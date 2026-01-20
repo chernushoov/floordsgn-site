@@ -1,0 +1,13 @@
+{
+  "hero": {
+    "title1": "Engineering-Grade",
+    "title2": "Floor Systems",
+    "description": "Premium industrial and decorative flooring solutions. European technology, Israeli craftsmanship."
+  },
+  "stats": [
+    { "number": "500+", "label": "Projects Completed" },
+    { "number": "15", "label": "Years Experience" },
+    { "number": "10+", "label": "Floor Systems" },
+    { "number": "100%", "label": "Warranty Coverage" }
+  ]
+}

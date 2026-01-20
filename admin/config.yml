@@ -1,0 +1,142 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Для локального тестирования (раскомментируйте):
+# local_backend: true
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: 'ru'
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  # ===== БЛОГ =====
+  - name: "blog"
+    label: "Блог - Статьи"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Категория", name: "category", widget: "select",
+          options: ["Технологии", "Материалы", "Кейсы", "Советы", "Тренды"] }
+      - { label: "Изображение", name: "image", widget: "image", required: false }
+      - { label: "Краткое описание", name: "excerpt", widget: "text" }
+      - { label: "Время чтения (мин)", name: "readTime", widget: "number", default: 5 }
+      - { label: "Текст статьи", name: "body", widget: "markdown" }
+      - { label: "Опубликовано", name: "published", widget: "boolean", default: true }
+
+  # ===== ПРОЕКТЫ =====
+  - name: "projects"
+    label: "Проекты"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название проекта", name: "title", widget: "string" }
+      - { label: "Клиент", name: "client", widget: "string", required: false }
+      - { label: "Локация", name: "location", widget: "string" }
+      - { label: "Год", name: "year", widget: "number" }
+      - { label: "Тип пола", name: "floorType", widget: "select",
+          options: ["Epoxy", "Microtopping", "Terrazzo", "PU-Cement", "MMA", "Polished Concrete", "Rubber"] }
+      - { label: "Категория", name: "category", widget: "select",
+          options: ["Residential", "Commercial", "Industrial", "Hospitality"] }
+      - { label: "Площадь (м²)", name: "area", widget: "number", required: false }
+      - { label: "Главное фото", name: "image", widget: "image" }
+      - { label: "Галерея", name: "gallery", widget: "list", field: { label: "Фото", name: "photo", widget: "image" }, required: false }
+      - { label: "Описание", name: "description", widget: "markdown" }
+      - { label: "На главной", name: "featured", widget: "boolean", default: false }
+
+  # ===== НАСТРОЙКИ САЙТА =====
+  - name: "settings"
+    label: "Настройки сайта"
+    files:
+      - name: "general"
+        label: "Общие настройки"
+        file: "content/settings/general.json"
+        fields:
+          - { label: "Название компании", name: "companyName", widget: "string", default: "Floor.DSGN" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Телефон", name: "phone", widget: "string" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
+          - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+
+      - name: "homepage"
+        label: "Главная страница"
+        file: "content/settings/homepage.json"
+        fields:
+          - label: "Hero секция"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Заголовок (строка 1)", name: "title1", widget: "string" }
+              - { label: "Заголовок (строка 2)", name: "title2", widget: "string" }
+              - { label: "Описание", name: "description", widget: "text" }
+          - label: "Статистика"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Число", name: "number", widget: "string" }
+              - { label: "Подпись", name: "label", widget: "string" }
+
+      - name: "about"
+        label: "О компании"
+        file: "content/settings/about.json"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Подзаголовок", name: "subtitle", widget: "string" }
+          - { label: "Основной текст", name: "content", widget: "markdown" }
+          - label: "Ценности"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "Номер", name: "number", widget: "string" }
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "description", widget: "text" }
+
+  # ===== МАТЕРИАЛЫ =====
+  - name: "materials"
+    label: "Материалы (типы полов)"
+    folder: "content/materials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "URL slug", name: "slug", widget: "string" }
+      - { label: "Подзаголовок", name: "subtitle", widget: "string" }
+      - { label: "Краткое описание", name: "excerpt", widget: "text" }
+      - { label: "Главное фото", name: "image", widget: "image", required: false }
+      - label: "Характеристики"
+        name: "specs"
+        widget: "list"
+        fields:
+          - { label: "Значение", name: "value", widget: "string" }
+          - { label: "Подпись", name: "label", widget: "string" }
+      - label: "Применение"
+        name: "applications"
+        widget: "list"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Подготовка основания", name: "substrate", widget: "markdown" }
+      - { label: "Технология", name: "technology", widget: "markdown" }
+      - label: "Галерея"
+        name: "gallery"
+        widget: "list"
+        field: { label: "Фото", name: "photo", widget: "image" }
+        required: false
+      - label: "Преимущества"
+        name: "advantages"
+        widget: "list"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Обслуживание", name: "maintenance", widget: "markdown" }
+      - { label: "Порядок на странице Floors", name: "order", widget: "number", default: 10 }

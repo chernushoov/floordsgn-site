@@ -1,0 +1,22 @@
+{
+  "title": "Engineering Excellence",
+  "subtitle": "About Us",
+  "content": "For over 15 years, Floor.DSGN has delivered engineering-grade flooring solutions across Israel. We combine European material systems with precision installation to create floors that perform and inspire.\n\nFloor.DSGN was founded by flooring engineers who saw a gap in the Israeli market: a need for truly technical flooring solutions delivered with architectural sensibility.\n\nToday, we serve industrial facilities, commercial developers, architects, and homeowners who demand performance without compromising aesthetics.",
+  "values": [
+    {
+      "number": "01",
+      "title": "Technical Excellence",
+      "description": "Every project begins with thorough substrate analysis and system specification. We match the right floor system to your specific environment and performance requirements."
+    },
+    {
+      "number": "02",
+      "title": "Quality Materials",
+      "description": "We source exclusively from leading European manufacturers — German, Italian, and Swiss systems with proven track records in demanding applications."
+    },
+    {
+      "number": "03",
+      "title": "Precision Installation",
+      "description": "Our installation teams are factory-trained and ISO-certified. Surface preparation, material application, and curing are executed to manufacturer specifications."
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Floor.DSGN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 180 60" fill="none"><g fill="#1a1a1a"><rect x="0" y="0" width="8" height="18" rx="3"/><rect x="10" y="0" width="8" height="8" rx="3"/><rect x="10" y="10" width="8" height="8" rx="3"/><rect x="20" y="0" width="18" height="8" rx="3"/><rect x="20" y="10" width="8" height="8" rx="3"/><rect x="30" y="10" width="8" height="8" rx="3"/><rect x="40" y="0" width="8" height="8" rx="3"/><rect x="40" y="10" width="8" height="8" rx="3"/><rect x="0" y="20" width="8" height="8" rx="3"/><rect x="0" y="30" width="8" height="8" rx="3"/><rect x="20" y="20" width="8" height="8" rx="3"/><rect x="30" y="20" width="8" height="18" rx="3"/><rect x="40" y="20" width="18" height="8" rx="3"/><rect x="40" y="30" width="8" height="8" rx="3"/><rect x="50" y="30" width="8" height="8" rx="3"/><rect x="0" y="40" width="18" height="8" rx="3"/><rect x="0" y="50" width="8" height="8" rx="3"/><rect x="20" y="40" width="8" height="8" rx="3"/><rect x="20" y="50" width="8" height="8" rx="3"/><rect x="30" y="40" width="8" height="8" rx="3"/><rect x="30" y="50" width="8" height="8" rx="3"/><rect x="40" y="40" width="8" height="18" rx="3"/><rect x="50" y="40" width="8" height="8" rx="3"/><rect x="50" y="50" width="8" height="8" rx="3"/></g><text x="72" y="14" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">F</text><text x="72" y="25" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">L</text><text x="72" y="36" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="47" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="58" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">R</text><text x="86" y="58" font-family="Montserrat" font-size="14" font-weight="700" fill="#1a1a1a">FL.DSGN</text></svg></a>
+        <nav><ul class="nav"><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <a href="contact.html" class="btn btn-dark active">Contact Us</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <p class="section-subtitle">Contact</p>
+                <h1>Let's Discuss<br>Your Project</h1>
+                <p class="lead">Have a project in mind? Our technical team is ready to discuss your flooring requirements and recommend the optimal solution.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-wrapper">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type" name="project-type">
+                                <option value="">Select project type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="floor-system">Floor System of Interest</label>
+                            <select id="floor-system" name="floor-system">
+                                <option value="">Select floor system</option>
+                                <option value="epoxy">Epoxy Systems</option>
+                                <option value="microtopping">Microtopping</option>
+                                <option value="terrazzo">Terrazzo</option>
+                                <option value="pu-cement">PU-Cement</option>
+                                <option value="mma">MMA Resin</option>
+                                <option value="concrete">Decorative Concrete</option>
+                                <option value="rubber">Rubber Flooring</option>
+                                <option value="restoration">Restoration/Sealer</option>
+                                <option value="not-sure">Not Sure - Need Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="area">Approximate Area (m²)</label>
+                            <input type="text" id="area" name="area" placeholder="e.g., 150">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific concerns..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-full">Send Inquiry</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h3>Direct Contact</h3>
+                        <div class="info-item">
+                            <div class="info-label">Phone</div>
+                            <a href="tel:+972509051065" class="info-value">+972 50 905 1065</a>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Email</div>
+                            <a href="mailto:floors.dsgn@gmail.com" class="info-value">floors.dsgn@gmail.com</a>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">WhatsApp</div>
+                            <a href="https://wa.me/972509051065" class="info-value">Message Us</a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Service Area</h3>
+                        <p>We provide flooring services throughout Israel, including Tel Aviv, Jerusalem, Haifa, and surrounding regions.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Working Hours</h3>
+                        <div class="info-item">
+                            <div class="info-label">Sunday - Thursday</div>
+                            <div class="info-value">08:00 - 18:00</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Friday</div>
+                            <div class="info-value">08:00 - 14:00</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Saturday</div>
+                            <div class="info-value">Closed</div>
+                        </div>
+                    </div>
+                    <div class="info-card dark">
+                        <h3>Free Consultation</h3>
+                        <p>Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
+                        <a href="tel:+972509051065" class="btn btn-outline-white">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">FAQ</p>
+                <h2 class="section-title">Common Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What information do you need for a quote?</h4>
+                    <p>For an accurate quote, we need: floor area (m²), current substrate condition, intended use of the space, desired aesthetic, and timeline. Site photos are helpful.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer site assessments?</h4>
+                    <p>Yes. For projects over 50m², we provide complimentary on-site substrate evaluation and system recommendations.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is your typical project timeline?</h4>
+                    <p>Timeline depends on the system and area. Most residential projects (50-150m²) complete in 3-7 days. Industrial projects may require 1-3 weeks.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you work with architects and designers?</h4>
+                    <p>We regularly collaborate with architects and interior designers. We provide technical specifications, material samples, and can attend design meetings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><svg width="140" height="50" viewBox="0 0 180 60" fill="none"><g fill="#fff"><rect x="0" y="0" width="8" height="18" rx="3"/><rect x="10" y="0" width="8" height="8" rx="3"/><rect x="10" y="10" width="8" height="8" rx="3"/><rect x="20" y="0" width="18" height="8" rx="3"/><rect x="20" y="10" width="8" height="8" rx="3"/><rect x="30" y="10" width="8" height="8" rx="3"/><rect x="40" y="0" width="8" height="8" rx="3"/><rect x="40" y="10" width="8" height="8" rx="3"/><rect x="0" y="20" width="8" height="8" rx="3"/><rect x="0" y="30" width="8" height="8" rx="3"/><rect x="20" y="20" width="8" height="8" rx="3"/><rect x="30" y="20" width="8" height="18" rx="3"/><rect x="40" y="20" width="18" height="8" rx="3"/><rect x="40" y="30" width="8" height="8" rx="3"/><rect x="50" y="30" width="8" height="8" rx="3"/><rect x="0" y="40" width="18" height="8" rx="3"/><rect x="0" y="50" width="8" height="8" rx="3"/><rect x="20" y="40" width="8" height="8" rx="3"/><rect x="20" y="50" width="8" height="8" rx="3"/><rect x="30" y="40" width="8" height="8" rx="3"/><rect x="30" y="50" width="8" height="8" rx="3"/><rect x="40" y="40" width="8" height="18" rx="3"/><rect x="50" y="40" width="8" height="8" rx="3"/><rect x="50" y="50" width="8" height="8" rx="3"/></g><text x="72" y="14" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">F</text><text x="72" y="25" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">L</text><text x="72" y="36" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">O</text><text x="72" y="47" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">O</text><text x="72" y="58" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">R</text><text x="86" y="58" font-family="Montserrat" font-size="14" font-weight="700" fill="#fff">FL.DSGN</text></svg><p>Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4>Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

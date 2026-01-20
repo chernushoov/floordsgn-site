@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Floor.DSGN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 180 60" fill="none"><g fill="#1a1a1a"><rect x="0" y="0" width="8" height="18" rx="3"/><rect x="10" y="0" width="8" height="8" rx="3"/><rect x="10" y="10" width="8" height="8" rx="3"/><rect x="20" y="0" width="18" height="8" rx="3"/><rect x="20" y="10" width="8" height="8" rx="3"/><rect x="30" y="10" width="8" height="8" rx="3"/><rect x="40" y="0" width="8" height="8" rx="3"/><rect x="40" y="10" width="8" height="8" rx="3"/><rect x="0" y="20" width="8" height="8" rx="3"/><rect x="0" y="30" width="8" height="8" rx="3"/><rect x="20" y="20" width="8" height="8" rx="3"/><rect x="30" y="20" width="8" height="18" rx="3"/><rect x="40" y="20" width="18" height="8" rx="3"/><rect x="40" y="30" width="8" height="8" rx="3"/><rect x="50" y="30" width="8" height="8" rx="3"/><rect x="0" y="40" width="18" height="8" rx="3"/><rect x="0" y="50" width="8" height="8" rx="3"/><rect x="20" y="40" width="8" height="8" rx="3"/><rect x="20" y="50" width="8" height="8" rx="3"/><rect x="30" y="40" width="8" height="8" rx="3"/><rect x="30" y="50" width="8" height="8" rx="3"/><rect x="40" y="40" width="8" height="18" rx="3"/><rect x="50" y="40" width="8" height="8" rx="3"/><rect x="50" y="50" width="8" height="8" rx="3"/></g><text x="72" y="14" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">F</text><text x="72" y="25" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">L</text><text x="72" y="36" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="47" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="58" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">R</text><text x="86" y="58" font-family="Montserrat" font-size="14" font-weight="700" fill="#1a1a1a">FL.DSGN</text></svg></a>
+        <nav><ul class="nav"><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html" class="active">About Us</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <a href="contact.html" class="btn btn-dark">Contact Us</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <p class="section-subtitle">About Us</p>
+                <h1>Engineering<br>Excellence</h1>
+                <p class="lead">For over 15 years, Floor.DSGN has delivered engineering-grade flooring solutions across Israel. We combine European material systems with precision installation to create floors that perform and inspire.</p>
+            </div>
+            <div class="about-image-placeholder"></div>
+        </div>
+    </section>
+
+    <section class="about-values">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Our Approach</p>
+                <h2 class="section-title">What Drives Us</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="number">01</div>
+                    <h3>Technical Excellence</h3>
+                    <p>Every project begins with thorough substrate analysis and system specification. We match the right floor system to your specific environment and performance requirements.</p>
+                </div>
+                <div class="value-item">
+                    <div class="number">02</div>
+                    <h3>Quality Materials</h3>
+                    <p>We source exclusively from leading European manufacturers — German, Italian, and Swiss systems with proven track records in demanding applications.</p>
+                </div>
+                <div class="value-item">
+                    <div class="number">03</div>
+                    <h3>Precision Installation</h3>
+                    <p>Our installation teams are factory-trained and ISO-certified. Surface preparation, material application, and curing are executed to manufacturer specifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="section-subtitle">Our Story</p>
+                    <h2>Built on Expertise</h2>
+                    <p>Floor.DSGN was founded by flooring engineers who saw a gap in the Israeli market: a need for truly technical flooring solutions delivered with architectural sensibility.</p>
+                    <p>Today, we serve industrial facilities, commercial developers, architects, and homeowners who demand performance without compromising aesthetics. From factory epoxy to handcrafted terrazzo, we deliver floors that work.</p>
+                    <p>Our team combines deep material science knowledge with hands-on installation expertise. We don't just sell systems — we engineer solutions.</p>
+                </div>
+                <div class="about-image-placeholder" style="aspect-ratio:4/3;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item"><div class="trust-number">500+</div><div class="trust-label">Projects Completed</div></div>
+                <div class="trust-item"><div class="trust-number">15</div><div class="trust-label">Years Experience</div></div>
+                <div class="trust-item"><div class="trust-number">10+</div><div class="trust-label">Floor Systems</div></div>
+                <div class="trust-item"><div class="trust-number">100%</div><div class="trust-label">Warranty Coverage</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p>Discuss your project requirements with our technical team.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-outline-white">Contact Us</a>
+                <a href="projects.html" class="btn btn-outline-white">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><svg width="140" height="50" viewBox="0 0 180 60" fill="none"><g fill="#fff"><rect x="0" y="0" width="8" height="18" rx="3"/><rect x="10" y="0" width="8" height="8" rx="3"/><rect x="10" y="10" width="8" height="8" rx="3"/><rect x="20" y="0" width="18" height="8" rx="3"/><rect x="20" y="10" width="8" height="8" rx="3"/><rect x="30" y="10" width="8" height="8" rx="3"/><rect x="40" y="0" width="8" height="8" rx="3"/><rect x="40" y="10" width="8" height="8" rx="3"/><rect x="0" y="20" width="8" height="8" rx="3"/><rect x="0" y="30" width="8" height="8" rx="3"/><rect x="20" y="20" width="8" height="8" rx="3"/><rect x="30" y="20" width="8" height="18" rx="3"/><rect x="40" y="20" width="18" height="8" rx="3"/><rect x="40" y="30" width="8" height="8" rx="3"/><rect x="50" y="30" width="8" height="8" rx="3"/><rect x="0" y="40" width="18" height="8" rx="3"/><rect x="0" y="50" width="8" height="8" rx="3"/><rect x="20" y="40" width="8" height="8" rx="3"/><rect x="20" y="50" width="8" height="8" rx="3"/><rect x="30" y="40" width="8" height="8" rx="3"/><rect x="30" y="50" width="8" height="8" rx="3"/><rect x="40" y="40" width="8" height="18" rx="3"/><rect x="50" y="40" width="8" height="8" rx="3"/><rect x="50" y="50" width="8" height="8" rx="3"/></g><text x="72" y="14" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">F</text><text x="72" y="25" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">L</text><text x="72" y="36" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">O</text><text x="72" y="47" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">O</text><text x="72" y="58" font-family="Montserrat" font-size="10" font-weight="600" fill="#fff">R</text><text x="86" y="58" font-family="Montserrat" font-size="14" font-weight="700" fill="#fff">FL.DSGN</text></svg><p>Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4>Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
