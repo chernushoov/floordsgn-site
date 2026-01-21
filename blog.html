@@ -25,7 +25,11 @@
     <header class="header">
         <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 180 60" fill="none"><g fill="#1a1a1a"><rect x="0" y="0" width="8" height="18" rx="3"/><rect x="10" y="0" width="8" height="8" rx="3"/><rect x="10" y="10" width="8" height="8" rx="3"/><rect x="20" y="0" width="18" height="8" rx="3"/><rect x="20" y="10" width="8" height="8" rx="3"/><rect x="30" y="10" width="8" height="8" rx="3"/><rect x="40" y="0" width="8" height="8" rx="3"/><rect x="40" y="10" width="8" height="8" rx="3"/><rect x="0" y="20" width="8" height="8" rx="3"/><rect x="0" y="30" width="8" height="8" rx="3"/><rect x="20" y="20" width="8" height="8" rx="3"/><rect x="30" y="20" width="8" height="18" rx="3"/><rect x="40" y="20" width="18" height="8" rx="3"/><rect x="40" y="30" width="8" height="8" rx="3"/><rect x="50" y="30" width="8" height="8" rx="3"/><rect x="0" y="40" width="18" height="8" rx="3"/><rect x="0" y="50" width="8" height="8" rx="3"/><rect x="20" y="40" width="8" height="8" rx="3"/><rect x="20" y="50" width="8" height="8" rx="3"/><rect x="30" y="40" width="8" height="8" rx="3"/><rect x="30" y="50" width="8" height="8" rx="3"/><rect x="40" y="40" width="8" height="18" rx="3"/><rect x="50" y="40" width="8" height="8" rx="3"/><rect x="50" y="50" width="8" height="8" rx="3"/></g><text x="72" y="14" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">F</text><text x="72" y="25" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">L</text><text x="72" y="36" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="47" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">O</text><text x="72" y="58" font-family="Montserrat" font-size="10" font-weight="600" fill="#1a1a1a">R</text><text x="86" y="58" font-family="Montserrat" font-size="14" font-weight="700" fill="#1a1a1a">FL.DSGN</text></svg></a>
         <nav><ul class="nav"><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html" class="active">Blog</a></li></ul></nav>
-        <a href="contact.html" class="btn btn-dark">Contact Us</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
     </header>
 
@@ -176,5 +180,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="translations.js"></script>
 </body>
 </html>

@@ -71,14 +71,18 @@
         </a>
         <nav>
             <ul class="nav">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="floors.html">Floors</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
+                <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
+                <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+                <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
             </ul>
         </nav>
-        <a href="contact.html" class="btn btn-dark">Contact Us</a>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <span></span><span></span><span></span>
         </button>
@@ -99,12 +103,12 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-overline">Premium Flooring Studio &bull; Israel</p>
-            <h1>Industrial &<br>Commercial<br>Flooring</h1>
-            <p class="hero-text">Epoxy, terrazzo, microtopping — European materials, professional installation, 10-year warranty. Factories, warehouses, showrooms, offices.</p>
+            <p class="hero-overline" data-i18n="hero_overline">Premium Flooring Studio &bull; Israel</p>
+            <h1 data-i18n="hero_title">Industrial &<br>Commercial<br>Flooring</h1>
+            <p class="hero-text" data-i18n="hero_text">Epoxy, terrazzo, microtopping — European materials, professional installation, 10-year warranty. Factories, warehouses, showrooms, offices.</p>
             <div class="hero-buttons">
-                <a href="contact.html" class="btn btn-dark">Get Free Quote</a>
-                <a href="projects.html" class="btn btn-outline">See 500+ Projects</a>
+                <a href="contact.html" class="btn btn-dark" data-i18n="hero_cta_primary">Get Free Quote</a>
+                <a href="projects.html" class="btn btn-outline" data-i18n="hero_cta_secondary">See 500+ Projects</a>
             </div>
         </div>
         <div class="hero-image">
@@ -118,19 +122,19 @@
             <div class="trust-grid">
                 <div class="trust-item">
                     <div class="trust-number">500+</div>
-                    <div class="trust-label">Projects Completed</div>
+                    <div class="trust-label" data-i18n="trust_projects">Projects Completed</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-number">15</div>
-                    <div class="trust-label">Years Experience</div>
+                    <div class="trust-label" data-i18n="trust_years">Years Experience</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-number">10+</div>
-                    <div class="trust-label">Flooring Systems</div>
+                    <div class="trust-label" data-i18n="trust_systems">Floor Systems</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-number">100%</div>
-                    <div class="trust-label">Quality Guaranteed</div>
+                    <div class="trust-label" data-i18n="trust_warranty">Warranty Coverage</div>
                 </div>
             </div>
         </div>
@@ -206,34 +210,34 @@
     <section class="process-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Our Process</p>
-                <h2 class="section-title">How We Work</h2>
+                <p class="section-subtitle" data-i18n="process_subtitle">Our Process</p>
+                <h2 class="section-title" data-i18n="process_title">How We Work</h2>
             </div>
             <div class="process-steps">
                 <div class="step fade-in">
                     <div class="number">01</div>
-                    <h4>Consultation</h4>
-                    <p>Free site visit. We assess conditions, discuss requirements, and recommend solutions.</p>
+                    <h4 data-i18n="process_step1_title">Consultation</h4>
+                    <p data-i18n="process_step1_text">Free site visit. We assess conditions, discuss requirements, and recommend solutions.</p>
                 </div>
                 <div class="step fade-in">
                     <div class="number">02</div>
-                    <h4>Proposal</h4>
-                    <p>Detailed quote within 48 hours. Fixed price, no hidden fees, clear timeline.</p>
+                    <h4 data-i18n="process_step2_title">Proposal</h4>
+                    <p data-i18n="process_step2_text">Detailed quote within 48 hours. Fixed price, no hidden fees, clear timeline.</p>
                 </div>
                 <div class="step fade-in">
                     <div class="number">03</div>
-                    <h4>Preparation</h4>
-                    <p>Surface preparation, crack repair, moisture testing. Foundation for perfect results.</p>
+                    <h4 data-i18n="process_step3_title">Preparation</h4>
+                    <p data-i18n="process_step3_text">Surface preparation, crack repair, moisture testing. Foundation for perfect results.</p>
                 </div>
                 <div class="step fade-in">
                     <div class="number">04</div>
-                    <h4>Installation</h4>
-                    <p>Professional application by certified teams. Typical project: 3-7 days.</p>
+                    <h4 data-i18n="process_step4_title">Installation</h4>
+                    <p data-i18n="process_step4_text">Professional application by certified teams. Typical project: 3-7 days.</p>
                 </div>
                 <div class="step fade-in">
                     <div class="number">05</div>
-                    <h4>Warranty</h4>
-                    <p>10-year warranty on all systems. Ongoing maintenance support available.</p>
+                    <h4 data-i18n="process_step5_title">Warranty</h4>
+                    <p data-i18n="process_step5_text">10-year warranty on all systems. Ongoing maintenance support available.</p>
                 </div>
             </div>
         </div>
@@ -243,35 +247,35 @@
     <section class="testimonials-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Client Feedback</p>
-                <h2 class="section-title">What They Say</h2>
+                <p class="section-subtitle" data-i18n="testimonials_subtitle">Client Feedback</p>
+                <h2 class="section-title" data-i18n="testimonials_title">What They Say</h2>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-content">
-                        <p>"Completed 12,000 sqm warehouse floor in just 5 days. Zero defects after 3 years of heavy forklift traffic. Exceptional quality."</p>
+                        <p data-i18n="testimonial1_text">"Completed 12,000 sqm warehouse floor in just 5 days. Zero defects after 3 years of heavy forklift traffic. Exceptional quality."</p>
                     </div>
                     <div class="testimonial-author">
-                        <strong>David K.</strong>
-                        <span>Facility Manager, Logistics Center Ashdod</span>
+                        <strong data-i18n="testimonial1_author">David K.</strong>
+                        <span data-i18n="testimonial1_role">Facility Manager, Logistics Center Ashdod</span>
                     </div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-content">
-                        <p>"The terrazzo floor transformed our showroom. Clients constantly compliment it. Worth every shekel — this is investment in brand image."</p>
+                        <p data-i18n="testimonial2_text">"The terrazzo floor transformed our showroom. Clients constantly compliment it. Worth every shekel — this is investment in brand image."</p>
                     </div>
                     <div class="testimonial-author">
-                        <strong>Marina S.</strong>
-                        <span>Owner, Furniture Gallery Tel Aviv</span>
+                        <strong data-i18n="testimonial2_author">Marina S.</strong>
+                        <span data-i18n="testimonial2_role">Owner, Furniture Gallery Tel Aviv</span>
                     </div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-content">
-                        <p>"We needed food-grade epoxy for our production facility. Floor.DSGN delivered on time, passed all health inspections. Highly recommend."</p>
+                        <p data-i18n="testimonial3_text">"We needed food-grade epoxy for our production facility. Floor.DSGN delivered on time, passed all health inspections. Highly recommend."</p>
                     </div>
                     <div class="testimonial-author">
-                        <strong>Yossi R.</strong>
-                        <span>Operations Director, Food Manufacturing</span>
+                        <strong data-i18n="testimonial3_author">Yossi R.</strong>
+                        <span data-i18n="testimonial3_role">Operations Director, Food Manufacturing</span>
                     </div>
                 </div>
             </div>
@@ -337,11 +341,11 @@
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Start?</h2>
-            <p>Free consultation, site assessment, and detailed quote within 48 hours.</p>
+            <h2 data-i18n="cta_title">Ready to Start?</h2>
+            <p data-i18n="cta_text">Free consultation, site assessment, and detailed quote within 48 hours.</p>
             <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-outline-white">Get Free Quote</a>
-                <a href="tel:+972509051065" class="btn btn-outline-white">Call Now</a>
+                <a href="contact.html" class="btn btn-outline-white" data-i18n="cta_btn_quote">Get Free Quote</a>
+                <a href="tel:+972509051065" class="btn btn-outline-white" data-i18n="cta_btn_call">Call Now</a>
             </div>
             <div class="cta-contact">
                 <a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a> |
@@ -421,7 +425,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
+                <p data-i18n="footer_copyright">&copy; 2024 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
                 <div class="social-links">
                     <a href="#">Instagram</a>
                     <a href="#">LinkedIn</a>
@@ -429,14 +433,14 @@
                 </div>
             </div>
             <div class="footer-legal">
-                <p>Floor.DSGN Ltd. | Service throughout Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva | VAT Registered</p>
+                <p data-i18n="footer_legal">Floor.DSGN Ltd. | Service throughout Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva | VAT Registered</p>
             </div>
         </div>
     </footer>
 
     <!-- STICKY CTA -->
     <a href="contact.html" class="sticky-cta" id="stickyCta">
-        <span>Get Quote</span>
+        <span data-i18n="sticky_cta">Get Quote</span>
     </a>
 
     <script src="script.js"></script>
@@ -462,5 +466,6 @@
         }, { threshold: 0.1 });
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
+    <script src="translations.js"></script>
 </body>
 </html>

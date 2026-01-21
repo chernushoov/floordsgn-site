@@ -2395,6 +2395,50 @@ img {
     letter-spacing: 0.05em;
 }
 
+/* ==================== LANGUAGE SWITCHER ==================== */
+.lang-switch {
+    display: flex;
+    gap: 5px;
+    margin-right: 20px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--grey-border);
+    color: var(--grey-text);
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lang-btn:hover {
+    border-color: var(--black);
+    color: var(--black);
+}
+
+.lang-btn.active {
+    background: var(--black);
+    border-color: var(--black);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .lang-switch {
+        position: absolute;
+        top: 20px;
+        right: 70px;
+    }
+
+    .lang-btn {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+}
+
 /* ==================== STICKY CTA ==================== */
 .sticky-cta {
     position: fixed;
