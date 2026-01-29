@@ -3152,3 +3152,24 @@ s {
         height: 4px;
     }
 }
+
+/* ==================== LOGO STYLES ==================== */
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    .footer-logo {
+        height: 50px;
+    }
+}
