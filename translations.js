@@ -96,6 +96,15 @@ const translations = {
         // Sticky CTA
         sticky_cta: "Get Quote",
 
+        // Industries Section
+        industries_subtitle: "Industries We Serve",
+        industries_title: "Trusted Across Sectors",
+        industry_food: "Food & Beverage",
+        industry_pharma: "Pharmaceutical",
+        industry_logistics: "Logistics",
+        industry_retail: "Retail",
+        industry_hospitality: "Hospitality",
+
         // Material Pages — Shared
         mat_back: "Back to Floors",
         mat_cta_title: "Start Your Project",
@@ -847,6 +856,15 @@ const translations = {
         // Clients
         clients_subtitle: "Надёжные партнёры",
         clients_title: "Компании, с которыми мы работаем",
+
+        // Industries Section
+        industries_subtitle: "Отрасли",
+        industries_title: "Работаем с разными секторами",
+        industry_food: "Пищевая промышленность",
+        industry_pharma: "Фармацевтика",
+        industry_logistics: "Логистика",
+        industry_retail: "Ритейл",
+        industry_hospitality: "Гостиничный бизнес",
 
         // CTA
         cta_title: "Готовы начать?",
