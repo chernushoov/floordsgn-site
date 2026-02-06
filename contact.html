@@ -30,7 +30,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="contact.html" class="btn btn-dark active" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="info-item">
                             <div class="info-label">WhatsApp</div>
-                            <a href="https://wa.me/972509051065" class="info-value">Message Us</a>
+                            <a href="https://wa.me/972509051065" class="info-value" target="_blank" rel="noopener noreferrer">Message Us</a>
                         </div>
                     </div>
                     <div class="info-card">
@@ -142,6 +142,42 @@
                         <p>Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
                         <a href="tel:+972509051065" class="btn btn-outline-white">Call Now</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Next Steps</p>
+                <h2 class="section-title">What Happens After You Reach Out</h2>
+                <p class="section-desc">Our streamlined process ensures you get expert guidance quickly.</p>
+            </div>
+            <div class="next-steps-grid">
+                <div class="next-step">
+                    <div class="step-number">1</div>
+                    <h3>Initial Response</h3>
+                    <p>We review your inquiry and respond within 24 hours with preliminary recommendations.</p>
+                    <span class="step-time">Within 24 hours</span>
+                </div>
+                <div class="next-step">
+                    <div class="step-number">2</div>
+                    <h3>Technical Consultation</h3>
+                    <p>Our team discusses your requirements, answers questions, and schedules a site visit if needed.</p>
+                    <span class="step-time">1-2 business days</span>
+                </div>
+                <div class="next-step">
+                    <div class="step-number">3</div>
+                    <h3>Detailed Quote</h3>
+                    <p>You receive a comprehensive quote with system recommendations, timeline, and transparent pricing.</p>
+                    <span class="step-time">48 hours after site visit</span>
+                </div>
+                <div class="next-step">
+                    <div class="step-number">4</div>
+                    <h3>Project Kickoff</h3>
+                    <p>Upon approval, we finalize materials, schedule installation, and begin transforming your space.</p>
+                    <span class="step-time">You decide the start date</span>
                 </div>
             </div>
         </div>
@@ -182,7 +218,47 @@
                 <div class="footer-column"><h4>Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
                 <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li></ul></div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div>
+            <div class="footer-badges">
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>10-Year Warranty</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>15+ Years Experience</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <span>Free Site Visit</span>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
         </div>
     </footer>
 

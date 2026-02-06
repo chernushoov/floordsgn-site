@@ -30,7 +30,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -54,76 +54,160 @@
             </div>
 
             <div class="projects-masonry">
-                <div class="project-item tall">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item tall" data-category="industrial">
+                    <div class="project-item-image" style="background:url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>Industrial Epoxy</span>
-                        <h3>Manufacturing Facility</h3>
-                        <p>Haifa | 5,000 m²</p>
+                        <h3>Hi-Tech Manufacturing</h3>
+                        <p>Haifa Industrial Zone</p>
+                        <div class="project-item-stats">
+                            <span>5,000 m²</span>
+                            <span>ESD System</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-item-image" style="background:url('/images/terrazzo/171b1e42-3f48-4b95-aacb-37ec27d6d902.jpeg') center/cover;"></div>
+                <div class="project-item" data-category="residential terrazzo">
+                    <div class="project-item-image" style="background:url('images/terrazzo/171b1e42-3f48-4b95-aacb-37ec27d6d902.jpeg') center/cover;"></div>
                     <div class="project-item-overlay">
-                        <span>Terrazzo</span>
-                        <h3>Luxury Villa</h3>
-                        <p>Herzliya</p>
+                        <span>Venetian Terrazzo</span>
+                        <h3>Private Residence</h3>
+                        <p>Herzliya Pituach</p>
+                        <div class="project-item-stats">
+                            <span>320 m²</span>
+                            <span>Marble Chips</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item" data-category="commercial">
+                    <div class="project-item-image" style="background:url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>Microtopping</span>
-                        <h3>Design Studio</h3>
-                        <p>Tel Aviv</p>
+                        <h3>Architect Studio</h3>
+                        <p>Tel Aviv, Rothschild</p>
+                        <div class="project-item-stats">
+                            <span>180 m²</span>
+                            <span>Seamless</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item wide">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item wide" data-category="commercial">
+                    <div class="project-item-image" style="background:url('images/terrazzo/5285493171318544266.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
-                        <span>Polished Concrete</span>
-                        <h3>Corporate Headquarters</h3>
-                        <p>Ramat Gan | 3,200 m²</p>
+                        <span>Polished Terrazzo</span>
+                        <h3>Corporate HQ Lobby</h3>
+                        <p>Ramat Gan, Diamond Exchange</p>
+                        <div class="project-item-stats">
+                            <span>3,200 m²</span>
+                            <span>Custom Pattern</span>
+                            <span>2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item" data-category="industrial">
+                    <div class="project-item-image" style="background:url('images/microtopping/g12ground.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>PU-Cement</span>
-                        <h3>Food Processing Plant</h3>
-                        <p>Ashdod</p>
+                        <h3>Food Production</h3>
+                        <p>Ashdod Port Area</p>
+                        <div class="project-item-stats">
+                            <span>2,800 m²</span>
+                            <span>HACCP</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item tall">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item tall" data-category="commercial terrazzo">
+                    <div class="project-item-image" style="background:url('images/terrazzo/5285493171318544257.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>Epoxy Terrazzo</span>
-                        <h3>Shopping Mall</h3>
-                        <p>Netanya | 8,000 m²</p>
+                        <h3>Shopping Gallery</h3>
+                        <p>Netanya, City Center</p>
+                        <div class="project-item-stats">
+                            <span>8,000 m²</span>
+                            <span>High Traffic</span>
+                            <span>2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item" data-category="commercial">
+                    <div class="project-item-image" style="background:url('images/microtopping/full-frame-shot-wall.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>Microtopping</span>
-                        <h3>Restaurant Interior</h3>
-                        <p>Tel Aviv</p>
+                        <h3>Gourmet Restaurant</h3>
+                        <p>Tel Aviv, Sarona</p>
+                        <div class="project-item-stats">
+                            <span>450 m²</span>
+                            <span>Matte Finish</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-item-image" style="background:url('/images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg') center/cover;"></div>
+                <div class="project-item" data-category="commercial">
+                    <div class="project-item-image" style="background:url('images/rubber/workout-room-with-gym-equipment.jpg') center/cover;"></div>
                     <div class="project-item-overlay">
-                        <span>Rubber</span>
-                        <h3>Fitness Center</h3>
-                        <p>Jerusalem</p>
+                        <span>Rubber Flooring</span>
+                        <h3>Premium Fitness Club</h3>
+                        <p>Jerusalem, Mamilla</p>
+                        <div class="project-item-stats">
+                            <span>1,200 m²</span>
+                            <span>Impact Absorbing</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item wide">
-                    <div class="project-item-image" style="background:url('/images/terrazzo/171b1e42-3f48-4b95-aacb-37ec27d6d902.jpeg') center/cover;"></div>
+                <div class="project-item wide" data-category="industrial">
+                    <div class="project-item-image" style="background:url('images/terrazzo/1807324487.png') center/cover;"></div>
                     <div class="project-item-overlay">
                         <span>Industrial Epoxy</span>
-                        <h3>Warehouse Complex</h3>
-                        <p>Modiin | 12,000 m²</p>
+                        <h3>Logistics Center</h3>
+                        <p>Modi'in, Industrial Park</p>
+                        <div class="project-item-stats">
+                            <span>12,000 m²</span>
+                            <span>Forklift Rated</span>
+                            <span>2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="residential terrazzo">
+                    <div class="project-item-image" style="background:url('images/terrazzo/188339_vitra-terrazzo-x-k949753lpr01vte0-svetlyj-lpr-60x120-re0.jpg') center/cover;"></div>
+                    <div class="project-item-overlay">
+                        <span>Terrazzo</span>
+                        <h3>Penthouse Suite</h3>
+                        <p>Tel Aviv, Neve Tzedek</p>
+                        <div class="project-item-stats">
+                            <span>280 m²</span>
+                            <span>Custom Color</span>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="commercial">
+                    <div class="project-item-image" style="background:url('images/terrazzo/199672_orinda-terrazzo-glossy-60x120-re0.jpg') center/cover;"></div>
+                    <div class="project-item-overlay">
+                        <span>Polished Concrete</span>
+                        <h3>Boutique Hotel</h3>
+                        <p>Eilat, Marina</p>
+                        <div class="project-item-stats">
+                            <span>1,800 m²</span>
+                            <span>High Gloss</span>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item" data-category="residential">
+                    <div class="project-item-image" style="background:url('images/microtopping/full-frame-shot-weathered-wall.jpg') center/cover;"></div>
+                    <div class="project-item-overlay">
+                        <span>Microtopping</span>
+                        <h3>Modern Apartment</h3>
+                        <p>Raanana</p>
+                        <div class="project-item-stats">
+                            <span>150 m²</span>
+                            <span>Warm Grey</span>
+                            <span>2024</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,7 +233,47 @@
                 <div class="footer-column"><h4>Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
                 <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li></ul></div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div>
+            <div class="footer-badges">
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>10-Year Warranty</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>15+ Years Experience</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <span>Free Site Visit</span>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
         </div>
     </footer>
 

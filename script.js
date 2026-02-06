@@ -34,18 +34,37 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Category filter for blog
+// Category filter for projects and blog
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        // Filter logic would go here
+
+        const filter = this.textContent.toLowerCase().trim();
+        const items = document.querySelectorAll('.project-item, .blog-card');
+
+        items.forEach(item => {
+            const category = item.dataset.category || '';
+            if (filter === 'all' || category.toLowerCase().includes(filter)) {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+                item.style.display = '';
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    if (!category.toLowerCase().includes(filter) && filter !== 'all') {
+                        item.style.display = 'none';
+                    }
+                }, 300);
+            }
+        });
     });
 });
 
 // Category navigation highlight
 document.querySelectorAll('.category-nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function() {
         document.querySelectorAll('.category-nav a').forEach(l => l.classList.remove('active'));
         this.classList.add('active');
     });
@@ -70,7 +89,7 @@ document.querySelectorAll('.floor-section, .service-card, .project-card, .blog-c
 });
 
 // Form validation
-const contactForm = document.querySelector('.contact-form form');
+const contactForm = document.querySelector('form.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();

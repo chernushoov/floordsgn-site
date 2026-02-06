@@ -83,7 +83,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </header>
@@ -179,6 +179,55 @@
             </div>
             <div class="services-cta">
                 <a href="floors.html" class="btn btn-outline">View All Systems</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOOR SELECTOR CTA -->
+    <section class="selector-section">
+        <div class="container">
+            <div class="selector-card">
+                <div class="selector-content">
+                    <h2>Not Sure Which Floor Is Right For You?</h2>
+                    <p>Tell us about your space and requirements. Our experts will recommend the perfect flooring solution for your project.</p>
+                    <div class="selector-features">
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </span>
+                            <span>2-Minute Quiz</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </span>
+                            <span>Personalized Recommendation</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </span>
+                            <span>Free Expert Consultation</span>
+                        </div>
+                    </div>
+                    <a href="contact.html?quiz=true" class="btn btn-dark">Find My Perfect Floor</a>
+                </div>
+                <div class="selector-visual">
+                    <div class="visual-grid">
+                        <div class="visual-item" style="background: linear-gradient(135deg, #4a4a4a, #2d2d2d);"></div>
+                        <div class="visual-item" style="background: linear-gradient(135deg, #8b7355, #6b5344);"></div>
+                        <div class="visual-item" style="background: linear-gradient(135deg, #c4b998, #a89878);"></div>
+                        <div class="visual-item" style="background: linear-gradient(135deg, #d4d4d4, #a8a8a8);"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -424,12 +473,52 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer-badges">
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>10-Year Warranty</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>15+ Years Experience</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <span>Free Site Visit</span>
+                </div>
+            </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">&copy; 2024 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
                 <div class="social-links">
-                    <a href="#">Instagram</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Facebook</a>
+                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a>
+                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a>
+                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook">Facebook</a>
                 </div>
             </div>
             <div class="footer-legal">

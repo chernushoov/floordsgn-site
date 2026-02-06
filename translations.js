@@ -90,7 +90,7 @@ const translations = {
         footer_systems: "Floor Systems",
         footer_company: "Company",
         footer_contact: "Contact",
-        footer_copyright: "© 2024 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.",
+        footer_copyright: "© 2026 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.",
         footer_legal: "Floor.DSGN Ltd. | Service throughout Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva | VAT Registered",
 
         // Sticky CTA
@@ -187,7 +187,7 @@ const translations = {
         footer_systems: "Покрытия",
         footer_company: "Компания",
         footer_contact: "Контакты",
-        footer_copyright: "© 2024 Floor.DSGN. Все права защищены. Лицензированный подрядчик.",
+        footer_copyright: "© 2026 Floor.DSGN. Все права защищены. Лицензированный подрядчик.",
         footer_legal: "Floor.DSGN Ltd. | Работаем по всему Израилю: Тель-Авив, Иерусалим, Хайфа, Беэр-Шева | Плательщик НДС",
 
         // Sticky CTA
@@ -203,10 +203,15 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
+            const value = translations[lang][key];
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[lang][key];
+                element.placeholder = value;
+            } else if (value.includes('<br>') || value.includes('<strong>') || value.includes('<em>')) {
+                // Only use innerHTML for trusted content with specific HTML tags
+                element.innerHTML = value;
             } else {
-                element.innerHTML = translations[lang][key];
+                // Use textContent for security (prevents XSS)
+                element.textContent = value;
             }
         }
     });
