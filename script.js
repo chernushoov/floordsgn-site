@@ -173,3 +173,74 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Scroll Reveal Animation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add reveal class to elements that should animate
+    const revealElements = document.querySelectorAll(
+        '.section-header, .service-card, .floor-card, .blog-card, ' +
+        '.project-item, .trust-item, .process-step, .testimonial-card, ' +
+        '.material-app-card, .variant-card, .faq-item, .team-member'
+    );
+
+    revealElements.forEach(el => {
+        if (!el.classList.contains('reveal')) {
+            el.classList.add('reveal');
+        }
+    });
+
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: stop observing after reveal
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        revealObserver.observe(el);
+    });
+});
+
+// Staggered animation for grid items
+document.addEventListener('DOMContentLoaded', function() {
+    const grids = document.querySelectorAll('.services-grid, .blog-grid, .projects-grid, .trust-grid');
+
+    grids.forEach(grid => {
+        const items = grid.children;
+        Array.from(items).forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.1}s`;
+        });
+    });
+});
+
+// Smooth page load transition
+document.body.classList.add('page-transition');
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+        }
+    }
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('active');
+    });
+});

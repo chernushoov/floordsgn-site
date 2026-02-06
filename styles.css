@@ -1003,7 +1003,7 @@ img {
     color: rgba(255,255,255,0.7);
 }
 
-.applications {
+.advantages {
     margin-bottom: 30px;
 }
 
@@ -1014,6 +1014,34 @@ img {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 12px;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 40px;
+    margin-top: 50px;
+}
+
+.application-card {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.application-card h3 {
+    margin: 20px 0 15px 0;
+    font-size: 18px;
+}
+
+.application-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--grey-text);
+    margin: 0;
+}
+
+.application-icon {
+    margin-bottom: 15px;
 }
 
 .app-tags {
