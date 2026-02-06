@@ -129,6 +129,11 @@ img {
     height: 55px;
 }
 
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
 .nav {
     display: flex;
     gap: 40px;
