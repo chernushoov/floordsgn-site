@@ -244,3 +244,267 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
         document.getElementById('mobileMenu').classList.remove('active');
     });
 });
+
+// ==================== APPLE-STYLE SCROLL ANIMATIONS ====================
+class ScrollAnimationManager {
+    constructor() {
+        this.animatedElements = new Set();
+        this.init();
+    }
+
+    init() {
+        // Observer for animate-on-scroll elements
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.15
+        };
+
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animatedElements.has(entry.target)) {
+                    this.animatedElements.add(entry.target);
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll, .reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            this.observer.observe(el);
+        });
+
+        // Initialize parallax
+        this.initParallax();
+    }
+
+    initParallax() {
+        const parallaxElements = document.querySelectorAll('.parallax-image, .hero-image img');
+
+        if (parallaxElements.length === 0) return;
+
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    parallaxElements.forEach(el => {
+                        const speed = 0.3;
+                        const yPos = -(scrolled * speed);
+                        el.style.transform = `translateY(${yPos}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+}
+
+// ==================== COUNTER ANIMATION ====================
+class CounterAnimation {
+    constructor() {
+        this.counters = document.querySelectorAll('.trust-number, .counter-value');
+        this.animated = new Set();
+        this.init();
+    }
+
+    init() {
+        if (this.counters.length === 0) return;
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animated.has(entry.target)) {
+                    this.animated.add(entry.target);
+                    this.animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        this.counters.forEach(counter => observer.observe(counter));
+    }
+
+    animateCounter(element) {
+        const text = element.textContent;
+        const match = text.match(/(\d+)/);
+
+        if (!match) return;
+
+        const target = parseInt(match[1]);
+        const suffix = text.replace(/\d+/, '').trim();
+        const duration = 2000;
+        const startTime = performance.now();
+
+        element.classList.add('counted');
+
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function (ease-out cubic)
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(target * easeOut);
+
+            element.textContent = current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                element.textContent = target + suffix;
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }
+}
+
+// ==================== EXPERTISE CARDS MANAGER ====================
+class ExpertiseCardManager {
+    constructor() {
+        this.cards = document.querySelectorAll('.expertise-card');
+        this.init();
+    }
+
+    init() {
+        if (this.cards.length === 0) return;
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        this.cards.forEach(card => observer.observe(card));
+    }
+}
+
+// ==================== BENTO GALLERY INTERACTIONS ====================
+class BentoGallery {
+    constructor() {
+        this.items = document.querySelectorAll('.bento-item');
+        this.init();
+    }
+
+    init() {
+        if (this.items.length === 0) return;
+
+        this.items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                this.items.forEach(i => {
+                    if (i !== item) {
+                        i.style.opacity = '0.7';
+                        i.style.transform = 'scale(0.98)';
+                    }
+                });
+            });
+
+            item.addEventListener('mouseleave', () => {
+                this.items.forEach(i => {
+                    i.style.opacity = '1';
+                    i.style.transform = 'scale(1)';
+                });
+            });
+        });
+    }
+}
+
+// ==================== SPECS TABLE ANIMATION ====================
+class SpecsTableAnimation {
+    constructor() {
+        this.tables = document.querySelectorAll('.specs-table-animated');
+        this.init();
+    }
+
+    init() {
+        if (this.tables.length === 0) return;
+
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const rows = entry.target.querySelectorAll('tr');
+                    rows.forEach((row, index) => {
+                        setTimeout(() => {
+                            row.classList.add('visible');
+                        }, index * 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        this.tables.forEach(table => observer.observe(table));
+    }
+}
+
+// ==================== SMOOTH HEADER TRANSITION ====================
+class HeaderManager {
+    constructor() {
+        this.header = document.querySelector('.header');
+        this.lastScroll = 0;
+        this.init();
+    }
+
+    init() {
+        if (!this.header) return;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                this.header.style.background = 'rgba(255, 255, 255, 0.9)';
+                this.header.style.backdropFilter = 'blur(20px)';
+                this.header.style.webkitBackdropFilter = 'blur(20px)';
+                this.header.style.boxShadow = '0 1px 0 rgba(0,0,0,0.1)';
+            } else {
+                this.header.style.background = 'var(--white)';
+                this.header.style.backdropFilter = 'none';
+                this.header.style.webkitBackdropFilter = 'none';
+                this.header.style.boxShadow = 'none';
+            }
+
+            this.lastScroll = currentScroll;
+        });
+    }
+}
+
+// ==================== INITIALIZE ALL MANAGERS ====================
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize animation managers
+    new ScrollAnimationManager();
+    new CounterAnimation();
+    new ExpertiseCardManager();
+    new BentoGallery();
+    new SpecsTableAnimation();
+    new HeaderManager();
+
+    // Add stagger delays to grid items
+    const grids = document.querySelectorAll('.bento-gallery, .expertise-grid, .services-grid');
+    grids.forEach(grid => {
+        const items = grid.children;
+        Array.from(items).forEach((item, index) => {
+            if (!item.classList.contains('stagger-1') && !item.classList.contains('stagger-2')) {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            }
+        });
+    });
+
+    console.log('Apple-style animations initialized');
+});
