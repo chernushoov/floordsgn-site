@@ -88,45 +88,38 @@ document.querySelectorAll('.floor-section, .service-card, .project-card, .blog-c
     observer.observe(el);
 });
 
-// Form validation
+// Form validation and submission
 const contactForm = document.querySelector('form.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
         // Basic validation
         const name = this.querySelector('input[name="name"]');
-        const email = this.querySelector('input[name="email"]');
-        const message = this.querySelector('textarea[name="message"]');
+        const phone = this.querySelector('input[name="phone"]');
 
         let valid = true;
 
-        if (!name.value.trim()) {
+        if (name && !name.value.trim()) {
             name.style.borderColor = '#ff0000';
             valid = false;
-        } else {
+        } else if (name) {
             name.style.borderColor = '';
         }
 
-        if (!email.value.trim() || !email.value.includes('@')) {
-            email.style.borderColor = '#ff0000';
+        if (phone && !phone.value.trim()) {
+            phone.style.borderColor = '#ff0000';
             valid = false;
-        } else {
-            email.style.borderColor = '';
+        } else if (phone) {
+            phone.style.borderColor = '';
         }
 
-        if (!message.value.trim()) {
-            message.style.borderColor = '#ff0000';
-            valid = false;
-        } else {
-            message.style.borderColor = '';
+        if (!valid) {
+            e.preventDefault();
+            return;
         }
 
-        if (valid) {
-            // Submit form or show success message
-            alert('Thank you for your message. We will contact you soon.');
-            this.reset();
-        }
+        // If valid, redirect to thank-you page
+        e.preventDefault();
+        window.location.href = 'thank-you.html';
     });
 }
 
