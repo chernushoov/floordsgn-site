@@ -191,8 +191,8 @@
     <script src="translations.js"></script>
     <script>
     (function() {
-      // Webhook URL — обновляется при смене cloudflared туннеля
-      var WEBHOOK = 'https://dairy-nationally-grades-floors.trycloudflare.com/webhook/floordsgn-contact';
+      // Stable Vercel API endpoint (no cloudflared dependency)
+      var WEBHOOK = '/api/contact';
 
       var form = document.getElementById('contactForm');
       var msgBox = document.getElementById('form-message');
