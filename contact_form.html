@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Контактная форма FloorDSGN</title>
+<style>
+body {font-family:Arial,Helvetica,sans-serif;padding:20px;}
+form {max-width:400px;margin:auto;}
+input,textarea {width:100%;margin-bottom:10px;padding:8px;}
+button {padding:10px 20px;background:#28a745;color:#fff;border:none;cursor:pointer;}
+</style>
+</head>
+<body>
+<h2>Оставьте заявку</h2>
+<form id="leadForm" action="https://api.example.com/lead" method="POST">
+  <input type="text" name="name" placeholder="Имя" required>
+  <input type="tel" name="phone" placeholder="Телефон" required>
+  <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
+  <button type="submit">Отправить</button>
+</form>
+<script>
+// Simple client‑side validation & submit via fetch to our backend
+document.getElementById('leadForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const json = Object.fromEntries(data.entries());
+  try {
+    const res = await fetch('https://localhost:3000/api/lead', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(json)});
+    if(res.ok){alert('Спасибо за заявку! Мы свяжемся в течение 30 минут.'); e.target.reset();}
+    else{alert('Ошибка отправки. Попробуйте позже.');}
+  }catch(err){alert('Ошибка сети.');}
+});
+</script>
+</body>
+</html>

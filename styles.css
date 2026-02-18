@@ -149,6 +149,16 @@ img {
     width: 160px;
     height: 55px;
 }
+/* Added larger logo image and floating animation */
+.logo img {
+    width: 180px;
+    animation: float 6s infinite ease-in-out;
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
 
 .nav {
     display: flex;
