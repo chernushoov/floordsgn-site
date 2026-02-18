@@ -1,5 +1,6 @@
 # Local Netlify folder
 .netlify
+.vercel
 
 .DS_Store
 **/.DS_Store

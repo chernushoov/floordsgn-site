@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=2">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
@@ -160,62 +160,60 @@
                         </div>
                     </div>
 
-                    <div class="article-cta">
-                        <h3 data-i18n="mma_cta_title">Need Minimal Downtime?</h3>
-                        <p data-i18n="mma_cta_text">Let's discuss how MMA can solve your rapid-installation challenge.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
-                    </div>
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">FAQ</p>
+                <h2 class="section-title">Common Questions About MMA Floors</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How fast can MMA really be installed?</h3>
+                    <p>MMA cures in 1-2 hours, meaning a complete system can be installed and ready for light traffic in 4-6 hours. Full mechanical loading is typically possible within 24 hours. We regularly complete overnight installations for retail and food processing clients.</p>
                 </div>
+                <div class="faq-item">
+                    <h3>What about the smell during installation?</h3>
+                    <p>MMA has a distinctive odor during application (similar to acrylic nail products). It dissipates quickly after curing — usually within a few hours. For sensitive environments like hospitals, we use low-odor formulations and coordinate ventilation carefully.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can MMA be installed in cold storage without emptying it?</h3>
+                    <p>Yes, this is one of MMA's key advantages. It cures at temperatures as low as -30°C. We can install in active cold storage facilities without raising the temperature, which would compromise stored products. This is often impossible with other resin systems.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does MMA compare to epoxy in durability?</h3>
+                    <p>MMA and epoxy have similar mechanical properties when properly formulated. MMA is more flexible (better crack bridging), more UV-stable (suitable for exterior), but slightly lower chemical resistance than specialized epoxy systems. For most applications, they perform comparably.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is MMA more expensive than epoxy?</h3>
+                    <p>Material costs are typically higher. However, when you factor in reduced downtime, faster return to production, and the ability to install in adverse conditions, MMA often delivers better total project value. We provide detailed cost analysis for each project.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can damaged areas be repaired easily?</h3>
+                    <p>Yes — MMA's fast cure makes repairs particularly convenient. Small areas can be ground out and patched in a few hours. The new material bonds chemically to the existing floor. Repairs don't require extended downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <aside class="article-sidebar">
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="mma_specs_title">Technical Specifications</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mma_spec_thickness">System Thickness</span><span class="spec-value">2-6 mm</span></li>
-                            <li><span class="spec-label" data-i18n="mat_full_cure">Full Cure</span><span class="spec-value">1-2 hours</span></li>
-                            <li><span class="spec-label" data-i18n="mma_spec_traffic">Traffic Ready</span><span class="spec-value">2-4 hours</span></li>
-                            <li><span class="spec-label" data-i18n="mma_spec_primer">Primer Cure</span><span class="spec-value">30-60 min</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="mma_temp_title">Temperature Range</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mma_temp_min">Min Install Temp</span><span class="spec-value">-30°C</span></li>
-                            <li><span class="spec-label" data-i18n="mma_temp_max">Max Install Temp</span><span class="spec-value">+35°C</span></li>
-                            <li><span class="spec-label" data-i18n="mma_temp_service">Service Range</span><span class="spec-value">-40°C to +80°C</span></li>
-                            <li><span class="spec-label" data-i18n="mma_temp_humidity">Humidity Tolerance</span><span class="spec-value" data-i18n="mma_temp_humidity_v">High</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="mma_perf_title">Performance</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mat_service_life">Service Life</span><span class="spec-value">10-15 years</span></li>
-                            <li><span class="spec-label" data-i18n="mma_perf_uv">UV Stability</span><span class="spec-value" data-i18n="mma_perf_uv_v">Excellent</span></li>
-                            <li><span class="spec-label" data-i18n="mma_perf_chem">Chemical Resistance</span><span class="spec-value" data-i18n="mma_perf_chem_v">Excellent</span></li>
-                            <li><span class="spec-label" data-i18n="mma_perf_flex">Flexibility</span><span class="spec-value" data-i18n="mma_perf_flex_v">High</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card highlight">
-                        <h4 data-i18n="mat_warranty">Warranty</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mat_workmanship">Workmanship</span><span class="spec-value" data-i18n="mma_warranty_years">5 years</span></li>
-                            <li><span class="spec-label" data-i18n="mma_warranty_repair">Emergency Repair</span><span class="spec-value" data-i18n="mma_warranty_repair_v">Available</span></li>
-                        </ul>
-                        <a href="../contact.html" class="btn btn-dark btn-small" data-i18n="mat_request_quote">Request Quote</a>
-                    </div>
-
-                    <div class="sidebar-section">
-                        <h4 data-i18n="mat_related">Related Systems</h4>
-                        <ul class="related-links">
-                            <li><a href="epoxy.html" data-i18n="mma_rel1">Epoxy Flooring</a></li>
-                            <li><a href="pu-cement.html" data-i18n="mma_rel2">PU-Cement</a></li>
-                            <li><a href="rubber.html" data-i18n="mma_rel3">Rubber Flooring</a></li>
-                        </ul>
-                    </div>
-                </aside>
+    <section class="related-systems">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Related Systems</p>
+                <h2 class="section-title">Explore Other Options</h2>
+            </div>
+            <div class="related-grid">
+                <a href="epoxy.html" class="related-card">
+                    <h3>Epoxy</h3>
+                    <p>Standard cure resin systems for maximum chemical resistance.</p>
+                </a>
+                <a href="pu-cement.html" class="related-card">
+                    <h3>PU-Cement</h3>
+                    <p>Thermal shock resistant for food and beverage.</p>
+                </a>
+                <a href="rubber.html" class="related-card">
+                    <h3>Rubber Flooring</h3>
+                    <p>Comfort and safety for people-centric spaces.</p>
+                </a>
             </div>
         </div>
     </article>
@@ -246,6 +244,7 @@
                     <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
         </div>
     </footer>
 

@@ -90,7 +90,7 @@
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -113,7 +113,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </header>
@@ -130,39 +130,61 @@
         </ul>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-overline" data-i18n="hero_overline">Premium Flooring Studio &bull; Israel</p>
-            <h1 data-i18n="hero_title">Industrial &<br>Commercial<br>Flooring</h1>
-            <p class="hero-text" data-i18n="hero_text">Epoxy, terrazzo, microtopping — European materials, professional installation, 10-year warranty. Factories, warehouses, showrooms, offices.</p>
-            <div class="hero-buttons">
-                <a href="contact.html" class="btn btn-dark" data-i18n="hero_cta_primary">Get Free Quote</a>
-                <a href="projects.html" class="btn btn-outline" data-i18n="hero_cta_secondary">See 500+ Projects</a>
-            </div>
+    <!-- HERO SECTION - MARKET SPLIT -->
+    <section class="hero-split">
+        <div class="hero-split-intro">
+            <p class="hero-overline">Floor.DSGN &bull; Israel</p>
+            <h1>What brings you here?</h1>
         </div>
-        <div class="hero-image">
-            <img src="images/terrazzo/171b1e42-3f48-4b95-aacb-37ec27d6d902.jpeg" alt="Premium terrazzo flooring" loading="lazy">
+        <div class="hero-split-grid">
+            <!-- MARKET A: Industrial / Commercial -->
+            <a href="industrial.html" class="market-card market-a">
+                <div class="market-card-bg" style="background-image: url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg');"></div>
+                <div class="market-card-content">
+                    <span class="market-label">For Business Owners</span>
+                    <h2>Industrial &<br>Commercial</h2>
+                    <p>Factories, warehouses, logistics, restaurants, parking. Fast installation, minimal downtime, maximum durability.</p>
+                    <ul class="market-features">
+                        <li>Epoxy &bull; PU-Cement &bull; MMA</li>
+                        <li>48h quote &bull; 10-year warranty</li>
+                    </ul>
+                    <span class="market-cta">Get Industrial Quote <span class="arrow">&rarr;</span></span>
+                </div>
+            </a>
+            <!-- MARKET B: Design / Architects -->
+            <a href="designers.html" class="market-card market-b">
+                <div class="market-card-bg" style="background-image: url('images/terrazzo/scale_2400.jpeg');"></div>
+                <div class="market-card-content">
+                    <span class="market-label">For Designers & Architects</span>
+                    <h2>Design &<br>Finishes</h2>
+                    <p>Terrazzo, microtopping, decorative concrete. We handle floors so you can focus on design.</p>
+                    <ul class="market-features">
+                        <li>Terrazzo &bull; Microtopping &bull; Concrete</li>
+                        <li>Samples &bull; Specs &bull; Reliable delivery</li>
+                    </ul>
+                    <span class="market-cta">Partner With Us <span class="arrow">&rarr;</span></span>
+                </div>
+            </a>
         </div>
     </section>
 
-    <!-- WHY TRUST US -->
+    <!-- WHY TRUST US - ANIMATED COUNTERS -->
     <section class="trust-section">
         <div class="container">
             <div class="trust-grid">
-                <div class="trust-item">
+                <div class="trust-item animate-on-scroll">
                     <div class="trust-number">500+</div>
                     <div class="trust-label" data-i18n="trust_projects">Projects Completed</div>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item animate-on-scroll stagger-1">
                     <div class="trust-number">15</div>
                     <div class="trust-label" data-i18n="trust_years">Years Experience</div>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item animate-on-scroll stagger-2">
                     <div class="trust-number">10+</div>
                     <div class="trust-label" data-i18n="trust_systems">Floor Systems</div>
                 </div>
-                <div class="trust-item">
+                <div class="trust-item animate-on-scroll stagger-3">
                     <div class="trust-number">100%</div>
                     <div class="trust-label" data-i18n="trust_warranty">Warranty Coverage</div>
                 </div>
@@ -213,6 +235,7 @@
         </div>
     </section>
 
+
     <!-- QUALITY SECTION -->
     <section class="quality-section">
         <div class="container">
@@ -236,61 +259,54 @@
         </div>
     </section>
 
-    <!-- TERRAZZO GALLERY -->
+    <!-- TERRAZZO GALLERY - APPLE BENTO STYLE -->
     <section class="gallery-section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header center animate-on-scroll">
                 <p class="section-subtitle">Our Craft</p>
                 <h2 class="section-title">Terrazzo Gallery</h2>
             </div>
-            <div class="terrazzo-gallery">
-                <div class="gallery-item featured">
-                    <img src="images/terrazzo/scale_2400.jpeg" alt="Premium terrazzo floor" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Handcrafted</span>
-                        <h4>Venetian Terrazzo</h4>
+            <div class="bento-gallery">
+                <div class="bento-item bento-hero animate-on-scroll">
+                    <img src="images/terrazzo/interrior-222944.jpg" alt="Modern terrazzo interior" loading="lazy">
+                    <div class="bento-glass">
+                        <span class="tag">Featured Project</span>
+                        <h4>Modern Interior Design</h4>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/5285493171318544266.jpg" alt="Terrazzo texture" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Classic</span>
-                        <h4>Marble Aggregate</h4>
+                <div class="bento-item animate-on-scroll stagger-1">
+                    <img src="images/terrazzo/interrior-222943.jpg" alt="Terrazzo living space" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag">Residential</span>
+                        <h4>Living Space</h4>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/macrophotography-terrazzo-slab-texture.jpg" alt="Terrazzo detail" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Detail</span>
-                        <h4>Surface Texture</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg" alt="Terrazzo pattern" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Pattern</span>
-                        <h4>Natural Stone</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/5285493171318544274.jpg" alt="Terrazzo interior" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Interior</span>
-                        <h4>Modern Space</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/interrior-222942.jpg" alt="Terrazzo design" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Design</span>
+                <div class="bento-item animate-on-scroll stagger-2">
+                    <img src="images/terrazzo/interrior-222942.jpg" alt="Contemporary terrazzo" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag">Design</span>
                         <h4>Contemporary</h4>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/terrazzo/interrior-222943.jpg" alt="Terrazzo floor" loading="lazy">
-                    <div class="gallery-caption">
-                        <span>Residential</span>
-                        <h4>Living Space</h4>
+                <div class="bento-item bento-wide animate-on-scroll stagger-3">
+                    <img src="images/terrazzo/svoboda-2.jpg" alt="Project Svoboda" loading="lazy">
+                    <div class="bento-glass">
+                        <span class="tag">Commercial</span>
+                        <h4>Project Svoboda</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-4">
+                    <img src="images/terrazzo/interrior-266999.jpg" alt="Terrazzo floor detail" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag">Detail</span>
+                        <h4>Floor Pattern</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-5">
+                    <img src="images/terrazzo/scale_2400-2.jpeg" alt="Premium terrazzo" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag">Premium</span>
+                        <h4>Venetian Style</h4>
                     </div>
                 </div>
             </div>
@@ -482,12 +498,52 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer-badges">
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <span>10-Year Warranty</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>15+ Years Experience</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <span>ISO 9001 Certified</span>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13" rx="2"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <span>Free Site Visit</span>
+                </div>
+            </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">&copy; 2024 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a>
+                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a>
+                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook">Facebook</a>
                 </div>
             </div>
             <div class="footer-legal">
@@ -527,3 +583,4 @@
     <script src="translations.js"></script>
 </body>
 </html>
+<!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->

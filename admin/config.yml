@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-# Для локального тестирования (раскомментируйте):
+# Для локальной разработки раскомментируйте:
 # local_backend: true
 
 media_folder: "images"

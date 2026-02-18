@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=2">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
@@ -160,62 +160,60 @@
                         </div>
                     </div>
 
-                    <div class="article-cta">
-                        <h3 data-i18n="terrazzo_cta_title">Ready for Your Terrazzo Project?</h3>
-                        <p data-i18n="terrazzo_cta_text">Our design team will help you create a custom terrazzo floor that will last generations.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
-                    </div>
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">FAQ</p>
+                <h2 class="section-title">Common Questions About Terrazzo</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What's the difference between cement and epoxy terrazzo?</h3>
+                    <p>Cement terrazzo is the traditional system — thicker (25-50mm), requires a sand-cement bed, and suits new construction. Epoxy terrazzo is thin-set (10-12mm), applied directly to concrete, and ideal for renovation. Both offer comparable aesthetics and durability; the choice depends on project constraints.</p>
                 </div>
+                <div class="faq-item">
+                    <h3>Is terrazzo really worth the higher cost?</h3>
+                    <p>When evaluated over lifecycle, yes. Initial costs are higher, but terrazzo lasts 50+ years with minimal maintenance. It's restorable, not replaceable. Many terrazzo floors installed decades ago are still in service — the math favors terrazzo for permanent installations.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How customizable is the design?</h3>
+                    <p>Almost unlimited. Aggregate types (marble, glass, shell, recycled materials), sizes, colors, and matrix tints are all variable. Divider strips create patterns, logos, and wayfinding. We work with architects to realize virtually any design vision.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can old terrazzo floors be restored?</h3>
+                    <p>Yes — this is one of terrazzo's great advantages. Worn or damaged floors can be reground and repolished to original condition. Cracks and chips are repairable with matching materials. Restoration is typically far more cost-effective than replacement.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is terrazzo slippery?</h3>
+                    <p>Polished terrazzo has moderate slip resistance suitable for most commercial environments. For areas requiring higher slip ratings (entrances, wet areas), we use aggregates and finishes that achieve the required coefficients while maintaining aesthetic appeal.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does terrazzo installation take?</h3>
+                    <p>Terrazzo requires patience. The process involves pouring, curing (7-14 days), multiple grinding passes, grouting, and polishing. A typical project takes 3-4 weeks from start to completion. This is an investment in permanent quality, not a quick fix.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <aside class="article-sidebar">
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="terrazzo_specs_title">Technical Specifications</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="terrazzo_spec_thickness">System Thickness</span><span class="spec-value">10-25 mm</span></li>
-                            <li><span class="spec-label" data-i18n="mat_service_life">Service Life</span><span class="spec-value">50+ years</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_spec_passes">Grinding Passes</span><span class="spec-value">3-5</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_spec_polish">Final Polish</span><span class="spec-value">400-3000 grit</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="terrazzo_sealer_title">Sealer & Protection</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="terrazzo_seal_type">Sealer Type</span><span class="spec-value" data-i18n="terrazzo_seal_type_v">Penetrating</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_seal_stain">Stain Resistance</span><span class="spec-value" data-i18n="terrazzo_seal_stain_v">Excellent</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_seal_cure">Curing Time</span><span class="spec-value">7-14 days</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_seal_design">Design Options</span><span class="spec-value" data-i18n="terrazzo_seal_design_v">Custom</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="terrazzo_cat_title">System Categories</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="terrazzo_cat_cement">Cement Terrazzo</span><span class="spec-value">25-50 mm</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_cat_epoxy">Epoxy Terrazzo</span><span class="spec-value">10-12 mm</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_cat_precast">Precast Tiles</span><span class="spec-value">20-30 mm</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_cat_rustic">Rustic / Monolithic</span><span class="spec-value">15-25 mm</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card highlight">
-                        <h4 data-i18n="mat_warranty">Warranty</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mat_workmanship">Workmanship</span><span class="spec-value" data-i18n="terrazzo_warranty_years">10 years</span></li>
-                            <li><span class="spec-label" data-i18n="terrazzo_warranty_struct">Structural (cement)</span><span class="spec-value" data-i18n="mat_included">Included</span></li>
-                        </ul>
-                        <a href="../contact.html" class="btn btn-dark btn-small" data-i18n="mat_request_quote">Request Quote</a>
-                    </div>
-
-                    <div class="sidebar-section">
-                        <h4 data-i18n="mat_related">Related Systems</h4>
-                        <ul class="related-links">
-                            <li><a href="microtopping.html" data-i18n="terrazzo_rel1">Microtopping</a></li>
-                            <li><a href="concrete.html" data-i18n="terrazzo_rel2">Polished Concrete</a></li>
-                            <li><a href="epoxy.html" data-i18n="terrazzo_rel3">Epoxy Flooring</a></li>
-                        </ul>
-                    </div>
-                </aside>
+    <section class="related-systems">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Related Systems</p>
+                <h2 class="section-title">Explore Other Options</h2>
+            </div>
+            <div class="related-grid">
+                <a href="microtopping.html" class="related-card">
+                    <h3>Microtopping</h3>
+                    <p>Thin cement overlay for contemporary aesthetics.</p>
+                </a>
+                <a href="concrete.html" class="related-card">
+                    <h3>Decorative Concrete</h3>
+                    <p>Polished and stained concrete finishes.</p>
+                </a>
+                <a href="epoxy.html" class="related-card">
+                    <h3>Epoxy</h3>
+                    <p>High-performance resin systems.</p>
+                </a>
             </div>
         </div>
     </article>
@@ -246,6 +244,7 @@
                     <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
         </div>
     </footer>
 

@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=2">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
@@ -160,62 +160,60 @@
                         </div>
                     </div>
 
-                    <div class="article-cta">
-                        <h3 data-i18n="puc_cta_title">Food Processing Floor Project?</h3>
-                        <p data-i18n="puc_cta_text">Our team specializes in HACCP-compliant floor systems for demanding environments.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
-                    </div>
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">FAQ</p>
+                <h2 class="section-title">Common Questions About PU-Cement Floors</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Why choose PU-cement over epoxy?</h3>
+                    <p>PU-cement is specifically designed for environments with thermal shock — hot wash-downs, steam cleaning, freezer interfaces. Standard epoxy can crack under these conditions. If your facility requires daily hot water cleaning or has temperature extremes, PU-cement is the right choice.</p>
                 </div>
+                <div class="faq-item">
+                    <h3>Is PU-cement HACCP compliant?</h3>
+                    <p>Yes. PU-cement systems are widely approved for food contact areas when installed with appropriate coved skirting and drainage. They're the industry standard for breweries, dairies, meat processing, and commercial kitchens worldwide.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How thick is a PU-cement floor?</h3>
+                    <p>Typically 6-9mm, significantly thicker than epoxy (2-5mm). This thickness provides impact resistance, thermal mass for temperature cycling, and allows for integral falls to drain. The thickness is a feature, not a limitation.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can PU-cement be installed over existing floors?</h3>
+                    <p>Usually existing coatings need to be removed down to concrete. The system requires aggressive mechanical bonding and often needs screeding to achieve proper drainage falls. We assess overlay feasibility during site inspection.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How slippery is PU-cement when wet?</h3>
+                    <p>PU-cement comes in texture options from R10 (light texture) to R13 (heavy texture). We specify the appropriate slip rating for your application — lighter textures for dry processing areas, heavier for wet/oily environments.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What's the installation process for an operating facility?</h3>
+                    <p>We typically install in phases to minimize disruption. Weekend work is common. The system cures quickly (24-48 hours to traffic), so areas can return to production rapidly. Full project planning coordinates with your production schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <aside class="article-sidebar">
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="puc_specs_title">Technical Specifications</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="puc_spec_thickness">System Thickness</span><span class="spec-value">6-9 mm</span></li>
-                            <li><span class="spec-label" data-i18n="mat_temp_range">Thermal Range</span><span class="spec-value">-40°C to +120°C</span></li>
-                            <li><span class="spec-label" data-i18n="puc_spec_shock">Thermal Shock</span><span class="spec-value" data-i18n="puc_spec_shock_v">Unlimited cycles</span></li>
-                            <li><span class="spec-label" data-i18n="puc_spec_impact">Impact Resistance</span><span class="spec-value">IR10+</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="puc_slip_title">Slip Resistance</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="puc_slip_smooth">Smooth Finish</span><span class="spec-value">R10</span></li>
-                            <li><span class="spec-label" data-i18n="puc_slip_medium">Medium Finish</span><span class="spec-value">R11</span></li>
-                            <li><span class="spec-label" data-i18n="puc_slip_coarse">Coarse Finish</span><span class="spec-value">R12</span></li>
-                            <li><span class="spec-label" data-i18n="puc_slip_heavy">Heavy Duty</span><span class="spec-value">R13</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card">
-                        <h4 data-i18n="puc_compliance_title">Compliance</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="puc_compl_food">Food Safety</span><span class="spec-value">HACCP</span></li>
-                            <li><span class="spec-label" data-i18n="puc_compl_chem">Chemical Resistance</span><span class="spec-value" data-i18n="puc_compl_chem_v">Excellent</span></li>
-                            <li><span class="spec-label" data-i18n="puc_compl_steam">Steam Cleaning</span><span class="spec-value" data-i18n="puc_compl_steam_v">Daily rated</span></li>
-                            <li><span class="spec-label" data-i18n="mat_service_life">Service Life</span><span class="spec-value">15-20 years</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-section specs-card highlight">
-                        <h4 data-i18n="mat_warranty">Warranty</h4>
-                        <ul class="specs-list">
-                            <li><span class="spec-label" data-i18n="mat_workmanship">Workmanship</span><span class="spec-value" data-i18n="puc_warranty_years">10 years</span></li>
-                            <li><span class="spec-label" data-i18n="puc_warranty_inspect">Annual Inspection</span><span class="spec-value" data-i18n="mat_included">Included</span></li>
-                        </ul>
-                        <a href="../contact.html" class="btn btn-dark btn-small" data-i18n="mat_request_quote">Request Quote</a>
-                    </div>
-
-                    <div class="sidebar-section">
-                        <h4 data-i18n="mat_related">Related Systems</h4>
-                        <ul class="related-links">
-                            <li><a href="epoxy.html" data-i18n="puc_rel1">Epoxy Flooring</a></li>
-                            <li><a href="mma.html" data-i18n="puc_rel2">MMA Resin</a></li>
-                            <li><a href="microtopping.html" data-i18n="puc_rel3">Microtopping</a></li>
-                        </ul>
-                    </div>
-                </aside>
+    <section class="related-systems">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Related Systems</p>
+                <h2 class="section-title">Explore Other Options</h2>
+            </div>
+            <div class="related-grid">
+                <a href="epoxy.html" class="related-card">
+                    <h3>Epoxy</h3>
+                    <p>For environments without thermal shock requirements.</p>
+                </a>
+                <a href="mma.html" class="related-card">
+                    <h3>MMA Resin</h3>
+                    <p>Rapid cure for minimal downtime installations.</p>
+                </a>
+                <a href="microtopping.html" class="related-card">
+                    <h3>Microtopping</h3>
+                    <p>Decorative cement for front-of-house areas.</p>
+                </a>
             </div>
         </div>
     </article>
@@ -246,6 +244,7 @@
                     <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
+            <div class="footer-bottom"><p>&copy; 2024 Floor.DSGN</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
         </div>
     </footer>
 
