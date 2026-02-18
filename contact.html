@@ -99,15 +99,16 @@
                             <label for="message">Project Details</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific concerns..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-full">Send Inquiry</button>
+                        <button type="submit" class="btn btn-dark btn-full" id="submitBtn">Send Inquiry</button>
                     </form>
+                    <div id="form-message" style="display:none;margin-top:16px;padding:14px 18px;border-radius:8px;font-size:14px;"></div>
                 </div>
                 <div class="contact-info">
                     <div class="info-card">
                         <h3>Direct Contact</h3>
                         <div class="info-item">
                             <div class="info-label">Phone</div>
-                            <a href="tel:+972509051065" class="info-value">+972 50 905 1065</a>
+                            <a href="tel:+972559661459" class="info-value">+972 55 966 1459</a>
                         </div>
                         <div class="info-item">
                             <div class="info-label">Email</div>
@@ -115,7 +116,7 @@
                         </div>
                         <div class="info-item">
                             <div class="info-label">WhatsApp</div>
-                            <a href="https://wa.me/972509051065" class="info-value">Message Us</a>
+                            <a href="https://wa.me/972559661459" class="info-value">Message Us</a>
                         </div>
                     </div>
                     <div class="info-card">
@@ -140,7 +141,7 @@
                     <div class="info-card dark">
                         <h3>Free Consultation</h3>
                         <p>Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
-                        <a href="tel:+972509051065" class="btn btn-outline-white">Call Now</a>
+                        <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +181,7 @@
                 <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
                 <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
                 <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li><li>Israel, Tel Aviv</li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
             </div>
             <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2024 Floor.DSGN. All rights reserved.</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener">LinkedIn</a></div></div>
         </div>
@@ -188,5 +189,58 @@
 
     <script src="script.js"></script>
     <script src="translations.js"></script>
+    <script>
+    (function() {
+      // Webhook URL — обновляется при смене cloudflared туннеля
+      var WEBHOOK = 'https://dairy-nationally-grades-floors.trycloudflare.com/webhook/floordsgn-contact';
+
+      var form = document.getElementById('contactForm');
+      var msgBox = document.getElementById('form-message');
+      var btn = document.getElementById('submitBtn');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        msgBox.style.display = 'none';
+
+        var data = {
+          name:         form.querySelector('[name=name]')?.value || '',
+          phone:        form.querySelector('[name=phone]')?.value || '',
+          email:        form.querySelector('[name=email]')?.value || '',
+          project_type: form.querySelector('[name=project-type]')?.value || '',
+          floor_system: form.querySelector('[name=floor-system]')?.value || '',
+          area:         form.querySelector('[name=area]')?.value || '',
+          message:      form.querySelector('[name=message]')?.value || '',
+          source:       'floordsgn-website',
+          ts:           new Date().toISOString()
+        };
+
+        fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function() {
+          msgBox.style.cssText = 'display:block;background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;margin-top:16px;padding:14px 18px;border-radius:8px;font-size:14px;';
+          msgBox.textContent = 'Thank you! Your inquiry has been sent. We will contact you within 24 hours.';
+          form.reset();
+          btn.textContent = 'Send Inquiry';
+          btn.disabled = false;
+        })
+        .catch(function() {
+          // Fallback: submit normally to Netlify if webhook fails
+          msgBox.style.cssText = 'display:block;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;margin-top:16px;padding:14px 18px;border-radius:8px;font-size:14px;';
+          msgBox.textContent = 'Sending via backup channel...';
+          btn.textContent = 'Send Inquiry';
+          btn.disabled = false;
+          form.submit();
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
