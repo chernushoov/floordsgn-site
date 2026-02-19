@@ -140,8 +140,25 @@ img {
 }
 
 .logo-img {
-    height: 60px;
+    height: 80px;
     width: auto;
+    transition: transform 0.3s ease-out;
+    animation: logoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
+}
+
+@keyframes logoEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav {
@@ -155,6 +172,23 @@ img {
     font-weight: 400;
     letter-spacing: 0.05em;
     transition: opacity 0.3s;
+    position: relative;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--black);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
 }
 
 .nav a:hover {
@@ -585,6 +619,12 @@ img {
     overflow: hidden;
     display: block;
     border-radius: 20px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
 .service-image {
@@ -2180,7 +2220,7 @@ img {
     border: 1px solid var(--grey-border);
     background: var(--white);
     font-family: 'Montserrat', sans-serif;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
@@ -2188,6 +2228,7 @@ img {
 .form-group select:focus {
     outline: none;
     border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.08);
 }
 
 .form-group textarea {
@@ -2862,6 +2903,10 @@ img {
         padding: 15px 25px;
     }
 
+    .logo-img {
+        height: 55px;
+    }
+
     .header .btn {
         display: none;
     }
@@ -3360,6 +3405,12 @@ img {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    animation: ctaPulse 3s ease-in-out 2s infinite;
+}
+
+@keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
 }
 
 /* ==================== FOOTER TRUST BADGES ==================== */
@@ -7109,8 +7160,13 @@ img {
 
 /* Footer logo */
 .footer-logo {
-    height: 50px;
+    height: 70px;
     width: auto;
+    transition: transform 0.3s ease-out;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
 }
 
 /* ==================== LANDING PAGES (Market A/B) ==================== */
@@ -7373,6 +7429,12 @@ img {
     padding: 40px;
     background: var(--grey-light);
     border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .offer-number {
@@ -7669,13 +7731,14 @@ img {
     border: 1px solid var(--grey-border);
     border-radius: 10px;
     background: var(--white);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .landing-form input:focus,
 .landing-form select:focus {
     outline: none;
     border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.08);
 }
 
 .landing-form .btn-full {
