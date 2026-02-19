@@ -1,0 +1,48 @@
+<!-- Language Switcher - Add this to your navbar -->
+<div id="language-switcher" class="language-switcher" style="display: flex; gap: 0.5rem; align-items: center;">
+  <span style="font-size: 0.875rem; color: #666;">
+    <span data-i18n="language">Language</span>:
+  </span>
+  <div style="display: flex; gap: 0.25rem;">
+    <button onclick="i18n.setLanguage('he')" id="lang-he" class="lang-btn" style="padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; border: none; cursor: pointer; background-color: #ddd; color: #1f2937; transition: all 0.2s;">
+      עברית
+    </button>
+    <button onclick="i18n.setLanguage('en')" id="lang-en" class="lang-btn" style="padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; border: none; cursor: pointer; background-color: #ddd; color: #1f2937; transition: all 0.2s;">
+      English
+    </button>
+    <button onclick="i18n.setLanguage('ru')" id="lang-ru" class="lang-btn" style="padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; border: none; cursor: pointer; background-color: #ddd; color: #1f2937; transition: all 0.2s;">
+      Русский
+    </button>
+  </div>
+</div>
+
+<script>
+// Update button styles based on current language
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.lang-btn').forEach(button => {
+    const lang = button.textContent.includes('עברית') ? 'he' : 
+                 button.textContent.includes('English') ? 'en' : 'ru';
+    if (i18n && i18n.currentLocale === lang) {
+      button.style.backgroundColor = '#2563eb';
+      button.style.color = 'white';
+    }
+  });
+
+  // Update on language change
+  const originalSetLanguage = i18n.setLanguage.bind(i18n);
+  i18n.setLanguage = function(locale) {
+    originalSetLanguage(locale);
+    document.querySelectorAll('.lang-btn').forEach(button => {
+      const lang = button.textContent.includes('עברית') ? 'he' : 
+                   button.textContent.includes('English') ? 'en' : 'ru';
+      if (locale === lang) {
+        button.style.backgroundColor = '#2563eb';
+        button.style.color = 'white';
+      } else {
+        button.style.backgroundColor = '#ddd';
+        button.style.color = '#1f2937';
+      }
+    });
+  };
+});
+</script>
