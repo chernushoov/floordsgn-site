@@ -42,8 +42,8 @@ _Спринт: 2026-02-18 → 2026-02-25_
 - DEADLINE: 2026-02-21
 - DEPENDENCIES: Данные от Алексея
 - OWNER: Алексей → MeltBot
-- STATUS: blocked
-- NOTES: НУЖНЫ ДАННЫЕ ОТ АЛЕКСЕЯ
+- STATUS: done
+- NOTES: Completed 2026-02-19. Phone updated to +972 55 966 1459, WhatsApp to +972559661459. Updated general.json + 24 HTML files.
 
 ## Задача 4
 - ID: FD-004

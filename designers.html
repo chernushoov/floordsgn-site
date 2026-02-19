@@ -245,7 +245,7 @@
                     </div>
                 </div>
                 <div class="landing-form-wrapper">
-                    <form class="landing-form" id="designerForm" action="thank-you.html" method="GET">
+                    <form class="landing-form" id="designerForm" method="POST" data-netlify="true" name="designer">
                         <input type="hidden" name="source" value="designer">
                         <div class="form-group">
                             <label for="name">Name *</label>
@@ -283,7 +283,44 @@
                             <input type="text" id="contact" name="contact" required placeholder="How should we reach you?">
                         </div>
                         <button type="submit" class="btn btn-dark btn-full">Start Conversation</button>
+                        <p class="form-msg" id="designerMsg" style="margin-top:12px;text-align:center;display:none;"></p>
                     </form>
+                    <script>
+                    (function(){
+                        var WEBHOOK = 'https://dairy-nationally-grades-floors.trycloudflare.com/webhook/floordsgn-contact';
+                        var form = document.getElementById('designerForm');
+                        var msgBox = document.getElementById('designerMsg');
+                        form.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            msgBox.style.display = 'block';
+                            msgBox.style.color = '#666';
+                            msgBox.textContent = 'Sending...';
+                            var data = {
+                                name: form.name.value,
+                                studio: form.studio.value,
+                                role: form.role.value,
+                                project_type: form['project-type'].value,
+                                contact: form.contact.value,
+                                source: 'designer-landing',
+                                ts: new Date().toISOString()
+                            };
+                            fetch(WEBHOOK, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            })
+                            .then(function() {
+                                msgBox.style.color = '#2a7d2a';
+                                msgBox.textContent = 'Thank you! We will get back to you shortly.';
+                                form.reset();
+                            })
+                            .catch(function() {
+                                msgBox.textContent = 'Sending via backup channel...';
+                                form.submit();
+                            });
+                        });
+                    })();
+                    </script>
                 </div>
             </div>
         </div>
@@ -296,7 +333,7 @@
                 <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Engineering-grade floor systems across Israel.</p></div>
                 <div class="footer-column"><h4>Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
                 <div class="footer-column"><h4>Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-                <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972509051065">+972 50 905 1065</a></li><li>Israel, Tel Aviv</li></ul></div>
+                <div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
             </div>
             <div class="footer-badges">
                 <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span>10-Year Warranty</span></div>

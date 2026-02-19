@@ -8,6 +8,7 @@
     "a11y": "node a11y.js"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.16.4",
     "@parcel/transformer-jsonld": "^2.16.4",
     "axe-core": "^4.9.1",
     "eslint": "^8.57.0",
