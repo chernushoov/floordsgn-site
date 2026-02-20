@@ -1,6 +1,27 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
+  "redirects": [
+    { "source": "/pu-cement", "destination": "/materials/pu-cement", "statusCode": 301 },
+    { "source": "/mma", "destination": "/materials/mma", "statusCode": 301 },
+    { "source": "/microtopping", "destination": "/materials/microtopping", "statusCode": 301 },
+    { "source": "/epoxy", "destination": "/materials/epoxy", "statusCode": 301 },
+    { "source": "/terrazzo", "destination": "/materials/terrazzo", "statusCode": 301 },
+    { "source": "/concrete", "destination": "/materials/concrete", "statusCode": 301 },
+    { "source": "/rubber", "destination": "/materials/rubber", "statusCode": 301 },
+    { "source": "/restoration", "destination": "/materials/restoration", "statusCode": 301 },
+    { "source": "/terrazzo-vs-microtopping", "destination": "/articles/terrazzo-vs-microtopping", "statusCode": 301 },
+    { "source": "/2026-trends", "destination": "/articles/2026-trends", "statusCode": 301 },
+    { "source": "/epoxy-vs-polyurethane", "destination": "/articles/epoxy-vs-polyurethane", "statusCode": 301 },
+    { "source": "/self-leveling-screeds", "destination": "/articles/self-leveling-screeds", "statusCode": 301 },
+    { "source": "/microtopping-vs-epoxy", "destination": "/articles/microtopping-vs-epoxy", "statusCode": 301 },
+    { "source": "/mma-fast-cure", "destination": "/articles/mma-fast-cure", "statusCode": 301 },
+    { "source": "/concrete-crack-repair", "destination": "/articles/concrete-crack-repair", "statusCode": 301 },
+    { "source": "/industrial-cleaning", "destination": "/articles/industrial-cleaning", "statusCode": 301 },
+    { "source": "/substrate-moisture-testing", "destination": "/articles/substrate-moisture-testing", "statusCode": 301 },
+    { "source": "/when-to-recoat", "destination": "/articles/when-to-recoat", "statusCode": 301 },
+    { "source": "/terrazzo-modern-interiors", "destination": "/articles/terrazzo-modern-interiors", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/$1" }
