@@ -96,6 +96,25 @@ const translations = {
         // Sticky CTA
         sticky_cta: "Get Quote",
 
+        // Contact Page
+        contact_subtitle: "Contact",
+        contact_title: "Let's Discuss<br>Your Project",
+        contact_lead: "Have a project in mind? Our technical team is ready to discuss your flooring requirements and recommend the optimal solution.",
+        contact_form_title: "Send Us a Message",
+        contact_label_name: "Name *",
+        contact_label_phone: "Phone *",
+        contact_label_email: "Email",
+        contact_label_project_type: "Project Type",
+        contact_label_floor_system: "Floor System of Interest",
+        contact_label_area: "Approximate Area (m²)",
+        contact_label_message: "Project Details",
+        contact_submit: "Send Inquiry",
+        contact_direct: "Direct Contact",
+        contact_service_area: "Service Area",
+        contact_hours: "Working Hours",
+        contact_free_consult: "Free Consultation",
+        contact_faq_title: "Common Questions",
+
         // Industries Section
         industries_subtitle: "Industries We Serve",
         industries_title: "Trusted Across Sectors",
@@ -882,6 +901,25 @@ const translations = {
 
         // Sticky CTA
         sticky_cta: "Расчёт",
+
+        // Contact Page
+        contact_subtitle: "Контакты",
+        contact_title: "Обсудим<br>ваш проект",
+        contact_lead: "Есть проект? Наша техническая команда готова обсудить ваши требования к полам и рекомендовать оптимальное решение.",
+        contact_form_title: "Напишите нам",
+        contact_label_name: "Имя *",
+        contact_label_phone: "Телефон *",
+        contact_label_email: "Email",
+        contact_label_project_type: "Тип проекта",
+        contact_label_floor_system: "Интересующая система",
+        contact_label_area: "Примерная площадь (м²)",
+        contact_label_message: "Детали проекта",
+        contact_submit: "Отправить заявку",
+        contact_direct: "Прямой контакт",
+        contact_service_area: "Зона обслуживания",
+        contact_hours: "Часы работы",
+        contact_free_consult: "Бесплатная консультация",
+        contact_faq_title: "Частые вопросы",
 
         // Material Pages — Shared
         mat_back: "Назад к покрытиям",

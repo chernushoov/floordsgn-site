@@ -38,9 +38,9 @@
     <section class="contact-hero">
         <div class="container">
             <div class="contact-hero-content">
-                <p class="section-subtitle">Contact</p>
-                <h1>Let's Discuss<br>Your Project</h1>
-                <p class="lead">Have a project in mind? Our technical team is ready to discuss your flooring requirements and recommend the optimal solution.</p>
+                <p class="section-subtitle" data-i18n="contact_subtitle">Contact</p>
+                <h1 data-i18n="contact_title">Let's Discuss<br>Your Project</h1>
+                <p class="lead" data-i18n="contact_lead">Have a project in mind? Our technical team is ready to discuss your flooring requirements and recommend the optimal solution.</p>
             </div>
         </div>
     </section>
@@ -49,24 +49,24 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
-                    <h2>Send Us a Message</h2>
+                    <h2 data-i18n="contact_form_title">Send Us a Message</h2>
                     <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">Name *</label>
+                                <label for="name" data-i18n="contact_label_name">Name *</label>
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone *</label>
+                                <label for="phone" data-i18n="contact_label_phone">Phone *</label>
                                 <input type="tel" id="phone" name="phone" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-i18n="contact_label_email">Email</label>
                             <input type="email" id="email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="project-type">Project Type</label>
+                            <label for="project-type" data-i18n="contact_label_project_type">Project Type</label>
                             <select id="project-type" name="project-type">
                                 <option value="">Select project type</option>
                                 <option value="residential">Residential</option>
@@ -77,7 +77,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="floor-system">Floor System of Interest</label>
+                            <label for="floor-system" data-i18n="contact_label_floor_system">Floor System of Interest</label>
                             <select id="floor-system" name="floor-system">
                                 <option value="">Select floor system</option>
                                 <option value="epoxy">Epoxy Systems</option>
@@ -92,20 +92,20 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="area">Approximate Area (m²)</label>
+                            <label for="area" data-i18n="contact_label_area">Approximate Area (m²)</label>
                             <input type="text" id="area" name="area" placeholder="e.g., 150">
                         </div>
                         <div class="form-group">
-                            <label for="message">Project Details</label>
+                            <label for="message" data-i18n="contact_label_message">Project Details</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific concerns..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-full" id="submitBtn">Send Inquiry</button>
+                        <button type="submit" class="btn btn-dark btn-full" id="submitBtn" data-i18n="contact_submit">Send Inquiry</button>
                     </form>
                     <div id="form-message" style="display:none;margin-top:16px;padding:14px 18px;border-radius:8px;font-size:14px;"></div>
                 </div>
                 <div class="contact-info">
                     <div class="info-card">
-                        <h3>Direct Contact</h3>
+                        <h3 data-i18n="contact_direct">Direct Contact</h3>
                         <div class="info-item">
                             <div class="info-label">Phone</div>
                             <a href="tel:+972559661459" class="info-value">+972 55 966 1459</a>
@@ -120,11 +120,11 @@
                         </div>
                     </div>
                     <div class="info-card">
-                        <h3>Service Area</h3>
+                        <h3 data-i18n="contact_service_area">Service Area</h3>
                         <p>We provide flooring services throughout Israel, including Tel Aviv, Jerusalem, Haifa, and surrounding regions.</p>
                     </div>
                     <div class="info-card">
-                        <h3>Working Hours</h3>
+                        <h3 data-i18n="contact_hours">Working Hours</h3>
                         <div class="info-item">
                             <div class="info-label">Sunday - Thursday</div>
                             <div class="info-value">08:00 - 18:00</div>
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="info-card dark">
-                        <h3>Free Consultation</h3>
+                        <h3 data-i18n="contact_free_consult">Free Consultation</h3>
                         <p>Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
                         <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
                     </div>
@@ -152,7 +152,7 @@
         <div class="container">
             <div class="section-header center">
                 <p class="section-subtitle">FAQ</p>
-                <h2 class="section-title">Common Questions</h2>
+                <h2 class="section-title" data-i18n="contact_faq_title">Common Questions</h2>
             </div>
             <div class="faq-grid">
                 <div class="faq-item">
