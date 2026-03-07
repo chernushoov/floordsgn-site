@@ -279,5 +279,23 @@
 
     <script src="script.js"></script>
     <script src="translations.js"></script>
+    <script>
+    (function(){
+      var btns = document.querySelectorAll('.projects-filter .filter-btn');
+      var items = document.querySelectorAll('.project-item');
+      btns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          btns.forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          var cat = btn.textContent.trim().toLowerCase();
+          items.forEach(function(item){
+            if (cat === 'all') { item.style.display = ''; return; }
+            var dc = item.getAttribute('data-category') || '';
+            item.style.display = dc.indexOf(cat) !== -1 ? '' : 'none';
+          });
+        });
+      });
+    })();
+    </script>
 </body>
 </html>

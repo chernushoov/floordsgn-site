@@ -195,5 +195,24 @@
 
     <script src="script.js"></script>
     <script src="translations.js"></script>
+    <script>
+    (function(){
+      var btns = document.querySelectorAll('.category-filter .filter-btn');
+      var cards = document.querySelectorAll('.blog-card');
+      btns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          btns.forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          var cat = btn.textContent.trim();
+          cards.forEach(function(card){
+            if (cat === 'All') { card.style.display = ''; return; }
+            var tag = card.querySelector('.blog-category-tag');
+            var match = tag && tag.textContent.trim().toLowerCase().indexOf(cat.toLowerCase()) !== -1;
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
