@@ -1,6 +1,9 @@
 // Floor.DSGN Translations
 const translations = {
     en: {
+        // General
+        language: "Language",
+
         // Navigation
         nav_home: "Home",
         nav_floors: "Floors",
@@ -1318,6 +1321,9 @@ const translations = {
     },
 
     ru: {
+        // General
+        language: "Язык",
+
         // Navigation
         nav_home: "Главная",
         nav_floors: "Покрытия",
