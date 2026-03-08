@@ -176,7 +176,7 @@
         <div class="container">
             <h2 data-i18n="blog_newsletter_title">Stay Updated</h2>
             <p data-i18n="blog_newsletter_desc">Monthly technical insights. No marketing noise.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <form class="newsletter-form">
                 <input type="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" required>
                 <button type="submit" data-i18n="blog_newsletter_btn">Subscribe</button>
             </form>
@@ -213,6 +213,28 @@
             card.style.display = match ? '' : 'none';
           });
         });
+      });
+    })();
+    </script>
+    <script>
+    (function(){
+      var form = document.querySelector('.newsletter-form');
+      if (!form) return;
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var email = form.querySelector('input[type="email"]').value;
+        try {
+          var res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ type: 'newsletter', email: email })
+          });
+          if (res.ok) {
+            form.innerHTML = '<p style="color: var(--black); font-weight: 500;">Thank you for subscribing!</p>';
+          }
+        } catch(err) {
+          alert('Something went wrong. Please try again.');
+        }
       });
     })();
     </script>
