@@ -26,12 +26,12 @@
 
     <header class="header">
         <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="#designer-form" class="btn btn-dark">Partner With Us</a>
+        <a href="#designer-form" class="btn btn-dark" data-i18n="designers_header_cta">Partner With Us</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </header>
 
@@ -41,11 +41,11 @@
     <section class="landing-hero landing-hero-light">
         <div class="container">
             <div class="landing-hero-content">
-                <span class="landing-label">For Designers & Architects</span>
-                <h1>Design<br>Finishes</h1>
-                <p class="landing-tagline">We handle floors so you can focus on design.</p>
-                <p class="landing-text">Partner with a reliable flooring contractor for your projects. Terrazzo, microtopping, decorative concrete — samples, specifications, and predictable delivery. Less operational chaos, more creative control.</p>
-                <a href="#designer-form" class="btn btn-dark">Work With Us</a>
+                <span class="landing-label" data-i18n="designers_hero_overline">For Designers & Architects</span>
+                <h1 data-i18n="designers_hero_title">Design<br>Finishes</h1>
+                <p class="landing-tagline" data-i18n="designers_hero_tagline">We handle floors so you can focus on design.</p>
+                <p class="landing-text" data-i18n="designers_hero_desc">Partner with a reliable flooring contractor for your projects. Terrazzo, microtopping, decorative concrete — samples, specifications, and predictable delivery. Less operational chaos, more creative control.</p>
+                <a href="#designer-form" class="btn btn-dark" data-i18n="designers_hero_cta">Work With Us</a>
             </div>
         </div>
         <div class="landing-hero-bg" style="background-image: url('images/terrazzo/scale_2400.jpeg');"></div>
@@ -55,29 +55,29 @@
     <section class="landing-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Partnership</p>
-                <h2 class="section-title">What We Offer Designers</h2>
+                <p class="section-subtitle" data-i18n="designers_offer_overline">Partnership</p>
+                <h2 class="section-title" data-i18n="designers_offer_title">What We Offer Designers</h2>
             </div>
             <div class="offer-grid">
                 <div class="offer-card">
                     <div class="offer-number">01</div>
-                    <h3>Material Samples</h3>
-                    <p>Custom samples for client presentations. Color matching, aggregate selection, finish options.</p>
+                    <h3 data-i18n="designers_offer1_title">Material Samples</h3>
+                    <p data-i18n="designers_offer1_desc">Custom samples for client presentations. Color matching, aggregate selection, finish options.</p>
                 </div>
                 <div class="offer-card">
                     <div class="offer-number">02</div>
-                    <h3>Technical Specs</h3>
-                    <p>Detailed specifications for your documentation. CAD details, section drawings, material data sheets.</p>
+                    <h3 data-i18n="designers_offer2_title">Technical Specs</h3>
+                    <p data-i18n="designers_offer2_desc">Detailed specifications for your documentation. CAD details, section drawings, material data sheets.</p>
                 </div>
                 <div class="offer-card">
                     <div class="offer-number">03</div>
-                    <h3>Reliable Execution</h3>
-                    <p>On-time, on-budget delivery. We understand design timelines and respect your project schedule.</p>
+                    <h3 data-i18n="designers_offer3_title">Reliable Execution</h3>
+                    <p data-i18n="designers_offer3_desc">On-time, on-budget delivery. We understand design timelines and respect your project schedule.</p>
                 </div>
                 <div class="offer-card">
                     <div class="offer-number">04</div>
-                    <h3>Client Shielding</h3>
-                    <p>We handle the technical complexity. You present the design vision without flooring headaches.</p>
+                    <h3 data-i18n="designers_offer4_title">Client Shielding</h3>
+                    <p data-i18n="designers_offer4_desc">We handle the technical complexity. You present the design vision without flooring headaches.</p>
                 </div>
             </div>
         </div>
@@ -87,41 +87,41 @@
     <section class="landing-section bg-grey">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Materials</p>
-                <h2 class="section-title">Design-Grade Finishes</h2>
+                <p class="section-subtitle" data-i18n="designers_materials_overline">Materials</p>
+                <h2 class="section-title" data-i18n="designers_materials_title">Design-Grade Finishes</h2>
             </div>
             <div class="materials-showcase">
                 <a href="materials/terrazzo.html" class="material-showcase-card large">
                     <div class="material-showcase-image" style="background-image: url('images/terrazzo/interrior-222944.jpg');"></div>
                     <div class="material-showcase-content">
-                        <span class="material-tag">Signature Material</span>
-                        <h3>Terrazzo</h3>
-                        <p>Venetian and epoxy terrazzo. Custom aggregates, unlimited colors. The ultimate statement floor.</p>
-                        <span class="material-link">Explore Terrazzo &rarr;</span>
+                        <span class="material-tag" data-i18n="designers_mat_terrazzo_tag">Signature Material</span>
+                        <h3 data-i18n="designers_mat_terrazzo_title">Terrazzo</h3>
+                        <p data-i18n="designers_mat_terrazzo_desc">Venetian and epoxy terrazzo. Custom aggregates, unlimited colors. The ultimate statement floor.</p>
+                        <span class="material-link" data-i18n="designers_mat_terrazzo_link">Explore Terrazzo &rarr;</span>
                     </div>
                 </a>
                 <a href="materials/microtopping.html" class="material-showcase-card">
                     <div class="material-showcase-image" style="background-image: url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg');"></div>
                     <div class="material-showcase-content">
-                        <h3>Microtopping</h3>
-                        <p>Ultra-thin cement coating. Seamless, modern, minimal.</p>
-                        <span class="material-link">Explore &rarr;</span>
+                        <h3 data-i18n="designers_mat_micro_title">Microtopping</h3>
+                        <p data-i18n="designers_mat_micro_desc">Ultra-thin cement coating. Seamless, modern, minimal.</p>
+                        <span class="material-link" data-i18n="designers_mat_micro_link">Explore &rarr;</span>
                     </div>
                 </a>
                 <a href="materials/concrete.html" class="material-showcase-card">
                     <div class="material-showcase-image" style="background-image: url('images/microtopping/gray-old-scratched-textured-surface-background.jpg');"></div>
                     <div class="material-showcase-content">
-                        <h3>Decorative Concrete</h3>
-                        <p>Polished, stained, textured. Industrial aesthetic refined.</p>
-                        <span class="material-link">Explore &rarr;</span>
+                        <h3 data-i18n="designers_mat_concrete_title">Decorative Concrete</h3>
+                        <p data-i18n="designers_mat_concrete_desc">Polished, stained, textured. Industrial aesthetic refined.</p>
+                        <span class="material-link" data-i18n="designers_mat_concrete_link">Explore &rarr;</span>
                     </div>
                 </a>
                 <a href="materials/rubber.html" class="material-showcase-card">
                     <div class="material-showcase-image" style="background-image: url('images/rubber/workout-room-with-gym-equipment.jpg');"></div>
                     <div class="material-showcase-content">
-                        <h3>Rubber Flooring</h3>
-                        <p>Acoustic, comfortable, contemporary colors.</p>
-                        <span class="material-link">Explore &rarr;</span>
+                        <h3 data-i18n="designers_mat_rubber_title">Rubber Flooring</h3>
+                        <p data-i18n="designers_mat_rubber_desc">Acoustic, comfortable, contemporary colors.</p>
+                        <span class="material-link" data-i18n="designers_mat_rubber_link">Explore &rarr;</span>
                     </div>
                 </a>
             </div>
@@ -132,8 +132,8 @@
     <section class="landing-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Process</p>
-                <h2 class="section-title">How We Work With Designers</h2>
+                <p class="section-subtitle" data-i18n="designers_process_overline">Process</p>
+                <h2 class="section-title" data-i18n="designers_process_title">How We Work With Designers</h2>
             </div>
             <div class="process-timeline">
                 <div class="process-step">
@@ -142,8 +142,8 @@
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
                     </div>
-                    <h4>Initial Consultation</h4>
-                    <p>Discuss your project vision, timeline, and requirements</p>
+                    <h4 data-i18n="designers_step1_title">Initial Consultation</h4>
+                    <p data-i18n="designers_step1_desc">Discuss your project vision, timeline, and requirements</p>
                 </div>
                 <div class="process-step">
                     <div class="process-icon">
@@ -152,8 +152,8 @@
                             <path d="M3 9h18M9 21V9"/>
                         </svg>
                     </div>
-                    <h4>Sample Development</h4>
-                    <p>Custom samples matching your design intent</p>
+                    <h4 data-i18n="designers_step2_title">Sample Development</h4>
+                    <p data-i18n="designers_step2_desc">Custom samples matching your design intent</p>
                 </div>
                 <div class="process-step">
                     <div class="process-icon">
@@ -162,8 +162,8 @@
                             <polyline points="14 2 14 8 20 8"/>
                         </svg>
                     </div>
-                    <h4>Specification</h4>
-                    <p>Technical documentation for your project files</p>
+                    <h4 data-i18n="designers_step3_title">Specification</h4>
+                    <p data-i18n="designers_step3_desc">Technical documentation for your project files</p>
                 </div>
                 <div class="process-step">
                     <div class="process-icon">
@@ -172,8 +172,8 @@
                             <polyline points="22 4 12 14.01 9 11.01"/>
                         </svg>
                     </div>
-                    <h4>Execution</h4>
-                    <p>Professional installation, on schedule</p>
+                    <h4 data-i18n="designers_step4_title">Execution</h4>
+                    <p data-i18n="designers_step4_desc">Professional installation, on schedule</p>
                 </div>
             </div>
         </div>
@@ -183,34 +183,34 @@
     <section class="landing-section bg-dark">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Portfolio</p>
-                <h2 class="section-title" style="color: #fff;">Selected Projects</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.6);" data-i18n="designers_portfolio_overline">Portfolio</p>
+                <h2 class="section-title" style="color: #fff;" data-i18n="designers_portfolio_title">Selected Projects</h2>
             </div>
             <div class="projects-preview-grid">
                 <div class="project-preview-card">
                     <div class="project-preview-image" style="background-image: url('images/terrazzo/interrior-222943.jpg');"></div>
                     <div class="project-preview-info">
-                        <span>Terrazzo</span>
-                        <h4>Private Residence</h4>
+                        <span data-i18n="designers_project1_type">Terrazzo</span>
+                        <h4 data-i18n="designers_project1_title">Private Residence</h4>
                     </div>
                 </div>
                 <div class="project-preview-card">
                     <div class="project-preview-image" style="background-image: url('images/terrazzo/5285493171318544266.jpg');"></div>
                     <div class="project-preview-info">
-                        <span>Terrazzo</span>
-                        <h4>Corporate Lobby</h4>
+                        <span data-i18n="designers_project2_type">Terrazzo</span>
+                        <h4 data-i18n="designers_project2_title">Corporate Lobby</h4>
                     </div>
                 </div>
                 <div class="project-preview-card">
                     <div class="project-preview-image" style="background-image: url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg');"></div>
                     <div class="project-preview-info">
-                        <span>Microtopping</span>
-                        <h4>Design Studio</h4>
+                        <span data-i18n="designers_project3_type">Microtopping</span>
+                        <h4 data-i18n="designers_project3_title">Design Studio</h4>
                     </div>
                 </div>
             </div>
             <div class="center" style="margin-top: 40px;">
-                <a href="projects.html" class="btn btn-outline-white">View All Projects</a>
+                <a href="projects.html" class="btn btn-outline-white" data-i18n="designers_portfolio_btn">View All Projects</a>
             </div>
         </div>
     </section>
@@ -220,29 +220,29 @@
         <div class="container">
             <div class="landing-form-grid">
                 <div class="landing-form-content">
-                    <h2>Work With Us</h2>
-                    <p>Let's discuss how we can support your next project. Tell us about your practice and we'll set up a consultation.</p>
+                    <h2 data-i18n="designers_form_title">Work With Us</h2>
+                    <p data-i18n="designers_form_desc">Let's discuss how we can support your next project. Tell us about your practice and we'll set up a consultation.</p>
                     <div class="form-benefits">
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Free sample kit for qualified projects</span>
+                            <span data-i18n="designers_form_benefit1">Free sample kit for qualified projects</span>
                         </div>
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Technical specifications included</span>
+                            <span data-i18n="designers_form_benefit2">Technical specifications included</span>
                         </div>
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Priority scheduling for repeat partners</span>
+                            <span data-i18n="designers_form_benefit3">Priority scheduling for repeat partners</span>
                         </div>
                     </div>
                 </div>
@@ -250,41 +250,41 @@
                     <form class="landing-form" id="designerForm" method="POST" name="designer">
                         <input type="hidden" name="source" value="designer">
                         <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name">
+                            <label for="name" data-i18n="designers_label_name">Name *</label>
+                            <input type="text" id="name" name="name" required data-i18n-placeholder="designers_ph_name" placeholder="Your name">
                         </div>
                         <div class="form-group">
-                            <label for="studio">Studio / Company</label>
-                            <input type="text" id="studio" name="studio" placeholder="Studio name">
+                            <label for="studio" data-i18n="designers_label_studio">Studio / Company</label>
+                            <input type="text" id="studio" name="studio" data-i18n-placeholder="designers_ph_studio" placeholder="Studio name">
                         </div>
                         <div class="form-group">
-                            <label for="role">Your Role</label>
+                            <label for="role" data-i18n="designers_label_role">Your Role</label>
                             <select id="role" name="role">
-                                <option value="">Select role</option>
-                                <option value="architect">Architect</option>
-                                <option value="interior-designer">Interior Designer</option>
-                                <option value="project-manager">Project Manager</option>
-                                <option value="developer">Developer</option>
-                                <option value="other">Other</option>
+                                <option value="" data-i18n="designers_opt_role_default">Select role</option>
+                                <option value="architect" data-i18n="designers_opt_role_architect">Architect</option>
+                                <option value="interior-designer" data-i18n="designers_opt_role_interior">Interior Designer</option>
+                                <option value="project-manager" data-i18n="designers_opt_role_pm">Project Manager</option>
+                                <option value="developer" data-i18n="designers_opt_role_developer">Developer</option>
+                                <option value="other" data-i18n="designers_opt_role_other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="project-type">Project Type</label>
+                            <label for="project-type" data-i18n="designers_label_project_type">Project Type</label>
                             <select id="project-type" name="project-type">
-                                <option value="">Select project type</option>
-                                <option value="residential">Residential</option>
-                                <option value="hospitality">Hospitality</option>
-                                <option value="commercial">Commercial / Retail</option>
-                                <option value="office">Office</option>
-                                <option value="public">Public Space</option>
-                                <option value="general">General Partnership</option>
+                                <option value="" data-i18n="designers_opt_ptype_default">Select project type</option>
+                                <option value="residential" data-i18n="designers_opt_ptype_residential">Residential</option>
+                                <option value="hospitality" data-i18n="designers_opt_ptype_hospitality">Hospitality</option>
+                                <option value="commercial" data-i18n="designers_opt_ptype_commercial">Commercial / Retail</option>
+                                <option value="office" data-i18n="designers_opt_ptype_office">Office</option>
+                                <option value="public" data-i18n="designers_opt_ptype_public">Public Space</option>
+                                <option value="general" data-i18n="designers_opt_ptype_general">General Partnership</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="contact">Email or WhatsApp *</label>
-                            <input type="text" id="contact" name="contact" required placeholder="How should we reach you?">
+                            <label for="contact" data-i18n="designers_label_contact">Email or WhatsApp *</label>
+                            <input type="text" id="contact" name="contact" required data-i18n-placeholder="designers_ph_contact" placeholder="How should we reach you?">
                         </div>
-                        <button type="submit" class="btn btn-dark btn-full">Start Conversation</button>
+                        <button type="submit" class="btn btn-dark btn-full" data-i18n="designers_form_submit">Start Conversation</button>
                         <p class="form-msg" id="designerMsg" style="margin-top:12px;text-align:center;display:none;"></p>
                     </form>
                     <script>
@@ -338,10 +338,10 @@
                 <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
             </div>
             <div class="footer-badges">
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span>10-Year Warranty</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span>15+ Years Experience</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span>ISO 9001 Certified</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span>Free Site Visit</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span data-i18n="footer_badge_warranty">10-Year Warranty</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span data-i18n="footer_badge_experience">15+ Years Experience</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span data-i18n="footer_badge_iso">ISO 9001 Certified</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span data-i18n="footer_badge_visit">Free Site Visit</span></div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>

@@ -26,12 +26,12 @@
 
     <header class="header">
         <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li></ul></nav>
+        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="#industrial-form" class="btn btn-dark">Get Quote</a>
+        <a href="#industrial-form" class="btn btn-dark" data-i18n="industrial_header_cta">Get Quote</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </header>
 
@@ -41,11 +41,11 @@
     <section class="landing-hero landing-hero-dark">
         <div class="container">
             <div class="landing-hero-content">
-                <span class="landing-label">For Business Owners & Facility Managers</span>
-                <h1>Industrial &<br>Commercial<br>Flooring</h1>
-                <p class="landing-tagline">Fast. Durable. Minimal downtime.</p>
-                <p class="landing-text">We install high-performance flooring systems for factories, warehouses, logistics centers, restaurants, and commercial spaces. European materials, professional installation, 10-year warranty.</p>
-                <a href="#industrial-form" class="btn btn-outline-white">Request Site Visit</a>
+                <span class="landing-label" data-i18n="industrial_hero_overline">For Business Owners & Facility Managers</span>
+                <h1 data-i18n="industrial_hero_title">Industrial &<br>Commercial<br>Flooring</h1>
+                <p class="landing-tagline" data-i18n="industrial_hero_tagline">Fast. Durable. Minimal downtime.</p>
+                <p class="landing-text" data-i18n="industrial_hero_desc">We install high-performance flooring systems for factories, warehouses, logistics centers, restaurants, and commercial spaces. European materials, professional installation, 10-year warranty.</p>
+                <a href="#industrial-form" class="btn btn-outline-white" data-i18n="industrial_hero_cta">Request Site Visit</a>
             </div>
         </div>
         <div class="landing-hero-bg" style="background-image: url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg');"></div>
@@ -55,8 +55,8 @@
     <section class="landing-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">We Serve</p>
-                <h2 class="section-title">Object Types</h2>
+                <p class="section-subtitle" data-i18n="industrial_objects_overline">We Serve</p>
+                <h2 class="section-title" data-i18n="industrial_objects_title">Object Types</h2>
             </div>
             <div class="object-grid">
                 <div class="object-card">
@@ -66,8 +66,8 @@
                             <path d="M3 9h18M9 21V9"/>
                         </svg>
                     </div>
-                    <h3>Factories</h3>
-                    <p>Heavy machinery, chemical resistance, ESD protection</p>
+                    <h3 data-i18n="industrial_obj1_title">Factories</h3>
+                    <p data-i18n="industrial_obj1_desc">Heavy machinery, chemical resistance, ESD protection</p>
                 </div>
                 <div class="object-card">
                     <div class="object-icon">
@@ -76,8 +76,8 @@
                             <path d="M6 11h12M6 15h12"/>
                         </svg>
                     </div>
-                    <h3>Warehouses</h3>
-                    <p>Forklift-rated, high abrasion resistance, seamless</p>
+                    <h3 data-i18n="industrial_obj2_title">Warehouses</h3>
+                    <p data-i18n="industrial_obj2_desc">Forklift-rated, high abrasion resistance, seamless</p>
                 </div>
                 <div class="object-card">
                     <div class="object-icon">
@@ -88,8 +88,8 @@
                             <circle cx="18.5" cy="18.5" r="2.5"/>
                         </svg>
                     </div>
-                    <h3>Logistics</h3>
-                    <p>Fast cure MMA, overnight installation, minimal downtime</p>
+                    <h3 data-i18n="industrial_obj3_title">Logistics</h3>
+                    <p data-i18n="industrial_obj3_desc">Fast cure MMA, overnight installation, minimal downtime</p>
                 </div>
                 <div class="object-card">
                     <div class="object-icon">
@@ -100,8 +100,8 @@
                             <line x1="14" y1="1" x2="14" y2="4"/>
                         </svg>
                     </div>
-                    <h3>Restaurants & Kitchens</h3>
-                    <p>Food-grade, HACCP certified, anti-slip, thermal shock</p>
+                    <h3 data-i18n="industrial_obj4_title">Restaurants & Kitchens</h3>
+                    <p data-i18n="industrial_obj4_desc">Food-grade, HACCP certified, anti-slip, thermal shock</p>
                 </div>
                 <div class="object-card">
                     <div class="object-icon">
@@ -110,8 +110,8 @@
                             <path d="M9 21v-6h6v6"/>
                         </svg>
                     </div>
-                    <h3>Parking</h3>
-                    <p>Traffic coating, line marking, chemical resistant</p>
+                    <h3 data-i18n="industrial_obj5_title">Parking</h3>
+                    <p data-i18n="industrial_obj5_desc">Traffic coating, line marking, chemical resistant</p>
                 </div>
                 <div class="object-card">
                     <div class="object-icon">
@@ -120,8 +120,8 @@
                             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                         </svg>
                     </div>
-                    <h3>Commercial</h3>
-                    <p>Retail, showrooms, offices, public spaces</p>
+                    <h3 data-i18n="industrial_obj6_title">Commercial</h3>
+                    <p data-i18n="industrial_obj6_desc">Retail, showrooms, offices, public spaces</p>
                 </div>
             </div>
         </div>
@@ -131,32 +131,32 @@
     <section class="landing-section bg-grey">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Our Systems</p>
-                <h2 class="section-title">Industrial Floor Systems</h2>
+                <p class="section-subtitle" data-i18n="industrial_systems_overline">Our Systems</p>
+                <h2 class="section-title" data-i18n="industrial_systems_title">Industrial Floor Systems</h2>
             </div>
             <div class="systems-grid">
                 <a href="materials/epoxy.html" class="system-card">
                     <div class="system-image" style="background-image: url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg');"></div>
                     <div class="system-content">
-                        <h3>Epoxy Systems</h3>
-                        <p>Self-leveling, quartz broadcast, ESD, anti-static</p>
-                        <span class="system-link">Learn More &rarr;</span>
+                        <h3 data-i18n="industrial_sys_epoxy_title">Epoxy Systems</h3>
+                        <p data-i18n="industrial_sys_epoxy_desc">Self-leveling, quartz broadcast, ESD, anti-static</p>
+                        <span class="system-link" data-i18n="industrial_sys_link">Learn More &rarr;</span>
                     </div>
                 </a>
                 <a href="materials/pu-cement.html" class="system-card">
                     <div class="system-image" style="background-image: url('images/microtopping/g12ground.jpg');"></div>
                     <div class="system-content">
-                        <h3>PU-Cement</h3>
-                        <p>Food-grade, thermal shock, HACCP certified</p>
-                        <span class="system-link">Learn More &rarr;</span>
+                        <h3 data-i18n="industrial_sys_pu_title">PU-Cement</h3>
+                        <p data-i18n="industrial_sys_pu_desc">Food-grade, thermal shock, HACCP certified</p>
+                        <span class="system-link" data-i18n="industrial_sys_link">Learn More &rarr;</span>
                     </div>
                 </a>
                 <a href="materials/mma.html" class="system-card">
                     <div class="system-image" style="background-image: url('images/terrazzo/1807324487.png');"></div>
                     <div class="system-content">
-                        <h3>MMA Resin</h3>
-                        <p>Fast cure (2 hours), low temperature install</p>
-                        <span class="system-link">Learn More &rarr;</span>
+                        <h3 data-i18n="industrial_sys_mma_title">MMA Resin</h3>
+                        <p data-i18n="industrial_sys_mma_desc">Fast cure (2 hours), low temperature install</p>
+                        <span class="system-link" data-i18n="industrial_sys_link">Learn More &rarr;</span>
                     </div>
                 </a>
             </div>
@@ -167,29 +167,29 @@
     <section class="landing-section">
         <div class="container">
             <div class="section-header center">
-                <p class="section-subtitle">Why Us</p>
-                <h2 class="section-title">Why Choose Floor.DSGN</h2>
+                <p class="section-subtitle" data-i18n="industrial_why_overline">Why Us</p>
+                <h2 class="section-title" data-i18n="industrial_why_title">Why Choose Floor.DSGN</h2>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-number">48h</div>
-                    <h4>Quote Delivery</h4>
-                    <p>Site visit and detailed quote within 48 hours</p>
+                    <h4 data-i18n="industrial_why1_title">Quote Delivery</h4>
+                    <p data-i18n="industrial_why1_desc">Site visit and detailed quote within 48 hours</p>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-number">10y</div>
-                    <h4>Warranty</h4>
-                    <p>Full system warranty on all installations</p>
+                    <h4 data-i18n="industrial_why2_title">Warranty</h4>
+                    <p data-i18n="industrial_why2_desc">Full system warranty on all installations</p>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-number">1-3d</div>
-                    <h4>Fast Cure Options</h4>
-                    <p>MMA systems ready for traffic in hours</p>
+                    <h4 data-i18n="industrial_why3_title">Fast Cure Options</h4>
+                    <p data-i18n="industrial_why3_desc">MMA systems ready for traffic in hours</p>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-number">ISO</div>
-                    <h4>Certified</h4>
-                    <p>ISO 9001 quality management certified</p>
+                    <h4 data-i18n="industrial_why4_title">Certified</h4>
+                    <p data-i18n="industrial_why4_desc">ISO 9001 quality management certified</p>
                 </div>
             </div>
         </div>
@@ -200,29 +200,29 @@
         <div class="container">
             <div class="landing-form-grid">
                 <div class="landing-form-content">
-                    <h2>Request Site Visit</h2>
-                    <p>Tell us about your facility. We'll assess conditions and provide a detailed quote within 48 hours.</p>
+                    <h2 data-i18n="industrial_form_title">Request Site Visit</h2>
+                    <p data-i18n="industrial_form_desc">Tell us about your facility. We'll assess conditions and provide a detailed quote within 48 hours.</p>
                     <div class="form-benefits">
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Free site assessment</span>
+                            <span data-i18n="industrial_form_benefit1">Free site assessment</span>
                         </div>
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>No obligation quote</span>
+                            <span data-i18n="industrial_form_benefit2">No obligation quote</span>
                         </div>
                         <div class="form-benefit">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
-                            <span>Response within 24h</span>
+                            <span data-i18n="industrial_form_benefit3">Response within 24h</span>
                         </div>
                     </div>
                 </div>
@@ -230,39 +230,39 @@
                     <form class="landing-form" id="industrialForm" method="POST" name="industrial">
                         <input type="hidden" name="source" value="industrial">
                         <div class="form-group">
-                            <label for="name">Name *</label>
+                            <label for="name" data-i18n="industrial_label_name">Name *</label>
                             <input type="text" id="name" name="name" required placeholder="Your name">
                         </div>
                         <div class="form-group">
-                            <label for="company">Company *</label>
+                            <label for="company" data-i18n="industrial_label_company">Company *</label>
                             <input type="text" id="company" name="company" required placeholder="Company name">
                         </div>
                         <div class="form-group">
-                            <label for="object-type">Object Type *</label>
+                            <label for="object-type" data-i18n="industrial_label_object">Object Type *</label>
                             <select id="object-type" name="object-type" required>
-                                <option value="">Select object type</option>
-                                <option value="factory">Factory / Production</option>
-                                <option value="warehouse">Warehouse / Logistics</option>
-                                <option value="restaurant">Restaurant / Kitchen</option>
-                                <option value="parking">Parking / Garage</option>
-                                <option value="retail">Retail / Commercial</option>
-                                <option value="other">Other</option>
+                                <option value="" data-i18n="industrial_opt_obj_default">Select object type</option>
+                                <option value="factory" data-i18n="industrial_opt_obj_factory">Factory / Production</option>
+                                <option value="warehouse" data-i18n="industrial_opt_obj_warehouse">Warehouse / Logistics</option>
+                                <option value="restaurant" data-i18n="industrial_opt_obj_restaurant">Restaurant / Kitchen</option>
+                                <option value="parking" data-i18n="industrial_opt_obj_parking">Parking / Garage</option>
+                                <option value="retail" data-i18n="industrial_opt_obj_retail">Retail / Commercial</option>
+                                <option value="other" data-i18n="industrial_opt_obj_other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone / WhatsApp *</label>
+                            <label for="phone" data-i18n="industrial_label_phone">Phone / WhatsApp *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="+972...">
                         </div>
                         <div class="form-group">
-                            <label for="urgency">Urgency</label>
+                            <label for="urgency" data-i18n="industrial_label_urgency">Urgency</label>
                             <select id="urgency" name="urgency">
-                                <option value="">Select timeline</option>
-                                <option value="urgent">Urgent (within 2 weeks)</option>
-                                <option value="soon">Soon (1-2 months)</option>
-                                <option value="planning">Planning phase</option>
+                                <option value="" data-i18n="industrial_opt_urg_default">Select timeline</option>
+                                <option value="urgent" data-i18n="industrial_opt_urg_urgent">Urgent (within 2 weeks)</option>
+                                <option value="soon" data-i18n="industrial_opt_urg_soon">Soon (1-2 months)</option>
+                                <option value="planning" data-i18n="industrial_opt_urg_planning">Planning phase</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-full">Request Site Visit</button>
+                        <button type="submit" class="btn btn-dark btn-full" data-i18n="industrial_form_submit">Request Site Visit</button>
                         <p class="form-msg" id="industrialMsg" style="margin-top:12px;text-align:center;display:none;"></p>
                     </form>
                     <script>
@@ -316,10 +316,10 @@
                 <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
             </div>
             <div class="footer-badges">
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span>10-Year Warranty</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span>15+ Years Experience</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span>ISO 9001 Certified</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span>Free Site Visit</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span data-i18n="footer_badge_warranty">10-Year Warranty</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span data-i18n="footer_badge_experience">15+ Years Experience</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span data-i18n="footer_badge_iso">ISO 9001 Certified</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span data-i18n="footer_badge_visit">Free Site Visit</span></div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
