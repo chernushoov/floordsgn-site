@@ -127,7 +127,7 @@ img {
 }
 
 .logo-img {
-    height: 38px;
+    height: 54px;
     width: auto;
     transition: opacity 0.3s ease;
 }
@@ -2846,7 +2846,7 @@ img {
     }
 
     .logo-img {
-        height: 30px;
+        height: 44px;
     }
 
     .header .btn {
