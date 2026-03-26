@@ -84,25 +84,23 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header header--transparent" id="mainHeader">
-        <a href="index.html" class="logo">
-            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="logo-img logo-white">
-            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img logo-black">
-        </a>
-        <nav>
-            <ul class="nav">
-                <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
-                <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
-                <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
-                <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
-                <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
-            </ul>
+    <header class="header header--hero" id="mainHeader">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
         </nav>
-        <div class="lang-switch">
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -114,39 +112,30 @@
             <li><a href="index.html" data-i18n="nav_home">Home</a></li>
             <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
             <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
-            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
             <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
             <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </div>
 
-    <!-- HERO SECTION - FULL SPLIT -->
-    <section class="hero-fullsplit" id="heroSplit">
-        <a href="industrial.html" class="hero-panel hero-panel--left">
-            <div class="hero-panel__bg" style="background-image: url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg');"></div>
-            <div class="hero-panel__overlay"></div>
-            <div class="hero-panel__content">
-                <span class="hero-panel__label anim-fade" data-i18n="home_market_a_label">For Business Owners</span>
-                <h2 class="hero-panel__title anim-fade anim-delay-1" data-i18n="home_market_a_title">Industrial &<br>Commercial</h2>
-                <p class="hero-panel__desc anim-fade anim-delay-2" data-i18n="home_market_a_desc">Epoxy, PU-Cement, MMA. Fast installation, minimal downtime, 10-year warranty.</p>
-                <span class="hero-panel__cta anim-fade anim-delay-3" data-i18n="home_market_a_cta">Get Quote →</span>
-            </div>
-            <div class="hero-panel__divider"></div>
-        </a>
-        <a href="designers.html" class="hero-panel hero-panel--right">
-            <div class="hero-panel__bg" style="background-image: url('images/terrazzo/interrior-222942.jpg');"></div>
-            <div class="hero-panel__overlay"></div>
-            <div class="hero-panel__content">
-                <span class="hero-panel__label anim-fade" data-i18n="home_market_b_label">For Designers & Architects</span>
-                <h2 class="hero-panel__title anim-fade anim-delay-1" data-i18n="home_market_b_title">Design &<br>Finishes</h2>
-                <p class="hero-panel__desc anim-fade anim-delay-2" data-i18n="home_market_b_desc">Terrazzo, microtopping, decorative concrete. Samples, specs, reliable delivery.</p>
-                <span class="hero-panel__cta anim-fade anim-delay-3" data-i18n="home_market_b_cta">Partner With Us →</span>
+    <!-- HERO -->
+    <section class="hero-split" id="heroSplit">
+        <a href="industrial.html" class="hero-split__panel">
+            <div class="hero-split__bg" style="background-image: url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg');"></div>
+            <div class="hero-split__content">
+                <p class="hero-split__eyebrow anim-up" data-i18n="home_market_a_label">For Business</p>
+                <h2 class="hero-split__title anim-up anim-d1" data-i18n="home_market_a_title">Industrial &<br>Commercial</h2>
+                <span class="hero-split__link anim-up anim-d2" data-i18n="home_market_a_cta">Explore →</span>
             </div>
         </a>
-        <div class="hero-scroll-hint anim-fade anim-delay-4">
-            <span>Scroll</span>
-            <div class="hero-scroll-line"></div>
-        </div>
+        <a href="designers.html" class="hero-split__panel">
+            <div class="hero-split__bg" style="background-image: url('images/terrazzo/interrior-222942.jpg');"></div>
+            <div class="hero-split__content">
+                <p class="hero-split__eyebrow anim-up" data-i18n="home_market_b_label">For Designers</p>
+                <h2 class="hero-split__title anim-up anim-d1" data-i18n="home_market_b_title">Design &<br>Finishes</h2>
+                <span class="hero-split__link anim-up anim-d2" data-i18n="home_market_b_cta">Explore →</span>
+            </div>
+        </a>
     </section>
 
     <!-- WHY TRUST US - ANIMATED COUNTERS -->

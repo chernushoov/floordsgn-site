@@ -25,18 +25,12 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    if (header.classList.contains('header--transparent')) {
-        if (currentScroll > 80) {
+    if (header.classList.contains('header--hero')) {
+        if (currentScroll > 60) {
             header.classList.add('header--scrolled');
         } else {
             header.classList.remove('header--scrolled');
         }
-    }
-
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-    } else {
-        header.style.boxShadow = 'none';
     }
 
     lastScroll = currentScroll;
