@@ -309,19 +309,33 @@ img {
 
 .hero-split-intro {
     text-align: center;
-    padding: 60px 40px 40px;
+    padding: 70px 40px 40px;
     color: var(--white);
 }
 
 .hero-split-intro .hero-overline {
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 15px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
 }
 
 .hero-split-intro h1 {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5.5vw, 60px);
+    font-weight: 300;
     color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 16px;
+    letter-spacing: 0.08em;
 }
 
 .hero-split-grid {
@@ -472,6 +486,10 @@ img {
 
     .hero-split-intro h1 {
         font-size: 28px;
+    }
+
+    .hero-sub {
+        font-size: 12px;
     }
 
     .market-card {
