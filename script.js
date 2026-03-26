@@ -18,15 +18,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header scroll effect
+// Header scroll effect — transparent on hero, solid on scroll
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
+    if (header.classList.contains('header--transparent')) {
+        if (currentScroll > 80) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
+        }
+    }
+
     if (currentScroll > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
     } else {
         header.style.boxShadow = 'none';
     }

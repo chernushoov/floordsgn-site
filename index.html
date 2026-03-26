@@ -84,9 +84,10 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header">
+    <header class="header header--transparent" id="mainHeader">
         <a href="index.html" class="logo">
-            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="logo-img logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img logo-black">
         </a>
         <nav>
             <ul class="nav">
@@ -119,41 +120,32 @@
         </ul>
     </div>
 
-    <!-- HERO SECTION - MARKET SPLIT -->
-    <section class="hero-split">
-        <div class="hero-split-intro">
-            <p class="hero-overline" data-i18n="home_hero_overline">Floor.DSGN &bull; Israel</p>
-            <h1 data-i18n="home_hero_title">What brings you here?</h1>
-        </div>
-        <div class="hero-split-grid">
-            <!-- MARKET A: Industrial / Commercial -->
-            <a href="industrial.html" class="market-card market-a">
-                <div class="market-card-bg" style="background-image: url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg');"></div>
-                <div class="market-card-content">
-                    <span class="market-label" data-i18n="home_market_a_label">For Business Owners</span>
-                    <h2 data-i18n="home_market_a_title">Industrial &<br>Commercial</h2>
-                    <p data-i18n="home_market_a_desc">Factories, warehouses, logistics, restaurants, parking. Fast installation, minimal downtime, maximum durability.</p>
-                    <ul class="market-features">
-                        <li data-i18n="home_market_a_feat1">Epoxy &bull; PU-Cement &bull; MMA</li>
-                        <li data-i18n="home_market_a_feat2">48h quote &bull; 10-year warranty</li>
-                    </ul>
-                    <span class="market-cta" data-i18n="home_market_a_cta">Get Industrial Quote &rarr;</span>
-                </div>
-            </a>
-            <!-- MARKET B: Design / Architects -->
-            <a href="designers.html" class="market-card market-b">
-                <div class="market-card-bg" style="background-image: url('images/terrazzo/interrior-222942.jpg');"></div>
-                <div class="market-card-content">
-                    <span class="market-label" data-i18n="home_market_b_label">For Designers & Architects</span>
-                    <h2 data-i18n="home_market_b_title">Design &<br>Finishes</h2>
-                    <p data-i18n="home_market_b_desc">Terrazzo, microtopping, decorative concrete. We handle floors so you can focus on design.</p>
-                    <ul class="market-features">
-                        <li data-i18n="home_market_b_feat1">Terrazzo &bull; Microtopping &bull; Concrete</li>
-                        <li data-i18n="home_market_b_feat2">Samples &bull; Specs &bull; Reliable delivery</li>
-                    </ul>
-                    <span class="market-cta" data-i18n="home_market_b_cta">Partner With Us &rarr;</span>
-                </div>
-            </a>
+    <!-- HERO SECTION - FULL SPLIT -->
+    <section class="hero-fullsplit" id="heroSplit">
+        <a href="industrial.html" class="hero-panel hero-panel--left">
+            <div class="hero-panel__bg" style="background-image: url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg');"></div>
+            <div class="hero-panel__overlay"></div>
+            <div class="hero-panel__content">
+                <span class="hero-panel__label anim-fade" data-i18n="home_market_a_label">For Business Owners</span>
+                <h2 class="hero-panel__title anim-fade anim-delay-1" data-i18n="home_market_a_title">Industrial &<br>Commercial</h2>
+                <p class="hero-panel__desc anim-fade anim-delay-2" data-i18n="home_market_a_desc">Epoxy, PU-Cement, MMA. Fast installation, minimal downtime, 10-year warranty.</p>
+                <span class="hero-panel__cta anim-fade anim-delay-3" data-i18n="home_market_a_cta">Get Quote →</span>
+            </div>
+            <div class="hero-panel__divider"></div>
+        </a>
+        <a href="designers.html" class="hero-panel hero-panel--right">
+            <div class="hero-panel__bg" style="background-image: url('images/terrazzo/interrior-222942.jpg');"></div>
+            <div class="hero-panel__overlay"></div>
+            <div class="hero-panel__content">
+                <span class="hero-panel__label anim-fade" data-i18n="home_market_b_label">For Designers & Architects</span>
+                <h2 class="hero-panel__title anim-fade anim-delay-1" data-i18n="home_market_b_title">Design &<br>Finishes</h2>
+                <p class="hero-panel__desc anim-fade anim-delay-2" data-i18n="home_market_b_desc">Terrazzo, microtopping, decorative concrete. Samples, specs, reliable delivery.</p>
+                <span class="hero-panel__cta anim-fade anim-delay-3" data-i18n="home_market_b_cta">Partner With Us →</span>
+            </div>
+        </a>
+        <div class="hero-scroll-hint anim-fade anim-delay-4">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
         </div>
     </section>
 
