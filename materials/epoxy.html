@@ -176,6 +176,68 @@
             </div><!-- /container -->
         </div><!-- /article-content -->
 
+    <!-- GOOD FIT / BAD FIT / WHAT TO INSPECT -->
+    <section class="fitmatrix-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Honest decision</p>
+                <h2 class="section-title">Is Epoxy right for your project?</h2>
+            </div>
+            <div class="fitmatrix-grid">
+                <div class="fitmatrix-card fitmatrix-card--good">
+                    <div class="fitmatrix-card__head">
+                        <img src="../images/icons/lucide/shield-check.svg" alt="" width="20" height="20">
+                        <span class="fitmatrix-card__label">Good fit</span>
+                    </div>
+                    <ul>
+                        <li>Industrial floors with chemical exposure (workshops, garages, warehouses)</li>
+                        <li>Areas needing seamless, hygienic finish (food-prep zones, labs)</li>
+                        <li>Forklift/wheel-load environments with proper system thickness</li>
+                        <li>Where slip resistance can be tuned via aggregate broadcast</li>
+                    </ul>
+                </div>
+                <div class="fitmatrix-card fitmatrix-card--bad">
+                    <div class="fitmatrix-card__head">
+                        <img src="../images/icons/lucide/flame.svg" alt="" width="20" height="20">
+                        <span class="fitmatrix-card__label">Not a fit</span>
+                    </div>
+                    <ul>
+                        <li>Damp substrates without barrier system — moisture causes delamination</li>
+                        <li>Outdoor exposed surfaces (UV-yellowing of standard epoxy)</li>
+                        <li>Spaces needing same-day return-to-service (chemical cure 3–7 days)</li>
+                        <li>Substrates with active cracks or movement</li>
+                    </ul>
+                </div>
+                <div class="fitmatrix-card fitmatrix-card--inspect">
+                    <div class="fitmatrix-card__head">
+                        <img src="../images/icons/lucide/wrench.svg" alt="" width="20" height="20">
+                        <span class="fitmatrix-card__label">Inspect first</span>
+                    </div>
+                    <ul>
+                        <li>Substrate moisture (CM-method), target ≤ 4%</li>
+                        <li>Surface flatness, primer compatibility, oil/grease contamination</li>
+                        <li>Existing crack pattern — repair before overlay</li>
+                        <li>Concrete strength — soft/dusty surfaces need consolidation first</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .fitmatrix-section { padding: 64px 0; }
+        .fitmatrix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 32px auto 0; }
+        .fitmatrix-card { background: #fafafa; border-radius: 16px; padding: 28px; border: 1px solid #e5e5e7; }
+        .fitmatrix-card--good { border-color: #d4e8d4; background: #f4faf4; }
+        .fitmatrix-card--bad { border-color: #f0d4d4; background: #fbf6f6; }
+        .fitmatrix-card--inspect { border-color: #e8e0c4; background: #faf8f1; }
+        .fitmatrix-card__head { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+        .fitmatrix-card__label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6e6e73; }
+        .fitmatrix-card ul { margin: 0; padding: 0; list-style: none; }
+        .fitmatrix-card li { font-size: 14px; line-height: 1.6; color: #1d1d1f; padding: 8px 0; border-top: 1px solid rgba(0,0,0,0.06); }
+        .fitmatrix-card li:first-child { border-top: none; }
+        @media (max-width: 900px) { .fitmatrix-grid { grid-template-columns: 1fr; gap: 16px; } }
+    </style>
+
     <!-- ENGINEERED SPEC TABLE — quick technical-decision card -->
     <section class="spec-table-section">
         <div class="container">
