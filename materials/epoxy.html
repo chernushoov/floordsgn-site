@@ -176,6 +176,70 @@
             </div><!-- /container -->
         </div><!-- /article-content -->
 
+    <!-- ENGINEERED SPEC TABLE — quick technical-decision card -->
+    <section class="spec-table-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle" data-i18n="spec_subtitle">Spec at a glance</p>
+                <h2 class="section-title" data-i18n="spec_title_epoxy">Epoxy decision specs</h2>
+            </div>
+            <div class="spec-table">
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/droplets.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_moisture_label">Substrate moisture</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_moisture">≤ 4% by weight (CM-method); confirm before priming</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/gauge.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_load_label">Load class</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_load">Light–heavy traffic; forklift load with thicker self-leveling buildup</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/clock.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_downtime_label">Realistic downtime</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_downtime">3–7 days from substrate prep to full chemical cure</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/thermometer.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_thermal_label">Thermal range</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_thermal">Typically rated −20°C to +60°C in service; system-dependent</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/flame.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_chemical_label">Chemical exposure</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_chemical">Acids, fuels, oils — system-specific topcoat needed</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/layers.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_system_label">System buildup</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_system">Primer + body (2–4 mm) + topcoat; quartz broadcast for slip resistance</div>
+                </div>
+                <div class="spec-row">
+                    <div class="spec-row__icon"><img src="../images/icons/lucide/shield-check.svg" alt="" width="22" height="22"></div>
+                    <div class="spec-row__label" data-i18n="spec_warranty_label">Warranty</div>
+                    <div class="spec-row__value" data-i18n="spec_epoxy_warranty">System-specific; documented in project proposal</div>
+                </div>
+            </div>
+            <p class="spec-table__note" data-i18n="spec_note">Real numbers depend on substrate, environment and selected system family. We confirm everything before quoting.</p>
+        </div>
+    </section>
+    <style>
+        .spec-table-section { padding: 64px 0; background: #fafafa; }
+        .spec-table { display: grid; max-width: 920px; margin: 32px auto 0; border-top: 1px solid #e5e5e7; }
+        .spec-row { display: grid; grid-template-columns: 48px 220px 1fr; align-items: center; gap: 16px; padding: 20px 8px; border-bottom: 1px solid #e5e5e7; }
+        .spec-row__icon { display: flex; align-items: center; justify-content: center; opacity: 0.7; }
+        .spec-row__icon img { width: 22px; height: 22px; }
+        .spec-row__label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6e6e73; }
+        .spec-row__value { font-size: 16px; line-height: 1.5; color: #1d1d1f; }
+        .spec-table__note { font-size: 13px; color: #86868b; max-width: 920px; margin: 24px auto 0; line-height: 1.6; text-align: center; }
+        @media (max-width: 700px) {
+            .spec-row { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 4px; }
+            .spec-row__label { grid-column: 2; font-size: 11px; }
+            .spec-row__value { grid-column: 2; font-size: 14px; }
+            .spec-row__icon { grid-row: span 2; align-self: start; padding-top: 4px; }
+        }
+    </style>
+
     <section class="faq-section">
         <div class="container">
             <div class="section-header center">

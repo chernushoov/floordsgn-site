@@ -20,10 +20,12 @@ const translations = {
         hero_cta_secondary: "See 500+ Projects",
 
         // Trust Section
-        trust_projects: "Projects Completed",
-        trust_years: "Years Experience",
-        trust_systems: "Floor Systems",
-        trust_warranty: "Warranty Coverage",
+        trust_projects: "Documented project examples",
+        trust_years: "Documented track record",
+        trust_systems: "Floor system families",
+        trust_warranty: "System-specific warranty",
+        industries_title: "Industries we work in",
+        industries_note: "Sectors our floor systems are specified for. Logos shown are industry references, not client endorsements.",
 
         // Services
         services_subtitle: "Our Expertise",
@@ -1340,10 +1342,12 @@ const translations = {
         hero_cta_secondary: "500+ проектов",
 
         // Trust Section
-        trust_projects: "Выполненных проектов",
-        trust_years: "Лет опыта",
-        trust_systems: "Систем покрытий",
-        trust_warranty: "Гарантийное покрытие",
+        trust_projects: "Документированные примеры проектов",
+        trust_years: "Документированный опыт",
+        trust_systems: "Семейства напольных систем",
+        trust_warranty: "Гарантия по конкретной системе",
+        industries_title: "Отрасли, в которых мы работаем",
+        industries_note: "Секторы, для которых проектируются наши системы покрытий. Показанные логотипы — отраслевые ориентиры, не утверждение клиентских отношений.",
 
         // Services
         services_subtitle: "Наша экспертиза",
