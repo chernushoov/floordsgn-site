@@ -164,7 +164,7 @@
                     <div class="article-cta">
                         <h3 data-i18n="rubber_cta_title">Need a Rubber Flooring Solution?</h3>
                         <p data-i18n="rubber_cta_text">Let us recommend the right rubber product for your specific application and requirements.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
+                        <a href="../contact.html?system=rubber" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
                     </div>
                 </div>
 
@@ -226,7 +226,7 @@
             <h2 data-i18n="mat_cta_title">Start Your Project</h2>
             <p data-i18n="mat_cta_text">Get expert advice on the right flooring solution for your facility.</p>
             <div class="cta-buttons">
-                <a href="../contact.html" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
+                <a href="../contact.html?system=rubber" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white" data-i18n="mat_cta_call">Call Now</a>
             </div>
         </div>
@@ -252,6 +252,20 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js"></script>
+    <script src="../translations.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Rubber Flooring",
+      "description": "Rubber flooring for comfort and safety. 2-12mm thickness, 20+ years service life. Sheet, tiles, or poured options. Professional installation in Israel.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Floor.DSGN"
+      },
+      "category": "Flooring system"
+    }
+    </script>
 </body>
 </html>
