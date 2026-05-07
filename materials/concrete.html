@@ -61,7 +61,7 @@
                         </div>
                         <div class="material-app-card">
                             <h4 data-i18n="concrete_app3_title">Office Buildings</h4>
-                            <p data-i18n="concrete_app3_desc">Sustainable flooring option. LEED credits. Exposed aggregate or cream finish.</p>
+                            <p data-i18n="concrete_app3_desc">Uses the existing slab where suitable. Exposed aggregate or cream finish.</p>
                         </div>
                         <div class="material-app-card">
                             <h4 data-i18n="concrete_app4_title">Residential</h4>
@@ -131,7 +131,7 @@
 
                     <h2 data-i18n="concrete_h2_advantages">Key Advantages</h2>
                     <ul>
-                        <li data-i18n="concrete_adv1"><strong>Sustainable</strong> — No new materials added. Uses existing slab. Zero VOC. LEED credits available.</li>
+                        <li data-i18n="concrete_adv1"><strong>Lower material input</strong> — Uses the existing slab where suitable, with densifier/guard coats selected by site requirements.</li>
                         <li data-i18n="concrete_adv2"><strong>Low Maintenance</strong> — Densified surface resists staining and dusting. Simple cleaning protocol.</li>
                         <li data-i18n="concrete_adv3"><strong>Cost Effective</strong> — No overlay materials. Lower lifecycle cost than most flooring systems.</li>
                         <li data-i18n="concrete_adv4"><strong>Light Reflective</strong> — High-gloss polish reflects ambient light, reducing lighting energy costs.</li>
@@ -164,7 +164,7 @@
                     <div class="article-cta">
                         <h3 data-i18n="concrete_cta_title">Interested in Polished Concrete?</h3>
                         <p data-i18n="concrete_cta_text">Let us assess your existing slab and recommend the best finish option for your space.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
+                        <a href="../contact.html?system=concrete" class="btn btn-dark" data-i18n="mat_cta_quote">Get Free Quote</a>
                     </div>
                 </div>
 
@@ -205,7 +205,7 @@
                             <li><span class="spec-label" data-i18n="mat_workmanship">Workmanship</span><span class="spec-value" data-i18n="concrete_warranty_years">5 years</span></li>
                             <li><span class="spec-label" data-i18n="concrete_warranty_repolish">Re-Polish Service</span><span class="spec-value" data-i18n="concrete_warranty_repolish_v">Available</span></li>
                         </ul>
-                        <a href="../contact.html" class="btn btn-dark btn-small" data-i18n="mat_request_quote">Request Quote</a>
+                        <a href="../contact.html?system=concrete" class="btn btn-dark btn-small" data-i18n="mat_request_quote">Request Quote</a>
                     </div>
 
                     <div class="sidebar-section">
@@ -226,7 +226,7 @@
             <h2 data-i18n="mat_cta_title">Start Your Project</h2>
             <p data-i18n="mat_cta_text">Get expert advice on the right flooring solution for your facility.</p>
             <div class="cta-buttons">
-                <a href="../contact.html" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
+                <a href="../contact.html?system=concrete" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white" data-i18n="mat_cta_call">Call Now</a>
             </div>
         </div>
@@ -252,6 +252,20 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js"></script>
+    <script src="../translations.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Polished Concrete",
+      "description": "Decorative polished and stained concrete flooring. 0mm added thickness, 25+ years service life, sustainable option. Professional grinding and polishing in Israel.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Floor.DSGN"
+      },
+      "category": "Flooring system"
+    }
+    </script>
 </body>
 </html>

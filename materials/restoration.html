@@ -117,7 +117,7 @@
                         </div>
                         <div class="variant-card">
                             <h4 data-i18n="rest_var2_title">Kitchen Sealer Failure</h4>
-                            <p data-i18n="rest_var2_desc">Stripped and resealed after chemical damage or wear. Non-slip texture maintained.</p>
+                            <p data-i18n="rest_var2_desc">Stripped and resealed after chemical damage or wear. Existing texture is assessed and maintained where practical.</p>
                         </div>
                         <div class="variant-card">
                             <h4 data-i18n="rest_var3_title">Showroom Refresh</h4>
@@ -164,7 +164,7 @@
                     <div class="article-cta">
                         <h3 data-i18n="rest_cta_title">Is Your Floor Worth Saving?</h3>
                         <p data-i18n="rest_cta_text">Let us assess your floor and give you honest advice on restoration vs. replacement.</p>
-                        <a href="../contact.html" class="btn btn-dark" data-i18n="rest_cta_btn">Request Assessment</a>
+                        <a href="../contact.html?system=restoration" class="btn btn-dark" data-i18n="rest_cta_btn">Request Assessment</a>
                     </div>
                 </div>
 
@@ -205,7 +205,7 @@
                             <li><span class="spec-label" data-i18n="rest_warranty_recoat">Recoating Work</span><span class="spec-value" data-i18n="rest_warranty_recoat_v">3 years</span></li>
                             <li><span class="spec-label" data-i18n="rest_warranty_repairs">Repairs</span><span class="spec-value" data-i18n="rest_warranty_repairs_v">1 year</span></li>
                         </ul>
-                        <a href="../contact.html" class="btn btn-dark btn-small" data-i18n="rest_schedule_btn">Schedule Assessment</a>
+                        <a href="../contact.html?system=restoration" class="btn btn-dark btn-small" data-i18n="rest_schedule_btn">Schedule Assessment</a>
                     </div>
 
                     <div class="sidebar-section">
@@ -226,7 +226,7 @@
             <h2 data-i18n="mat_cta_title">Start Your Project</h2>
             <p data-i18n="mat_cta_text">Get expert advice on the right flooring solution for your facility.</p>
             <div class="cta-buttons">
-                <a href="../contact.html" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
+                <a href="../contact.html?system=restoration" class="btn btn-outline-white" data-i18n="mat_cta_quote">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white" data-i18n="mat_cta_call">Call Now</a>
             </div>
         </div>
@@ -252,6 +252,20 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js"></script>
+    <script src="../translations.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Floor Restoration Service",
+      "description": "Professional floor restoration services. 50-70% cost vs replacement, 1-3 days turnaround, 5-10 years extended life. Expert assessment and restoration in Israel.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Floor.DSGN"
+      },
+      "category": "Flooring system"
+    }
+    </script>
 </body>
 </html>
