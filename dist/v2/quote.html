@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Калькулятор стоимости · Floor.DSGN | Превью v2</title>
+<meta name="description" content="Ориентир по стоимости полимерного пола за 30 секунд. Финальная смета — после бесплатного замера."/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css?v=3"/>
+</head>
+<body>
+<div data-chrome="header"></div>
+
+<section class="detail-hero pad-top-90" style="padding-bottom:30px">
+  <div class="cat">калькулятор</div>
+  <h1>Ориентир<br/><em>по бюджету</em> за 30 секунд</h1>
+  <p class="meta">Не точная смета — рабочий ориентир. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</p>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="calc">
+    <div class="l">
+      <h3>Что включает финальная смета</h3>
+      <p>Калькулятор показывает порядок цены. Реальная сумма зависит от состояния основания, геометрии, регламента уборки и выбранного финиша. Без сюрпризов — все этапы фиксируются в проекте.</p>
+      <ul>
+        <li>Замер и CM-тест на влажность основания</li>
+        <li>Подготовка: ремонт трещин, шлифовка, праймер</li>
+        <li>Материалы европейских поставщиков</li>
+        <li>Работа сертифицированных бригад</li>
+        <li>Защитные пропитки, финиш</li>
+        <li>Документированная гарантия по системе</li>
+      </ul>
+      <p style="margin-top:32px;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.5;color:var(--ink)">«Цена пола — это не материал, это правильное основание. На замере мы измеряем влажность и прочность плиты — без этого работаем только под подпись клиента.»</p>
+    </div>
+    <div class="calc-card">
+      <div class="calc-row">
+        <span class="lbl">Тип покрытия</span>
+        <div class="calc-chips" id="cMat">
+          <span class="on" data-v="terrazzo" data-p="280">Терраццо</span>
+          <span data-v="epoxy" data-p="95">Эпокси</span>
+          <span data-v="micro" data-p="160">Микротопинг</span>
+          <span data-v="concrete" data-p="75">Бетон</span>
+          <span data-v="pucement" data-p="180">PU-cement</span>
+          <span data-v="mma" data-p="220">MMA</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <span class="lbl">Назначение</span>
+        <div class="calc-chips" id="cUse">
+          <span class="on" data-v="resi" data-k="1.0">Жильё</span>
+          <span data-v="design" data-k="1.15">Шоурум / офис</span>
+          <span data-v="indus" data-k="0.85">Производство</span>
+          <span data-v="hosp" data-k="1.25">HoReCa / ритейл</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <span class="lbl">Площадь · <span id="cArea">120</span> м²</span>
+        <div class="calc-slider"><input type="range" min="20" max="3000" value="120" step="10" id="cAreaR"/><span class="val"><span id="cArea2">120</span><small>м²</small></span></div>
+      </div>
+      <div class="calc-out">
+        <div class="num"><span id="cTotal">33 600</span><small>$ / ориентир</small></div>
+        <div class="note">Финальная смета — после выезда замерщика.</div>
+      </div>
+      <a class="btn primary" href="contact.html">Получить точную смету<span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div data-chrome="footer"></div>
+<script src="./app.js?v=3"></script>
+</body>
+</html>

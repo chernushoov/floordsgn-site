@@ -215,7 +215,124 @@ function initLoader(){
   setTimeout(()=>{loader.classList.add('gone');setTimeout(()=>loader.remove(),1300);sessionStorage.setItem('fdg_loaded','1')}, 3400);
 }
 
+/* ============ SHARED HEADER / FOOTER injection ============ */
+function injectChrome(){
+  const root = location.pathname.includes('/v2/materials/') || location.pathname.includes('/v2/floors/') || location.pathname.includes('/v2/projects/') || location.pathname.includes('/v2/blog/') ? '..' : '.';
+  const imgRoot = location.pathname.includes('/v2/materials/') || location.pathname.includes('/v2/floors/') || location.pathname.includes('/v2/projects/') || location.pathname.includes('/v2/blog/') ? '../../images' : '../images';
+
+  const headerHTML = `
+<header class="topbar">
+  <div class="tb-l">
+    <nav class="nav">
+      <a href="${root}/floors/">Системы</a>
+      <a href="${root}/industrial.html">Бизнесу</a>
+      <a href="${root}/decorative.html">Архитекторам</a>
+    </nav>
+  </div>
+  <a class="tb-c" href="${root}/index.html">
+    <img class="dark-only" src="${imgRoot}/logo/White1_tr.png" alt="Floor.DSGN"/>
+    <img class="light-only" src="${imgRoot}/logo/Black1_tr.png" alt="Floor.DSGN"/>
+  </a>
+  <div class="tb-r">
+    <nav class="nav">
+      <a href="${root}/projects/">Проекты</a>
+      <a href="${root}/blog/">Журнал</a>
+      <a href="${root}/about.html">О нас</a>
+    </nav>
+    <div class="langSeg">
+      <span class="on" data-l="RU">RU</span>
+      <span data-l="EN">EN</span>
+    </div>
+    <a class="cta-mini" href="${root}/contact.html">Заявка<span>→</span></a>
+    <button class="mobile-tog" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mob-drawer">
+  <a href="${root}/floors/">Системы</a>
+  <a href="${root}/industrial.html">Бизнесу</a>
+  <a href="${root}/decorative.html">Архитекторам</a>
+  <a href="${root}/projects/">Проекты</a>
+  <a href="${root}/blog/">Журнал</a>
+  <a href="${root}/about.html">О нас</a>
+  <a href="${root}/contact.html">Контакты</a>
+</nav>`;
+
+  const footerHTML = `
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <img class="flogo dark-only" src="${imgRoot}/logo/White1_tr.png" alt="Floor.DSGN"/>
+      <img class="flogo light-only" src="${imgRoot}/logo/Black1_tr.png" alt="Floor.DSGN"/>
+      <p>Полимерные полы, спроектированные как часть архитектуры. Промышленные системы и декоративные покрытия по всему Израилю.</p>
+    </div>
+    <div>
+      <h5>Системы</h5>
+      <ul>
+        <li><a href="${root}/floors/terrazzo.html">Terrazzo</a></li>
+        <li><a href="${root}/floors/epoxy.html">Epoxy</a></li>
+        <li><a href="${root}/floors/microtopping.html">Micro-topping</a></li>
+        <li><a href="${root}/floors/concrete.html">Polished Concrete</a></li>
+        <li><a href="${root}/floors/pu-cement.html">PU-Cement</a></li>
+        <li><a href="${root}/floors/mma.html">MMA</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="${root}/projects/">Проекты</a></li>
+        <li><a href="${root}/about.html">О нас</a></li>
+        <li><a href="${root}/blog/">Журнал</a></li>
+        <li><a href="${root}/contact.html">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li>
+        <li><a href="tel:+972559661459">+972 55 966 1459</a></li>
+        <li><a href="https://wa.me/972559661459">WhatsApp</a></li>
+        <li><a>Israel · Tel Aviv</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <div class="badges">
+      <span>Документированная гарантия по системе</span>
+      <span>Бесплатный выезд с тестом основания</span>
+      <span>Европейские материалы</span>
+    </div>
+    <div class="foot-soc">
+      <a href="https://instagram.com/floor.dsgn">IG</a>
+      <a href="https://linkedin.com/company/floordsgn">IN</a>
+      <a href="https://facebook.com/floordsgn">FB</a>
+    </div>
+  </div>
+  <div class="foot-bot" style="border-top:none;padding-top:18px;color:var(--ink-mute)">© 2026 Floor.DSGN Ltd. · Tel Aviv · Jerusalem · Haifa · Be'er Sheva</div>
+</footer>
+<div class="preview-banner">⚙ Превью v2 · <a href="${root}/index.html">главная превью</a> · <a href="/">старый сайт</a></div>`;
+
+  const head = document.querySelector('[data-chrome="header"]');
+  const foot = document.querySelector('[data-chrome="footer"]');
+  if(head){ head.outerHTML = headerHTML; }
+  if(foot){ foot.outerHTML = footerHTML; }
+}
+
+/* ============ PROJECT FILTER ============ */
+function initProjFilter(){
+  const filter=document.querySelector('.proj-filter');
+  if(!filter) return;
+  filter.querySelectorAll('span').forEach(s=>s.onclick=()=>{
+    filter.querySelectorAll('span').forEach(x=>x.classList.remove('on'));
+    s.classList.add('on');
+    const f=s.dataset.f;
+    document.querySelectorAll('#projGrid .proj').forEach(p=>{
+      p.classList.toggle('is-hidden', f!=='all' && p.dataset.cat!==f);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
+  injectChrome();
   initLoader();
   initTheme();
   initScroll();
@@ -224,4 +341,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   initAudience();
   initCalc();
   initForm();
+  initProjFilter();
 });
