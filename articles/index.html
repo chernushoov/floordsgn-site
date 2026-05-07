@@ -30,7 +30,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html">Home</a></li><li><a href="../floors.html">Floors</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../about.html">About Us</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
@@ -155,7 +155,7 @@
             <h2>Stay Updated</h2>
             <p>Monthly technical insights. No marketing noise.</p>
             <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-                <input type="email" placeholder="Your email address" required>
+                <input type="email" placeholder="Your email address" aria-label="Email address" required>
                 <button type="submit">Subscribe</button>
             </form>
         </div>
@@ -180,6 +180,6 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js"></script>
+    <script src="../translations.js" defer></script>
 </body>
 </html>

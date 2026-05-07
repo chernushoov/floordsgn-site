@@ -13,6 +13,8 @@
     <meta property="og:title" content="Floor Engineering Blog | Floor.DSGN">
     <meta property="og:description" content="Expert flooring knowledge and technical guides from Floor.DSGN Israel.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn-site.vercel.app/blog">
+    <meta property="og:image" content="/images/og-preview.jpg">
 
     <link rel="canonical" href="https://floordsgn-site.vercel.app/blog">
 
@@ -32,7 +34,7 @@
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
         <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
@@ -177,7 +179,7 @@
             <h2 data-i18n="blog_newsletter_title">Stay Updated</h2>
             <p data-i18n="blog_newsletter_desc">Monthly technical insights. No marketing noise.</p>
             <form class="newsletter-form">
-                <input type="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" required>
+                <input type="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
                 <button type="submit" data-i18n="blog_newsletter_btn">Subscribe</button>
             </form>
         </div>
@@ -195,8 +197,12 @@
         </div>
     </footer>
 
+    <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20a%20flooring%20project." class="sticky-cta sticky-cta-whatsapp" id="stickyCta" target="_blank" rel="noopener">
+        <span>WhatsApp</span>
+    </a>
+
     <script src="script.js"></script>
-    <script src="translations.js"></script>
+    <script src="translations.js" defer></script>
     <script>
     (function(){
       var btns = document.querySelectorAll('.category-filter .filter-btn');
