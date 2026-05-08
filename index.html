@@ -84,6 +84,69 @@
 </head>
 <body>
 
+    <!-- ENHANCE: onboarding overlay (first-visit only, removable by deleting this block) -->
+    <div class="fx-ob" data-fx="onboarding" style="display:none">
+        <button class="fx-ob-skip" data-fx="obSkip" type="button">Пропустить</button>
+        <div class="fx-ob-dots">
+            <span class="fx-ob-dot on" data-i="1"></span>
+            <span class="fx-ob-dot" data-i="2"></span>
+            <span class="fx-ob-dot" data-i="3"></span>
+        </div>
+
+        <div class="fx-ob-screen active" data-step="1">
+            <div class="fx-ob-logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN"/></div>
+            <h1 class="fx-ob-welcome"><em>Добро пожаловать</em><br/>в Floor.DSGN</h1>
+            <p class="fx-ob-sub">Премиальные полимерные полы. Промышленные системы и архитектурные покрытия по всему Израилю.</p>
+            <button class="btn btn-dark fx-ob-cta" data-next="2" type="button">Войти</button>
+        </div>
+
+        <div class="fx-ob-screen" data-step="2">
+            <div class="fx-ob-step-meta">шаг 2 из 3</div>
+            <h2 class="fx-ob-q">Кто <em>вы</em>?</h2>
+            <p class="fx-ob-sub">Покажем, что подходит именно вам</p>
+            <div class="fx-ob-options">
+                <button class="fx-ob-opt" data-aud="b2b" type="button">
+                    <div class="fx-ob-opt-icon">B</div>
+                    <div class="fx-ob-opt-name">Бизнесу</div>
+                    <div class="fx-ob-opt-desc">Производство, склад, паркинг, ритейл</div>
+                </button>
+                <button class="fx-ob-opt" data-aud="design" type="button">
+                    <div class="fx-ob-opt-icon">A</div>
+                    <div class="fx-ob-opt-name">Архитектору</div>
+                    <div class="fx-ob-opt-desc">Спецификация, образцы, документация</div>
+                </button>
+                <button class="fx-ob-opt" data-aud="resi" type="button">
+                    <div class="fx-ob-opt-icon">R</div>
+                    <div class="fx-ob-opt-name">Частнику</div>
+                    <div class="fx-ob-opt-desc">Дом, квартира, частная резиденция</div>
+                </button>
+            </div>
+        </div>
+
+        <div class="fx-ob-screen" data-step="3">
+            <div class="fx-ob-step-meta">шаг 3 из 3</div>
+            <h2 class="fx-ob-q">Что <em>интересует</em>?</h2>
+            <div class="fx-ob-options-2">
+                <button class="fx-ob-opt-large" data-type="industrial" type="button">
+                    <div class="fx-ob-opt-bg" style="background-image:url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg')"></div>
+                    <div class="fx-ob-opt-content">
+                        <div class="fx-ob-opt-cat">01 · INDUSTRIAL</div>
+                        <div class="fx-ob-opt-name">Промышленные<br/>и коммерческие</div>
+                        <div class="fx-ob-opt-desc">Эпокси, PU-cement, MMA — нагрузки, химия, скорость ввода</div>
+                    </div>
+                </button>
+                <button class="fx-ob-opt-large" data-type="decorative" type="button">
+                    <div class="fx-ob-opt-bg" style="background-image:url('images/terrazzo/interrior-222942.jpg')"></div>
+                    <div class="fx-ob-opt-content">
+                        <div class="fx-ob-opt-cat">02 · DECORATIVE</div>
+                        <div class="fx-ob-opt-name">Декоративные<br/>и архитектурные</div>
+                        <div class="fx-ob-opt-desc">Терраццо, микротопинг, бетон — характер интерьера</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="header header--hero" id="mainHeader">
         <nav class="header__nav header__nav--left">
