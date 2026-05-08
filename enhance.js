@@ -372,8 +372,90 @@
     });
   };
 
+  /* ---------------- fx.initStack — слоёный сэндвич hero -- */
+  fx.initStack = function () {
+    const root = document.querySelector('.fx-stack');
+    if (!root) return;
+
+    const PRESETS = {
+      epoxy: {
+        name: 'Sikafloor SL — Self-Leveling',
+        total: '3.8 мм',
+        cure: '3 дня',
+        labels: [
+          { sel: '[data-fx-label="topcoat"]', t: 'Топкоат',     s: 'Sikafloor‑264 · 0.5 мм' },
+          { sel: '[data-fx-label="body"]',    t: 'Тело системы', s: 'Sikafloor‑263 SL · 3 мм' },
+          { sel: '[data-fx-label="primer"]',  t: 'Праймер',     s: 'Sikafloor‑156 · 0.3 мм' }
+        ]
+      },
+      terrazzo: {
+        name: 'Sikafloor Terrazzo EM-10',
+        total: '12 мм',
+        cure: '7 дней',
+        labels: [
+          { sel: '[data-fx-label="topcoat"]', t: 'Шлифовка + sealer', s: 'Sikagard‑701 W · 30 µm' },
+          { sel: '[data-fx-label="body"]',    t: 'Терраццо матрица',  s: 'EM-10 + чипсы · 10 мм' },
+          { sel: '[data-fx-label="primer"]',  t: 'Праймер',           s: 'Sikafloor‑156 · 0.3 мм' }
+        ]
+      },
+      micro: {
+        name: 'Sika MonoTop MicroTopping',
+        total: '3 мм',
+        cure: '5 дней',
+        labels: [
+          { sel: '[data-fx-label="topcoat"]', t: 'Sealer PU/AC', s: 'Sikagard‑690 · 60 µm' },
+          { sel: '[data-fx-label="body"]',    t: 'Микро 2 слоя',  s: 'MonoTop‑412 N · 2 × 1 мм' },
+          { sel: '[data-fx-label="primer"]',  t: 'Bond bridge',    s: 'Sika MonoTop‑910 · 0.5 мм' }
+        ]
+      },
+      purcem: {
+        name: 'Sikafloor PurCem 21N',
+        total: '6 мм',
+        cure: '24 ч',
+        labels: [
+          { sel: '[data-fx-label="topcoat"]', t: 'Финиш HACCP',  s: 'Sikafloor‑264 N · 0.3 мм' },
+          { sel: '[data-fx-label="body"]',    t: 'PurCem body',   s: 'Sikafloor‑21N PurCem · 6 мм' },
+          { sel: '[data-fx-label="primer"]',  t: 'Скрэтч-кот',    s: 'PurCem mortar · 1 мм' }
+        ]
+      },
+      mma: {
+        name: 'Sikafloor MMA Pronto',
+        total: '3 мм',
+        cure: '2 ч',
+        labels: [
+          { sel: '[data-fx-label="topcoat"]', t: 'Топкоат',     s: 'Pronto Topcoat-21 · 0.5 мм' },
+          { sel: '[data-fx-label="body"]',    t: 'MMA body',     s: 'Pronto‑18 MMA · 2 мм' },
+          { sel: '[data-fx-label="primer"]',  t: 'Праймер MMA',  s: 'Pronto‑112 · 0.3 мм' }
+        ]
+      }
+    };
+
+    const $name  = root.querySelector('[data-fx="stackName"]');
+    const $total = root.querySelector('[data-fx="stackTotal"]');
+    const $cure  = root.querySelector('[data-fx="stackCure"]');
+    const buttons = Array.from(root.querySelectorAll('.fx-stack__seg button'));
+
+    function apply(key) {
+      const p = PRESETS[key]; if (!p) return;
+      if ($name)  $name.textContent  = p.name;
+      if ($total) $total.textContent = p.total;
+      if ($cure)  $cure.textContent  = p.cure;
+      buttons.forEach(b => {
+        const on = b.dataset.stack === key;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.stack)));
+
+    // entrance reveal
+    requestAnimationFrame(() => root.setAttribute('data-loaded', '1'));
+  };
+
   /* ---------------- bootstrap ----------------------------- */
   function init() {
+    try { fx.initStack       && fx.initStack();       } catch (e) { console.warn('fx.initStack', e); }
     try { fx.init3DPlate     && fx.init3DPlate();     } catch (e) { console.warn('fx.init3DPlate', e); }
     try { fx.initCalc        && fx.initCalc();        } catch (e) { console.warn('fx.initCalc', e); }
     try { fx.initFaq         && fx.initFaq();         } catch (e) { console.warn('fx.initFaq', e); }

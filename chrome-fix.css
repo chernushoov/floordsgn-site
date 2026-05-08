@@ -2,23 +2,15 @@
    chrome-fix.css — REQUIRED on every legacy-header page.
    Bug fix only, no new features. Linked alongside styles.css.
 
-   Many inner pages (industrial, designers, materials/*, articles/*,
-   about, contact, floors, blog, projects, thank-you) use the older
-   markup:
+   Legacy markup pattern:
      <header class="header">
-       <a class="logo"><img class="logo-img"></a>
+       <a class="logo"><img class="logo-img" src=".../logo-horizontal.svg"></a>
        <nav><ul class="nav">…</ul></nav>
        <div class="lang-switch">…</div>
      </header>
 
-   styles.css only targets the BEM pattern (.header__logo /
-   .header__nav / .header__lang). So on legacy pages the logo <img>
-   renders at the PNG's intrinsic 1871x1871 size and overflows the
-   viewport, pushing layout into the trash.
-
-   These rules constrain the legacy chrome without modifying
-   styles.css. Once all pages are migrated to BEM markup this file
-   can be deleted.
+   styles.css only targets the BEM pattern (.header__logo / etc).
+   These rules constrain the legacy chrome without modifying styles.css.
    ============================================================ */
 
 header.header > .logo {
@@ -27,21 +19,18 @@ header.header > .logo {
   justify-content: center;
   margin: 0 clamp(20px, 4vw, 56px);
   text-decoration: none;
-  overflow: hidden;
 }
 header.header > .logo .logo-img {
-  height: 140px;
+  height: 38px;
   width: auto;
-  margin: -30px 0;
   display: block;
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 header.header > .logo:hover .logo-img { opacity: 0.6; }
 
 @media (max-width: 768px) {
   header.header > .logo .logo-img {
-    height: 110px;
-    margin: -22px 0;
+    height: 32px;
   }
 }
 
@@ -61,7 +50,7 @@ header.header > nav .nav a {
   transition: opacity .2s ease;
 }
 header.header > nav .nav a:hover { opacity: .55; }
-header.header > nav .nav a.active { color: #1d1d1f; }
+header.header > nav .nav a.active { color: #1d1d1f; font-weight: 600; }
 
 header.header > .lang-switch {
   display: inline-flex;
@@ -79,3 +68,14 @@ header.header > .lang-switch .lang-btn {
   padding: 6px 8px;
 }
 header.header > .lang-switch .lang-btn.active { color: #1d1d1f; }
+
+/* Footer logo: stacked SVG (mark + wordmark + tagline). */
+.footer .footer-logo {
+  width: 168px;
+  height: auto;
+  display: block;
+  margin-bottom: 18px;
+}
+@media (max-width: 768px) {
+  .footer .footer-logo { width: 140px; }
+}
