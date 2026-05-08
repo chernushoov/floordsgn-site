@@ -89,22 +89,22 @@
                 <div class="fx-calc-row">
                     <span class="fx-calc-lbl">Тип покрытия</span>
                     <div class="fx-calc-chips" data-fx="cMat">
-                        <span class="on" data-v="terrazzo" data-p="280">Терраццо</span>
-                        <span data-v="epoxy" data-p="95">Эпокси</span>
-                        <span data-v="micro" data-p="160">Микротопинг</span>
-                        <span data-v="concrete" data-p="75">Бетон</span>
-                        <span data-v="pucement" data-p="180">PU-cement</span>
-                        <span data-v="mma" data-p="220">MMA</span>
+                        <button type="button" class="on" data-v="terrazzo" data-p="280">Терраццо</button>
+                        <button type="button" data-v="epoxy" data-p="110">Эпокси (4 мм)</button>
+                        <button type="button" data-v="micro" data-p="170">Микротопинг</button>
+                        <button type="button" data-v="concrete" data-p="80">Бетон полированный</button>
+                        <button type="button" data-v="pucement" data-p="200">PU-cement</button>
+                        <button type="button" data-v="mma" data-p="240">MMA</button>
                     </div>
                 </div>
 
                 <div class="fx-calc-row">
                     <span class="fx-calc-lbl">Назначение</span>
                     <div class="fx-calc-chips" data-fx="cUse">
-                        <span class="on" data-v="resi" data-k="1.0">Жильё</span>
-                        <span data-v="design" data-k="1.15">Шоурум / офис</span>
-                        <span data-v="indus" data-k="0.85">Производство</span>
-                        <span data-v="hosp" data-k="1.25">HoReCa / ритейл</span>
+                        <button type="button" class="on" data-v="resi" data-k="1.0">Жильё</button>
+                        <button type="button" data-v="design" data-k="1.15">Шоурум / офис</button>
+                        <button type="button" data-v="indus" data-k="1.20">Производство / склад</button>
+                        <button type="button" data-v="hosp" data-k="1.25">HoReCa / ритейл</button>
                     </div>
                 </div>
 
@@ -117,11 +117,12 @@
                 </div>
 
                 <div class="fx-calc-out">
-                    <div class="fx-calc-num"><span data-fx="cTotal">33 600</span><small>$ / ориентир</small></div>
-                    <div class="fx-calc-note">Финальная смета — после выезда замерщика.</div>
+                    <div class="fx-calc-num">₪ <span data-fx="cTotalIls">122 800</span></div>
+                    <div class="fx-calc-num-secondary">≈ $<span data-fx="cTotal">33 600</span> · ориентир</div>
+                    <div class="fx-calc-note">Это рабочий ориентир, а не смета. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</div>
                 </div>
 
-                <a class="btn btn-dark fx-calc-cta" href="contact.html">Получить точную смету</a>
+                <a class="btn btn-dark fx-calc-cta" href="contact.html">Прислать смету в PDF — за 48 часов</a>
             </div>
         </section>
     </main>

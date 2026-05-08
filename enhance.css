@@ -86,9 +86,11 @@
 .fx-calc-chips {
   display: flex; flex-wrap: wrap; gap: 8px;
 }
+.fx-calc-chips button,
 .fx-calc-chips span {
   padding: 9px 14px;
   border: 1px solid #d2d2d7;
+  background: #fff;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px; font-weight: 500;
   cursor: pointer;
@@ -96,7 +98,9 @@
   border-radius: 980px;
   color: #1d1d1f; user-select: none;
 }
+.fx-calc-chips button:hover,
 .fx-calc-chips span:hover { border-color: #1d1d1f; }
+.fx-calc-chips button.on,
 .fx-calc-chips span.on {
   background: #1d1d1f; color: #fff; border-color: #1d1d1f;
 }
@@ -140,19 +144,26 @@
 }
 .fx-calc-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 64px; font-weight: 400;
+  font-size: 56px; font-weight: 400;
   color: #0071e3; letter-spacing: -.02em;
   line-height: 1;
 }
 .fx-calc-num small {
   font-family: 'Montserrat', sans-serif;
-  font-size: 13px; color: #86868b;
+  font-size: 13px; color: #6e6e73;
   margin-left: 12px; font-weight: 500;
+}
+.fx-calc-num-secondary {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px; font-weight: 500;
+  color: #6e6e73;
+  margin-top: 8px;
 }
 .fx-calc-note {
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px; color: #86868b;
-  margin-top: 8px;
+  font-size: 12px; color: #6e6e73;
+  margin-top: 12px;
+  line-height: 1.5;
 }
 .fx-calc-cta {
   display: inline-block; margin-top: 24px;
@@ -253,9 +264,9 @@
   padding: 28px;
   border: 1px solid #e8e8ed;
 }
-.fx-fit-card.good    { border-top: 2px solid #1d1d1f; }
-.fx-fit-card.bad     { border-top: 2px solid #86868b; }
-.fx-fit-card.inspect { border-top: 2px solid #0071e3; }
+.fx-fit-card.good    { background: #f4faf4; border-color: #d4e8d4; border-top: 2px solid #2a7a2a; }
+.fx-fit-card.bad     { background: #fbf6f6; border-color: #f0d4d4; border-top: 2px solid #b04545; }
+.fx-fit-card.inspect { background: #faf8f1; border-color: #e8e0c4; border-top: 2px solid #0071e3; }
 .fx-fit-card h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 700;
@@ -327,24 +338,29 @@
   z-index: 5;
   box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
 }
+.fx-aud-switch button,
 .fx-aud-switch span {
   padding: 8px 18px;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px; font-weight: 600;
   letter-spacing: .14em; text-transform: uppercase;
   color: #6e6e73;
+  background: none;
+  border: none;
   cursor: pointer;
   border-radius: 980px;
   transition: .2s ease;
   user-select: none;
   white-space: nowrap;
 }
+.fx-aud-switch button.on,
 .fx-aud-switch span.on {
   background: #1d1d1f; color: #fff;
 }
 
 @media (max-width: 768px) {
-  .fx-aud-switch { top: 76px; padding: 3px; }
+  .fx-aud-switch { top: auto; bottom: 80px; padding: 3px; }
+  .fx-aud-switch button,
   .fx-aud-switch span { padding: 6px 12px; font-size: 11px; letter-spacing: .1em; }
 }
 
@@ -397,19 +413,32 @@
   background: #fff;
   margin-bottom: 28px;
 }
+.fx-plate-mat-seg button,
 .fx-plate-mat-seg span {
   padding: 8px 14px;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 600;
   letter-spacing: .14em; text-transform: uppercase;
   color: #6e6e73;
+  background: none;
+  border: none;
   cursor: pointer;
   border-radius: 980px;
   transition: .2s ease;
   user-select: none;
 }
+.fx-plate-mat-seg button.on,
 .fx-plate-mat-seg span.on {
   background: #1d1d1f; color: #fff;
+}
+.fx-plate-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.fx-plate-cta-row .btn {
+  flex: 0 1 auto;
 }
 .fx-plate-meta-row {
   display: grid; grid-template-columns: repeat(3, auto);
@@ -465,7 +494,7 @@
 }
 .fx-plate-face { position: absolute; inset: 0; }
 .fx-plate-top {
-  transform: translateZ(28px);
+  transform: translateZ(11px);
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, .12) inset,
     0 8px 60px rgba(0, 0, 0, .25);
@@ -474,7 +503,7 @@
 }
 .fx-plate-top svg { width: 100%; height: 100%; display: block; }
 .fx-plate-bottom {
-  transform: translateZ(-28px) rotateX(180deg);
+  transform: translateZ(-11px) rotateX(180deg);
   background: #1c1a17;
 }
 .fx-plate-side {
@@ -482,10 +511,10 @@
   background: linear-gradient(180deg, #2a2620 0%, #16140f 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .04);
 }
-.fx-plate-sN { left: 0; right: 0; top:    0; height: 56px; transform: rotateX(-90deg) translateZ(28px); transform-origin: 50% 0; }
-.fx-plate-sS { left: 0; right: 0; bottom: 0; height: 56px; transform: rotateX( 90deg) translateZ(28px); transform-origin: 50% 100%; }
-.fx-plate-sE { top: 0; bottom: 0; right: 0; width: 56px; transform: rotateY( 90deg) translateZ(28px); transform-origin: 100% 50%; }
-.fx-plate-sW { top: 0; bottom: 0; left:  0; width: 56px; transform: rotateY(-90deg) translateZ(28px); transform-origin: 0 50%; }
+.fx-plate-sN { left: 0; right: 0; top:    0; height: 22px; transform: rotateX(-90deg) translateZ(11px); transform-origin: 50% 0; }
+.fx-plate-sS { left: 0; right: 0; bottom: 0; height: 22px; transform: rotateX( 90deg) translateZ(11px); transform-origin: 50% 100%; }
+.fx-plate-sE { top: 0; bottom: 0; right: 0; width: 22px; transform: rotateY( 90deg) translateZ(11px); transform-origin: 100% 50%; }
+.fx-plate-sW { top: 0; bottom: 0; left:  0; width: 22px; transform: rotateY(-90deg) translateZ(11px); transform-origin: 0 50%; }
 .fx-plate-hint {
   position: absolute;
   bottom: 12px;
@@ -494,7 +523,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 10px; font-weight: 500;
   letter-spacing: .3em; text-transform: uppercase;
-  color: #86868b;
+  color: #6e6e73;
   display: flex; align-items: center; gap: 10px;
   white-space: nowrap;
 }
@@ -539,7 +568,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px; font-weight: 600;
   letter-spacing: .14em; text-transform: uppercase;
-  color: #86868b;
+  color: #6e6e73;
   cursor: pointer;
   padding: 8px 12px;
   z-index: 10;
@@ -618,7 +647,7 @@
   font-weight: 600;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: #86868b;
+  color: #6e6e73;
   margin: 0 0 24px;
 }
 .fx-ob-q {

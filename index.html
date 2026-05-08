@@ -97,7 +97,7 @@
             <div class="fx-ob-logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN"/></div>
             <h1 class="fx-ob-welcome"><em>Добро пожаловать</em><br/>в Floor.DSGN</h1>
             <p class="fx-ob-sub">Премиальные полимерные полы. Промышленные системы и архитектурные покрытия по всему Израилю.</p>
-            <button class="btn btn-dark fx-ob-cta" data-next="2" type="button">Войти</button>
+            <button class="btn btn-dark fx-ob-cta" data-next="2" type="button">Дальше</button>
         </div>
 
         <div class="fx-ob-screen" data-step="2">
@@ -303,16 +303,20 @@
                 <p class="fx-plate-eyebrow">Тактильно — увидеть до укладки</p>
                 <h2 class="fx-plate-h2">Покрутите<br/><em>образец</em></h2>
                 <p class="fx-plate-meta">Каждое семейство систем — своя пластика, фактура и реакция на свет. Образец — ближе всего к реальности перед заливкой.</p>
-                <div class="fx-plate-mat-seg">
-                    <span class="on" data-m="terrazzo">Terrazzo</span>
-                    <span data-m="epoxy">Epoxy</span>
-                    <span data-m="micro">Micro-topping</span>
-                    <span data-m="concrete">Concrete</span>
+                <div class="fx-plate-mat-seg" role="tablist" aria-label="Образец материала">
+                    <button type="button" class="on" data-m="terrazzo" role="tab">Терраццо</button>
+                    <button type="button" data-m="epoxy" role="tab">Эпокси</button>
+                    <button type="button" data-m="micro" role="tab">Микротопинг</button>
+                    <button type="button" data-m="concrete" role="tab">Бетон</button>
                 </div>
                 <div class="fx-plate-meta-row">
-                    <div><span class="fx-plate-meta-lbl">тип</span><b data-fx="pmType">terrazzo · venetian</b></div>
+                    <div><span class="fx-plate-meta-lbl">тип</span><b data-fx="pmType">терраццо · венецианское</b></div>
                     <div><span class="fx-plate-meta-lbl">толщина</span><b data-fx="pmThick">12 мм</b></div>
                     <div><span class="fx-plate-meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
+                </div>
+                <div class="fx-plate-cta-row">
+                    <a href="quote.html" class="btn btn-dark">Подобрать систему</a>
+                    <a href="contact.html?intent=sample" class="btn btn-outline">Заказать образец</a>
                 </div>
             </div>
             <div class="fx-plate-wrap">

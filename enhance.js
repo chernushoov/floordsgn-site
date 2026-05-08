@@ -9,7 +9,7 @@
   /* ---------------- terrazzo pattern (from /v2/) ---------- */
   const PALETTES = {
     terrazzo: {
-      base: '#efe7d6', sub: 'venetian',
+      base: '#efe7d6', label: 'терраццо', sub: 'венецианское',
       thick: '12 мм', base_: 'эпоксидная смола',
       chips: [
         { c: '#d9c39a', w: .18 }, { c: '#1c1916', w: .12 },
@@ -19,7 +19,7 @@
       ]
     },
     epoxy: {
-      base: '#2a2620', sub: 'self-leveling',
+      base: '#2a2620', label: 'эпокси', sub: 'self-leveling',
       thick: '4 мм', base_: 'эпоксидная смола',
       chips: [
         { c: '#3a342c', w: .5 }, { c: '#5d5448', w: .25 },
@@ -27,7 +27,7 @@
       ]
     },
     micro: {
-      base: '#cfc4b3', sub: 'satin',
+      base: '#cfc4b3', label: 'микротопинг', sub: 'satin',
       thick: '2–3 мм', base_: 'минеральная база',
       chips: [
         { c: '#b9a98a', w: .4 }, { c: '#9a8e7b', w: .3 },
@@ -35,8 +35,8 @@
       ]
     },
     concrete: {
-      base: '#7a7468', sub: 'polished',
-      thick: '8 мм', base_: 'портланд-цемент',
+      base: '#7a7468', label: 'бетон', sub: 'полированный',
+      thick: '0.5–3 мм снимается', base_: 'существующая плита',
       chips: [
         { c: '#5d5448', w: .3 }, { c: '#3a342c', w: .2 },
         { c: '#9a9286', w: .3 }, { c: '#a8a298', w: .2 }
@@ -120,30 +120,52 @@
     const $area = card.querySelector('[data-fx="cAreaInput"]');
     if (!$area) return;
 
+    // Approx USD->ILS for orientational dual display. Updated periodically.
+    const ILS_PER_USD = 3.65;
+    const cta = card.querySelector('.fx-calc-cta');
+    const baseHref = cta ? cta.getAttribute('href') : 'contact.html';
+
     const set = () => {
       const m2 = +$area.value;
       const lbl = card.querySelector('[data-fx="cAreaLbl"]');
       const val = card.querySelector('[data-fx="cAreaVal"]');
       if (lbl) lbl.textContent = m2;
       if (val) val.textContent = m2;
-      const total = Math.round(m2 * p * k);
+      const totalUsd = Math.round(m2 * p * k);
+      const totalIls = Math.round(totalUsd * ILS_PER_USD / 100) * 100;
       const out = card.querySelector('[data-fx="cTotal"]');
-      if (out) out.textContent = total.toLocaleString('ru-RU').replace(/,/g, ' ');
+      const outIls = card.querySelector('[data-fx="cTotalIls"]');
+      if (out) out.textContent = totalUsd.toLocaleString('ru-RU').replace(/,/g, ' ');
+      if (outIls) outIls.textContent = totalIls.toLocaleString('ru-RU').replace(/,/g, ' ');
+
+      // Pre-fill contact link with calculator state — don't lose the hot lead
+      if (cta) {
+        const matEl = card.querySelector('[data-fx="cMat"] .on');
+        const useEl = card.querySelector('[data-fx="cUse"] .on');
+        const params = new URLSearchParams({
+          system: matEl ? matEl.dataset.v : '',
+          area: m2,
+          use: useEl ? useEl.dataset.v : '',
+          estimate_usd: totalUsd,
+          estimate_ils: totalIls,
+        });
+        cta.setAttribute('href', baseHref.split('?')[0] + '?' + params.toString());
+      }
     };
 
     $area.addEventListener('input', set);
 
-    card.querySelectorAll('[data-fx="cMat"] span').forEach(s => {
+    card.querySelectorAll('[data-fx="cMat"] button, [data-fx="cMat"] span').forEach(s => {
       s.addEventListener('click', () => {
-        card.querySelectorAll('[data-fx="cMat"] span').forEach(x => x.classList.remove('on'));
+        card.querySelectorAll('[data-fx="cMat"] button, [data-fx="cMat"] span').forEach(x => x.classList.remove('on'));
         s.classList.add('on');
         p = +s.dataset.p;
         set();
       });
     });
-    card.querySelectorAll('[data-fx="cUse"] span').forEach(s => {
+    card.querySelectorAll('[data-fx="cUse"] button, [data-fx="cUse"] span').forEach(s => {
       s.addEventListener('click', () => {
-        card.querySelectorAll('[data-fx="cUse"] span').forEach(x => x.classList.remove('on'));
+        card.querySelectorAll('[data-fx="cUse"] button, [data-fx="cUse"] span').forEach(x => x.classList.remove('on'));
         s.classList.add('on');
         k = +s.dataset.k;
         set();
@@ -173,35 +195,50 @@
   };
 
   /* ---------------- audience switcher --------------------- */
+  const VALID_AUDIENCES = ['b2b', 'design', 'resi'];
+  function lsGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function lsSet(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) { /* private mode */ }
+  }
+
   fx.initAudSwitch = function () {
     const hero = document.getElementById('heroSplit');
     if (!hero || hero.querySelector('.fx-aud-switch')) return;
 
     const tabs = document.createElement('div');
     tabs.className = 'fx-aud-switch';
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', 'Аудитория');
     tabs.innerHTML = `
-      <span class="on" data-a="b2b">Бизнесу</span>
-      <span data-a="design">Архитектору</span>
-      <span data-a="resi">Частнику</span>
+      <button type="button" class="on" data-a="b2b" role="tab">Бизнесу</button>
+      <button type="button" data-a="design" role="tab">Архитектору</button>
+      <button type="button" data-a="resi" role="tab">Частнику</button>
     `;
     hero.appendChild(tabs);
 
     // URL ?audience=b2b|design|resi takes priority over saved
     const params = new URLSearchParams(location.search);
     const fromUrl = params.get('audience');
-    const saved = fromUrl || localStorage.getItem('fx_audience');
+    const safeFromUrl = VALID_AUDIENCES.includes(fromUrl) ? fromUrl : null;
+    const safeFromStorage = (() => {
+      const v = lsGet('fx_audience');
+      return VALID_AUDIENCES.includes(v) ? v : null;
+    })();
+    const saved = safeFromUrl || safeFromStorage;
     if (saved) {
-      tabs.querySelectorAll('span').forEach(s => {
+      tabs.querySelectorAll('button').forEach(s => {
         s.classList.toggle('on', s.dataset.a === saved);
       });
-      if (fromUrl) localStorage.setItem('fx_audience', fromUrl);
+      if (safeFromUrl) lsSet('fx_audience', safeFromUrl);
     }
 
-    tabs.querySelectorAll('span').forEach(s => {
+    tabs.querySelectorAll('button').forEach(s => {
       s.addEventListener('click', () => {
-        tabs.querySelectorAll('span').forEach(x => x.classList.remove('on'));
+        tabs.querySelectorAll('button').forEach(x => x.classList.remove('on'));
         s.classList.add('on');
-        try { localStorage.setItem('fx_audience', s.dataset.a); } catch (e) { /* private mode */ }
+        lsSet('fx_audience', s.dataset.a);
       });
     });
   };
@@ -218,9 +255,9 @@
 
     const matSeg = document.querySelector('.fx-plate-mat-seg');
     if (matSeg) {
-      matSeg.querySelectorAll('span').forEach(s => {
+      matSeg.querySelectorAll('button, span').forEach(s => {
         s.addEventListener('click', () => {
-          matSeg.querySelectorAll('span').forEach(x => x.classList.remove('on'));
+          matSeg.querySelectorAll('button, span').forEach(x => x.classList.remove('on'));
           s.classList.add('on');
           curMat = s.dataset.m;
           buildTerrazzo(topPattern, curMat);
@@ -229,7 +266,7 @@
           const t1 = document.querySelector('[data-fx="pmType"]');
           const t2 = document.querySelector('[data-fx="pmThick"]');
           const t3 = document.querySelector('[data-fx="pmBase"]');
-          if (t1) t1.textContent = `${curMat} · ${p.sub}`;
+          if (t1) t1.textContent = `${p.label} · ${p.sub}`;
           if (t2) t2.textContent = p.thick;
           if (t3) t3.textContent = p.base_;
         });
@@ -241,8 +278,17 @@
       plate.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
     };
 
+    let idleTimer = null;
+    const scheduleIdle = () => {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        if (!drag) plate.classList.add('idle');
+      }, 2400);
+    };
+
     plate.addEventListener('mousedown', (e) => {
       e.preventDefault();
+      if (idleTimer) clearTimeout(idleTimer);
       plate.classList.remove('idle');
       drag = { x: e.clientX, y: e.clientY, rx, ry };
     });
@@ -255,54 +301,77 @@
     window.addEventListener('mouseup', () => {
       if (!drag) return;
       drag = null;
-      setTimeout(() => { if (!drag) plate.classList.add('idle'); }, 2400);
+      scheduleIdle();
     });
 
     plate.addEventListener('touchstart', (e) => {
+      if (idleTimer) clearTimeout(idleTimer);
       const t = e.touches[0];
       plate.classList.remove('idle');
       drag = { x: t.clientX, y: t.clientY, rx, ry };
-    }, { passive: true });
+    }, { passive: false });
     window.addEventListener('touchmove', (e) => {
       if (!drag) return;
+      e.preventDefault(); // prevent vertical scroll while rotating
       const t = e.touches[0];
       rx = Math.max(20, Math.min(85, drag.rx + (drag.y - t.clientY) * .4));
       ry = drag.ry + (t.clientX - drag.x) * .6;
       applyRot();
-    }, { passive: true });
+    }, { passive: false });
     window.addEventListener('touchend', () => {
       if (!drag) return;
       drag = null;
-      setTimeout(() => { if (!drag) plate.classList.add('idle'); }, 2400);
+      scheduleIdle();
     });
   };
 
-  /* ---------------- onboarding overlay -------------------- */
+  /* ---------------- onboarding overlay --------------------
+     Disabled by default (was killing bounce rate). Show only when:
+       - URL has ?onboarding=1, OR
+       - URL has ?reset=1 (legacy). */
   fx.initOnboarding = function () {
     const ob = document.querySelector('[data-fx="onboarding"]');
     if (!ob) return;
     const params = new URLSearchParams(location.search);
-    const force = params.get('reset') === '1';
+    const explicitlyRequested =
+      params.get('onboarding') === '1' || params.get('reset') === '1';
 
-    let onboarded = false;
-    try { onboarded = localStorage.getItem('fx_onboarded') === '1'; } catch (e) { /* ignore */ }
-
-    if (onboarded && !force) {
+    if (!explicitlyRequested) {
       ob.remove();
       return;
     }
 
-    // make it visible (HTML uses display:none for non-blocking initial paint)
+    // Make modal accessible to AT
+    ob.setAttribute('role', 'dialog');
+    ob.setAttribute('aria-modal', 'true');
+    ob.setAttribute('aria-labelledby', 'fx-ob-title');
+    const titleEl = ob.querySelector('.fx-ob-welcome');
+    if (titleEl) titleEl.id = 'fx-ob-title';
+
+    const previouslyFocused = document.activeElement;
     ob.style.display = 'flex';
 
     const screens = ob.querySelectorAll('.fx-ob-screen');
     const dots = ob.querySelectorAll('.fx-ob-dot');
+
+    const setInert = () => {
+      screens.forEach(s => {
+        const active = s.classList.contains('active');
+        if (active) s.removeAttribute('inert');
+        else s.setAttribute('inert', '');
+      });
+    };
+    setInert();
+
     const goto = step => {
       screens.forEach(s => s.classList.toggle('active', s.dataset.step === String(step)));
       dots.forEach(d => d.classList.toggle('on', Number(d.dataset.i) <= step));
+      setInert();
+      const firstFocusable = ob.querySelector('.fx-ob-screen.active button, .fx-ob-screen.active [tabindex]');
+      if (firstFocusable) firstFocusable.focus();
     };
-    const chosen = { audience: '', type: '' };
 
+    const chosen = { audience: '', type: '' };
     const skipBtn = ob.querySelector('[data-fx="obSkip"]');
     if (skipBtn) skipBtn.addEventListener('click', finish);
 
@@ -322,20 +391,24 @@
       });
     });
 
+    // Escape closes
+    ob.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') finish();
+    });
+
     function finish() {
-      try {
-        if (chosen.audience) localStorage.setItem('fx_audience', chosen.audience);
-        if (chosen.type) localStorage.setItem('fx_type', chosen.type);
-        localStorage.setItem('fx_onboarded', '1');
-      } catch (e) { /* private mode */ }
+      if (chosen.audience) lsSet('fx_audience', chosen.audience);
+      if (chosen.type) lsSet('fx_type', chosen.type);
+      lsSet('fx_onboarded', '1');
 
       ob.classList.add('gone');
       setTimeout(() => ob.remove(), 900);
 
       if (chosen.audience) {
-        const tab = document.querySelector(`.fx-aud-switch span[data-a="${chosen.audience}"]`);
+        const tab = document.querySelector(`.fx-aud-switch button[data-a="${chosen.audience}"]`);
         if (tab) tab.click();
       }
+      if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
     }
   };
 
