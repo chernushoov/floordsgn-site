@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости — Floor.DSGN</title>
+
+    <meta name="description" content="Ориентировочная стоимость пола за 30 секунд: тип покрытия, назначение, площадь.">
+    <meta name="keywords" content="калькулятор пола, стоимость эпокси, цена терраццо, расчёт стоимости пола Israel">
+    <meta name="author" content="Floor.DSGN">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn-site.vercel.app/quote.html">
+    <meta property="og:title" content="Калькулятор стоимости — Floor.DSGN">
+    <meta property="og:description" content="Ориентировочная стоимость пола за 30 секунд: тип покрытия, назначение, площадь.">
+    <meta property="og:image" content="https://floordsgn-site.vercel.app/images/og-preview.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Калькулятор стоимости — Floor.DSGN">
+    <meta name="twitter:description" content="Ориентировочная стоимость пола за 30 секунд.">
+
+    <link rel="canonical" href="https://floordsgn-site.vercel.app/quote.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="enhance.css?v=1">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
+            <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <main class="fx-quote-shell">
+        <section class="fx-quote-hero">
+            <p class="fx-quote-eyebrow">Ориентир за 30 секунд</p>
+            <h1 class="fx-quote-h1">Калькулятор<br/><em>стоимости</em></h1>
+            <p class="fx-quote-meta">Не точная смета — рабочий ориентир. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</p>
+        </section>
+
+        <section class="fx-quote-grid">
+            <div class="fx-quote-info">
+                <h3>Что входит в смету</h3>
+                <ul>
+                    <li>Замер и CM-тест на влажность основания</li>
+                    <li>Подготовка: ремонт трещин, шлифовка, праймер</li>
+                    <li>Материалы европейских поставщиков</li>
+                    <li>Работа сертифицированных бригад</li>
+                    <li>Защитные пропитки, финиш</li>
+                    <li>Документированная гарантия по системе</li>
+                </ul>
+            </div>
+
+            <div class="fx-calc-card">
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Тип покрытия</span>
+                    <div class="fx-calc-chips" data-fx="cMat">
+                        <span class="on" data-v="terrazzo" data-p="280">Терраццо</span>
+                        <span data-v="epoxy" data-p="95">Эпокси</span>
+                        <span data-v="micro" data-p="160">Микротопинг</span>
+                        <span data-v="concrete" data-p="75">Бетон</span>
+                        <span data-v="pucement" data-p="180">PU-cement</span>
+                        <span data-v="mma" data-p="220">MMA</span>
+                    </div>
+                </div>
+
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Назначение</span>
+                    <div class="fx-calc-chips" data-fx="cUse">
+                        <span class="on" data-v="resi" data-k="1.0">Жильё</span>
+                        <span data-v="design" data-k="1.15">Шоурум / офис</span>
+                        <span data-v="indus" data-k="0.85">Производство</span>
+                        <span data-v="hosp" data-k="1.25">HoReCa / ритейл</span>
+                    </div>
+                </div>
+
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Площадь · <span data-fx="cAreaLbl">120</span> м²</span>
+                    <div class="fx-calc-slider">
+                        <input type="range" min="20" max="3000" value="120" step="10" data-fx="cAreaInput" aria-label="Площадь в квадратных метрах"/>
+                        <span class="fx-calc-val"><span data-fx="cAreaVal">120</span><small>м²</small></span>
+                    </div>
+                </div>
+
+                <div class="fx-calc-out">
+                    <div class="fx-calc-num"><span data-fx="cTotal">33 600</span><small>$ / ориентир</small></div>
+                    <div class="fx-calc-note">Финальная смета — после выезда замерщика.</div>
+                </div>
+
+                <a class="btn btn-dark fx-calc-cta" href="contact.html">Получить точную смету</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo">
+                    <p data-i18n="footer_tagline">Premium floor design and installation across Israel. Engineering-grade systems for industry, commercial, and architectural projects.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_systems">Floor Systems</h4>
+                    <ul>
+                        <li><a href="materials/epoxy.html">Epoxy</a></li>
+                        <li><a href="materials/mma.html">MMA</a></li>
+                        <li><a href="materials/pu-cement.html">PU-Cement</a></li>
+                        <li><a href="materials/microtopping.html">Microtopping</a></li>
+                        <li><a href="materials/terrazzo.html">Terrazzo</a></li>
+                        <li><a href="materials/concrete.html">Concrete</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_company">Company</h4>
+                    <ul>
+                        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+                        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+                        <li><a href="contact.html" data-i18n="footer_contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <ul>
+                        <li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li>
+                        <li><a href="tel:+972559661459">+972 55 966 1459</a></li>
+                        <li data-i18n="footer_location">Israel, Tel Aviv</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a>
+                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a>
+                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook">Facebook</a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p data-i18n="footer_legal">Floor.DSGN Ltd. | Service throughout Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva | VAT Registered</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="contact.html" class="sticky-cta" id="stickyCta">
+        <span data-i18n="sticky_cta">Получить смету</span>
+    </a>
+
+    <script src="script.js?v=6"></script>
+    <script>
+        const stickyCta = document.getElementById('stickyCta');
+        if (stickyCta) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 600) stickyCta.classList.add('visible');
+                else stickyCta.classList.remove('visible');
+            });
+        }
+    </script>
+    <script src="translations.js"></script>
+    <script src="enhance.js?v=1" defer></script>
+</body>
+</html>
