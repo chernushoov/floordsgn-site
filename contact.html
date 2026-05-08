@@ -252,21 +252,76 @@
     })();
     </script>
     <script>
-    // Pre-fill the floor system select from ?system= or #system= link context.
+    // Pre-fill from ?system=&area=&use=&estimate_usd=&estimate_ils=&intent=
+    // (legacy hash fragment also supported for backwards compatibility).
     (function() {
       try {
-        var params = new URLSearchParams(window.location.search);
-        var hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-        var sys = params.get('system') || hashParams.get('system');
-        if (!sys) return;
-        var select = document.querySelector('select[name*="system"]');
-        if (!select) return;
-        var match = sys.toLowerCase();
-        for (var i = 0; i < select.options.length; i++) {
-          if (select.options[i].value.toLowerCase() === match) {
-            select.selectedIndex = i;
-            break;
+        var search = new URLSearchParams(window.location.search);
+        var hash   = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        function param(name) { return search.get(name) || hash.get(name); }
+
+        // System select
+        var sys = param('system');
+        if (sys) {
+          var sysSelect = document.querySelector('select[name*="system"]');
+          if (sysSelect) {
+            var match = sys.toLowerCase();
+            for (var i = 0; i < sysSelect.options.length; i++) {
+              if (sysSelect.options[i].value.toLowerCase() === match) {
+                sysSelect.selectedIndex = i; break;
+              }
+            }
           }
+        }
+
+        // Approximate area
+        var area = param('area');
+        if (area && /^\d+$/.test(area)) {
+          var areaInput = document.getElementById('area');
+          if (areaInput) areaInput.value = area;
+        }
+
+        // Project type — map calculator `use` to the contact form values
+        var use = param('use');
+        if (use) {
+          var typeMap = {
+            indus: 'industrial',
+            design: 'commercial',
+            hosp: 'commercial',
+            resi: 'residential'
+          };
+          var typeVal = typeMap[use];
+          if (typeVal) {
+            var typeSelect = document.getElementById('project-type');
+            if (typeSelect) {
+              for (var j = 0; j < typeSelect.options.length; j++) {
+                if (typeSelect.options[j].value.toLowerCase() === typeVal) {
+                  typeSelect.selectedIndex = j; break;
+                }
+              }
+            }
+          }
+        }
+
+        // Compose a starter message for the textarea, prepended only if empty
+        var estUsd = param('estimate_usd');
+        var estIls = param('estimate_ils');
+        var intent = param('intent');
+        var msgEl  = document.getElementById('message');
+        if (msgEl && !msgEl.value) {
+          var lines = [];
+          if (intent === 'sample') {
+            lines.push('Хочу заказать физический образец материала.');
+          } else if (sys || area || estIls) {
+            lines.push('Запрос из калькулятора:');
+            if (sys)    lines.push('• Система: ' + sys);
+            if (use)    lines.push('• Назначение: ' + use);
+            if (area)   lines.push('• Площадь: ' + area + ' м²');
+            if (estIls) lines.push('• Ориентир: ₪ ' + estIls + (estUsd ? ' (~$ ' + estUsd + ')' : ''));
+            lines.push('');
+            lines.push('Прошу подтвердить смету и сроки.');
+          }
+          if (lines.length) msgEl.value = lines.join('\n');
         }
       } catch (e) { /* no-op */ }
     })();

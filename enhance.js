@@ -133,10 +133,13 @@
       if (val) val.textContent = m2;
       const totalUsd = Math.round(m2 * p * k);
       const totalIls = Math.round(totalUsd * ILS_PER_USD / 100) * 100;
+      const perM2Ils = m2 > 0 ? Math.round(totalIls / m2) : 0;
       const out = card.querySelector('[data-fx="cTotal"]');
       const outIls = card.querySelector('[data-fx="cTotalIls"]');
+      const outPerM2 = card.querySelector('[data-fx="cPerM2"]');
       if (out) out.textContent = totalUsd.toLocaleString('ru-RU').replace(/,/g, ' ');
       if (outIls) outIls.textContent = totalIls.toLocaleString('ru-RU').replace(/,/g, ' ');
+      if (outPerM2) outPerM2.textContent = perM2Ils.toLocaleString('ru-RU').replace(/,/g, ' ');
 
       // Pre-fill contact link with calculator state — don't lose the hot lead
       if (cta) {
