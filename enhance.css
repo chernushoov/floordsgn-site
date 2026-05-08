@@ -11,7 +11,7 @@
   font-weight: 500;
   letter-spacing: .36em;
   text-transform: uppercase;
-  color: var(--blue-link, #0071e3);
+  color: var(--blue-link, #1d1d1f);
   margin: 0 0 16px;
 }
 
@@ -24,7 +24,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 500;
   letter-spacing: .36em; text-transform: uppercase;
-  color: #0071e3; margin: 0 0 16px;
+  color: #1d1d1f; margin: 0 0 16px;
 }
 .fx-quote-h1 {
   font-family: 'Cormorant Garamond', serif;
@@ -35,7 +35,7 @@
 }
 .fx-quote-h1 em {
   font-style: italic;
-  color: #0071e3;
+  color: #1d1d1f;
   font-weight: 300;
 }
 .fx-quote-meta {
@@ -118,13 +118,13 @@
 .fx-calc-slider input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
   width: 22px; height: 22px;
-  background: #0071e3; border-radius: 50%;
+  background: #1d1d1f; border-radius: 50%;
   cursor: pointer; border: 2px solid #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,.18);
 }
 .fx-calc-slider input[type="range"]::-moz-range-thumb {
   width: 22px; height: 22px;
-  background: #0071e3; border-radius: 50%;
+  background: #1d1d1f; border-radius: 50%;
   cursor: pointer; border: 2px solid #fff;
 }
 .fx-calc-val {
@@ -145,7 +145,7 @@
 .fx-calc-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 56px; font-weight: 400;
-  color: #0071e3; letter-spacing: -.02em;
+  color: #1d1d1f; letter-spacing: -.02em;
   line-height: 1;
 }
 .fx-calc-num small {
@@ -192,7 +192,7 @@
   color: #1d1d1f;
 }
 .fx-spec-table-section h2 em {
-  font-style: italic; color: #0071e3; font-weight: 300;
+  font-style: italic; color: #1d1d1f; font-weight: 300;
 }
 .fx-spec-table-section .fx-eyebrow {
   text-align: center; margin-bottom: 12px;
@@ -213,7 +213,7 @@
 }
 .fx-spec-row svg {
   width: 24px; height: 24px;
-  color: #0071e3;
+  color: #1d1d1f;
   stroke-width: 1.5;
 }
 .fx-spec-key {
@@ -246,7 +246,7 @@
   color: #1d1d1f;
 }
 .fx-fitmatrix h2 em {
-  font-style: italic; color: #0071e3; font-weight: 300;
+  font-style: italic; color: #1d1d1f; font-weight: 300;
 }
 .fx-fitmatrix .fx-eyebrow {
   text-align: center; margin-bottom: 12px;
@@ -266,7 +266,7 @@
 }
 .fx-fit-card.good    { background: #f4faf4; border-color: #d4e8d4; border-top: 2px solid #2a7a2a; }
 .fx-fit-card.bad     { background: #fbf6f6; border-color: #f0d4d4; border-top: 2px solid #b04545; }
-.fx-fit-card.inspect { background: #faf8f1; border-color: #e8e0c4; border-top: 2px solid #0071e3; }
+.fx-fit-card.inspect { background: #faf8f1; border-color: #e8e0c4; border-top: 2px solid #1d1d1f; }
 .fx-fit-card h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 700;
@@ -274,7 +274,7 @@
   color: #6e6e73; margin: 0 0 16px;
 }
 .fx-fit-card.good h3    { color: #1d1d1f; }
-.fx-fit-card.inspect h3 { color: #0071e3; }
+.fx-fit-card.inspect h3 { color: #1d1d1f; }
 .fx-fit-card ul {
   list-style: none; padding: 0; margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -352,7 +352,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px; font-weight: 500;
   letter-spacing: .36em; text-transform: uppercase;
-  color: #0071e3; margin: 0 0 16px;
+  color: #1d1d1f; margin: 0 0 16px;
 }
 .fx-plate-h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -362,7 +362,7 @@
   color: #1d1d1f;
 }
 .fx-plate-h2 em {
-  font-style: italic; color: #0071e3; font-weight: 300;
+  font-style: italic; color: #1d1d1f; font-weight: 300;
 }
 .fx-plate-meta {
   font-family: 'Montserrat', sans-serif;
@@ -421,7 +421,7 @@
 }
 .fx-plate-meta-row b {
   font-size: 13px; font-weight: 600;
-  color: #0071e3;
+  color: #1d1d1f;
 }
 
 .fx-plate-wrap {
@@ -515,7 +515,7 @@
 /* ============================================================
    MATERIAL HUB / SYSTEM PAGE COMPONENTS
    Apple-style baseline. Cormorant + Montserrat. #1d1d1f / #f5f5f7
-   / #fff palette + #0071e3 accent. 18px-28px corner radius.
+   / #fff palette + #1d1d1f accent. 18px-28px corner radius.
    ============================================================ */
 
 /* ---- shell + wrappers ---- */
@@ -681,7 +681,7 @@
   font-weight: 600;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: #0071e3;
+  color: #1d1d1f;
   margin: 0 0 12px;
 }
 .fx-system-card__name {
@@ -722,7 +722,7 @@
   font-weight: 600;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: #0071e3;
+  color: #1d1d1f;
 }
 .fx-system-card:hover .fx-system-card__link::after { transform: translateX(4px); }
 .fx-system-card__link::after {
@@ -887,7 +887,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 16px;
   font-style: italic;
-  color: #0071e3;
+  color: #1d1d1f;
   margin-top: 6px;
 }
 @media (max-width: 1100px) {
@@ -985,7 +985,7 @@
 }
 .fx-faq-item.open .fx-faq-item__q::after {
   transform: rotate(45deg);
-  color: #0071e3;
+  color: #1d1d1f;
 }
 .fx-faq-item__a {
   max-height: 0;
@@ -1032,7 +1032,7 @@
   letter-spacing: -.01em;
   line-height: 1.2;
 }
-.fx-compare-cell--this { border-color: #0071e3; box-shadow: 0 0 0 1px #0071e3 inset; }
+.fx-compare-cell--this { border-color: #1d1d1f; box-shadow: 0 0 0 1px #1d1d1f inset; }
 @media (max-width: 700px) {
   .fx-compare-row { grid-template-columns: 1fr; }
 }
@@ -1197,9 +1197,9 @@
 .fx-sample-modal input:focus,
 .fx-sample-modal select:focus,
 .fx-sample-modal textarea:focus {
-  outline: 2px solid #0071e3;
+  outline: 2px solid #1d1d1f;
   outline-offset: -1px;
-  border-color: #0071e3;
+  border-color: #1d1d1f;
 }
 .fx-sample-modal__submit {
   width: 100%;
@@ -1233,7 +1233,7 @@
   font-weight: 600;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: #0071e3;
+  color: #1d1d1f;
   margin-bottom: 8px;
 }
 .fx-decision__q {
@@ -1313,8 +1313,8 @@
 }
 .fx-toc li a:hover,
 .fx-toc li a.active {
-  color: #0071e3;
-  border-left-color: #0071e3;
+  color: #1d1d1f;
+  border-left-color: #1d1d1f;
 }
 
 /* ---- inline mini stat row ---- */
@@ -1338,7 +1338,7 @@
   color: #1d1d1f;
 }
 .fx-stat__num em {
-  color: #0071e3;
+  color: #1d1d1f;
   font-style: italic;
 }
 .fx-stat__label {
@@ -1353,4 +1353,149 @@
 @media (max-width: 768px) {
   .fx-stats-row { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .fx-stat__num { font-size: 36px; }
+}
+
+
+/* ============================================================
+   HOME HERO — wow polish (overrides on existing .hero-split)
+   Apple-style: subtle motion, no flashy gimmicks. Keeps existing
+   markup; just enhances visual treatment + entrance animation.
+   ============================================================ */
+
+/* Photo treatment — smoother color, subtle vignette, premium-grade */
+.hero-split .hero-split__bg {
+  filter: saturate(1.06) contrast(1.04) brightness(.97);
+  transform: scale(1.04);
+  transition: transform 1.4s cubic-bezier(.22, 1, .36, 1),
+              filter .8s ease;
+  will-change: transform;
+}
+.hero-split .hero-split__panel:hover .hero-split__bg {
+  transform: scale(1.08);
+  filter: saturate(1.12) contrast(1.06) brightness(.94);
+}
+
+/* Vignette overlay — pulls focus to bottom-left content */
+.hero-split .hero-split__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 35% 75%,
+      rgba(0,0,0,.05) 0%,
+      rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg,
+      rgba(0,0,0,0) 30%,
+      rgba(0,0,0,.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  animation: fxVignetteFadeIn 1.4s cubic-bezier(.22,1,.36,1) .2s forwards;
+}
+
+/* Subtle film-grain (SVG noise) over photos for premium texture */
+.hero-split .hero-split__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: .35;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero content — wow entrance: word-by-word reveal feel via stagger */
+.hero-split .hero-split__content {
+  z-index: 2;
+}
+.hero-split .hero-split__eyebrow,
+.hero-split .hero-split__title,
+.hero-split .hero-split__link {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fxHeroRise 1.1s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+.hero-split .hero-split__panel:nth-child(1) .hero-split__eyebrow { animation-delay: .35s; }
+.hero-split .hero-split__panel:nth-child(1) .hero-split__title   { animation-delay: .50s; }
+.hero-split .hero-split__panel:nth-child(1) .hero-split__link    { animation-delay: .75s; }
+.hero-split .hero-split__panel:nth-child(2) .hero-split__eyebrow { animation-delay: .55s; }
+.hero-split .hero-split__panel:nth-child(2) .hero-split__title   { animation-delay: .70s; }
+.hero-split .hero-split__panel:nth-child(2) .hero-split__link    { animation-delay: .95s; }
+
+@keyframes fxHeroRise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fxVignetteFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Drawing line under each title — premium serif punctuation */
+.hero-split .hero-split__title {
+  position: relative;
+  padding-bottom: 22px;
+}
+.hero-split .hero-split__title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 64px; height: 2px;
+  background: rgba(255,255,255,.85);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: fxLineDraw 1s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+.hero-split .hero-split__panel:nth-child(1) .hero-split__title::after { animation-delay: 1.1s; }
+.hero-split .hero-split__panel:nth-child(2) .hero-split__title::after { animation-delay: 1.3s; }
+
+@keyframes fxLineDraw {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Link arrow — magnetic-feel slide on hover */
+.hero-split .hero-split__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  transition: gap .4s cubic-bezier(.22, 1, .36, 1);
+}
+.hero-split .hero-split__panel:hover .hero-split__link {
+  gap: 18px;
+}
+
+/* Center logo — gentle pulse on initial load */
+.header--hero .header__logo-img {
+  animation: fxLogoIn 1.2s cubic-bezier(.22, 1, .36, 1) .1s both;
+}
+@keyframes fxLogoIn {
+  0%   { opacity: 0; transform: scale(.92) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Honor reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-split .hero-split__bg,
+  .hero-split .hero-split__eyebrow,
+  .hero-split .hero-split__title,
+  .hero-split .hero-split__link,
+  .hero-split .hero-split__title::after,
+  .hero-split .hero-split__panel::before,
+  .header--hero .header__logo-img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Image-rendering hint for sharper photos on retina */
+.hero-split__bg,
+.fx-mat-hero__image img {
+  image-rendering: -webkit-optimize-contrast;
 }
