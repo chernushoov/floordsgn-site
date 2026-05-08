@@ -261,10 +261,126 @@
   };
 
 
+  /* ---------------- FAQ accordion ------------------------- */
+  fx.initFaq = function () {
+    document.querySelectorAll('.fx-faq-item').forEach((item) => {
+      const q = item.querySelector('.fx-faq-item__q');
+      if (!q) return;
+      q.setAttribute('aria-expanded', 'false');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('open');
+        q.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
+  };
+
+  /* ---------------- sticky vertical TOC active link ------- */
+  fx.initToc = function () {
+    const links = document.querySelectorAll('.fx-toc a[href^="#"]');
+    if (!links.length) return;
+    const targets = Array.from(links)
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+    if (!targets.length) return;
+    const setActive = () => {
+      let current = targets[0];
+      const probe = window.scrollY + window.innerHeight * 0.25;
+      for (const t of targets) {
+        if (t.offsetTop <= probe) current = t;
+      }
+      links.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + current.id;
+        a.classList.toggle('active', isActive);
+      });
+    };
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  };
+
+  /* ---------------- sample request modal ------------------ */
+  fx.initSampleModal = function () {
+    const overlay = document.querySelector('[data-fx="sampleOverlay"]');
+    if (!overlay) return;
+    const open = () => {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const focus = overlay.querySelector('input, select, textarea');
+      if (focus) focus.focus();
+    };
+    const close = () => {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-fx="sampleOpen"]').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); open(); }));
+    overlay.querySelectorAll('[data-fx="sampleClose"]').forEach(b => b.addEventListener('click', close));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+  };
+
+  /* ---------------- WhatsApp pre-fill --------------------- */
+  fx.initWhatsApp = function () {
+    const btn = document.querySelector('[data-fx="waLink"]');
+    if (!btn) return;
+    const number = btn.dataset.waNumber || '+972559661459';
+    const sysName = document.body.dataset.fxPage || document.title;
+    const text = `Здравствуйте! Пишу со страницы «${sysName}». Хочу обсудить проект.`;
+    const url = `https://wa.me/${number.replace(/[^\d]/g, '')}?text=${encodeURIComponent(text)}`;
+    btn.setAttribute('href', url);
+  };
+
+  /* ---------------- decision tool wizard ------------------ */
+  fx.initDecisionTool = function () {
+    const root = document.querySelector('[data-fx="decisionTool"]');
+    if (!root) return;
+    const steps = root.querySelectorAll('[data-step]');
+    const total = steps.length;
+    const answers = {};
+    let i = 0;
+
+    const show = () => {
+      steps.forEach((s, idx) => s.style.display = idx === i ? 'block' : 'none');
+      const progress = root.querySelector('[data-fx="dtProgress"]');
+      if (progress) progress.textContent = `Вопрос ${Math.min(i + 1, total)} из ${total}`;
+    };
+    show();
+
+    root.querySelectorAll('[data-answer]').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.preventDefault();
+        const step = b.closest('[data-step]');
+        const key = step.dataset.step;
+        answers[key] = b.dataset.answer;
+        i += 1;
+        if (i >= total - 1) {
+          // Show result step (last) — caller renders recommendations from `answers`
+          const resultStep = root.querySelector('[data-step="result"]');
+          if (resultStep) {
+            // basic recommendation logic — operator can refine later
+            const place   = answers.place || '';
+            const traffic = answers.traffic || '';
+            let rec = ['самовыравнивающийся эпокси'];
+            if (place === 'industrial' && traffic === 'forklift') rec = ['эпокси HBS 6–9 мм', 'PU-cement'];
+            else if (place === 'food')                            rec = ['PU-cement', 'эпокси HBS'];
+            else if (place === 'designer')                        rec = ['венецианское терраццо', 'микротопинг'];
+            else if (place === 'residential')                     rec = ['микротопинг', 'эпокси декоративный'];
+            const out = resultStep.querySelector('[data-fx="dtRec"]');
+            if (out) out.innerHTML = rec.map(r => `<li>${r}</li>`).join('');
+          }
+        }
+        show();
+      });
+    });
+  };
+
   /* ---------------- bootstrap ----------------------------- */
   function init() {
-    try { fx.init3DPlate && fx.init3DPlate(); } catch (e) { console.warn('fx.init3DPlate', e); }
-    try { fx.initCalc    && fx.initCalc();    } catch (e) { console.warn('fx.initCalc', e); }
+    try { fx.init3DPlate     && fx.init3DPlate();     } catch (e) { console.warn('fx.init3DPlate', e); }
+    try { fx.initCalc        && fx.initCalc();        } catch (e) { console.warn('fx.initCalc', e); }
+    try { fx.initFaq         && fx.initFaq();         } catch (e) { console.warn('fx.initFaq', e); }
+    try { fx.initToc         && fx.initToc();         } catch (e) { console.warn('fx.initToc', e); }
+    try { fx.initSampleModal && fx.initSampleModal(); } catch (e) { console.warn('fx.initSampleModal', e); }
+    try { fx.initWhatsApp    && fx.initWhatsApp();    } catch (e) { console.warn('fx.initWhatsApp', e); }
+    try { fx.initDecisionTool && fx.initDecisionTool(); } catch (e) { console.warn('fx.initDecisionTool', e); }
   }
 
   if (document.readyState === 'loading') {
