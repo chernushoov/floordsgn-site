@@ -197,8 +197,10 @@ function initLoader(){
   const wrap=document.getElementById('lchips');
   const loader=document.getElementById('loader');
   if(!loader) return;
-  // skip loader on subsequent visits in this session
-  if(sessionStorage.getItem('fdg_loaded')){ loader.remove(); return; }
+  // If onboarding is active, hide loader immediately (onboarding has its own intro)
+  const ob=document.getElementById('ob');
+  const obActive = ob && !localStorage.getItem('fdg_onboarded');
+  if(obActive){ loader.style.display='none'; return; }
   if(wrap){
     const palette=PALETTES.terrazzo.chips.map(c=>c.c);
     const w=wrap.parentElement.offsetWidth;
@@ -212,7 +214,68 @@ function initLoader(){
   const lprog=document.querySelector('#lprog .b');
   let p=0;
   const iv=setInterval(()=>{p+=Math.random()*9+3;if(p>=100){p=100;clearInterval(iv)}if(lprog)lprog.textContent=String(Math.floor(p)).padStart(2,'0')},80);
-  setTimeout(()=>{loader.classList.add('gone');setTimeout(()=>loader.remove(),1300);sessionStorage.setItem('fdg_loaded','1')}, 3400);
+  setTimeout(()=>{loader.classList.add('gone');setTimeout(()=>loader.remove(),1300)}, 2600);
+}
+
+/* ============ ONBOARDING ============ */
+function initOnboarding(){
+  const ob=document.getElementById('ob');
+  if(!ob) return;
+  // Skip if already onboarded (URL ?reset=1 forces show)
+  const params=new URLSearchParams(location.search);
+  const force=params.get('reset')==='1';
+  if(localStorage.getItem('fdg_onboarded') && !force){
+    ob.remove();
+    return;
+  }
+  // Pre-fill from query if returning user changed mind via URL
+  let chosen={audience:'',type:''};
+
+  const screens=ob.querySelectorAll('.ob-screen');
+  const dots=ob.querySelectorAll('.ob-dot');
+  function goto(step){
+    screens.forEach(s=>s.classList.toggle('active', s.dataset.step==String(step)));
+    dots.forEach(d=>d.classList.toggle('on', Number(d.dataset.i)<=step));
+  }
+
+  // Skip button
+  document.getElementById('obSkip').onclick = ()=>finish();
+
+  // Step 1 -> 2
+  ob.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>goto(Number(b.dataset.next)));
+
+  // Step 2: choose audience
+  ob.querySelectorAll('.ob-opt[data-aud]').forEach(b=>b.onclick=()=>{
+    chosen.audience=b.dataset.aud;
+    goto(3);
+  });
+
+  // Step 3: choose type
+  ob.querySelectorAll('.ob-opt-large[data-type]').forEach(b=>b.onclick=()=>{
+    chosen.type=b.dataset.type;
+    finish();
+  });
+
+  function finish(){
+    if(chosen.audience){
+      localStorage.setItem('fdg_audience', chosen.audience);
+      // Apply to homepage audience switcher
+      const swSpan=document.querySelector(`#aud span[data-a="${chosen.audience}"]`);
+      if(swSpan){ swSpan.click(); }
+    }
+    if(chosen.type){
+      localStorage.setItem('fdg_type', chosen.type);
+    }
+    localStorage.setItem('fdg_onboarded','1');
+    ob.classList.add('gone');
+    setTimeout(()=>ob.remove(), 1200);
+    // If user picked decorative/industrial — soft scroll to that section after closing
+    if(chosen.type==='industrial'){
+      setTimeout(()=>document.querySelector('.duo-panel--ind')?.scrollIntoView({behavior:'smooth',block:'center'}), 1300);
+    } else if(chosen.type==='decorative'){
+      setTimeout(()=>document.querySelector('.duo-panel--dec')?.scrollIntoView({behavior:'smooth',block:'center'}), 1300);
+    }
+  }
 }
 
 /* ============ SHARED HEADER / FOOTER injection ============ */
@@ -333,6 +396,7 @@ function initProjFilter(){
 
 document.addEventListener('DOMContentLoaded',()=>{
   injectChrome();
+  initOnboarding();
   initLoader();
   initTheme();
   initScroll();
