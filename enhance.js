@@ -178,74 +178,6 @@
     set();
   };
 
-  /* ---------------- project filter chips ------------------ */
-  fx.initProjFilter = function () {
-    const filter = document.querySelector('[data-fx="projFilter"]');
-    if (!filter) return;
-    const items = document.querySelectorAll('.project-item, .project-card, .projects-masonry__item');
-    if (!items.length) return;
-    filter.querySelectorAll('span').forEach(s => {
-      s.addEventListener('click', () => {
-        filter.querySelectorAll('span').forEach(x => x.classList.remove('on'));
-        s.classList.add('on');
-        const f = s.dataset.f;
-        items.forEach(it => {
-          const cat = (it.dataset.fxCat || it.dataset.category || '').toLowerCase();
-          it.style.display = (f === 'all' || cat.includes(f)) ? '' : 'none';
-        });
-      });
-    });
-  };
-
-  /* ---------------- audience switcher --------------------- */
-  const VALID_AUDIENCES = ['b2b', 'design', 'resi'];
-  function lsGet(key) {
-    try { return localStorage.getItem(key); } catch (e) { return null; }
-  }
-  function lsSet(key, val) {
-    try { localStorage.setItem(key, val); } catch (e) { /* private mode */ }
-  }
-
-  fx.initAudSwitch = function () {
-    const hero = document.getElementById('heroSplit');
-    if (!hero || hero.querySelector('.fx-aud-switch')) return;
-
-    const tabs = document.createElement('div');
-    tabs.className = 'fx-aud-switch';
-    tabs.setAttribute('role', 'tablist');
-    tabs.setAttribute('aria-label', 'Аудитория');
-    tabs.innerHTML = `
-      <button type="button" class="on" data-a="b2b" role="tab">Бизнесу</button>
-      <button type="button" data-a="design" role="tab">Архитектору</button>
-      <button type="button" data-a="resi" role="tab">Частнику</button>
-    `;
-    hero.appendChild(tabs);
-
-    // URL ?audience=b2b|design|resi takes priority over saved
-    const params = new URLSearchParams(location.search);
-    const fromUrl = params.get('audience');
-    const safeFromUrl = VALID_AUDIENCES.includes(fromUrl) ? fromUrl : null;
-    const safeFromStorage = (() => {
-      const v = lsGet('fx_audience');
-      return VALID_AUDIENCES.includes(v) ? v : null;
-    })();
-    const saved = safeFromUrl || safeFromStorage;
-    if (saved) {
-      tabs.querySelectorAll('button').forEach(s => {
-        s.classList.toggle('on', s.dataset.a === saved);
-      });
-      if (safeFromUrl) lsSet('fx_audience', safeFromUrl);
-    }
-
-    tabs.querySelectorAll('button').forEach(s => {
-      s.addEventListener('click', () => {
-        tabs.querySelectorAll('button').forEach(x => x.classList.remove('on'));
-        s.classList.add('on');
-        lsSet('fx_audience', s.dataset.a);
-      });
-    });
-  };
-
   /* ---------------- 3D rotating plate --------------------- */
   fx.init3DPlate = function () {
     const plate = document.querySelector('[data-fx="plate"]');
@@ -328,100 +260,11 @@
     });
   };
 
-  /* ---------------- onboarding overlay --------------------
-     Disabled by default (was killing bounce rate). Show only when:
-       - URL has ?onboarding=1, OR
-       - URL has ?reset=1 (legacy). */
-  fx.initOnboarding = function () {
-    const ob = document.querySelector('[data-fx="onboarding"]');
-    if (!ob) return;
-    const params = new URLSearchParams(location.search);
-    const explicitlyRequested =
-      params.get('onboarding') === '1' || params.get('reset') === '1';
-
-    if (!explicitlyRequested) {
-      ob.remove();
-      return;
-    }
-
-    // Make modal accessible to AT
-    ob.setAttribute('role', 'dialog');
-    ob.setAttribute('aria-modal', 'true');
-    ob.setAttribute('aria-labelledby', 'fx-ob-title');
-    const titleEl = ob.querySelector('.fx-ob-welcome');
-    if (titleEl) titleEl.id = 'fx-ob-title';
-
-    const previouslyFocused = document.activeElement;
-    ob.style.display = 'flex';
-
-    const screens = ob.querySelectorAll('.fx-ob-screen');
-    const dots = ob.querySelectorAll('.fx-ob-dot');
-
-    const setInert = () => {
-      screens.forEach(s => {
-        const active = s.classList.contains('active');
-        if (active) s.removeAttribute('inert');
-        else s.setAttribute('inert', '');
-      });
-    };
-    setInert();
-
-    const goto = step => {
-      screens.forEach(s => s.classList.toggle('active', s.dataset.step === String(step)));
-      dots.forEach(d => d.classList.toggle('on', Number(d.dataset.i) <= step));
-      setInert();
-      const firstFocusable = ob.querySelector('.fx-ob-screen.active button, .fx-ob-screen.active [tabindex]');
-      if (firstFocusable) firstFocusable.focus();
-    };
-
-    const chosen = { audience: '', type: '' };
-    const skipBtn = ob.querySelector('[data-fx="obSkip"]');
-    if (skipBtn) skipBtn.addEventListener('click', finish);
-
-    ob.querySelectorAll('[data-next]').forEach(b => {
-      b.addEventListener('click', () => goto(Number(b.dataset.next)));
-    });
-    ob.querySelectorAll('.fx-ob-opt[data-aud]').forEach(b => {
-      b.addEventListener('click', () => {
-        chosen.audience = b.dataset.aud;
-        goto(3);
-      });
-    });
-    ob.querySelectorAll('.fx-ob-opt-large[data-type]').forEach(b => {
-      b.addEventListener('click', () => {
-        chosen.type = b.dataset.type;
-        finish();
-      });
-    });
-
-    // Escape closes
-    ob.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') finish();
-    });
-
-    function finish() {
-      if (chosen.audience) lsSet('fx_audience', chosen.audience);
-      if (chosen.type) lsSet('fx_type', chosen.type);
-      lsSet('fx_onboarded', '1');
-
-      ob.classList.add('gone');
-      setTimeout(() => ob.remove(), 900);
-
-      if (chosen.audience) {
-        const tab = document.querySelector(`.fx-aud-switch button[data-a="${chosen.audience}"]`);
-        if (tab) tab.click();
-      }
-      if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
-    }
-  };
 
   /* ---------------- bootstrap ----------------------------- */
   function init() {
-    try { fx.initOnboarding && fx.initOnboarding(); } catch (e) { console.warn('fx.initOnboarding', e); }
-    try { fx.initAudSwitch && fx.initAudSwitch(); } catch (e) { console.warn('fx.initAudSwitch', e); }
     try { fx.init3DPlate && fx.init3DPlate(); } catch (e) { console.warn('fx.init3DPlate', e); }
-    try { fx.initCalc && fx.initCalc(); } catch (e) { console.warn('fx.initCalc', e); }
-    try { fx.initProjFilter && fx.initProjFilter(); } catch (e) { console.warn('fx.initProjFilter', e); }
+    try { fx.initCalc    && fx.initCalc();    } catch (e) { console.warn('fx.initCalc', e); }
   }
 
   if (document.readyState === 'loading') {
