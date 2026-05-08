@@ -152,11 +152,10 @@ img {
 }
 
 .header__logo-img {
-    height: 40px;
+    height: 140px;
     width: auto;
-    margin: 0;
-    display: block;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    margin: -30px 0;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .header__logo:hover .header__logo-img {
@@ -214,8 +213,8 @@ img {
 .header--hero .header__logo-white { display: block; }
 
 .header--hero .header__logo-img {
-    height: 44px;
-    margin: 0;
+    height: 180px;
+    margin: -40px 0;
 }
 
 .header--hero .lang-btn {
@@ -245,7 +244,7 @@ img {
 .header--scrolled .header__nav a:hover { color: rgba(0,0,0,0.4); }
 .header--scrolled .header__logo-black { display: block; }
 .header--scrolled .header__logo-white { display: none; }
-.header--scrolled .header__logo-img { height: 34px; margin: 0; }
+.header--scrolled .header__logo-img { height: 110px; margin: -24px 0; }
 .header--scrolled .lang-btn { color: var(--black); border-color: rgba(0,0,0,0.1); }
 .header--scrolled .lang-btn.active { background: var(--black); color: var(--white); }
 .header--scrolled .mobile-menu-btn span { background: var(--black); }
@@ -2803,9 +2802,9 @@ img {
 
     .header__nav { display: none; }
 
-    .header__logo-img { height: 34px; margin: 0; }
-    .header--hero .header__logo-img { height: 36px; margin: 0; }
-    .header--scrolled .header__logo-img { height: 30px; margin: 0; }
+    .header__logo-img { height: 120px; margin: -26px 0; }
+    .header--hero .header__logo-img { height: 150px; margin: -34px 0; }
+    .header--scrolled .header__logo-img { height: 95px; margin: -20px 0; }
 
     .header__lang { right: 56px; }
 
@@ -7056,17 +7055,18 @@ img {
     }
 }
 
-/* Footer logo — stacked SVG (mark + wordmark + tagline) */
+/* Footer logo — square PNG */
 .footer-logo {
-    width: 168px;
-    height: auto;
+    height: 64px;
+    width: auto;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     opacity: 0.95;
     transition: opacity 0.3s ease;
 }
+.footer-logo:hover { opacity: 1; }
 @media (max-width: 768px) {
-    .footer-logo { width: 140px; }
+    .footer-logo { height: 56px; }
 }
 
 .footer-logo:hover {

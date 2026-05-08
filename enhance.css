@@ -1501,25 +1501,25 @@
 }
 
 /* ==========================================================
-   FX-STACK — слоёный сэндвич hero (первый блок главной).
-   Минимализм + изометрический SVG-разрез слоёв.
+   FX-HERO — компактный, минималистичный hero для главной.
+   Не full-screen. Левая колонка текст, правая колонка одна
+   фотография в card. Сохраняет качество фото.
    ========================================================== */
-.fx-stack {
+.fx-hero {
   background: #f5f5f7;
-  padding: clamp(120px, 14vh, 160px) 0 clamp(60px, 9vh, 96px);
-  position: relative;
+  padding: clamp(110px, 13vh, 150px) 0 clamp(56px, 8vh, 88px);
 }
-.fx-stack__inner {
-  max-width: 1280px;
+.fx-hero__inner {
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 56px);
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
-.fx-stack__copy { display: flex; flex-direction: column; gap: 18px; }
-.fx-stack__eyebrow {
+.fx-hero__copy { display: flex; flex-direction: column; gap: 20px; }
+.fx-hero__eyebrow {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 700;
@@ -1528,118 +1528,48 @@
   color: #86868b;
   margin: 0;
 }
-.fx-stack__h1 {
+.fx-hero__h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(38px, 5.5vw, 64px);
+  font-size: clamp(40px, 5.5vw, 72px);
   font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -0.015em;
+  line-height: 1.02;
+  letter-spacing: -0.018em;
   color: #1d1d1f;
   margin: 0;
 }
-.fx-stack__h1 em {
-  font-style: italic;
-  font-weight: 500;
-  color: #1d1d1f;
-}
-.fx-stack__lede {
+.fx-hero__h1 em { font-style: italic; font-weight: 500; }
+.fx-hero__lede {
   font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: #4a4a4f;
   max-width: 480px;
   margin: 0;
 }
-.fx-stack__seg {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  background: #fff;
-  padding: 4px;
-  border-radius: 999px;
-  border: 1px solid #e5e5ea;
-  width: fit-content;
-}
-.fx-stack__seg button {
-  border: none;
-  background: transparent;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: #4a4a4f;
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all .25s cubic-bezier(.22,1,.36,1);
-  letter-spacing: .01em;
-}
-.fx-stack__seg button:hover { color: #1d1d1f; }
-.fx-stack__seg button.on {
-  background: #1d1d1f;
-  color: #fff;
-}
-.fx-stack__meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 8px 0 0;
-  border-top: 1px solid #e5e5ea;
-  padding-top: 18px;
-  max-width: 520px;
-}
-.fx-stack__meta div { display: flex; flex-direction: column; gap: 4px; }
-.fx-stack__meta dt {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #86868b;
-  font-weight: 600;
-}
-.fx-stack__meta dd {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin: 0;
-}
-.fx-stack__cta {
+.fx-hero__cta {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 8px;
+  flex-wrap: wrap;
 }
-.fx-stack__viz {
-  position: relative;
-  width: 100%;
+.fx-hero__media {
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 5/4;
+  max-height: 520px;
+  background: #e5e5ea;
+  box-shadow: 0 30px 60px rgba(0,0,0,.10), 0 8px 20px rgba(0,0,0,.06);
 }
-.fx-stack__svg {
+.fx-hero__media img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  filter: drop-shadow(0 30px 50px rgba(0,0,0,.08));
 }
-.fx-stack__layer {
-  transition: transform .6s cubic-bezier(.22,1,.36,1), opacity .4s ease;
-  transform-origin: 320px 360px;
-}
-.fx-stack__layer:hover {
-  transform: translate(0,-4px);
-}
-.fx-stack[data-loaded="0"] .fx-stack__layer { opacity: 0; transform: translate(40px,-30px); }
-.fx-stack[data-loaded="1"] .fx-stack__layer { opacity: 1; transform: translate(0,0); }
-.fx-stack[data-loaded="1"] .fx-stack__layer[data-layer="substrate"] { transition-delay: .05s; }
-.fx-stack[data-loaded="1"] .fx-stack__layer[data-layer="primer"]    { transition-delay: .20s; }
-.fx-stack[data-loaded="1"] .fx-stack__layer[data-layer="body"]      { transition-delay: .35s; }
-.fx-stack[data-loaded="1"] .fx-stack__layer[data-layer="topcoat"]   { transition-delay: .50s; }
-
 @media (max-width: 900px) {
-  .fx-stack__inner { grid-template-columns: 1fr; gap: 40px; }
-  .fx-stack__viz   { order: -1; }
-  .fx-stack__h1    { font-size: clamp(34px, 8vw, 48px); }
-  .fx-stack__meta  { grid-template-columns: 1fr 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .fx-stack__layer { transition: none !important; }
+  .fx-hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .fx-hero__h1 { font-size: clamp(36px, 9vw, 52px); }
+  .fx-hero__media { aspect-ratio: 4/3; max-height: 360px; border-radius: 18px; }
 }
 
 /* ==========================================================
