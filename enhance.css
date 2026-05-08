@@ -322,6 +322,190 @@
 }
 
 /* ============================================================
+   compact hero — replaces full-screen hero-split
+   smaller photos as 2 cards, lists what each panel covers
+   ============================================================ */
+.hero-split.fx-hero-compact {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: clamp(80px, 12vh, 120px) 36px 60px;
+  max-width: 1480px;
+  margin: 0 auto;
+  background: #fff;
+  overflow: visible !important;
+}
+.hero-split.fx-hero-compact .hero-split__panel {
+  position: relative;
+  flex: none !important;
+  height: clamp(420px, 60vh, 560px);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
+  text-decoration: none;
+  will-change: transform;
+}
+.hero-split.fx-hero-compact:hover .hero-split__panel { flex: none !important; }
+.hero-split.fx-hero-compact .hero-split__panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0,0,0,.18);
+}
+.hero-split.fx-hero-compact .hero-split__bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  transition: transform .8s cubic-bezier(.22,1,.36,1);
+}
+.hero-split.fx-hero-compact .hero-split__panel:hover .hero-split__bg {
+  transform: scale(1.04);
+}
+.hero-split.fx-hero-compact .hero-split__panel::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 24px;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0) 35%,
+    rgba(0,0,0,.55) 75%,
+    rgba(0,0,0,.85) 100%);
+  pointer-events: none;
+}
+.hero-split.fx-hero-compact .hero-split__content {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 36px 36px 32px;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hero-split.fx-hero-compact .hero-split__eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+}
+.hero-split.fx-hero-compact .hero-split__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4.2vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin: 0;
+}
+.fx-hero-list {
+  list-style: none;
+  padding: 0; margin: 8px 0 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255,255,255,.92);
+  max-width: 360px;
+}
+.fx-hero-list li {
+  padding: 4px 0;
+  border-top: 1px solid rgba(255,255,255,.18);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.fx-hero-list li:first-child { border-top: none; }
+.fx-hero-list li::before {
+  content: "—";
+  color: rgba(255,255,255,.5);
+  font-weight: 300;
+}
+.hero-split.fx-hero-compact .hero-split__link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.6);
+  align-self: flex-start;
+  padding-bottom: 4px;
+  margin-top: 8px;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.hero-split.fx-hero-compact .hero-split__panel:hover .hero-split__link {
+  border-color: #fff;
+  transform: translateX(4px);
+}
+
+/* Subtle entrance animations on hero — line draws under each title,
+   content fades in with staggered translate-up */
+@keyframes fxHeroLineDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes fxHeroFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-split.fx-hero-compact .hero-split__title {
+  position: relative;
+  padding-bottom: 14px;
+}
+.hero-split.fx-hero-compact .hero-split__title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 56px; height: 2px;
+  background: rgba(255,255,255,.85);
+  transform-origin: left center;
+  animation: fxHeroLineDraw .9s cubic-bezier(.22,1,.36,1) .4s both;
+}
+.hero-split.fx-hero-compact .hero-split__eyebrow,
+.hero-split.fx-hero-compact .hero-split__title,
+.hero-split.fx-hero-compact .fx-hero-list,
+.hero-split.fx-hero-compact .hero-split__link {
+  animation: fxHeroFadeUp .8s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(1) .hero-split__eyebrow { animation-delay: .15s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(1) .hero-split__title   { animation-delay: .25s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(1) .fx-hero-list        { animation-delay: .50s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(1) .hero-split__link    { animation-delay: .75s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(2) .hero-split__eyebrow { animation-delay: .25s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(2) .hero-split__title   { animation-delay: .35s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(2) .fx-hero-list        { animation-delay: .60s; }
+.hero-split.fx-hero-compact .hero-split__panel:nth-child(2) .hero-split__link    { animation-delay: .85s; }
+
+@media (max-width: 900px) {
+  .hero-split.fx-hero-compact {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 100px 16px 40px;
+  }
+  .hero-split.fx-hero-compact .hero-split__panel {
+    height: 420px;
+  }
+  .hero-split.fx-hero-compact .hero-split__content {
+    padding: 24px 24px 24px;
+  }
+  .fx-hero-list { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-split.fx-hero-compact .hero-split__eyebrow,
+  .hero-split.fx-hero-compact .hero-split__title,
+  .hero-split.fx-hero-compact .fx-hero-list,
+  .hero-split.fx-hero-compact .hero-split__link,
+  .hero-split.fx-hero-compact .hero-split__title::after {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ============================================================
    audience switcher pill-tabs over hero
    ============================================================ */
 .fx-aud-switch {
@@ -624,11 +808,23 @@
   line-height: 1.05;
   margin: 0 0 20px;
   color: #1d1d1f;
+  position: relative;
+  display: inline-block;
 }
 .fx-ob-welcome em {
   font-style: italic;
-  color: #0071e3;
+  color: #1d1d1f;
   font-weight: 300;
+}
+.fx-ob-welcome::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: #1d1d1f;
+  margin: 18px auto 0;
+  transform-origin: center;
+  animation: fxHeroLineDraw 1s cubic-bezier(.22,1,.36,1) .4s both;
 }
 .fx-ob-sub {
   font-family: 'Montserrat', sans-serif;
