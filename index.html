@@ -168,34 +168,35 @@
         <p class="fx-plate-meta anim-up anim-d2">Соберите образец под вашу задачу. Слева — материал, справа — параметры. Тяните плиту чтобы вращать, нажмите чтобы разнести на слои.</p>
       </div>
       <div class="fx-hero-lab__grid">
-        <!-- LEFT: material list -->
-        <aside class="fx-hero-lab__materials" aria-label="Материалы">
+        <!-- LEFT: material list (groups + items rendered by JS from materials.config.json — fallback below) -->
+        <aside class="fx-hero-lab__materials" aria-label="Материалы" data-fx="materialsRoot">
           <div class="fx-hero-lab__group">
-            <p class="fx-hero-lab__group-label">Декоративные</p>
-            <ul class="fx-hero-lab__mlist" data-fx="materialsDecor">
-              <li><button type="button" class="fx-hero-lab__mat is-active" data-m="terrazzo-dark"><span class="fx-hero-lab__swatch" style="background:#1c1c1e"></span><span class="fx-hero-lab__mat-label">Терраццо тёмный</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="terrazzo-light"><span class="fx-hero-lab__swatch" style="background:#f0ece2"></span><span class="fx-hero-lab__mat-label">Терраццо светлый</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="terrazzo"><span class="fx-hero-lab__swatch" style="background:#efe7d6"></span><span class="fx-hero-lab__mat-label">Терраццо венецианский</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="epoxy-light"><span class="fx-hero-lab__swatch" style="background:#c2bcb0"></span><span class="fx-hero-lab__mat-label">Эпокси декоративный</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="micro"><span class="fx-hero-lab__swatch" style="background:#cfc4b3"></span><span class="fx-hero-lab__mat-label">Микротопинг</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="rubber"><span class="fx-hero-lab__swatch" style="background:#2a2a2a"></span><span class="fx-hero-lab__mat-label">Резина / sport</span></button></li>
+            <p class="fx-hero-lab__group-label" id="fxMatGroupDecor">Декоративные</p>
+            <ul class="fx-hero-lab__mlist" data-fx="materialsDecor" role="radiogroup" aria-labelledby="fxMatGroupDecor">
+              <li><button type="button" class="fx-hero-lab__mat is-active" role="radio" aria-checked="true" data-m="terrazzo-dark"><span class="fx-hero-lab__swatch" style="background:#1c1c1e"></span><span class="fx-hero-lab__mat-label">Терраццо тёмный</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="terrazzo-light"><span class="fx-hero-lab__swatch" style="background:#f0ece2"></span><span class="fx-hero-lab__mat-label">Терраццо светлый</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="terrazzo"><span class="fx-hero-lab__swatch" style="background:#efe7d6"></span><span class="fx-hero-lab__mat-label">Терраццо венецианский</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="epoxy-light"><span class="fx-hero-lab__swatch" style="background:#c2bcb0"></span><span class="fx-hero-lab__mat-label">Эпоксид</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="micro"><span class="fx-hero-lab__swatch" style="background:#cfc4b3"></span><span class="fx-hero-lab__mat-label">Микротопинг</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="mma"><span class="fx-hero-lab__swatch" style="background:#3c3a35"></span><span class="fx-hero-lab__mat-label">MMA Pronto</span></button></li>
             </ul>
           </div>
           <div class="fx-hero-lab__group">
-            <p class="fx-hero-lab__group-label">Индастриал</p>
-            <ul class="fx-hero-lab__mlist" data-fx="materialsIndustrial">
-              <li><button type="button" class="fx-hero-lab__mat" data-m="epoxy"><span class="fx-hero-lab__swatch" style="background:#2a2620"></span><span class="fx-hero-lab__mat-label">Эпокси SL</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="concrete"><span class="fx-hero-lab__swatch" style="background:#7a7468"></span><span class="fx-hero-lab__mat-label">Полированный бетон</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="purcem"><span class="fx-hero-lab__swatch" style="background:#9a9690"></span><span class="fx-hero-lab__mat-label">PU-cement</span></button></li>
-              <li><button type="button" class="fx-hero-lab__mat" data-m="mma"><span class="fx-hero-lab__swatch" style="background:#3c3a35"></span><span class="fx-hero-lab__mat-label">MMA Pronto</span></button></li>
+            <p class="fx-hero-lab__group-label" id="fxMatGroupIndustrial">Промышленные</p>
+            <ul class="fx-hero-lab__mlist" data-fx="materialsIndustrial" role="radiogroup" aria-labelledby="fxMatGroupIndustrial">
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="concrete"><span class="fx-hero-lab__swatch" style="background:#7a7468"></span><span class="fx-hero-lab__mat-label">Полированный цемент</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="purcem"><span class="fx-hero-lab__swatch" style="background:#9a9690"></span><span class="fx-hero-lab__mat-label">PU-cement / ПУ-цемент</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="rubber"><span class="fx-hero-lab__swatch" style="background:#2a2a2a"></span><span class="fx-hero-lab__mat-label">Резиновое покрытие</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" role="radio" aria-checked="false" data-m="epoxy"><span class="fx-hero-lab__swatch" style="background:#2a2620"></span><span class="fx-hero-lab__mat-label">Эпоксидная заливка</span></button></li>
             </ul>
           </div>
+          <p class="fx-hero-lab__sr-live" data-fx="liveAnnounce" aria-live="polite" aria-atomic="true"></p>
         </aside>
 
         <!-- CENTER: 3D plate -->
         <div class="fx-hero-lab__stage">
           <div class="fx-plate-wrap">
-            <div class="fx-plate idle" data-fx="plate" role="button" tabindex="0" aria-label="Образец материала — крутите или нажмите чтобы разнести на слои">
+            <div class="fx-plate idle" data-fx="plate" role="button" tabindex="0" aria-pressed="false" aria-keyshortcuts="Enter Space" aria-label="Образец материала — крутите или нажмите чтобы разнести на слои">
               <!-- Topcoat -->
               <div class="fx-layer fx-l-topcoat">
                 <div class="fx-face fx-face-top"></div>
@@ -211,6 +212,7 @@
                   <div class="fx-hero-lab__strips" data-fx="strips" aria-hidden="true"></div>
                   <div class="fx-hero-lab__flecks" data-fx="flecks" aria-hidden="true"></div>
                   <div class="fx-hero-lab__texture" data-fx="texture" aria-hidden="true"></div>
+                  <div class="fx-hero-lab__marking" data-fx="marking" aria-hidden="true"></div>
                   <div class="fx-hero-lab__sheen" data-fx="sheen" aria-hidden="true"></div>
                 </div>
                 <div class="fx-face fx-face-bot"></div>
@@ -262,8 +264,9 @@
             <div><span class="fx-hero-lab__meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
           </div>
           <div class="fx-hero-lab__cta">
-            <a href="floors/terrazzo.html" class="btn btn-dark fx-hero-lab__cta-primary" data-fx="systemLink">Открыть систему <span aria-hidden="true">→</span></a>
+            <a href="quote.html" class="btn btn-dark fx-hero-lab__cta-primary" data-fx="systemLink">Заказать эту формулу <span aria-hidden="true">→</span></a>
             <a href="contact.html#intent=sample" class="btn btn-outline fx-hero-lab__cta-secondary">Заказать образец</a>
+            <p class="fx-hero-lab__cta-helper" data-fx="ctaHelper" hidden>Состояние сохранится — продолжите позже</p>
           </div>
         </aside>
       </div>

@@ -290,249 +290,19 @@
   // option.id is encoded in URL params; option.label rendered (passes through localize()).
   // option.swatch (optional) renders a colored circle on the button.
   // option.hex (optional) is the body/base color override applied when picked.
+  // CONTROL_SCHEMAS is *populated* from materials.config.json by buildSchemasFromConfig().
+  // Fallback inline schemas live below — used when fetch fails.
+  const CONTROL_LABELS = {
+    color: 'Цвет',
+    aggregate: 'Агрегат',
+    strips: 'Саргелим',
+    finish: 'Финиш',
+    flecks: 'Флеки',
+    roughness: 'Текстура',
+    marking: 'Дорожная разметка'
+  };
   const CONTROL_SCHEMAS = {
-    'terrazzo-dark': [
-      { id: 'color', label: 'Цвет основы', mode: 'single', options: [
-        { id: 'charcoal',   label: 'Charcoal',   hex: '#1c1c1e', swatch: '#1c1c1e' },
-        { id: 'anthracite', label: 'Anthracite', hex: '#2c2c2e', swatch: '#2c2c2e' },
-        { id: 'graphite',   label: 'Graphite',   hex: '#3a3a3c', swatch: '#3a3a3c' },
-        { id: 'stone',      label: 'Stone',      hex: '#5a5a5c', swatch: '#5a5a5c' }
-      ]},
-      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
-        { id: 'basalt',  label: 'Basalt' },
-        { id: 'carrara', label: 'Carrara' },
-        { id: 'verona',  label: 'Verona' },
-        { id: 'mirror',  label: 'Glass-mirror' },
-        { id: 'brass',   label: 'Brass-flake' }
-      ]},
-      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
-        { id: 'off',      label: 'Без полос' },
-        { id: 'brass4',   label: 'Латунь 4мм',  hex: '#c9a04a' },
-        { id: 'alu4',     label: 'Алюминий 4мм', hex: '#d8d4cc' },
-        { id: 'black6',   label: 'Чёрный 6мм',  hex: '#0a0a0a' }
-      ]},
-      { id: 'finish', label: 'Финиш', mode: 'single', options: [
-        { id: 'matte',    label: 'Matte' },
-        { id: 'satin',    label: 'Satin' },
-        { id: 'polished', label: 'Polished' }
-      ]}
-    ],
-    'terrazzo-light': [
-      { id: 'color', label: 'Цвет основы', mode: 'single', options: [
-        { id: 'white',   label: 'White',     hex: '#f0ece2', swatch: '#f0ece2' },
-        { id: 'offwhite',label: 'Off-white', hex: '#e8e3d4', swatch: '#e8e3d4' },
-        { id: 'sand',    label: 'Sand',      hex: '#dfd4ba', swatch: '#dfd4ba' },
-        { id: 'pearl',   label: 'Pearl',     hex: '#ebe6db', swatch: '#ebe6db' }
-      ]},
-      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
-        { id: 'carrara', label: 'Carrara' },
-        { id: 'verona',  label: 'Verona' },
-        { id: 'basalt',  label: 'Basalt' },
-        { id: 'mirror',  label: 'Glass-mirror' },
-        { id: 'brass',   label: 'Brass-flake' }
-      ]},
-      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
-        { id: 'off',    label: 'Без полос' },
-        { id: 'brass4', label: 'Латунь 4мм', hex: '#c9a04a' },
-        { id: 'alu4',   label: 'Алюминий 4мм', hex: '#d8d4cc' },
-        { id: 'black6', label: 'Чёрный 6мм',  hex: '#1d1d1f' }
-      ]},
-      { id: 'finish', label: 'Финиш', mode: 'single', options: [
-        { id: 'matte',    label: 'Matte' },
-        { id: 'satin',    label: 'Satin' },
-        { id: 'polished', label: 'Polished' }
-      ]}
-    ],
-    terrazzo: [
-      { id: 'color', label: 'Цвет цемента', mode: 'single', options: [
-        { id: 'white',   label: 'White',   hex: '#efe7d6', swatch: '#efe7d6' },
-        { id: 'cream',   label: 'Cream',   hex: '#e8dec8', swatch: '#e8dec8' },
-        { id: 'sand',    label: 'Sand',    hex: '#dfd4ba', swatch: '#dfd4ba' },
-        { id: 'grey',    label: 'Grey',    hex: '#bdb6a8', swatch: '#bdb6a8' }
-      ]},
-      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
-        { id: 'carrara', label: 'Carrara' },
-        { id: 'verona',  label: 'Verona' },
-        { id: 'basalt',  label: 'Basalt' },
-        { id: 'mirror',  label: 'Glass-mirror' },
-        { id: 'brass',   label: 'Brass-flake' }
-      ]},
-      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
-        { id: 'off',    label: 'Без полос' },
-        { id: 'brass4', label: 'Латунь 4мм', hex: '#c9a04a' },
-        { id: 'alu4',   label: 'Алюминий 4мм', hex: '#d8d4cc' },
-        { id: 'black6', label: 'Чёрный 6мм',  hex: '#1d1d1f' }
-      ]},
-      { id: 'finish', label: 'Финиш', mode: 'single', options: [
-        { id: 'matte',    label: 'Matte' },
-        { id: 'satin',    label: 'Satin' },
-        { id: 'polished', label: 'Polished' }
-      ]}
-    ],
-    epoxy: [
-      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
-        { id: '9005', label: 'RAL 9005', hex: '#0a0a0a', swatch: '#0a0a0a' },
-        { id: '7016', label: 'RAL 7016', hex: '#293133', swatch: '#293133' },
-        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
-        { id: '1001', label: 'RAL 1001', hex: '#c2b078', swatch: '#c2b078' },
-        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' },
-        { id: '6011', label: 'RAL 6011', hex: '#587246', swatch: '#587246' }
-      ]},
-      { id: 'flecks', label: 'Флеки', mode: 'single', options: [
-        { id: 'off',      label: 'Без флеков' },
-        { id: 'fine',     label: 'Vinyl chips' },
-        { id: 'coarse',   label: 'Coarse 1/8″' },
-        { id: 'mica',     label: 'Mica' },
-        { id: 'metallic', label: 'Metallic FX' }
-      ]},
-      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
-        { id: 'matte',   label: 'Matte' },
-        { id: 'satin',   label: 'Satin' },
-        { id: 'glossy',  label: 'Glossy' }
-      ]},
-      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
-        { id: 'off',    label: 'Без кварца' },
-        { id: 'fine',   label: 'Fine' },
-        { id: 'coarse', label: 'Coarse anti-slip' }
-      ]}
-    ],
-    'epoxy-light': [
-      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
-        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
-        { id: '9001', label: 'RAL 9001', hex: '#e9e0d2', swatch: '#e9e0d2' },
-        { id: '9010', label: 'RAL 9010', hex: '#f1ece1', swatch: '#f1ece1' },
-        { id: '1015', label: 'RAL 1015', hex: '#e6d2b5', swatch: '#e6d2b5' },
-        { id: '7035', label: 'RAL 7035', hex: '#cbd0cc', swatch: '#cbd0cc' },
-        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' }
-      ]},
-      { id: 'flecks', label: 'Флеки', mode: 'single', options: [
-        { id: 'off',      label: 'Без флеков' },
-        { id: 'fine',     label: 'Vinyl chips' },
-        { id: 'coarse',   label: 'Coarse 1/8″' },
-        { id: 'mica',     label: 'Mica' },
-        { id: 'metallic', label: 'Metallic FX' }
-      ]},
-      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
-        { id: 'matte',   label: 'Matte' },
-        { id: 'satin',   label: 'Satin' },
-        { id: 'glossy',  label: 'Glossy' }
-      ]},
-      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
-        { id: 'off',    label: 'Без кварца' },
-        { id: 'fine',   label: 'Fine' },
-        { id: 'coarse', label: 'Coarse anti-slip' }
-      ]}
-    ],
-    micro: [
-      { id: 'color', label: 'Цвет', mode: 'single', options: [
-        { id: 'cream',   label: 'Cream',     hex: '#cfc4b3', swatch: '#cfc4b3' },
-        { id: 'sand',    label: 'Sand',      hex: '#c4b698', swatch: '#c4b698' },
-        { id: 'olive',   label: 'Olive',     hex: '#9a9272', swatch: '#9a9272' },
-        { id: 'cement',  label: 'Cement-grey',hex: '#9d9b96', swatch: '#9d9b96' },
-        { id: 'charcoal',label: 'Charcoal',  hex: '#3a3a3c', swatch: '#3a3a3c' }
-      ]},
-      { id: 'finish', label: 'Финиш', mode: 'single', options: [
-        { id: 'matte',    label: 'Matte' },
-        { id: 'satin',    label: 'Satin' },
-        { id: 'wetlook',  label: 'Wet-look' }
-      ]},
-      { id: 'texture', label: 'Текстура', mode: 'single', options: [
-        { id: 'smooth',  label: 'Smooth' },
-        { id: 'trowel',  label: 'Trowel-marked' },
-        { id: 'wave',    label: 'Wave' }
-      ]},
-      { id: 'broadcast', label: 'Топкоат', mode: 'single', options: [
-        { id: 'pu2x',  label: 'PU 2 × слоя' },
-        { id: 'wax',   label: 'Wax-cement' }
-      ]}
-    ],
-    purcem: [
-      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
-        { id: '7037', label: 'RAL 7037', hex: '#7d7f7d', swatch: '#7d7f7d' },
-        { id: '1015', label: 'RAL 1015', hex: '#e6d2b5', swatch: '#e6d2b5' },
-        { id: '8004', label: 'RAL 8004', hex: '#a04125', swatch: '#a04125' },
-        { id: '6011', label: 'RAL 6011', hex: '#587246', swatch: '#587246' },
-        { id: '7035', label: 'RAL 7035', hex: '#cbd0cc', swatch: '#cbd0cc' }
-      ]},
-      { id: 'surface', label: 'Поверхность', mode: 'single', options: [
-        { id: 'smooth',    label: 'Smooth' },
-        { id: 'textured',  label: 'Textured (anti-slip)' },
-        { id: 'broadcast', label: 'Heavy broadcast' }
-      ]},
-      { id: 'thickness', label: 'Толщина', mode: 'single', options: [
-        { id: '4mm', label: '4 мм' },
-        { id: '6mm', label: '6 мм' },
-        { id: '9mm', label: '9 мм' }
-      ]},
-      { id: 'cove', label: 'Cove-base', mode: 'single', options: [
-        { id: 'off',  label: 'Без галтели' },
-        { id: '100',  label: '100 мм' }
-      ]}
-    ],
-    mma: [
-      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
-        { id: '9005', label: 'RAL 9005', hex: '#0a0a0a', swatch: '#0a0a0a' },
-        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
-        { id: '1001', label: 'RAL 1001', hex: '#c2b078', swatch: '#c2b078' },
-        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' },
-        { id: 'clear',label: 'Clear pigmented', hex: '#3c3a35', swatch: '#3c3a35' }
-      ]},
-      { id: 'cure', label: 'Cure', mode: 'single', options: [
-        { id: 'std',  label: 'Standard' },
-        { id: 'fast', label: 'Fast (–30 °C)' }
-      ]},
-      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
-        { id: 'off',    label: 'Без кварца' },
-        { id: 'fine',   label: 'Fine' },
-        { id: 'coarse', label: 'Coarse' }
-      ]},
-      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
-        { id: 'clear',     label: 'Clear' },
-        { id: 'pigmented', label: 'Pigmented' }
-      ]}
-    ],
-    concrete: [
-      { id: 'aggregate', label: 'Aggregate exposure', mode: 'single', options: [
-        { id: 'salt',  label: 'Salt-pepper' },
-        { id: 'cream', label: 'Cream' },
-        { id: 'full',  label: 'Full-aggregate' }
-      ]},
-      { id: 'grit', label: 'Polish grit', mode: 'single', options: [
-        { id: '400',  label: '400' },
-        { id: '800',  label: '800' },
-        { id: '1500', label: '1500' },
-        { id: '3000', label: '3000' }
-      ]},
-      { id: 'sealer', label: 'Sealer', mode: 'single', options: [
-        { id: 'oleo',     label: 'Olephobic' },
-        { id: 'wetlook',  label: 'Wet-look' },
-        { id: 'densify',  label: 'Densify-only' }
-      ]}
-    ],
-    rubber: [
-      { id: 'type', label: 'Тип', mode: 'single', options: [
-        { id: 'poured',       label: 'Poured (sport)' },
-        { id: 'sheet',        label: 'Sheet' },
-        { id: 'tile',         label: 'Tile' },
-        { id: 'comfortfloor', label: 'ComfortFloor PS-65' }
-      ]},
-      { id: 'color', label: 'Цвет', mode: 'single', options: [
-        { id: 'black',      label: 'Black',      hex: '#1a1a1a', swatch: '#1a1a1a' },
-        { id: 'red',        label: 'Red',        hex: '#a82a28', swatch: '#a82a28' },
-        { id: 'blue',       label: 'Blue',       hex: '#1d4f8a', swatch: '#1d4f8a' },
-        { id: 'sand',       label: 'Sand',       hex: '#bca27a', swatch: '#bca27a' },
-        { id: 'multicolor', label: 'Multicolor', hex: '#3a3a3a', swatch: '#5a5a5a' }
-      ]},
-      { id: 'surface', label: 'Поверхность', mode: 'single', options: [
-        { id: 'smooth',   label: 'Smooth' },
-        { id: 'textured', label: 'Textured' }
-      ]},
-      { id: 'thickness', label: 'Толщина', mode: 'single', options: [
-        { id: '4mm', label: '4 мм' },
-        { id: '6mm', label: '6 мм' },
-        { id: '9mm', label: '9 мм' }
-      ]}
-    ]
+    /* terrazzo-dark — populated below from buildSchemasFromConfig or fallback */
   };
 
   // Aggregate id → chip palette (overrides PALETTES[mat].chips when active)
@@ -564,6 +334,77 @@
     ]
   };
 
+  // Inline fallback config — keeps lab functional if materials.config.json fetch fails.
+  const INLINE_CONFIG_FALLBACK = {
+    version: 1,
+    materials: [
+      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо тёмный',     swatch: '#1c1c1e', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'charcoal', aggregate:'basalt', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо светлый',    swatch: '#f0ece2', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'white',    aggregate:'carrara', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'terrazzo',       group: 'decor',      label: 'Терраццо венецианский', swatch: '#efe7d6', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'white', aggregate:'carrara', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'epoxy-light',    group: 'decor',      label: 'Эпоксид',             swatch: '#c2bcb0', controls: ['color','flecks','strips','roughness','finish','marking'], defaults: { color:'7044', flecks:'off', strips:'off', roughness:'smooth', finish:'matte', marking:'off' } },
+      { id: 'micro',          group: 'decor',      label: 'Микротопинг',         swatch: '#cfc4b3', controls: ['color','strips','roughness','finish'], defaults: { color:'cream', strips:'off', roughness:'smooth', finish:'satin' } },
+      { id: 'mma',            group: 'decor',      label: 'MMA Pronto',          swatch: '#3c3a35', controls: ['color','flecks','strips','roughness','finish','marking'], defaults: { color:'9005', flecks:'off', strips:'off', roughness:'smooth', finish:'satin', marking:'off' } },
+      { id: 'concrete',       group: 'industrial', label: 'Полированный цемент', swatch: '#7a7468', controls: ['color','strips','roughness','finish','marking'], defaults: { color:'salt', strips:'off', roughness:'smooth', finish:'polished', marking:'off' } },
+      { id: 'purcem',         group: 'industrial', label: 'PU-cement / ПУ-цемент', swatch: '#9a9690', controls: ['color','roughness','finish','marking'], defaults: { color:'7037', roughness:'smooth', finish:'satin', marking:'off' } },
+      { id: 'rubber',         group: 'industrial', label: 'Резиновое покрытие',  swatch: '#2a2a2a', controls: ['color','roughness','marking'], defaults: { color:'black', roughness:'smooth', marking:'off' } },
+      { id: 'epoxy',          group: 'industrial', label: 'Эпоксидная заливка',  swatch: '#2a2620', controls: ['color','roughness','finish','marking'], defaults: { color:'9005', roughness:'smooth', finish:'satin', marking:'off' } }
+    ],
+    controlOptions: {
+      color: {
+        'terrazzo-dark':  [{id:'charcoal',label:'Charcoal',hex:'#1c1c1e',swatch:'#1c1c1e'},{id:'anthracite',label:'Anthracite',hex:'#2c2c2e',swatch:'#2c2c2e'},{id:'graphite',label:'Graphite',hex:'#3a3a3c',swatch:'#3a3a3c'},{id:'stone',label:'Stone',hex:'#5a5a5c',swatch:'#5a5a5c'}],
+        'terrazzo-light': [{id:'white',label:'White',hex:'#f0ece2',swatch:'#f0ece2'},{id:'offwhite',label:'Off-white',hex:'#e8e3d4',swatch:'#e8e3d4'},{id:'sand',label:'Sand',hex:'#dfd4ba',swatch:'#dfd4ba'},{id:'pearl',label:'Pearl',hex:'#ebe6db',swatch:'#ebe6db'}],
+        'terrazzo':       [{id:'white',label:'White',hex:'#efe7d6',swatch:'#efe7d6'},{id:'cream',label:'Cream',hex:'#e8dec8',swatch:'#e8dec8'},{id:'sand',label:'Sand',hex:'#dfd4ba',swatch:'#dfd4ba'},{id:'grey',label:'Grey',hex:'#bdb6a8',swatch:'#bdb6a8'}],
+        'epoxy':          [{id:'9005',label:'RAL 9005',hex:'#0a0a0a',swatch:'#0a0a0a'},{id:'7016',label:'RAL 7016',hex:'#293133',swatch:'#293133'},{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'1001',label:'RAL 1001',hex:'#c2b078',swatch:'#c2b078'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'},{id:'6011',label:'RAL 6011',hex:'#587246',swatch:'#587246'}],
+        'epoxy-light':    [{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'9001',label:'RAL 9001',hex:'#e9e0d2',swatch:'#e9e0d2'},{id:'9010',label:'RAL 9010',hex:'#f1ece1',swatch:'#f1ece1'},{id:'1015',label:'RAL 1015',hex:'#e6d2b5',swatch:'#e6d2b5'},{id:'7035',label:'RAL 7035',hex:'#cbd0cc',swatch:'#cbd0cc'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'}],
+        'micro':          [{id:'cream',label:'Cream',hex:'#cfc4b3',swatch:'#cfc4b3'},{id:'sand',label:'Sand',hex:'#c4b698',swatch:'#c4b698'},{id:'olive',label:'Olive',hex:'#9a9272',swatch:'#9a9272'},{id:'cement',label:'Cement-grey',hex:'#9d9b96',swatch:'#9d9b96'},{id:'charcoal',label:'Charcoal',hex:'#3a3a3c',swatch:'#3a3a3c'}],
+        'purcem':         [{id:'7037',label:'RAL 7037',hex:'#7d7f7d',swatch:'#7d7f7d'},{id:'1015',label:'RAL 1015',hex:'#e6d2b5',swatch:'#e6d2b5'},{id:'8004',label:'RAL 8004',hex:'#a04125',swatch:'#a04125'},{id:'6011',label:'RAL 6011',hex:'#587246',swatch:'#587246'},{id:'7035',label:'RAL 7035',hex:'#cbd0cc',swatch:'#cbd0cc'}],
+        'mma':            [{id:'9005',label:'RAL 9005',hex:'#0a0a0a',swatch:'#0a0a0a'},{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'1001',label:'RAL 1001',hex:'#c2b078',swatch:'#c2b078'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'},{id:'clear',label:'Clear pigmented',hex:'#3c3a35',swatch:'#3c3a35'}],
+        'concrete':       [{id:'salt',label:'Salt-pepper',hex:'#7a7468',swatch:'#7a7468'},{id:'cream',label:'Cream',hex:'#9a9286',swatch:'#9a9286'},{id:'full',label:'Full-aggregate',hex:'#5d5448',swatch:'#5d5448'}],
+        'rubber':         [{id:'black',label:'Black',hex:'#1a1a1a',swatch:'#1a1a1a'},{id:'red',label:'Red',hex:'#a82a28',swatch:'#a82a28'},{id:'blue',label:'Blue',hex:'#1d4f8a',swatch:'#1d4f8a'},{id:'sand',label:'Sand',hex:'#bca27a',swatch:'#bca27a'},{id:'multicolor',label:'Multicolor',hex:'#3a3a3a',swatch:'#5a5a5a'}]
+      },
+      aggregate: {
+        'terrazzo-dark':  [{id:'basalt',label:'Basalt'},{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
+        'terrazzo-light': [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
+        'terrazzo':       [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}]
+      },
+      strips: [{id:'off',label:'Без полос'},{id:'brass4',label:'Латунь 4мм',hex:'#c9a04a'},{id:'alu4',label:'Алюминий 4мм',hex:'#d8d4cc'},{id:'black6',label:'Чёрный 6мм',hex:'#0a0a0a'}],
+      finish: [{id:'matte',label:'Matte'},{id:'satin',label:'Satin'},{id:'polished',label:'Polished'},{id:'glossy',label:'Glossy'},{id:'wetlook',label:'Wet-look'}],
+      flecks: [{id:'off',label:'Без флеков'},{id:'fine',label:'Vinyl chips'},{id:'coarse',label:'Coarse 1/8″'},{id:'mica',label:'Mica'},{id:'metallic',label:'Metallic FX'}],
+      roughness: [{id:'smooth',label:'Smooth'},{id:'fine',label:'Fine grit'},{id:'coarse',label:'Coarse anti-slip'}],
+      marking: [{id:'off',label:'Без разметки'},{id:'yellow-zone',label:'Жёлтая зона'},{id:'white-grid',label:'Белая сетка'},{id:'red-safety',label:'Красная зона'},{id:'pedestrian',label:'Зебра'}]
+    }
+  };
+
+  // Build CONTROL_SCHEMAS dynamically from a config (incl. fallback structure).
+  function buildSchemasFromConfig(config) {
+    const opts = config.controlOptions || {};
+    config.materials.forEach(mat => {
+      const matId = mat.id;
+      const groups = (mat.controls || []).map(ctrlId => {
+        let options;
+        if (opts[ctrlId] && Array.isArray(opts[ctrlId])) {
+          // shared list (strips/finish/flecks/roughness/marking)
+          options = opts[ctrlId];
+        } else if (opts[ctrlId] && opts[ctrlId][matId]) {
+          // per-material list (color/aggregate)
+          options = opts[ctrlId][matId];
+        } else {
+          options = [];
+        }
+        if (!options.length) return null;
+        return {
+          id: ctrlId,
+          label: CONTROL_LABELS[ctrlId] || ctrlId,
+          mode: 'single',
+          options: options.slice()
+        };
+      }).filter(Boolean);
+      CONTROL_SCHEMAS[matId] = groups;
+    });
+    // Cache loaded config for any other consumer
+    window.__floordsgnMaterials = config;
+  }
+
   // Strip-overlay style for терраццо саргелим (CSS background)
   function stripsBackground(stripId) {
     if (!stripId || stripId === 'off') return 'none';
@@ -578,31 +419,19 @@
     return `repeating-linear-gradient(90deg, transparent 0 calc(${s.spacing} - ${s.width}), ${s.color} calc(${s.spacing} - ${s.width}) ${s.spacing})`;
   }
 
-  // System URL builder per material
-  function systemHrefFor(material, st) {
-    const enc = (v) => encodeURIComponent(v || '');
-    switch (material) {
-      case 'terrazzo':
-      case 'terrazzo-dark':
-      case 'terrazzo-light':
-        return `floors/terrazzo.html?finish=${enc(st.finish)}&aggregate=${enc(st.aggregate)}&color=${enc(st.color)}`;
-      case 'epoxy':
-      case 'epoxy-light':
-        return `floors/epoxy.html?ral=${enc(st.color)}&fleck=${enc(st.flecks)}&finish=${enc(st.finish)}&broadcast=${enc(st.broadcast)}`;
-      case 'micro':
-        return `floors/microtopping.html?color=${enc(st.color)}&finish=${enc(st.finish)}&texture=${enc(st.texture)}&topcoat=${enc(st.broadcast)}`;
-      case 'concrete':
-        return `floors/concrete.html?exposure=${enc(st.aggregate)}&grit=${enc(st.grit)}&sealer=${enc(st.sealer)}`;
-      case 'purcem':
-        return `floors/pu-cement.html?color=${enc(st.color)}&surface=${enc(st.surface)}&thickness=${enc(st.thickness)}&cove=${enc(st.cove)}`;
-      case 'mma':
-        return `floors/mma.html?color=${enc(st.color)}&cure=${enc(st.cure)}&broadcast=${enc(st.broadcast)}&finish=${enc(st.finish)}`;
-      case 'rubber':
-        return `floors/rubber.html?type=${enc(st.type)}&color=${enc(st.color)}&surface=${enc(st.surface)}&thickness=${enc(st.thickness)}`;
-      default:
-        return 'floors.html';
-    }
+  // CTA URL builder — links to quote.html with all current state encoded as URL params.
+  // Owner brief: CTA "Заказать эту формулу" → quote.html?<state>; state also persisted to localStorage.
+  function quoteHrefFor(material, st) {
+    const params = new URLSearchParams();
+    params.set('material', material);
+    Object.keys(st || {}).forEach(k => {
+      const v = st[k];
+      if (v != null && v !== '' && v !== 'off') params.set(k, v);
+    });
+    return 'quote.html?' + params.toString();
   }
+  // Backward-compatible alias used elsewhere
+  function systemHrefFor(material, st) { return quoteHrefFor(material, st); }
 
   // Map finish id → CSS variables for plate gloss/contrast
   function glossVarsFor(finishId) {
@@ -760,6 +589,27 @@
       });
     });
 
+    // Prefill material from ?material= query param (sent by hero-lab CTA)
+    try {
+      const qs = new URLSearchParams(window.location.search);
+      const m = qs.get('material');
+      if (m) {
+        const map = {
+          'terrazzo': 'terrazzo', 'terrazzo-dark': 'terrazzo', 'terrazzo-light': 'terrazzo',
+          'epoxy': 'epoxy', 'epoxy-light': 'epoxy',
+          'micro': 'micro', 'concrete': 'concrete',
+          'purcem': 'pucement', 'mma': 'mma', 'rubber': 'epoxy'
+        };
+        const target = map[m] || m;
+        const matBtn = card.querySelector('[data-fx="cMat"] [data-v="' + target + '"]');
+        if (matBtn) {
+          card.querySelectorAll('[data-fx="cMat"] button, [data-fx="cMat"] span').forEach(x => x.classList.remove('on'));
+          matBtn.classList.add('on');
+          p = +matBtn.dataset.p || p;
+        }
+      }
+    } catch (e) { /* prefill is best-effort; ignore failures */ }
+
     set();
   };
 
@@ -774,9 +624,50 @@
     const stripsOverlay  = document.querySelector('[data-fx="strips"]');
     const flecksOverlay  = document.querySelector('[data-fx="flecks"]');
     const textureOverlay = document.querySelector('[data-fx="texture"]');
+    const markingOverlay = document.querySelector('[data-fx="marking"]');
     const sheenOverlay   = document.querySelector('[data-fx="sheen"]');
     const systemLink     = document.querySelector('[data-fx="systemLink"]');
+    const introBlock     = document.querySelector('.fx-hero-lab__intro');
+    const heroSection    = document.querySelector('.fx-hero-lab');
+    const liveAnnounce   = document.querySelector('[data-fx="liveAnnounce"]');
+    const ctaHelper      = document.querySelector('[data-fx="ctaHelper"]');
+    const LS_KEY         = 'floordsgn-lab-state';
+    const LS_ONBOARDED   = 'floordsgn-lab-onboarded';
 
+    // ---------- Config loader: try fetch then fall back to inline ----------
+    function loadConfig(cb) {
+      if (window.__floordsgnMaterials) {
+        try { buildSchemasFromConfig(window.__floordsgnMaterials); cb(); return; } catch (e) {}
+      }
+      // Find config relative to current page (handles /en/ subpath too)
+      const url = (location.pathname.indexOf('/en/') === 0 ? '../' : '') + 'materials.config.json';
+      let done = false;
+      const finish = (cfg, source) => {
+        if (done) return;
+        done = true;
+        try {
+          buildSchemasFromConfig(cfg);
+        } catch (e) {
+          console.warn('[hero-lab] config build failed, using inline fallback', e);
+          buildSchemasFromConfig(INLINE_CONFIG_FALLBACK);
+        }
+        cb();
+      };
+      // Hard timeout — never block the lab if fetch is slow
+      const t = setTimeout(() => finish(INLINE_CONFIG_FALLBACK, 'timeout'), 1500);
+      try {
+        fetch(url, { cache: 'force-cache' })
+          .then(r => r.ok ? r.json() : Promise.reject(new Error('http ' + r.status)))
+          .then(cfg => { clearTimeout(t); finish(cfg, 'fetch'); })
+          .catch(err => { clearTimeout(t); console.warn('[hero-lab] fetch fallback', err.message); finish(INLINE_CONFIG_FALLBACK, 'fallback'); });
+      } catch (e) {
+        clearTimeout(t);
+        finish(INLINE_CONFIG_FALLBACK, 'no-fetch');
+      }
+    }
+
+    // Boot the lab AFTER config is loaded — guarantees CONTROL_SCHEMAS is populated.
+    loadConfig(function boot() {
     // State store: { [material]: { control_id: option_id } }
     const state = Object.create(null);
     function defaultStateFor(material) {
@@ -788,6 +679,27 @@
     function ensureState(material) {
       if (!state[material]) state[material] = defaultStateFor(material);
       return state[material];
+    }
+
+    function persistState() {
+      try {
+        const snap = { material: curMat, state: state[curMat] || {} };
+        localStorage.setItem(LS_KEY, JSON.stringify(snap));
+        if (ctaHelper) ctaHelper.hidden = false;
+      } catch (e) {}
+    }
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(LS_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.material && CONTROL_SCHEMAS[parsed.material]) {
+          state[parsed.material] = Object.assign(defaultStateFor(parsed.material), parsed.state || {});
+          if (ctaHelper) ctaHelper.hidden = false;
+          return parsed.material;
+        }
+      } catch (e) {}
+      return null;
     }
 
     let curMat = plate.getAttribute('data-system') || 'terrazzo-dark';
@@ -882,25 +794,29 @@
         }
       }
 
-      // 6) Texture overlay (micro / concrete / rubber surface)
+      // 6) Roughness overlay (unified surface texture control)
       if (textureOverlay) {
         textureOverlay.className = 'fx-hero-lab__texture';
+        const rgOpt = selectedOption(material, 'roughness');
+        if (rgOpt && rgOpt.id !== 'smooth') {
+          textureOverlay.classList.add('is-on');
+          textureOverlay.classList.add('rg-' + rgOpt.id);
+        }
+        // legacy support — texture/surface/broadcast IDs map to similar visual modes
         const txOpt = selectedOption(material, 'texture');
         if (txOpt && txOpt.id !== 'smooth') {
           textureOverlay.classList.add('is-on');
           textureOverlay.classList.add('mode-' + txOpt.id);
         }
-        // surface (purcem/rubber) maps too
-        const surfOpt = selectedOption(material, 'surface');
-        if (surfOpt && surfOpt.id !== 'smooth') {
-          textureOverlay.classList.add('is-on');
-          textureOverlay.classList.add('surf-' + surfOpt.id);
-        }
-        // broadcast (epoxy/mma) → fine/coarse texture
-        const bcOpt = selectedOption(material, 'broadcast');
-        if (bcOpt && bcOpt.id && bcOpt.id !== 'off' && bcOpt.id !== 'pu2x' && bcOpt.id !== 'wax') {
-          textureOverlay.classList.add('is-on');
-          textureOverlay.classList.add('bc-' + bcOpt.id);
+      }
+
+      // 6b) Marking overlay (road/safety markings)
+      if (markingOverlay) {
+        markingOverlay.className = 'fx-hero-lab__marking';
+        const mkOpt = selectedOption(material, 'marking');
+        if (mkOpt && mkOpt.id && mkOpt.id !== 'off') {
+          markingOverlay.classList.add('is-on');
+          markingOverlay.classList.add('is-' + mkOpt.id);
         }
       }
 
@@ -973,37 +889,84 @@
       }
     }
 
-    function selectMaterial(material) {
+    function announceMaterial(material) {
+      if (!liveAnnounce) return;
+      const p = PALETTES[material];
+      if (!p) return;
+      liveAnnounce.textContent = text('Выбрано: ', 'Selected: ') + localize(p.label) + (p.sub ? ' · ' + localize(p.sub) : '');
+    }
+
+    function selectMaterial(material, opts) {
+      opts = opts || {};
+      if (!CONTROL_SCHEMAS[material]) return;
       curMat = material;
       ensureState(material);
-      // mark active in left material list
+      // mark active in left material list (radiogroup pattern)
       document.querySelectorAll('.fx-hero-lab__mat').forEach(b => {
-        b.classList.toggle('is-active', b.dataset.m === material);
-        b.setAttribute('aria-pressed', b.dataset.m === material ? 'true' : 'false');
+        const on = b.dataset.m === material;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-checked', on ? 'true' : 'false');
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
       });
       renderControls(material);
       applyAllForMaterial(material);
+      announceMaterial(material);
+      if (opts.persist !== false) persistState();
+      if (opts.focus) {
+        const btn = document.querySelector('.fx-hero-lab__mat.is-active');
+        if (btn) btn.focus();
+      }
     }
 
-    // Initial render
-    selectMaterial(curMat);
+    // Plate rotation state — declared early so scroll-tilt closure can reference it
+    let rx = 56, ry = -18, drag = null, dragMoved = 0, exploded = false;
+    const applyRot = () => {
+      plate.style.setProperty('--rx', rx + 'deg');
+      plate.style.setProperty('--ry', ry + 'deg');
+    };
 
-    // LEFT — material list click handler (delegated)
-    const matsRoot = document.querySelectorAll('.fx-hero-lab__mat');
-    matsRoot.forEach(btn => {
+    let idleTimer = null;
+    const scheduleIdle = () => {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        if (!drag && !exploded) plate.classList.add('idle');
+      }, 2400);
+    };
+
+    // Restore from localStorage if present, before initial render
+    const restored = restoreState();
+    if (restored) curMat = restored;
+
+    // Initial render
+    selectMaterial(curMat, { persist: false });
+
+    // ---------- LEFT: material list keyboard + click ----------
+    const allMatBtns = () => Array.from(document.querySelectorAll('.fx-hero-lab__mat'));
+    document.querySelectorAll('.fx-hero-lab__mat').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const m = btn.dataset.m;
-        if (!m || m === curMat) {
-          // still re-render in case state was reset
-          if (m && m !== curMat) selectMaterial(m);
-          return;
+        if (m) selectMaterial(m);
+      });
+      btn.addEventListener('keydown', (e) => {
+        const list = allMatBtns();
+        const idx = list.indexOf(btn);
+        if (idx < 0) return;
+        let next = -1;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (idx + 1) % list.length;
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (idx - 1 + list.length) % list.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = list.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          const m = list[next].dataset.m;
+          if (m) selectMaterial(m, { focus: true });
         }
-        selectMaterial(m);
       });
     });
 
-    // RIGHT — controls click handler (delegated)
+    // ---------- RIGHT: controls click + keyboard ----------
     if (controlsRoot) {
       controlsRoot.addEventListener('click', (e) => {
         const btn = e.target.closest('.fx-hero-lab__btn');
@@ -1020,25 +983,100 @@
             const on = b.dataset.value === val;
             b.classList.toggle('is-active', on);
             b.setAttribute('aria-pressed', on ? 'true' : 'false');
+            b.setAttribute('aria-checked', on ? 'true' : 'false');
           });
         }
         applyAllForMaterial(curMat);
+        persistState();
+      });
+      // arrow-key navigation within control buttons inside a single group
+      controlsRoot.addEventListener('keydown', (e) => {
+        const btn = e.target.closest('.fx-hero-lab__btn');
+        if (!btn) return;
+        const groupEl = btn.closest('.fx-hero-lab__btnrow');
+        if (!groupEl) return;
+        const list = Array.from(groupEl.querySelectorAll('.fx-hero-lab__btn'));
+        const idx = list.indexOf(btn);
+        let next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (idx + 1) % list.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + list.length) % list.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = list.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          list[next].focus();
+          list[next].click();
+        }
       });
     }
 
-    let rx = 56, ry = -18, drag = null, dragMoved = 0, exploded = false;
-    const applyRot = () => {
-      plate.style.setProperty('--rx', rx + 'deg');
-      plate.style.setProperty('--ry', ry + 'deg');
-    };
+    // ---------- Onboarding: pulse first 3 controls once ----------
+    function maybeOnboard() {
+      try {
+        if (localStorage.getItem(LS_ONBOARDED) === '1') return;
+      } catch (e) { return; }
+      if (!controlsRoot) return;
+      const buttons = Array.from(controlsRoot.querySelectorAll('.fx-hero-lab__btn'));
+      const targets = buttons.slice(0, 3);
+      targets.forEach((b, i) => {
+        setTimeout(() => {
+          b.classList.add('is-pulse');
+          setTimeout(() => b.classList.remove('is-pulse'), 800);
+        }, i * 800);
+      });
+      try { localStorage.setItem(LS_ONBOARDED, '1'); } catch (e) {}
+    }
 
-    let idleTimer = null;
-    const scheduleIdle = () => {
-      if (idleTimer) clearTimeout(idleTimer);
-      idleTimer = setTimeout(() => {
-        if (!drag && !exploded) plate.classList.add('idle');
-      }, 2400);
-    };
+    // ---------- Scroll choreography (IntersectionObserver + tilt) ----------
+    if (introBlock) {
+      try {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              introBlock.classList.add('is-revealed');
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        io.observe(introBlock);
+      } catch (e) {
+        introBlock.classList.add('is-revealed');
+      }
+    }
+
+    if (heroSection) {
+      let scrollTilt = 0;
+      let scrollRaf = null;
+      let lastScrollAt = 0;
+      const updateScrollTilt = () => {
+        scrollRaf = null;
+        if (exploded || drag) {
+          plate.style.setProperty('--plate-scroll-tilt', '0deg');
+          return;
+        }
+        const rect = heroSection.getBoundingClientRect();
+        const vh = window.innerHeight || 800;
+        // Map top/vh ratio (1 → -8deg entering top, -1 → +8deg leaving bottom)
+        let ratio = rect.top / vh;
+        ratio = Math.max(-1, Math.min(1, ratio));
+        scrollTilt = -ratio * 8;
+        plate.style.setProperty('--plate-scroll-tilt', scrollTilt.toFixed(2) + 'deg');
+        lastScrollAt = Date.now();
+      };
+      window.addEventListener('scroll', () => {
+        if (!scrollRaf) scrollRaf = requestAnimationFrame(updateScrollTilt);
+      }, { passive: true });
+      updateScrollTilt();
+
+      // Pause idle rotation when actively scrolling
+      const pauseIdleOnScroll = () => {
+        if (Date.now() - lastScrollAt < 400) plate.classList.remove('idle');
+      };
+      setInterval(pauseIdleOnScroll, 250);
+    }
+
+    // Trigger onboarding when intro is revealed (or fallback timeout)
+    setTimeout(maybeOnboard, 1500);
 
     function toggleExplode() {
       exploded = !exploded;
@@ -1124,6 +1162,7 @@
       drag = null;
       scheduleIdle();
     });
+    }); // end loadConfig(boot)
   };
 
 
