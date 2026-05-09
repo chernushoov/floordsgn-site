@@ -79,8 +79,8 @@
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=9">
-    <link rel="stylesheet" href="enhance.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="enhance.css?v=15">
 </head>
 <body>
 
@@ -164,9 +164,9 @@
     <section class="fx-plate-section">
       <div class="fx-plate-shell">
         <div class="fx-plate-info">
-          <p class="fx-plate-eyebrow anim-up">Floor.DSGN · Sika certified · Israel</p>
+          <p class="fx-plate-eyebrow anim-up">Floor.DSGN · Israel · Engineering</p>
           <h2 class="fx-plate-h2 anim-up anim-d1">Полы, которые<br/><em>проектируют</em><br/>— а не кладут</h2>
-          <p class="fx-plate-meta anim-up anim-d2">Сертифицированные системы Sika для складов, студий и домов — от расчёта нагрузки до финишной текстуры. Тяните образец чтобы вращать, <b>нажмите</b> чтобы разнести его на слои технологии.</p>
+          <p class="fx-plate-meta anim-up anim-d2">Системы покрытий для складов, студий и домов — от расчёта нагрузки до финишной текстуры. Тяните образец чтобы вращать, <b>нажмите</b> чтобы разнести его на слои технологии.</p>
           <div class="fx-plate-mat-seg anim-up anim-d3" role="tablist" aria-label="Образец материала">
             <button type="button" class="on" data-m="terrazzo-dark" role="tab">Терраццо тёмный</button>
             <button type="button" data-m="terrazzo-light" role="tab">Терраццо светлый</button>
@@ -232,6 +232,12 @@
             </div>
           </div>
           <div class="fx-plate-hint" data-fx="plateHint">тяните чтобы вращать · нажмите чтобы разнести на слои</div>
+          <!-- Mobile bottom-sheet с подписями слоёв (показывается только когда plate is-exploded на мобиле) -->
+          <aside class="fx-plate-sheet" data-fx="plateSheet" aria-hidden="true">
+            <div class="fx-plate-sheet__grab" aria-hidden="true"></div>
+            <p class="fx-plate-sheet__title">Слои системы</p>
+            <ol class="fx-plate-sheet__list" data-fx="plateSheetList"></ol>
+          </aside>
         </div>
       </div>
     </section>
@@ -239,7 +245,7 @@
     <!-- HERO — выбор системы по материалу -->
     <section class="fx-picker">
       <div class="fx-picker__head">
-        <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Sika certified</p>
+        <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Engineering</p>
         <h1 class="fx-picker__h1">Выберите <em>систему</em></h1>
         <p class="fx-picker__lede">Шесть семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href="decision-tool.html" class="fx-picker__inline-link">подбор за 6 вопросов</a>.</p>
       </div>
@@ -307,25 +313,83 @@
 
 
 
+    <!-- TERRAZZO GALLERY - APPLE BENTO STYLE -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header center animate-on-scroll">
+                <p class="section-subtitle" data-i18n="home_gallery_subtitle">Our Craft</p>
+                <h2 class="section-title" data-i18n="home_gallery_title">Terrazzo Gallery</h2>
+            </div>
+            <div class="bento-gallery">
+                <div class="bento-item bento-hero animate-on-scroll">
+                    <img src="images/terrazzo/interrior-222944.jpg" alt="Modern terrazzo interior" loading="lazy">
+                    <div class="bento-glass">
+                        <span class="tag" data-i18n="home_gallery_tag1">Featured Project</span>
+                        <h4 data-i18n="home_gallery_item1">Modern Interior Design</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-1">
+                    <img src="images/terrazzo/interrior-222943.jpg" alt="Terrazzo living space" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag" data-i18n="home_gallery_tag2">Residential</span>
+                        <h4 data-i18n="home_gallery_item2">Living Space</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-2">
+                    <img src="images/terrazzo/interrior-222942.jpg" alt="Contemporary terrazzo" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag" data-i18n="home_gallery_tag3">Design</span>
+                        <h4 data-i18n="home_gallery_item3">Contemporary</h4>
+                    </div>
+                </div>
+                <div class="bento-item bento-wide animate-on-scroll stagger-3">
+                    <img src="images/terrazzo/svoboda-2.jpg" alt="Project Svoboda" loading="lazy">
+                    <div class="bento-glass">
+                        <span class="tag" data-i18n="home_gallery_tag4">Commercial</span>
+                        <h4 data-i18n="home_gallery_item4">Project Svoboda</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-4">
+                    <img src="images/terrazzo/interrior-266999.jpg" alt="Terrazzo floor detail" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag" data-i18n="home_gallery_tag5">Detail</span>
+                        <h4 data-i18n="home_gallery_item5">Floor Pattern</h4>
+                    </div>
+                </div>
+                <div class="bento-item animate-on-scroll stagger-5">
+                    <img src="images/terrazzo/scale_2400-2.jpeg" alt="Premium terrazzo" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="tag" data-i18n="home_gallery_tag6">Premium</span>
+                        <h4 data-i18n="home_gallery_item6">Venetian Style</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- WHY TRUST US - SOFTENED CLAIMS -->
     <section class="trust-section">
         <div class="container">
             <div class="trust-grid">
                 <div class="trust-item animate-on-scroll">
-                    <div class="trust-number">●</div>
-                    <div class="trust-label" data-i18n="trust_projects">Documented project examples</div>
+                    <div class="trust-icon" aria-hidden="true">✓</div>
+                    <div class="trust-title">Сертифицированный installer</div>
+                    <div class="trust-label">Работаем по технологическим картам ведущих производителей материалов</div>
                 </div>
                 <div class="trust-item animate-on-scroll stagger-1">
-                    <div class="trust-number">●</div>
-                    <div class="trust-label" data-i18n="trust_years">Documented track record</div>
+                    <div class="trust-icon" aria-hidden="true">⌬</div>
+                    <div class="trust-title">10+ систем</div>
+                    <div class="trust-label">Эпокси, терраццо, микротопинг, PU‑cement, MMA, полированный бетон</div>
                 </div>
                 <div class="trust-item animate-on-scroll stagger-2">
-                    <div class="trust-number">10+</div>
-                    <div class="trust-label" data-i18n="trust_systems">Floor system families</div>
+                    <div class="trust-icon" aria-hidden="true">⌖</div>
+                    <div class="trust-title">8 индустрий</div>
+                    <div class="trust-label">Склады, food/pharma, ритейл, healthcare, hospitality, residential</div>
                 </div>
                 <div class="trust-item animate-on-scroll stagger-3">
-                    <div class="trust-number">●</div>
-                    <div class="trust-label" data-i18n="trust_warranty">System-specific warranty</div>
+                    <div class="trust-icon" aria-hidden="true">⏳</div>
+                    <div class="trust-title">10 лет</div>
+                    <div class="trust-label">Гарантия на систему — адгезия и износостойкость</div>
                 </div>
             </div>
         </div>
@@ -419,60 +483,6 @@
                 </div>
                 <div class="quality-image">
                     <img src="images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="Professional floor installation" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TERRAZZO GALLERY - APPLE BENTO STYLE -->
-    <section class="gallery-section">
-        <div class="container">
-            <div class="section-header center animate-on-scroll">
-                <p class="section-subtitle" data-i18n="home_gallery_subtitle">Our Craft</p>
-                <h2 class="section-title" data-i18n="home_gallery_title">Terrazzo Gallery</h2>
-            </div>
-            <div class="bento-gallery">
-                <div class="bento-item bento-hero animate-on-scroll">
-                    <img src="images/terrazzo/interrior-222944.jpg" alt="Modern terrazzo interior" loading="lazy">
-                    <div class="bento-glass">
-                        <span class="tag" data-i18n="home_gallery_tag1">Featured Project</span>
-                        <h4 data-i18n="home_gallery_item1">Modern Interior Design</h4>
-                    </div>
-                </div>
-                <div class="bento-item animate-on-scroll stagger-1">
-                    <img src="images/terrazzo/interrior-222943.jpg" alt="Terrazzo living space" loading="lazy">
-                    <div class="bento-overlay">
-                        <span class="tag" data-i18n="home_gallery_tag2">Residential</span>
-                        <h4 data-i18n="home_gallery_item2">Living Space</h4>
-                    </div>
-                </div>
-                <div class="bento-item animate-on-scroll stagger-2">
-                    <img src="images/terrazzo/interrior-222942.jpg" alt="Contemporary terrazzo" loading="lazy">
-                    <div class="bento-overlay">
-                        <span class="tag" data-i18n="home_gallery_tag3">Design</span>
-                        <h4 data-i18n="home_gallery_item3">Contemporary</h4>
-                    </div>
-                </div>
-                <div class="bento-item bento-wide animate-on-scroll stagger-3">
-                    <img src="images/terrazzo/svoboda-2.jpg" alt="Project Svoboda" loading="lazy">
-                    <div class="bento-glass">
-                        <span class="tag" data-i18n="home_gallery_tag4">Commercial</span>
-                        <h4 data-i18n="home_gallery_item4">Project Svoboda</h4>
-                    </div>
-                </div>
-                <div class="bento-item animate-on-scroll stagger-4">
-                    <img src="images/terrazzo/interrior-266999.jpg" alt="Terrazzo floor detail" loading="lazy">
-                    <div class="bento-overlay">
-                        <span class="tag" data-i18n="home_gallery_tag5">Detail</span>
-                        <h4 data-i18n="home_gallery_item5">Floor Pattern</h4>
-                    </div>
-                </div>
-                <div class="bento-item animate-on-scroll stagger-5">
-                    <img src="images/terrazzo/scale_2400-2.jpeg" alt="Premium terrazzo" loading="lazy">
-                    <div class="bento-overlay">
-                        <span class="tag" data-i18n="home_gallery_tag6">Premium</span>
-                        <h4 data-i18n="home_gallery_item6">Venetian Style</h4>
-                    </div>
                 </div>
             </div>
         </div>
@@ -746,7 +756,7 @@
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
     <script src="translations.js"></script>
-    <script src="enhance.js?v=11" defer></script>
+    <script src="enhance.js?v=12" defer></script>
 </body>
 </html>
 <!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->

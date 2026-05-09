@@ -339,7 +339,7 @@
         plate.style.setProperty('--plate-svg-opacity', '1');
         plate.style.setProperty('--plate-top-filter', 'none');
       }
-      // Динамические подписи слоёв из buildup конфига Sika TDS
+      // Динамические подписи слоёв
       if (p.buildup) {
         const setLayerLabel = (sel, def) => {
           const el = document.querySelector(sel);
@@ -359,6 +359,20 @@
             const tag = meshLayer.querySelector('.fx-layer-tag');
             if (tag) tag.innerHTML = p.buildup.mesh.name + (p.buildup.mesh.sku ? `<b>${p.buildup.mesh.sku}</b>` : '');
           }
+        }
+        // bottom-sheet (мобильная версия подписей)
+        const sheetList = document.querySelector('[data-fx="plateSheetList"]');
+        if (sheetList) {
+          const order = [
+            { def: p.buildup.topcoat,   color: '#cfd0d2' },
+            { def: p.buildup.body,      color: '#d4cfb8' },
+            ...(p.mesh && p.buildup.mesh ? [{ def: p.buildup.mesh, color: '#aac8aa' }] : []),
+            { def: p.buildup.primer,    color: '#d49b4a' },
+            { def: p.buildup.substrate, color: '#9a9286' }
+          ];
+          sheetList.innerHTML = order.map(r => r.def
+            ? `<li style="--row-color:${r.color}"><span><div class="row-label">${r.def.name}</div>${r.def.sku?`<div class="row-sku">${r.def.sku}</div>`:''}</span></li>`
+            : '').join('');
         }
       }
     }
@@ -398,13 +412,18 @@
       if (hint) hint.textContent = exploded
         ? 'нажмите ещё раз чтобы собрать обратно'
         : 'тяните чтобы вращать · нажмите чтобы разнести на слои';
+      const sheet = document.querySelector('[data-fx="plateSheet"]');
+      if (sheet) {
+        if (exploded) sheet.setAttribute('data-open', '');
+        else sheet.removeAttribute('data-open');
+      }
       if (exploded) {
-        // Снимаем inline --rx/--ry от drag, чтобы CSS .is-exploded
-        // мог зафиксировать "правильный" угол показа слоёв.
         plate.style.removeProperty('--rx');
         plate.style.removeProperty('--ry');
-        // Запоминаем "правильную" позу для подписей.
         rx = 24; ry = -16;
+        if (window.navigator && window.navigator.vibrate) {
+          try { window.navigator.vibrate(12); } catch (e) {}
+        }
       } else {
         applyRot();
         scheduleIdle();

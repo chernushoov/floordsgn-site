@@ -446,32 +446,85 @@ img {
 
 /* ==================== TRUST SECTION ==================== */
 .trust-section {
-    padding: 80px 0;
-    background: var(--black);
-    color: var(--white);
+    padding: 120px 0;
+    background: #1d1d1f;
+    color: #f5f5f7;
 }
 
 .trust-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    text-align: center;
+    gap: 32px;
+    text-align: left;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 36px);
 }
 
+.trust-item {
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.02);
+    transition: border-color .3s cubic-bezier(.22,1,.36,1), background .3s cubic-bezier(.22,1,.36,1);
+}
+.trust-item:hover {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+}
+
+.trust-icon {
+    font-size: 28px;
+    line-height: 1;
+    color: #f5f5f7;
+    margin-bottom: 18px;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    text-align: center;
+    line-height: 44px;
+    border: 1px solid rgba(255,255,255,0.10);
+}
+
+.trust-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #f5f5f7;
+    margin-bottom: 8px;
+    line-height: 1.1;
+}
+
+.trust-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.72);
+}
+
+/* Backwards-compat: oldskool .trust-number если где-то остался */
 .trust-number {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
     font-size: clamp(42px, 6vw, 64px);
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 10px;
+    color: #f5f5f7;
 }
 
-.trust-label {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    color: rgba(255,255,255,0.6);
+@media (max-width: 768px) {
+    .trust-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .trust-item { padding: 18px; }
+    .trust-title { font-size: 22px; }
+    .trust-icon { width: 36px; height: 36px; line-height: 36px; font-size: 22px; margin-bottom: 12px; }
+}
+@media (max-width: 480px) {
+    .trust-grid { grid-template-columns: 1fr; }
 }
 
 /* ==================== BREADCRUMBS ==================== */
