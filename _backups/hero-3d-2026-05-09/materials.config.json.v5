@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 5,
   "groups": {
     "decor": { "label": "Декоративные", "order": 1 },
     "industrial": { "label": "Промышленные", "order": 2 }
@@ -32,8 +32,8 @@
         { "c": "#6a6a6d", "w": 0.15 }, { "c": "#cfcfcf", "w": 0.10 },
         { "c": "#3a3a3c", "w": 0.15 }, { "c": "#fafafa", "w": 0.10 }
       ],
-      "controls": ["color", "aggregate", "accents", "strips", "roughness", "finish", "thickness"],
-      "defaults": { "color": "charcoal", "aggregate": "basalt", "accents": "off", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "12mm" },
+      "controls": ["color", "aggregate", "strips", "roughness", "finish", "thickness"],
+      "defaults": { "color": "charcoal", "aggregate": "basalt", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "12mm" },
       "systemHref": "floors/terrazzo.html"
     },
     {
@@ -65,8 +65,8 @@
         { "c": "#d6d2c8", "w": 0.25 }, { "c": "#c4a878", "w": 0.10 },
         { "c": "#fff",    "w": 0.10 }
       ],
-      "controls": ["color", "aggregate", "accents", "strips", "roughness", "finish", "thickness"],
-      "defaults": { "color": "white", "aggregate": "carrara", "accents": "off", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "12mm" },
+      "controls": ["color", "aggregate", "strips", "roughness", "finish", "thickness"],
+      "defaults": { "color": "white", "aggregate": "carrara", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "12mm" },
       "systemHref": "floors/terrazzo.html"
     },
     {
@@ -97,8 +97,8 @@
         { "c": "#5a6a4f", "w": 0.05 }, { "c": "#b9a98a", "w": 0.20 },
         { "c": "#fff",    "w": 0.08 }
       ],
-      "controls": ["color", "aggregate", "accents", "strips", "roughness", "finish", "thickness"],
-      "defaults": { "color": "white", "aggregate": "carrara", "accents": "off", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "15mm" },
+      "controls": ["color", "aggregate", "strips", "roughness", "finish", "thickness"],
+      "defaults": { "color": "white", "aggregate": "carrara", "strips": "off", "roughness": "smooth", "finish": "matte", "thickness": "15mm" },
       "systemHref": "floors/terrazzo.html"
     },
     {
@@ -159,8 +159,8 @@
         { "c": "#b9a98a", "w": 0.4 }, { "c": "#9a8e7b", "w": 0.3 },
         { "c": "#dccaa9", "w": 0.3 }
       ],
-      "controls": ["color", "trowelPattern", "strips", "roughness", "finish"],
-      "defaults": { "color": "cream", "trowelPattern": "smooth", "strips": "off", "roughness": "smooth", "finish": "satin" },
+      "controls": ["color", "strips", "roughness", "finish"],
+      "defaults": { "color": "cream", "strips": "off", "roughness": "smooth", "finish": "satin" },
       "systemHref": "floors/microtopping.html"
     },
     {
@@ -190,8 +190,8 @@
         { "c": "#4a4640", "w": 0.50 }, { "c": "#5e5a50", "w": 0.25 },
         { "c": "#28261f", "w": 0.25 }
       ],
-      "controls": ["color", "flecks", "broadcast", "strips", "roughness", "finish", "marking", "thickness"],
-      "defaults": { "color": "9005", "flecks": "off", "broadcast": "off", "strips": "off", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "3mm" },
+      "controls": ["color", "flecks", "strips", "roughness", "finish", "marking", "thickness"],
+      "defaults": { "color": "9005", "flecks": "off", "strips": "off", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "3mm" },
       "systemHref": "floors/mma.html"
     },
     {
@@ -220,8 +220,8 @@
         { "c": "#5d5448", "w": 0.3 }, { "c": "#3a342c", "w": 0.2 },
         { "c": "#9a9286", "w": 0.3 }, { "c": "#a8a298", "w": 0.2 }
       ],
-      "controls": ["color", "aggregateExposure", "strips", "roughness", "finish", "marking"],
-      "defaults": { "color": "salt", "aggregateExposure": "salt-pepper", "strips": "off", "roughness": "smooth", "finish": "polished", "marking": "off" },
+      "controls": ["color", "strips", "roughness", "finish", "marking"],
+      "defaults": { "color": "salt", "strips": "off", "roughness": "smooth", "finish": "polished", "marking": "off" },
       "systemHref": "floors/concrete.html"
     },
     {
@@ -251,8 +251,8 @@
         { "c": "#7a7670", "w": 0.35 }, { "c": "#a8a49e", "w": 0.35 },
         { "c": "#5a564f", "w": 0.15 }, { "c": "#bab6b0", "w": 0.15 }
       ],
-      "controls": ["color", "broadcast", "roughness", "finish", "marking", "thickness", "coveBase", "drain"],
-      "defaults": { "color": "7037", "broadcast": "off", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "6mm", "coveBase": "off", "drain": "off" },
+      "controls": ["color", "roughness", "finish", "marking", "thickness", "coveBase", "drain"],
+      "defaults": { "color": "7037", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "6mm", "coveBase": "off", "drain": "off" },
       "systemHref": "floors/pu-cement.html"
     },
     {
@@ -282,8 +282,8 @@
         { "c": "#cf3a3a", "w": 0.05 }, { "c": "#1d4f8a", "w": 0.05 },
         { "c": "#dca858", "w": 0.05 }
       ],
-      "controls": ["color", "pattern", "roughness", "marking", "thickness"],
-      "defaults": { "color": "black", "pattern": "solid", "roughness": "smooth", "marking": "off", "thickness": "6mm" },
+      "controls": ["color", "roughness", "marking", "thickness"],
+      "defaults": { "color": "black", "roughness": "smooth", "marking": "off", "thickness": "6mm" },
       "systemHref": "floors/rubber.html"
     },
     {
@@ -313,16 +313,16 @@
         { "c": "#3a342c", "w": 0.5 }, { "c": "#5d5448", "w": 0.25 },
         { "c": "#1c1916", "w": 0.25 }
       ],
-      "controls": ["color", "flecks", "strips", "roughness", "finish", "marking", "thickness", "coveBase", "certification"],
-      "defaults": { "color": "9005", "flecks": "off", "strips": "off", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "2.5mm", "coveBase": "off", "certification": "standard" },
+      "controls": ["color", "roughness", "finish", "marking", "thickness", "coveBase", "certification"],
+      "defaults": { "color": "9005", "roughness": "smooth", "finish": "satin", "marking": "off", "thickness": "2.5mm", "coveBase": "off", "certification": "standard" },
       "systemHref": "floors/epoxy.html"
     }
   ],
   "presets": [
     { "id": "warehouse",      "label": "Склад · ричтрак",       "materialId": "epoxy",       "controlState": { "color": "7016", "roughness": "coarse", "finish": "satin", "marking": "yellow-zone", "thickness": "2.5mm" }, "badge": ["heavy-duty"] },
     { "id": "coldstorage",    "label": "Холодильник · overnight", "materialId": "mma",       "controlState": { "color": "9005", "roughness": "fine", "finish": "satin", "thickness": "3mm" }, "badge": ["fast-cure", "low-odor"] },
-    { "id": "haccp",          "label": "Пищевое HACCP",         "materialId": "purcem",      "controlState": { "color": "7037", "broadcast": "coarse", "roughness": "coarse-r12", "finish": "matte", "thickness": "9mm", "coveBase": "R100", "drain": "linear-slot" }, "badge": ["HACCP", "food-grade"] },
-    { "id": "dairy",          "label": "Молочная ферма",        "materialId": "purcem",      "controlState": { "color": "1015", "broadcast": "heavy", "roughness": "coarse-r12", "finish": "matte", "thickness": "9mm", "coveBase": "R150" }, "badge": ["food-grade"] },
+    { "id": "haccp",          "label": "Пищевое HACCP",         "materialId": "purcem",      "controlState": { "color": "7037", "roughness": "coarse-r12", "finish": "matte", "thickness": "9mm", "coveBase": "R100", "drain": "linear-slot" }, "badge": ["HACCP", "food-grade"] },
+    { "id": "dairy",          "label": "Молочная ферма",        "materialId": "purcem",      "controlState": { "color": "1015", "roughness": "coarse-r12", "finish": "matte", "thickness": "9mm", "coveBase": "R150" }, "badge": ["food-grade"] },
     { "id": "winery",         "label": "Винодельня · зал",      "materialId": "terrazzo-light", "controlState": { "color": "white", "aggregate": "carrara", "strips": "brass4", "finish": "polished", "roughness": "smooth", "thickness": "12mm" } },
     { "id": "cleanroom",      "label": "Чистая комната",        "materialId": "epoxy-light", "controlState": { "color": "9010", "roughness": "smooth", "finish": "glossy", "thickness": "2.5mm" }, "badge": ["ESD"] },
     { "id": "autoshop",       "label": "Автосервис",            "materialId": "epoxy",       "controlState": { "color": "7016", "roughness": "coarse", "finish": "satin", "marking": "yellow-zone", "thickness": "2.5mm" } },
@@ -330,9 +330,9 @@
     { "id": "boutiquehotel",  "label": "Бутик-отель",           "materialId": "micro",       "controlState": { "color": "sand", "finish": "satin", "roughness": "smooth" } },
     { "id": "metallic",       "label": "Ресторан metallic",     "materialId": "epoxy-light", "controlState": { "color": "1015", "flecks": "metallic", "finish": "glossy", "roughness": "smooth", "thickness": "2.5mm" } },
     { "id": "residence",      "label": "Резиденция",            "materialId": "terrazzo-light", "controlState": { "color": "white", "aggregate": "verona", "strips": "brass4", "finish": "polished", "roughness": "smooth", "thickness": "12mm" } },
-    { "id": "gym",            "label": "Спортзал",              "materialId": "rubber",      "controlState": { "color": "multicolor", "pattern": "safety", "roughness": "fine", "thickness": "9mm" } },
-    { "id": "playground",     "label": "Школьная площадка",     "materialId": "rubber",      "controlState": { "color": "multicolor", "pattern": "multicolor", "roughness": "fine", "thickness": "55mm" }, "badge": ["EN-1177"] },
-    { "id": "showroom",       "label": "Шоурум премиум",        "materialId": "concrete",    "controlState": { "color": "full", "aggregateExposure": "full-aggregate", "finish": "wetlook", "roughness": "smooth" } },
+    { "id": "gym",            "label": "Спортзал",              "materialId": "rubber",      "controlState": { "color": "multicolor", "roughness": "fine", "thickness": "9mm" } },
+    { "id": "playground",     "label": "Школьная площадка",     "materialId": "rubber",      "controlState": { "color": "multicolor", "roughness": "fine", "thickness": "55mm" }, "badge": ["EN-1177"] },
+    { "id": "showroom",       "label": "Шоурум премиум",        "materialId": "concrete",    "controlState": { "color": "full", "finish": "wetlook", "roughness": "smooth" } },
     { "id": "office",         "label": "Офис open-space",       "materialId": "micro",       "controlState": { "color": "cement", "finish": "satin", "roughness": "smooth" }, "badge": ["acoustic"] },
     { "id": "spa",            "label": "SPA",                   "materialId": "micro",       "controlState": { "color": "sand", "finish": "satin", "roughness": "barefoot-b" }, "badge": ["barefoot"] }
   ],
@@ -490,51 +490,11 @@
       { "id": "wetlook",  "label": "Wet-look" }
     ],
     "flecks": [
-      { "id": "off",              "label": "Без флеков" },
-      { "id": "fine",             "label": "Vinyl chips · fine" },
-      { "id": "medium",           "label": "Vinyl chips · medium" },
-      { "id": "coarse",           "label": "Coarse 1/8″" },
-      { "id": "full-broadcast",   "label": "Full-broadcast" },
-      { "id": "mica",             "label": "Mica" },
-      { "id": "metallic",         "label": "Metallic FX" },
-      { "id": "metallic-bronze",  "label": "Metallic Bronze" },
-      { "id": "metallic-copper",  "label": "Metallic Copper" },
-      { "id": "metallic-pearl",   "label": "Metallic Pearl" }
-    ],
-    "accents": [
-      { "id": "off",       "label": "Без акцентов" },
-      { "id": "mica-pearl","label": "Mica · перламутр" },
-      { "id": "metal",     "label": "Metallic flakes" },
-      { "id": "glass",     "label": "Glass shards" },
-      { "id": "brass",     "label": "Brass dust" }
-    ],
-    "broadcast": [
-      { "id": "off",    "label": "Без посыпки" },
-      { "id": "fine",   "label": "Кварц fine · R10" },
-      { "id": "medium", "label": "Кварц medium · R11" },
-      { "id": "coarse", "label": "Кварц coarse · R12" },
-      { "id": "heavy",  "label": "Корунд heavy · R13" },
-      { "id": "full",   "label": "Full-broadcast" }
-    ],
-    "aggregateExposure": [
-      { "id": "salt-pepper",        "label": "Salt-pepper" },
-      { "id": "cream",              "label": "Cream · light grind" },
-      { "id": "full-aggregate",     "label": "Full-aggregate" },
-      { "id": "dispersed-glass",    "label": "Dispersed glass" },
-      { "id": "metallic-dispersed", "label": "Metallic dispersed" }
-    ],
-    "trowelPattern": [
-      { "id": "smooth", "label": "Гладко" },
-      { "id": "sweep",  "label": "Sweep · направленный мазок" },
-      { "id": "swirl",  "label": "Swirl · круговой" },
-      { "id": "cross",  "label": "Cross-hatch" }
-    ],
-    "pattern": [
-      { "id": "solid",      "label": "Solid · моно" },
-      { "id": "multicolor", "label": "Multicolor islands" },
-      { "id": "safety",     "label": "Safety zones" },
-      { "id": "radial",     "label": "Radial rings" },
-      { "id": "classic",    "label": "Sport · zebra" }
+      { "id": "off",      "label": "Без флеков" },
+      { "id": "fine",     "label": "Vinyl chips" },
+      { "id": "coarse",   "label": "Coarse 1/8″" },
+      { "id": "mica",     "label": "Mica" },
+      { "id": "metallic", "label": "Metallic FX" }
     ],
     "roughness": [
       { "id": "smooth",      "label": "Гладко · R9",           "tooltip": "DIN 51130: пешая зона, без воды." },

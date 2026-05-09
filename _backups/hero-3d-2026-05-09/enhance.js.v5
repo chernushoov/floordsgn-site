@@ -295,14 +295,9 @@
   const CONTROL_LABELS = {
     color: 'Цвет',
     aggregate: 'Агрегат',
-    accents: 'Акценты',
     strips: 'Саргелим',
     finish: 'Финиш',
     flecks: 'Флеки',
-    broadcast: 'Кварц-broadcast',
-    aggregateExposure: 'Степень обнажения',
-    trowelPattern: 'Затирка',
-    pattern: 'Узор',
     roughness: 'Текстура · R-класс',
     marking: 'Дорожная разметка',
     thickness: 'Толщина',
@@ -1006,27 +1001,6 @@
       const certOpt = selectedOption(material, 'certification');
       if (certOpt && certOpt.id && certOpt.id !== 'standard') plate.classList.add('cert-' + certOpt.id);
 
-      // 8e) v6 — per-material decorative filler classes (CSS overlays).
-      // Each control toggles an exclusive `.is-<ctrl>-<id>` class on the plate so
-      // CSS rules can paint accents / broadcast / exposure / trowel / pattern.
-      const v6Controls = [
-        { ctrl: 'accents',           prefix: 'is-accents-',  skip: 'off' },
-        { ctrl: 'broadcast',         prefix: 'is-broadcast-',skip: 'off' },
-        { ctrl: 'aggregateExposure', prefix: 'is-exposure-', skip: null  },
-        { ctrl: 'trowelPattern',     prefix: 'is-trowel-',   skip: 'smooth' },
-        { ctrl: 'pattern',           prefix: 'is-pattern-',  skip: 'solid' }
-      ];
-      v6Controls.forEach(({ ctrl, prefix, skip }) => {
-        // strip any prior class with this prefix
-        Array.from(plate.classList).forEach(cn => {
-          if (cn.indexOf(prefix) === 0) plate.classList.remove(cn);
-        });
-        const opt = selectedOption(material, ctrl);
-        if (opt && opt.id && opt.id !== skip) {
-          plate.classList.add(prefix + opt.id);
-        }
-      });
-
       // 9) Update meta-row + system link href
       const t1 = document.querySelector('[data-fx="pmType"]');
       const t2 = document.querySelector('[data-fx="pmThick"]');
@@ -1155,7 +1129,7 @@
       // force reflow before re-adding so animation restarts
       void plate.offsetWidth;
       plate.classList.add('is-changing');
-      setTimeout(() => plate.classList.remove('is-changing'), 950);
+      setTimeout(() => plate.classList.remove('is-changing'), 750);
     }
 
     function applyPreset(preset) {
