@@ -319,6 +319,7 @@
     function applyMaterial(key) {
       const p = PALETTES[key];
       if (!p) return;
+      plate.setAttribute('data-system', key);
       buildTerrazzo(topPattern, key);
       const t1 = document.querySelector('[data-fx="pmType"]');
       const t2 = document.querySelector('[data-fx="pmThick"]');

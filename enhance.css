@@ -504,14 +504,31 @@
 .fx-l-primer    { --z: -13px; --gap:   60px; --d: .18s; --h: 2px;   --c: var(--plate-primer); }
 .fx-l-substrate { --z: -24px; --gap:  130px; --d: .24s; --h: 9px;   --c: var(--plate-substrate); }
 
-/* MESH face — стеклосетка SVG-паттерном (диагональная сетка 4×4) */
+/* MESH top — ортогональная стеклосетка 6×6 px (контрастная) */
 .fx-l-mesh .fx-face-top {
   background:
-    repeating-linear-gradient( 45deg, rgba(255,255,255,.85) 0 1px, transparent 1px 12px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,.85) 0 1px, transparent 1px 12px);
-  background-color: rgba(0,0,0,.05);
+    repeating-linear-gradient(90deg, rgba(245,245,240,.95) 0 .8px, transparent .8px 6px),
+    repeating-linear-gradient( 0deg, rgba(245,245,240,.95) 0 .8px, transparent .8px 6px);
+  background-color: rgba(180,200,180,.10);
+  box-shadow: inset 0 0 0 .5px rgba(255,255,255,.4);
 }
-.fx-l-mesh .fx-face { background: rgba(255,255,255,.35); }
+.fx-l-mesh .fx-face { background: rgba(255,255,255,.30); }
+
+/* PU-cement: убрать rebar overlay (не армируется по технологии) */
+.fx-plate[data-system="purcem"] .fx-l-substrate .fx-face-N::after,
+.fx-plate[data-system="purcem"] .fx-l-substrate .fx-face-S::after,
+.fx-plate[data-system="purcem"] .fx-l-substrate .fx-face-E::after,
+.fx-plate[data-system="purcem"] .fx-l-substrate .fx-face-W::after { display: none; }
+/* Polished concrete: dispersed steel fibres вместо rebar grid */
+.fx-plate[data-system="concrete"] .fx-l-substrate .fx-face-top {
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(200,205,210,.7) 0 .4px, transparent .6px),
+    radial-gradient(circle at 47% 78%, rgba(200,205,210,.7) 0 .4px, transparent .6px),
+    radial-gradient(circle at 83% 35%, rgba(200,205,210,.7) 0 .4px, transparent .6px),
+    radial-gradient(circle at 28% 61%, rgba(220,225,230,.6) 0 .3px, transparent .5px),
+    radial-gradient(circle at 68% 14%, rgba(220,225,230,.6) 0 .3px, transparent .5px);
+  background-size: 7px 9px, 11px 8px, 6px 7px, 9px 11px, 13px 10px;
+}
 
 /* Грани каждого слоя — без двойных линий. Единый контур через ::after */
 .fx-face {
@@ -533,32 +550,80 @@
   mix-blend-mode: overlay; pointer-events: none;
 }
 
-/* Substrate side — реалистичный срез бетона (агрегат + поры) */
+/* SUBSTRATE — поперечный срез бетонной стяжки (щебень → песок → молочко → поры) */
 .fx-l-substrate .fx-face-N,
 .fx-l-substrate .fx-face-S,
 .fx-l-substrate .fx-face-E,
 .fx-l-substrate .fx-face-W {
-  background-color: var(--plate-substrate);
+  background-color: #b6ad9c;
   background-image:
-    radial-gradient(circle at 18% 60%, #6e6a60 0 2.2px, transparent 2.6px),
-    radial-gradient(circle at 72% 30%, #9d978a 0 1.8px, transparent 2.2px),
-    radial-gradient(circle at 44% 80%, #5d5950 0 1.4px, transparent 1.8px),
-    radial-gradient(circle at 88% 70%, #a8a294 0 1px, transparent 1.4px),
-    repeating-linear-gradient(92deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px);
-  background-size: 18px 22px, 14px 16px, 22px 18px, 10px 12px, auto;
+    radial-gradient(ellipse 6px 5px at 14% 62%, #6b6358 0 78%, #423d35 79% 92%, transparent 95%),
+    radial-gradient(ellipse 7px 4px at 41% 38%, #8a8170 0 70%, #5b5447 75% 92%, transparent 95%),
+    radial-gradient(ellipse 5px 6px at 68% 70%, #756a5a 0 75%, #3f3a32 82% 94%, transparent 96%),
+    radial-gradient(ellipse 8px 5px at 88% 33%, #9a8f7c 0 72%, #5e5648 80% 94%, transparent 96%),
+    radial-gradient(ellipse 4px 5px at 27% 24%, #5d5648 0 80%, transparent 92%),
+    radial-gradient(circle at 22% 78%, #d8cfb8 0 .9px, transparent 1.3px),
+    radial-gradient(circle at 56% 18%, #c7bda4 0 1.1px, transparent 1.5px),
+    radial-gradient(circle at 78% 88%, #cabf9f 0 .8px, transparent 1.2px),
+    radial-gradient(circle at 36% 55%, #b8ad92 0 .7px, transparent 1.1px),
+    radial-gradient(circle at 62% 48%, #2a2620 0 1.4px, transparent 1.8px),
+    radial-gradient(circle at 12% 30%, #1f1c17 0 .9px, transparent 1.3px),
+    radial-gradient(circle at 84% 60%, #2c2823 0 1.1px, transparent 1.5px),
+    repeating-linear-gradient(90.3deg, rgba(255,250,238,.07) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(89.7deg, rgba(40,35,28,.10) 0 .5px, transparent .5px 7px),
+    linear-gradient(180deg, #cfc5b0 0 12%, rgba(0,0,0,.18) 12% 14%, #b6ad9c 14% 88%, #948b7a 100%);
+  background-size:
+    34px 28px, 42px 30px, 38px 26px, 46px 32px, 30px 24px,
+    9px 11px, 11px 13px, 8px 10px, 7px 9px,
+    24px 18px, 20px 22px, 28px 20px,
+    auto, auto, 100% 100%;
+  background-blend-mode:
+    normal, normal, normal, normal, normal,
+    normal, normal, normal, normal,
+    normal, normal, normal,
+    overlay, multiply, normal;
+}
+/* Rebar bars cross-section — два серебристых блика на 30%/70% высоты */
+.fx-l-substrate .fx-face-N::after,
+.fx-l-substrate .fx-face-S::after,
+.fx-l-substrate .fx-face-E::after,
+.fx-l-substrate .fx-face-W::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(180deg, transparent 28%, rgba(220,225,230,.85) 28.5%, rgba(180,185,190,.9) 30%, transparent 31.5%),
+    linear-gradient(180deg, transparent 68%, rgba(220,225,230,.85) 68.5%, rgba(180,185,190,.9) 70%, transparent 71.5%);
+  mix-blend-mode: screen;
+}
+/* SUBSTRATE top — арматурная сетка ⌀10/шаг 150 мм поверх агрегата */
+.fx-l-substrate .fx-face-top {
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 9px, rgba(170,175,180,.30) 9px 10px, transparent 10px 18px),
+    repeating-linear-gradient( 0deg, transparent 0 9px, rgba(170,175,180,.30) 9px 10px, transparent 10px 18px),
+    radial-gradient(circle at 30% 40%, #8a847a 0 1.4px, transparent 1.8px),
+    radial-gradient(circle at 75% 65%, #6e6a60 0 1.2px, transparent 1.6px);
+  background-size: 18px 18px, 18px 18px, 22px 22px, 17px 19px;
 }
 
-/* Body side — срез эпокси/терраццо с включениями */
+/* BODY side — срез терраццо/эпокси массы. Реагирует на --plate-body */
 .fx-l-body .fx-face-N,
 .fx-l-body .fx-face-S,
 .fx-l-body .fx-face-E,
 .fx-l-body .fx-face-W {
   background-color: var(--plate-body);
   background-image:
-    radial-gradient(circle at 25% 40%, rgba(255,255,255,.55) 0 1.2px, transparent 1.6px),
-    radial-gradient(circle at 65% 70%, rgba(180,160,120,.5) 0 1.5px, transparent 2px),
-    radial-gradient(circle at 80% 25%, rgba(60,50,40,.4) 0 .8px, transparent 1.2px);
-  background-size: 11px 14px, 17px 13px, 9px 11px;
+    radial-gradient(ellipse 4px 3px at 22% 35%, rgba(255,253,247,.92) 0 70%, rgba(255,255,255,.3) 78% 92%, transparent 96%),
+    radial-gradient(ellipse 3px 4px at 73% 60%, rgba(250,246,236,.88) 0 72%, transparent 94%),
+    radial-gradient(ellipse 3px 3px at 48% 78%, rgba(40,32,24,.75) 0 70%, transparent 92%),
+    radial-gradient(ellipse 4px 2px at 88% 22%, rgba(55,42,30,.65) 0 72%, transparent 94%),
+    radial-gradient(circle at 30% 65%, rgba(255,255,255,.4) 0 .8px, transparent 1.2px),
+    radial-gradient(circle at 60% 28%, rgba(0,0,0,.35) 0 .6px, transparent 1px),
+    radial-gradient(circle at 18% 50%, rgba(0,0,0,.55) 0 .9px, transparent 1.3px),
+    linear-gradient(180deg, rgba(255,255,255,.18) 0 6%, transparent 14%, transparent 86%, rgba(0,0,0,.20) 100%);
+  background-size:
+    26px 20px, 22px 18px, 28px 22px, 24px 16px,
+    8px 10px, 7px 9px, 18px 14px,
+    100% 100%;
+  background-blend-mode: screen, screen, multiply, multiply, normal, normal, normal, overlay;
 }
 
 /* Primer side — янтарная плёнка с мокрым highlight сверху */
