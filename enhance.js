@@ -703,21 +703,59 @@
     requestAnimationFrame(() => root.setAttribute('data-loaded', '1'));
   };
 
-  /* ---------------- sticky mobile CTA visibility ---------- */
+  /* ---------------- sticky mobile CTA + scroll progress --- */
   fx.initStickyCta = function () {
     const bar = document.querySelector('[data-fx="stickyCta"]');
-    if (!bar) return;
+    // scroll progress bar — создаём если ещё нет
+    let progress = document.querySelector('.fx-scroll-progress');
+    if (!progress) {
+      progress = document.createElement('div');
+      progress.className = 'fx-scroll-progress';
+      document.body.appendChild(progress);
+    }
+    // adaptive CTA: меняем primary-кнопку под видимую секцию
+    const primaryBtn = bar ? bar.querySelector('.fx-sticky-cta__btn--solid') : null;
+    const sections = [
+      { sel: '.fx-picker', text: 'Сравнить' },
+      { sel: '.quality-section, .gallery-section', text: 'Расчёт' },
+      { sel: '.cta-section, .testimonials-section', text: 'Звонок' },
+    ];
+    let lastText = primaryBtn ? primaryBtn.textContent : '';
+
     const update = () => {
       const h = document.documentElement;
-      const scrolled = (h.scrollTop || document.body.scrollTop) || 0;
+      const scrolled = h.scrollTop || document.body.scrollTop || 0;
       const max = (h.scrollHeight - h.clientHeight) || 1;
       const ratio = scrolled / max;
-      const show = ratio > 0.18 && ratio < 0.94;
-      bar.classList.toggle('is-visible', show);
+      progress.style.width = (ratio * 100).toFixed(2) + '%';
+      if (bar) {
+        const show = ratio > 0.18 && ratio < 0.94;
+        bar.classList.toggle('is-visible', show);
+      }
+      // adaptive CTA — определяем какая секция в viewport
+      if (primaryBtn) {
+        const mid = window.innerHeight * 0.5;
+        let next = 'Расчёт';
+        for (const s of sections) {
+          const el = document.querySelector(s.sel);
+          if (!el) continue;
+          const r = el.getBoundingClientRect();
+          if (r.top < mid && r.bottom > 0) next = s.text;
+        }
+        if (next !== lastText) { primaryBtn.textContent = next; lastText = next; }
+      }
     };
     update();
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
+  };
+
+  /* ---------------- lazy + decoding async для всех картинок */
+  fx.initLazyImages = function () {
+    document.querySelectorAll('img').forEach((img, i) => {
+      if (!img.hasAttribute('loading')) img.loading = i < 2 ? 'eager' : 'lazy';
+      if (!img.hasAttribute('decoding')) img.decoding = 'async';
+    });
   };
 
   /* ---------------- bootstrap ----------------------------- */
@@ -731,6 +769,7 @@
     try { fx.initWhatsApp    && fx.initWhatsApp();    } catch (e) { console.warn('fx.initWhatsApp', e); }
     try { fx.initDecisionTool && fx.initDecisionTool(); } catch (e) { console.warn('fx.initDecisionTool', e); }
     try { fx.initStickyCta   && fx.initStickyCta();   } catch (e) { console.warn('fx.initStickyCta', e); }
+    try { fx.initLazyImages  && fx.initLazyImages();  } catch (e) { console.warn('fx.initLazyImages', e); }
   }
 
   if (document.readyState === 'loading') {
