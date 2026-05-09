@@ -298,12 +298,8 @@
     strips: 'Саргелим',
     finish: 'Финиш',
     flecks: 'Флеки',
-    roughness: 'Текстура · R-класс',
-    marking: 'Дорожная разметка',
-    thickness: 'Толщина',
-    coveBase: 'Cove-base (плинтус-галтель)',
-    drain: 'Водоотвод',
-    certification: 'Сертификация'
+    roughness: 'Текстура',
+    marking: 'Дорожная разметка'
   };
   const CONTROL_SCHEMAS = {
     /* terrazzo-dark — populated below from buildSchemasFromConfig or fallback */
@@ -387,10 +383,10 @@
       const groups = (mat.controls || []).map(ctrlId => {
         let options;
         if (opts[ctrlId] && Array.isArray(opts[ctrlId])) {
-          // shared list (strips/finish/flecks/roughness/marking/coveBase/drain/certification)
+          // shared list (strips/finish/flecks/roughness/marking)
           options = opts[ctrlId];
         } else if (opts[ctrlId] && opts[ctrlId][matId]) {
-          // per-material list (color/aggregate/thickness)
+          // per-material list (color/aggregate)
           options = opts[ctrlId][matId];
         } else {
           options = [];
@@ -407,8 +403,6 @@
     });
     // Cache loaded config for any other consumer
     window.__floordsgnMaterials = config;
-    window.__floordsgnPresets = Array.isArray(config.presets) ? config.presets : [];
-    window.__floordsgnGlossary = config.glossary || {};
   }
 
   // Strip-overlay style for терраццо саргелим (CSS background)
@@ -760,33 +754,16 @@
       if (!controlsRoot) return;
       const schema = CONTROL_SCHEMAS[material] || [];
       const st = ensureState(material);
-      const colorGroup = schema.find(g => g.id === 'color');
-      const customColor = (st.color === 'custom' && st.customHex) ? st.customHex : '';
       controlsRoot.innerHTML = schema.map(group => {
         const buttons = group.options.map(opt => {
           const isOn = st[group.id] === opt.id;
           const swatch = opt.swatch ? `<span class="fx-hero-lab__btn-dot" style="background:${opt.swatch}"></span>` : '';
           const cls = `fx-hero-lab__btn${isOn ? ' is-active' : ''}${opt.swatch ? ' has-dot' : ''}`;
-          const tip = opt.tooltip ? ` data-tooltip="${String(opt.tooltip).replace(/"/g,'&quot;')}"` : '';
-          return `<button type="button" class="${cls}" data-control="${group.id}" data-value="${opt.id}" aria-pressed="${isOn ? 'true' : 'false'}"${tip}>${swatch}<span class="fx-hero-lab__btn-label">${localize(opt.label)}</span></button>`;
+          return `<button type="button" class="${cls}" data-control="${group.id}" data-value="${opt.id}" aria-pressed="${isOn ? 'true' : 'false'}">${swatch}<span class="fx-hero-lab__btn-label">${localize(opt.label)}</span></button>`;
         }).join('');
-        // Custom color picker appended to color group
-        let extra = '';
-        if (group.id === 'color') {
-          const isCustomOn = st.color === 'custom';
-          const initial = customColor || (colorGroup && colorGroup.options[0] && colorGroup.options[0].hex) || '#cccccc';
-          extra = `<div class="fx-hero-lab__custom-color${isCustomOn ? ' is-active' : ''}" data-fx="customColorWrap">
-            <label class="fx-hero-lab__custom-label" for="fxCustomHex">${text('Свой цвет','Custom color')}</label>
-            <span class="fx-hero-lab__custom-row">
-              <input type="color" id="fxCustomHex" class="fx-hero-lab__custom-picker" value="${initial}" data-fx="customColorPicker" aria-label="${text('Выбрать пользовательский цвет','Pick custom color')}" />
-              <input type="text" class="fx-hero-lab__custom-text" value="${customColor || ''}" placeholder="#abc123" maxlength="7" data-fx="customColorText" aria-label="${text('HEX-код цвета','Hex color code')}" />
-            </span>
-          </div>`;
-        }
         return `<div class="fx-hero-lab__group">
           <p class="fx-hero-lab__ctrl-label">${localize(group.label)}</p>
           <div class="fx-hero-lab__btnrow">${buttons}</div>
-          ${extra}
         </div>`;
       }).join('');
     }
@@ -804,9 +781,8 @@
       // but for solid systems the rect.fill = p.base inside the SVG, so this is the
       // fall-through color for any transparency or filter operations).
       const colorOpt = selectedOption(material, 'color');
-      const customHex = (st.color === 'custom' && /^#[0-9a-fA-F]{6}$/.test(st.customHex || '')) ? st.customHex : null;
-      const baseHex = customHex || (colorOpt && colorOpt.hex) || p.base;
-      const bodyHex = customHex || (colorOpt && colorOpt.hex) || p.bodyColor || p.base;
+      const baseHex = (colorOpt && colorOpt.hex) || p.base;
+      const bodyHex = (colorOpt && colorOpt.hex) || p.bodyColor || p.base;
       plate.style.setProperty('--plate-base', baseHex);
       plate.style.setProperty('--plate-body', bodyHex);
       plate.style.setProperty('--plate-top',  baseHex);
@@ -971,35 +947,14 @@
       plate.removeAttribute('data-finish');
       if (finishOpt && finishOpt.id) plate.setAttribute('data-finish', finishOpt.id);
 
-      // 8) Thickness → body layer height (visualization only; proportional)
+      // 8) Thickness (purcem / rubber) → body layer height
       const thOpt = selectedOption(material, 'thickness');
       if (thOpt) {
-        const thMap = {
-          '1.5mm': '8px', '2mm': '10px', '2.5mm': '12px', '3mm': '14px',
-          '4mm': '16px', '6mm': '20px', '9mm': '26px', '12mm': '32px',
-          '15mm': '38px', '20mm': '46px', '25mm': '52px', '40mm': '64px',
-          '55mm': '72px', '80mm': '88px'
-        };
-        plate.style.setProperty('--plate-body-h', thMap[thOpt.id] || '20px');
+        const map = { '4mm': '12px', '6mm': '16px', '9mm': '22px' };
+        plate.style.setProperty('--plate-body-h', map[thOpt.id] || '16px');
       } else {
         plate.style.removeProperty('--plate-body-h');
       }
-
-      // 8b) Cove-base — visual indicator on plate edge via class
-      plate.classList.remove('has-cove-R50','has-cove-R75','has-cove-R100','has-cove-R150');
-      const coveOpt = selectedOption(material, 'coveBase');
-      if (coveOpt && coveOpt.id !== 'off') plate.classList.add('has-cove-' + coveOpt.id);
-
-      // 8c) Drain visual indicator
-      plate.classList.remove('has-drain-linear','has-drain-radial');
-      const drainOpt = selectedOption(material, 'drain');
-      if (drainOpt && drainOpt.id === 'linear-slot') plate.classList.add('has-drain-linear');
-      else if (drainOpt && drainOpt.id === 'radial-gully') plate.classList.add('has-drain-radial');
-
-      // 8d) Certification (ESD/cleanroom) — copper-grid overlay class
-      plate.classList.remove('cert-antistatic','cert-ESD-conductive','cert-cleanroom-ISO5');
-      const certOpt = selectedOption(material, 'certification');
-      if (certOpt && certOpt.id && certOpt.id !== 'standard') plate.classList.add('cert-' + certOpt.id);
 
       // 9) Update meta-row + system link href
       const t1 = document.querySelector('[data-fx="pmType"]');
@@ -1010,35 +965,6 @@
       if (t3) t3.textContent = localize(p.base_);
       if (systemLink) {
         systemLink.setAttribute('href', systemHrefFor(material, st));
-      }
-      // 9b) Meta-row badges (cure-time, warranty, price-range, R-class)
-      const sampleLink = document.querySelector('[data-fx="sampleLink"]');
-      if (sampleLink) sampleLink.setAttribute('href', 'contact.html#intent=sample_kit&material=' + encodeURIComponent(material));
-      const matCfg = (window.__floordsgnMaterials && window.__floordsgnMaterials.materials || []).find(m => m.id === material) || {};
-      const rgOpt2 = selectedOption(material, 'roughness');
-      const rgLabel = rgOpt2 ? rgOpt2.label.replace(/.* · /, '') : '';
-      const setBadge = (sel, txt) => {
-        const el = document.querySelector(sel);
-        if (!el) return;
-        const wrap = el.closest('div');
-        if (!txt) { if (wrap) wrap.style.display = 'none'; return; }
-        if (wrap) wrap.style.display = '';
-        el.textContent = txt;
-      };
-      setBadge('[data-fx="pmCure"]', matCfg.cureTime || '');
-      setBadge('[data-fx="pmWarranty"]', matCfg.warranty || '');
-      setBadge('[data-fx="pmPrice"]', matCfg.priceRange || '');
-      setBadge('[data-fx="pmRClass"]', rgLabel || '');
-      // Certification badge (if active)
-      const certEl = document.querySelector('[data-fx="pmCert"]');
-      if (certEl) {
-        const certWrap = certEl.closest('div');
-        if (certOpt && certOpt.id && certOpt.id !== 'standard') {
-          if (certWrap) certWrap.style.display = '';
-          certEl.textContent = certOpt.label;
-        } else {
-          if (certWrap) certWrap.style.display = 'none';
-        }
       }
 
       // 10) Layer labels + bottom-sheet (preserved logic)
@@ -1124,81 +1050,9 @@
       liveAnnounce.textContent = text('Выбрано: ', 'Selected: ') + localize(p.label) + (p.sub ? ' · ' + localize(p.sub) : '');
     }
 
-    function applySheenSweep() {
-      plate.classList.remove('is-changing');
-      // force reflow before re-adding so animation restarts
-      void plate.offsetWidth;
-      plate.classList.add('is-changing');
-      setTimeout(() => plate.classList.remove('is-changing'), 750);
-    }
-
-    function applyPreset(preset) {
-      if (!preset || !preset.materialId) return;
-      const matId = preset.materialId;
-      if (!CONTROL_SCHEMAS[matId]) return;
-      ensureState(matId);
-      const st = state[matId];
-      const schema = CONTROL_SCHEMAS[matId] || [];
-      // Reset to defaults first, then layer preset values where valid
-      schema.forEach(g => { st[g.id] = (g.options[0] && g.options[0].id) || ''; });
-      const cs = preset.controlState || {};
-      Object.keys(cs).forEach(k => {
-        const g = schema.find(grp => grp.id === k);
-        if (g && g.options.find(o => o.id === cs[k])) st[k] = cs[k];
-      });
-      selectMaterial(matId, { persist: true });
-      // Mark active preset chip
-      document.querySelectorAll('[data-fx="presets"] .fx-hero-lab__preset').forEach(b => {
-        b.classList.toggle('is-active', b.dataset.preset === preset.id);
-      });
-      // Scroll plate into view
-      const plateWrap = document.querySelector('.fx-plate-wrap');
-      if (plateWrap && plateWrap.scrollIntoView) {
-        try { plateWrap.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
-      }
-    }
-
-    function renderPresets() {
-      const root = document.querySelector('[data-fx="presets"]');
-      if (!root) return;
-      const presets = window.__floordsgnPresets || [];
-      if (!presets.length) { root.style.display = 'none'; return; }
-      root.innerHTML = presets.map(p =>
-        `<button type="button" class="fx-hero-lab__preset" data-preset="${p.id}">${localize(p.label)}</button>`
-      ).join('');
-      root.addEventListener('click', (e) => {
-        const btn = e.target.closest('.fx-hero-lab__preset');
-        if (!btn) return;
-        const id = btn.dataset.preset;
-        const p = presets.find(x => x.id === id);
-        if (p) applyPreset(p);
-      });
-    }
-
-    function renderGlossaryTooltips() {
-      const gloss = window.__floordsgnGlossary || {};
-      document.querySelectorAll('[data-gloss]').forEach(el => {
-        const key = el.dataset.gloss;
-        const entry = gloss[key];
-        if (!entry) return;
-        if (el.dataset.glossInit === '1') return;
-        el.dataset.glossInit = '1';
-        el.classList.add('fx-gloss');
-        el.setAttribute('tabindex', '0');
-        el.setAttribute('role', 'button');
-        el.setAttribute('aria-label', entry.term + ': ' + entry.def);
-        const tip = document.createElement('span');
-        tip.className = 'fx-gloss__tip';
-        tip.setAttribute('role', 'tooltip');
-        tip.textContent = entry.def;
-        el.appendChild(tip);
-      });
-    }
-
     function selectMaterial(material, opts) {
       opts = opts || {};
       if (!CONTROL_SCHEMAS[material]) return;
-      const isMaterialChange = curMat !== material;
       curMat = material;
       ensureState(material);
       // mark active in left material list (radiogroup pattern)
@@ -1212,11 +1066,6 @@
       renderControls(material);
       applyAllForMaterial(material);
       announceMaterial(material);
-      if (isMaterialChange) applySheenSweep();
-      // Clear active preset chip on direct material change (unless triggered by preset)
-      if (!opts.fromPreset) {
-        document.querySelectorAll('[data-fx="presets"] .fx-hero-lab__preset').forEach(b => b.classList.remove('is-active'));
-      }
       if (opts.persist !== false) persistState();
       if (opts.focus) {
         const btn = document.querySelector('.fx-hero-lab__mat.is-active');
@@ -1244,8 +1093,6 @@
     if (restored) curMat = restored;
 
     // Initial render
-    renderPresets();
-    renderGlossaryTooltips();
     selectMaterial(curMat, { persist: false });
 
     // ---------- LEFT: material list keyboard + click ----------
@@ -1296,8 +1143,7 @@
         applyAllForMaterial(curMat);
         persistState();
       });
-      // arrow-key navigation within control buttons inside a single group — focus only
-      // (Enter/Space activates via native button behavior)
+      // arrow-key navigation within control buttons inside a single group
       controlsRoot.addEventListener('keydown', (e) => {
         const btn = e.target.closest('.fx-hero-lab__btn');
         if (!btn) return;
@@ -1313,38 +1159,7 @@
         if (next >= 0) {
           e.preventDefault();
           list[next].focus();
-          // No click — Enter/Space triggers activation per ARIA radio guidelines
-        }
-      });
-      // Custom color input — both color picker + text hex
-      const handleCustomColor = (hex) => {
-        if (!/^#[0-9a-fA-F]{6}$/.test(hex)) return;
-        const st = ensureState(curMat);
-        st.color = 'custom';
-        st.customHex = hex;
-        // Update active state for color buttons
-        controlsRoot.querySelectorAll('.fx-hero-lab__btn[data-control="color"]').forEach(b => {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-pressed','false');
-        });
-        const wrap = controlsRoot.querySelector('[data-fx="customColorWrap"]');
-        if (wrap) wrap.classList.add('is-active');
-        applyAllForMaterial(curMat);
-        persistState();
-      };
-      controlsRoot.addEventListener('input', (e) => {
-        if (e.target && e.target.matches('[data-fx="customColorPicker"]')) {
-          handleCustomColor(e.target.value);
-          const txt = controlsRoot.querySelector('[data-fx="customColorText"]');
-          if (txt) txt.value = e.target.value;
-        } else if (e.target && e.target.matches('[data-fx="customColorText"]')) {
-          let v = e.target.value.trim();
-          if (v && v[0] !== '#') v = '#' + v;
-          if (/^#[0-9a-fA-F]{6}$/.test(v)) {
-            handleCustomColor(v);
-            const pk = controlsRoot.querySelector('[data-fx="customColorPicker"]');
-            if (pk) pk.value = v;
-          }
+          list[next].click();
         }
       });
     }
@@ -1420,7 +1235,6 @@
     function toggleExplode() {
       exploded = !exploded;
       plate.classList.toggle('is-exploded', exploded);
-      plate.setAttribute('aria-pressed', exploded ? 'true' : 'false');
       plate.classList.remove('idle');
       const hint = document.querySelector('[data-fx="plateHint"]');
       if (hint) hint.textContent = exploded
@@ -1479,10 +1293,6 @@
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         toggleExplode();
-      } else if (e.key === 'Escape' && exploded) {
-        e.preventDefault();
-        toggleExplode();
-        plate.focus();
       }
     });
 
