@@ -306,31 +306,31 @@
   };
 
   // Aggregate id → chip palette (overrides PALETTES[mat].chips when active)
+  // Spec-aligned realistic chip palettes per aggregate option (each must be visibly different).
   const AGGREGATE_CHIPS = {
     basalt:  [
       { c: '#0a0a0a', w: .35 }, { c: '#3a3a3c', w: .25 },
-      { c: '#1c1c1e', w: .20 }, { c: '#5a5a5c', w: .15 },
-      { c: '#9a9a9d', w: .05 }
+      { c: '#6a6a6d', w: .20 }, { c: '#cfcfcf', w: .12 },
+      { c: '#fafafa', w: .08 }
     ],
     carrara: [
-      { c: '#fafafa', w: .30 }, { c: '#e8e6e0', w: .30 },
-      { c: '#cfcfcf', w: .15 }, { c: '#9a9a9d', w: .10 },
-      { c: '#1d1d1f', w: .05 }, { c: '#3a3a3c', w: .10 }
+      { c: '#fafafa', w: .50 }, { c: '#cfcfcf', w: .25 },
+      { c: '#9a9a9d', w: .15 }, { c: '#3a3a3c', w: .10 }
     ],
     verona:  [
-      { c: '#c66a3a', w: .20 }, { c: '#d8a82e', w: .15 },
-      { c: '#7d6f54', w: .25 }, { c: '#b9a98a', w: .25 },
-      { c: '#1d1d1f', w: .05 }, { c: '#fafafa', w: .10 }
+      { c: '#a8584a', w: .28 }, { c: '#c89a55', w: .22 },
+      { c: '#e8dec8', w: .25 }, { c: '#5a2820', w: .15 },
+      { c: '#dcc8a0', w: .10 }
     ],
     mirror:  [
-      { c: '#e8eef2', w: .35 }, { c: '#9bb0c0', w: .25 },
-      { c: '#3a4a58', w: .20 }, { c: '#1d1d1f', w: .10 },
-      { c: '#fafafa', w: .10 }
+      { c: '#a8d0e0', w: .25 }, { c: '#c8cdd0', w: .25 },
+      { c: '#3a7050', w: .15 }, { c: '#2c4a78', w: .15 },
+      { c: '#c89030', w: .10 }, { c: '#ffffff', w: .10 }
     ],
     brass:   [
-      { c: '#c9a04a', w: .35 }, { c: '#a87a2a', w: .25 },
-      { c: '#dcb86a', w: .15 }, { c: '#1d1d1f', w: .15 },
-      { c: '#7a6a3a', w: .10 }
+      { c: '#b8902a', w: .35 }, { c: '#6a4d12', w: .25 },
+      { c: '#a0681c', w: .20 }, { c: '#d4b048', w: .12 },
+      { c: '#28200c', w: .08 }
     ]
   };
 
@@ -367,7 +367,7 @@
         'terrazzo-light': [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
         'terrazzo':       [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}]
       },
-      strips: [{id:'off',label:'Без полос'},{id:'brass4',label:'Латунь 4мм',hex:'#c9a04a'},{id:'alu4',label:'Алюминий 4мм',hex:'#d8d4cc'},{id:'black6',label:'Чёрный 6мм',hex:'#0a0a0a'}],
+      strips: [{id:'off',label:'Без полос'},{id:'brass4',label:'Латунь 4мм',hex:'#b8902a'},{id:'alu4',label:'Алюминий 4мм',hex:'#cdd0d4'},{id:'black6',label:'Чёрный 6мм',hex:'#0a0a0a'},{id:'mixed',label:'Смешанные',hex:'#7a5a18'}],
       finish: [{id:'matte',label:'Matte'},{id:'satin',label:'Satin'},{id:'polished',label:'Polished'},{id:'glossy',label:'Glossy'},{id:'wetlook',label:'Wet-look'}],
       flecks: [{id:'off',label:'Без флеков'},{id:'fine',label:'Vinyl chips'},{id:'coarse',label:'Coarse 1/8″'},{id:'mica',label:'Mica'},{id:'metallic',label:'Metallic FX'}],
       roughness: [{id:'smooth',label:'Smooth'},{id:'fine',label:'Fine grit'},{id:'coarse',label:'Coarse anti-slip'}],
@@ -406,17 +406,51 @@
   }
 
   // Strip-overlay style for терраццо саргелим (CSS background)
+  // Each metallic strip is a layered linear-gradient with a 1px highlight + drop-shadow ridge.
   function stripsBackground(stripId) {
     if (!stripId || stripId === 'off') return 'none';
-    const map = {
-      brass4: { color: 'rgba(201,160,74,.92)', width: '4px',  spacing: '120px' },
-      alu4:   { color: 'rgba(216,212,204,.95)', width: '4px',  spacing: '120px' },
-      black6: { color: 'rgba(10,10,10,.92)',   width: '6px',  spacing: '160px' }
-    };
-    const s = map[stripId];
-    if (!s) return 'none';
-    // 4 vertical bars at 25%/50%/75% of plate width — emulate via repeating-linear-gradient
-    return `repeating-linear-gradient(90deg, transparent 0 calc(${s.spacing} - ${s.width}), ${s.color} calc(${s.spacing} - ${s.width}) ${s.spacing})`;
+    // Metallic gradients — 3-stop linear: shadow → core → highlight → core → shadow
+    const brassGrad   = 'linear-gradient(180deg,#7a5a18 0%,#b8902a 18%,#e6c870 48%,#b8902a 78%,#5a4012 100%)';
+    const aluGrad     = 'linear-gradient(180deg,#8a8d92 0%,#cdd0d4 18%,#f4f6f8 48%,#cdd0d4 78%,#7e8186 100%)';
+    const blackGrad   = 'linear-gradient(180deg,#000 0%,#1d1d1f 30%,#3a3a3c 50%,#1d1d1f 70%,#000 100%)';
+    // Util — vertical bar at fraction f of width, given strip width w (px), gradient g
+    const bar = (f, w, g) =>
+      `linear-gradient(${g}) ${f}% 0/${w}px 100% no-repeat`;
+    const set = arr => arr.join(', ');
+    if (stripId === 'brass4') {
+      return set([
+        bar(12.5, 3, brassGrad),
+        bar(25,   4, brassGrad),
+        bar(50,   4, brassGrad),
+        bar(75,   4, brassGrad),
+        bar(87.5, 3, brassGrad)
+      ]);
+    }
+    if (stripId === 'alu4') {
+      return set([
+        bar(12.5, 3, aluGrad),
+        bar(25,   4, aluGrad),
+        bar(50,   4, aluGrad),
+        bar(75,   4, aluGrad),
+        bar(87.5, 3, aluGrad)
+      ]);
+    }
+    if (stripId === 'black6') {
+      return set([
+        bar(30, 8, blackGrad),
+        bar(50, 8, blackGrad),
+        bar(70, 8, blackGrad)
+      ]);
+    }
+    if (stripId === 'mixed') {
+      return set([
+        bar(20, 4, brassGrad),
+        bar(40, 6, blackGrad),
+        bar(60, 4, brassGrad),
+        bar(80, 6, blackGrad)
+      ]);
+    }
+    return 'none';
   }
 
   // CTA URL builder — links to quote.html with all current state encoded as URL params.
@@ -433,28 +467,30 @@
   // Backward-compatible alias used elsewhere
   function systemHrefFor(material, st) { return quoteHrefFor(material, st); }
 
-  // Map finish id → CSS variables for plate gloss/contrast
+  // Map finish id → CSS variables for plate gloss/contrast.
+  // Returns { gloss, filter, shine, reflection } — drives multiple visual layers
+  // (sheen overlay opacity, contrast, highlight band size). 5 distinct steps.
   function glossVarsFor(finishId) {
     switch (finishId) {
-      case 'matte':    return { gloss: '0',   filter: 'contrast(1.00) brightness(1.00)' };
-      case 'satin':    return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.02)' };
-      case 'polished':
-      case 'glossy':
-      case 'wetlook':  return { gloss: '1',   filter: 'contrast(1.10) brightness(1.05)' };
-      case 'clear':    return { gloss: '.85', filter: 'contrast(1.06) brightness(1.03)' };
-      case 'pigmented':return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.00)' };
-      default:         return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.02)' };
+      case 'matte':    return { gloss: '.05', shine: '.04', reflection: '.06', filter: 'contrast(.96) brightness(.97) saturate(.95)' };
+      case 'satin':    return { gloss: '.25', shine: '.22', reflection: '.18', filter: 'contrast(1.02) brightness(1.01)' };
+      case 'polished': return { gloss: '.55', shine: '.50', reflection: '.42', filter: 'contrast(1.08) brightness(1.03)' };
+      case 'glossy':   return { gloss: '.78', shine: '.78', reflection: '.66', filter: 'contrast(1.12) brightness(1.05) saturate(1.05)' };
+      case 'wetlook':  return { gloss: '.95', shine: '.96', reflection: '.92', filter: 'contrast(1.18) brightness(1.08) saturate(1.12)' };
+      case 'clear':    return { gloss: '.85', shine: '.78', reflection: '.62', filter: 'contrast(1.10) brightness(1.04)' };
+      case 'pigmented':return { gloss: '.30', shine: '.24', reflection: '.20', filter: 'contrast(1.02) brightness(1.00)' };
+      default:         return { gloss: '.25', shine: '.22', reflection: '.18', filter: 'contrast(1.02) brightness(1.01)' };
     }
   }
 
   // Polish grit (concrete) → gloss intensity
   function gritGlossVars(gritId) {
     switch (gritId) {
-      case '400':  return { gloss: '0',   filter: 'contrast(1.00) brightness(.95)' };
-      case '800':  return { gloss: '.3',  filter: 'contrast(1.03) brightness(.98)' };
-      case '1500': return { gloss: '.65', filter: 'contrast(1.06) brightness(1.02)' };
-      case '3000': return { gloss: '1',   filter: 'contrast(1.10) brightness(1.06)' };
-      default:     return { gloss: '.4',  filter: 'none' };
+      case '400':  return { gloss: '.05', shine: '.04', reflection: '.06', filter: 'contrast(.98) brightness(.95)' };
+      case '800':  return { gloss: '.30', shine: '.26', reflection: '.22', filter: 'contrast(1.03) brightness(.98)' };
+      case '1500': return { gloss: '.60', shine: '.55', reflection: '.45', filter: 'contrast(1.06) brightness(1.02)' };
+      case '3000': return { gloss: '.92', shine: '.90', reflection: '.84', filter: 'contrast(1.12) brightness(1.06)' };
+      default:     return { gloss: '.30', shine: '.26', reflection: '.22', filter: 'none' };
     }
   }
 
@@ -739,13 +775,19 @@
       const st = ensureState(material);
       plate.setAttribute('data-system', material);
 
-      // 1) Body/base color from `color` control if hex provided, else palette default
+      // 1) Body/base color from `color` control if hex provided, else palette default.
+      // Force a clean repaint so the cross-fade is visible; set vars on plate AND
+      // direct background-color on the body face-top (SVG sits above with vector chips,
+      // but for solid systems the rect.fill = p.base inside the SVG, so this is the
+      // fall-through color for any transparency or filter operations).
       const colorOpt = selectedOption(material, 'color');
       const baseHex = (colorOpt && colorOpt.hex) || p.base;
       const bodyHex = (colorOpt && colorOpt.hex) || p.bodyColor || p.base;
       plate.style.setProperty('--plate-base', baseHex);
       plate.style.setProperty('--plate-body', bodyHex);
       plate.style.setProperty('--plate-top',  baseHex);
+      const bodyTop = plate.querySelector('.fx-l-body .fx-face-top');
+      if (bodyTop) bodyTop.style.backgroundColor = bodyHex;
 
       // 2) Aggregate (terrazzo) → swap chip palette in SVG.
       //    Concrete: "exposure" via aggregate id (salt/cream/full) tweaks chip count weight.
@@ -795,12 +837,16 @@
       }
 
       // 6) Roughness overlay (unified surface texture control)
+      // Also tag the plate itself with a roughness class so global rules (e.g. desat
+      // body on coarse anti-slip) can react.
+      plate.classList.remove('is-rg-fine', 'is-rg-coarse');
       if (textureOverlay) {
         textureOverlay.className = 'fx-hero-lab__texture';
         const rgOpt = selectedOption(material, 'roughness');
         if (rgOpt && rgOpt.id !== 'smooth') {
           textureOverlay.classList.add('is-on');
           textureOverlay.classList.add('rg-' + rgOpt.id);
+          plate.classList.add('is-rg-' + rgOpt.id);
         }
         // legacy support — texture/surface/broadcast IDs map to similar visual modes
         const txOpt = selectedOption(material, 'texture');
@@ -820,7 +866,8 @@
         }
       }
 
-      // 7) Finish / gloss → CSS vars (controls sheen overlay)
+      // 7) Finish / gloss → CSS vars (controls sheen overlay).
+      //    glossInfo = { gloss, shine, reflection, filter } — 5 distinct levels.
       let glossInfo = null;
       const finishOpt = selectedOption(material, 'finish');
       if (finishOpt) glossInfo = glossVarsFor(finishOpt.id);
@@ -828,9 +875,14 @@
         const gritOpt = selectedOption(material, 'grit');
         if (gritOpt) glossInfo = gritGlossVars(gritOpt.id);
       }
-      if (!glossInfo) glossInfo = { gloss: '.4', filter: 'none' };
+      if (!glossInfo) glossInfo = { gloss: '.25', shine: '.22', reflection: '.18', filter: 'none' };
       plate.style.setProperty('--plate-gloss', glossInfo.gloss);
+      plate.style.setProperty('--plate-gloss-shine', glossInfo.shine);
+      plate.style.setProperty('--plate-gloss-reflection', glossInfo.reflection);
       plate.style.setProperty('--plate-body-filter', glossInfo.filter);
+      // Tag plate so CSS can also dial finish-specific tweaks (e.g. wet-look needs deeper saturation)
+      plate.removeAttribute('data-finish');
+      if (finishOpt && finishOpt.id) plate.setAttribute('data-finish', finishOpt.id);
 
       // 8) Thickness (purcem / rubber) → body layer height
       const thOpt = selectedOption(material, 'thickness');
@@ -885,6 +937,45 @@
           sheetList.innerHTML = order.map(r => r.def
             ? `<li style="--row-color:${r.color}"><span><div class="row-label">${localize(r.def.name)}</div>${r.def.sku?`<div class="row-sku">${localize(r.def.sku)}</div>`:''}</span></li>`
             : '').join('');
+        }
+
+        // 11) Buildup spec sidecards (desktop rail next to the plate)
+        const specRail = document.querySelector('[data-fx="specRail"]');
+        if (specRail) {
+          const role = (k) => ({
+            topcoat: text('Топкоат', 'Topcoat'),
+            body:    text('Тело системы', 'Body'),
+            mesh:    text('Стеклосетка', 'Glass mesh'),
+            primer:  text('Праймер', 'Primer'),
+            substrate: text('Подложка', 'Substrate')
+          }[k] || k);
+          // Layer-color dot per row (matches plate cross-section visual)
+          const colorFor = {
+            topcoat:   '#dfe1e3',
+            body:      bodyHex || '#d4cfb8',
+            mesh:      '#aac8aa',
+            primer:    '#d49b4a',
+            substrate: '#8a857a'
+          };
+          const rows = [
+            { key: 'topcoat',   def: p.buildup.topcoat },
+            { key: 'body',      def: p.buildup.body },
+            ...(p.mesh && p.buildup.mesh ? [{ key: 'mesh', def: p.buildup.mesh }] : []),
+            { key: 'primer',    def: p.buildup.primer },
+            { key: 'substrate', def: p.buildup.substrate }
+          ];
+          specRail.setAttribute('data-rows', String(rows.length));
+          specRail.innerHTML = rows.map((r, i) => {
+            if (!r.def) return '';
+            const dot = colorFor[r.key];
+            return `<li class="fx-hero-lab__spec-row fx-hero-lab__spec-row--${r.key}" style="--row-color:${dot};--row-i:${i};">`
+              + `<span class="fx-hero-lab__spec-dot" aria-hidden="true"></span>`
+              + `<span class="fx-hero-lab__spec-text">`
+              + `<span class="fx-hero-lab__spec-role">${role(r.key)}</span>`
+              + `<span class="fx-hero-lab__spec-sku">${localize(r.def.sku || r.def.name || '')}</span>`
+              + `</span>`
+              + `</li>`;
+          }).join('');
         }
       }
     }
@@ -1091,6 +1182,9 @@
         if (exploded) sheet.setAttribute('data-open', '');
         else sheet.removeAttribute('data-open');
       }
+      // Spec rail tracks the explosion state (rows fan out vertically)
+      const specRail = document.querySelector('[data-fx="specRail"]');
+      if (specRail) specRail.classList.toggle('is-exploded', exploded);
       if (exploded) {
         plate.style.removeProperty('--rx');
         plate.style.removeProperty('--ry');
