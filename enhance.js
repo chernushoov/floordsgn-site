@@ -12,6 +12,7 @@
       base: '#1c1c1e', label: 'терраццо', sub: 'тёмный · charcoal',
       thick: '12 мм', base_: 'эпоксидная смола',
       bodyColor: '#2c2c2e',
+      top: 'images/terrazzo/dark-mosaic-textured-background.jpg',
       chips: [
         { c: '#0a0a0a', w: .35 }, { c: '#9a9a9d', w: .15 },
         { c: '#6a6a6d', w: .15 }, { c: '#cfcfcf', w: .10 },
@@ -22,6 +23,7 @@
       base: '#f0ece2', label: 'терраццо', sub: 'светлый · multicolor',
       thick: '12 мм', base_: 'эпоксидная смола',
       bodyColor: '#e8e3d4',
+      top: 'images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg',
       chips: [
         { c: '#2c5e88', w: .10 }, { c: '#d8a82e', w: .08 },
         { c: '#c66a3a', w: .07 }, { c: '#7a8a78', w: .07 },
@@ -34,6 +36,7 @@
       base: '#efe7d6', label: 'терраццо', sub: 'венецианское',
       thick: '12 мм', base_: 'эпоксидная смола',
       bodyColor: '#e8dec8',
+      top: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
       chips: [
         { c: '#d9c39a', w: .18 }, { c: '#1c1916', w: .12 },
         { c: '#7d6f54', w: .18 }, { c: '#c2603e', w: .06 },
@@ -42,9 +45,11 @@
       ]
     },
     epoxy: {
-      base: '#2a2620', label: 'эпокси', sub: 'self-leveling',
+      base: '#2a2620', label: 'эпокси', sub: 'self-leveling · charcoal',
       thick: '4 мм', base_: 'эпоксидная смола',
       bodyColor: '#3a342c',
+      top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
+      filter: 'brightness(.45) contrast(1.15) saturate(.6) hue-rotate(-8deg)',
       chips: [
         { c: '#3a342c', w: .5 }, { c: '#5d5448', w: .25 },
         { c: '#1c1916', w: .25 }
@@ -54,6 +59,8 @@
       base: '#c2bcb0', label: 'эпокси', sub: 'light grey · RAL 7044',
       thick: '4 мм', base_: 'эпоксидная смола',
       bodyColor: '#bab4a8',
+      top: 'images/terrazzo/cement-concrete-texture-copy-space.jpg',
+      filter: 'brightness(1.18) contrast(.85) saturate(.4)',
       chips: [
         { c: '#bab4a8', w: .55 }, { c: '#a8a298', w: .25 },
         { c: '#d4cec0', w: .20 }
@@ -63,6 +70,7 @@
       base: '#cfc4b3', label: 'микротопинг', sub: 'satin · cream',
       thick: '2–3 мм', base_: 'минеральная база',
       bodyColor: '#cfc4b3',
+      top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
       chips: [
         { c: '#b9a98a', w: .4 }, { c: '#9a8e7b', w: .3 },
         { c: '#dccaa9', w: .3 }
@@ -72,6 +80,7 @@
       base: '#7a7468', label: 'бетон', sub: 'полированный · salt-pepper',
       thick: '0.5–3 мм снимается', base_: 'существующая плита',
       bodyColor: '#7a7468',
+      top: 'images/terrazzo/cement-concrete-texture-copy-space.jpg',
       chips: [
         { c: '#5d5448', w: .3 }, { c: '#3a342c', w: .2 },
         { c: '#9a9286', w: .3 }, { c: '#a8a298', w: .2 }
@@ -81,6 +90,8 @@
       base: '#9a9690', label: 'PU-cement', sub: 'food / pharma',
       thick: '6–9 мм', base_: 'полиуретан + цемент',
       bodyColor: '#9a9690',
+      top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
+      filter: 'brightness(.92) saturate(.4) hue-rotate(155deg)',
       chips: [
         { c: '#7a7670', w: .35 }, { c: '#a8a49e', w: .35 },
         { c: '#5a564f', w: .15 }, { c: '#bab6b0', w: .15 }
@@ -90,6 +101,8 @@
       base: '#3c3a35', label: 'MMA Pronto', sub: 'fast-cure · cold storage',
       thick: '2–4 мм', base_: 'MMA смола',
       bodyColor: '#3c3a35',
+      top: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
+      filter: 'brightness(.55) contrast(1.3) saturate(.7) hue-rotate(15deg)',
       chips: [
         { c: '#4a4640', w: .50 }, { c: '#5e5a50', w: .25 },
         { c: '#28261f', w: .25 }
@@ -251,6 +264,16 @@
       if (t3) t3.textContent = p.base_;
       plate.style.setProperty('--plate-body', p.bodyColor || p.base);
       plate.style.setProperty('--plate-top',  p.base);
+      // Реалистичная фото-текстура поверх процедурного SVG
+      if (p.top) {
+        plate.style.setProperty('--plate-top-image', `url('${p.top}')`);
+        plate.style.setProperty('--plate-svg-opacity', '0');
+        plate.style.setProperty('--plate-top-filter', p.filter || 'none');
+      } else {
+        plate.style.setProperty('--plate-top-image', 'none');
+        plate.style.setProperty('--plate-svg-opacity', '1');
+        plate.style.setProperty('--plate-top-filter', 'none');
+      }
       const tagBody = document.querySelector('[data-fx="tagBody"]');
       const tagTop  = document.querySelector('[data-fx="tagTopcoat"]');
       if (tagBody) tagBody.textContent = `${p.label} · ${p.thick}`;
@@ -292,7 +315,17 @@
       if (hint) hint.textContent = exploded
         ? 'нажмите ещё раз чтобы собрать обратно'
         : 'тяните чтобы вращать · нажмите чтобы разнести на слои';
-      if (!exploded) { applyRot(); scheduleIdle(); }
+      if (exploded) {
+        // Снимаем inline --rx/--ry от drag, чтобы CSS .is-exploded
+        // мог зафиксировать "правильный" угол показа слоёв.
+        plate.style.removeProperty('--rx');
+        plate.style.removeProperty('--ry');
+        // Запоминаем "правильную" позу для подписей.
+        rx = 24; ry = -16;
+      } else {
+        applyRot();
+        scheduleIdle();
+      }
     }
 
     plate.addEventListener('mousedown', (e) => {
@@ -410,6 +443,46 @@
     overlay.querySelectorAll('[data-fx="sampleClose"]').forEach(b => b.addEventListener('click', close));
     overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+
+    const form = overlay.querySelector('form');
+    if (form) {
+      let status = overlay.querySelector('[data-fx="sampleStatus"]');
+      if (!status) {
+        status = document.createElement('p');
+        status.setAttribute('data-fx', 'sampleStatus');
+        status.className = 'fx-sample-modal__note';
+        form.appendChild(status);
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submit = form.querySelector('button[type="submit"]');
+        if (submit) submit.disabled = true;
+        status.textContent = 'Отправляем...';
+
+        const data = Object.fromEntries(new FormData(form).entries());
+        data.page = window.location.pathname;
+        data.source = data.source || 'sample-modal';
+
+        try {
+          const response = await fetch(form.getAttribute('action') || '/api/contact', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (!response.ok) throw new Error('Sample request failed');
+
+          status.textContent = 'Готово. Мы свяжемся и отправим образец / тех. описание.';
+          form.reset();
+          setTimeout(close, 1200);
+        } catch (error) {
+          status.innerHTML = 'Не удалось подтвердить отправку. Напишите в WhatsApp: <a href="https://wa.me/972559661459" target="_blank" rel="noopener">+972 55 966 1459</a>.';
+        } finally {
+          if (submit) submit.disabled = false;
+        }
+      });
+    }
   };
 
   /* ---------------- WhatsApp pre-fill --------------------- */

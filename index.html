@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=9">
-    <link rel="stylesheet" href="enhance.css?v=10">
+    <link rel="stylesheet" href="enhance.css?v=11">
 </head>
 <body>
 
@@ -121,13 +121,13 @@
 
     <!-- Sticky mobile CTA bar — появляется после 40% скролла -->
     <nav class="fx-sticky-cta" data-fx="stickyCta" aria-label="Быстрые действия">
-      <a href="contact.html?intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost">Образец</a>
+      <a href="contact.html#intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost">Образец</a>
       <a href="quote.html" class="fx-sticky-cta__btn fx-sticky-cta__btn--solid">Расчёт</a>
       <a href="tel:+972559661459" class="fx-sticky-cta__btn fx-sticky-cta__btn--call" aria-label="Позвонить">📞</a>
     </nav>
 
-    <!-- AUDIENCE SEGMENTATION — первое касание, кто ты -->
-    <section class="fx-audience">
+    <!-- AUDIENCE SEGMENTATION — первое касание, кто ты (СКРЫТО, сохранено) -->
+    <section class="fx-audience" hidden style="display:none">
       <p class="fx-audience__lead anim-up">Я ищу пол для…</p>
       <div class="fx-audience__row">
         <a href="industrial.html" class="fx-audience__card anim-up anim-d1">
@@ -148,7 +148,7 @@
           </div>
           <span class="fx-audience__arrow" aria-hidden="true">→</span>
         </a>
-        <a href="contact.html?audience=home" class="fx-audience__card anim-up anim-d3">
+        <a href="contact.html#audience=home" class="fx-audience__card anim-up anim-d3">
           <div class="fx-audience__thumb" style="background-image:url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg')"></div>
           <div class="fx-audience__body">
             <span class="fx-audience__tag">Дом</span>
@@ -185,7 +185,7 @@
           </div>
           <div class="fx-plate-cta-row">
             <a href="quote.html" class="btn btn-dark">Подобрать систему</a>
-            <a href="contact.html?intent=sample" class="btn btn-outline">Заказать образец</a>
+            <a href="contact.html#intent=sample" class="btn btn-outline">Заказать образец</a>
           </div>
         </div>
         <div class="fx-plate-wrap">
@@ -738,7 +738,7 @@
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
     <script src="translations.js"></script>
-    <script src="enhance.js?v=7" defer></script>
+    <script src="enhance.js?v=8" defer></script>
 </body>
 </html>
 <!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->

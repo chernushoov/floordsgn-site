@@ -502,7 +502,23 @@
   background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.34) 50%, transparent 62%);
   mix-blend-mode: screen; pointer-events: none;
 }
-.fx-l-body .fx-face-top svg { width: 100%; height: 100%; display: block; }
+.fx-l-body .fx-face-top {
+  background-image: var(--plate-top-image, none);
+  background-size: cover;
+  background-position: center;
+  filter: var(--plate-top-filter, none);
+  position: relative;
+}
+.fx-l-body .fx-face-top svg { width: 100%; height: 100%; display: block; opacity: var(--plate-svg-opacity, 1); transition: opacity .4s ease; }
+/* Лёгкий specular highlight чтобы фото не выглядело "плоским" — имитация лака топкоата */
+.fx-l-body .fx-face-top::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.22), transparent 55%),
+    linear-gradient(125deg, transparent 38%, rgba(255,255,255,.10) 50%, transparent 62%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 .fx-l-substrate .fx-face-top {
   background:
     radial-gradient(circle at 22% 28%, #6c685e 0 1px, transparent 2px) 0 0/14px 14px,
