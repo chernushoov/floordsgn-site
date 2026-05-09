@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=8">
-    <link rel="stylesheet" href="enhance.css?v=8">
+    <link rel="stylesheet" href="enhance.css?v=9">
 </head>
 <body>
 
@@ -119,14 +119,48 @@
         </ul>
     </div>
 
+    <!-- AUDIENCE SEGMENTATION — первое касание, кто ты -->
+    <section class="fx-audience">
+      <p class="fx-audience__lead anim-up">Я ищу пол для…</p>
+      <div class="fx-audience__row">
+        <a href="industrial.html" class="fx-audience__card anim-up anim-d1">
+          <div class="fx-audience__thumb" style="background-image:url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg')"></div>
+          <div class="fx-audience__body">
+            <span class="fx-audience__tag">Бизнес</span>
+            <h3 class="fx-audience__title">Промышленный объект</h3>
+            <p class="fx-audience__sub">Склад, цех, авто, ритейл</p>
+          </div>
+          <span class="fx-audience__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="designers.html" class="fx-audience__card anim-up anim-d2">
+          <div class="fx-audience__thumb" style="background-image:url('images/terrazzo/interrior-222942.jpg')"></div>
+          <div class="fx-audience__body">
+            <span class="fx-audience__tag">Дизайн</span>
+            <h3 class="fx-audience__title">Архитектор / интерьер</h3>
+            <p class="fx-audience__sub">Шоурум, ресторан, отель</p>
+          </div>
+          <span class="fx-audience__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="contact.html?audience=home" class="fx-audience__card anim-up anim-d3">
+          <div class="fx-audience__thumb" style="background-image:url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg')"></div>
+          <div class="fx-audience__body">
+            <span class="fx-audience__tag">Дом</span>
+            <h3 class="fx-audience__title">Квартира / частный дом</h3>
+            <p class="fx-audience__sub">Микротопинг, терраццо</p>
+          </div>
+          <span class="fx-audience__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
     <!-- HERO — 3D-образец материала, можно крутить -->
     <section class="fx-plate-section">
       <div class="fx-plate-shell">
         <div class="fx-plate-info">
-          <p class="fx-plate-eyebrow">Тактильно — увидеть до укладки</p>
-          <h2 class="fx-plate-h2">Покрутите<br/><em>образец</em></h2>
-          <p class="fx-plate-meta">Каждый материал — своя пластика, фактура и реакция на свет. Сверху видна поверхность, по бокам — слоёный сэндвич: подложка, праймер, тело, топкоат. Тяните чтобы вращать.</p>
-          <div class="fx-plate-mat-seg" role="tablist" aria-label="Образец материала">
+          <p class="fx-plate-eyebrow anim-up">Тактильно — увидеть до укладки</p>
+          <h2 class="fx-plate-h2 anim-up anim-d1">Покрутите<br/><em>образец</em></h2>
+          <p class="fx-plate-meta anim-up anim-d2">Каждый материал — своя пластика, фактура и реакция на свет. Сверху видна поверхность, по бокам — слоёный сэндвич: подложка, праймер, тело, топкоат. Тяните чтобы вращать.</p>
+          <div class="fx-plate-mat-seg anim-up anim-d3" role="tablist" aria-label="Образец материала">
             <button type="button" class="on" data-m="terrazzo-dark" role="tab">Терраццо тёмный</button>
             <button type="button" data-m="terrazzo-light" role="tab">Терраццо светлый</button>
             <button type="button" data-m="terrazzo" role="tab">Терраццо венецианский</button>
