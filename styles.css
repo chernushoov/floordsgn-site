@@ -114,11 +114,11 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 72px;
-    padding: 0 clamp(20px, 4vw, 48px);
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    height: 104px;
+    padding: 12px clamp(20px, 4vw, 48px) 18px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: saturate(180%) blur(22px);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
     border-bottom: 1px solid rgba(0,0,0,0.06);
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -152,9 +152,10 @@ img {
 }
 
 .header__logo-img {
-    height: 140px;
+    height: 110px;
     width: auto;
-    margin: -30px 0;
+    margin: -16px 0 -8px;
+    display: block;
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -197,7 +198,7 @@ img {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom-color: transparent;
-    height: 88px;
+    height: 112px;
 }
 
 .header--hero .header__nav a {
@@ -213,8 +214,8 @@ img {
 .header--hero .header__logo-white { display: block; }
 
 .header--hero .header__logo-img {
-    height: 180px;
-    margin: -40px 0;
+    height: 124px;
+    margin: -16px 0 -10px;
 }
 
 .header--hero .lang-btn {
@@ -233,18 +234,19 @@ img {
 
 /* ---- Scrolled state ---- */
 .header--scrolled {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: saturate(180%) blur(22px);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
     border-bottom-color: rgba(0,0,0,0.06);
-    height: 56px;
+    height: 76px;
+    padding: 8px clamp(20px, 4vw, 48px) 12px;
 }
 
 .header--scrolled .header__nav a { color: rgba(0,0,0,0.8); }
 .header--scrolled .header__nav a:hover { color: rgba(0,0,0,0.4); }
 .header--scrolled .header__logo-black { display: block; }
 .header--scrolled .header__logo-white { display: none; }
-.header--scrolled .header__logo-img { height: 110px; margin: -24px 0; }
+.header--scrolled .header__logo-img { height: 84px; margin: -12px 0 -6px; }
 .header--scrolled .lang-btn { color: var(--black); border-color: rgba(0,0,0,0.1); }
 .header--scrolled .lang-btn.active { background: var(--black); color: var(--white); }
 .header--scrolled .mobile-menu-btn span { background: var(--black); }

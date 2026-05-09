@@ -249,9 +249,12 @@
       if (t1) t1.textContent = `${p.label} · ${p.sub}`;
       if (t2) t2.textContent = p.thick;
       if (t3) t3.textContent = p.base_;
-      // drive side-face sandwich color via CSS var
       plate.style.setProperty('--plate-body', p.bodyColor || p.base);
       plate.style.setProperty('--plate-top',  p.base);
+      const tagBody = document.querySelector('[data-fx="tagBody"]');
+      const tagTop  = document.querySelector('[data-fx="tagTopcoat"]');
+      if (tagBody) tagBody.textContent = `${p.label} · ${p.thick}`;
+      if (tagTop)  tagTop.textContent  = `Топкоат · ${p.label === 'PU-cement' ? 'Sikafloor‑264 N' : 'Sikafloor‑264'}`;
     }
     applyMaterial(curMat);
 
@@ -267,27 +270,43 @@
       });
     }
 
-    let rx = 56, ry = -18, drag = null;
+    let rx = 56, ry = -18, drag = null, dragMoved = 0, exploded = false;
     const applyRot = () => {
-      plate.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      plate.style.setProperty('--rx', rx + 'deg');
+      plate.style.setProperty('--ry', ry + 'deg');
     };
 
     let idleTimer = null;
     const scheduleIdle = () => {
       if (idleTimer) clearTimeout(idleTimer);
       idleTimer = setTimeout(() => {
-        if (!drag) plate.classList.add('idle');
+        if (!drag && !exploded) plate.classList.add('idle');
       }, 2400);
     };
 
+    function toggleExplode() {
+      exploded = !exploded;
+      plate.classList.toggle('is-exploded', exploded);
+      plate.classList.remove('idle');
+      const hint = document.querySelector('[data-fx="plateHint"]');
+      if (hint) hint.textContent = exploded
+        ? 'нажмите ещё раз чтобы собрать обратно'
+        : 'тяните чтобы вращать · нажмите чтобы разнести на слои';
+      if (!exploded) { applyRot(); scheduleIdle(); }
+    }
+
     plate.addEventListener('mousedown', (e) => {
+      if (exploded) return;
       e.preventDefault();
       if (idleTimer) clearTimeout(idleTimer);
       plate.classList.remove('idle');
+      plate.classList.add('is-dragging');
+      dragMoved = 0;
       drag = { x: e.clientX, y: e.clientY, rx, ry };
     });
     window.addEventListener('mousemove', (e) => {
       if (!drag) return;
+      dragMoved += Math.abs(e.movementX) + Math.abs(e.movementY);
       rx = Math.max(20, Math.min(85, drag.rx + (drag.y - e.clientY) * .4));
       ry = drag.ry + (e.clientX - drag.x) * .6;
       applyRot();
@@ -295,21 +314,38 @@
     window.addEventListener('mouseup', () => {
       if (!drag) return;
       drag = null;
+      plate.classList.remove('is-dragging');
       scheduleIdle();
     });
 
+    // Click to toggle explode (только если это был tap, не drag)
+    plate.addEventListener('click', (e) => {
+      if (dragMoved > 6) return;        // drag, не click
+      toggleExplode();
+    });
+    plate.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleExplode();
+      }
+    });
+
     plate.addEventListener('touchstart', (e) => {
+      if (exploded) return;
       if (idleTimer) clearTimeout(idleTimer);
       const t = e.touches[0];
       plate.classList.remove('idle');
+      dragMoved = 0;
       drag = { x: t.clientX, y: t.clientY, rx, ry };
-    }, { passive: false });
+    }, { passive: true });
     window.addEventListener('touchmove', (e) => {
       if (!drag) return;
-      e.preventDefault(); // prevent vertical scroll while rotating
       const t = e.touches[0];
-      rx = Math.max(20, Math.min(85, drag.rx + (drag.y - t.clientY) * .4));
-      ry = drag.ry + (t.clientX - drag.x) * .6;
+      const dx = t.clientX - drag.x, dy = t.clientY - drag.y;
+      dragMoved = Math.abs(dx) + Math.abs(dy);
+      if (dragMoved > 6 && e.cancelable) e.preventDefault();
+      rx = Math.max(20, Math.min(85, drag.rx + (-dy) * .4));
+      ry = drag.ry + dx * .6;
       applyRot();
     }, { passive: false });
     window.addEventListener('touchend', () => {
@@ -512,6 +548,23 @@
     requestAnimationFrame(() => root.setAttribute('data-loaded', '1'));
   };
 
+  /* ---------------- sticky mobile CTA visibility ---------- */
+  fx.initStickyCta = function () {
+    const bar = document.querySelector('[data-fx="stickyCta"]');
+    if (!bar) return;
+    const update = () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop || document.body.scrollTop) || 0;
+      const max = (h.scrollHeight - h.clientHeight) || 1;
+      const ratio = scrolled / max;
+      const show = ratio > 0.18 && ratio < 0.94;
+      bar.classList.toggle('is-visible', show);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  };
+
   /* ---------------- bootstrap ----------------------------- */
   function init() {
     try { fx.initStack       && fx.initStack();       } catch (e) { console.warn('fx.initStack', e); }
@@ -522,6 +575,7 @@
     try { fx.initSampleModal && fx.initSampleModal(); } catch (e) { console.warn('fx.initSampleModal', e); }
     try { fx.initWhatsApp    && fx.initWhatsApp();    } catch (e) { console.warn('fx.initWhatsApp', e); }
     try { fx.initDecisionTool && fx.initDecisionTool(); } catch (e) { console.warn('fx.initDecisionTool', e); }
+    try { fx.initStickyCta   && fx.initStickyCta();   } catch (e) { console.warn('fx.initStickyCta', e); }
   }
 
   if (document.readyState === 'loading') {

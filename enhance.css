@@ -430,7 +430,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1400px;
+  perspective: 2200px;
   perspective-origin: 50% 50%;
 }
 .fx-plate-wrap::before {
@@ -442,76 +442,107 @@
   filter: blur(20px);
   max-width: 90%;
 }
+/* ====== 3D-plate v2 — composition of 4 thin layer-plates ====== */
 .fx-plate {
+  --rx: 56deg; --ry: -18deg; --ex: 0;          /* explode 0|1 */
+  --plate-body: #efe7d6;                       /* кварцевое тело */
+  --plate-top:  #efe7d6;                       /* топкоат */
+  --plate-primer:    #c8893d;                  /* янтарный праймер */
+  --plate-substrate: #8a857a;                  /* серый бетон */
   position: relative;
   width: min(480px, 80vw);
   height: min(480px, 80vw);
   transform-style: preserve-3d;
-  transition: transform .12s cubic-bezier(.4, 0, .2, 1);
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .9s cubic-bezier(.22, 1.2, .36, 1);
   will-change: transform;
-  cursor: grab;
+  cursor: pointer;
 }
-.fx-plate:active { cursor: grabbing; }
 .fx-plate.idle { animation: fxPlateIdle 28s linear infinite; }
 @keyframes fxPlateIdle {
-  0%   { transform: rotateX(56deg) rotateY(-18deg) rotateZ(0); }
-  50%  { transform: rotateX(56deg) rotateY( 18deg) rotateZ(0); }
-  100% { transform: rotateX(56deg) rotateY(-18deg) rotateZ(0); }
+  0%, 100% { transform: rotateX(56deg) rotateY(-18deg); }
+  50%      { transform: rotateX(56deg) rotateY( 18deg); }
 }
-.fx-plate {
-  --plate-body: #efe7d6;
-  --plate-top:  #efe7d6;
+.fx-plate.is-exploded { --ex: 1; --rx: 24deg; --ry: -16deg; cursor: zoom-out; animation: none; }
+.fx-plate.is-dragging { cursor: grabbing; }
+
+/* Каждый слой = независимая мини-плита со своей толщиной */
+.fx-layer {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: translate3d(0, calc(var(--gap) * var(--ex)), var(--z));
+  transition: transform 1.05s cubic-bezier(.16, 1.05, .32, 1) var(--d, 0s),
+              filter .5s ease;
+  will-change: transform;
 }
-.fx-plate-face { position: absolute; inset: 0; }
-.fx-plate-top {
-  transform: translateZ(24px);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, .14) inset,
-    0 10px 70px rgba(0, 0, 0, .28);
-  background: var(--plate-top);
-  overflow: hidden;
+.fx-plate.is-exploded .fx-layer {
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.18));
 }
-.fx-plate-top svg { width: 100%; height: 100%; display: block; }
-.fx-plate-bottom {
-  transform: translateZ(-24px) rotateX(180deg);
-  background: #5a564f;
+.fx-l-topcoat   { --z:  24px; --gap: -110px; --d: .05s; --h: 1.5px; --c: var(--plate-top); }
+.fx-l-body      { --z:   6px; --gap:  -36px; --d: .12s; --h: 16px;  --c: var(--plate-body); }
+.fx-l-primer    { --z: -12px; --gap:   36px; --d: .18s; --h: 2px;   --c: var(--plate-primer); }
+.fx-l-substrate { --z: -23px; --gap:  108px; --d: .24s; --h: 9px;   --c: var(--plate-substrate); }
+
+/* Грани каждого слоя */
+.fx-face {
+  position: absolute; inset: 0;
+  background: var(--c);
+  backface-visibility: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.10);
 }
-/* Side face = слоёный сэндвич:
-   0–6%   топкоат (тонкая тёмная плёнка)
-   6–72%  тело системы (цвет материала, var --plate-body)
-   72–82% праймер (амбер)
-   82–100% подложка (бетон-градиент) */
-.fx-plate-side {
+.fx-face-top { transform: translateZ(var(--h)); overflow: hidden; }
+.fx-face-bot { transform: translateZ(calc(var(--h) * -1)) rotateX(180deg); filter: brightness(.78); }
+.fx-face-N { left: 0; right: 0; top:    0; height: calc(var(--h) * 2); transform: rotateX(-90deg) translateZ(var(--h)); transform-origin: 50% 0;   filter: brightness(.92); }
+.fx-face-S { left: 0; right: 0; bottom: 0; height: calc(var(--h) * 2); transform: rotateX( 90deg) translateZ(var(--h)); transform-origin: 50% 100%; filter: brightness(.86); }
+.fx-face-E { top: 0; bottom: 0; right: 0; width:  calc(var(--h) * 2); transform: rotateY( 90deg) translateZ(var(--h)); transform-origin: 100% 50%; filter: brightness(.90); }
+.fx-face-W { top: 0; bottom: 0; left:  0; width:  calc(var(--h) * 2); transform: rotateY(-90deg) translateZ(var(--h)); transform-origin: 0 50%;   filter: brightness(.94); }
+.fx-l-topcoat .fx-face-top { box-shadow: inset 0 0 0 1px rgba(0,0,0,.14), 0 10px 70px rgba(0,0,0,.28); }
+.fx-l-topcoat .fx-face-top::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.34) 50%, transparent 62%);
+  mix-blend-mode: screen; pointer-events: none;
+}
+.fx-l-body .fx-face-top svg { width: 100%; height: 100%; display: block; }
+.fx-l-substrate .fx-face-top {
+  background:
+    radial-gradient(circle at 22% 28%, #6c685e 0 1px, transparent 2px) 0 0/14px 14px,
+    radial-gradient(circle at 70% 60%, #5a564f 0 1px, transparent 2px) 7px 7px/14px 14px,
+    var(--plate-substrate);
+}
+.fx-l-primer .fx-face-top {
+  background:
+    radial-gradient(ellipse at 30% 24%, rgba(255,220,140,.45), transparent 60%),
+    linear-gradient(180deg, #d49b4a, #b07530);
+}
+
+/* Подписи слоёв в 3D-плоскости — counter-rotated чтобы оставались frontal */
+.fx-layer-tag {
   position: absolute;
-  background:
-    linear-gradient(180deg,
-      #1d1d1f 0%,
-      #1d1d1f 6%,
-      var(--plate-body) 7%,
-      var(--plate-body) 72%,
-      #c8893d 73%,
-      #b07530 82%,
-      #8a857a 84%,
-      #6c685e 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
+  left: 100%; top: 50%;
+  transform: translateY(-50%) translateX(-20px) rotateY(calc(var(--ry) * -1)) rotateX(calc(var(--rx) * -1));
+  transform-origin: 0 50%;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #1d1d1f;
+  background: rgba(255,255,255,.92);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d2d2d7;
+  margin-left: 32px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s ease calc(var(--d) + .35s),
+              transform .6s cubic-bezier(.16, 1.05, .32, 1) calc(var(--d) + .25s);
 }
-.fx-plate-sN { left: 0; right: 0; top:    0; height: 48px; transform: rotateX(-90deg) translateZ(24px); transform-origin: 50% 0; }
-.fx-plate-sS { left: 0; right: 0; bottom: 0; height: 48px; transform: rotateX( 90deg) translateZ(24px); transform-origin: 50% 100%; }
-.fx-plate-sE { top: 0; bottom: 0; right: 0; width: 48px; transform: rotateY( 90deg) translateZ(24px); transform-origin: 100% 50%;
-  background:
-    linear-gradient(90deg,
-      #1d1d1f 0%, #1d1d1f 6%,
-      var(--plate-body) 7%, var(--plate-body) 72%,
-      #c8893d 73%, #b07530 82%,
-      #8a857a 84%, #6c685e 100%);
+.fx-plate.is-exploded .fx-layer-tag {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0) rotateY(calc(var(--ry) * -1)) rotateX(calc(var(--rx) * -1));
 }
-.fx-plate-sW { top: 0; bottom: 0; left:  0; width: 48px; transform: rotateY(-90deg) translateZ(24px); transform-origin: 0 50%;
-  background:
-    linear-gradient(270deg,
-      #1d1d1f 0%, #1d1d1f 6%,
-      var(--plate-body) 7%, var(--plate-body) 72%,
-      #c8893d 73%, #b07530 82%,
-      #8a857a 84%, #6c685e 100%);
+.fx-layer-tag b {
+  display: block;
+  font-weight: 700; font-size: 12px; letter-spacing: .02em;
+  text-transform: none; color: #1d1d1f; margin-top: 2px;
 }
 .fx-plate-hint {
   position: absolute;
@@ -1530,6 +1561,49 @@
 .hero-split__bg,
 .fx-mat-hero__image img {
   image-rendering: -webkit-optimize-contrast;
+}
+
+/* ==========================================================
+   FX-STICKY-CTA — нижняя плавающая панель на мобиле.
+   Появляется после 40% скролла, прячется снова если ушёл в верх.
+   ========================================================== */
+.fx-sticky-cta {
+  position: fixed;
+  bottom: 16px; left: 16px; right: 16px;
+  z-index: 900;
+  display: none;
+  gap: 8px;
+  background: rgba(29,29,31,.96);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.10);
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity .35s ease, transform .5s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.fx-sticky-cta.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.fx-sticky-cta__btn {
+  flex: 1 1 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 12px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity .2s ease, transform .15s ease;
+}
+.fx-sticky-cta__btn--ghost { color: #f5f5f7; border: 1px solid rgba(255,255,255,.18); }
+.fx-sticky-cta__btn--solid { color: #1d1d1f; background: #f5f5f7; }
+.fx-sticky-cta__btn--call  { flex: 0 0 48px; padding: 12px 0; color: #f5f5f7; font-size: 16px; }
+.fx-sticky-cta__btn:active { transform: scale(.97); }
+@media (max-width: 768px) {
+  .fx-sticky-cta { display: flex; }
+  /* lift WhatsApp bubble above sticky CTA */
+  .fx-wa { bottom: 86px !important; }
 }
 
 /* ==========================================================
