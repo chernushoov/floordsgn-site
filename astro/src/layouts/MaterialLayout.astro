@@ -1,0 +1,381 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+type Lang = 'ru' | 'en';
+
+interface Props {
+  material: CollectionEntry<'materials'>;
+  lang: Lang;
+}
+
+const { material, lang } = Astro.props;
+const d = material.data;
+
+const t = {
+  ru: {
+    sectionWhat: 'О материале',
+    sectionWhatTitle: 'Что это и из чего',
+    sectionPrice: 'Экономика',
+    sectionPriceTitle: 'Цена и что входит',
+    sectionFit: 'Применимость',
+    sectionFitTitle: 'Где работает, где нет',
+    sectionFitGood: 'Подходит для',
+    sectionFitBad: 'Не подходит для',
+    sectionFitWhy: 'Почему именно так',
+    sectionInstall: 'Технология',
+    sectionInstallTitle: 'Как монтируется',
+    sectionInstallSubstrate: 'Требования к основанию',
+    sectionInstallSteps: 'Этапы',
+    sectionInstallCure: 'Сроки набора прочности',
+    sectionPitfalls: 'Подводные камни',
+    sectionPitfallsTitle: 'Что может пойти не так',
+    sectionAlt: 'Альтернативы',
+    sectionAltTitle: 'Когда выбрать другое',
+    sectionFaq: 'Вопросы',
+    sectionFaqTitle: 'Частые вопросы',
+    sectionSources: 'Источники',
+    sectionSourcesTitle: 'Откуда цифры',
+    cause: 'Причина',
+    fix: 'Что делаем',
+    when: 'Когда',
+    walkAt: 'Пешеход через',
+    loadAt: 'Под нагрузку',
+    fullCure: 'Полная полимеризация',
+    crew: 'Бригада',
+    days: 'дн.',
+    h: 'ч',
+    people: 'чел',
+    ctaTitle: 'Подходит\nпод вашу задачу?',
+    ctaLede: 'Бесплатный выезд инженера, тест влажности, точная смета в течение 48 часов.',
+    ctaQuote: 'Запросить смету',
+    ctaSample: 'Заказать образец',
+    ctaTool: 'Подбор системы',
+    statThickness: 'толщина',
+    statLife: 'срок службы',
+    statPrice: 'цена ₪/м²',
+    statTime: 'срок монтажа',
+    yearsShort: 'лет',
+    lastReviewed: 'Проверено',
+    reviewer: 'Ревьюер',
+    related: 'См. также',
+    eyebrowFamily: 'Семейство',
+  },
+  en: {
+    sectionWhat: 'About',
+    sectionWhatTitle: 'What it is and how',
+    sectionPrice: 'Economics',
+    sectionPriceTitle: 'Price and scope',
+    sectionFit: 'Fit',
+    sectionFitTitle: 'Where it works, where not',
+    sectionFitGood: 'Good for',
+    sectionFitBad: 'Not for',
+    sectionFitWhy: 'Why',
+    sectionInstall: 'Installation',
+    sectionInstallTitle: 'How it goes down',
+    sectionInstallSubstrate: 'Substrate requirements',
+    sectionInstallSteps: 'Steps',
+    sectionInstallCure: 'Cure times',
+    sectionPitfalls: 'Pitfalls',
+    sectionPitfallsTitle: 'What can go wrong',
+    sectionAlt: 'Alternatives',
+    sectionAltTitle: 'When to pick something else',
+    sectionFaq: 'FAQ',
+    sectionFaqTitle: 'Frequent questions',
+    sectionSources: 'Sources',
+    sectionSourcesTitle: 'Where numbers come from',
+    cause: 'Cause',
+    fix: 'Fix',
+    when: 'When',
+    walkAt: 'Walk-on at',
+    loadAt: 'Load at',
+    fullCure: 'Full cure',
+    crew: 'Crew',
+    days: 'days',
+    h: 'h',
+    people: 'people',
+    ctaTitle: 'Right for\nyour case?',
+    ctaLede: 'Free engineer site visit, RH test, precise quote within 48 hours.',
+    ctaQuote: 'Request quote',
+    ctaSample: 'Request sample',
+    ctaTool: 'Decision tool',
+    statThickness: 'thickness',
+    statLife: 'service life',
+    statPrice: 'price ₪/m²',
+    statTime: 'install time',
+    yearsShort: 'yrs',
+    lastReviewed: 'Last reviewed',
+    reviewer: 'Reviewer',
+    related: 'See also',
+    eyebrowFamily: 'Family',
+  },
+}[lang];
+
+const familyLabel: Record<string, { ru: string; en: string }> = {
+  'polished-concrete':         { ru: 'Полированный бетон',        en: 'Polished concrete' },
+  'epoxy':                     { ru: 'Эпоксидные системы',         en: 'Epoxy systems' },
+  'terrazzo':                  { ru: 'Террацо',                    en: 'Terrazzo' },
+  'pu-mma':                    { ru: 'PU / PU-cement / MMA',       en: 'PU / PU-cement / MMA' },
+  'microcement':               { ru: 'Микроцементы',               en: 'Microcement' },
+  'cement-screed':             { ru: 'Цементные стяжки',           en: 'Cement screeds' },
+  'industrial-self-leveling':  { ru: 'Индустриальные наливные',    en: 'Industrial self-leveling' },
+  'parquet-engineered':        { ru: 'Паркет / инж. доска',        en: 'Parquet / engineered' },
+  'laminate-lvt-spc':          { ru: 'Ламинат / LVT / SPC',        en: 'Laminate / LVT / SPC' },
+};
+
+const altPath = lang === 'en' ? '/en/floors/' : '/floors/';
+
+const paragraphs = (text: string) => text.trim().split(/\n\n+/);
+---
+<BaseLayout
+  lang={lang}
+  title={`${d.display_name[lang]} — Floor.DSGN`}
+  description={d.one_liner[lang]}
+>
+
+  {/* HERO в брендовом стиле .fx-mat-hero (без картинки слева — по центру, для draft без фото) */}
+  <section class="fx-mat-hero fx-mat-hero--no-image">
+    <div class="fx-mat-hero__content" style="padding-right: 0;">
+      <p class="fx-mat-hero__eyebrow">
+        <a href={lang === 'en' ? '/en' : '/'} style="color: inherit; text-decoration: none;">← {familyLabel[d.family][lang]}</a>
+        <span style="margin: 0 8px; opacity: 0.4;">·</span>
+        <span>{d.slug}</span>
+      </p>
+      <h1 class="fx-mat-hero__h1">{d.display_name[lang]}</h1>
+      <p class="fx-mat-hero__lede">{d.one_liner[lang]}</p>
+      <div class="fx-mat-hero__chip">
+        <span>{t.statThickness}<b>{d.thickness_mm[0]}–{d.thickness_mm[1]} mm</b></span>
+        <span>{t.statLife}<b>{d.service_life_years[0]}–{d.service_life_years[1]} {t.yearsShort}</b></span>
+        <span>{t.statPrice}<b>{d.price_ils_m2.range[0]}–{d.price_ils_m2.range[1]}</b></span>
+        <span>{t.statTime}<b>{d.installation.typical_time_days} {t.days}</b></span>
+      </div>
+    </div>
+  </section>
+
+  {/* §1 — Что это (белая секция) */}
+  <section class="fx-mat-section" id="what">
+    <div class="fx-mat-section__head">
+      <p class="fx-eyebrow"><span class="encyc-section-num">§1</span>{t.sectionWhat}</p>
+      <h2>{t.sectionWhatTitle}</h2>
+    </div>
+    <div class="encyc-prose" style="max-width: 880px; margin: 0 auto;">
+      {paragraphs(d.what_is_it[lang]).map((p) => <p>{p}</p>)}
+      {d.composition.length > 0 && (
+        <p style="margin-top: 24px; color: #6e6e73; font-size: 14px;">
+          <strong style="color: #1d1d1f;">{lang === 'en' ? 'Composition:' : 'Состав:'}</strong> {d.composition.join(' · ')}
+        </p>
+      )}
+    </div>
+  </section>
+
+  {/* §2 — Цена (серая секция) */}
+  <section class="fx-mat-section fx-mat-section--grey" id="price">
+    <div class="fx-mat-section__inner">
+      <div class="fx-mat-section__head">
+        <p class="fx-eyebrow"><span class="encyc-section-num">§2</span>{t.sectionPrice}</p>
+        <h2>{t.sectionPriceTitle}</h2>
+      </div>
+      <div class="encyc-two-col" style="max-width: 1100px; margin: 0 auto;">
+        <div>
+          <div class="encyc-col-title encyc-col-title--good">{lang === 'en' ? 'Included' : 'Входит в цену'}</div>
+          <ul class="encyc-col-list encyc-col-list--good">
+            {d.price_ils_m2.includes.map((x) => <li>{x}</li>)}
+          </ul>
+        </div>
+        <div>
+          <div class="encyc-col-title encyc-col-title--bad">{lang === 'en' ? 'Not included' : 'Не входит'}</div>
+          <ul class="encyc-col-list encyc-col-list--bad">
+            {d.price_ils_m2.excludes.map((x) => <li>{x}</li>)}
+          </ul>
+        </div>
+      </div>
+      {d.price_ils_m2.notes && (
+        <p style="margin-top: 32px; max-width: 880px; margin-left: auto; margin-right: auto; color: #6e6e73; font-size: 14px; font-family: 'Montserrat', sans-serif; text-align: center;">{d.price_ils_m2.notes}</p>
+      )}
+    </div>
+  </section>
+
+  {/* §3 — Применимость (белая) */}
+  <section class="fx-mat-section" id="fit">
+    <div class="fx-mat-section__head">
+      <p class="fx-eyebrow"><span class="encyc-section-num">§3</span>{t.sectionFit}</p>
+      <h2>{t.sectionFitTitle}</h2>
+    </div>
+    <div class="encyc-two-col" style="max-width: 1100px; margin: 0 auto 60px;">
+      <div>
+        <div class="encyc-col-title encyc-col-title--good">{t.sectionFitGood}</div>
+        <ul class="encyc-col-list encyc-col-list--good">
+          {d.fit.good.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+      <div>
+        <div class="encyc-col-title encyc-col-title--bad">{t.sectionFitBad}</div>
+        <ul class="encyc-col-list encyc-col-list--bad">
+          {d.fit.bad.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="encyc-prose" style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 16px; color: #1d1d1f;">{t.sectionFitWhy}</h3>
+      {paragraphs(d.fit.why[lang]).map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  {/* §4 — Технология (серая) */}
+  <section class="fx-mat-section fx-mat-section--grey" id="install">
+    <div class="fx-mat-section__inner">
+      <div class="fx-mat-section__head">
+        <p class="fx-eyebrow"><span class="encyc-section-num">§4</span>{t.sectionInstall}</p>
+        <h2>{t.sectionInstallTitle}</h2>
+      </div>
+
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 16px; color: #1d1d1f; max-width: 1100px; margin: 0 auto 16px;">{t.sectionInstallSubstrate}</h3>
+      <ul class="encyc-substrate" style="max-width: 1100px; margin: 0 auto 48px;">
+        {d.installation.substrate_requirements.map((x) => <li>{x}</li>)}
+      </ul>
+
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 24px; color: #1d1d1f; max-width: 1100px; margin: 0 auto 24px;">{t.sectionInstallSteps}</h3>
+      <div class="fx-process" style="max-width: 1100px; margin: 0 auto;">
+        {d.installation.steps.map((step, i) => (
+          <div class="fx-process-step">
+            <div class="fx-process-step__num">{i + 1}</div>
+            <p class="fx-process-step__name">{step.name}</p>
+            <p class="fx-process-step__desc">{step.purpose}</p>
+            {(step.time_h !== undefined || step.consumables_kg_m2 !== undefined) && (
+              <span class="fx-process-step__time">
+                {step.time_h !== undefined && <>~{step.time_h} {t.h}</>}
+                {step.time_h !== undefined && step.consumables_kg_m2 !== undefined && <> · </>}
+                {step.consumables_kg_m2 !== undefined && <>{step.consumables_kg_m2} kg/m²</>}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {(d.installation.cure_walk_h || d.installation.cure_load_h || d.installation.cure_full_days) && (
+        <div class="encyc-cure-grid" style="max-width: 1100px; margin: 48px auto 0;">
+          {d.installation.cure_walk_h !== undefined && (
+            <div class="encyc-cure-cell">
+              <div class="encyc-cure-label">{t.walkAt}</div>
+              <div class="encyc-cure-value">{d.installation.cure_walk_h}<em>{t.h}</em></div>
+            </div>
+          )}
+          {d.installation.cure_load_h !== undefined && (
+            <div class="encyc-cure-cell">
+              <div class="encyc-cure-label">{t.loadAt}</div>
+              <div class="encyc-cure-value">{d.installation.cure_load_h}<em>{t.h}</em></div>
+            </div>
+          )}
+          {d.installation.cure_full_days !== undefined && (
+            <div class="encyc-cure-cell">
+              <div class="encyc-cure-label">{t.fullCure}</div>
+              <div class="encyc-cure-value">{d.installation.cure_full_days}<em>{t.days}</em></div>
+            </div>
+          )}
+          <div class="encyc-cure-cell">
+            <div class="encyc-cure-label">{t.crew}</div>
+            <div class="encyc-cure-value">{d.installation.crew_size}<em>{t.people}</em></div>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* §5 — Pitfalls (белая) */}
+  <section class="fx-mat-section" id="pitfalls">
+    <div class="fx-mat-section__head">
+      <p class="fx-eyebrow"><span class="encyc-section-num">§5</span>{t.sectionPitfalls}</p>
+      <h2>{t.sectionPitfallsTitle}</h2>
+    </div>
+    <div class="fx-pitfalls-grid">
+      {d.pitfalls.map((p) => (
+        <div class="fx-pitfall">
+          <p class="fx-pitfall__label">{t.cause.toLowerCase()}</p>
+          <h3 class="fx-pitfall__name">{p.name}</h3>
+          <p class="fx-pitfall__desc">{p.cause}</p>
+          <div class="fx-pitfall__fix"><b>{t.fix}:</b> {p.fix}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* §6 — Альтернативы (серая) */}
+  <section class="fx-mat-section fx-mat-section--grey" id="alt">
+    <div class="fx-mat-section__inner">
+      <div class="fx-mat-section__head">
+        <p class="fx-eyebrow"><span class="encyc-section-num">§6</span>{t.sectionAlt}</p>
+        <h2>{t.sectionAltTitle}</h2>
+      </div>
+      <div class="fx-systems-grid">
+        {d.alternatives.map((alt) => (
+          <a class="fx-system-card" href={`${altPath}${alt.slug}`}>
+            <p class="fx-system-card__thickness">{alt.slug}</p>
+            <h3 class="fx-system-card__name">{alt.slug.replace(/-/g, ' ')}</h3>
+            <p class="fx-system-card__desc">{alt.when}</p>
+            <span class="fx-system-card__link">{lang === 'en' ? 'Learn more' : 'Подробнее'}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* §7 — FAQ (белая) */}
+  {d.faq.length > 0 && (
+    <section class="fx-mat-section" id="faq">
+      <div class="fx-mat-section__head">
+        <p class="fx-eyebrow"><span class="encyc-section-num">§7</span>{t.sectionFaq}</p>
+        <h2>{t.sectionFaqTitle}</h2>
+      </div>
+      <div class="encyc-faq">
+        {d.faq.map((item) => (
+          <details>
+            <summary>{item.q[lang]}</summary>
+            <div class="encyc-faq-answer">{item.a[lang]}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {/* §8 — Источники (серая) */}
+  <section class="fx-mat-section fx-mat-section--grey" id="sources">
+    <div class="fx-mat-section__inner">
+      <div class="fx-mat-section__head">
+        <p class="fx-eyebrow"><span class="encyc-section-num">§8</span>{t.sectionSources}</p>
+        <h2>{t.sectionSourcesTitle}</h2>
+      </div>
+      <ul class="encyc-sources" style="max-width: 880px; margin: 0 auto;">
+        {d.sources.map((s) => (
+          <li>
+            <span class="src-type">{s.type}</span>
+            {s.vendor && <span class="src-vendor">{s.vendor}</span>}
+            {s.authority && <span class="src-vendor">{s.authority}</span>}
+            {s.url ? <a href={s.url} target="_blank" rel="noopener">{s.doc || s.url}</a> : <span>{s.doc}</span>}
+            <span class="src-date">retrieved {s.retrieved}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* CTA (тёмный, как .fx-mat-cta) */}
+  <section class="fx-mat-cta">
+    <h2 set:html={t.ctaTitle.replace('\n', '<br/>')}></h2>
+    <p>{t.ctaLede}</p>
+    <div class="fx-mat-cta__row">
+      <a href={`/contact.html#system=${d.slug}`} class="btn btn-outline-white">{t.ctaQuote}</a>
+      <a href="#" class="btn btn-outline-white" data-fx="sampleOpen">{t.ctaSample}</a>
+      <a href="/decision-tool.html" class="btn btn-outline-white">{t.ctaTool}</a>
+    </div>
+  </section>
+
+  {/* META внизу */}
+  <div class="encyc-meta">
+    <div>{t.lastReviewed}: <strong>{d.last_reviewed}</strong></div>
+    <div>{t.reviewer}: <strong>{d.reviewer}</strong></div>
+    <div>
+      <span class={`encyc-status encyc-status--${d.draft_status}`}>{d.draft_status}</span>
+    </div>
+  </div>
+
+</BaseLayout>

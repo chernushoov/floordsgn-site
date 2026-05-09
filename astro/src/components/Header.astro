@@ -1,0 +1,48 @@
+---
+interface Props {
+  lang?: 'ru' | 'en';
+  /** Если true — header стартует прозрачным (для тёмного hero). Иначе сразу в "scrolled-light" */
+  hero?: boolean;
+}
+
+const { lang = 'ru', hero = false } = Astro.props;
+const langPrefix = lang === 'en' ? '/en' : '';
+
+// База: текущая страница в "alt" языке для языкового переключателя
+const currentPath = Astro.url.pathname;
+const altPath = lang === 'en'
+  ? currentPath.replace(/^\/en/, '') || '/'
+  : '/en' + (currentPath === '/' ? '' : currentPath);
+---
+<header class={`header${hero ? ' header--hero' : ''}`} id="mainHeader">
+  <nav class="header__nav header__nav--left">
+    <a href={`${langPrefix}/`} data-i18n="nav_floors">{lang === 'en' ? 'Encyclopedia' : 'Энциклопедия'}</a>
+    <a href="/floors.html" data-i18n="nav_projects">{lang === 'en' ? 'Floors' : 'Полы'}</a>
+  </nav>
+  <a href="/" class="header__logo">
+    <img src="/images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+    <img src="/images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+  </a>
+  <nav class="header__nav header__nav--right">
+    <a href="/about.html" data-i18n="nav_about">{lang === 'en' ? 'About' : 'О нас'}</a>
+    <a href="/contact.html" data-i18n="nav_contact">{lang === 'en' ? 'Contact' : 'Контакты'}</a>
+  </nav>
+  <div class="header__lang">
+    <a class={`lang-btn${lang === 'en' ? ' active' : ''}`} href={lang === 'en' ? '#' : altPath} data-lang="en">EN</a>
+    <a class={`lang-btn${lang === 'ru' ? ' active' : ''}`} href={lang === 'ru' ? '#' : altPath} data-lang="ru">RU</a>
+  </div>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/" data-i18n="nav_home">{lang === 'en' ? 'Encyclopedia' : 'Энциклопедия'}</a></li>
+    <li><a href="/floors.html" data-i18n="nav_floors">{lang === 'en' ? 'Floors' : 'Полы'}</a></li>
+    <li><a href="/projects.html" data-i18n="nav_projects">{lang === 'en' ? 'Projects' : 'Проекты'}</a></li>
+    <li><a href="/about.html" data-i18n="nav_about">{lang === 'en' ? 'About' : 'О нас'}</a></li>
+    <li><a href="/blog.html" data-i18n="nav_blog">{lang === 'en' ? 'Blog' : 'Блог'}</a></li>
+    <li><a href="/contact.html" data-i18n="nav_contact">{lang === 'en' ? 'Contact' : 'Контакты'}</a></li>
+  </ul>
+</div>

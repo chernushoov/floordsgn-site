@@ -1,0 +1,215 @@
+# Golden Sample #1 — Self-leveling epoxy 3-5mm
+# Это эталон для Writer/Reviewer. Все 280 страниц должны быть такого же уровня плотности и тона.
+# Цифры: верифицированы по Sikafloor-264 TDS + Mapefloor I 300 SL TDS на 2026-04 (placeholder URL — заменит Scout).
+# При первом проходе Reviewer-агента эти цифры идут на проверку как "trusted baseline".
+
+slug: epoxy-self-leveling
+family: epoxy
+draft_status: published
+audience_tag: contractor
+source_priority: 5
+
+display_name:
+  ru: "Самонивелирующийся эпоксид 3–5 мм"
+  en: "Self-leveling epoxy 3–5 mm"
+  he: ""  # заполняется в Phase 2 с подсмотром у Sika IL / Mapei IL
+  ar: ""
+
+one_liner:
+  ru: "Гладкий бесшовный эпоксидный пол для лёгких и средних промышленных нагрузок. Заливается до уровня сам, выравнивает мелкие неровности основания."
+  en: "Smooth, seamless epoxy floor for light-to-medium industrial loads. Self-levels to a flat surface, hides minor substrate irregularities."
+
+# ═════════ §1 — что это ═════════
+what_is_it:
+  ru: |
+    Двухкомпонентная эпоксидная система на базе бисфенол-A смолы и аминного отвердителя, с кварцевым наполнителем для тиксотропии и износа. Заливается на подготовленное бетонное основание поверх грунтовки слоем 3–5 мм; жидкая консистенция позволяет смеси растекаться под собственным весом до горизонтальной плоскости. После полимеризации даёт бесшовное покрытие с гладкой полу-глянцевой поверхностью, средней химической стойкостью и заявленной адгезией к бетону свыше 1.5 МПа.
+
+    Базовая система состоит из трёх слоёв: 2-компонентный праймер (~250 г/м²), наливная масса 3–5 мм, опционально топкоат (UV/износ). Без топкоата срок службы режется на 30–40% при высокой проходимости.
+
+    Это рабочая лошадка промышленных полов: warehouse, retail, паркинг 1-го этажа, шоу-румы. Классы нагрузки EN 1504-2 и ACI 302.1R до moderate. Не для холодильных камер, не для агрессивной химии, не для улицы.
+  en: |
+    Two-component epoxy system based on bisphenol-A resin and amine hardener, with quartz filler for thixotropy and wear. Poured onto a primed concrete substrate at 3–5 mm; the low-viscosity blend self-levels under gravity to a flat plane. Once cured, it forms a seamless coating with a smooth semi-gloss finish, moderate chemical resistance, and bond strength to concrete typically exceeding 1.5 MPa.
+
+    Standard build-up: 2-component primer (~250 g/m²), self-leveling pour 3–5 mm, optional topcoat for UV or abrasion. Without topcoat, useful life drops 30–40% under heavy foot traffic.
+
+    The industrial workhorse: warehouses, retail, ground-floor parking, showrooms. Load class moderate per EN 1504-2 / ACI 302.1R. Not for cold storage, not for aggressive chemicals, not for exterior UV exposure.
+
+composition:
+  - "Bisphenol-A epoxy resin (component A)"
+  - "Polyamine / cycloaliphatic amine hardener (component B)"
+  - "Quartz / silica filler 0.1–0.3 mm"
+  - "Pigment paste (typically iron oxide or organic)"
+  - "Defoaming agent"
+
+thickness_mm: [3, 5]
+service_life_years: [10, 15]
+
+# ═════════ §2 — экономика ═════════
+price_ils_m2:
+  range: [220, 380]
+  includes:
+    - "Материал (праймер + наливная масса + топкоат)"
+    - "Работа: нанесение, шлифовка кромок, защита смежных поверхностей"
+    - "Базовая колеровка из RAL 7000-7045"
+  excludes:
+    - "Подготовка основания (shotblast, diamond grinding, ремонт трещин)"
+    - "Coving / устройство галтелей"
+    - "Цвет вне стандартного RAL — +50 ₪/м²"
+    - "Площадь < 200 м² — уплотняющий коэффициент +30%"
+  notes: "Цены обновляются раз в квартал. Декабрь 2026 — пересмотр после изменения цен Sika IL Q4 2026."
+  last_priced: "2026-04-15"
+
+# ═════════ §3 — fit / not-fit ═════════
+fit:
+  good:
+    - "Warehouses (light-to-moderate forklift, ≤ 3 т)"
+    - "Retail и shopping centers"
+    - "Ground-floor parking без термошока"
+    - "Showrooms, galleries"
+    - "Pharma и food (только с пищевым топкоатом + интегрированными coving)"
+    - "Light manufacturing"
+  bad:
+    - "Холодильные камеры < 0°C (термоудар → растрескивание)"
+    - "Прямой контакт с агрессивной химией (concentrated acids, aromatic solvents)"
+    - "Наружные площадки под прямым УФ (желтеет, мелит)"
+    - "Полы с постоянной влагой / wet processing (PU-cement лучше)"
+    - "Heavy industrial с динамическими ударными нагрузками (нужен HBS troweled)"
+  why:
+    ru: |
+      Эпоксид жёсткий и прочный, но не эластичный. Любые движения основания — термические, усадочные, сейсмические — переходят в трещины покрытия. Холодильные камеры дают разницу температур до 40°C между полом и воздухом — это гарантированное расслоение через 1–3 года. Под УФ Bisphenol-A теряет хромофоры и желтеет; стандартная система это не топкоат с алифатическим PU. Для влажных процессов проблема в обратном — пары воды через бетон создают давление под покрытием (vapor drive), и эпоксид отрывается, потому что не пропускает пар. PU-cement специально проектируется как paste-through для таких случаев.
+    en: |
+      Epoxy is hard and strong but not elastic. Any substrate movement — thermal, shrinkage, seismic — telegraphs through as cracks in the coating. Cold rooms see swings up to 40°C between floor and air, which guarantees delamination within 1–3 years. Under UV exposure, bisphenol-A loses chromophores and yellows; the standard system has no aliphatic PU topcoat. In wet-processing environments the issue is reversed: water vapour migrating through concrete builds pressure under the impermeable epoxy film (vapour drive), and the coating debonds. PU-cement is specifically engineered as a vapour-permeable system for these cases.
+
+# ═════════ §4 — технология монтажа ═════════
+installation:
+  substrate_requirements:
+    - "Бетон CT-C25-F4 минимум, EN 13813"
+    - "Возраст плиты ≥ 28 дней"
+    - "Влажность бетона RH < 4% по Tramex CMEx II или RH < 75% по ASTM F2170 (зонд)"
+    - "Прочность на отрыв ≥ 1.5 МПа (pull-off, EN 1542)"
+    - "Profile CSP 2–3 после shotblast (ICRI Guideline 310.2R)"
+    - "Отсутствие масляных и силиконовых загрязнений (UV-lamp test)"
+    - "Уклон с готовой геометрией ± 3 мм / 2 м"
+  steps:
+    - name: "Shotblast / diamond grinding"
+      purpose: "Механическая адгезия, удаление laitance и поверхностных загрязнений"
+      time_h: 2
+      consumables_kg_m2: 0
+    - name: "Crack and joint repair"
+      purpose: "Заделка ремонтным эпоксидом ≥ 1 мм трещин, статические швы оставляем"
+      time_h: 1
+      consumables_kg_m2: 0.05
+    - name: "Primer 2-component"
+      purpose: "Связь с основанием + закрытие пор для предотвращения pinholes"
+      time_h: 1
+      consumables_kg_m2: 0.25
+    - name: "Self-level pour 3–5 mm"
+      purpose: "Основной слой, заливка зубчатым шпателем + игольчатый валик"
+      time_h: 3
+      consumables_kg_m2: 5.5
+    - name: "Topcoat (опционально)"
+      purpose: "Износо- и УФ-защита; даёт matt/satin/gloss финиш"
+      time_h: 1
+      consumables_kg_m2: 0.15
+  typical_time_days: 4
+  crew_size: 3
+  cure_walk_h: 24
+  cure_load_h: 72
+  cure_full_days: 7
+
+# ═════════ §5 — подводные камни ═════════
+pitfalls:
+  - name: "Pinholes от газовыделения основания"
+    cause: "Воздух выходит из пор бетона при тёплой плите и охлаждающемся помещении (или наоборот). Если праймер не успел закрыть поры или нанесён тонким слоем — пузыри проходят сквозь наливной слой и оставляют точечные кратеры."
+    fix: "Праймер в 2 прохода, второй — с кварцевым посыпом. Заливка в стабильном температурном режиме (+18…+22°C, плита и воздух с разницей ≤ 3°C). Игольчатый валик через 5–10 мин после заливки."
+  - name: "Adhesion failure (расслоение)"
+    cause: "Влажность основания > 4% RH или vapour drive снизу (нет гидроизоляции под плитой)."
+    fix: "Перед нанесением — обязательный замер RH тестом Tramex или ASTM F2170. При сомнении — 2-компонентный moisture-mitigation primer (epoxy с амино-силановой подложкой)."
+  - name: "Цвет уплыл между партиями"
+    cause: "Пигмент-паста разных производственных партий даёт разные ΔE. На стыке заливок видна полоса."
+    fix: "Заказывать материал одной партией (ask for `batch number` в Sika IL) на весь объект; границы заливок проводить по линиям швов, а не по середине пролёта."
+  - name: "Желтизна / мелование"
+    cause: "Прямой УФ (окна, открытые ворота). Bisphenol-A теряет хромофоры через 6–18 мес."
+    fix: "Алифатический PU-топкоат (Sikafloor-264 + Sikafloor-359 N) или замена на 100%-PU систему."
+  - name: "Hairline cracks через швы"
+    cause: "Эпоксид заполнил статический шов, не дал ему работать."
+    fix: "Швы режутся диск-резкой по покрытию ровно над швом плиты, заполняются полиуретановым герметиком. Reviewer материала: 'не покрывать дилатационные швы'."
+
+# ═════════ §6 — альтернативы ═════════
+alternatives:
+  - slug: "epoxy-troweled-hbs"
+    when: "Если нагрузка тяжелее (heavy forklift > 5 т, abrasion класс > AR 0.5) — нужен Heavy-Body Screed 6–12 мм"
+  - slug: "pu-cement"
+    when: "Если бывает термошок, мойка горячей водой, влажные процессы или химия — PU-цемент в разы устойчивее"
+  - slug: "polished-concrete-cream"
+    when: "Если бюджет жёсткий и нужен только лёгкий retail без специальных требований — шлифовка существующей плиты дешевле"
+  - slug: "mma-fast-cure"
+    when: "Если простой объекта < 8 часов критичен (пищевое производство, аптека) — MMA встаёт за 2 часа"
+  - slug: "microcement"
+    when: "Если ключевое — эстетика и residential interior — микроцемент даёт 2-3 мм минеральный финиш"
+
+# ═════════ §7 — визуал ═════════
+cross_section_svg: "/encyclopedia/assets/diagrams/epoxy-self-leveling-section.svg"  # TBD: рисуем в Phase 1
+hero_photo: "/encyclopedia/assets/photos/epoxy-self-leveling-hero.jpg"  # TBD: подобрать из архива
+photos: []  # заполнится из case-studies
+
+# ═════════ §8 — источники ═════════
+sources:
+  - type: vendor-tds
+    vendor: "Sika"
+    doc: "Sikafloor-264 Technical Data Sheet"
+    url: "https://isr.sika.com/dms/getdocument.../sikafloor-264.pdf"  # TBD: точный URL подтянет Scout
+    retrieved: "2026-04-15"
+  - type: vendor-tds
+    vendor: "Mapei"
+    doc: "Mapefloor I 300 SL TDS"
+    url: "https://www.mapei.com/.../mapefloor-i-300-sl.pdf"  # TBD
+    retrieved: "2026-04-15"
+  - type: standard
+    authority: "ICRI"
+    doc: "310.2R-2013 Selecting and Specifying Concrete Surface Preparation"
+    retrieved: "2026-04-15"
+  - type: standard
+    authority: "ACI"
+    doc: "117-15 Specification for Tolerances for Concrete Construction"
+    retrieved: "2026-04-15"
+  - type: standard
+    authority: "EN"
+    doc: "EN 13813 Screed material and floor screeds"
+    retrieved: "2026-04-15"
+  - type: standard
+    authority: "ASTM"
+    doc: "ASTM F2170 In-situ RH probe testing"
+    retrieved: "2026-04-15"
+
+# ═════════ §9 — мета и связи ═════════
+related:
+  - epoxy-troweled-hbs
+  - epoxy-anti-static
+  - epoxy-decorative
+  - epoxy-seal-coat
+  - pu-cement-standard
+  - polished-concrete-cream
+
+faq:
+  - q:
+      ru: "Можно ли заливать эпоксид прямо на старую плитку?"
+      en: "Can you pour epoxy directly over old tile?"
+    a:
+      ru: "Технически — да, после shotblast или диамантной шлифовки и проверки адгезии каждой плитки на отрыв (≥ 1.5 МПа). Практически — отрицательный совет: швы между плитками работают как тепловые мосты и проступают трещинами через 6–12 мес. Лучше демонтировать плитку или сделать самонивелирующую цементную стяжку 5–10 мм поверх как разделительный слой."
+      en: "Technically yes — after shotblasting or diamond grinding and pull-off testing of each tile (≥ 1.5 MPa). In practice we advise against: grout joints act as thermal bridges and telegraph as cracks within 6–12 months. Strip the tile, or pour a 5–10 mm self-leveling cement screed as a decoupling layer."
+  - q:
+      ru: "Сколько объект простаивает?"
+      en: "How much downtime?"
+    a:
+      ru: "Минимум 4 рабочих дня + 24 часа на пешеходную нагрузку и 7 суток на полную химическую полимеризацию. Тяжёлая техника / ричтраки — не раньше 7 дней."
+      en: "Minimum 4 working days + 24 hours before walking + 7 days for full chemical cure. Heavy equipment and reach trucks — not before 7 days."
+  - q:
+      ru: "Гарантия?"
+      en: "Warranty?"
+    a:
+      ru: "Floor.DSGN даёт 5 лет на адгезию и 2 года на износ топкоата при условии корректной эксплуатации (без термошока, без пиктовых нагрузок > заявленных, регулярная мойка нейтральными средствами). Гарантия аннулируется при несанкционированных ремонтах самонанесением."
+      en: "Floor.DSGN warrants adhesion for 5 years and topcoat wear for 2 years, conditional on proper use (no thermal shock, point loads within spec, neutral pH cleaning). DIY repairs void warranty."
+
+last_reviewed: "2026-05-10"
+reviewer: "Алексей Чернышев (golden sample, hand-written)"

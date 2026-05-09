@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('materials', ({ data }) => data.draft_status === 'published');
+
+const families: Record<string, { ru: string; en: string; order: number }> = {
+  'polished-concrete':         { ru: 'Полированный бетон',        en: 'Polished concrete',        order: 1 },
+  'epoxy':                     { ru: 'Эпоксидные системы',         en: 'Epoxy systems',            order: 2 },
+  'terrazzo':                  { ru: 'Террацо',                    en: 'Terrazzo',                 order: 3 },
+  'pu-mma':                    { ru: 'PU / PU-cement / MMA',       en: 'PU / PU-cement / MMA',     order: 4 },
+  'microcement':               { ru: 'Микроцементы',               en: 'Microcement',              order: 5 },
+  'cement-screed':             { ru: 'Цементные стяжки',           en: 'Cement screeds',           order: 6 },
+  'industrial-self-leveling':  { ru: 'Индустриальные наливные',    en: 'Industrial self-leveling', order: 7 },
+  'parquet-engineered':        { ru: 'Паркет / инж. доска',        en: 'Parquet / engineered',     order: 8 },
+  'laminate-lvt-spc':          { ru: 'Ламинат / LVT / SPC',        en: 'Laminate / LVT / SPC',     order: 9 },
+};
+
+const byFamily = all.reduce((acc, m) => {
+  const f = m.data.family;
+  if (!acc[f]) acc[f] = [];
+  acc[f].push(m);
+  return acc;
+}, {} as Record<string, typeof all>);
+
+const sortedFamilies = Object.entries(byFamily).sort(
+  ([a], [b]) => (families[a]?.order || 99) - (families[b]?.order || 99)
+);
+---
+<BaseLayout
+  lang="ru"
+  title="Floor.DSGN — Энциклопедия полов"
+  description="Справочник по полимерным и декоративным полам, стяжкам и ремонту бетона. Без маркетинга, со ссылками на TDS и нормативы. Для подрядчиков, архитекторов и владельцев."
+>
+
+  <section class="encyc-index-hero">
+    <p class="fx-eyebrow">Floor.DSGN · Encyclopedia · {all.length} материалов опубликовано</p>
+    <h1>Справочник<br/>по полам</h1>
+    <p>Что подойдёт под ваш случай, сколько стоит, какие подводные камни. Цифры и ссылки на TDS — без маркетинга. Для подрядчиков, архитекторов, владельцев и тех, кто делает себе.</p>
+  </section>
+
+  {sortedFamilies.map(([family, items]) => (
+    <section class="encyc-family">
+      <div class="encyc-family__head">
+        <h2 class="encyc-family__name">{families[family]?.ru || family}</h2>
+        <span class="encyc-family__count">{items.length} {items.length === 1 ? 'материал' : 'материалов'}</span>
+      </div>
+      <div class="fx-systems-grid">
+        {items.map((m) => (
+          <a class="fx-system-card" href={`/floors/${m.data.slug}`}>
+            <p class="fx-system-card__thickness">{m.data.thickness_mm[0]}–{m.data.thickness_mm[1]} мм</p>
+            <h3 class="fx-system-card__name">{m.data.display_name.ru}</h3>
+            <p class="fx-system-card__desc">{m.data.one_liner.ru}</p>
+            <div class="fx-system-card__meta">
+              <span>от <b>₪{m.data.price_ils_m2.range[0]}/м²</b></span>
+              <span>{m.data.installation.typical_time_days} дн.</span>
+            </div>
+            <span class="fx-system-card__link">Подробнее</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  {all.length === 0 && (
+    <section class="fx-mat-section">
+      <p style="text-align: center; color: #6e6e73; padding: 80px 0; font-family: 'Montserrat', sans-serif;">
+        Материалы пока в работе. Добавляйте YAML в encyclopedia/materials/.
+      </p>
+    </section>
+  )}
+
+  <div style="height: 80px;"></div>
+
+</BaseLayout>

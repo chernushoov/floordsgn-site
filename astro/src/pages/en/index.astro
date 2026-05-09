@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('materials', ({ data }) => data.draft_status === 'published');
+
+const families: Record<string, { en: string; order: number }> = {
+  'polished-concrete':         { en: 'Polished concrete',        order: 1 },
+  'epoxy':                     { en: 'Epoxy systems',            order: 2 },
+  'terrazzo':                  { en: 'Terrazzo',                 order: 3 },
+  'pu-mma':                    { en: 'PU / PU-cement / MMA',     order: 4 },
+  'microcement':               { en: 'Microcement',              order: 5 },
+  'cement-screed':             { en: 'Cement screeds',           order: 6 },
+  'industrial-self-leveling':  { en: 'Industrial self-leveling', order: 7 },
+  'parquet-engineered':        { en: 'Parquet / engineered',     order: 8 },
+  'laminate-lvt-spc':          { en: 'Laminate / LVT / SPC',     order: 9 },
+};
+
+const byFamily = all.reduce((acc, m) => {
+  const f = m.data.family;
+  if (!acc[f]) acc[f] = [];
+  acc[f].push(m);
+  return acc;
+}, {} as Record<string, typeof all>);
+
+const sortedFamilies = Object.entries(byFamily).sort(
+  ([a], [b]) => (families[a]?.order || 99) - (families[b]?.order || 99)
+);
+---
+<BaseLayout
+  lang="en"
+  title="Floor.DSGN — Floor Encyclopedia"
+  description="Reference for polymer and decorative flooring, screeds and concrete repair. No marketing — numbers, TDS citations, code references. For contractors, architects, owners."
+>
+
+  <section class="encyc-index-hero">
+    <p class="fx-eyebrow">Floor.DSGN · Encyclopedia · {all.length} materials published</p>
+    <h1>Floor systems<br/>reference</h1>
+    <p>What fits your case, what it costs, what goes wrong. Numbers and TDS citations — no marketing. For contractors, architects, owners and DIYers.</p>
+  </section>
+
+  {sortedFamilies.map(([family, items]) => (
+    <section class="encyc-family">
+      <div class="encyc-family__head">
+        <h2 class="encyc-family__name">{families[family]?.en || family}</h2>
+        <span class="encyc-family__count">{items.length} {items.length === 1 ? 'material' : 'materials'}</span>
+      </div>
+      <div class="fx-systems-grid">
+        {items.map((m) => (
+          <a class="fx-system-card" href={`/en/floors/${m.data.slug}`}>
+            <p class="fx-system-card__thickness">{m.data.thickness_mm[0]}–{m.data.thickness_mm[1]} mm</p>
+            <h3 class="fx-system-card__name">{m.data.display_name.en}</h3>
+            <p class="fx-system-card__desc">{m.data.one_liner.en}</p>
+            <div class="fx-system-card__meta">
+              <span>from <b>₪{m.data.price_ils_m2.range[0]}/m²</b></span>
+              <span>{m.data.installation.typical_time_days} days</span>
+            </div>
+            <span class="fx-system-card__link">Learn more</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <div style="height: 80px;"></div>
+
+</BaseLayout>

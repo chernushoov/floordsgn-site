@@ -1,0 +1,274 @@
+# Floor Encyclopedia — Material Page Schema
+# Версия: 1.0 (2026-05-10)
+# Это контракт между Writer/Reviewer-агентами и фронтендом.
+# Любая страница материала — это YAML, удовлетворяющий этой схеме.
+# Frontend (Astro + Zod) валидирует на билде, упавшие YAML не публикуются.
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: Material Page
+type: object
+required:
+  - slug
+  - family
+  - display_name
+  - one_liner
+  - what_is_it
+  - thickness_mm
+  - service_life_years
+  - price_ils_m2
+  - fit
+  - installation
+  - pitfalls
+  - alternatives
+  - sources
+  - last_reviewed
+  - reviewer
+
+properties:
+
+  # ═════════ identity ═════════
+  slug:
+    type: string
+    pattern: "^[a-z0-9-]+$"
+    description: URL slug, kebab-case. Пример "epoxy-self-leveling".
+
+  family:
+    type: string
+    enum:
+      - polished-concrete
+      - epoxy
+      - terrazzo
+      - pu-mma
+      - microcement
+      - cement-screed
+      - industrial-self-leveling
+      - parquet-engineered
+      - laminate-lvt-spc
+    description: Одно из 9 семейств таксономии.
+
+  display_name:
+    type: object
+    required: [ru, en]
+    properties:
+      ru: { type: string, maxLength: 80 }
+      en: { type: string, maxLength: 80 }
+      he: { type: string, maxLength: 80 }
+      ar: { type: string, maxLength: 80 }
+
+  one_liner:
+    type: object
+    required: [ru, en]
+    description: Одна фраза по-инженерному что это. Без маркетинга.
+    properties:
+      ru: { type: string, minLength: 30, maxLength: 200 }
+      en: { type: string, minLength: 30, maxLength: 200 }
+      he: { type: string, minLength: 30, maxLength: 200 }
+      ar: { type: string, minLength: 30, maxLength: 200 }
+
+  audience_tag:
+    type: string
+    enum: [contractor, architect, owner, diy]
+    description: Под кого hero-параграф пишется в первую очередь.
+
+  # ═════════ §1 — что это ═════════
+  what_is_it:
+    type: object
+    required: [ru, en]
+    description: 2-3 абзаца инженерным языком. Composition + механизм работы.
+    properties:
+      ru: { type: string, minLength: 200 }
+      en: { type: string, minLength: 200 }
+      he: { type: string, minLength: 200 }
+      ar: { type: string, minLength: 200 }
+
+  composition:
+    type: array
+    minItems: 1
+    items: { type: string }
+    description: Химия/состав. Пример ["Bisphenol-A epoxy", "amine hardener", "quartz filler"].
+
+  thickness_mm:
+    type: array
+    minItems: 2
+    maxItems: 2
+    items: { type: number, minimum: 0 }
+    description: "[min, max] фактическая рабочая толщина в мм."
+
+  service_life_years:
+    type: array
+    minItems: 2
+    maxItems: 2
+    items: { type: integer, minimum: 1 }
+    description: "[min, max] реалистичный срок службы при типовой нагрузке. Не маркетинг."
+
+  # ═════════ §2 — экономика ═════════
+  price_ils_m2:
+    type: object
+    required: [range, includes, excludes]
+    properties:
+      range:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items: { type: number, minimum: 0 }
+        description: "[min, max] ₪/м² на 2026."
+      includes:
+        type: array
+        items: { type: string }
+      excludes:
+        type: array
+        items: { type: string }
+      notes: { type: string }
+      last_priced: { type: string, format: date }
+
+  # ═════════ §3 — fit / not-fit ═════════
+  fit:
+    type: object
+    required: [good, bad, why]
+    properties:
+      good:
+        type: array
+        minItems: 2
+        items: { type: string }
+        description: Где реально подходит. Конкретно (warehouse light traffic, retail, parking ground floor).
+      bad:
+        type: array
+        minItems: 1
+        items: { type: string }
+        description: Где НЕ подходит. С причиной в "why".
+      why:
+        type: object
+        required: [ru, en]
+        properties:
+          ru: { type: string, minLength: 100 }
+          en: { type: string, minLength: 100 }
+          he: { type: string, minLength: 100 }
+          ar: { type: string, minLength: 100 }
+
+  # ═════════ §4 — технология монтажа ═════════
+  installation:
+    type: object
+    required: [substrate_requirements, steps, typical_time_days, crew_size]
+    properties:
+      substrate_requirements:
+        type: array
+        items: { type: string }
+        description: Норматив + конкретные числа. "RH < 4% (Tramex CMEx II)".
+      steps:
+        type: array
+        minItems: 2
+        items:
+          type: object
+          required: [name, purpose]
+          properties:
+            name: { type: string }
+            purpose: { type: string }
+            time_h: { type: number }
+            consumables_kg_m2: { type: number }
+      typical_time_days: { type: number, minimum: 0.1 }
+      crew_size: { type: integer, minimum: 1 }
+      cure_full_days: { type: integer }
+      cure_walk_h: { type: number }
+      cure_load_h: { type: number }
+
+  # ═════════ §5 — подводные камни ═════════
+  pitfalls:
+    type: array
+    minItems: 2
+    items:
+      type: object
+      required: [name, cause, fix]
+      properties:
+        name: { type: string }
+        cause: { type: string }
+        fix: { type: string }
+        photo: { type: string, description: "путь до failure-фото в /encyclopedia/assets/failures/" }
+
+  # ═════════ §6 — альтернативы ═════════
+  alternatives:
+    type: array
+    minItems: 2
+    items:
+      type: object
+      required: [slug, when]
+      properties:
+        slug: { type: string, description: "слаг другого материала" }
+        when: { type: string, description: "когда выбирать его вместо этого" }
+
+  # ═════════ §7 — визуал ═════════
+  cross_section_svg: { type: string, description: "путь до SVG-разреза" }
+  photos:
+    type: array
+    items: { type: string, description: "путь до фото" }
+  hero_photo: { type: string }
+
+  # ═════════ §8 — источники ═════════
+  sources:
+    type: array
+    minItems: 1
+    description: |
+      Каждое тех. число должно опираться на источник из этого списка.
+      Reviewer проверяет соответствие.
+    items:
+      type: object
+      required: [type, retrieved]
+      properties:
+        type: { type: string, enum: [vendor-tds, standard, peer-reviewed, internal-project, vendor-blog] }
+        vendor: { type: string }
+        doc: { type: string }
+        url: { type: string, format: uri }
+        retrieved: { type: string, format: date }
+        authority: { type: string, description: "ICRI/ACI/EN/ASTM" }
+
+  # ═════════ §9 — мета и связи ═════════
+  related:
+    type: array
+    items: { type: string, description: "слаг связанного материала" }
+
+  faq:
+    type: array
+    items:
+      type: object
+      required: [q, a]
+      properties:
+        q:
+          type: object
+          properties:
+            ru: { type: string }
+            en: { type: string }
+            he: { type: string }
+            ar: { type: string }
+        a:
+          type: object
+          properties:
+            ru: { type: string }
+            en: { type: string }
+            he: { type: string }
+            ar: { type: string }
+
+  last_reviewed:
+    type: string
+    format: date
+    description: Когда reviewer-агент или человек последний раз прошёлся по странице.
+
+  reviewer:
+    type: string
+    description: Имя ответственного. Для авто-генерации — "Claude Reviewer + {operator}".
+
+  draft_status:
+    type: string
+    enum: [draft, in-review, published, archived]
+    default: draft
+
+  source_priority:
+    type: integer
+    minimum: 1
+    maximum: 5
+    description: Приоритет 1-5, который Curator поставил при триаже. Для Writer'а ориентир глубины.
+
+# ═════════ что НЕ принимается ═════════
+# - "innovative", "cutting-edge", "state of the art" — стоп-слова, Reviewer ловит.
+# - Числа без единиц измерения.
+# - "до 50 лет" без условий нагрузки.
+# - Vendor-цитата без url + retrieved date.
+# - "self-leveling" в slug при толщине < 1 мм (это не self-level, это seal coat).

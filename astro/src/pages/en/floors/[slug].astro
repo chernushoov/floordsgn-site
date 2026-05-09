@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import MaterialLayout from '../../../layouts/MaterialLayout.astro';
+
+export async function getStaticPaths() {
+  const materials = await getCollection('materials', ({ data }) => data.draft_status !== 'archived');
+  return materials.map((m) => ({
+    params: { slug: m.data.slug },
+    props: { material: m },
+  }));
+}
+
+const { material } = Astro.props;
+---
+<MaterialLayout material={material} lang="en" />
