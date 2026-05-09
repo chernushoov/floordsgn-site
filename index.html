@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=9">
-    <link rel="stylesheet" href="enhance.css?v=11">
+    <link rel="stylesheet" href="enhance.css?v=12">
 </head>
 <body>
 
@@ -205,6 +205,14 @@
               <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
               <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
               <span class="fx-layer-tag">Тело системы<b data-fx="tagBody">Sikafloor‑263 SL · 3 мм</b></span>
+            </div>
+            <!-- Mesh — стеклосетка (только для micro и систем где требуется) -->
+            <div class="fx-layer fx-l-mesh" style="display:none">
+              <div class="fx-face fx-face-top"></div>
+              <div class="fx-face fx-face-bot"></div>
+              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+              <span class="fx-layer-tag">Стеклосетка<b>Fibreglass mesh 4×4 мм 60 г/м²</b></span>
             </div>
             <!-- Primer -->
             <div class="fx-layer fx-l-primer">
@@ -738,7 +746,7 @@
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
     <script src="translations.js"></script>
-    <script src="enhance.js?v=8" defer></script>
+    <script src="enhance.js?v=9" defer></script>
 </body>
 </html>
 <!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->

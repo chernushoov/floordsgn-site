@@ -343,7 +343,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 60px;
   align-items: center;
-  padding: 120px 36px;
+  padding: 160px 36px 120px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -478,10 +478,20 @@
 .fx-plate.is-exploded .fx-layer {
   filter: drop-shadow(0 14px 22px rgba(0,0,0,.18));
 }
-.fx-l-topcoat   { --z:  24px; --gap: -110px; --d: .05s; --h: 1.5px; --c: var(--plate-top); }
-.fx-l-body      { --z:   6px; --gap:  -36px; --d: .12s; --h: 16px;  --c: var(--plate-body); }
-.fx-l-primer    { --z: -12px; --gap:   36px; --d: .18s; --h: 2px;   --c: var(--plate-primer); }
-.fx-l-substrate { --z: -23px; --gap:  108px; --d: .24s; --h: 9px;   --c: var(--plate-substrate); }
+.fx-l-topcoat   { --z:  24px; --gap: -130px; --d: .05s; --h: 1.5px; --c: var(--plate-top); }
+.fx-l-body      { --z:   6px; --gap:  -50px; --d: .12s; --h: 16px;  --c: var(--plate-body); }
+.fx-l-mesh      { --z:  -9px; --gap:   18px; --d: .15s; --h: 1.2px; --c: rgba(255,255,255,.55); pointer-events: none; }
+.fx-l-primer    { --z: -13px; --gap:   60px; --d: .18s; --h: 2px;   --c: var(--plate-primer); }
+.fx-l-substrate { --z: -24px; --gap:  130px; --d: .24s; --h: 9px;   --c: var(--plate-substrate); }
+
+/* MESH face — стеклосетка SVG-паттерном (диагональная сетка 4×4) */
+.fx-l-mesh .fx-face-top {
+  background:
+    repeating-linear-gradient( 45deg, rgba(255,255,255,.85) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.85) 0 1px, transparent 1px 12px);
+  background-color: rgba(0,0,0,.05);
+}
+.fx-l-mesh .fx-face { background: rgba(255,255,255,.35); }
 
 /* Грани каждого слоя */
 .fx-face {
@@ -496,12 +506,26 @@
 .fx-face-S { left: 0; right: 0; bottom: 0; height: calc(var(--h) * 2); transform: rotateX( 90deg) translateZ(var(--h)); transform-origin: 50% 100%; filter: brightness(.86); }
 .fx-face-E { top: 0; bottom: 0; right: 0; width:  calc(var(--h) * 2); transform: rotateY( 90deg) translateZ(var(--h)); transform-origin: 100% 50%; filter: brightness(.90); }
 .fx-face-W { top: 0; bottom: 0; left:  0; width:  calc(var(--h) * 2); transform: rotateY(-90deg) translateZ(var(--h)); transform-origin: 0 50%;   filter: brightness(.94); }
-.fx-l-topcoat .fx-face-top { box-shadow: inset 0 0 0 1px rgba(0,0,0,.14), 0 10px 70px rgba(0,0,0,.28); }
-.fx-l-topcoat .fx-face-top::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.34) 50%, transparent 62%);
-  mix-blend-mode: screen; pointer-events: none;
+/* TOPCOAT — прозрачный глянцевый лак.
+   В compact-режиме сливается с body (ты видишь через него фактуру).
+   В exploded-режиме — лёгкая стеклянная "плёнка" с бликом. */
+.fx-l-topcoat .fx-face { background: rgba(20,20,22,.0); box-shadow: none; }
+.fx-l-topcoat .fx-face-top {
+  background:
+    linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%),
+    linear-gradient(180deg, rgba(20,20,22,.10), rgba(20,20,22,.03));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+  backdrop-filter: blur(.4px);
 }
+.fx-l-topcoat .fx-face-bot { background: rgba(20,20,22,.06); }
+.fx-l-topcoat .fx-face-N,
+.fx-l-topcoat .fx-face-S,
+.fx-l-topcoat .fx-face-E,
+.fx-l-topcoat .fx-face-W { background: rgba(20,20,22,.18); }
+/* В compact-режиме топкоат становится почти прозрачным — фактура body просвечивает */
+.fx-plate:not(.is-exploded) .fx-l-topcoat .fx-face-top { opacity: .55; }
+.fx-plate.is-exploded .fx-l-topcoat .fx-face-top { opacity: 1; }
+.fx-l-topcoat .fx-face-top { transition: opacity .6s ease; }
 .fx-l-body .fx-face-top {
   background-image: var(--plate-top-image, none);
   background-size: cover;

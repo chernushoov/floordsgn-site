@@ -13,6 +13,13 @@
       thick: '12 мм', base_: 'эпоксидная смола',
       bodyColor: '#2c2c2e',
       top: 'images/terrazzo/dark-mosaic-textured-background.jpg',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'Топ-герметик · 2 слоя', sku: 'Sikafloor‑304 W · 2 × 0.1 мм' },
+        body:      { name: 'Терраццо-масса',        sku: 'Sikafloor‑263 SL + Decodur basalt · 8 мм' },
+        primer:    { name: 'Праймер + кварц',       sku: 'Sikafloor‑156 + кварц 0.4–0.7 · 0.8 мм' },
+        substrate: { name: 'Подложка',              sku: 'Бетон C25/30 · ≥ 25 МПа' }
+      },
       chips: [
         { c: '#0a0a0a', w: .35 }, { c: '#9a9a9d', w: .15 },
         { c: '#6a6a6d', w: .15 }, { c: '#cfcfcf', w: .10 },
@@ -24,6 +31,13 @@
       thick: '12 мм', base_: 'эпоксидная смола',
       bodyColor: '#e8e3d4',
       top: 'images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'PU-топ · 2 слоя',   sku: 'Sikafloor‑304 W · 2 × 0.1 мм' },
+        body:      { name: 'Терраццо-масса',    sku: 'Sikafloor‑264 white + multicolor chips · 8 мм' },
+        primer:    { name: 'Праймер + кварц',   sku: 'Sikafloor‑156 + кварц · 0.8 мм' },
+        substrate: { name: 'Подложка',          sku: 'Бетон C25/30 · ≥ 25 МПа' }
+      },
       chips: [
         { c: '#2c5e88', w: .10 }, { c: '#d8a82e', w: .08 },
         { c: '#c66a3a', w: .07 }, { c: '#7a8a78', w: .07 },
@@ -33,10 +47,17 @@
       ]
     },
     terrazzo: {
-      base: '#efe7d6', label: 'терраццо', sub: 'венецианское',
-      thick: '12 мм', base_: 'эпоксидная смола',
+      base: '#efe7d6', label: 'терраццо', sub: 'венецианское · цементное',
+      thick: '15–20 мм', base_: 'белый цемент + мраморная крошка',
       bodyColor: '#e8dec8',
       top: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'Воск + ProSeal · 2 слоя', sku: 'Sikafloor ProSeal-22 + Sikagard wax · 2 × 0.05 мм' },
+        body:      { name: 'Цементно-мраморная масса', sku: 'White cement + Carrara/Verona chips · 15–20 мм' },
+        primer:    { name: 'Цементный контакт',        sku: 'SikaTop‑77 D · 1 мм' },
+        substrate: { name: 'Подложка',                  sku: 'Бетон C25/30 · ≥ 25 МПа' }
+      },
       chips: [
         { c: '#d9c39a', w: .18 }, { c: '#1c1916', w: .12 },
         { c: '#7d6f54', w: .18 }, { c: '#c2603e', w: .06 },
@@ -45,22 +66,36 @@
       ]
     },
     epoxy: {
-      base: '#2a2620', label: 'эпокси', sub: 'self-leveling · charcoal',
-      thick: '4 мм', base_: 'эпоксидная смола',
+      base: '#2a2620', label: 'эпокси SL', sub: 'self-leveling · RAL 9005',
+      thick: '2.5 мм', base_: 'эпоксидная смола',
       bodyColor: '#3a342c',
       top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
       filter: 'brightness(.45) contrast(1.15) saturate(.6) hue-rotate(-8deg)',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'PU-топ · 2 слоя', sku: 'Sikafloor‑304 W · 2 × 0.1 мм' },
+        body:      { name: 'Self-levelling эпоксид', sku: 'Sikafloor‑263 SL · 2 мм (RAL 9005)' },
+        primer:    { name: 'Праймер + кварц',  sku: 'Sikafloor‑156 + кварц · 0.8 мм' },
+        substrate: { name: 'Подложка',          sku: 'Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%' }
+      },
       chips: [
         { c: '#3a342c', w: .5 }, { c: '#5d5448', w: .25 },
         { c: '#1c1916', w: .25 }
       ]
     },
     'epoxy-light': {
-      base: '#c2bcb0', label: 'эпокси', sub: 'light grey · RAL 7044',
-      thick: '4 мм', base_: 'эпоксидная смола',
+      base: '#c2bcb0', label: 'эпокси SL', sub: 'светлый · RAL 7044',
+      thick: '2.5 мм', base_: 'эпоксидная смола',
       bodyColor: '#bab4a8',
       top: 'images/terrazzo/cement-concrete-texture-copy-space.jpg',
       filter: 'brightness(1.18) contrast(.85) saturate(.4)',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'PU-топ · 2 слоя', sku: 'Sikafloor‑304 W · 2 × 0.1 мм' },
+        body:      { name: 'Self-levelling эпоксид', sku: 'Sikafloor‑263 SL · 2 мм (RAL 7044)' },
+        primer:    { name: 'Праймер + кварц',  sku: 'Sikafloor‑156 + кварц · 0.8 мм' },
+        substrate: { name: 'Подложка',          sku: 'Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%' }
+      },
       chips: [
         { c: '#bab4a8', w: .55 }, { c: '#a8a298', w: .25 },
         { c: '#d4cec0', w: .20 }
@@ -68,30 +103,52 @@
     },
     micro: {
       base: '#cfc4b3', label: 'микротопинг', sub: 'satin · cream',
-      thick: '2–3 мм', base_: 'минеральная база',
+      thick: '2.5–3 мм', base_: 'минеральная база',
       bodyColor: '#cfc4b3',
       top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
+      mesh: true,
+      buildup: {
+        topcoat:   { name: 'PU защита · 2 слоя', sku: 'Sikafloor‑304 W · 2 × 0.075 мм' },
+        body:      { name: 'Финиш-микротопинг · 2 прохода', sku: 'Sika MonoTop decorative finish · 1 мм' },
+        mesh:      { name: 'База + стеклосетка 4×4 мм', sku: 'Sika MonoTop base + fibreglass mesh · 1.5 мм' },
+        primer:    { name: 'Адгезионный праймер', sku: 'Sikafloor‑161 / Concrete Primer · 0.2 мм' },
+        substrate: { name: 'Подложка',            sku: 'Бетон / стяжка C20/25' }
+      },
       chips: [
         { c: '#b9a98a', w: .4 }, { c: '#9a8e7b', w: .3 },
         { c: '#dccaa9', w: .3 }
       ]
     },
     concrete: {
-      base: '#7a7468', label: 'бетон', sub: 'полированный · salt-pepper',
-      thick: '0.5–3 мм снимается', base_: 'существующая плита',
+      base: '#7a7468', label: 'бетон', sub: 'полированный · densify-only',
+      thick: '0 мм наращивания', base_: 'существующая плита',
       bodyColor: '#7a7468',
       top: 'images/terrazzo/cement-concrete-texture-copy-space.jpg',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'Олеофоб + полировка · 2 слоя', sku: 'Sikagard‑705 L · 2 × 0.02 мм' },
+        body:      { name: 'Полировка 400 → 3000 grit',     sku: 'механика без наращивания' },
+        primer:    { name: 'Литий-силикатный упрочнитель',   sku: 'Sikafloor ProSeal-22 (Li densifier) · 0.05 мм' },
+        substrate: { name: 'Бетонная плита',                  sku: 'существующая плита, шлифовка 50–100 grit' }
+      },
       chips: [
         { c: '#5d5448', w: .3 }, { c: '#3a342c', w: .2 },
         { c: '#9a9286', w: .3 }, { c: '#a8a298', w: .2 }
       ]
     },
     purcem: {
-      base: '#9a9690', label: 'PU-cement', sub: 'food / pharma',
+      base: '#9a9690', label: 'PU-cement', sub: 'food / pharma · HACCP',
       thick: '6–9 мм', base_: 'полиуретан + цемент',
       bodyColor: '#9a9690',
       top: 'images/microtopping/gray-old-scratched-textured-surface-background.jpg',
       filter: 'brightness(.92) saturate(.4) hue-rotate(155deg)',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'PU-cement seal · 2 слоя', sku: 'Sikafloor PurCem HM-Top · 2 × 0.15 мм' },
+        body:      { name: 'PurCem основной слой',     sku: 'Sikafloor PurCem HM-21N · 6–9 мм' },
+        primer:    { name: 'Без праймера (на влажный бетон)', sku: '— · опц. Sika Concrete Primer' },
+        substrate: { name: 'Бетон с насечкой',          sku: 'Бетон C25/30, mechanically prepared' }
+      },
       chips: [
         { c: '#7a7670', w: .35 }, { c: '#a8a49e', w: .35 },
         { c: '#5a564f', w: .15 }, { c: '#bab6b0', w: .15 }
@@ -99,10 +156,17 @@
     },
     mma: {
       base: '#3c3a35', label: 'MMA Pronto', sub: 'fast-cure · cold storage',
-      thick: '2–4 мм', base_: 'MMA смола',
+      thick: '3 мм', base_: 'MMA смола',
       bodyColor: '#3c3a35',
       top: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
       filter: 'brightness(.55) contrast(1.3) saturate(.7) hue-rotate(15deg)',
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'MMA seal · 2 слоя', sku: 'Sikafloor‑18 Pronto · 2 × 0.1 мм' },
+        body:      { name: 'MMA body',           sku: 'Sikafloor‑24 Pronto SL · 2 мм' },
+        primer:    { name: 'MMA праймер + кварц', sku: 'Sikafloor‑13 Pronto + кварц · 0.8 мм' },
+        substrate: { name: 'Подложка',             sku: 'Бетон C25/30 · ≥ 25 МПа' }
+      },
       chips: [
         { c: '#4a4640', w: .50 }, { c: '#5e5a50', w: .25 },
         { c: '#28261f', w: .25 }
@@ -274,10 +338,28 @@
         plate.style.setProperty('--plate-svg-opacity', '1');
         plate.style.setProperty('--plate-top-filter', 'none');
       }
-      const tagBody = document.querySelector('[data-fx="tagBody"]');
-      const tagTop  = document.querySelector('[data-fx="tagTopcoat"]');
-      if (tagBody) tagBody.textContent = `${p.label} · ${p.thick}`;
-      if (tagTop)  tagTop.textContent  = `Топкоат · ${p.label === 'PU-cement' ? 'Sikafloor‑264 N' : 'Sikafloor‑264'}`;
+      // Динамические подписи слоёв из buildup конфига Sika TDS
+      if (p.buildup) {
+        const setLayerLabel = (sel, def) => {
+          const el = document.querySelector(sel);
+          if (!el || !def) return;
+          const tag = el.querySelector('.fx-layer-tag');
+          if (!tag) return;
+          tag.innerHTML = def.name + (def.sku ? `<b>${def.sku}</b>` : '');
+        };
+        setLayerLabel('.fx-l-topcoat',   p.buildup.topcoat);
+        setLayerLabel('.fx-l-body',      p.buildup.body);
+        setLayerLabel('.fx-l-primer',    p.buildup.primer);
+        setLayerLabel('.fx-l-substrate', p.buildup.substrate);
+        const meshLayer = document.querySelector('.fx-l-mesh');
+        if (meshLayer) {
+          meshLayer.style.display = p.mesh ? '' : 'none';
+          if (p.mesh && p.buildup.mesh) {
+            const tag = meshLayer.querySelector('.fx-layer-tag');
+            if (tag) tag.innerHTML = p.buildup.mesh.name + (p.buildup.mesh.sku ? `<b>${p.buildup.mesh.sku}</b>` : '');
+          }
+        }
+      }
     }
     applyMaterial(curMat);
 
