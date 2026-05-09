@@ -2379,17 +2379,19 @@ html, body { overflow-x: hidden; max-width: 100vw; }
    ============================================================ */
 .fx-hero-lab {
   /* override old shell padding via section-level rules */
-  padding: clamp(128px, 16vh, 200px) clamp(20px, 3vw, 36px) clamp(80px, 10vh, 120px);
-  max-width: 1320px;
+  padding: clamp(128px, 16vh, 200px) clamp(28px, 5vw, 88px) clamp(80px, 10vh, 120px);
+  max-width: 1680px;
   margin: 0 auto;
   background: #fff;
   scroll-margin-top: 120px;
   overflow: visible;
 }
 .fx-hero-lab .fx-plate-shell { display: none; } /* legacy guard */
+/* Floating layer-tag pills duplicate the right-panel meta — hide inside lab */
+.fx-hero-lab .fx-layer-tag { display: none !important; }
 .fx-hero-lab__intro {
-  max-width: 720px;
-  margin: 0 0 clamp(40px, 5vh, 64px);
+  max-width: 820px;
+  margin: 0 0 clamp(48px, 6vh, 80px);
   text-align: left;
 }
 .fx-hero-lab__intro .fx-plate-eyebrow { margin-bottom: 16px; }
@@ -2398,10 +2400,10 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 .fx-hero-lab__grid {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr) 320px;
-  gap: 56px;
+  grid-template-columns: 280px minmax(0, 1fr) 360px;
+  gap: clamp(40px, 5vw, 80px);
   align-items: stretch;
-  min-height: 560px;
+  min-height: 600px;
 }
 
 /* ---- LEFT: material list ---- */
@@ -2473,32 +2475,32 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 520px;
+  min-height: 600px;
 }
 .fx-hero-lab__stage .fx-plate-wrap {
   position: relative;
   width: 100%;
-  height: 560px;
+  height: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 2200px;
+  perspective: 2400px;
   perspective-origin: 50% 50%;
 }
 .fx-hero-lab__stage .fx-plate-wrap::before {
   content: "";
   position: absolute;
-  width: 520px; height: 56px;
-  bottom: 70px;
+  width: 580px; height: 60px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, .25), transparent 70%);
-  filter: blur(20px);
+  filter: blur(22px);
   max-width: 90%;
 }
 .fx-hero-lab__stage .fx-plate {
-  width: min(440px, 70vw);
-  height: min(440px, 70vw);
+  width: min(500px, 75vw);
+  height: min(500px, 75vw);
 }
 
 /* Body height responds to thickness control */
