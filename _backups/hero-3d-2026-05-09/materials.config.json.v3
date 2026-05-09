@@ -1,0 +1,434 @@
+{
+  "version": 1,
+  "groups": {
+    "decor": { "label": "Декоративные", "order": 1 },
+    "industrial": { "label": "Промышленные", "order": 2 }
+  },
+  "materials": [
+    {
+      "id": "terrazzo-dark",
+      "group": "decor",
+      "label": "Терраццо тёмный",
+      "swatch": "#1c1c1e",
+      "system": "terrazzo",
+      "sub": "тёмный · charcoal",
+      "thickness": "12 мм",
+      "base": "эпоксидная смола",
+      "bodyColor": "#2c2c2e",
+      "top": "images/terrazzo/dark-mosaic-textured-background.jpg",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "Топ-герметик · 2 слоя", "sku": "Sikafloor‑304 W · 2 × 0.1 мм" },
+        "body":      { "name": "Терраццо-масса",         "sku": "Sikafloor‑263 SL + Decodur basalt · 8 мм" },
+        "primer":    { "name": "Праймер + кварц",        "sku": "Sikafloor‑156 + кварц 0.4–0.7 · 0.8 мм" },
+        "substrate": { "name": "Подложка",                "sku": "Бетон C25/30 · ≥ 25 МПа" }
+      },
+      "chips": [
+        { "c": "#0a0a0a", "w": 0.35 }, { "c": "#9a9a9d", "w": 0.15 },
+        { "c": "#6a6a6d", "w": 0.15 }, { "c": "#cfcfcf", "w": 0.10 },
+        { "c": "#3a3a3c", "w": 0.15 }, { "c": "#fafafa", "w": 0.10 }
+      ],
+      "controls": ["color", "aggregate", "strips", "roughness", "finish"],
+      "defaults": { "color": "charcoal", "aggregate": "basalt", "strips": "off", "roughness": "smooth", "finish": "matte" },
+      "systemHref": "floors/terrazzo.html"
+    },
+    {
+      "id": "terrazzo-light",
+      "group": "decor",
+      "label": "Терраццо светлый",
+      "swatch": "#f0ece2",
+      "system": "terrazzo",
+      "sub": "светлый · multicolor",
+      "thickness": "12 мм",
+      "base": "эпоксидная смола",
+      "bodyColor": "#e8e3d4",
+      "top": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "PU-топ · 2 слоя",   "sku": "Sikafloor‑304 W · 2 × 0.1 мм" },
+        "body":      { "name": "Терраццо-масса",     "sku": "Sikafloor‑264 white + multicolor chips · 8 мм" },
+        "primer":    { "name": "Праймер + кварц",    "sku": "Sikafloor‑156 + кварц · 0.8 мм" },
+        "substrate": { "name": "Подложка",            "sku": "Бетон C25/30 · ≥ 25 МПа" }
+      },
+      "chips": [
+        { "c": "#2c5e88", "w": 0.10 }, { "c": "#d8a82e", "w": 0.08 },
+        { "c": "#c66a3a", "w": 0.07 }, { "c": "#7a8a78", "w": 0.07 },
+        { "c": "#9a9594", "w": 0.15 }, { "c": "#1d1d1f", "w": 0.08 },
+        { "c": "#d6d2c8", "w": 0.25 }, { "c": "#c4a878", "w": 0.10 },
+        { "c": "#fff",    "w": 0.10 }
+      ],
+      "controls": ["color", "aggregate", "strips", "roughness", "finish"],
+      "defaults": { "color": "white", "aggregate": "carrara", "strips": "off", "roughness": "smooth", "finish": "matte" },
+      "systemHref": "floors/terrazzo.html"
+    },
+    {
+      "id": "terrazzo",
+      "group": "decor",
+      "label": "Терраццо венецианский",
+      "swatch": "#efe7d6",
+      "system": "terrazzo",
+      "sub": "венецианское · цементное",
+      "thickness": "15–20 мм",
+      "base": "белый цемент + мраморная крошка",
+      "bodyColor": "#e8dec8",
+      "top": "images/terrazzo/macrophotography-terrazzo-slab-texture.jpg",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "Воск + ProSeal · 2 слоя", "sku": "Sikafloor ProSeal-22 + Sikagard wax · 2 × 0.05 мм" },
+        "body":      { "name": "Цементно-мраморная масса", "sku": "White cement + Carrara/Verona chips · 15–20 мм" },
+        "primer":    { "name": "Цементный контакт",         "sku": "SikaTop‑77 D · 1 мм" },
+        "substrate": { "name": "Подложка",                   "sku": "Бетон C25/30 · ≥ 25 МПа" }
+      },
+      "chips": [
+        { "c": "#d9c39a", "w": 0.18 }, { "c": "#1c1916", "w": 0.12 },
+        { "c": "#7d6f54", "w": 0.18 }, { "c": "#c2603e", "w": 0.06 },
+        { "c": "#5a6a4f", "w": 0.05 }, { "c": "#b9a98a", "w": 0.20 },
+        { "c": "#fff",    "w": 0.08 }
+      ],
+      "controls": ["color", "aggregate", "strips", "roughness", "finish"],
+      "defaults": { "color": "white", "aggregate": "carrara", "strips": "off", "roughness": "smooth", "finish": "matte" },
+      "systemHref": "floors/terrazzo.html"
+    },
+    {
+      "id": "epoxy-light",
+      "group": "decor",
+      "label": "Эпоксид",
+      "swatch": "#c2bcb0",
+      "system": "epoxy",
+      "sub": "декоративный · RAL 7044",
+      "thickness": "2.5 мм",
+      "base": "эпоксидная смола",
+      "bodyColor": "#bab4a8",
+      "top": "images/terrazzo/cement-concrete-texture-copy-space.jpg",
+      "filter": "brightness(1.18) contrast(.85) saturate(.4)",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "PU-топ · 2 слоя",  "sku": "Sikafloor‑304 W · 2 × 0.1 мм" },
+        "body":      { "name": "Self-levelling эпоксид", "sku": "Sikafloor‑263 SL · 2 мм (RAL 7044)" },
+        "primer":    { "name": "Праймер + кварц",   "sku": "Sikafloor‑156 + кварц · 0.8 мм" },
+        "substrate": { "name": "Подложка",           "sku": "Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%" }
+      },
+      "chips": [
+        { "c": "#bab4a8", "w": 0.55 }, { "c": "#a8a298", "w": 0.25 },
+        { "c": "#d4cec0", "w": 0.20 }
+      ],
+      "controls": ["color", "flecks", "strips", "roughness", "finish", "marking"],
+      "defaults": { "color": "7044", "flecks": "off", "strips": "off", "roughness": "smooth", "finish": "matte", "marking": "off" },
+      "systemHref": "floors/epoxy.html"
+    },
+    {
+      "id": "micro",
+      "group": "decor",
+      "label": "Микротопинг",
+      "swatch": "#cfc4b3",
+      "system": "microtopping",
+      "sub": "satin · cream",
+      "thickness": "2.5–3 мм",
+      "base": "минеральная база",
+      "bodyColor": "#cfc4b3",
+      "top": "images/microtopping/gray-old-scratched-textured-surface-background.jpg",
+      "mesh": true,
+      "buildup": {
+        "topcoat":   { "name": "PU защита · 2 слоя", "sku": "Sikafloor‑304 W · 2 × 0.075 мм" },
+        "body":      { "name": "Финиш-микротопинг · 2 прохода", "sku": "Sika MonoTop decorative finish · 1 мм" },
+        "mesh":      { "name": "База + стеклосетка 4×4 мм", "sku": "Sika MonoTop base + fibreglass mesh · 1.5 мм" },
+        "primer":    { "name": "Адгезионный праймер", "sku": "Sikafloor‑161 / Concrete Primer · 0.2 мм" },
+        "substrate": { "name": "Подложка",            "sku": "Бетон / стяжка C20/25" }
+      },
+      "chips": [
+        { "c": "#b9a98a", "w": 0.4 }, { "c": "#9a8e7b", "w": 0.3 },
+        { "c": "#dccaa9", "w": 0.3 }
+      ],
+      "controls": ["color", "strips", "roughness", "finish"],
+      "defaults": { "color": "cream", "strips": "off", "roughness": "smooth", "finish": "satin" },
+      "systemHref": "floors/microtopping.html"
+    },
+    {
+      "id": "mma",
+      "group": "decor",
+      "label": "MMA Pronto",
+      "swatch": "#3c3a35",
+      "system": "mma",
+      "sub": "fast-cure · cold storage",
+      "thickness": "3 мм",
+      "base": "MMA смола",
+      "bodyColor": "#3c3a35",
+      "top": "images/terrazzo/macrophotography-terrazzo-slab-texture.jpg",
+      "filter": "brightness(.55) contrast(1.3) saturate(.7) hue-rotate(15deg)",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "MMA seal · 2 слоя", "sku": "Sikafloor‑18 Pronto · 2 × 0.1 мм" },
+        "body":      { "name": "MMA body",           "sku": "Sikafloor‑24 Pronto SL · 2 мм" },
+        "primer":    { "name": "MMA праймер + кварц", "sku": "Sikafloor‑13 Pronto + кварц · 0.8 мм" },
+        "substrate": { "name": "Подложка",             "sku": "Бетон C25/30 · ≥ 25 МПа" }
+      },
+      "chips": [
+        { "c": "#4a4640", "w": 0.50 }, { "c": "#5e5a50", "w": 0.25 },
+        { "c": "#28261f", "w": 0.25 }
+      ],
+      "controls": ["color", "flecks", "strips", "roughness", "finish", "marking"],
+      "defaults": { "color": "9005", "flecks": "off", "strips": "off", "roughness": "smooth", "finish": "satin", "marking": "off" },
+      "systemHref": "floors/mma.html"
+    },
+    {
+      "id": "concrete",
+      "group": "industrial",
+      "label": "Полированный цемент",
+      "swatch": "#7a7468",
+      "system": "concrete",
+      "sub": "полированный · densify-only",
+      "thickness": "0 мм наращивания",
+      "base": "существующая плита",
+      "bodyColor": "#7a7468",
+      "top": "images/terrazzo/cement-concrete-texture-copy-space.jpg",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "Олеофоб + полировка · 2 слоя", "sku": "Sikagard‑705 L · 2 × 0.02 мм" },
+        "body":      { "name": "Полировка 400 → 3000 grit",     "sku": "механика без наращивания" },
+        "primer":    { "name": "Литий-силикатный упрочнитель",   "sku": "Sikafloor ProSeal-22 (Li densifier) · 0.05 мм" },
+        "substrate": { "name": "Бетонная плита",                  "sku": "существующая плита, шлифовка 50–100 grit" }
+      },
+      "chips": [
+        { "c": "#5d5448", "w": 0.3 }, { "c": "#3a342c", "w": 0.2 },
+        { "c": "#9a9286", "w": 0.3 }, { "c": "#a8a298", "w": 0.2 }
+      ],
+      "controls": ["color", "strips", "roughness", "finish", "marking"],
+      "defaults": { "color": "salt", "strips": "off", "roughness": "smooth", "finish": "polished", "marking": "off" },
+      "systemHref": "floors/concrete.html"
+    },
+    {
+      "id": "purcem",
+      "group": "industrial",
+      "label": "PU-cement / ПУ-цемент",
+      "swatch": "#9a9690",
+      "system": "purcem",
+      "sub": "food / pharma · HACCP",
+      "thickness": "6–9 мм",
+      "base": "полиуретан + цемент",
+      "bodyColor": "#9a9690",
+      "top": "images/microtopping/gray-old-scratched-textured-surface-background.jpg",
+      "filter": "brightness(.92) saturate(.4) hue-rotate(155deg)",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "PU-cement seal · 2 слоя", "sku": "Sikafloor PurCem HM-Top · 2 × 0.15 мм" },
+        "body":      { "name": "PurCem основной слой",     "sku": "Sikafloor PurCem HM-21N · 6–9 мм" },
+        "primer":    { "name": "Без праймера (на влажный бетон)", "sku": "— · опц. Sika Concrete Primer" },
+        "substrate": { "name": "Бетон с насечкой",          "sku": "Бетон C25/30, mechanically prepared" }
+      },
+      "chips": [
+        { "c": "#7a7670", "w": 0.35 }, { "c": "#a8a49e", "w": 0.35 },
+        { "c": "#5a564f", "w": 0.15 }, { "c": "#bab6b0", "w": 0.15 }
+      ],
+      "controls": ["color", "roughness", "finish", "marking"],
+      "defaults": { "color": "7037", "roughness": "smooth", "finish": "satin", "marking": "off" },
+      "systemHref": "floors/pu-cement.html"
+    },
+    {
+      "id": "rubber",
+      "group": "industrial",
+      "label": "Резиновое покрытие",
+      "swatch": "#2a2a2a",
+      "system": "rubber",
+      "sub": "sport / playground · poured",
+      "thickness": "6 мм",
+      "base": "EPDM-гранулят + PU-связующее",
+      "bodyColor": "#2a2a2a",
+      "top": null,
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "EPDM-finish · 2 мм", "sku": "Цветной EPDM 1–4 мм + PU 1K · 2 мм" },
+        "body":      { "name": "SBR-base",            "sku": "SBR-гранулят 1–4 мм + PU-связующее · 4–6 мм" },
+        "primer":    { "name": "PU-праймер",          "sku": "Sika ComfortFloor primer (PS-65) · 0.2 мм" },
+        "substrate": { "name": "Подложка",            "sku": "Бетон C20/25 / асфальт" }
+      },
+      "chips": [
+        { "c": "#1a1a1a", "w": 0.55 }, { "c": "#3a3a3a", "w": 0.30 },
+        { "c": "#cf3a3a", "w": 0.05 }, { "c": "#1d4f8a", "w": 0.05 },
+        { "c": "#dca858", "w": 0.05 }
+      ],
+      "controls": ["color", "roughness", "marking"],
+      "defaults": { "color": "black", "roughness": "smooth", "marking": "off" },
+      "systemHref": "floors/rubber.html"
+    },
+    {
+      "id": "epoxy",
+      "group": "industrial",
+      "label": "Эпоксидная заливка",
+      "swatch": "#2a2620",
+      "system": "epoxy",
+      "sub": "self-leveling · RAL 9005",
+      "thickness": "2.5 мм",
+      "base": "эпоксидная смола",
+      "bodyColor": "#3a342c",
+      "top": "images/microtopping/gray-old-scratched-textured-surface-background.jpg",
+      "filter": "brightness(.45) contrast(1.15) saturate(.6) hue-rotate(-8deg)",
+      "mesh": false,
+      "buildup": {
+        "topcoat":   { "name": "PU-топ · 2 слоя",  "sku": "Sikafloor‑304 W · 2 × 0.1 мм" },
+        "body":      { "name": "Self-levelling эпоксид", "sku": "Sikafloor‑263 SL · 2 мм (RAL 9005)" },
+        "primer":    { "name": "Праймер + кварц",   "sku": "Sikafloor‑156 + кварц · 0.8 мм" },
+        "substrate": { "name": "Подложка",           "sku": "Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%" }
+      },
+      "chips": [
+        { "c": "#3a342c", "w": 0.5 }, { "c": "#5d5448", "w": 0.25 },
+        { "c": "#1c1916", "w": 0.25 }
+      ],
+      "controls": ["color", "roughness", "finish", "marking"],
+      "defaults": { "color": "9005", "roughness": "smooth", "finish": "satin", "marking": "off" },
+      "systemHref": "floors/epoxy.html"
+    }
+  ],
+  "controlOptions": {
+    "color": {
+      "terrazzo-dark": [
+        { "id": "charcoal",   "label": "Charcoal",   "hex": "#1c1c1e", "swatch": "#1c1c1e" },
+        { "id": "anthracite", "label": "Anthracite", "hex": "#2c2c2e", "swatch": "#2c2c2e" },
+        { "id": "graphite",   "label": "Graphite",   "hex": "#3a3a3c", "swatch": "#3a3a3c" },
+        { "id": "stone",      "label": "Stone",      "hex": "#5a5a5c", "swatch": "#5a5a5c" }
+      ],
+      "terrazzo-light": [
+        { "id": "white",    "label": "White",     "hex": "#f0ece2", "swatch": "#f0ece2" },
+        { "id": "offwhite", "label": "Off-white", "hex": "#e8e3d4", "swatch": "#e8e3d4" },
+        { "id": "sand",     "label": "Sand",      "hex": "#dfd4ba", "swatch": "#dfd4ba" },
+        { "id": "pearl",    "label": "Pearl",     "hex": "#ebe6db", "swatch": "#ebe6db" }
+      ],
+      "terrazzo": [
+        { "id": "white", "label": "White", "hex": "#efe7d6", "swatch": "#efe7d6" },
+        { "id": "cream", "label": "Cream", "hex": "#e8dec8", "swatch": "#e8dec8" },
+        { "id": "sand",  "label": "Sand",  "hex": "#dfd4ba", "swatch": "#dfd4ba" },
+        { "id": "grey",  "label": "Grey",  "hex": "#bdb6a8", "swatch": "#bdb6a8" }
+      ],
+      "epoxy": [
+        { "id": "9005", "label": "RAL 9005", "hex": "#0a0a0a", "swatch": "#0a0a0a" },
+        { "id": "7016", "label": "RAL 7016", "hex": "#293133", "swatch": "#293133" },
+        { "id": "7044", "label": "RAL 7044", "hex": "#b3aea1", "swatch": "#b3aea1" },
+        { "id": "1001", "label": "RAL 1001", "hex": "#c2b078", "swatch": "#c2b078" },
+        { "id": "5024", "label": "RAL 5024", "hex": "#5d9b9b", "swatch": "#5d9b9b" },
+        { "id": "6011", "label": "RAL 6011", "hex": "#587246", "swatch": "#587246" }
+      ],
+      "epoxy-light": [
+        { "id": "7044", "label": "RAL 7044", "hex": "#b3aea1", "swatch": "#b3aea1" },
+        { "id": "9001", "label": "RAL 9001", "hex": "#e9e0d2", "swatch": "#e9e0d2" },
+        { "id": "9010", "label": "RAL 9010", "hex": "#f1ece1", "swatch": "#f1ece1" },
+        { "id": "1015", "label": "RAL 1015", "hex": "#e6d2b5", "swatch": "#e6d2b5" },
+        { "id": "7035", "label": "RAL 7035", "hex": "#cbd0cc", "swatch": "#cbd0cc" },
+        { "id": "5024", "label": "RAL 5024", "hex": "#5d9b9b", "swatch": "#5d9b9b" }
+      ],
+      "micro": [
+        { "id": "cream",    "label": "Cream",       "hex": "#cfc4b3", "swatch": "#cfc4b3" },
+        { "id": "sand",     "label": "Sand",        "hex": "#c4b698", "swatch": "#c4b698" },
+        { "id": "olive",    "label": "Olive",       "hex": "#9a9272", "swatch": "#9a9272" },
+        { "id": "cement",   "label": "Cement-grey", "hex": "#9d9b96", "swatch": "#9d9b96" },
+        { "id": "charcoal", "label": "Charcoal",    "hex": "#3a3a3c", "swatch": "#3a3a3c" }
+      ],
+      "purcem": [
+        { "id": "7037", "label": "RAL 7037", "hex": "#7d7f7d", "swatch": "#7d7f7d" },
+        { "id": "1015", "label": "RAL 1015", "hex": "#e6d2b5", "swatch": "#e6d2b5" },
+        { "id": "8004", "label": "RAL 8004", "hex": "#a04125", "swatch": "#a04125" },
+        { "id": "6011", "label": "RAL 6011", "hex": "#587246", "swatch": "#587246" },
+        { "id": "7035", "label": "RAL 7035", "hex": "#cbd0cc", "swatch": "#cbd0cc" }
+      ],
+      "mma": [
+        { "id": "9005",  "label": "RAL 9005",         "hex": "#0a0a0a", "swatch": "#0a0a0a" },
+        { "id": "7044",  "label": "RAL 7044",         "hex": "#b3aea1", "swatch": "#b3aea1" },
+        { "id": "1001",  "label": "RAL 1001",         "hex": "#c2b078", "swatch": "#c2b078" },
+        { "id": "5024",  "label": "RAL 5024",         "hex": "#5d9b9b", "swatch": "#5d9b9b" },
+        { "id": "clear", "label": "Clear pigmented",  "hex": "#3c3a35", "swatch": "#3c3a35" }
+      ],
+      "concrete": [
+        { "id": "salt",  "label": "Salt-pepper",    "hex": "#7a7468", "swatch": "#7a7468" },
+        { "id": "cream", "label": "Cream",          "hex": "#9a9286", "swatch": "#9a9286" },
+        { "id": "full",  "label": "Full-aggregate", "hex": "#5d5448", "swatch": "#5d5448" }
+      ],
+      "rubber": [
+        { "id": "black",      "label": "Black",      "hex": "#1a1a1a", "swatch": "#1a1a1a" },
+        { "id": "red",        "label": "Red",        "hex": "#a82a28", "swatch": "#a82a28" },
+        { "id": "blue",       "label": "Blue",       "hex": "#1d4f8a", "swatch": "#1d4f8a" },
+        { "id": "sand",       "label": "Sand",       "hex": "#bca27a", "swatch": "#bca27a" },
+        { "id": "multicolor", "label": "Multicolor", "hex": "#3a3a3a", "swatch": "#5a5a5a" }
+      ]
+    },
+    "aggregate": {
+      "terrazzo-dark": [
+        { "id": "basalt",  "label": "Basalt" },
+        { "id": "carrara", "label": "Carrara" },
+        { "id": "verona",  "label": "Verona" },
+        { "id": "mirror",  "label": "Glass-mirror" },
+        { "id": "brass",   "label": "Brass-flake" }
+      ],
+      "terrazzo-light": [
+        { "id": "carrara", "label": "Carrara" },
+        { "id": "verona",  "label": "Verona" },
+        { "id": "basalt",  "label": "Basalt" },
+        { "id": "mirror",  "label": "Glass-mirror" },
+        { "id": "brass",   "label": "Brass-flake" }
+      ],
+      "terrazzo": [
+        { "id": "carrara", "label": "Carrara" },
+        { "id": "verona",  "label": "Verona" },
+        { "id": "basalt",  "label": "Basalt" },
+        { "id": "mirror",  "label": "Glass-mirror" },
+        { "id": "brass",   "label": "Brass-flake" }
+      ]
+    },
+    "aggregateChips": {
+      "basalt": [
+        { "c": "#0a0a0a", "w": 0.35 }, { "c": "#3a3a3c", "w": 0.25 },
+        { "c": "#6a6a6d", "w": 0.20 }, { "c": "#cfcfcf", "w": 0.12 },
+        { "c": "#fafafa", "w": 0.08 }
+      ],
+      "carrara": [
+        { "c": "#fafafa", "w": 0.50 }, { "c": "#cfcfcf", "w": 0.25 },
+        { "c": "#9a9a9d", "w": 0.15 }, { "c": "#3a3a3c", "w": 0.10 }
+      ],
+      "verona": [
+        { "c": "#a8584a", "w": 0.28 }, { "c": "#c89a55", "w": 0.22 },
+        { "c": "#e8dec8", "w": 0.25 }, { "c": "#5a2820", "w": 0.15 },
+        { "c": "#dcc8a0", "w": 0.10 }
+      ],
+      "mirror": [
+        { "c": "#a8d0e0", "w": 0.25 }, { "c": "#c8cdd0", "w": 0.25 },
+        { "c": "#3a7050", "w": 0.15 }, { "c": "#2c4a78", "w": 0.15 },
+        { "c": "#c89030", "w": 0.10 }, { "c": "#ffffff", "w": 0.10 }
+      ],
+      "brass": [
+        { "c": "#b8902a", "w": 0.35 }, { "c": "#6a4d12", "w": 0.25 },
+        { "c": "#a0681c", "w": 0.20 }, { "c": "#d4b048", "w": 0.12 },
+        { "c": "#28200c", "w": 0.08 }
+      ]
+    },
+    "strips": [
+      { "id": "off",    "label": "Без полос" },
+      { "id": "brass4", "label": "Латунь 4мм",   "hex": "#b8902a" },
+      { "id": "alu4",   "label": "Алюминий 4мм", "hex": "#cdd0d4" },
+      { "id": "black6", "label": "Чёрный 6мм",   "hex": "#0a0a0a" },
+      { "id": "mixed",  "label": "Смешанные",    "hex": "#7a5a18" }
+    ],
+    "finish": [
+      { "id": "matte",    "label": "Matte" },
+      { "id": "satin",    "label": "Satin" },
+      { "id": "polished", "label": "Polished" },
+      { "id": "glossy",   "label": "Glossy" },
+      { "id": "wetlook",  "label": "Wet-look" }
+    ],
+    "flecks": [
+      { "id": "off",      "label": "Без флеков" },
+      { "id": "fine",     "label": "Vinyl chips" },
+      { "id": "coarse",   "label": "Coarse 1/8″" },
+      { "id": "mica",     "label": "Mica" },
+      { "id": "metallic", "label": "Metallic FX" }
+    ],
+    "roughness": [
+      { "id": "smooth",   "label": "Smooth" },
+      { "id": "fine",     "label": "Fine grit" },
+      { "id": "coarse",   "label": "Coarse anti-slip" }
+    ],
+    "marking": [
+      { "id": "off",         "label": "Без разметки" },
+      { "id": "yellow-zone", "label": "Жёлтая зона" },
+      { "id": "white-grid",  "label": "Белая сетка" },
+      { "id": "red-safety",  "label": "Красная зона" },
+      { "id": "pedestrian",  "label": "Зебра" }
+    ]
+  }
+}

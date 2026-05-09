@@ -808,74 +808,11 @@
       buildTerrazzo(topPattern, material);
       PALETTES[material] = origPalette;
 
-      // 3) Photographic top texture (v4) — REAL PHOTO as base layer, with optional
-      //    aggregate-driven filter swap, then color tint via blend-mode overlay.
-      const isTerrazzo = (material === 'terrazzo' || material === 'terrazzo-dark' || material === 'terrazzo-light');
-      const isSolidSystem = !isTerrazzo;
-
-      // 3a) Pick top photo: per-aggregate override for terrazzo, else material default
-      const aggregatePhoto = {
-        basalt:  'images/terrazzo/dark-mosaic-textured-background.jpg',
-        carrara: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
-        verona:  'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
-        mirror:  'images/terrazzo/scale_2400.jpeg',
-        brass:   'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg'
-      };
-      const aggregateFilter = {
-        basalt:  'none',
-        carrara: 'brightness(1.45) saturate(.55) contrast(1.05)',
-        verona:  'hue-rotate(-12deg) saturate(1.45) brightness(.95)',
-        mirror:  'brightness(1.10) saturate(1.20) contrast(1.05)',
-        brass:   'sepia(.45) brightness(.96) saturate(1.5) hue-rotate(-22deg)'
-      };
-
-      let topImage = p.top || null;
-      let topFilter = p.filter || 'none';
-      if (isTerrazzo && aggOpt && aggregatePhoto[aggOpt.id]) {
-        // Material default uses its own canonical photo — only override if material isn't dark+basalt etc.
-        // For terrazzo-dark, basalt = the dark mosaic photo (already default). For carrara/verona/mirror/brass swap.
-        if (material === 'terrazzo-dark') {
-          if (aggOpt.id !== 'basalt') {
-            topImage = aggregatePhoto[aggOpt.id];
-            topFilter = aggregateFilter[aggOpt.id];
-            // For dark-base aggregates other than basalt, darken slightly to keep "dark" mood
-            if (aggOpt.id === 'carrara') topFilter = 'brightness(1.05) saturate(.5) contrast(1.10)';
-          }
-        } else {
-          topImage = aggregatePhoto[aggOpt.id] || topImage;
-          topFilter = aggregateFilter[aggOpt.id] || topFilter;
-        }
-      }
-
-      if (topImage) {
-        plate.style.setProperty('--plate-top-image', `url("${topImage}")`);
-        plate.style.setProperty('--plate-top-filter', topFilter);
-        // For solid systems, hide the procedural SVG chips (the photo IS the base)
-        // For terrazzo, keep SVG faint to add micro-chip detail over the photo
-        plate.style.setProperty('--plate-svg-opacity', isSolidSystem ? '0' : '0.35');
-      } else {
-        plate.style.setProperty('--plate-top-image', 'none');
-        plate.style.setProperty('--plate-top-filter', 'none');
-        plate.style.setProperty('--plate-svg-opacity', '1');
-      }
-
-      // 3b) Color tint overlay — for solid systems the chosen color hex tints the photo.
-      // For terrazzo, the photo itself carries the color; tint stays mostly invisible.
-      const tintHex = (colorOpt && colorOpt.hex) || baseHex;
-      let tintStrength = 0;
-      if (isSolidSystem) {
-        if (material === 'rubber') tintStrength = 0.78;
-        else if (material === 'purcem') tintStrength = 0.72;
-        else if (material === 'epoxy' || material === 'mma') tintStrength = 0.70;
-        else if (material === 'epoxy-light') tintStrength = 0.55;
-        else if (material === 'micro') tintStrength = 0.50;
-        else if (material === 'concrete') tintStrength = 0.30;
-        else tintStrength = 0.55;
-      } else {
-        tintStrength = 0; // terrazzo: photo carries color
-      }
-      plate.style.setProperty('--plate-tint-color', tintHex);
-      plate.style.setProperty('--plate-tint-strength', String(tintStrength));
+      // 3) Photographic top texture — disabled in Lab v3 mode so SVG always shows
+      //    (controls are the source of truth; photo would mask their effect).
+      plate.style.setProperty('--plate-top-image', 'none');
+      plate.style.setProperty('--plate-svg-opacity', '1');
+      plate.style.setProperty('--plate-top-filter', 'none');
 
       // 4) Strips overlay (саргелим) — applied to body top face
       if (stripsOverlay) {

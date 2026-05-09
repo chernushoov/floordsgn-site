@@ -698,14 +698,10 @@
   pointer-events: none;
 }
 .fx-l-substrate .fx-face-top {
-  background-color: var(--plate-substrate, #8a857a);
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.18)),
-    url("images/terrazzo/cement-concrete-texture-copy-space.jpg");
-  background-size: cover, 220px auto;
-  background-position: center, center;
-  background-blend-mode: multiply, normal;
-  filter: brightness(.78) saturate(.6);
+  background:
+    radial-gradient(circle at 22% 28%, #6c685e 0 1px, transparent 2px) 0 0/14px 14px,
+    radial-gradient(circle at 70% 60%, #5a564f 0 1px, transparent 2px) 7px 7px/14px 14px,
+    var(--plate-substrate);
 }
 .fx-l-primer .fx-face-top {
   background:
@@ -2475,22 +2471,12 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .fx-hero-lab__mat-label { flex: 1; line-height: 1.2; }
 
 /* ---- CENTER: stage with plate ---- */
-/* v4: Stage is a 2-col grid — spec rail | plate-wrap. Rail sits cleanly to the
-   left of the plate inside the central column, never overlapping. On <1024px
-   we collapse to a single column and hide the rail (mobile uses bottom-sheet). */
 .fx-hero-lab__stage {
   position: relative;
-  display: grid;
-  grid-template-columns: clamp(150px, 13vw, 200px) minmax(0, 1fr);
-  column-gap: clamp(16px, 1.8vw, 32px);
+  display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 600px;
-}
-@media (max-width: 1180px) {
-  .fx-hero-lab__stage {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-  }
 }
 .fx-hero-lab__stage .fx-plate-wrap {
   position: relative;
@@ -2505,14 +2491,13 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .fx-hero-lab__stage .fx-plate-wrap::before {
   content: "";
   position: absolute;
-  width: 620px; height: 70px;
+  width: 580px; height: 60px;
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, .32), transparent 70%);
-  filter: blur(28px);
-  opacity: .9;
-  max-width: 92%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, .25), transparent 70%);
+  filter: blur(22px);
+  max-width: 90%;
 }
 .fx-hero-lab__stage .fx-plate {
   width: min(500px, 75vw);
@@ -3159,11 +3144,13 @@ html, body { overflow-x: hidden; max-width: 100vw; }
    ============================================================ */
 
 /* ---- Spec sidecards rail (between materials list and plate) ---- */
-/* v4 — spec rail lives in stage grid col 1 (no absolute positioning) */
+.fx-hero-lab__stage { position: relative; }
 .fx-hero-lab__spec {
-  /* In-flow grid child — no absolute positioning so it cannot overlap plate */
-  align-self: center;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: clamp(-180px, -10vw, -120px);  /* sit in the gap between mlist and plate */
+  transform: translateY(-50%);
+  width: clamp(180px, 14vw, 220px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -3255,7 +3242,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   display: none;
 }
 /* Hide on tablet and below — mobile uses .fx-plate-sheet bottom-sheet pattern */
-@media (max-width: 1180px) {
+@media (max-width: 1023px) {
   .fx-hero-lab__spec { display: none !important; }
 }
 
@@ -3265,27 +3252,6 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     filter .42s cubic-bezier(.22,1,.36,1),
     background-color .28s cubic-bezier(.22,1,.36,1);
 }
-
-/* ---- v4: Color tint overlay (sits above photo, below strips/marking/sheen) ---- */
-.fx-hero-lab__color-tint {
-  position: absolute;
-  inset: 0;
-  background: var(--plate-tint-color, transparent);
-  mix-blend-mode: multiply;
-  opacity: var(--plate-tint-strength, 0);
-  transition:
-    opacity 280ms cubic-bezier(.22,1,.36,1),
-    background-color 280ms cubic-bezier(.22,1,.36,1);
-  pointer-events: none;
-  z-index: 1;
-}
-/* Stack order — explicit z-indexing keeps overlays predictable */
-.fx-l-body .fx-face-top svg.fx-plate-pattern { position: relative; z-index: 0; }
-.fx-hero-lab__strips  { z-index: 2; }
-.fx-hero-lab__flecks  { z-index: 3; }
-.fx-hero-lab__marking { z-index: 4; }
-.fx-hero-lab__texture { z-index: 5; }
-.fx-hero-lab__sheen   { z-index: 6; }
 
 /* ---- Sheen overlay v3.1: shine + reflection driven by separate vars ---- */
 .fx-hero-lab__sheen {

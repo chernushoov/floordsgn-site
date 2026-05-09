@@ -211,11 +211,10 @@
               <div class="fx-layer fx-l-body">
                 <div class="fx-face fx-face-top">
                   <svg class="fx-plate-pattern" data-fx="topPattern" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice"></svg>
-                  <div class="fx-hero-lab__color-tint" data-fx="colorTint" aria-hidden="true"></div>
                   <div class="fx-hero-lab__strips" data-fx="strips" aria-hidden="true"></div>
                   <div class="fx-hero-lab__flecks" data-fx="flecks" aria-hidden="true"></div>
-                  <div class="fx-hero-lab__marking" data-fx="marking" aria-hidden="true"></div>
                   <div class="fx-hero-lab__texture" data-fx="texture" aria-hidden="true"></div>
+                  <div class="fx-hero-lab__marking" data-fx="marking" aria-hidden="true"></div>
                   <div class="fx-hero-lab__sheen" data-fx="sheen" aria-hidden="true"></div>
                 </div>
                 <div class="fx-face fx-face-bot"></div>

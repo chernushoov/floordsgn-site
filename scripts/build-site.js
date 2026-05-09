@@ -52,3 +52,29 @@ for (const name of STATIC_PASSTHROUGH) {
     fs.copyFileSync(src, path.join(enDir, name));
   }
 }
+
+// v4: Copy unhashed images/ tree for runtime-dynamic refs (enhance.js builds
+// `url("images/<material>/<file>")` strings at runtime, which Parcel cannot
+// fingerprint. Mirror the originals so those URLs resolve in dist.
+function copyDir(src, dest) {
+  if (!fs.existsSync(src)) return;
+  fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    const s = path.join(src, entry.name);
+    const d = path.join(dest, entry.name);
+    if (entry.isDirectory()) copyDir(s, d);
+    else if (entry.isFile()) fs.copyFileSync(s, d);
+  }
+}
+const RUNTIME_IMAGE_DIRS = [
+  path.join('images', 'terrazzo'),
+  path.join('images', 'microtopping'),
+  path.join('images', 'rubber')
+];
+for (const rel of RUNTIME_IMAGE_DIRS) {
+  copyDir(path.join(ROOT, rel), path.join(ROOT, 'dist', rel));
+  const enDir = path.join(ROOT, 'dist', 'en');
+  if (fs.existsSync(enDir)) {
+    copyDir(path.join(ROOT, rel), path.join(enDir, rel));
+  }
+}
