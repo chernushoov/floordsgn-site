@@ -5,6 +5,99 @@
 (function () {
   'use strict';
   const fx = window.fx = window.fx || {};
+  const isEnglishPage = () => (
+    document.body?.dataset.fxLang === 'en'
+    || window.location.pathname.startsWith('/en/')
+  );
+  const text = (ru, en) => (isEnglishPage() ? en : ru);
+  const EN_DYNAMIC = {
+    'терраццо': 'terrazzo',
+    'тёмный · charcoal': 'dark · charcoal',
+    'светлый · multicolor': 'light · multicolor',
+    'венецианское · цементное': 'Venetian · cement-based',
+    'эпокси SL': 'epoxy SL',
+    'светлый · RAL 7044': 'light · RAL 7044',
+    'микротопинг': 'microtopping',
+    'минеральная база': 'mineral base',
+    'бетон': 'concrete',
+    'полированный · densify-only': 'polished · densify-only',
+    '0 мм наращивания': '0 mm build-up',
+    'существующая плита': 'existing slab',
+    'полиуретан + цемент': 'polyurethane + cement',
+    'MMA смола': 'MMA resin',
+    'эпоксидная смола': 'epoxy resin',
+    'белый цемент + мраморная крошка': 'white cement + marble chips',
+    'Топ-герметик · 2 слоя': 'Top sealer · 2 coats',
+    'Терраццо-масса': 'Terrazzo matrix',
+    'Праймер + кварц': 'Primer + quartz',
+    'Подложка': 'Substrate',
+    'PU-топ · 2 слоя': 'PU topcoat · 2 coats',
+    'Воск + ProSeal · 2 слоя': 'Wax + ProSeal · 2 coats',
+    'Цементно-мраморная масса': 'Cement-marble matrix',
+    'Цементный контакт': 'Cement bonding bridge',
+    'Self-levelling эпоксид': 'Self-leveling epoxy',
+    'PU защита · 2 слоя': 'PU protection · 2 coats',
+    'Финиш-микротопинг · 2 прохода': 'Finish microtopping · 2 passes',
+    'База + стеклосетка 4×4 мм': 'Base + 4×4 mm fiberglass mesh',
+    'Адгезионный праймер': 'Adhesion primer',
+    'Бетон / стяжка C20/25': 'Concrete / screed C20/25',
+    'Олеофоб + полировка · 2 слоя': 'Oleophobic sealer + polish · 2 coats',
+    'Полировка 400 → 3000 grit': 'Polishing 400 → 3000 grit',
+    'механика без наращивания': 'mechanical process, no build-up',
+    'Литий-силикатный упрочнитель': 'Lithium-silicate densifier',
+    'Бетонная плита': 'Concrete slab',
+    'существующая плита, шлифовка 50–100 grit': 'existing slab, 50–100 grit grinding',
+    'PU-cement seal · 2 слоя': 'PU-cement seal · 2 coats',
+    'PurCem основной слой': 'PurCem body layer',
+    'Без праймера (на влажный бетон)': 'No primer (on damp concrete)',
+    '— · опц. Sika Concrete Primer': '— · optional Sika Concrete Primer',
+    'Бетон с насечкой': 'Mechanically keyed concrete',
+    'MMA seal · 2 слоя': 'MMA seal · 2 coats',
+    'MMA праймер + кварц': 'MMA primer + quartz',
+    'Топкоат': 'Topcoat',
+    'Тело системы': 'System body',
+    'Праймер': 'Primer',
+    'Шлифовка + sealer': 'Grinding + sealer',
+    'Терраццо матрица': 'Terrazzo matrix',
+    'Микро 2 слоя': 'Micro layer · 2 coats',
+    'Финиш HACCP': 'HACCP finish',
+    'Скрэтч-кот': 'Scratch coat',
+    'Праймер MMA': 'MMA primer',
+    'самовыравнивающийся эпокси': 'self-leveling epoxy',
+    'эпокси HBS 6–9 мм': 'epoxy HBS 6–9 mm',
+    'эпокси HBS': 'epoxy HBS',
+    'венецианское терраццо': 'Venetian terrazzo',
+    'эпокси декоративный': 'decorative epoxy',
+    'Сравнить': 'Compare',
+    'Расчёт': 'Estimate',
+    'Звонок': 'Call',
+  };
+  function localize(value) {
+    if (!isEnglishPage() || typeof value !== 'string') return value;
+    if (EN_DYNAMIC[value]) return EN_DYNAMIC[value];
+    return value
+      .replace(/мм/g, 'mm')
+      .replace(/МПа/g, 'MPa')
+      .replace(/кварц/g, 'quartz')
+      .replace(/чипсы/g, 'chips')
+      .replace(/слоя/g, 'coats')
+      .replace(/слой/g, 'layer')
+      .replace(/дней/g, 'days')
+      .replace(/дня/g, 'days')
+      .replace(/ч\b/g, 'h')
+      .replace(/Бетон/g, 'Concrete')
+      .replace(/бетон/g, 'concrete')
+      .replace(/Терраццо/g, 'Terrazzo')
+      .replace(/терраццо/g, 'terrazzo')
+      .replace(/эпокси/g, 'epoxy')
+      .replace(/микротопинг/g, 'microtopping')
+      .replace(/праймер/g, 'primer')
+      .replace(/Праймер/g, 'Primer');
+  }
+  function assetPath(value) {
+    if (!value || !isEnglishPage() || /^(?:[a-z]+:|\/|#)/i.test(value)) return value;
+    return value.startsWith('images/') ? `../${value}` : value;
+  }
 
   /* ---------------- terrazzo pattern (from /v2/) ---------- */
   const PALETTES = {
@@ -171,8 +264,370 @@
         { c: '#4a4640', w: .50 }, { c: '#5e5a50', w: .25 },
         { c: '#28261f', w: .25 }
       ]
+    },
+    rubber: {
+      base: '#2a2a2a', label: 'резина', sub: 'sport / playground · poured',
+      thick: '6 мм', base_: 'EPDM-гранулят + PU-связующее',
+      bodyColor: '#2a2a2a',
+      top: null,
+      mesh: false,
+      buildup: {
+        topcoat:   { name: 'EPDM-finish · 2 мм', sku: 'Цветной EPDM 1–4 мм + PU 1K · 2 мм' },
+        body:      { name: 'SBR-base',           sku: 'SBR-гранулят 1–4 мм + PU-связующее · 4–6 мм' },
+        primer:    { name: 'PU-праймер',         sku: 'Sika ComfortFloor primer (PS-65) · 0.2 мм' },
+        substrate: { name: 'Подложка',           sku: 'Бетон C20/25 / асфальт' }
+      },
+      chips: [
+        { c: '#1a1a1a', w: .55 }, { c: '#3a3a3a', w: .30 },
+        { c: '#cf3a3a', w: .05 }, { c: '#1d4f8a', w: .05 },
+        { c: '#dca858', w: .05 }
+      ]
     }
   };
+
+  /* ---------- per-material control schemas (right panel) ---------- */
+  // Each schema: array of groups. group.id maps to PALETTES.controls state key.
+  // option.id is encoded in URL params; option.label rendered (passes through localize()).
+  // option.swatch (optional) renders a colored circle on the button.
+  // option.hex (optional) is the body/base color override applied when picked.
+  const CONTROL_SCHEMAS = {
+    'terrazzo-dark': [
+      { id: 'color', label: 'Цвет основы', mode: 'single', options: [
+        { id: 'charcoal',   label: 'Charcoal',   hex: '#1c1c1e', swatch: '#1c1c1e' },
+        { id: 'anthracite', label: 'Anthracite', hex: '#2c2c2e', swatch: '#2c2c2e' },
+        { id: 'graphite',   label: 'Graphite',   hex: '#3a3a3c', swatch: '#3a3a3c' },
+        { id: 'stone',      label: 'Stone',      hex: '#5a5a5c', swatch: '#5a5a5c' }
+      ]},
+      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
+        { id: 'basalt',  label: 'Basalt' },
+        { id: 'carrara', label: 'Carrara' },
+        { id: 'verona',  label: 'Verona' },
+        { id: 'mirror',  label: 'Glass-mirror' },
+        { id: 'brass',   label: 'Brass-flake' }
+      ]},
+      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
+        { id: 'off',      label: 'Без полос' },
+        { id: 'brass4',   label: 'Латунь 4мм',  hex: '#c9a04a' },
+        { id: 'alu4',     label: 'Алюминий 4мм', hex: '#d8d4cc' },
+        { id: 'black6',   label: 'Чёрный 6мм',  hex: '#0a0a0a' }
+      ]},
+      { id: 'finish', label: 'Финиш', mode: 'single', options: [
+        { id: 'matte',    label: 'Matte' },
+        { id: 'satin',    label: 'Satin' },
+        { id: 'polished', label: 'Polished' }
+      ]}
+    ],
+    'terrazzo-light': [
+      { id: 'color', label: 'Цвет основы', mode: 'single', options: [
+        { id: 'white',   label: 'White',     hex: '#f0ece2', swatch: '#f0ece2' },
+        { id: 'offwhite',label: 'Off-white', hex: '#e8e3d4', swatch: '#e8e3d4' },
+        { id: 'sand',    label: 'Sand',      hex: '#dfd4ba', swatch: '#dfd4ba' },
+        { id: 'pearl',   label: 'Pearl',     hex: '#ebe6db', swatch: '#ebe6db' }
+      ]},
+      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
+        { id: 'carrara', label: 'Carrara' },
+        { id: 'verona',  label: 'Verona' },
+        { id: 'basalt',  label: 'Basalt' },
+        { id: 'mirror',  label: 'Glass-mirror' },
+        { id: 'brass',   label: 'Brass-flake' }
+      ]},
+      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
+        { id: 'off',    label: 'Без полос' },
+        { id: 'brass4', label: 'Латунь 4мм', hex: '#c9a04a' },
+        { id: 'alu4',   label: 'Алюминий 4мм', hex: '#d8d4cc' },
+        { id: 'black6', label: 'Чёрный 6мм',  hex: '#1d1d1f' }
+      ]},
+      { id: 'finish', label: 'Финиш', mode: 'single', options: [
+        { id: 'matte',    label: 'Matte' },
+        { id: 'satin',    label: 'Satin' },
+        { id: 'polished', label: 'Polished' }
+      ]}
+    ],
+    terrazzo: [
+      { id: 'color', label: 'Цвет цемента', mode: 'single', options: [
+        { id: 'white',   label: 'White',   hex: '#efe7d6', swatch: '#efe7d6' },
+        { id: 'cream',   label: 'Cream',   hex: '#e8dec8', swatch: '#e8dec8' },
+        { id: 'sand',    label: 'Sand',    hex: '#dfd4ba', swatch: '#dfd4ba' },
+        { id: 'grey',    label: 'Grey',    hex: '#bdb6a8', swatch: '#bdb6a8' }
+      ]},
+      { id: 'aggregate', label: 'Агрегат', mode: 'single', options: [
+        { id: 'carrara', label: 'Carrara' },
+        { id: 'verona',  label: 'Verona' },
+        { id: 'basalt',  label: 'Basalt' },
+        { id: 'mirror',  label: 'Glass-mirror' },
+        { id: 'brass',   label: 'Brass-flake' }
+      ]},
+      { id: 'strips', label: 'Саргелим', mode: 'single', options: [
+        { id: 'off',    label: 'Без полос' },
+        { id: 'brass4', label: 'Латунь 4мм', hex: '#c9a04a' },
+        { id: 'alu4',   label: 'Алюминий 4мм', hex: '#d8d4cc' },
+        { id: 'black6', label: 'Чёрный 6мм',  hex: '#1d1d1f' }
+      ]},
+      { id: 'finish', label: 'Финиш', mode: 'single', options: [
+        { id: 'matte',    label: 'Matte' },
+        { id: 'satin',    label: 'Satin' },
+        { id: 'polished', label: 'Polished' }
+      ]}
+    ],
+    epoxy: [
+      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
+        { id: '9005', label: 'RAL 9005', hex: '#0a0a0a', swatch: '#0a0a0a' },
+        { id: '7016', label: 'RAL 7016', hex: '#293133', swatch: '#293133' },
+        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
+        { id: '1001', label: 'RAL 1001', hex: '#c2b078', swatch: '#c2b078' },
+        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' },
+        { id: '6011', label: 'RAL 6011', hex: '#587246', swatch: '#587246' }
+      ]},
+      { id: 'flecks', label: 'Флеки', mode: 'single', options: [
+        { id: 'off',      label: 'Без флеков' },
+        { id: 'fine',     label: 'Vinyl chips' },
+        { id: 'coarse',   label: 'Coarse 1/8″' },
+        { id: 'mica',     label: 'Mica' },
+        { id: 'metallic', label: 'Metallic FX' }
+      ]},
+      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
+        { id: 'matte',   label: 'Matte' },
+        { id: 'satin',   label: 'Satin' },
+        { id: 'glossy',  label: 'Glossy' }
+      ]},
+      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
+        { id: 'off',    label: 'Без кварца' },
+        { id: 'fine',   label: 'Fine' },
+        { id: 'coarse', label: 'Coarse anti-slip' }
+      ]}
+    ],
+    'epoxy-light': [
+      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
+        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
+        { id: '9001', label: 'RAL 9001', hex: '#e9e0d2', swatch: '#e9e0d2' },
+        { id: '9010', label: 'RAL 9010', hex: '#f1ece1', swatch: '#f1ece1' },
+        { id: '1015', label: 'RAL 1015', hex: '#e6d2b5', swatch: '#e6d2b5' },
+        { id: '7035', label: 'RAL 7035', hex: '#cbd0cc', swatch: '#cbd0cc' },
+        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' }
+      ]},
+      { id: 'flecks', label: 'Флеки', mode: 'single', options: [
+        { id: 'off',      label: 'Без флеков' },
+        { id: 'fine',     label: 'Vinyl chips' },
+        { id: 'coarse',   label: 'Coarse 1/8″' },
+        { id: 'mica',     label: 'Mica' },
+        { id: 'metallic', label: 'Metallic FX' }
+      ]},
+      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
+        { id: 'matte',   label: 'Matte' },
+        { id: 'satin',   label: 'Satin' },
+        { id: 'glossy',  label: 'Glossy' }
+      ]},
+      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
+        { id: 'off',    label: 'Без кварца' },
+        { id: 'fine',   label: 'Fine' },
+        { id: 'coarse', label: 'Coarse anti-slip' }
+      ]}
+    ],
+    micro: [
+      { id: 'color', label: 'Цвет', mode: 'single', options: [
+        { id: 'cream',   label: 'Cream',     hex: '#cfc4b3', swatch: '#cfc4b3' },
+        { id: 'sand',    label: 'Sand',      hex: '#c4b698', swatch: '#c4b698' },
+        { id: 'olive',   label: 'Olive',     hex: '#9a9272', swatch: '#9a9272' },
+        { id: 'cement',  label: 'Cement-grey',hex: '#9d9b96', swatch: '#9d9b96' },
+        { id: 'charcoal',label: 'Charcoal',  hex: '#3a3a3c', swatch: '#3a3a3c' }
+      ]},
+      { id: 'finish', label: 'Финиш', mode: 'single', options: [
+        { id: 'matte',    label: 'Matte' },
+        { id: 'satin',    label: 'Satin' },
+        { id: 'wetlook',  label: 'Wet-look' }
+      ]},
+      { id: 'texture', label: 'Текстура', mode: 'single', options: [
+        { id: 'smooth',  label: 'Smooth' },
+        { id: 'trowel',  label: 'Trowel-marked' },
+        { id: 'wave',    label: 'Wave' }
+      ]},
+      { id: 'broadcast', label: 'Топкоат', mode: 'single', options: [
+        { id: 'pu2x',  label: 'PU 2 × слоя' },
+        { id: 'wax',   label: 'Wax-cement' }
+      ]}
+    ],
+    purcem: [
+      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
+        { id: '7037', label: 'RAL 7037', hex: '#7d7f7d', swatch: '#7d7f7d' },
+        { id: '1015', label: 'RAL 1015', hex: '#e6d2b5', swatch: '#e6d2b5' },
+        { id: '8004', label: 'RAL 8004', hex: '#a04125', swatch: '#a04125' },
+        { id: '6011', label: 'RAL 6011', hex: '#587246', swatch: '#587246' },
+        { id: '7035', label: 'RAL 7035', hex: '#cbd0cc', swatch: '#cbd0cc' }
+      ]},
+      { id: 'surface', label: 'Поверхность', mode: 'single', options: [
+        { id: 'smooth',    label: 'Smooth' },
+        { id: 'textured',  label: 'Textured (anti-slip)' },
+        { id: 'broadcast', label: 'Heavy broadcast' }
+      ]},
+      { id: 'thickness', label: 'Толщина', mode: 'single', options: [
+        { id: '4mm', label: '4 мм' },
+        { id: '6mm', label: '6 мм' },
+        { id: '9mm', label: '9 мм' }
+      ]},
+      { id: 'cove', label: 'Cove-base', mode: 'single', options: [
+        { id: 'off',  label: 'Без галтели' },
+        { id: '100',  label: '100 мм' }
+      ]}
+    ],
+    mma: [
+      { id: 'color', label: 'Цвет (RAL)', mode: 'single', options: [
+        { id: '9005', label: 'RAL 9005', hex: '#0a0a0a', swatch: '#0a0a0a' },
+        { id: '7044', label: 'RAL 7044', hex: '#b3aea1', swatch: '#b3aea1' },
+        { id: '1001', label: 'RAL 1001', hex: '#c2b078', swatch: '#c2b078' },
+        { id: '5024', label: 'RAL 5024', hex: '#5d9b9b', swatch: '#5d9b9b' },
+        { id: 'clear',label: 'Clear pigmented', hex: '#3c3a35', swatch: '#3c3a35' }
+      ]},
+      { id: 'cure', label: 'Cure', mode: 'single', options: [
+        { id: 'std',  label: 'Standard' },
+        { id: 'fast', label: 'Fast (–30 °C)' }
+      ]},
+      { id: 'broadcast', label: 'Кварц-broadcast', mode: 'single', options: [
+        { id: 'off',    label: 'Без кварца' },
+        { id: 'fine',   label: 'Fine' },
+        { id: 'coarse', label: 'Coarse' }
+      ]},
+      { id: 'finish', label: 'Топкоат', mode: 'single', options: [
+        { id: 'clear',     label: 'Clear' },
+        { id: 'pigmented', label: 'Pigmented' }
+      ]}
+    ],
+    concrete: [
+      { id: 'aggregate', label: 'Aggregate exposure', mode: 'single', options: [
+        { id: 'salt',  label: 'Salt-pepper' },
+        { id: 'cream', label: 'Cream' },
+        { id: 'full',  label: 'Full-aggregate' }
+      ]},
+      { id: 'grit', label: 'Polish grit', mode: 'single', options: [
+        { id: '400',  label: '400' },
+        { id: '800',  label: '800' },
+        { id: '1500', label: '1500' },
+        { id: '3000', label: '3000' }
+      ]},
+      { id: 'sealer', label: 'Sealer', mode: 'single', options: [
+        { id: 'oleo',     label: 'Olephobic' },
+        { id: 'wetlook',  label: 'Wet-look' },
+        { id: 'densify',  label: 'Densify-only' }
+      ]}
+    ],
+    rubber: [
+      { id: 'type', label: 'Тип', mode: 'single', options: [
+        { id: 'poured',       label: 'Poured (sport)' },
+        { id: 'sheet',        label: 'Sheet' },
+        { id: 'tile',         label: 'Tile' },
+        { id: 'comfortfloor', label: 'ComfortFloor PS-65' }
+      ]},
+      { id: 'color', label: 'Цвет', mode: 'single', options: [
+        { id: 'black',      label: 'Black',      hex: '#1a1a1a', swatch: '#1a1a1a' },
+        { id: 'red',        label: 'Red',        hex: '#a82a28', swatch: '#a82a28' },
+        { id: 'blue',       label: 'Blue',       hex: '#1d4f8a', swatch: '#1d4f8a' },
+        { id: 'sand',       label: 'Sand',       hex: '#bca27a', swatch: '#bca27a' },
+        { id: 'multicolor', label: 'Multicolor', hex: '#3a3a3a', swatch: '#5a5a5a' }
+      ]},
+      { id: 'surface', label: 'Поверхность', mode: 'single', options: [
+        { id: 'smooth',   label: 'Smooth' },
+        { id: 'textured', label: 'Textured' }
+      ]},
+      { id: 'thickness', label: 'Толщина', mode: 'single', options: [
+        { id: '4mm', label: '4 мм' },
+        { id: '6mm', label: '6 мм' },
+        { id: '9mm', label: '9 мм' }
+      ]}
+    ]
+  };
+
+  // Aggregate id → chip palette (overrides PALETTES[mat].chips when active)
+  const AGGREGATE_CHIPS = {
+    basalt:  [
+      { c: '#0a0a0a', w: .35 }, { c: '#3a3a3c', w: .25 },
+      { c: '#1c1c1e', w: .20 }, { c: '#5a5a5c', w: .15 },
+      { c: '#9a9a9d', w: .05 }
+    ],
+    carrara: [
+      { c: '#fafafa', w: .30 }, { c: '#e8e6e0', w: .30 },
+      { c: '#cfcfcf', w: .15 }, { c: '#9a9a9d', w: .10 },
+      { c: '#1d1d1f', w: .05 }, { c: '#3a3a3c', w: .10 }
+    ],
+    verona:  [
+      { c: '#c66a3a', w: .20 }, { c: '#d8a82e', w: .15 },
+      { c: '#7d6f54', w: .25 }, { c: '#b9a98a', w: .25 },
+      { c: '#1d1d1f', w: .05 }, { c: '#fafafa', w: .10 }
+    ],
+    mirror:  [
+      { c: '#e8eef2', w: .35 }, { c: '#9bb0c0', w: .25 },
+      { c: '#3a4a58', w: .20 }, { c: '#1d1d1f', w: .10 },
+      { c: '#fafafa', w: .10 }
+    ],
+    brass:   [
+      { c: '#c9a04a', w: .35 }, { c: '#a87a2a', w: .25 },
+      { c: '#dcb86a', w: .15 }, { c: '#1d1d1f', w: .15 },
+      { c: '#7a6a3a', w: .10 }
+    ]
+  };
+
+  // Strip-overlay style for терраццо саргелим (CSS background)
+  function stripsBackground(stripId) {
+    if (!stripId || stripId === 'off') return 'none';
+    const map = {
+      brass4: { color: 'rgba(201,160,74,.92)', width: '4px',  spacing: '120px' },
+      alu4:   { color: 'rgba(216,212,204,.95)', width: '4px',  spacing: '120px' },
+      black6: { color: 'rgba(10,10,10,.92)',   width: '6px',  spacing: '160px' }
+    };
+    const s = map[stripId];
+    if (!s) return 'none';
+    // 4 vertical bars at 25%/50%/75% of plate width — emulate via repeating-linear-gradient
+    return `repeating-linear-gradient(90deg, transparent 0 calc(${s.spacing} - ${s.width}), ${s.color} calc(${s.spacing} - ${s.width}) ${s.spacing})`;
+  }
+
+  // System URL builder per material
+  function systemHrefFor(material, st) {
+    const enc = (v) => encodeURIComponent(v || '');
+    switch (material) {
+      case 'terrazzo':
+      case 'terrazzo-dark':
+      case 'terrazzo-light':
+        return `floors/terrazzo.html?finish=${enc(st.finish)}&aggregate=${enc(st.aggregate)}&color=${enc(st.color)}`;
+      case 'epoxy':
+      case 'epoxy-light':
+        return `floors/epoxy.html?ral=${enc(st.color)}&fleck=${enc(st.flecks)}&finish=${enc(st.finish)}&broadcast=${enc(st.broadcast)}`;
+      case 'micro':
+        return `floors/microtopping.html?color=${enc(st.color)}&finish=${enc(st.finish)}&texture=${enc(st.texture)}&topcoat=${enc(st.broadcast)}`;
+      case 'concrete':
+        return `floors/concrete.html?exposure=${enc(st.aggregate)}&grit=${enc(st.grit)}&sealer=${enc(st.sealer)}`;
+      case 'purcem':
+        return `floors/pu-cement.html?color=${enc(st.color)}&surface=${enc(st.surface)}&thickness=${enc(st.thickness)}&cove=${enc(st.cove)}`;
+      case 'mma':
+        return `floors/mma.html?color=${enc(st.color)}&cure=${enc(st.cure)}&broadcast=${enc(st.broadcast)}&finish=${enc(st.finish)}`;
+      case 'rubber':
+        return `floors/rubber.html?type=${enc(st.type)}&color=${enc(st.color)}&surface=${enc(st.surface)}&thickness=${enc(st.thickness)}`;
+      default:
+        return 'floors.html';
+    }
+  }
+
+  // Map finish id → CSS variables for plate gloss/contrast
+  function glossVarsFor(finishId) {
+    switch (finishId) {
+      case 'matte':    return { gloss: '0',   filter: 'contrast(1.00) brightness(1.00)' };
+      case 'satin':    return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.02)' };
+      case 'polished':
+      case 'glossy':
+      case 'wetlook':  return { gloss: '1',   filter: 'contrast(1.10) brightness(1.05)' };
+      case 'clear':    return { gloss: '.85', filter: 'contrast(1.06) brightness(1.03)' };
+      case 'pigmented':return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.00)' };
+      default:         return { gloss: '.4',  filter: 'contrast(1.04) brightness(1.02)' };
+    }
+  }
+
+  // Polish grit (concrete) → gloss intensity
+  function gritGlossVars(gritId) {
+    switch (gritId) {
+      case '400':  return { gloss: '0',   filter: 'contrast(1.00) brightness(.95)' };
+      case '800':  return { gloss: '.3',  filter: 'contrast(1.03) brightness(.98)' };
+      case '1500': return { gloss: '.65', filter: 'contrast(1.06) brightness(1.02)' };
+      case '3000': return { gloss: '1',   filter: 'contrast(1.10) brightness(1.06)' };
+      default:     return { gloss: '.4',  filter: 'none' };
+    }
+  }
 
   function rnd(min, max) { return min + Math.random() * (max - min); }
 
@@ -308,45 +763,187 @@
     set();
   };
 
-  /* ---------------- 3D rotating plate --------------------- */
+  /* ---------------- 3D rotating plate (HERO LAB v3 2026-05-09) --------------------- */
   fx.init3DPlate = function () {
     const plate = document.querySelector('[data-fx="plate"]');
     if (!plate) return;
     const topPattern = document.querySelector('[data-fx="topPattern"]');
     if (!topPattern) return;
 
-    let curMat = 'terrazzo-dark';
-    function applyMaterial(key) {
-      const p = PALETTES[key];
+    const controlsRoot   = document.querySelector('[data-fx="controls"]');
+    const stripsOverlay  = document.querySelector('[data-fx="strips"]');
+    const flecksOverlay  = document.querySelector('[data-fx="flecks"]');
+    const textureOverlay = document.querySelector('[data-fx="texture"]');
+    const sheenOverlay   = document.querySelector('[data-fx="sheen"]');
+    const systemLink     = document.querySelector('[data-fx="systemLink"]');
+
+    // State store: { [material]: { control_id: option_id } }
+    const state = Object.create(null);
+    function defaultStateFor(material) {
+      const schema = CONTROL_SCHEMAS[material] || [];
+      const st = {};
+      schema.forEach(g => { st[g.id] = (g.options[0] && g.options[0].id) || ''; });
+      return st;
+    }
+    function ensureState(material) {
+      if (!state[material]) state[material] = defaultStateFor(material);
+      return state[material];
+    }
+
+    let curMat = plate.getAttribute('data-system') || 'terrazzo-dark';
+
+    function selectedOption(material, group) {
+      const st = ensureState(material);
+      const schema = CONTROL_SCHEMAS[material] || [];
+      const grp = schema.find(g => g.id === group);
+      if (!grp) return null;
+      const id = st[group];
+      return grp.options.find(o => o.id === id) || grp.options[0] || null;
+    }
+
+    // Build the right-panel controls for the active material
+    function renderControls(material) {
+      if (!controlsRoot) return;
+      const schema = CONTROL_SCHEMAS[material] || [];
+      const st = ensureState(material);
+      controlsRoot.innerHTML = schema.map(group => {
+        const buttons = group.options.map(opt => {
+          const isOn = st[group.id] === opt.id;
+          const swatch = opt.swatch ? `<span class="fx-hero-lab__btn-dot" style="background:${opt.swatch}"></span>` : '';
+          const cls = `fx-hero-lab__btn${isOn ? ' is-active' : ''}${opt.swatch ? ' has-dot' : ''}`;
+          return `<button type="button" class="${cls}" data-control="${group.id}" data-value="${opt.id}" aria-pressed="${isOn ? 'true' : 'false'}">${swatch}<span class="fx-hero-lab__btn-label">${localize(opt.label)}</span></button>`;
+        }).join('');
+        return `<div class="fx-hero-lab__group">
+          <p class="fx-hero-lab__ctrl-label">${localize(group.label)}</p>
+          <div class="fx-hero-lab__btnrow">${buttons}</div>
+        </div>`;
+      }).join('');
+    }
+
+    // Resolve final palette + apply CSS vars / overlays for current material+state
+    function applyAllForMaterial(material) {
+      const p = PALETTES[material];
       if (!p) return;
-      plate.setAttribute('data-system', key);
-      buildTerrazzo(topPattern, key);
+      const st = ensureState(material);
+      plate.setAttribute('data-system', material);
+
+      // 1) Body/base color from `color` control if hex provided, else palette default
+      const colorOpt = selectedOption(material, 'color');
+      const baseHex = (colorOpt && colorOpt.hex) || p.base;
+      const bodyHex = (colorOpt && colorOpt.hex) || p.bodyColor || p.base;
+      plate.style.setProperty('--plate-base', baseHex);
+      plate.style.setProperty('--plate-body', bodyHex);
+      plate.style.setProperty('--plate-top',  baseHex);
+
+      // 2) Aggregate (terrazzo) → swap chip palette in SVG.
+      //    Concrete: "exposure" via aggregate id (salt/cream/full) tweaks chip count weight.
+      const aggOpt = selectedOption(material, 'aggregate');
+      let chipsForBuild = p.chips;
+      if (aggOpt && AGGREGATE_CHIPS[aggOpt.id]) {
+        chipsForBuild = AGGREGATE_CHIPS[aggOpt.id];
+      }
+      // Build SVG pattern (use chipsForBuild)
+      const tempPalette = Object.assign({}, p, {
+        base: baseHex,
+        bodyColor: bodyHex,
+        chips: chipsForBuild
+      });
+      // Patch palette temporarily for buildTerrazzo
+      const origPalette = PALETTES[material];
+      PALETTES[material] = tempPalette;
+      buildTerrazzo(topPattern, material);
+      PALETTES[material] = origPalette;
+
+      // 3) Photographic top texture — disabled in Lab v3 mode so SVG always shows
+      //    (controls are the source of truth; photo would mask their effect).
+      plate.style.setProperty('--plate-top-image', 'none');
+      plate.style.setProperty('--plate-svg-opacity', '1');
+      plate.style.setProperty('--plate-top-filter', 'none');
+
+      // 4) Strips overlay (саргелим) — applied to body top face
+      if (stripsOverlay) {
+        const stripsOpt = selectedOption(material, 'strips');
+        if (stripsOpt && stripsOpt.id !== 'off') {
+          stripsOverlay.style.background = stripsBackground(stripsOpt.id);
+          stripsOverlay.style.opacity = '1';
+        } else {
+          stripsOverlay.style.background = 'none';
+          stripsOverlay.style.opacity = '0';
+        }
+      }
+
+      // 5) Flecks overlay (epoxy)
+      if (flecksOverlay) {
+        const flOpt = selectedOption(material, 'flecks');
+        flecksOverlay.className = 'fx-hero-lab__flecks';
+        if (flOpt && flOpt.id !== 'off') {
+          flecksOverlay.classList.add('is-on');
+          flecksOverlay.classList.add('mode-' + flOpt.id);
+        }
+      }
+
+      // 6) Texture overlay (micro / concrete / rubber surface)
+      if (textureOverlay) {
+        textureOverlay.className = 'fx-hero-lab__texture';
+        const txOpt = selectedOption(material, 'texture');
+        if (txOpt && txOpt.id !== 'smooth') {
+          textureOverlay.classList.add('is-on');
+          textureOverlay.classList.add('mode-' + txOpt.id);
+        }
+        // surface (purcem/rubber) maps too
+        const surfOpt = selectedOption(material, 'surface');
+        if (surfOpt && surfOpt.id !== 'smooth') {
+          textureOverlay.classList.add('is-on');
+          textureOverlay.classList.add('surf-' + surfOpt.id);
+        }
+        // broadcast (epoxy/mma) → fine/coarse texture
+        const bcOpt = selectedOption(material, 'broadcast');
+        if (bcOpt && bcOpt.id && bcOpt.id !== 'off' && bcOpt.id !== 'pu2x' && bcOpt.id !== 'wax') {
+          textureOverlay.classList.add('is-on');
+          textureOverlay.classList.add('bc-' + bcOpt.id);
+        }
+      }
+
+      // 7) Finish / gloss → CSS vars (controls sheen overlay)
+      let glossInfo = null;
+      const finishOpt = selectedOption(material, 'finish');
+      if (finishOpt) glossInfo = glossVarsFor(finishOpt.id);
+      if (material === 'concrete') {
+        const gritOpt = selectedOption(material, 'grit');
+        if (gritOpt) glossInfo = gritGlossVars(gritOpt.id);
+      }
+      if (!glossInfo) glossInfo = { gloss: '.4', filter: 'none' };
+      plate.style.setProperty('--plate-gloss', glossInfo.gloss);
+      plate.style.setProperty('--plate-body-filter', glossInfo.filter);
+
+      // 8) Thickness (purcem / rubber) → body layer height
+      const thOpt = selectedOption(material, 'thickness');
+      if (thOpt) {
+        const map = { '4mm': '12px', '6mm': '16px', '9mm': '22px' };
+        plate.style.setProperty('--plate-body-h', map[thOpt.id] || '16px');
+      } else {
+        plate.style.removeProperty('--plate-body-h');
+      }
+
+      // 9) Update meta-row + system link href
       const t1 = document.querySelector('[data-fx="pmType"]');
       const t2 = document.querySelector('[data-fx="pmThick"]');
       const t3 = document.querySelector('[data-fx="pmBase"]');
-      if (t1) t1.textContent = `${p.label} · ${p.sub}`;
-      if (t2) t2.textContent = p.thick;
-      if (t3) t3.textContent = p.base_;
-      plate.style.setProperty('--plate-body', p.bodyColor || p.base);
-      plate.style.setProperty('--plate-top',  p.base);
-      // Реалистичная фото-текстура поверх процедурного SVG
-      if (p.top) {
-        plate.style.setProperty('--plate-top-image', `url('${p.top}')`);
-        plate.style.setProperty('--plate-svg-opacity', '0');
-        plate.style.setProperty('--plate-top-filter', p.filter || 'none');
-      } else {
-        plate.style.setProperty('--plate-top-image', 'none');
-        plate.style.setProperty('--plate-svg-opacity', '1');
-        plate.style.setProperty('--plate-top-filter', 'none');
+      if (t1) t1.textContent = `${localize(p.label)} · ${localize(p.sub)}`;
+      if (t2) t2.textContent = thOpt ? thOpt.label : localize(p.thick);
+      if (t3) t3.textContent = localize(p.base_);
+      if (systemLink) {
+        systemLink.setAttribute('href', systemHrefFor(material, st));
       }
-      // Динамические подписи слоёв
+
+      // 10) Layer labels + bottom-sheet (preserved logic)
       if (p.buildup) {
         const setLayerLabel = (sel, def) => {
           const el = document.querySelector(sel);
           if (!el || !def) return;
           const tag = el.querySelector('.fx-layer-tag');
           if (!tag) return;
-          tag.innerHTML = def.name + (def.sku ? `<b>${def.sku}</b>` : '');
+          tag.innerHTML = localize(def.name) + (def.sku ? `<b>${localize(def.sku)}</b>` : '');
         };
         setLayerLabel('.fx-l-topcoat',   p.buildup.topcoat);
         setLayerLabel('.fx-l-body',      p.buildup.body);
@@ -357,10 +954,9 @@
           meshLayer.style.display = p.mesh ? '' : 'none';
           if (p.mesh && p.buildup.mesh) {
             const tag = meshLayer.querySelector('.fx-layer-tag');
-            if (tag) tag.innerHTML = p.buildup.mesh.name + (p.buildup.mesh.sku ? `<b>${p.buildup.mesh.sku}</b>` : '');
+            if (tag) tag.innerHTML = localize(p.buildup.mesh.name) + (p.buildup.mesh.sku ? `<b>${localize(p.buildup.mesh.sku)}</b>` : '');
           }
         }
-        // bottom-sheet (мобильная версия подписей)
         const sheetList = document.querySelector('[data-fx="plateSheetList"]');
         if (sheetList) {
           const order = [
@@ -371,22 +967,62 @@
             { def: p.buildup.substrate, color: '#9a9286' }
           ];
           sheetList.innerHTML = order.map(r => r.def
-            ? `<li style="--row-color:${r.color}"><span><div class="row-label">${r.def.name}</div>${r.def.sku?`<div class="row-sku">${r.def.sku}</div>`:''}</span></li>`
+            ? `<li style="--row-color:${r.color}"><span><div class="row-label">${localize(r.def.name)}</div>${r.def.sku?`<div class="row-sku">${localize(r.def.sku)}</div>`:''}</span></li>`
             : '').join('');
         }
       }
     }
-    applyMaterial(curMat);
 
-    const matSeg = document.querySelector('.fx-plate-mat-seg');
-    if (matSeg) {
-      matSeg.querySelectorAll('button, span').forEach(s => {
-        s.addEventListener('click', () => {
-          matSeg.querySelectorAll('button, span').forEach(x => x.classList.remove('on'));
-          s.classList.add('on');
-          curMat = s.dataset.m;
-          applyMaterial(curMat);
-        });
+    function selectMaterial(material) {
+      curMat = material;
+      ensureState(material);
+      // mark active in left material list
+      document.querySelectorAll('.fx-hero-lab__mat').forEach(b => {
+        b.classList.toggle('is-active', b.dataset.m === material);
+        b.setAttribute('aria-pressed', b.dataset.m === material ? 'true' : 'false');
+      });
+      renderControls(material);
+      applyAllForMaterial(material);
+    }
+
+    // Initial render
+    selectMaterial(curMat);
+
+    // LEFT — material list click handler (delegated)
+    const matsRoot = document.querySelectorAll('.fx-hero-lab__mat');
+    matsRoot.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const m = btn.dataset.m;
+        if (!m || m === curMat) {
+          // still re-render in case state was reset
+          if (m && m !== curMat) selectMaterial(m);
+          return;
+        }
+        selectMaterial(m);
+      });
+    });
+
+    // RIGHT — controls click handler (delegated)
+    if (controlsRoot) {
+      controlsRoot.addEventListener('click', (e) => {
+        const btn = e.target.closest('.fx-hero-lab__btn');
+        if (!btn) return;
+        const ctrl = btn.dataset.control;
+        const val  = btn.dataset.value;
+        if (!ctrl || !val) return;
+        const st = ensureState(curMat);
+        st[ctrl] = val;
+        // mark active within group
+        const groupEl = btn.closest('.fx-hero-lab__group');
+        if (groupEl) {
+          groupEl.querySelectorAll('.fx-hero-lab__btn').forEach(b => {
+            const on = b.dataset.value === val;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+        }
+        applyAllForMaterial(curMat);
       });
     }
 
@@ -410,8 +1046,8 @@
       plate.classList.remove('idle');
       const hint = document.querySelector('[data-fx="plateHint"]');
       if (hint) hint.textContent = exploded
-        ? 'нажмите ещё раз чтобы собрать обратно'
-        : 'тяните чтобы вращать · нажмите чтобы разнести на слои';
+        ? text('нажмите ещё раз чтобы собрать обратно', 'tap again to assemble back')
+        : text('тяните чтобы вращать · нажмите чтобы разнести на слои', 'drag to rotate · tap to explode layers');
       const sheet = document.querySelector('[data-fx="plateSheet"]');
       if (sheet) {
         if (exploded) sheet.setAttribute('data-open', '');
@@ -560,7 +1196,7 @@
         e.preventDefault();
         const submit = form.querySelector('button[type="submit"]');
         if (submit) submit.disabled = true;
-        status.textContent = 'Отправляем...';
+        status.textContent = text('Отправляем...', 'Sending...');
 
         const data = Object.fromEntries(new FormData(form).entries());
         data.page = window.location.pathname;
@@ -575,11 +1211,17 @@
 
           if (!response.ok) throw new Error('Sample request failed');
 
-          status.textContent = 'Готово. Мы свяжемся и отправим образец / тех. описание.';
+          status.textContent = text(
+            'Готово. Мы свяжемся и отправим образец / тех. описание.',
+            'Done. We will contact you and send the sample / technical notes.'
+          );
           form.reset();
           setTimeout(close, 1200);
         } catch (error) {
-          status.innerHTML = 'Не удалось подтвердить отправку. Напишите в WhatsApp: <a href="https://wa.me/972559661459" target="_blank" rel="noopener">+972 55 966 1459</a>.';
+          status.innerHTML = text(
+            'Не удалось подтвердить отправку. Напишите в WhatsApp: <a href="https://wa.me/972559661459" target="_blank" rel="noopener">+972 55 966 1459</a>.',
+            'We could not confirm delivery. Please message us on WhatsApp: <a href="https://wa.me/972559661459" target="_blank" rel="noopener">+972 55 966 1459</a>.'
+          );
         } finally {
           if (submit) submit.disabled = false;
         }
@@ -593,8 +1235,10 @@
     if (!btn) return;
     const number = btn.dataset.waNumber || '+972559661459';
     const sysName = document.body.dataset.fxPage || document.title;
-    const text = `Здравствуйте! Пишу со страницы «${sysName}». Хочу обсудить проект.`;
-    const url = `https://wa.me/${number.replace(/[^\d]/g, '')}?text=${encodeURIComponent(text)}`;
+    const message = isEnglishPage()
+      ? `Hello! I'm writing from "${sysName}". I'd like to discuss a project.`
+      : `Здравствуйте! Пишу со страницы «${sysName}». Хочу обсудить проект.`;
+    const url = `https://wa.me/${number.replace(/[^\d]/g, '')}?text=${encodeURIComponent(message)}`;
     btn.setAttribute('href', url);
   };
 
@@ -610,7 +1254,9 @@
     const show = () => {
       steps.forEach((s, idx) => s.style.display = idx === i ? 'block' : 'none');
       const progress = root.querySelector('[data-fx="dtProgress"]');
-      if (progress) progress.textContent = `Вопрос ${Math.min(i + 1, total)} из ${total}`;
+      if (progress) progress.textContent = isEnglishPage()
+        ? `Question ${Math.min(i + 1, total)} of ${total}`
+        : `Вопрос ${Math.min(i + 1, total)} из ${total}`;
     };
     show();
 
@@ -634,7 +1280,7 @@
             else if (place === 'designer')                        rec = ['венецианское терраццо', 'микротопинг'];
             else if (place === 'residential')                     rec = ['микротопинг', 'эпокси декоративный'];
             const out = resultStep.querySelector('[data-fx="dtRec"]');
-            if (out) out.innerHTML = rec.map(r => `<li>${r}</li>`).join('');
+            if (out) out.innerHTML = rec.map(r => `<li>${localize(r)}</li>`).join('');
           }
         }
         show();
@@ -708,8 +1354,16 @@
     function apply(key) {
       const p = PRESETS[key]; if (!p) return;
       if ($name)  $name.textContent  = p.name;
-      if ($total) $total.textContent = p.total;
-      if ($cure)  $cure.textContent  = p.cure;
+      if ($total) $total.textContent = localize(p.total);
+      if ($cure)  $cure.textContent  = localize(p.cure);
+      p.labels.forEach(row => {
+        const label = root.querySelector(row.sel);
+        if (!label) return;
+        const name = label.querySelector('.fx-stack__label-name');
+        const sku = label.querySelector('.fx-stack__label-sku');
+        if (name) name.textContent = localize(row.t);
+        if (sku) sku.textContent = localize(row.s);
+      });
       buttons.forEach(b => {
         const on = b.dataset.stack === key;
         b.classList.toggle('on', on);
@@ -736,9 +1390,9 @@
     // adaptive CTA: меняем primary-кнопку под видимую секцию
     const primaryBtn = bar ? bar.querySelector('.fx-sticky-cta__btn--solid') : null;
     const sections = [
-      { sel: '.fx-picker', text: 'Сравнить' },
-      { sel: '.quality-section, .gallery-section', text: 'Расчёт' },
-      { sel: '.cta-section, .testimonials-section', text: 'Звонок' },
+      { sel: '.fx-picker', text: text('Сравнить', 'Compare') },
+      { sel: '.quality-section, .gallery-section', text: text('Расчёт', 'Estimate') },
+      { sel: '.cta-section, .testimonials-section', text: text('Звонок', 'Call') },
     ];
     let lastText = primaryBtn ? primaryBtn.textContent : '';
 
@@ -755,7 +1409,7 @@
       // adaptive CTA — определяем какая секция в viewport
       if (primaryBtn) {
         const mid = window.innerHeight * 0.5;
-        let next = 'Расчёт';
+        let next = text('Расчёт', 'Estimate');
         for (const s of sections) {
           const el = document.querySelector(s.sel);
           if (!el) continue;

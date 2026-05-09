@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=10">
-    <link rel="stylesheet" href="enhance.css?v=15">
+    <link rel="stylesheet" href="enhance.css?v=16">
 </head>
 <body>
 
@@ -160,85 +160,112 @@
       </div>
     </section>
 
-    <!-- HERO — 3D-образец материала, можно крутить -->
-    <section class="fx-plate-section">
-      <div class="fx-plate-shell">
-        <div class="fx-plate-info">
-          <p class="fx-plate-eyebrow anim-up">Floor.DSGN · Israel · Engineering</p>
-          <h2 class="fx-plate-h2 anim-up anim-d1">Полы, которые<br/><em>проектируют</em><br/>— а не кладут</h2>
-          <p class="fx-plate-meta anim-up anim-d2">Системы покрытий для складов, студий и домов — от расчёта нагрузки до финишной текстуры. Тяните образец чтобы вращать, <b>нажмите</b> чтобы разнести его на слои технологии.</p>
-          <div class="fx-plate-mat-seg anim-up anim-d3" role="tablist" aria-label="Образец материала">
-            <button type="button" class="on" data-m="terrazzo-dark" role="tab">Терраццо тёмный</button>
-            <button type="button" data-m="terrazzo-light" role="tab">Терраццо светлый</button>
-            <button type="button" data-m="terrazzo" role="tab">Терраццо венецианский</button>
-            <button type="button" data-m="epoxy" role="tab">Эпокси тёмный</button>
-            <button type="button" data-m="epoxy-light" role="tab">Эпокси светлый</button>
-            <button type="button" data-m="micro" role="tab">Микротопинг</button>
-            <button type="button" data-m="concrete" role="tab">Полированный бетон</button>
-            <button type="button" data-m="purcem" role="tab">PU-cement</button>
-            <button type="button" data-m="mma" role="tab">MMA Pronto</button>
+    <!-- HERO LAB v3 (2026-05-09) — 3-column material configurator -->
+    <section class="fx-plate-section fx-hero-lab" id="material-lab">
+      <div class="fx-hero-lab__intro">
+        <p class="fx-plate-eyebrow anim-up">Floor.DSGN · Israel · Engineering</p>
+        <h2 class="fx-plate-h2 anim-up anim-d1">Полы, которые<br/><em>проектируют</em><br/>— а не кладут</h2>
+        <p class="fx-plate-meta anim-up anim-d2">Соберите образец под вашу задачу. Слева — материал, справа — параметры. Тяните плиту чтобы вращать, нажмите чтобы разнести на слои.</p>
+      </div>
+      <div class="fx-hero-lab__grid">
+        <!-- LEFT: material list -->
+        <aside class="fx-hero-lab__materials" aria-label="Материалы">
+          <div class="fx-hero-lab__group">
+            <p class="fx-hero-lab__group-label">Декоративные</p>
+            <ul class="fx-hero-lab__mlist" data-fx="materialsDecor">
+              <li><button type="button" class="fx-hero-lab__mat is-active" data-m="terrazzo-dark"><span class="fx-hero-lab__swatch" style="background:#1c1c1e"></span><span class="fx-hero-lab__mat-label">Терраццо тёмный</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="terrazzo-light"><span class="fx-hero-lab__swatch" style="background:#f0ece2"></span><span class="fx-hero-lab__mat-label">Терраццо светлый</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="terrazzo"><span class="fx-hero-lab__swatch" style="background:#efe7d6"></span><span class="fx-hero-lab__mat-label">Терраццо венецианский</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="epoxy-light"><span class="fx-hero-lab__swatch" style="background:#c2bcb0"></span><span class="fx-hero-lab__mat-label">Эпокси декоративный</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="micro"><span class="fx-hero-lab__swatch" style="background:#cfc4b3"></span><span class="fx-hero-lab__mat-label">Микротопинг</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="rubber"><span class="fx-hero-lab__swatch" style="background:#2a2a2a"></span><span class="fx-hero-lab__mat-label">Резина / sport</span></button></li>
+            </ul>
           </div>
-          <div class="fx-plate-meta-row">
-            <div><span class="fx-plate-meta-lbl">тип</span><b data-fx="pmType">терраццо · тёмный</b></div>
-            <div><span class="fx-plate-meta-lbl">толщина</span><b data-fx="pmThick">12 мм</b></div>
-            <div><span class="fx-plate-meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
+          <div class="fx-hero-lab__group">
+            <p class="fx-hero-lab__group-label">Индастриал</p>
+            <ul class="fx-hero-lab__mlist" data-fx="materialsIndustrial">
+              <li><button type="button" class="fx-hero-lab__mat" data-m="epoxy"><span class="fx-hero-lab__swatch" style="background:#2a2620"></span><span class="fx-hero-lab__mat-label">Эпокси SL</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="concrete"><span class="fx-hero-lab__swatch" style="background:#7a7468"></span><span class="fx-hero-lab__mat-label">Полированный бетон</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="purcem"><span class="fx-hero-lab__swatch" style="background:#9a9690"></span><span class="fx-hero-lab__mat-label">PU-cement</span></button></li>
+              <li><button type="button" class="fx-hero-lab__mat" data-m="mma"><span class="fx-hero-lab__swatch" style="background:#3c3a35"></span><span class="fx-hero-lab__mat-label">MMA Pronto</span></button></li>
+            </ul>
           </div>
-          <div class="fx-plate-cta-row">
-            <a href="quote.html" class="btn btn-dark">Подобрать систему</a>
-            <a href="contact.html#intent=sample" class="btn btn-outline">Заказать образец</a>
+        </aside>
+
+        <!-- CENTER: 3D plate -->
+        <div class="fx-hero-lab__stage">
+          <div class="fx-plate-wrap">
+            <div class="fx-plate idle" data-fx="plate" role="button" tabindex="0" aria-label="Образец материала — крутите или нажмите чтобы разнести на слои">
+              <!-- Topcoat -->
+              <div class="fx-layer fx-l-topcoat">
+                <div class="fx-face fx-face-top"></div>
+                <div class="fx-face fx-face-bot"></div>
+                <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+                <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+                <span class="fx-layer-tag">Топкоат<b data-fx="tagTopcoat">Sikafloor‑264 · 0.5 мм</b></span>
+              </div>
+              <!-- Body system (terrazzo / эпокси / etc) -->
+              <div class="fx-layer fx-l-body">
+                <div class="fx-face fx-face-top">
+                  <svg class="fx-plate-pattern" data-fx="topPattern" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice"></svg>
+                  <div class="fx-hero-lab__strips" data-fx="strips" aria-hidden="true"></div>
+                  <div class="fx-hero-lab__flecks" data-fx="flecks" aria-hidden="true"></div>
+                  <div class="fx-hero-lab__texture" data-fx="texture" aria-hidden="true"></div>
+                  <div class="fx-hero-lab__sheen" data-fx="sheen" aria-hidden="true"></div>
+                </div>
+                <div class="fx-face fx-face-bot"></div>
+                <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+                <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+                <span class="fx-layer-tag">Тело системы<b data-fx="tagBody">Sikafloor‑263 SL · 3 мм</b></span>
+              </div>
+              <!-- Mesh — стеклосетка (только для micro и систем где требуется) -->
+              <div class="fx-layer fx-l-mesh" style="display:none">
+                <div class="fx-face fx-face-top"></div>
+                <div class="fx-face fx-face-bot"></div>
+                <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+                <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+                <span class="fx-layer-tag">Стеклосетка<b>Fibreglass mesh 4×4 мм 60 г/м²</b></span>
+              </div>
+              <!-- Primer -->
+              <div class="fx-layer fx-l-primer">
+                <div class="fx-face fx-face-top"></div>
+                <div class="fx-face fx-face-bot"></div>
+                <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+                <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+                <span class="fx-layer-tag">Праймер<b>Sikafloor‑156 · 0.3 мм</b></span>
+              </div>
+              <!-- Substrate (concrete) -->
+              <div class="fx-layer fx-l-substrate">
+                <div class="fx-face fx-face-top"></div>
+                <div class="fx-face fx-face-bot"></div>
+                <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
+                <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
+                <span class="fx-layer-tag">Подложка<b>Бетон C25/30 · ≥ 25 МПа</b></span>
+              </div>
+            </div>
+            <div class="fx-plate-hint" data-fx="plateHint">тяните чтобы вращать · нажмите чтобы разнести на слои</div>
+            <!-- Mobile bottom-sheet с подписями слоёв -->
+            <aside class="fx-plate-sheet" data-fx="plateSheet" aria-hidden="true">
+              <div class="fx-plate-sheet__grab" aria-hidden="true"></div>
+              <p class="fx-plate-sheet__title">Слои системы</p>
+              <ol class="fx-plate-sheet__list" data-fx="plateSheetList"></ol>
+            </aside>
           </div>
         </div>
-        <div class="fx-plate-wrap">
-          <div class="fx-plate idle" data-fx="plate" role="button" tabindex="0" aria-label="Образец материала — крутите или нажмите чтобы разнести на слои">
-            <!-- Topcoat -->
-            <div class="fx-layer fx-l-topcoat">
-              <div class="fx-face fx-face-top"></div>
-              <div class="fx-face fx-face-bot"></div>
-              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
-              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
-              <span class="fx-layer-tag">Топкоат<b data-fx="tagTopcoat">Sikafloor‑264 · 0.5 мм</b></span>
-            </div>
-            <!-- Body system (terrazzo / эпокси / etc) -->
-            <div class="fx-layer fx-l-body">
-              <div class="fx-face fx-face-top"><svg class="fx-plate-pattern" data-fx="topPattern" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice"></svg></div>
-              <div class="fx-face fx-face-bot"></div>
-              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
-              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
-              <span class="fx-layer-tag">Тело системы<b data-fx="tagBody">Sikafloor‑263 SL · 3 мм</b></span>
-            </div>
-            <!-- Mesh — стеклосетка (только для micro и систем где требуется) -->
-            <div class="fx-layer fx-l-mesh" style="display:none">
-              <div class="fx-face fx-face-top"></div>
-              <div class="fx-face fx-face-bot"></div>
-              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
-              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
-              <span class="fx-layer-tag">Стеклосетка<b>Fibreglass mesh 4×4 мм 60 г/м²</b></span>
-            </div>
-            <!-- Primer -->
-            <div class="fx-layer fx-l-primer">
-              <div class="fx-face fx-face-top"></div>
-              <div class="fx-face fx-face-bot"></div>
-              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
-              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
-              <span class="fx-layer-tag">Праймер<b>Sikafloor‑156 · 0.3 мм</b></span>
-            </div>
-            <!-- Substrate (concrete) -->
-            <div class="fx-layer fx-l-substrate">
-              <div class="fx-face fx-face-top"></div>
-              <div class="fx-face fx-face-bot"></div>
-              <div class="fx-face fx-face-N"></div><div class="fx-face fx-face-S"></div>
-              <div class="fx-face fx-face-E"></div><div class="fx-face fx-face-W"></div>
-              <span class="fx-layer-tag">Подложка<b>Бетон C25/30 · ≥ 25 МПа</b></span>
-            </div>
+
+        <!-- RIGHT: dynamic controls -->
+        <aside class="fx-hero-lab__panel" aria-label="Параметры образца">
+          <div class="fx-hero-lab__controls" data-fx="controls"></div>
+          <div class="fx-hero-lab__meta">
+            <div><span class="fx-hero-lab__meta-lbl">тип</span><b data-fx="pmType">терраццо · тёмный</b></div>
+            <div><span class="fx-hero-lab__meta-lbl">толщина</span><b data-fx="pmThick">12 мм</b></div>
+            <div><span class="fx-hero-lab__meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
           </div>
-          <div class="fx-plate-hint" data-fx="plateHint">тяните чтобы вращать · нажмите чтобы разнести на слои</div>
-          <!-- Mobile bottom-sheet с подписями слоёв (показывается только когда plate is-exploded на мобиле) -->
-          <aside class="fx-plate-sheet" data-fx="plateSheet" aria-hidden="true">
-            <div class="fx-plate-sheet__grab" aria-hidden="true"></div>
-            <p class="fx-plate-sheet__title">Слои системы</p>
-            <ol class="fx-plate-sheet__list" data-fx="plateSheetList"></ol>
-          </aside>
-        </div>
+          <div class="fx-hero-lab__cta">
+            <a href="floors/terrazzo.html" class="btn btn-dark fx-hero-lab__cta-primary" data-fx="systemLink">Открыть систему <span aria-hidden="true">→</span></a>
+            <a href="contact.html#intent=sample" class="btn btn-outline fx-hero-lab__cta-secondary">Заказать образец</a>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -756,7 +783,7 @@
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
     <script src="translations.js"></script>
-    <script src="enhance.js?v=12" defer></script>
+    <script src="enhance.js?v=13" defer></script>
 </body>
 </html>
 <!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->
