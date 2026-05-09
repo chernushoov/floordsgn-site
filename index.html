@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=8">
-    <link rel="stylesheet" href="enhance.css?v=6">
+    <link rel="stylesheet" href="enhance.css?v=7">
 </head>
 <body>
 
@@ -119,21 +119,72 @@
         </ul>
     </div>
 
-    <!-- HERO — компактный, минималистичный -->
-    <section class="fx-hero" data-loaded="0">
-      <div class="fx-hero__inner">
-        <div class="fx-hero__copy">
-          <p class="fx-hero__eyebrow">Floor.DSGN · Israel</p>
-          <h1 class="fx-hero__h1">Engineering-grade<br/><em>полы</em></h1>
-          <p class="fx-hero__lede">Эпокси, терраццо, микротопинг, PU‑cement, MMA. Сертифицированный installer Sika. От расчёта подложки до гарантии на систему.</p>
-          <div class="fx-hero__cta">
-            <a href="floors.html" class="btn btn-dark">Все системы</a>
-            <a href="quote.html" class="btn btn-outline">Калькулятор</a>
+    <!-- HERO — выбор системы по материалу -->
+    <section class="fx-picker">
+      <div class="fx-picker__head">
+        <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Sika certified</p>
+        <h1 class="fx-picker__h1">Выберите <em>систему</em></h1>
+        <p class="fx-picker__lede">Шесть семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href="decision-tool.html" class="fx-picker__inline-link">подбор за 6 вопросов</a>.</p>
+      </div>
+      <div class="fx-picker__grid">
+        <a href="floors/epoxy.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Промышленные</span>
+            <h3 class="fx-tile__name">Эпокси</h3>
+            <p class="fx-tile__meta">5 систем · 0.5–12 мм · от ₪140/м²</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
-        </div>
-        <div class="fx-hero__media">
-          <img src="images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg" alt="Terrazzo close-up" loading="eager"/>
-        </div>
+        </a>
+        <a href="floors/terrazzo.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Дизайнерские</span>
+            <h3 class="fx-tile__name">Терраццо</h3>
+            <p class="fx-tile__meta">4 системы · 8–20 мм · от ₪380/м²</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="floors/microtopping.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Декоративные</span>
+            <h3 class="fx-tile__name">Микротопинг</h3>
+            <p class="fx-tile__meta">3 системы · 2–3 мм · от ₪280/м²</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="floors/concrete.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/microtopping/gray-old-scratched-textured-surface-background.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Минимализм</span>
+            <h3 class="fx-tile__name">Полированный бетон</h3>
+            <p class="fx-tile__meta">3 финиша · 0 мм buildup · от ₪120/м²</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="floors/pu-cement.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Food / Pharma</span>
+            <h3 class="fx-tile__name">PU‑cement</h3>
+            <p class="fx-tile__meta">4 системы · 6–9 мм · от ₪380/м² · HACCP</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+        <a href="floors/mma.html" class="fx-tile">
+          <div class="fx-tile__img" style="background-image:url('images/terrazzo/cement-concrete-texture-copy-space.jpg')"></div>
+          <div class="fx-tile__body">
+            <span class="fx-tile__tag">Fast-cure</span>
+            <h3 class="fx-tile__name">MMA</h3>
+            <p class="fx-tile__meta">3 системы · 2–4 мм · cure 1–2 ч · от ₪320/м²</p>
+            <span class="fx-tile__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </div>
+      <div class="fx-picker__foot">
+        <a href="floors.html" class="btn btn-dark">Все системы</a>
+        <a href="quote.html" class="btn btn-outline">Калькулятор сметы</a>
       </div>
     </section>
 
