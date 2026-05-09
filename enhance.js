@@ -300,9 +300,11 @@
     finish: 'Финиш',
     flecks: 'Флеки',
     broadcast: 'Кварц-broadcast',
-    aggregateExposure: 'Степень обнажения',
-    trowelPattern: 'Затирка',
+    aggregateExposure: 'Степень обнажения · CPC class',
+    trowelPattern: 'Затирка · Pandomo',
     pattern: 'Узор',
+    broadcastMedia: 'Broadcast media',
+    cureMode: 'Режим отверждения',
     roughness: 'Текстура · R-класс',
     marking: 'Дорожная разметка',
     thickness: 'Толщина',
@@ -340,7 +342,19 @@
       { c: '#b8902a', w: .35 }, { c: '#6a4d12', w: .25 },
       { c: '#a0681c', w: .20 }, { c: '#d4b048', w: .12 },
       { c: '#28200c', w: .08 }
-    ]
+    ],
+    // v7 — 11 new aggregates from industry taxonomy (R1 of taxonomy doc)
+    'nero-marquina':       [{c:'#161616',w:.55},{c:'#3a3a3a',w:.20},{c:'#ffffff',w:.20},{c:'#7a7a7a',w:.05}],
+    'travertino-romano':   [{c:'#d8c2a0',w:.35},{c:'#b59874',w:.30},{c:'#7a5d40',w:.20},{c:'#e8d8b8',w:.15}],
+    'giallo-siena':        [{c:'#d8b572',w:.35},{c:'#b08a40',w:.25},{c:'#5e4520',w:.20},{c:'#e8c878',w:.20}],
+    'granite-sardo':       [{c:'#7c7c80',w:.35},{c:'#a8a8ac',w:.25},{c:'#3e3e42',w:.25},{c:'#5a5a5e',w:.15}],
+    'quartz-clear':        [{c:'#f5f5f0',w:.50},{c:'#dcdcd4',w:.25},{c:'#a9a9a3',w:.15},{c:'#ffffff',w:.10}],
+    'recycled-glass-cyan': [{c:'#5fb8c4',w:.35},{c:'#2c7a85',w:.20},{c:'#cfeef2',w:.25},{c:'#1d4a55',w:.10},{c:'#88d0d8',w:.10}],
+    'mop-iridescent':      [{c:'#f0e8df',w:.30},{c:'#c8b8d4',w:.25},{c:'#a9d4d0',w:.25},{c:'#fafafa',w:.20}],
+    'brass-dust':          [{c:'#c9a24a',w:.50},{c:'#8a6a20',w:.30},{c:'#f0d480',w:.20}],
+    'copper-flake':        [{c:'#b87333',w:.45},{c:'#7a3f1a',w:.30},{c:'#e0a070',w:.25}],
+    'palladiana-mix':      [{c:'#e8e3da',w:.35},{c:'#a89880',w:.25},{c:'#3a3530',w:.20},{c:'#bca890',w:.20}],
+    'antique-coin':        [{c:'#b8923a',w:.50},{c:'#7a5a20',w:.30},{c:'#e8c060',w:.20}]
   };
 
   // Inline fallback config — keeps lab functional if materials.config.json fetch fails.
@@ -1013,8 +1027,10 @@
         { ctrl: 'accents',           prefix: 'is-accents-',  skip: 'off' },
         { ctrl: 'broadcast',         prefix: 'is-broadcast-',skip: 'off' },
         { ctrl: 'aggregateExposure', prefix: 'is-exposure-', skip: null  },
-        { ctrl: 'trowelPattern',     prefix: 'is-trowel-',   skip: 'smooth' },
-        { ctrl: 'pattern',           prefix: 'is-pattern-',  skip: 'solid' }
+        { ctrl: 'trowelPattern',     prefix: 'is-trowel-',   skip: 'smooth-loft' },
+        { ctrl: 'pattern',           prefix: 'is-pattern-',  skip: 'solid' },
+        { ctrl: 'broadcastMedia',    prefix: 'is-bcm-',      skip: null  },
+        { ctrl: 'cureMode',          prefix: 'is-cure-',     skip: null  }
       ];
       v6Controls.forEach(({ ctrl, prefix, skip }) => {
         // strip any prior class with this prefix
