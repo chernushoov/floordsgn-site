@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=8">
-    <link rel="stylesheet" href="enhance.css?v=7">
+    <link rel="stylesheet" href="enhance.css?v=8">
 </head>
 <body>
 
@@ -118,6 +118,46 @@
             <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </div>
+
+    <!-- HERO — 3D-образец материала, можно крутить -->
+    <section class="fx-plate-section">
+      <div class="fx-plate-shell">
+        <div class="fx-plate-info">
+          <p class="fx-plate-eyebrow">Тактильно — увидеть до укладки</p>
+          <h2 class="fx-plate-h2">Покрутите<br/><em>образец</em></h2>
+          <p class="fx-plate-meta">Каждый материал — своя пластика, фактура и реакция на свет. Сверху видна поверхность, по бокам — слоёный сэндвич: подложка, праймер, тело, топкоат. Тяните чтобы вращать.</p>
+          <div class="fx-plate-mat-seg" role="tablist" aria-label="Образец материала">
+            <button type="button" class="on" data-m="terrazzo-dark" role="tab">Терраццо тёмный</button>
+            <button type="button" data-m="terrazzo-light" role="tab">Терраццо светлый</button>
+            <button type="button" data-m="terrazzo" role="tab">Терраццо венецианский</button>
+            <button type="button" data-m="epoxy" role="tab">Эпокси тёмный</button>
+            <button type="button" data-m="epoxy-light" role="tab">Эпокси светлый</button>
+            <button type="button" data-m="micro" role="tab">Микротопинг</button>
+            <button type="button" data-m="concrete" role="tab">Полированный бетон</button>
+            <button type="button" data-m="purcem" role="tab">PU-cement</button>
+            <button type="button" data-m="mma" role="tab">MMA Pronto</button>
+          </div>
+          <div class="fx-plate-meta-row">
+            <div><span class="fx-plate-meta-lbl">тип</span><b data-fx="pmType">терраццо · тёмный</b></div>
+            <div><span class="fx-plate-meta-lbl">толщина</span><b data-fx="pmThick">12 мм</b></div>
+            <div><span class="fx-plate-meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
+          </div>
+          <div class="fx-plate-cta-row">
+            <a href="quote.html" class="btn btn-dark">Подобрать систему</a>
+            <a href="contact.html?intent=sample" class="btn btn-outline">Заказать образец</a>
+          </div>
+        </div>
+        <div class="fx-plate-wrap">
+          <div class="fx-plate idle" data-fx="plate">
+            <div class="fx-plate-face fx-plate-top"><svg class="fx-plate-pattern" data-fx="topPattern" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice"></svg></div>
+            <div class="fx-plate-face fx-plate-bottom"></div>
+            <div class="fx-plate-side fx-plate-sN"></div><div class="fx-plate-side fx-plate-sS"></div>
+            <div class="fx-plate-side fx-plate-sE"></div><div class="fx-plate-side fx-plate-sW"></div>
+          </div>
+          <div class="fx-plate-hint">тяните чтобы вращать</div>
+        </div>
+      </div>
+    </section>
 
     <!-- HERO — выбор системы по материалу -->
     <section class="fx-picker">
@@ -629,7 +669,7 @@
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
     <script src="translations.js"></script>
-    <script src="enhance.js?v=5" defer></script>
+    <script src="enhance.js?v=6" defer></script>
 </body>
 </html>
 <!-- Redeploy trigger Fri Feb  6 10:29:24 IST 2026 -->

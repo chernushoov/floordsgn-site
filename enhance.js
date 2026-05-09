@@ -8,9 +8,32 @@
 
   /* ---------------- terrazzo pattern (from /v2/) ---------- */
   const PALETTES = {
+    'terrazzo-dark': {
+      base: '#1c1c1e', label: 'терраццо', sub: 'тёмный · charcoal',
+      thick: '12 мм', base_: 'эпоксидная смола',
+      bodyColor: '#2c2c2e',
+      chips: [
+        { c: '#0a0a0a', w: .35 }, { c: '#9a9a9d', w: .15 },
+        { c: '#6a6a6d', w: .15 }, { c: '#cfcfcf', w: .10 },
+        { c: '#3a3a3c', w: .15 }, { c: '#fafafa', w: .10 }
+      ]
+    },
+    'terrazzo-light': {
+      base: '#f0ece2', label: 'терраццо', sub: 'светлый · multicolor',
+      thick: '12 мм', base_: 'эпоксидная смола',
+      bodyColor: '#e8e3d4',
+      chips: [
+        { c: '#2c5e88', w: .10 }, { c: '#d8a82e', w: .08 },
+        { c: '#c66a3a', w: .07 }, { c: '#7a8a78', w: .07 },
+        { c: '#9a9594', w: .15 }, { c: '#1d1d1f', w: .08 },
+        { c: '#d6d2c8', w: .25 }, { c: '#c4a878', w: .10 },
+        { c: '#fff', w: .10 }
+      ]
+    },
     terrazzo: {
       base: '#efe7d6', label: 'терраццо', sub: 'венецианское',
       thick: '12 мм', base_: 'эпоксидная смола',
+      bodyColor: '#e8dec8',
       chips: [
         { c: '#d9c39a', w: .18 }, { c: '#1c1916', w: .12 },
         { c: '#7d6f54', w: .18 }, { c: '#c2603e', w: .06 },
@@ -21,25 +44,55 @@
     epoxy: {
       base: '#2a2620', label: 'эпокси', sub: 'self-leveling',
       thick: '4 мм', base_: 'эпоксидная смола',
+      bodyColor: '#3a342c',
       chips: [
         { c: '#3a342c', w: .5 }, { c: '#5d5448', w: .25 },
         { c: '#1c1916', w: .25 }
       ]
     },
+    'epoxy-light': {
+      base: '#c2bcb0', label: 'эпокси', sub: 'light grey · RAL 7044',
+      thick: '4 мм', base_: 'эпоксидная смола',
+      bodyColor: '#bab4a8',
+      chips: [
+        { c: '#bab4a8', w: .55 }, { c: '#a8a298', w: .25 },
+        { c: '#d4cec0', w: .20 }
+      ]
+    },
     micro: {
-      base: '#cfc4b3', label: 'микротопинг', sub: 'satin',
+      base: '#cfc4b3', label: 'микротопинг', sub: 'satin · cream',
       thick: '2–3 мм', base_: 'минеральная база',
+      bodyColor: '#cfc4b3',
       chips: [
         { c: '#b9a98a', w: .4 }, { c: '#9a8e7b', w: .3 },
         { c: '#dccaa9', w: .3 }
       ]
     },
     concrete: {
-      base: '#7a7468', label: 'бетон', sub: 'полированный',
+      base: '#7a7468', label: 'бетон', sub: 'полированный · salt-pepper',
       thick: '0.5–3 мм снимается', base_: 'существующая плита',
+      bodyColor: '#7a7468',
       chips: [
         { c: '#5d5448', w: .3 }, { c: '#3a342c', w: .2 },
         { c: '#9a9286', w: .3 }, { c: '#a8a298', w: .2 }
+      ]
+    },
+    purcem: {
+      base: '#9a9690', label: 'PU-cement', sub: 'food / pharma',
+      thick: '6–9 мм', base_: 'полиуретан + цемент',
+      bodyColor: '#9a9690',
+      chips: [
+        { c: '#7a7670', w: .35 }, { c: '#a8a49e', w: .35 },
+        { c: '#5a564f', w: .15 }, { c: '#bab6b0', w: .15 }
+      ]
+    },
+    mma: {
+      base: '#3c3a35', label: 'MMA Pronto', sub: 'fast-cure · cold storage',
+      thick: '2–4 мм', base_: 'MMA смола',
+      bodyColor: '#3c3a35',
+      chips: [
+        { c: '#4a4640', w: .50 }, { c: '#5e5a50', w: .25 },
+        { c: '#28261f', w: .25 }
       ]
     }
   };
@@ -185,8 +238,22 @@
     const topPattern = document.querySelector('[data-fx="topPattern"]');
     if (!topPattern) return;
 
-    let curMat = 'terrazzo';
-    buildTerrazzo(topPattern, curMat);
+    let curMat = 'terrazzo-dark';
+    function applyMaterial(key) {
+      const p = PALETTES[key];
+      if (!p) return;
+      buildTerrazzo(topPattern, key);
+      const t1 = document.querySelector('[data-fx="pmType"]');
+      const t2 = document.querySelector('[data-fx="pmThick"]');
+      const t3 = document.querySelector('[data-fx="pmBase"]');
+      if (t1) t1.textContent = `${p.label} · ${p.sub}`;
+      if (t2) t2.textContent = p.thick;
+      if (t3) t3.textContent = p.base_;
+      // drive side-face sandwich color via CSS var
+      plate.style.setProperty('--plate-body', p.bodyColor || p.base);
+      plate.style.setProperty('--plate-top',  p.base);
+    }
+    applyMaterial(curMat);
 
     const matSeg = document.querySelector('.fx-plate-mat-seg');
     if (matSeg) {
@@ -195,15 +262,7 @@
           matSeg.querySelectorAll('button, span').forEach(x => x.classList.remove('on'));
           s.classList.add('on');
           curMat = s.dataset.m;
-          buildTerrazzo(topPattern, curMat);
-          const p = PALETTES[curMat];
-          if (!p) return;
-          const t1 = document.querySelector('[data-fx="pmType"]');
-          const t2 = document.querySelector('[data-fx="pmThick"]');
-          const t3 = document.querySelector('[data-fx="pmBase"]');
-          if (t1) t1.textContent = `${p.label} · ${p.sub}`;
-          if (t2) t2.textContent = p.thick;
-          if (t3) t3.textContent = p.base_;
+          applyMaterial(curMat);
         });
       });
     }

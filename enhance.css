@@ -458,29 +458,61 @@
   50%  { transform: rotateX(56deg) rotateY( 18deg) rotateZ(0); }
   100% { transform: rotateX(56deg) rotateY(-18deg) rotateZ(0); }
 }
+.fx-plate {
+  --plate-body: #efe7d6;
+  --plate-top:  #efe7d6;
+}
 .fx-plate-face { position: absolute; inset: 0; }
 .fx-plate-top {
-  transform: translateZ(11px);
+  transform: translateZ(24px);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, .12) inset,
-    0 8px 60px rgba(0, 0, 0, .25);
-  background: #efe7d6;
+    0 0 0 1px rgba(0, 0, 0, .14) inset,
+    0 10px 70px rgba(0, 0, 0, .28);
+  background: var(--plate-top);
   overflow: hidden;
 }
 .fx-plate-top svg { width: 100%; height: 100%; display: block; }
 .fx-plate-bottom {
-  transform: translateZ(-11px) rotateX(180deg);
-  background: #1c1a17;
+  transform: translateZ(-24px) rotateX(180deg);
+  background: #5a564f;
 }
+/* Side face = слоёный сэндвич:
+   0–6%   топкоат (тонкая тёмная плёнка)
+   6–72%  тело системы (цвет материала, var --plate-body)
+   72–82% праймер (амбер)
+   82–100% подложка (бетон-градиент) */
 .fx-plate-side {
   position: absolute;
-  background: linear-gradient(180deg, #2a2620 0%, #16140f 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .04);
+  background:
+    linear-gradient(180deg,
+      #1d1d1f 0%,
+      #1d1d1f 6%,
+      var(--plate-body) 7%,
+      var(--plate-body) 72%,
+      #c8893d 73%,
+      #b07530 82%,
+      #8a857a 84%,
+      #6c685e 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
 }
-.fx-plate-sN { left: 0; right: 0; top:    0; height: 22px; transform: rotateX(-90deg) translateZ(11px); transform-origin: 50% 0; }
-.fx-plate-sS { left: 0; right: 0; bottom: 0; height: 22px; transform: rotateX( 90deg) translateZ(11px); transform-origin: 50% 100%; }
-.fx-plate-sE { top: 0; bottom: 0; right: 0; width: 22px; transform: rotateY( 90deg) translateZ(11px); transform-origin: 100% 50%; }
-.fx-plate-sW { top: 0; bottom: 0; left:  0; width: 22px; transform: rotateY(-90deg) translateZ(11px); transform-origin: 0 50%; }
+.fx-plate-sN { left: 0; right: 0; top:    0; height: 48px; transform: rotateX(-90deg) translateZ(24px); transform-origin: 50% 0; }
+.fx-plate-sS { left: 0; right: 0; bottom: 0; height: 48px; transform: rotateX( 90deg) translateZ(24px); transform-origin: 50% 100%; }
+.fx-plate-sE { top: 0; bottom: 0; right: 0; width: 48px; transform: rotateY( 90deg) translateZ(24px); transform-origin: 100% 50%;
+  background:
+    linear-gradient(90deg,
+      #1d1d1f 0%, #1d1d1f 6%,
+      var(--plate-body) 7%, var(--plate-body) 72%,
+      #c8893d 73%, #b07530 82%,
+      #8a857a 84%, #6c685e 100%);
+}
+.fx-plate-sW { top: 0; bottom: 0; left:  0; width: 48px; transform: rotateY(-90deg) translateZ(24px); transform-origin: 0 50%;
+  background:
+    linear-gradient(270deg,
+      #1d1d1f 0%, #1d1d1f 6%,
+      var(--plate-body) 7%, var(--plate-body) 72%,
+      #c8893d 73%, #b07530 82%,
+      #8a857a 84%, #6c685e 100%);
+}
 .fx-plate-hint {
   position: absolute;
   bottom: 12px;
