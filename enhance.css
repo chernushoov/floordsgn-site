@@ -5419,3 +5419,15 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 /* End HERO LAB v17 (decision tool) */
 /* End HERO LAB v16 */
+
+/* v18 — blog: "soon" placeholder for unpublished articles */
+.blog-card .read-more.is-soon {
+  display: inline-block;
+  color: #9a9a9a;
+  cursor: default;
+  pointer-events: none;
+  font-style: italic;
+  opacity: .75;
+}
+.blog-card:has(.read-more.is-soon) { opacity: .82; }
+

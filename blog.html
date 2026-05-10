@@ -68,7 +68,7 @@
                         <p class="blog-meta" data-i18n="blog_article1_meta">February 2026 | 10 min read</p>
                         <h3 data-i18n="blog_article1_title">Terrazzo in Modern Interiors: A Timeless Material Reimagined</h3>
                         <p data-i18n="blog_article1_desc">From ancient Roman origins to cutting-edge Israeli design — how modern terrazzo is transforming residential and commercial spaces.</p>
-                        <a href="articles/terrazzo-modern-interiors.html" class="read-more" data-i18n="blog_article1_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -78,7 +78,7 @@
                         <p class="blog-meta" data-i18n="blog_article2_meta">February 2026 | 8 min read</p>
                         <h3 data-i18n="blog_article2_title">Microtopping vs Epoxy: Which Is Right for Your Space?</h3>
                         <p data-i18n="blog_article2_desc">A detailed side-by-side comparison of aesthetics, durability, cost, and best-use scenarios for two popular seamless flooring systems.</p>
-                        <a href="articles/microtopping-vs-epoxy.html" class="read-more" data-i18n="blog_article2_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -98,7 +98,7 @@
                         <p class="blog-meta" data-i18n="blog_article4_meta">January 2026 | 8 min</p>
                         <h3 data-i18n="blog_article4_title">Substrate Moisture Testing: Methods and Limits</h3>
                         <p data-i18n="blog_article4_desc">Why 90% of coating failures trace back to moisture.</p>
-                        <a href="articles/substrate-moisture-testing.html" class="read-more" data-i18n="blog_article4_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -118,7 +118,7 @@
                         <p class="blog-meta" data-i18n="blog_article6_meta">December 2025 | 9 min</p>
                         <h3 data-i18n="blog_article6_title">Terrazzo vs. Microtopping Analysis</h3>
                         <p data-i18n="blog_article6_desc">Understanding the technical differences that matter.</p>
-                        <a href="articles/terrazzo-vs-microtopping.html" class="read-more" data-i18n="blog_article6_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -128,7 +128,7 @@
                         <p class="blog-meta" data-i18n="blog_article7_meta">December 2025 | 7 min</p>
                         <h3 data-i18n="blog_article7_title">MMA: When 2-Hour Cure Is Critical</h3>
                         <p data-i18n="blog_article7_desc">Applications where fast-cure is the only solution.</p>
-                        <a href="articles/mma-fast-cure.html" class="read-more" data-i18n="blog_article7_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -148,7 +148,7 @@
                         <p class="blog-meta" data-i18n="blog_article9_meta">November 2025 | 11 min</p>
                         <h3 data-i18n="blog_article9_title">Self-Leveling Screeds: Deep Dive</h3>
                         <p data-i18n="blog_article9_desc">Binder types and achieving perfect flatness.</p>
-                        <a href="articles/self-leveling-screeds.html" class="read-more" data-i18n="blog_article9_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -158,7 +158,7 @@
                         <p class="blog-meta" data-i18n="blog_article10_meta">November 2025 | 6 min</p>
                         <h3 data-i18n="blog_article10_title">When to Recoat Your Floor</h3>
                         <p data-i18n="blog_article10_desc">Signs your industrial floor needs attention.</p>
-                        <a href="articles/when-to-recoat.html" class="read-more" data-i18n="blog_article10_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
@@ -179,8 +179,10 @@
         <div class="container">
             <h2 data-i18n="blog_newsletter_title">Stay Updated</h2>
             <p data-i18n="blog_newsletter_desc">Monthly technical insights. No marketing noise.</p>
-            <form class="newsletter-form">
-                <input type="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="newsletter">
+                <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+                <input type="email" name="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
                 <button type="submit" data-i18n="blog_newsletter_btn">Subscribe</button>
             </form>
         </div>
