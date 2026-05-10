@@ -1551,6 +1551,51 @@
       drag = null;
       scheduleIdle();
     });
+
+    // ---------- v9: hover parallax (Apple-product feel) ----------
+    // Plate "looks at" the cursor with ±0.4deg max tilt. Skipped during
+    // drag/explode/touch. Cleared on mouseleave.
+    let hoverRaf = null;
+    plate.addEventListener('mousemove', (e) => {
+      if (drag || exploded) return;
+      if (hoverRaf) return;
+      hoverRaf = requestAnimationFrame(() => {
+        hoverRaf = null;
+        const r = plate.getBoundingClientRect();
+        const cx = r.left + r.width  / 2;
+        const cy = r.top  + r.height / 2;
+        // normalized -1..+1 → multiplier 0.4deg
+        const nx = Math.max(-1, Math.min(1, (e.clientX - cx) / (r.width  / 2)));
+        const ny = Math.max(-1, Math.min(1, (e.clientY - cy) / (r.height / 2)));
+        plate.style.setProperty('--hover-ry', (nx *  0.4).toFixed(2) + 'deg');
+        plate.style.setProperty('--hover-rx', (ny * -0.4).toFixed(2) + 'deg');
+        plate.classList.add('is-hovering');
+      });
+    });
+    plate.addEventListener('mouseleave', () => {
+      plate.classList.remove('is-hovering');
+      plate.style.setProperty('--hover-rx', '0deg');
+      plate.style.setProperty('--hover-ry', '0deg');
+      scheduleIdle();
+    });
+
+    // ---------- v9: cinematic collapse-scale on un-explode ----------
+    // Patch toggleExplode to add a brief 'is-exploding-collapse' class on
+    // the way down (gives 0.97 → 1.00 settle via CSS --explode-scale).
+    const _origToggle = toggleExplode;
+    // Replace via wrapper — can't reassign const, so monkey-patch via class hook.
+    // We listen for the click that fires toggleExplode and add the collapse
+    // class one tick later if the resulting state is NOT exploded.
+    plate.addEventListener('click', () => {
+      // exploded already toggled inside toggleExplode (via earlier listener).
+      // Defer one frame so we read the new state.
+      requestAnimationFrame(() => {
+        if (!exploded) {
+          plate.classList.add('is-exploding-collapse');
+          setTimeout(() => plate.classList.remove('is-exploding-collapse'), 280);
+        }
+      });
+    });
     }); // end loadConfig(boot)
   };
 

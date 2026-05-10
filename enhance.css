@@ -4155,3 +4155,250 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 /* Custom hex tint overlay refinement when material is rubber (granules read through tint better) */
 .fx-plate[data-system="rubber"] .fx-hero-lab__color-tint { mix-blend-mode: multiply; opacity: .85; }
+
+/* =====================================================================
+   HERO LAB v9 (2026-05-09) — 3D plate "12/10" polish
+   Photoreal vignette + dust noise on top, dual studio shadow,
+   hover parallax, breathing idle, cinematic explode/collapse,
+   second wet-look reflection column, smoother color crossfade.
+   Layered ON TOP of v6/v7 rules; does not remove anything.
+   ===================================================================== */
+
+/* --- Hover parallax vars set by JS (clamped ±0.4deg max) --------- */
+.fx-plate {
+  --hover-rx: 0deg;
+  --hover-ry: 0deg;
+  --idle-rx: 0deg;
+  --idle-ry: 0deg;
+  --explode-scale: 1;
+}
+/* Override transform to compose: base + scroll-tilt + idle-breath + hover-parallax + explode-scale.
+   Single source of truth; stays in sync with v7 scroll-tilt var. */
+.fx-plate {
+  transform:
+    rotateX(calc(var(--rx) + var(--plate-scroll-tilt) + var(--idle-rx) + var(--hover-rx)))
+    rotateY(calc(var(--ry) + var(--idle-ry) + var(--hover-ry)))
+    scale(var(--explode-scale));
+  transition:
+    transform .9s cubic-bezier(.22, 1.2, .36, 1),
+    --idle-rx .8s ease,
+    --idle-ry .8s ease;
+}
+/* Hover-only micro-parallax — short, snappy ease (Apple-product feel) */
+.fx-plate.is-hovering:not(.is-dragging):not(.is-exploded) {
+  transition: transform 200ms cubic-bezier(.22, 1, .36, 1);
+}
+
+/* --- Breathing idle replaces linear fxPlateIdle ------------------- */
+/* Disable old keyframe-based animation; the .idle class now drives
+   --idle-rx and --idle-ry via two independent CSS animations. */
+.fx-plate.idle {
+  animation:
+    fxPlateBreatheY 8s cubic-bezier(.45,.05,.55,.95) infinite,
+    fxPlateBreatheX 11s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+@keyframes fxPlateBreatheY {
+  0%, 100% { --idle-ry: -4deg; }
+  50%      { --idle-ry:  4deg; }
+}
+@keyframes fxPlateBreatheX {
+  0%, 100% { --idle-rx: -2deg; }
+  50%      { --idle-rx:  2deg; }
+}
+/* Pause breathing during interaction states */
+.fx-plate.is-dragging,
+.fx-plate.is-exploded,
+.fx-plate.is-hovering {
+  animation: none !important;
+  --idle-rx: 0deg;
+  --idle-ry: 0deg;
+}
+/* @property declarations enable smooth CSS-var transitions on Chromium/Safari */
+@property --idle-rx {
+  syntax: '<angle>'; inherits: true; initial-value: 0deg;
+}
+@property --idle-ry {
+  syntax: '<angle>'; inherits: true; initial-value: 0deg;
+}
+@property --hover-rx {
+  syntax: '<angle>'; inherits: true; initial-value: 0deg;
+}
+@property --hover-ry {
+  syntax: '<angle>'; inherits: true; initial-value: 0deg;
+}
+@property --explode-scale {
+  syntax: '<number>'; inherits: true; initial-value: 1;
+}
+
+/* --- Cinematic explode/collapse: brief scale lift then settle ----- */
+.fx-plate.is-exploded { --explode-scale: 1.02; }
+.fx-plate.is-exploding-collapse { --explode-scale: 0.97; }
+/* JS toggles is-exploding-collapse for ~280ms during collapse to give the
+   "snap-back" settle. Falls through to --explode-scale: 1 default. */
+
+/* Per-layer stagger for cinematic explode — increase delays slightly */
+.fx-plate.is-exploded .fx-l-topcoat   { transition-delay: 0s,    .04s; }
+.fx-plate.is-exploded .fx-l-body      { transition-delay: .12s,  .04s; }
+.fx-plate.is-exploded .fx-l-mesh      { transition-delay: .24s,  .04s; }
+.fx-plate.is-exploded .fx-l-primer    { transition-delay: .36s,  .04s; }
+.fx-plate.is-exploded .fx-l-substrate { transition-delay: .48s,  .04s; }
+/* Reverse stagger when collapsing (top first) */
+.fx-plate:not(.is-exploded) .fx-l-substrate { transition-delay: 0s,    .04s; }
+.fx-plate:not(.is-exploded) .fx-l-primer    { transition-delay: .12s,  .04s; }
+.fx-plate:not(.is-exploded) .fx-l-mesh      { transition-delay: .24s,  .04s; }
+.fx-plate:not(.is-exploded) .fx-l-body      { transition-delay: .36s,  .04s; }
+.fx-plate:not(.is-exploded) .fx-l-topcoat   { transition-delay: .48s,  .04s; }
+
+/* --- Dual studio shadow under plate ------------------------------- */
+/* Replace the single soft radial under .fx-plate-wrap::before with a
+   tighter "near" shadow + a diffuse "far" shadow. Shadow color is
+   slightly warm (#281e14 territory). Shadow length scales subtly with
+   horizontal-ness of the plate via --plate-scroll-tilt. */
+.fx-plate-wrap::before {
+  /* near shadow — tight, dark, defines contact */
+  width: 440px; height: 36px;
+  bottom: 64px;
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(40, 30, 20, .32),
+    rgba(40, 30, 20, .12) 55%,
+    transparent 78%);
+  filter: blur(10px);
+}
+.fx-plate-wrap::after {
+  content: "";
+  position: absolute;
+  width: 620px; height: 90px;
+  bottom: 32px;
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(40, 30, 20, .20),
+    transparent 70%);
+  filter: blur(36px);
+  max-width: 95%;
+  pointer-events: none;
+  /* lengthen subtly when plate tilts more horizontal (scroll-tilt) */
+  transform: scaleX(calc(1 + var(--plate-scroll-tilt, 0deg) / 80deg))
+             scaleY(calc(1 - var(--plate-scroll-tilt, 0deg) / 240deg));
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+/* --- Top face: studio vignette + micro-noise overlay -------------- */
+/* Sits ABOVE the existing ::after specular highlight via a ::before.
+   Existing rule (line ~692) already sets ::after for highlight. We add
+   a wrapping vignette through inset shadow on the face-top itself, plus
+   a low-opacity dust-noise pseudo via filter on a generated image. */
+.fx-plate .fx-l-body .fx-face-top {
+  /* studio-photo edge fall-off — subtle, doesn't darken centre */
+  box-shadow:
+    inset 0 0 0 .5px rgba(0,0,0,.10),
+    inset 0 0 60px rgba(0,0,0,.16),
+    inset 0 0 120px rgba(0,0,0,.10);
+}
+/* Micro-dust / scratch noise overlay — scoped to a dedicated child
+   (sheen overlay would interfere with finish-driven background). We
+   piggyback on existing strips overlay only when no strips applied?
+   Cleaner: add a thin ::before on .fx-l-body .fx-face-top that does
+   NOT clash with the ::after specular. */
+.fx-plate .fx-l-body .fx-face-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* SVG fractal-noise data-URI — tiny, ~6% opacity */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+  opacity: .06;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 7;     /* above all overlays incl. sheen */
+}
+/* Reduce noise on highly polished/wet finishes — they should feel slick */
+.fx-plate[data-finish="wetlook"] .fx-l-body .fx-face-top::before,
+.fx-plate[data-finish="polished"] .fx-l-body .fx-face-top::before {
+  opacity: .03;
+}
+/* Boost noise slightly on matte (more tactile/dry feel) */
+.fx-plate[data-finish="matte"] .fx-l-body .fx-face-top::before {
+  opacity: .09;
+}
+
+/* --- Matte finish: gentle absorption filter on body face-top ------ */
+.fx-plate[data-finish="matte"] .fx-l-body .fx-face-top {
+  filter: var(--plate-top-filter, none) contrast(.96) brightness(.98);
+}
+
+/* --- Wet-look: SECOND vertical reflection column + slow shimmer --- */
+/* Add a vertical column reflection at center 30-50% width — mimics
+   overhead light bouncing off a mirror floor. */
+.fx-plate[data-finish="wetlook"] .fx-l-body .fx-face-top::after {
+  background:
+    /* original radial highlight (kept) */
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.22), transparent 55%),
+    linear-gradient(125deg, transparent 38%, rgba(255,255,255,.10) 50%, transparent 62%),
+    /* NEW: vertical reflection column */
+    linear-gradient(90deg,
+      transparent 28%,
+      rgba(255,255,255,.18) 36%,
+      rgba(255,255,255,.32) 42%,
+      rgba(255,255,255,.18) 48%,
+      transparent 56%);
+  mix-blend-mode: screen;
+}
+
+/* --- Idle sheen shimmer — subtle horizontal slide on the sheen
+       overlay only. Pause on hover/drag/exploded. --------------- */
+.fx-plate.idle .fx-hero-lab__sheen {
+  animation: fxSheenShimmer 6s ease-in-out infinite;
+}
+@keyframes fxSheenShimmer {
+  0%, 100% { transform: translateX(-2.5%); }
+  50%      { transform: translateX( 2.5%); }
+}
+.fx-plate.is-hovering .fx-hero-lab__sheen,
+.fx-plate.is-dragging .fx-hero-lab__sheen,
+.fx-plate.is-exploded .fx-hero-lab__sheen {
+  animation: none;
+}
+
+/* --- Smooth color crossfade on body face-top ---------------------- */
+/* Already partially in v3.1 (line ~3299). Reinforce: side faces also
+   transition to avoid snap when --plate-body changes. */
+.fx-plate .fx-l-body .fx-face-N,
+.fx-plate .fx-l-body .fx-face-S,
+.fx-plate .fx-l-body .fx-face-E,
+.fx-plate .fx-l-body .fx-face-W {
+  transition:
+    background-color 280ms cubic-bezier(.22,1,.36,1),
+    filter 280ms cubic-bezier(.22,1,.36,1);
+}
+/* Color tint also crossfades (already 280ms in v3.1, kept for clarity) */
+
+/* --- Subtle 1px highlight on top edge of each layer --------------- */
+/* Crisp layer separations in cross-section. Applied to all side faces
+   so light direction matches existing "N brightest, S darkest" model. */
+.fx-plate .fx-l-topcoat   .fx-face-N,
+.fx-plate .fx-l-topcoat   .fx-face-S,
+.fx-plate .fx-l-topcoat   .fx-face-E,
+.fx-plate .fx-l-topcoat   .fx-face-W,
+.fx-plate .fx-l-body      .fx-face-N,
+.fx-plate .fx-l-body      .fx-face-S,
+.fx-plate .fx-l-body      .fx-face-E,
+.fx-plate .fx-l-body      .fx-face-W,
+.fx-plate .fx-l-primer    .fx-face-N,
+.fx-plate .fx-l-primer    .fx-face-S,
+.fx-plate .fx-l-primer    .fx-face-E,
+.fx-plate .fx-l-primer    .fx-face-W,
+.fx-plate .fx-l-substrate .fx-face-N,
+.fx-plate .fx-l-substrate .fx-face-S,
+.fx-plate .fx-l-substrate .fx-face-E,
+.fx-plate .fx-l-substrate .fx-face-W {
+  /* 1px specular highlight on top edge — mimics light hitting layer top */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18),
+              inset 0 -1px 0 rgba(0,0,0,.10);
+}
+
+/* --- Reduced-motion respect -------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-plate.idle,
+  .fx-plate.idle .fx-hero-lab__sheen { animation: none; }
+  .fx-plate { transition: none; }
+}
+/* End HERO LAB v9 polish */
