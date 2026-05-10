@@ -101,24 +101,6 @@
 
   /* ---------------- terrazzo pattern (from /v2/) ---------- */
   const PALETTES = {
-    'terrazzo-dark': {
-      base: '#1c1c1e', label: 'терраццо', sub: 'тёмный · charcoal',
-      thick: '12 мм', base_: 'эпоксидная смола',
-      bodyColor: '#2c2c2e',
-      top: 'images/terrazzo/dark-mosaic-textured-background.jpg',
-      mesh: false,
-      buildup: {
-        topcoat:   { name: 'Топ-герметик · 2 слоя', sku: 'Sikafloor‑304 W · 2 × 0.1 мм' },
-        body:      { name: 'Терраццо-масса',        sku: 'Sikafloor‑263 SL + Decodur basalt · 8 мм' },
-        primer:    { name: 'Праймер + кварц',       sku: 'Sikafloor‑156 + кварц 0.4–0.7 · 0.8 мм' },
-        substrate: { name: 'Подложка',              sku: 'Бетон C25/30 · ≥ 25 МПа' }
-      },
-      chips: [
-        { c: '#0a0a0a', w: .35 }, { c: '#9a9a9d', w: .15 },
-        { c: '#6a6a6d', w: .15 }, { c: '#cfcfcf', w: .10 },
-        { c: '#3a3a3c', w: .15 }, { c: '#fafafa', w: .10 }
-      ]
-    },
     'terrazzo-light': {
       base: '#f0ece2', label: 'терраццо', sub: 'светлый · multicolor',
       thick: '12 мм', base_: 'эпоксидная смола',
@@ -343,7 +325,7 @@
     stainDye: 'Тонировка'
   };
   const CONTROL_SCHEMAS = {
-    /* terrazzo-dark — populated below from buildSchemasFromConfig or fallback */
+    /* schemas populated by buildSchemasFromConfig() from materials.config.json */
   };
 
   // Aggregate id → chip palette (overrides PALETTES[mat].chips when active)
@@ -398,8 +380,7 @@
   const INLINE_CONFIG_FALLBACK = {
     version: 1,
     materials: [
-      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо · эпоксидное (тёмное)', swatch: '#1c1c1e', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'charcoal', aggregate:'basalt', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
-      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо · эпоксидное (мульти)', swatch: '#f0ece2', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
+      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо · эпоксидное',          swatch: '#f0ece2', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
       { id: 'terrazzo',       group: 'decor',      label: 'Терраццо · цементное',           swatch: '#efe7d6', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'15mm' } },
       { id: 'micro',          group: 'decor',      label: 'Микротопинг',                    swatch: '#cfc4b3', controls: ['color','trowelPattern','finishSlider','thickness'], defaults: { color:'cream-pa-w2', trowelPattern:'smooth-loft', finishSlider:30, thickness:'2.5mm' } },
       { id: 'rubber',         group: 'decor',      label: 'Резиновое покрытие',             swatch: '#2a2a2a', controls: ['color','pattern','thickness'], defaults: { color:'black', pattern:'solid', thickness:'6mm' } },
@@ -412,8 +393,7 @@
     ],
     controlOptions: {
       color: {
-        'terrazzo-dark':  [{id:'charcoal',label:'Charcoal',hex:'#1c1c1e',swatch:'#1c1c1e'},{id:'anthracite',label:'Anthracite',hex:'#2c2c2e',swatch:'#2c2c2e'},{id:'graphite',label:'Graphite',hex:'#3a3a3c',swatch:'#3a3a3c'},{id:'stone',label:'Stone',hex:'#5a5a5c',swatch:'#5a5a5c'}],
-        'terrazzo-light': [{id:'white',label:'White',hex:'#f0ece2',swatch:'#f0ece2'},{id:'offwhite',label:'Off-white',hex:'#e8e3d4',swatch:'#e8e3d4'},{id:'sand',label:'Sand',hex:'#dfd4ba',swatch:'#dfd4ba'},{id:'pearl',label:'Pearl',hex:'#ebe6db',swatch:'#ebe6db'}],
+        'terrazzo-light':[{id:'white',label:'White',hex:'#f0ece2',swatch:'#f0ece2'},{id:'offwhite',label:'Off-white',hex:'#e8e3d4',swatch:'#e8e3d4'},{id:'sand',label:'Sand',hex:'#dfd4ba',swatch:'#dfd4ba'},{id:'pearl',label:'Pearl',hex:'#ebe6db',swatch:'#ebe6db'}],
         'terrazzo':       [{id:'white',label:'White',hex:'#efe7d6',swatch:'#efe7d6'},{id:'cream',label:'Cream',hex:'#e8dec8',swatch:'#e8dec8'},{id:'sand',label:'Sand',hex:'#dfd4ba',swatch:'#dfd4ba'},{id:'grey',label:'Grey',hex:'#bdb6a8',swatch:'#bdb6a8'}],
         'epoxy':          [{id:'9005',label:'RAL 9005',hex:'#0a0a0a',swatch:'#0a0a0a'},{id:'7016',label:'RAL 7016',hex:'#293133',swatch:'#293133'},{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'1001',label:'RAL 1001',hex:'#c2b078',swatch:'#c2b078'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'},{id:'6011',label:'RAL 6011',hex:'#587246',swatch:'#587246'}],
         'epoxy-light':    [{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'9001',label:'RAL 9001',hex:'#e9e0d2',swatch:'#e9e0d2'},{id:'9010',label:'RAL 9010',hex:'#f1ece1',swatch:'#f1ece1'},{id:'1015',label:'RAL 1015',hex:'#e6d2b5',swatch:'#e6d2b5'},{id:'7035',label:'RAL 7035',hex:'#cbd0cc',swatch:'#cbd0cc'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'}],
@@ -425,7 +405,6 @@
         'parquet':        [{id:'oak-natural',label:'Дуб натуральный',hex:'#a07842',swatch:'#a07842'},{id:'oak-rustic',label:'Дуб рустик',hex:'#7a5530',swatch:'#7a5530'},{id:'walnut',label:'Орех',hex:'#5a3825',swatch:'#5a3825'},{id:'ash',label:'Ясень',hex:'#c8a878',swatch:'#c8a878'},{id:'teak',label:'Тик',hex:'#8a5a2a',swatch:'#8a5a2a'},{id:'whitewashed',label:'Беленый дуб',hex:'#d8c8b0',swatch:'#d8c8b0'}]
       },
       aggregate: {
-        'terrazzo-dark':  [{id:'basalt',label:'Basalt'},{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
         'terrazzo-light': [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
         'terrazzo':       [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}]
       },
@@ -669,7 +648,7 @@
 
     for (let i = 0; i < effectiveCount; i++) {
       const cx = rnd(-10, W + 10), cy = rnd(-10, H + 10);
-      const isTerr = key === 'terrazzo' || key === 'terrazzo-dark' || key === 'terrazzo-light';
+      const isTerr = key === 'terrazzo' || key === 'terrazzo-light';
       const userSize = p.userSizeScale || 1;
       const sz = isTerr ? rnd(3, 32) * scale * userSize : rnd(1, 5);
       if (useCircles && isTerr) {
@@ -806,7 +785,7 @@
       const m = qs.get('material');
       if (m) {
         const map = {
-          'terrazzo': 'terrazzo', 'terrazzo-dark': 'terrazzo', 'terrazzo-light': 'terrazzo',
+          'terrazzo': 'terrazzo', 'terrazzo-light': 'terrazzo',
           'epoxy': 'epoxy', 'epoxy-light': 'epoxy',
           'micro': 'micro', 'concrete': 'concrete',
           'purcem': 'pucement', 'mma': 'mma', 'rubber': 'epoxy'
@@ -922,7 +901,7 @@
       return null;
     }
 
-    let curMat = plate.getAttribute('data-system') || 'terrazzo-dark';
+    let curMat = plate.getAttribute('data-system') || 'terrazzo';
 
     function selectedOption(material, group) {
       const st = ensureState(material);
@@ -1079,7 +1058,7 @@
 
       // 3) Photographic top texture (v4) — REAL PHOTO as base layer, with optional
       //    aggregate-driven filter swap, then color tint via blend-mode overlay.
-      const isTerrazzo = (material === 'terrazzo' || material === 'terrazzo-dark' || material === 'terrazzo-light');
+      const isTerrazzo = (material === 'terrazzo' || material === 'terrazzo-light');
       const isSolidSystem = !isTerrazzo;
 
       // 3a) Pick top photo: per-aggregate override for terrazzo, else material default
@@ -1101,19 +1080,8 @@
       let topImage = p.top || null;
       let topFilter = p.filter || 'none';
       if (isTerrazzo && aggOpt && aggregatePhoto[aggOpt.id]) {
-        // Material default uses its own canonical photo — only override if material isn't dark+basalt etc.
-        // For terrazzo-dark, basalt = the dark mosaic photo (already default). For carrara/verona/mirror/brass swap.
-        if (material === 'terrazzo-dark') {
-          if (aggOpt.id !== 'basalt') {
-            topImage = aggregatePhoto[aggOpt.id];
-            topFilter = aggregateFilter[aggOpt.id];
-            // For dark-base aggregates other than basalt, darken slightly to keep "dark" mood
-            if (aggOpt.id === 'carrara') topFilter = 'brightness(1.05) saturate(.5) contrast(1.10)';
-          }
-        } else {
-          topImage = aggregatePhoto[aggOpt.id] || topImage;
-          topFilter = aggregateFilter[aggOpt.id] || topFilter;
-        }
+        topImage = aggregatePhoto[aggOpt.id] || topImage;
+        topFilter = aggregateFilter[aggOpt.id] || topFilter;
       }
 
       if (topImage) {
