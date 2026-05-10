@@ -358,8 +358,8 @@
       "thickness": "3 мм",
       "base": "MMA смола",
       "bodyColor": "#3c3a35",
-      "top": "images/terrazzo/macrophotography-terrazzo-slab-texture.jpg",
-      "filter": "brightness(.55) contrast(1.3) saturate(.7) hue-rotate(15deg)",
+      "top": "images/microtopping/gray-old-scratched-textured-surface-background.jpg",
+      "filter": "brightness(.72) contrast(1.18) saturate(.85)",
       "mesh": true,
       "cureTime": "1ч / 2ч",
       "warranty": "7-10 лет",
@@ -1933,18 +1933,9 @@
         "label": "Смешанные",
         "hex": "#7a5a18"
       },
-      {
-        "id": "brass-3mm-arch",
-        "label": "Латунь 3 мм · architectural"
-      },
-      {
-        "id": "aluminum-yellow-forklift",
-        "label": "Алюминий желтый · forklift lane"
-      },
-      {
-        "id": "pvc-black-compensation",
-        "label": "PVC compensation joint"
-      }
+      { "id": "brass-3mm-arch",          "label": "Латунь 3мм" },
+      { "id": "aluminum-yellow-forklift","label": "Жёлтый · forklift", "hex": "#d6b13a" },
+      { "id": "pvc-black-compensation",  "label": "PVC compensation",  "hex": "#1a1a1a" }
     ],
     "finish": [
       {
@@ -1973,62 +1964,20 @@
         "id": "off",
         "label": "Без флеков"
       },
-      {
-        "id": "fine",
-        "label": "Vinyl chips · fine"
-      },
-      {
-        "id": "medium",
-        "label": "Vinyl chips · medium"
-      },
-      {
-        "id": "coarse",
-        "label": "Coarse 1/8″"
-      },
-      {
-        "id": "full-broadcast",
-        "label": "Full-broadcast"
-      },
-      {
-        "id": "mica",
-        "label": "Mica"
-      },
-      {
-        "id": "metallic",
-        "label": "Metallic FX"
-      },
-      {
-        "id": "metallic-bronze",
-        "label": "Metallic Bronze"
-      },
-      {
-        "id": "metallic-copper",
-        "label": "Metallic Copper"
-      },
-      {
-        "id": "metallic-pearl",
-        "label": "Metallic Pearl"
-      },
-      {
-        "id": "fine-vinyl-1-16",
-        "label": "Fine vinyl 1/16\" · retail"
-      },
-      {
-        "id": "large-vinyl-1-4",
-        "label": "Large vinyl 1/4\" · showroom"
-      },
-      {
-        "id": "metallic-bronze-stapa",
-        "label": "Metallic Bronze (Eckart Stapa)"
-      },
-      {
-        "id": "metallic-copper-stapa",
-        "label": "Metallic Copper (Eckart Stapa)"
-      },
-      {
-        "id": "mica-pearl-iriodin",
-        "label": "Mica Pearl (Merck Iriodin 100)"
-      }
+      { "id": "fine",                  "label": "Vinyl · fine" },
+      { "id": "medium",                "label": "Vinyl · medium" },
+      { "id": "coarse",                "label": "Vinyl · coarse" },
+      { "id": "full-broadcast",        "label": "Full-broadcast" },
+      { "id": "mica",                  "label": "Mica" },
+      { "id": "metallic",              "label": "Metallic FX" },
+      { "id": "metallic-bronze",       "label": "Bronze" },
+      { "id": "metallic-copper",       "label": "Copper" },
+      { "id": "metallic-pearl",        "label": "Pearl" },
+      { "id": "fine-vinyl-1-16",       "label": "Vinyl · 1/16″" },
+      { "id": "large-vinyl-1-4",       "label": "Vinyl · 1/4″" },
+      { "id": "metallic-bronze-stapa", "label": "Bronze · Eckart" },
+      { "id": "metallic-copper-stapa", "label": "Copper · Eckart" },
+      { "id": "mica-pearl-iriodin",    "label": "Mica · Iriodin" }
     ],
     "accents": [
       {
@@ -2057,26 +2006,11 @@
         "id": "off",
         "label": "Без посыпки"
       },
-      {
-        "id": "fine",
-        "label": "Кварц fine · R10"
-      },
-      {
-        "id": "medium",
-        "label": "Кварц medium · R11"
-      },
-      {
-        "id": "coarse",
-        "label": "Кварц coarse · R12"
-      },
-      {
-        "id": "heavy",
-        "label": "Корунд heavy · R13"
-      },
-      {
-        "id": "full",
-        "label": "Full-broadcast"
-      }
+      { "id": "fine",   "label": "Fine · R10" },
+      { "id": "medium", "label": "Medium · R11" },
+      { "id": "coarse", "label": "Coarse · R12" },
+      { "id": "heavy",  "label": "Heavy · R13" },
+      { "id": "full",   "label": "Full" }
     ],
     "aggregateExposure": {
       "concrete": [
@@ -2495,30 +2429,12 @@
       ]
     },
     "sargelPattern": [
-      {
-        "id": "off",
-        "label": "Без узора"
-      },
-      {
-        "id": "linear",
-        "label": "Линейные · 4 полосы"
-      },
-      {
-        "id": "grid-3x3",
-        "label": "Сетка 3×3 (9 ячеек)"
-      },
-      {
-        "id": "grid-2x2",
-        "label": "Сетка 2×2 (4 ячейки)"
-      },
-      {
-        "id": "diagonal",
-        "label": "Диагональная сетка"
-      },
-      {
-        "id": "decorative-meander",
-        "label": "Декоративный меандр"
-      }
+      { "id": "off",                "label": "Без узора" },
+      { "id": "linear",             "label": "Линейный" },
+      { "id": "grid-3x3",           "label": "Сетка 3×3" },
+      { "id": "grid-2x2",           "label": "Сетка 2×2" },
+      { "id": "diagonal",           "label": "Диагональ" },
+      { "id": "decorative-meander", "label": "Меандр" }
     ],
     "multiZone": [
       {
@@ -2539,31 +2455,11 @@
       }
     ],
     "finishSlider": [
-      {
-        "id": "matte",
-        "label": "Matte · 0-15",
-        "value": 10
-      },
-      {
-        "id": "satin",
-        "label": "Satin · 16-35",
-        "value": 25
-      },
-      {
-        "id": "polished",
-        "label": "Polished · 36-55",
-        "value": 45
-      },
-      {
-        "id": "glossy",
-        "label": "Glossy · 56-75",
-        "value": 65
-      },
-      {
-        "id": "wetlook",
-        "label": "Wet-look · 76-100",
-        "value": 90
-      }
+      { "id": "matte", "label": "Matte", "value": 10 },
+      { "id": "satin",    "label": "Satin",    "value": 25 },
+      { "id": "polished", "label": "Polished", "value": 45 },
+      { "id": "glossy",   "label": "Glossy",   "value": 65 },
+      { "id": "wetlook",  "label": "Wet-look", "value": 90 }
     ],
     "woodSpecies": {
       "parquet": [

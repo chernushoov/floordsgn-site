@@ -963,13 +963,34 @@
             </div>
           </div>`;
         }
-        const buttons = group.options.map(opt => {
+        // v19 — collapse long option lists: show first MAX_VISIBLE, wrap rest in
+        // a hidden block toggled by an "Ещё N…" button. Active option is always
+        // visible regardless of its index, so users see the current state.
+        const MAX_VISIBLE = 6;
+        const activeIdx = group.options.findIndex(o => st[group.id] === o.id);
+        const renderBtn = opt => {
           const isOn = st[group.id] === opt.id;
           const swatch = opt.swatch ? `<span class="fx-hero-lab__btn-dot" style="background:${opt.swatch}"></span>` : '';
           const cls = `fx-hero-lab__btn${isOn ? ' is-active' : ''}${opt.swatch ? ' has-dot' : ''}`;
           const tip = opt.tooltip ? ` data-tooltip="${String(opt.tooltip).replace(/"/g,'&quot;')}"` : '';
           return `<button type="button" class="${cls}" data-control="${group.id}" data-value="${opt.id}" aria-pressed="${isOn ? 'true' : 'false'}"${tip}>${swatch}<span class="fx-hero-lab__btn-label">${localize(opt.label)}</span></button>`;
-        }).join('');
+        };
+        let buttons;
+        if (group.options.length <= MAX_VISIBLE) {
+          buttons = group.options.map(renderBtn).join('');
+        } else {
+          const visible = group.options.slice(0, MAX_VISIBLE);
+          const hidden = group.options.slice(MAX_VISIBLE);
+          // promote active item out of hidden bucket so user sees their choice
+          if (activeIdx >= MAX_VISIBLE) {
+            const swap = visible[MAX_VISIBLE - 1];
+            visible[MAX_VISIBLE - 1] = group.options[activeIdx];
+            hidden[activeIdx - MAX_VISIBLE] = swap;
+          }
+          const moreLabel = text(`Ещё ${hidden.length}…`, `More ${hidden.length}…`);
+          buttons = visible.map(renderBtn).join('')
+            + `<div class="fx-hero-lab__more" data-fx="moreGroup"><div class="fx-hero-lab__more-hidden" hidden>${hidden.map(renderBtn).join('')}</div><button type="button" class="fx-hero-lab__more-btn" data-fx="moreToggle" aria-expanded="false">${moreLabel}</button></div>`;
+        }
         // Custom color picker appended to color group
         let extra = '';
         if (group.id === 'color') {
@@ -1617,6 +1638,18 @@
     // ---------- RIGHT: controls click + keyboard ----------
     if (controlsRoot) {
       controlsRoot.addEventListener('click', (e) => {
+        // v19 — "Ещё N…" expander for long option lists.
+        const moreBtn = e.target.closest('[data-fx="moreToggle"]');
+        if (moreBtn) {
+          const wrap = moreBtn.parentElement;
+          const hidden = wrap && wrap.querySelector('.fx-hero-lab__more-hidden');
+          if (hidden) {
+            const isOpen = !hidden.hasAttribute('hidden');
+            if (isOpen) { hidden.setAttribute('hidden', ''); moreBtn.setAttribute('aria-expanded', 'false'); moreBtn.textContent = moreBtn.dataset.labelMore || moreBtn.textContent; }
+            else { hidden.removeAttribute('hidden'); moreBtn.setAttribute('aria-expanded', 'true'); moreBtn.dataset.labelMore = moreBtn.textContent; moreBtn.textContent = text('Свернуть','Less'); }
+          }
+          return;
+        }
         const btn = e.target.closest('.fx-hero-lab__btn');
         if (!btn) return;
         const ctrl = btn.dataset.control;
