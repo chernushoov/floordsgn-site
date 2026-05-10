@@ -4402,3 +4402,356 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   .fx-plate { transition: none; }
 }
 /* End HERO LAB v9 polish */
+
+/* =====================================================================
+   HERO LAB v10 (2026-05-09) — PER-BUTTON FIDELITY POLISH
+   Goal: every button click produces a visual that authentically reads
+   the underlying real material physics. Built ON TOP of v6/v7/v9 — the
+   below rules are mostly higher-specificity refinements that keep all
+   prior behaviour intact (breathing idle, parallax, sheen, dual shadow).
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. AGGREGATE — pearl iridescence (mop-iridescent) + palladiana scale
+   --------------------------------------------------------------------- */
+.fx-plate.is-mop-iridescent .fx-l-body .fx-face-top::after {
+  /* Add a soft pearlescent glow on top of the chip pattern.
+     Multiple radial pinks/cyans layered with screen blend for shimmer. */
+  background:
+    radial-gradient(ellipse at 22% 28%, rgba(220, 200, 240, .45), transparent 55%),
+    radial-gradient(ellipse at 75% 70%, rgba(180, 230, 220, .42), transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 245, 230, .25), transparent 70%),
+    /* preserve the existing radial highlight underneath */
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.18), transparent 55%);
+  mix-blend-mode: screen;
+  opacity: .85;
+}
+.fx-plate.is-agg-palladiana .fx-l-body .fx-face-top {
+  /* Subtle hint that chips are larger — adds soft outline glow on big chips */
+  filter: contrast(1.04) saturate(1.04);
+}
+
+/* ---------------------------------------------------------------------
+   2. STRIPS / DIVIDERS — metallic gradients are computed in JS
+   stripsBackground(). v10 added brass-3mm-arch / aluminum-yellow-forklift
+   / pvc-black-compensation. Add a thin shadow/groove cue at the strip
+   edges — purely decorative since the bg is JS-driven, this just darkens
+   the strip overlay's bottom edge for "inlay" depth.
+   --------------------------------------------------------------------- */
+.fx-plate .fx-hero-lab__strips {
+  filter: drop-shadow(0 0 .8px rgba(0,0,0,.45));
+}
+
+/* ---------------------------------------------------------------------
+   3. FLECKS — extended modes (v7 added several IDs without rules)
+   Each flecks option = different size × density × colour tone.
+   --------------------------------------------------------------------- */
+.fx-hero-lab__flecks.mode-medium {
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.55) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 64% 38%, rgba(0,0,0,.5)    0 2.2px, transparent 3px),
+    radial-gradient(circle at 38% 78%, rgba(255,255,255,.5) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 80% 70%, rgba(0,0,0,.5)    0 2px, transparent 2.8px);
+  background-size: 30px 32px, 34px 36px, 28px 32px, 32px 34px;
+}
+.fx-hero-lab__flecks.mode-full-broadcast {
+  /* Densely packed colour — almost no base showing through */
+  background-image:
+    radial-gradient(circle at 14% 18%, rgba(255,255,255,.62) 0 2.2px, transparent 3px),
+    radial-gradient(circle at 38% 32%, rgba(0,0,0,.55)       0 2.4px, transparent 3.2px),
+    radial-gradient(circle at 60% 14%, rgba(255,235,180,.55) 0 2px,   transparent 2.8px),
+    radial-gradient(circle at 78% 50%, rgba(0,0,0,.50)       0 2.2px, transparent 3px),
+    radial-gradient(circle at 22% 70%, rgba(255,255,255,.55) 0 2.2px, transparent 3px),
+    radial-gradient(circle at 60% 80%, rgba(180,170,160,.55) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle at 86% 88%, rgba(0,0,0,.45)       0 2px,   transparent 2.8px);
+  background-size: 18px 18px;
+}
+.fx-hero-lab__flecks.mode-fine-vinyl-1-16 {
+  background-image:
+    radial-gradient(circle at 20% 24%, rgba(255,255,255,.50) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 60% 36%, rgba(0,0,0,.45)       0 1px, transparent 1.4px),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.45) 0 1px, transparent 1.4px);
+  background-size: 14px 14px, 18px 18px, 16px 16px;
+}
+.fx-hero-lab__flecks.mode-large-vinyl-1-4 {
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,.62) 0 6px, transparent 7.5px),
+    radial-gradient(circle at 62% 36%, rgba(0,0,0,.55)       0 6px, transparent 7.5px),
+    radial-gradient(circle at 38% 78%, rgba(180,180,200,.55) 0 5.5px, transparent 7px),
+    radial-gradient(circle at 84% 72%, rgba(0,0,0,.50)       0 6px,   transparent 7.5px);
+  background-size: 60px 64px, 70px 74px, 64px 68px, 68px 72px;
+}
+.fx-hero-lab__flecks.mode-metallic-bronze-stapa,
+.fx-hero-lab__flecks.mode-metallic-bronze {
+  background:
+    radial-gradient(ellipse at 22% 18%, rgba(220,170,90,.55), transparent 35%),
+    radial-gradient(ellipse at 70% 52%, rgba(170,120,60,.55), transparent 40%),
+    radial-gradient(ellipse at 38% 80%, rgba(220,170,90,.45), transparent 35%),
+    linear-gradient(135deg, rgba(255,220,160,.18) 0%, rgba(60,30,10,.10) 50%, rgba(255,220,160,.18) 100%);
+  mix-blend-mode: screen;
+}
+.fx-hero-lab__flecks.mode-metallic-copper-stapa,
+.fx-hero-lab__flecks.mode-metallic-copper {
+  background:
+    radial-gradient(ellipse at 22% 18%, rgba(220,140,80,.55),  transparent 35%),
+    radial-gradient(ellipse at 70% 52%, rgba(180,90,40,.55),   transparent 40%),
+    radial-gradient(ellipse at 38% 80%, rgba(230,160,100,.50), transparent 35%),
+    linear-gradient(135deg, rgba(255,180,120,.20) 0%, rgba(80,30,10,.10) 50%, rgba(255,180,120,.20) 100%);
+  mix-blend-mode: screen;
+}
+.fx-hero-lab__flecks.mode-mica-pearl-iriodin,
+.fx-hero-lab__flecks.mode-metallic-pearl {
+  background:
+    radial-gradient(ellipse at 24% 22%, rgba(245,235,220,.55), transparent 30%),
+    radial-gradient(ellipse at 66% 46%, rgba(220,210,235,.50), transparent 35%),
+    radial-gradient(ellipse at 38% 78%, rgba(220,235,230,.45), transparent 32%);
+  mix-blend-mode: screen;
+  filter: brightness(1.04);
+}
+
+/* ---------------------------------------------------------------------
+   4. ROUGHNESS — clear progression R9 → R10 → R11 → R12 → barefoot
+   Stipple density ramps up. Use is-rgh-* class set in v10Controls.
+   --------------------------------------------------------------------- */
+.fx-plate.is-rgh-fine .fx-hero-lab__texture {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(0,0,0,.20) 0 .8px, transparent 1.2px);
+  background-size: 7px 7px;
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-rgh-coarse .fx-hero-lab__texture {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 22% 28%, rgba(0,0,0,.34) 0 1.4px, transparent 1.8px),
+    radial-gradient(circle at 64% 58%, rgba(255,255,255,.18) 0 1.2px, transparent 1.6px);
+  background-size: 6px 7px, 8px 9px;
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-rgh-coarse-r12 .fx-hero-lab__texture {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(0,0,0,.45) 0 2px, transparent 2.6px),
+    radial-gradient(circle at 60% 38%, rgba(255,255,255,.22) 0 1.8px, transparent 2.4px),
+    radial-gradient(circle at 78% 78%, rgba(0,0,0,.38) 0 2px, transparent 2.6px),
+    radial-gradient(circle at 38% 70%, rgba(255,255,255,.20) 0 1.6px, transparent 2.2px);
+  background-size: 9px 10px, 11px 12px, 10px 11px, 12px 13px;
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-rgh-coarse-r12 .fx-l-body .fx-face-top { filter: saturate(.88) brightness(.96); }
+.fx-plate.is-rgh-barefoot-b .fx-hero-lab__texture {
+  opacity: 1;
+  /* Pool/SPA texture: very fine but evenly distributed micro-bumps */
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(0,0,0,.22) 0 .9px, transparent 1.4px),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,.20) 0 .8px, transparent 1.3px);
+  background-size: 5px 5px, 5px 5px;
+  background-position: 0 0, 2.5px 2.5px;
+  mix-blend-mode: multiply;
+}
+
+/* ---------------------------------------------------------------------
+   5. FINISH — visibly different reflectivity per step
+   Already partly handled by glossVarsFor JS + data-finish in v9.
+   v10 adds explicit per-step body-tint adjustments to make MATTE feel
+   absorptive vs WET-LOOK feel slick.
+   --------------------------------------------------------------------- */
+.fx-plate[data-finish="satin"] .fx-l-body .fx-face-top::after {
+  /* Soft diffuse sheen, low-contrast */
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.16), transparent 60%),
+    linear-gradient(125deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%);
+  mix-blend-mode: screen;
+  opacity: .9;
+}
+.fx-plate[data-finish="polished"] .fx-l-body .fx-face-top::after {
+  background:
+    radial-gradient(ellipse at 28% 18%, rgba(255,255,255,.30), transparent 55%),
+    linear-gradient(125deg, transparent 38%, rgba(255,255,255,.18) 50%, transparent 62%);
+  mix-blend-mode: screen;
+}
+.fx-plate[data-finish="glossy"] .fx-l-body .fx-face-top::after {
+  background:
+    radial-gradient(ellipse at 26% 16%, rgba(255,255,255,.45), transparent 50%),
+    linear-gradient(125deg, transparent 38%, rgba(255,255,255,.28) 50%, transparent 62%);
+  mix-blend-mode: screen;
+}
+
+/* ---------------------------------------------------------------------
+   6. MARKING — refine to look like REAL painted floor markings
+   --------------------------------------------------------------------- */
+/* Yellow zone — proper warning hatch covering ~50% of one corner */
+.fx-hero-lab__marking.is-yellow-zone {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(245, 200, 30, 0.95) 0 16px,
+    rgba(20, 20, 20, 0.92)   16px 32px
+  );
+  -webkit-mask-image: linear-gradient(135deg, #000 0%, #000 48%, transparent 62%);
+          mask-image: linear-gradient(135deg, #000 0%, #000 48%, transparent 62%);
+  /* edge halo so hatch reads as paint, not pure overlay */
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.35));
+}
+/* White grid — 4 perpendicular lines forming parking stalls */
+.fx-hero-lab__marking.is-white-grid {
+  /* Two vertical lines at 28% and 72%, two horizontal at 28% and 72% */
+  background:
+    linear-gradient(90deg, transparent 0 27.5%, rgba(255,255,255,.95) 27.5% 28.5%, transparent 28.5%) no-repeat,
+    linear-gradient(90deg, transparent 0 71.5%, rgba(255,255,255,.95) 71.5% 72.5%, transparent 72.5%) no-repeat,
+    linear-gradient(0deg,  transparent 0 27.5%, rgba(255,255,255,.95) 27.5% 28.5%, transparent 28.5%) no-repeat,
+    linear-gradient(0deg,  transparent 0 71.5%, rgba(255,255,255,.95) 71.5% 72.5%, transparent 72.5%) no-repeat;
+  filter: drop-shadow(0 0 1px rgba(255,255,255,.45));
+}
+/* Red safety — solid red rectangle at one edge with subtle paint texture */
+.fx-hero-lab__marking.is-red-safety {
+  background:
+    linear-gradient(to bottom,
+      transparent 0 76%,
+      rgba(195, 40, 32, 0.94) 76% 92%,
+      transparent 92%) no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(60,0,0,.35));
+}
+/* Pedestrian crossing — 6 white slabs across plate */
+.fx-hero-lab__marking.is-pedestrian {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.96) 0 26px,
+      transparent           26px 52px) no-repeat;
+  background-size: 100% 32%;
+  background-position: 0 64%;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.30));
+}
+
+/* ---------------------------------------------------------------------
+   7. RUBBER PATTERNS — sharper island zones + real graphic markings
+   --------------------------------------------------------------------- */
+/* Island — sharp-edged colour zones (not gradient blur) */
+.fx-plate.is-pattern-island .fx-l-body .fx-face-top {
+  background-image:
+    radial-gradient(circle at 30% 35%, #c8302a 0 28%, transparent 28.6%),
+    radial-gradient(circle at 72% 68%, #4a8a2a 0 22%, transparent 22.6%),
+    radial-gradient(circle at 50% 50%, #1d4f8a 0 14%, transparent 14.6%);
+}
+/* Graphic — playground hopscotch + numbers via SVG data-URI overlay */
+.fx-plate.is-pattern-graphic .fx-l-body .fx-face-top {
+  background-image:
+    /* hopscotch grid + numbers */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 480'>\
+<g fill='none' stroke='%23ffffff' stroke-width='4'>\
+<rect x='180' y='40'  width='120' height='90'/>\
+<rect x='180' y='130' width='120' height='90'/>\
+<rect x='100' y='220' width='120' height='90'/>\
+<rect x='260' y='220' width='120' height='90'/>\
+<rect x='180' y='310' width='120' height='90'/>\
+</g>\
+<g fill='%23ffffff' font-family='Arial Black, sans-serif' font-size='40' text-anchor='middle'>\
+<text x='240' y='98'>1</text>\
+<text x='240' y='188'>2</text>\
+<text x='160' y='278'>3</text>\
+<text x='320' y='278'>4</text>\
+<text x='240' y='368'>5</text>\
+</g></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+/* Sport-lines — single white horizontal track marking */
+.fx-plate.is-pattern-sport-lines .fx-l-body .fx-face-top {
+  background-image:
+    linear-gradient(0deg,
+      transparent 0 49.5%,
+      rgba(255,255,255,.95) 49.5% 50.8%,
+      transparent 50.8%) no-repeat;
+}
+
+/* ---------------------------------------------------------------------
+   8. MMA CURE COLD — frost edge highlight + bold blue meta badge
+   --------------------------------------------------------------------- */
+.fx-plate.is-cure-cold {
+  --plate-tint-color: rgba(120, 180, 220, .14);
+  --plate-tint-strength: 0.14;
+}
+.fx-plate.is-cure-cold .fx-l-body .fx-face-N,
+.fx-plate.is-cure-cold .fx-l-body .fx-face-S,
+.fx-plate.is-cure-cold .fx-l-body .fx-face-E,
+.fx-plate.is-cure-cold .fx-l-body .fx-face-W,
+.fx-plate.is-cure-cold .fx-l-topcoat .fx-face-N,
+.fx-plate.is-cure-cold .fx-l-topcoat .fx-face-S,
+.fx-plate.is-cure-cold .fx-l-topcoat .fx-face-E,
+.fx-plate.is-cure-cold .fx-l-topcoat .fx-face-W {
+  /* light-blue rim — evokes frost/cold cure */
+  box-shadow:
+    inset 0 1px 0 rgba(180,225,250,.55),
+    inset 0 -1px 0 rgba(0,0,0,.10),
+    0 0 6px rgba(120,180,220,.30);
+}
+.fx-plate.is-cure-cold .fx-l-body .fx-face-top {
+  /* light frosty top edge */
+  box-shadow:
+    inset 0 0 0 .5px rgba(180,220,250,.35),
+    inset 0 0 24px rgba(120,180,220,.18),
+    inset 0 0 60px rgba(0,0,0,.16);
+}
+/* Bold blue badge for cure label when cold */
+.fx-hero-lab .fx-plate.is-cure-cold ~ * [data-fx="pmCure"],
+.fx-hero-lab__meta [data-fx="pmCure"]:where(.fx-plate.is-cure-cold ~ * [data-fx="pmCure"]) {
+  color: #1d6da8;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+/* Fallback selector chain via a class on the Lab section instead */
+.fx-hero-lab:has(.fx-plate.is-cure-cold) [data-fx="pmCure"] {
+  color: #1d6da8;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------
+   9. CPC EXPOSURE — cleaner progression A → D
+   classA = cement skin, almost no chips.
+   classD = full terrazzo-look exposure with extra speck overlay.
+   v9 already has opacity ramp — v10 strengthens classD highlight.
+   --------------------------------------------------------------------- */
+.fx-plate.is-exposure-classA-cream .fx-plate-pattern { opacity: .06; }
+.fx-plate.is-exposure-classB-saltPepper .fx-plate-pattern { opacity: .32; }
+.fx-plate.is-exposure-classC-medium .fx-plate-pattern { opacity: .68; }
+.fx-plate.is-exposure-classD-fullExposed .fx-plate-pattern { opacity: 1; }
+.fx-plate.is-exposure-classD-fullExposed .fx-l-body .fx-face-top {
+  /* slight contrast bump on full-exposed look */
+  filter: contrast(1.06) saturate(1.05);
+}
+
+/* ---------------------------------------------------------------------
+   10. STRIPS PER-ID — backgrounds set in JS, but ensure overlay rendering
+   does not get clipped by parent overflow. Already handled — kept as
+   no-op placeholder for symmetry with other v10 sections.
+   --------------------------------------------------------------------- */
+/* (intentionally empty — JS stripsBackground covers visuals) */
+
+/* ---------------------------------------------------------------------
+   11. COVE-BASE — thin amber curve hint at plate bottom edge
+   Visual is informational; keeps the control feeling responsive.
+   --------------------------------------------------------------------- */
+.fx-plate.has-cove-R50  .fx-l-body .fx-face-top,
+.fx-plate.has-cove-R75  .fx-l-body .fx-face-top,
+.fx-plate.has-cove-R100 .fx-l-body .fx-face-top,
+.fx-plate.has-cove-R150 .fx-l-body .fx-face-top {
+  position: relative;
+}
+.fx-plate.has-cove-R50  .fx-l-body .fx-face-top::before,
+.fx-plate.has-cove-R75  .fx-l-body .fx-face-top::before,
+.fx-plate.has-cove-R100 .fx-l-body .fx-face-top::before,
+.fx-plate.has-cove-R150 .fx-l-body .fx-face-top::before {
+  /* Don't override the noise overlay defined in v9 — chain via background-image add */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    radial-gradient(ellipse at 50% 100%, rgba(220,170,80,.32) 0 12px, transparent 28px);
+  background-repeat: repeat, no-repeat;
+  background-size: 220px 220px, 70% 30%;
+  background-position: 0 0, center bottom;
+}
+.fx-plate.has-cove-R150 .fx-l-body .fx-face-top::before {
+  /* bigger radius — wider curve hint */
+  background-size: 220px 220px, 92% 38%;
+}
+
+/* End HERO LAB v10 — per-button fidelity polish */

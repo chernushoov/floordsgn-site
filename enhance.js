@@ -344,18 +344,25 @@
       { c: '#28200c', w: .08 }
     ],
     // v7 — 11 new aggregates from industry taxonomy (R1 of taxonomy doc)
-    'nero-marquina':       [{c:'#161616',w:.55},{c:'#3a3a3a',w:.20},{c:'#ffffff',w:.20},{c:'#7a7a7a',w:.05}],
-    'travertino-romano':   [{c:'#d8c2a0',w:.35},{c:'#b59874',w:.30},{c:'#7a5d40',w:.20},{c:'#e8d8b8',w:.15}],
-    'giallo-siena':        [{c:'#d8b572',w:.35},{c:'#b08a40',w:.25},{c:'#5e4520',w:.20},{c:'#e8c878',w:.20}],
-    'granite-sardo':       [{c:'#7c7c80',w:.35},{c:'#a8a8ac',w:.25},{c:'#3e3e42',w:.25},{c:'#5a5a5e',w:.15}],
-    'quartz-clear':        [{c:'#f5f5f0',w:.50},{c:'#dcdcd4',w:.25},{c:'#a9a9a3',w:.15},{c:'#ffffff',w:.10}],
-    'recycled-glass-cyan': [{c:'#5fb8c4',w:.35},{c:'#2c7a85',w:.20},{c:'#cfeef2',w:.25},{c:'#1d4a55',w:.10},{c:'#88d0d8',w:.10}],
-    'mop-iridescent':      [{c:'#f0e8df',w:.30},{c:'#c8b8d4',w:.25},{c:'#a9d4d0',w:.25},{c:'#fafafa',w:.20}],
-    'brass-dust':          [{c:'#c9a24a',w:.50},{c:'#8a6a20',w:.30},{c:'#f0d480',w:.20}],
-    'copper-flake':        [{c:'#b87333',w:.45},{c:'#7a3f1a',w:.30},{c:'#e0a070',w:.25}],
-    'palladiana-mix':      [{c:'#e8e3da',w:.35},{c:'#a89880',w:.25},{c:'#3a3530',w:.20},{c:'#bca890',w:.20}],
-    'antique-coin':        [{c:'#b8923a',w:.50},{c:'#7a5a20',w:.30},{c:'#e8c060',w:.20}]
+    // v10 — fidelity polish: each palette tuned to real rock/material colour signature
+    'nero-marquina':       [{c:'#0c0c0c',w:.62},{c:'#262626',w:.16},{c:'#ffffff',w:.18},{c:'#d8d8d8',w:.04}], // black + long white veins (drawn as slivers in builder)
+    'travertino-romano':   [{c:'#d8c2a0',w:.30},{c:'#b59874',w:.30},{c:'#7a5d40',w:.20},{c:'#e8d8b8',w:.20}], // warm beige + brown
+    'giallo-siena':        [{c:'#d8b572',w:.30},{c:'#b08a40',w:.25},{c:'#5e4520',w:.15},{c:'#e8c878',w:.20},{c:'#f1d588',w:.10}], // yellow-gold dominant
+    'granite-sardo':       [{c:'#5a5a5e',w:.30},{c:'#7c7c80',w:.25},{c:'#a8a8ac',w:.20},{c:'#2a2a2e',w:.20},{c:'#cfcfd2',w:.05}], // grey/charcoal/black mix
+    'quartz-clear':        [{c:'#f5f5f0',w:.55},{c:'#e6e6e0',w:.20},{c:'#dcdcd4',w:.15},{c:'#ffffff',w:.10}], // milky translucent
+    'recycled-glass-cyan': [{c:'#5fb8c4',w:.30},{c:'#2c7a85',w:.18},{c:'#cfeef2',w:.20},{c:'#1d4a55',w:.10},{c:'#3a8a4a',w:.10},{c:'#d4a020',w:.07},{c:'#ffffff',w:.05}], // mosaic — cyan, emerald, amber, clear
+    'mop-iridescent':      [{c:'#f0e8df',w:.28},{c:'#c8b8d4',w:.22},{c:'#a9d4d0',w:.22},{c:'#e0c8e8',w:.16},{c:'#fafafa',w:.12}], // pearl + lavender + cyan + cream
+    'brass-dust':          [{c:'#c9a24a',w:.55},{c:'#8a6a20',w:.25},{c:'#f0d480',w:.15},{c:'#e8c258',w:.05}], // dense fine gold particles
+    'copper-flake':        [{c:'#b87333',w:.50},{c:'#7a3f1a',w:.25},{c:'#e0a070',w:.20},{c:'#d28a48',w:.05}], // copper-bronze
+    'palladiana-mix':      [{c:'#e8e3da',w:.32},{c:'#a89880',w:.24},{c:'#3a3530',w:.18},{c:'#bca890',w:.16},{c:'#cfc8b8',w:.10}], // larger chips drawn 3x size
+    'antique-coin':        [{c:'#b8923a',w:.50},{c:'#7a5a20',w:.30},{c:'#e8c060',w:.18},{c:'#9a7228',w:.02}]  // drawn as circles
   };
+
+  // v10 — aggregates that need special render geometry beyond colour palette
+  const AGG_LARGE_SCALE  = { 'palladiana-mix': 3.0 }; // chip-size multiplier
+  const AGG_AS_CIRCLES   = { 'antique-coin': true };
+  const AGG_VEINY        = { 'nero-marquina': true }; // adds white slivers
+  const AGG_SCREEN_BLEND = { 'mop-iridescent': true }; // pearl glow via class on plate
 
   // Inline fallback config — keeps lab functional if materials.config.json fetch fails.
   const INLINE_CONFIG_FALLBACK = {
@@ -475,6 +482,34 @@
         bar(80, 6, blackGrad)
       ]);
     }
+    // v10 — extended strip catalog (architectural / forklift / compensation joint)
+    const yellowGrad = 'linear-gradient(180deg,#7a6a18 0%,#c8a824 18%,#f5d850 48%,#c8a824 78%,#5a4a08 100%)';
+    const pvcGrad    = 'linear-gradient(180deg,#000 0%,#0e0e10 35%,#1c1c1f 50%,#0e0e10 65%,#000 100%)';
+    if (stripId === 'brass-3mm-arch') {
+      // 4 narrow brass lines, architectural style
+      return set([
+        bar(20, 3, brassGrad),
+        bar(40, 3, brassGrad),
+        bar(60, 3, brassGrad),
+        bar(80, 3, brassGrad)
+      ]);
+    }
+    if (stripId === 'aluminum-yellow-forklift') {
+      // 2 thick yellow forklift-lane stripes flanked by aluminum edges
+      return set([
+        bar(15, 3, aluGrad),
+        bar(35, 10, yellowGrad),
+        bar(65, 10, yellowGrad),
+        bar(85, 3, aluGrad)
+      ]);
+    }
+    if (stripId === 'pvc-black-compensation') {
+      // 2 wide deep matte-black expansion joints
+      return set([
+        bar(33, 8, pvcGrad),
+        bar(66, 8, pvcGrad)
+      ]);
+    }
     return 'none';
   }
 
@@ -556,10 +591,35 @@
       return p.chips[0].c;
     }
 
-    for (let i = 0; i < chipCount; i++) {
+    // v10 — per-aggregate geometry tweaks
+    const aggId = p.aggId || null;
+    const scale = (aggId && AGG_LARGE_SCALE[aggId]) || 1;
+    const useCircles = !!(aggId && AGG_AS_CIRCLES[aggId]);
+    const veiny = !!(aggId && AGG_VEINY[aggId]);
+    // Palladiana = fewer but bigger chips
+    const effectiveCount = scale > 1.5 ? Math.round(chipCount / scale) : chipCount;
+
+    for (let i = 0; i < effectiveCount; i++) {
       const cx = rnd(-10, W + 10), cy = rnd(-10, H + 10);
-      const isTerr = key === 'terrazzo';
-      const sz = isTerr ? rnd(3, 32) : rnd(1, 5);
+      const isTerr = key === 'terrazzo' || key === 'terrazzo-dark' || key === 'terrazzo-light';
+      const sz = isTerr ? rnd(3, 32) * scale : rnd(1, 5);
+      if (useCircles && isTerr) {
+        const c = document.createElementNS(ns, 'circle');
+        c.setAttribute('cx', cx.toFixed(1));
+        c.setAttribute('cy', cy.toFixed(1));
+        c.setAttribute('r',  sz.toFixed(1));
+        c.setAttribute('fill', pickColor());
+        c.setAttribute('opacity', rnd(.88, 1).toFixed(2));
+        // subtle inner highlight on coin-like chips
+        svg.appendChild(c);
+        const cInner = document.createElementNS(ns, 'circle');
+        cInner.setAttribute('cx', (cx - sz * 0.25).toFixed(1));
+        cInner.setAttribute('cy', (cy - sz * 0.25).toFixed(1));
+        cInner.setAttribute('r',  (sz * 0.45).toFixed(1));
+        cInner.setAttribute('fill', 'rgba(255,235,170,.35)');
+        svg.appendChild(cInner);
+        continue;
+      }
       const rot = rnd(0, 360);
       const sides = isTerr ? Math.floor(rnd(3, 7)) : 4;
       const pts = [];
@@ -573,6 +633,27 @@
       poly.setAttribute('fill', pickColor());
       poly.setAttribute('opacity', isTerr ? rnd(.85, 1).toFixed(2) : rnd(.4, .85).toFixed(2));
       svg.appendChild(poly);
+    }
+
+    // v10 — Nero Marquina: long thin white veins across slab
+    if (veiny) {
+      for (let v = 0; v < 7; v++) {
+        const x1 = rnd(-30, W + 30), y1 = rnd(-20, H + 20);
+        const angle = rnd(-25, 25) + (v % 2 === 0 ? 0 : 90);
+        const len = rnd(160, 360);
+        const x2 = x1 + Math.cos(angle * Math.PI / 180) * len;
+        const y2 = y1 + Math.sin(angle * Math.PI / 180) * len;
+        const ln = document.createElementNS(ns, 'line');
+        ln.setAttribute('x1', x1.toFixed(1));
+        ln.setAttribute('y1', y1.toFixed(1));
+        ln.setAttribute('x2', x2.toFixed(1));
+        ln.setAttribute('y2', y2.toFixed(1));
+        ln.setAttribute('stroke', '#f0eee6');
+        ln.setAttribute('stroke-width', rnd(0.7, 1.6).toFixed(2));
+        ln.setAttribute('opacity', rnd(.55, .85).toFixed(2));
+        ln.setAttribute('stroke-linecap', 'round');
+        svg.appendChild(ln);
+      }
     }
 
     const v = document.createElementNS(ns, 'rect');
@@ -845,11 +926,17 @@
         bodyColor: bodyHex,
         chips: chipsForBuild
       });
-      // Patch palette temporarily for buildTerrazzo
+      // Patch palette temporarily for buildTerrazzo. Stash aggId on palette so
+      // builder can pick geometry variants (palladiana scale, antique-coin circles, nero-marquina veins).
       const origPalette = PALETTES[material];
+      tempPalette.aggId = aggOpt && aggOpt.id;
       PALETTES[material] = tempPalette;
       buildTerrazzo(topPattern, material);
       PALETTES[material] = origPalette;
+      // v10 — pearl-iridescent flag (mix-blend-mode glow on plate top)
+      plate.classList.toggle('is-mop-iridescent', !!(aggOpt && AGG_SCREEN_BLEND[aggOpt.id]));
+      // v10 — palladiana flag (larger chip CSS hint where SVG isn't visible)
+      plate.classList.toggle('is-agg-palladiana', !!(aggOpt && aggOpt.id === 'palladiana-mix'));
 
       // 3) Photographic top texture (v4) — REAL PHOTO as base layer, with optional
       //    aggregate-driven filter swap, then color tint via blend-mode overlay.
@@ -1034,6 +1121,25 @@
       ];
       v6Controls.forEach(({ ctrl, prefix, skip }) => {
         // strip any prior class with this prefix
+        Array.from(plate.classList).forEach(cn => {
+          if (cn.indexOf(prefix) === 0) plate.classList.remove(cn);
+        });
+        const opt = selectedOption(material, ctrl);
+        if (opt && opt.id && opt.id !== skip) {
+          plate.classList.add(prefix + opt.id);
+        }
+      });
+
+      // v10 — additional class hooks so CSS can paint per-id fidelity rules
+      // (strips, flecks, marking, roughness, finish) — each is a single-select control.
+      const v10Controls = [
+        { ctrl: 'strips',    prefix: 'is-strip-',   skip: 'off' },
+        { ctrl: 'flecks',    prefix: 'is-fleck-',   skip: 'off' },
+        { ctrl: 'marking',   prefix: 'is-mark-',    skip: 'off' },
+        { ctrl: 'roughness', prefix: 'is-rgh-',     skip: 'smooth' },
+        { ctrl: 'finish',    prefix: 'is-fin-',     skip: null }
+      ];
+      v10Controls.forEach(({ ctrl, prefix, skip }) => {
         Array.from(plate.classList).forEach(cn => {
           if (cn.indexOf(prefix) === 0) plate.classList.remove(cn);
         });
