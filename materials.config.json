@@ -1,5 +1,5 @@
 {
-  "version": 13,
+  "version": 13.1,
   "groups": {
     "decor": {
       "label": "Декоративные",
@@ -23,7 +23,7 @@
       "base": "эпоксидная смола",
       "bodyColor": "#2c2c2e",
       "top": "images/terrazzo/dark-mosaic-textured-background.jpg",
-      "mesh": false,
+      "mesh": true,
       "cureTime": "24ч / 72ч",
       "warranty": "10 лет",
       "priceRange": "₪380-720/м²",
@@ -43,6 +43,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа"
+        },
+        "mesh": {
+          "name": "Стеклосетка 4×4 мм",
+          "sku": "Fibreglass 4×4 мм · в эпокси-скретч-коате"
         }
       },
       "chips": [
@@ -90,7 +94,7 @@
         "roughness": "smooth",
         "finish": "matte",
         "thickness": "12mm",
-        "crackBridging": "off"
+        "crackBridging": "fibreglass-4x4"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -106,7 +110,7 @@
       "base": "эпоксидная смола",
       "bodyColor": "#e8e3d4",
       "top": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
-      "mesh": false,
+      "mesh": true,
       "cureTime": "24ч / 72ч",
       "warranty": "10 лет",
       "priceRange": "₪380-720/м²",
@@ -126,6 +130,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа"
+        },
+        "mesh": {
+          "name": "Стеклосетка 4×4 мм",
+          "sku": "Fibreglass 4×4 мм · в эпокси-скретч-коате"
         }
       },
       "chips": [
@@ -185,7 +193,7 @@
         "roughness": "smooth",
         "finish": "matte",
         "thickness": "12mm",
-        "crackBridging": "off"
+        "crackBridging": "fibreglass-4x4"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -201,7 +209,7 @@
       "base": "белый цемент + мраморная крошка",
       "bodyColor": "#e8dec8",
       "top": "images/terrazzo/macrophotography-terrazzo-slab-texture.jpg",
-      "mesh": false,
+      "mesh": true,
       "cureTime": "5 дней",
       "warranty": "15 лет",
       "priceRange": "₪520-980/м²",
@@ -221,6 +229,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа"
+        },
+        "mesh": {
+          "name": "Стеклосетка 4×4 мм",
+          "sku": "Fibreglass 4×4 мм · 60 г/м² (в скретч-коате)"
         }
       },
       "chips": [
@@ -272,7 +284,7 @@
         "roughness": "smooth",
         "finish": "matte",
         "thickness": "15mm",
-        "crackBridging": "off"
+        "crackBridging": "fibreglass-4x4"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -309,6 +321,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%"
+        },
+        "mesh": {
+          "name": "Стеклосетка (опционально)",
+          "sku": "Fibreglass 4×4 мм · только при трещинах основания"
         }
       },
       "chips": [
@@ -329,13 +345,15 @@
         "color",
         "flecks",
         "finishSlider",
-        "thickness"
+        "thickness",
+        "crackBridging"
       ],
       "defaults": {
         "color": "7044",
         "flecks": "off",
         "finishSlider": 25,
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/epoxy.html"
     },
@@ -421,7 +439,7 @@
       "bodyColor": "#3c3a35",
       "top": "images/terrazzo/macrophotography-terrazzo-slab-texture.jpg",
       "filter": "brightness(.55) contrast(1.3) saturate(.7) hue-rotate(15deg)",
-      "mesh": false,
+      "mesh": true,
       "cureTime": "1ч / 2ч",
       "warranty": "7-10 лет",
       "priceRange": "₪260-440/м²",
@@ -441,6 +459,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа"
+        },
+        "mesh": {
+          "name": "Стеклосетка 4×4 мм",
+          "sku": "Fibreglass 4×4 мм · в Sikafloor‑13 Pronto primer"
         }
       },
       "chips": [
@@ -475,7 +497,7 @@
         "marking": "off",
         "finishSlider": 30,
         "thickness": "3mm",
-        "crackBridging": "off"
+        "crackBridging": "fibreglass-4x4"
       },
       "systemHref": "floors/mma.html"
     },
@@ -491,7 +513,7 @@
       "base": "существующая плита",
       "bodyColor": "#7a7468",
       "top": "images/terrazzo/cement-concrete-texture-copy-space.jpg",
-      "mesh": false,
+      "mesh": true,
       "cureTime": "—",
       "warranty": "10-15 лет",
       "priceRange": "₪140-260/м²",
@@ -511,6 +533,10 @@
         "substrate": {
           "name": "Бетонная плита",
           "sku": "существующая плита, шлифовка 50–100 grit"
+        },
+        "mesh": {
+          "name": "Decoupling mat",
+          "sku": "Schlüter Ditra · 3 мм decoupling membrane"
         }
       },
       "chips": [
@@ -546,7 +572,7 @@
         "aggregateExposure": "classB-saltPepper",
         "finishSlider": 50,
         "thickness": "0mm",
-        "crackBridging": "off"
+        "crackBridging": "aramid-mat"
       },
       "systemHref": "floors/concrete.html",
       "topPhoto": "images/concrete-decorative/macro-1.jpg"
@@ -726,6 +752,10 @@
         "substrate": {
           "name": "Подложка",
           "sku": "Бетон C25/30 · ≥ 25 МПа · CM ≤ 4%"
+        },
+        "mesh": {
+          "name": "Стеклосетка (опционально)",
+          "sku": "Fibreglass 4×4 мм · только при трещинах основания"
         }
       },
       "chips": [
@@ -749,7 +779,8 @@
         "certification",
         "marking",
         "finishSlider",
-        "thickness"
+        "thickness",
+        "crackBridging"
       ],
       "defaults": {
         "color": "9005",
@@ -758,7 +789,8 @@
         "certification": "standard",
         "marking": "off",
         "finishSlider": 30,
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/epoxy.html",
       "topPhoto": "images/epoxy-industrial/install-1.jpg"
