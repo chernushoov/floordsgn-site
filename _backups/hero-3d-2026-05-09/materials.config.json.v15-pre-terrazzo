@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 13.1,
   "groups": {
     "decor": {
       "label": "Декоративные",
@@ -12,9 +12,96 @@
   },
   "materials": [
     {
+      "id": "terrazzo-dark",
+      "group": "decor",
+      "label": "Терраццо · эпоксидное (тёмное)",
+      "code": "TD",
+      "swatch": "#1c1c1e",
+      "system": "terrazzo",
+      "sub": "тёмный · charcoal",
+      "thickness": "12 мм",
+      "base": "эпоксидная смола",
+      "bodyColor": "#2c2c2e",
+      "top": "images/terrazzo/dark-mosaic-textured-background.jpg",
+      "mesh": true,
+      "cureTime": "24ч / 72ч",
+      "warranty": "10 лет",
+      "priceRange": "₪380-720/м²",
+      "buildup": {
+        "topcoat": {
+          "name": "Топ-герметик · 2 слоя",
+          "sku": "Sikafloor‑304 W · 2 × 0.1 мм"
+        },
+        "body": {
+          "name": "Терраццо-масса",
+          "sku": "Sikafloor‑263 SL + Decodur basalt · 8 мм"
+        },
+        "primer": {
+          "name": "Праймер + кварц",
+          "sku": "Sikafloor‑156 + кварц 0.4–0.7 · 0.8 мм"
+        },
+        "substrate": {
+          "name": "Подложка",
+          "sku": "Бетон C25/30 · ≥ 25 МПа"
+        },
+        "mesh": {
+          "name": "Стеклосетка 4×4 мм",
+          "sku": "Fibreglass 4×4 мм · в эпокси-скретч-коате"
+        }
+      },
+      "chips": [
+        {
+          "c": "#0a0a0a",
+          "w": 0.35
+        },
+        {
+          "c": "#9a9a9d",
+          "w": 0.15
+        },
+        {
+          "c": "#6a6a6d",
+          "w": 0.15
+        },
+        {
+          "c": "#cfcfcf",
+          "w": 0.1
+        },
+        {
+          "c": "#3a3a3c",
+          "w": 0.15
+        },
+        {
+          "c": "#fafafa",
+          "w": 0.1
+        }
+      ],
+      "controls": [
+        "color",
+        "aggregate",
+        "accents",
+        "strips",
+        "sargelPattern",
+        "multiZone",
+        "finishSlider",
+        "crackBridging",
+        "thickness"
+      ],
+      "defaults": {
+        "color": "charcoal",
+        "aggregate": "basalt",
+        "accents": "off",
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "matte",
+        "thickness": "12mm",
+        "crackBridging": "fibreglass-4x4"
+      },
+      "systemHref": "floors/terrazzo.html"
+    },
+    {
       "id": "terrazzo-light",
       "group": "decor",
-      "label": "Терраццо · эпоксидное",
+      "label": "Терраццо · эпоксидное (мульти)",
       "code": "TL",
       "swatch": "#f0ece2",
       "system": "terrazzo",
@@ -1100,18 +1187,44 @@
   },
   "controlOptions": {
     "color": {
+      "terrazzo-dark": [
+        {
+          "id": "charcoal",
+          "label": "Charcoal",
+          "hex": "#1c1c1e",
+          "swatch": "#1c1c1e"
+        },
+        {
+          "id": "anthracite",
+          "label": "Anthracite",
+          "hex": "#2c2c2e",
+          "swatch": "#2c2c2e"
+        },
+        {
+          "id": "graphite",
+          "label": "Graphite",
+          "hex": "#3a3a3c",
+          "swatch": "#3a3a3c"
+        },
+        {
+          "id": "stone",
+          "label": "Stone",
+          "hex": "#5a5a5c",
+          "swatch": "#5a5a5c"
+        }
+      ],
       "terrazzo-light": [
         {
           "id": "white",
           "label": "White",
-          "hex": "#f1ece0",
-          "swatch": "#f1ece0"
+          "hex": "#f0ece2",
+          "swatch": "#f0ece2"
         },
         {
-          "id": "cream",
-          "label": "Cream",
-          "hex": "#e8dec8",
-          "swatch": "#e8dec8"
+          "id": "offwhite",
+          "label": "Off-white",
+          "hex": "#e8e3d4",
+          "swatch": "#e8e3d4"
         },
         {
           "id": "sand",
@@ -1120,48 +1233,18 @@
           "swatch": "#dfd4ba"
         },
         {
-          "id": "grey",
-          "label": "Grey",
-          "hex": "#a9a9ad",
-          "swatch": "#a9a9ad"
-        },
-        {
-          "id": "charcoal",
-          "label": "Charcoal",
-          "hex": "#3a3a3c",
-          "swatch": "#3a3a3c"
-        },
-        {
-          "id": "black",
-          "label": "Black",
-          "hex": "#0f0f10",
-          "swatch": "#0f0f10"
-        },
-        {
-          "id": "yellow",
-          "label": "Yellow accent",
-          "hex": "#e6b32a",
-          "swatch": "#e6b32a"
-        },
-        {
-          "id": "red",
-          "label": "Red accent",
-          "hex": "#b53a2a",
-          "swatch": "#b53a2a"
-        },
-        {
-          "id": "blue",
-          "label": "Blue accent",
-          "hex": "#2a5db5",
-          "swatch": "#2a5db5"
+          "id": "pearl",
+          "label": "Pearl",
+          "hex": "#ebe6db",
+          "swatch": "#ebe6db"
         }
       ],
       "terrazzo": [
         {
           "id": "white",
           "label": "White",
-          "hex": "#f1ece0",
-          "swatch": "#f1ece0"
+          "hex": "#efe7d6",
+          "swatch": "#efe7d6"
         },
         {
           "id": "cream",
@@ -1178,38 +1261,8 @@
         {
           "id": "grey",
           "label": "Grey",
-          "hex": "#a9a9ad",
-          "swatch": "#a9a9ad"
-        },
-        {
-          "id": "charcoal",
-          "label": "Charcoal",
-          "hex": "#3a3a3c",
-          "swatch": "#3a3a3c"
-        },
-        {
-          "id": "black",
-          "label": "Black",
-          "hex": "#0f0f10",
-          "swatch": "#0f0f10"
-        },
-        {
-          "id": "yellow",
-          "label": "Yellow accent",
-          "hex": "#e6b32a",
-          "swatch": "#e6b32a"
-        },
-        {
-          "id": "red",
-          "label": "Red accent",
-          "hex": "#b53a2a",
-          "swatch": "#b53a2a"
-        },
-        {
-          "id": "blue",
-          "label": "Blue accent",
-          "hex": "#2a5db5",
-          "swatch": "#2a5db5"
+          "hex": "#bdb6a8",
+          "swatch": "#bdb6a8"
         }
       ],
       "epoxy": [
@@ -1531,6 +1584,138 @@
       ]
     },
     "aggregate": {
+      "terrazzo-dark": [
+        {
+          "id": "basalt",
+          "label": "Basalt"
+        },
+        {
+          "id": "carrara",
+          "label": "Carrara"
+        },
+        {
+          "id": "verona",
+          "label": "Verona"
+        },
+        {
+          "id": "mirror",
+          "label": "Glass-mirror"
+        },
+        {
+          "id": "brass",
+          "label": "Brass-flake"
+        },
+        {
+          "id": "nero-marquina",
+          "label": "Nero Marquina · 8–12 мм",
+          "chips": [
+            "#161616",
+            "#3a3a3a",
+            "#ffffff"
+          ],
+          "desc": "Чёрный мрамор с белыми прожилками"
+        },
+        {
+          "id": "travertino-romano",
+          "label": "Travertino Romano · 4–12 мм",
+          "chips": [
+            "#d8c2a0",
+            "#b59874",
+            "#7a5d40"
+          ],
+          "desc": "Тёплый бежевый травертин"
+        },
+        {
+          "id": "giallo-siena",
+          "label": "Giallo Siena · 8–12 мм",
+          "chips": [
+            "#d8b572",
+            "#b08a40",
+            "#5e4520"
+          ],
+          "desc": "Жёлтый мрамор Сиены"
+        },
+        {
+          "id": "granite-sardo",
+          "label": "Granite Sardo · 8–12 мм",
+          "chips": [
+            "#7c7c80",
+            "#a8a8ac",
+            "#3e3e42"
+          ],
+          "desc": "Серый сардинский гранит"
+        },
+        {
+          "id": "quartz-clear",
+          "label": "Quartz · 0–4 мм",
+          "chips": [
+            "#f5f5f0",
+            "#dcdcd4",
+            "#a9a9a3"
+          ],
+          "desc": "Прозрачно-молочный кварц"
+        },
+        {
+          "id": "recycled-glass-cyan",
+          "label": "Recycled Glass · 4–12 мм",
+          "chips": [
+            "#5fb8c4",
+            "#2c7a85",
+            "#cfeef2"
+          ],
+          "desc": "Битое стекло, переработка"
+        },
+        {
+          "id": "mop-iridescent",
+          "label": "Mother-of-Pearl · 2–6 мм",
+          "chips": [
+            "#f0e8df",
+            "#c8b8d4",
+            "#a9d4d0"
+          ],
+          "desc": "Перламутр, переливы"
+        },
+        {
+          "id": "brass-dust",
+          "label": "Brass Dust · 0–2 мм",
+          "chips": [
+            "#c9a24a",
+            "#8a6a20",
+            "#f0d480"
+          ],
+          "desc": "Латунная пыль"
+        },
+        {
+          "id": "copper-flake",
+          "label": "Copper Flake · 2–6 мм",
+          "chips": [
+            "#b87333",
+            "#7a3f1a",
+            "#e0a070"
+          ],
+          "desc": "Медные хлопья"
+        },
+        {
+          "id": "palladiana-mix",
+          "label": "Palladiana · 25–40 мм (cement only)",
+          "chips": [
+            "#e8e3da",
+            "#a89880",
+            "#3a3530"
+          ],
+          "desc": "Крупный мраморный лом"
+        },
+        {
+          "id": "antique-coin",
+          "label": "Coin Embed · custom",
+          "chips": [
+            "#b8923a",
+            "#7a5a20",
+            "#e8c060"
+          ],
+          "desc": "Бронзовые/монетные вставки"
+        }
+      ],
       "terrazzo-light": [
         {
           "id": "carrara",
@@ -1543,6 +1728,10 @@
         {
           "id": "basalt",
           "label": "Basalt"
+        },
+        {
+          "id": "mirror",
+          "label": "Glass-mirror"
         },
         {
           "id": "brass",
@@ -1671,6 +1860,10 @@
         {
           "id": "basalt",
           "label": "Basalt"
+        },
+        {
+          "id": "mirror",
+          "label": "Glass-mirror"
         },
         {
           "id": "brass",
@@ -2275,6 +2468,20 @@
         {
           "id": "120mm",
           "label": "120 мм · HIC 2.5m playground (max)"
+        }
+      ],
+      "terrazzo-dark": [
+        {
+          "id": "12mm",
+          "label": "12 мм"
+        },
+        {
+          "id": "15mm",
+          "label": "15 мм"
+        },
+        {
+          "id": "20mm",
+          "label": "20 мм"
         }
       ],
       "terrazzo-light": [

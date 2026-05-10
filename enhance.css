@@ -5291,3 +5291,59 @@ html, body { overflow-x: hidden; max-width: 100vw; }
    of the shorter painter class. Confirmed via JS line 1191-1192.) */
 
 /* End HERO LAB v15 */
+
+/* ===== HERO LAB v16 — terrazzo round 1 =====
+   - Visible mesh weave on TOP of body face-top when crack-bridging is on
+     (separate from cross-section .fx-l-mesh layer which only shows in exploded view)
+   - Plate gets data-cb-on="<type>" set by JS when mesh active
+   - Pattern is a fine 4×4mm cross-hatch, low opacity so it doesn't obscure the photo
+*/
+.fx-plate[data-cb-on] .fx-l-body .fx-face-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* above SVG/photo, below strips/marking/sheen */
+  background-image:
+    repeating-linear-gradient(0deg,   rgba(255,255,255,.18) 0 .6px, transparent .6px 7px),
+    repeating-linear-gradient(90deg,  rgba(255,255,255,.18) 0 .6px, transparent .6px 7px),
+    repeating-linear-gradient(0deg,   rgba(0,0,0,.10)        0 .4px, transparent .4px 7px),
+    repeating-linear-gradient(90deg,  rgba(0,0,0,.10)        0 .4px, transparent .4px 7px);
+  mix-blend-mode: overlay;
+  opacity: .55;
+  transition: opacity .28s cubic-bezier(.22,1,.36,1);
+}
+.fx-plate[data-cb-on="aramid-mat"] .fx-l-body .fx-face-top::after {
+  background-image:
+    repeating-linear-gradient(45deg,  rgba(220,200,140,.6) 0 .7px, transparent .7px 6px),
+    repeating-linear-gradient(-45deg, rgba(220,200,140,.6) 0 .7px, transparent .7px 6px);
+  opacity: .45;
+}
+.fx-plate[data-cb-on="dry-mix-mesh"] .fx-l-body .fx-face-top::after {
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.6) 0 .5px, transparent 1px);
+  background-size: 5px 5px;
+  opacity: .35;
+}
+/* When sargel patterns are active, the body::after is owned by sargel rules — fall back
+   to a softer mesh that still hints at fibreglass without fighting the divider art. */
+.fx-plate.is-sargel-grid-3x3[data-cb-on] .fx-l-body .fx-face-top::after,
+.fx-plate.is-sargel-grid-2x2[data-cb-on] .fx-l-body .fx-face-top::after,
+.fx-plate.is-sargel-diagonal[data-cb-on] .fx-l-body .fx-face-top::after,
+.fx-plate.is-sargel-decorative-meander[data-cb-on] .fx-l-body .fx-face-top::after {
+  /* let sargel ::after win — mesh kept as base body filter via body face only */
+  opacity: .25;
+}
+
+/* Strips overlay — make the canonical sargelim (Латунь / Алюминий / Чёрный) actually
+   read as crisp metallic strips on top of the body. Add subtle drop-shadow + bring
+   above the color-tint overlay. */
+.fx-l-body .fx-face-top > .fx-hero-lab__strips {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3; /* above color-tint (z=1) and mesh::after (z=1) */
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.18));
+}
+
+/* End HERO LAB v16 */

@@ -590,7 +590,24 @@
     }
   }
 
-  function rnd(min, max) { return min + Math.random() * (max - min); }
+  // v16 — seeded PRNG so terrazzo chip layout is deterministic per (material+aggregate).
+  // Clicking strips / sargel / finish / thickness must NOT reshuffle chips.
+  let __rng = Math.random;
+  function strHash(s) {
+    let h = 0x9E3779B9;
+    for (let i = 0; i < s.length; i++) { h = Math.imul(h ^ s.charCodeAt(i), 0x85EBCA77); h ^= h >>> 13; }
+    return (h >>> 0);
+  }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function setRngSeed(key) { __rng = mulberry32(strHash(key || 'default')); }
+  function rnd(min, max) { return min + __rng() * (max - min); }
 
   function buildTerrazzo(svg, key) {
     if (!svg) return;
@@ -618,7 +635,7 @@
       : key === 'micro' ? 120 : 80;
 
     function pickColor() {
-      const r = Math.random();
+      const r = __rng();
       let acc = 0;
       for (const c of p.chips) {
         acc += c.w;
@@ -998,6 +1015,10 @@
       const origPalette = PALETTES[material];
       tempPalette.aggId = aggOpt && aggOpt.id;
       PALETTES[material] = tempPalette;
+      // v16 — seed RNG by (material+aggregate) so chip layout stays stable when only
+      // strips/finish/sargel/etc. change. Owner reported "клик саргели меняет агрегат"
+      // because the SVG was being reshuffled on every applyAllForMaterial.
+      setRngSeed(material + ':' + ((aggOpt && aggOpt.id) || 'default'));
       buildTerrazzo(topPattern, material);
       PALETTES[material] = origPalette;
       // v10 — pearl-iridescent flag (mix-blend-mode glow on plate top)
@@ -1069,7 +1090,13 @@
         else if (material === 'concrete') tintStrength = 0.30;
         else tintStrength = 0.55;
       } else {
-        tintStrength = 0; // terrazzo: photo carries color
+        // v16 — terrazzo: tint the photo so color buttons visibly recolor the matrix.
+        // Hot accents (yellow/red/blue) get stronger tint; neutrals stay subtle.
+        const cid = colorOpt && colorOpt.id;
+        if (cid === 'yellow' || cid === 'red' || cid === 'blue') tintStrength = 0.55;
+        else if (cid === 'black' || cid === 'charcoal') tintStrength = 0.65;
+        else if (cid === 'grey') tintStrength = 0.40;
+        else tintStrength = 0.32; // white/cream/sand/custom
       }
       plate.style.setProperty('--plate-tint-color', tintHex);
       plate.style.setProperty('--plate-tint-strength', String(tintStrength));
@@ -1322,13 +1349,18 @@
             if (__cbOpt.id && __cbOpt.id !== 'off') {
               meshLayer.style.display = '';
               meshLayer.dataset.cbType = __cbOpt.id;
+              plate.dataset.cbOn = __cbOpt.id;
             } else {
               meshLayer.style.display = 'none';
               delete meshLayer.dataset.cbType;
+              delete plate.dataset.cbOn;
             }
           } else {
             // Material has no crackBridging control — clear marker so default fibreglass CSS applies
             delete meshLayer.dataset.cbType;
+            // If material defaults to mesh=true (e.g. micro), still show top-of-body weave
+            if (p.mesh) plate.dataset.cbOn = 'fibreglass-4x4';
+            else delete plate.dataset.cbOn;
           }
         }
         const sheetList = document.querySelector('[data-fx="plateSheetList"]');
