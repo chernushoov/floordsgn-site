@@ -56,15 +56,17 @@ const materials = defineCollection({
   schema: z.object({
     slug: z.string().regex(/^[a-z0-9-]+$/),
     family: z.enum([
-      'polished-concrete',
+      // Декоративные
+      'terrazzo-cement',
+      'terrazzo-epoxy',
+      'microtopping',
+      'rubber',
+      'decorative-concrete',
+      'parquet',
+      // Промышленные
+      'mma',
+      'pu-cement',
       'epoxy',
-      'terrazzo',
-      'pu-mma',
-      'microcement',
-      'cement-screed',
-      'industrial-self-leveling',
-      'parquet-engineered',
-      'laminate-lvt-spc',
     ]),
     draft_status: z.enum(['draft', 'in-review', 'published', 'archived']).default('draft'),
     audience_tag: z.enum(['contractor', 'architect', 'owner', 'diy']).optional(),

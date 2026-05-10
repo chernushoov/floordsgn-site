@@ -35,16 +35,18 @@ properties:
   family:
     type: string
     enum:
-      - polished-concrete
-      - epoxy
-      - terrazzo
-      - pu-mma
-      - microcement
-      - cement-screed
-      - industrial-self-leveling
-      - parquet-engineered
-      - laminate-lvt-spc
-    description: Одно из 9 семейств таксономии.
+      # ─── Декоративные ───
+      - terrazzo-cement       # Террацо цемент
+      - terrazzo-epoxy        # Террацо эпоксидный
+      - microtopping          # Микротопинг
+      - rubber                # Резина
+      - decorative-concrete   # Бетон дизайнерский / декоративный наливной (меда декоративи)
+      - parquet               # Паркет
+      # ─── Промышленные ───
+      - mma                   # Метилметакрилат
+      - pu-cement             # ПУ-цемент / purcem
+      - epoxy                 # Эпоксидка во всех вариантах (self-leveling, troweled HBS, anti-static, decorative, seal coat)
+    description: Одно из 9 семейств таксономии (2 группы — декоративные / промышленные).
 
   display_name:
     type: object

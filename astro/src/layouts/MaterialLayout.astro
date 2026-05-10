@@ -112,15 +112,17 @@ const t = {
 }[lang];
 
 const familyLabel: Record<string, { ru: string; en: string }> = {
-  'polished-concrete':         { ru: 'Полированный бетон',        en: 'Polished concrete' },
-  'epoxy':                     { ru: 'Эпоксидные системы',         en: 'Epoxy systems' },
-  'terrazzo':                  { ru: 'Террацо',                    en: 'Terrazzo' },
-  'pu-mma':                    { ru: 'PU / PU-cement / MMA',       en: 'PU / PU-cement / MMA' },
-  'microcement':               { ru: 'Микроцементы',               en: 'Microcement' },
-  'cement-screed':             { ru: 'Цементные стяжки',           en: 'Cement screeds' },
-  'industrial-self-leveling':  { ru: 'Индустриальные наливные',    en: 'Industrial self-leveling' },
-  'parquet-engineered':        { ru: 'Паркет / инж. доска',        en: 'Parquet / engineered' },
-  'laminate-lvt-spc':          { ru: 'Ламинат / LVT / SPC',        en: 'Laminate / LVT / SPC' },
+  // Декоративные
+  'terrazzo-cement':       { ru: 'Террацо цемент',                en: 'Cement terrazzo' },
+  'terrazzo-epoxy':        { ru: 'Террацо эпоксидный',            en: 'Epoxy terrazzo' },
+  'microtopping':          { ru: 'Микротопинг',                   en: 'Microtopping' },
+  'rubber':                { ru: 'Резина',                        en: 'Rubber' },
+  'decorative-concrete':   { ru: 'Бетон дизайнерский',            en: 'Decorative concrete' },
+  'parquet':               { ru: 'Паркет',                        en: 'Parquet' },
+  // Промышленные
+  'mma':                   { ru: 'MMA',                           en: 'MMA' },
+  'pu-cement':             { ru: 'ПУ-цемент',                     en: 'PU-cement' },
+  'epoxy':                 { ru: 'Эпоксидка',                     en: 'Epoxy' },
 };
 
 const altPath = lang === 'en' ? '/en/floors/' : '/floors/';
