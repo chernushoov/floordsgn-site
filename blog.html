@@ -50,19 +50,19 @@
 
     <nav class="category-filter">
         <div class="filter-inner">
-            <button class="filter-btn active" data-i18n="blog_filter_all">All</button>
-            <button class="filter-btn" data-i18n="blog_filter_materials">Material Guides</button>
-            <button class="filter-btn" data-i18n="blog_filter_installation">Installation</button>
-            <button class="filter-btn" data-i18n="blog_filter_maintenance">Maintenance</button>
-            <button class="filter-btn" data-i18n="blog_filter_comparisons">Comparisons</button>
-            <button class="filter-btn" data-i18n="blog_filter_trends">Trends</button>
+            <button class="filter-btn active" data-cat="all"          data-i18n="blog_filter_all">All</button>
+            <button class="filter-btn"        data-cat="materials"    data-i18n="blog_filter_materials">Material Guides</button>
+            <button class="filter-btn"        data-cat="installation" data-i18n="blog_filter_installation">Installation</button>
+            <button class="filter-btn"        data-cat="maintenance"  data-i18n="blog_filter_maintenance">Maintenance</button>
+            <button class="filter-btn"        data-cat="comparisons"  data-i18n="blog_filter_comparisons">Comparisons</button>
+            <button class="filter-btn"        data-cat="trends"       data-i18n="blog_filter_trends">Trends</button>
         </div>
     </nav>
 
     <section class="blog-section">
         <div class="container">
             <div class="blog-grid">
-                <article class="blog-card featured">
+                <article class="blog-card featured" data-cat="trends">
                     <div class="blog-image"><img src="images/terrazzo/vysota-2.jpg" alt="Modern terrazzo flooring in interior" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article1_cat">Trends</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article1_meta">February 2026 | 10 min read</p>
@@ -72,7 +72,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="comparisons">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Microtopping vs epoxy comparison" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article2_cat">Comparison</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article2_meta">February 2026 | 8 min read</p>
@@ -82,7 +82,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="materials">
                     <div class="blog-image"><img src="images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg" alt="Epoxy flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article3_cat">Material Guide</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article3_meta">January 2026 | 12 min read</p>
@@ -92,7 +92,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/terrazzo/vysota-2.jpg" alt="Concrete substrate testing" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article4_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article4_meta">January 2026 | 8 min</p>
@@ -102,7 +102,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="maintenance">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Floor maintenance" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article5_cat">Maintenance</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article5_meta">January 2026 | 6 min</p>
@@ -112,7 +112,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="comparisons">
                     <div class="blog-image"><img src="images/terrazzo/macrophotography-terrazzo-slab-texture.jpg" alt="Terrazzo texture" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article6_cat">Comparison</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article6_meta">December 2025 | 9 min</p>
@@ -122,7 +122,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/terrazzo/svoboda-2.jpg" alt="MMA fast-cure flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article7_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article7_meta">December 2025 | 7 min</p>
@@ -132,7 +132,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="trends">
                     <div class="blog-image"><img src="images/terrazzo/5285493171318544266.jpg" alt="Modern flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article8_cat">Trends</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article8_meta">November 2025 | 5 min</p>
@@ -142,7 +142,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="materials">
                     <div class="blog-image"><img src="images/microtopping/gray-old-scratched-textured-surface-background.jpg" alt="Self-leveling floor" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article9_cat">Material Guide</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article9_meta">November 2025 | 11 min</p>
@@ -152,7 +152,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="maintenance">
                     <div class="blog-image"><img src="images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="Floor recoating" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article10_cat">Maintenance</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article10_meta">November 2025 | 6 min</p>
@@ -162,7 +162,7 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Concrete repair" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article11_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article11_meta">October 2025 | 8 min</p>
@@ -189,12 +189,25 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-brand"><img src="images/logo/logo-horizontal-white.svg" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Premium floor design and installation across Israel. Engineering-grade systems for industry, commercial, and architectural projects.</p></div>
                 <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="footer_contact">Contact</a></li></ul></div>
                 <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
             </div>
-            <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener">LinkedIn</a></div></div>
+            <div class="footer-badges">
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span data-i18n="footer_badge_warranty">10-Year Warranty</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span data-i18n="footer_badge_experience">15+ Years Experience</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span data-i18n="footer_badge_iso">ISO 9001 Certified</span></div>
+                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span data-i18n="footer_badge_visit">Free Site Visit</span></div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved. Licensed Flooring Contractor.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -212,12 +225,11 @@
         btn.addEventListener('click', function(){
           btns.forEach(function(b){ b.classList.remove('active'); });
           btn.classList.add('active');
-          var cat = btn.textContent.trim();
+          var cat = btn.getAttribute('data-cat') || 'all';
           cards.forEach(function(card){
-            if (cat === 'All') { card.style.display = ''; return; }
-            var tag = card.querySelector('.blog-category-tag');
-            var match = tag && tag.textContent.trim().toLowerCase().indexOf(cat.toLowerCase()) !== -1;
-            card.style.display = match ? '' : 'none';
+            if (cat === 'all') { card.style.display = ''; return; }
+            var cardCat = card.getAttribute('data-cat') || '';
+            card.style.display = (cardCat === cat) ? '' : 'none';
           });
         });
       });
