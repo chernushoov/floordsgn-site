@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 7,
   "groups": {
     "decor": {
       "label": "Декоративные",
@@ -14,7 +14,7 @@
     {
       "id": "terrazzo-dark",
       "group": "decor",
-      "label": "Терраццо · эпоксидное (тёмное)",
+      "label": "Терраццо тёмный",
       "code": "TD",
       "swatch": "#1c1c1e",
       "system": "terrazzo",
@@ -76,9 +76,8 @@
         "aggregate",
         "accents",
         "strips",
-        "sargelPattern",
-        "multiZone",
-        "finishSlider",
+        "roughness",
+        "finish",
         "thickness"
       ],
       "defaults": {
@@ -95,7 +94,7 @@
     {
       "id": "terrazzo-light",
       "group": "decor",
-      "label": "Терраццо · эпоксидное (мульти)",
+      "label": "Терраццо светлый",
       "code": "TL",
       "swatch": "#f0ece2",
       "system": "terrazzo",
@@ -169,9 +168,8 @@
         "aggregate",
         "accents",
         "strips",
-        "sargelPattern",
-        "multiZone",
-        "finishSlider",
+        "roughness",
+        "finish",
         "thickness"
       ],
       "defaults": {
@@ -188,7 +186,7 @@
     {
       "id": "terrazzo",
       "group": "decor",
-      "label": "Терраццо · цементное",
+      "label": "Терраццо венецианский",
       "code": "TV",
       "swatch": "#efe7d6",
       "system": "terrazzo",
@@ -254,9 +252,8 @@
         "aggregate",
         "accents",
         "strips",
-        "sargelPattern",
-        "multiZone",
-        "finishSlider",
+        "roughness",
+        "finish",
         "thickness"
       ],
       "defaults": {
@@ -272,8 +269,8 @@
     },
     {
       "id": "epoxy-light",
-      "group": "industrial",
-      "label": "Декоративная эпоксидка",
+      "group": "decor",
+      "label": "Эпоксид",
       "code": "EL",
       "swatch": "#c2bcb0",
       "system": "epoxy",
@@ -322,13 +319,19 @@
       "controls": [
         "color",
         "flecks",
-        "finishSlider",
+        "strips",
+        "roughness",
+        "finish",
+        "marking",
         "thickness"
       ],
       "defaults": {
         "color": "7044",
         "flecks": "off",
-        "finishSlider": 25,
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "matte",
+        "marking": "off",
         "thickness": "2.5mm"
       },
       "systemHref": "floors/epoxy.html"
@@ -388,20 +391,22 @@
       "controls": [
         "color",
         "trowelPattern",
-        "finishSlider",
-        "thickness"
+        "strips",
+        "roughness",
+        "finish"
       ],
       "defaults": {
-        "color": "cream-pa-w2",
-        "trowelPattern": "smooth-loft",
-        "finishSlider": 30,
-        "thickness": "2.5mm"
+        "color": "cream",
+        "trowelPattern": "smooth",
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "satin"
       },
       "systemHref": "floors/microtopping.html"
     },
     {
       "id": "mma",
-      "group": "industrial",
+      "group": "decor",
       "label": "MMA Pronto",
       "code": "MM",
       "swatch": "#3c3a35",
@@ -452,26 +457,29 @@
         "color",
         "flecks",
         "broadcast",
-        "cureMode",
+        "strips",
+        "roughness",
+        "finish",
         "marking",
-        "finishSlider",
-        "thickness"
+        "thickness",
+        "cureMode"
       ],
       "defaults": {
         "color": "9005",
         "flecks": "off",
         "broadcast": "off",
-        "cureMode": "standard",
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "satin",
         "marking": "off",
-        "finishSlider": 30,
         "thickness": "3mm"
       },
       "systemHref": "floors/mma.html"
     },
     {
       "id": "concrete",
-      "group": "decor",
-      "label": "Бетон дизайнерский · Меда декоративи",
+      "group": "industrial",
+      "label": "Полированный цемент",
       "code": "PC",
       "swatch": "#7a7468",
       "system": "concrete",
@@ -523,17 +531,18 @@
       "controls": [
         "color",
         "aggregateExposure",
-        "polishLevel",
-        "densifier",
-        "stainDye",
-        "finishSlider",
-        "thickness"
+        "strips",
+        "roughness",
+        "finish",
+        "marking"
       ],
       "defaults": {
         "color": "salt",
-        "aggregateExposure": "classB-saltPepper",
-        "finishSlider": 50,
-        "thickness": "0mm"
+        "aggregateExposure": "salt-pepper",
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "polished",
+        "marking": "off"
       },
       "systemHref": "floors/concrete.html"
     },
@@ -592,28 +601,30 @@
       ],
       "controls": [
         "color",
-        "broadcastMedia",
-        "broadcastDensity",
+        "broadcast",
+        "roughness",
+        "finish",
+        "marking",
+        "thickness",
         "coveBase",
         "drain",
-        "marking",
-        "finishSlider",
-        "thickness"
+        "broadcastMedia"
       ],
       "defaults": {
         "color": "7037",
-        "broadcastMedia": "aluminum-oxide",
-        "coveBase": "off",
-        "drain": "off",
+        "broadcast": "off",
+        "roughness": "smooth",
+        "finish": "satin",
         "marking": "off",
-        "finishSlider": 30,
-        "thickness": "6mm"
+        "thickness": "6mm",
+        "coveBase": "off",
+        "drain": "off"
       },
       "systemHref": "floors/pu-cement.html"
     },
     {
       "id": "rubber",
-      "group": "decor",
+      "group": "industrial",
       "label": "Резиновое покрытие",
       "code": "RB",
       "swatch": "#2a2a2a",
@@ -670,11 +681,15 @@
       "controls": [
         "color",
         "pattern",
+        "roughness",
+        "marking",
         "thickness"
       ],
       "defaults": {
         "color": "black",
         "pattern": "solid",
+        "roughness": "smooth",
+        "marking": "off",
         "thickness": "6mm"
       },
       "systemHref": "floors/rubber.html"
@@ -731,79 +746,26 @@
       "controls": [
         "color",
         "flecks",
-        "broadcast",
-        "certification",
+        "strips",
+        "roughness",
+        "finish",
         "marking",
-        "finishSlider",
-        "thickness"
+        "thickness",
+        "coveBase",
+        "certification"
       ],
       "defaults": {
         "color": "9005",
         "flecks": "off",
-        "broadcast": "off",
-        "certification": "standard",
+        "strips": "off",
+        "roughness": "smooth",
+        "finish": "satin",
         "marking": "off",
-        "finishSlider": 30,
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "coveBase": "off",
+        "certification": "standard"
       },
       "systemHref": "floors/epoxy.html"
-    },
-    {
-      "id": "parquet",
-      "group": "decor",
-      "label": "Паркет",
-      "code": "PQ",
-      "swatch": "#8a5a2a",
-      "system": "parquet",
-      "thickness": "14–22 мм",
-      "base": "массив дерева",
-      "bodyColor": "#8a5a2a",
-      "sub": "натуральное дерево · многослойное",
-      "top": null,
-      "mesh": false,
-      "cureTime": "сразу после укладки",
-      "warranty": "25-50 лет (с переснятием)",
-      "priceRange": "₪320-1200/м²",
-      "controls": [
-        "color",
-        "woodSpecies",
-        "plankSize",
-        "plankPattern",
-        "finishSlider",
-        "thickness"
-      ],
-      "defaults": {
-        "color": "oak-natural",
-        "woodSpecies": "oak-natural",
-        "plankSize": "medium",
-        "plankPattern": "herringbone",
-        "finishSlider": 60,
-        "thickness": "15mm"
-      },
-      "buildup": {
-        "topcoat":   { "name": "Лак / масло", "sku": "Loba 2K Invisible / Osmo Hartwachs · 2-3 слоя" },
-        "body":      { "name": "Массив / трёхслой", "sku": "Дуб / орех / ясень · 14-22мм" },
-        "primer":    { "name": "Подложка", "sku": "Tuplex / пробка 2-3мм" },
-        "substrate": { "name": "Основание", "sku": "Стяжка ≤2мм/2м · влажность ≤2%" }
-      },
-      "chips": [
-        {"c": "#8a5a2a", "w": 0.55},
-        {"c": "#a0703a", "w": 0.25},
-        {"c": "#6a4520", "w": 0.20}
-      ],
-      "estimatedDaysMin": 3,
-      "estimatedDaysMax": 7,
-      "walkOnTime": "сразу после укладки",
-      "fullCureTime": "лак 7 дней · масло 14 дней",
-      "sampleAvailable": true,
-      "sampleSize": "100×300 мм",
-      "simpleDescription": "Натуральный массив или инженерный паркет. Дуб, орех, ясень, тик. Ёлочка, шеврон, классика.",
-      "professionalDescription": "Многослойный инженерный паркет, толщина 14-22мм, верхний слой массив 4-6мм. Возможны переснятие и тонировка. Совместим с тёплым полом (T<28°C).",
-      "bestFor": ["Жилые интерьеры", "Бутик-отели", "Шоурумы", "Офисы класса A"],
-      "notIdealFor": ["Мокрые зоны без обработки", "Промышленные нагрузки", "Зоны с интенсивным трафиком на каблуках"],
-      "inspectFirst": ["Влажность стяжки ≤2%", "Ровность ≤2мм на 2м", "Стабильная температура +18..+24°C"],
-      "_todo": "Конфирм размеры/цены/породы у Alexey",
-      "systemHref": "floors/parquet.html"
     }
   ],
   "presets": [
@@ -1027,34 +989,6 @@
       "badge": [
         "barefoot"
       ]
-    },
-    {
-      "id": "residence-classic-parquet",
-      "label": "Резиденция · паркет ёлочка",
-      "materialId": "parquet",
-      "controlState": {
-        "color": "oak-natural",
-        "woodSpecies": "oak-natural",
-        "plankSize": "medium",
-        "plankPattern": "herringbone",
-        "finishSlider": 65,
-        "thickness": "15mm"
-      },
-      "badge": ["residential"]
-    },
-    {
-      "id": "boutique-walnut-versailles",
-      "label": "Бутик · орех Версаль",
-      "materialId": "parquet",
-      "controlState": {
-        "color": "walnut",
-        "woodSpecies": "walnut",
-        "plankSize": "extra-wide",
-        "plankPattern": "versailles",
-        "finishSlider": 15,
-        "thickness": "20mm"
-      },
-      "badge": ["boutique"]
     }
   ],
   "glossary": {
@@ -1468,15 +1402,6 @@
           "hex": "#3a3a3a",
           "swatch": "#5a5a5a"
         }
-      ],
-      "parquet": [
-        {"id": "oak-natural", "label": "Дуб натуральный", "hex": "#a07842", "swatch": "#a07842"},
-        {"id": "oak-rustic", "label": "Дуб рустик", "hex": "#7a5530", "swatch": "#7a5530"},
-        {"id": "oak-smoked", "label": "Дуб дымчатый", "hex": "#5a3e22", "swatch": "#5a3e22"},
-        {"id": "walnut", "label": "Орех американский", "hex": "#5a3825", "swatch": "#5a3825"},
-        {"id": "ash", "label": "Ясень", "hex": "#c8a878", "swatch": "#c8a878"},
-        {"id": "teak", "label": "Тик бирманский", "hex": "#8a5a2a", "swatch": "#8a5a2a"},
-        {"id": "whitewashed", "label": "Беленый дуб", "hex": "#d8c8b0", "swatch": "#d8c8b0"}
       ]
     },
     "aggregate": {
@@ -2449,19 +2374,6 @@
           "id": "4mm",
           "label": "4 мм"
         }
-      ],
-      "parquet": [
-        {"id": "14mm", "label": "14 мм · инженерный"},
-        {"id": "15mm", "label": "15 мм · инженерный"},
-        {"id": "20mm", "label": "20 мм · массив"},
-        {"id": "22mm", "label": "22 мм · массив премиум"}
-      ],
-      "concrete": [
-        {"id": "0mm", "label": "0 мм · без наращивания"}
-      ],
-      "micro": [
-        {"id": "2.5mm", "label": "2.5 мм"},
-        {"id": "3mm", "label": "3 мм"}
       ]
     },
     "coveBase": [
@@ -2566,59 +2478,6 @@
           "desc": "BPO 3-4%, walk 1.5ч, full 3ч — холодильники, минусовые помещения",
           "killer": true
         }
-      ]
-    },
-    "sargelPattern": [
-      {"id": "off", "label": "Без узора"},
-      {"id": "linear", "label": "Линейные · 4 полосы"},
-      {"id": "grid-3x3", "label": "Сетка 3×3 (9 ячеек)"},
-      {"id": "grid-2x2", "label": "Сетка 2×2 (4 ячейки)"},
-      {"id": "diagonal", "label": "Диагональная сетка"},
-      {"id": "decorative-meander", "label": "Декоративный меандр"}
-    ],
-    "multiZone": [
-      {"id": "single", "label": "Одна зона"},
-      {"id": "two-zones", "label": "2 зоны (вертикальное деление)"},
-      {"id": "three-zones", "label": "3 зоны (триптих)"},
-      {"id": "quadrants", "label": "4 квадранта"}
-    ],
-    "finishSlider": [
-      {"id": "matte", "label": "Matte · 0-15", "value": 10},
-      {"id": "satin", "label": "Satin · 16-35", "value": 25},
-      {"id": "polished", "label": "Polished · 36-55", "value": 45},
-      {"id": "glossy", "label": "Glossy · 56-75", "value": 65},
-      {"id": "wetlook", "label": "Wet-look · 76-100", "value": 90}
-    ],
-    "woodSpecies": {
-      "parquet": [
-        {"id": "oak-natural", "label": "Дуб натуральный", "hex": "#a07842", "swatch": "#a07842"},
-        {"id": "oak-rustic", "label": "Дуб рустик", "hex": "#7a5530", "swatch": "#7a5530"},
-        {"id": "oak-smoked", "label": "Дуб дымчатый", "hex": "#5a3e22", "swatch": "#5a3e22"},
-        {"id": "walnut", "label": "Орех американский", "hex": "#5a3825", "swatch": "#5a3825"},
-        {"id": "ash", "label": "Ясень", "hex": "#c8a878", "swatch": "#c8a878"},
-        {"id": "maple", "label": "Клён канадский", "hex": "#d8b890", "swatch": "#d8b890"},
-        {"id": "teak", "label": "Тик бирманский", "hex": "#8a5a2a", "swatch": "#8a5a2a"},
-        {"id": "cherry", "label": "Вишня", "hex": "#9a4a2a", "swatch": "#9a4a2a"},
-        {"id": "rosewood", "label": "Палисандр", "hex": "#5a2820", "swatch": "#5a2820"},
-        {"id": "whitewashed", "label": "Беленый дуб", "hex": "#d8c8b0", "swatch": "#d8c8b0"}
-      ]
-    },
-    "plankSize": {
-      "parquet": [
-        {"id": "narrow", "label": "Узкая · 70-90 мм"},
-        {"id": "medium", "label": "Средняя · 120-150 мм"},
-        {"id": "wide", "label": "Широкая · 180-220 мм"},
-        {"id": "extra-wide", "label": "Палубная · 250+ мм"}
-      ]
-    },
-    "plankPattern": {
-      "parquet": [
-        {"id": "straight", "label": "Палубная · прямая"},
-        {"id": "herringbone", "label": "Ёлочка"},
-        {"id": "chevron", "label": "Шеврон (французская ёлочка)"},
-        {"id": "fishbone", "label": "Рыбья кость"},
-        {"id": "versailles", "label": "Версаль"},
-        {"id": "modular", "label": "Модульный"}
       ]
     }
   },

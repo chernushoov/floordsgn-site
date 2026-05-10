@@ -282,23 +282,6 @@
         { c: '#cf3a3a', w: .05 }, { c: '#1d4f8a', w: .05 },
         { c: '#dca858', w: .05 }
       ]
-    },
-    parquet: {
-      base: '#8a5a2a', label: 'паркет', sub: 'натуральное дерево · многослойное',
-      thick: '15 мм', base_: 'массив дерева',
-      bodyColor: '#8a5a2a',
-      top: null,
-      mesh: false,
-      buildup: {
-        topcoat:   { name: 'Лак / масло',         sku: 'Loba 2K Invisible / Osmo Hartwachs · 2-3 слоя' },
-        body:      { name: 'Массив / трёхслой',   sku: 'Дуб / орех / ясень · 14-22мм' },
-        primer:    { name: 'Подложка',            sku: 'Tuplex / пробка 2-3мм' },
-        substrate: { name: 'Основание',           sku: 'Стяжка ≤2мм/2м · влажность ≤2%' }
-      },
-      chips: [
-        { c: '#8a5a2a', w: .55 }, { c: '#a0703a', w: .25 },
-        { c: '#6a4520', w: .20 }
-      ]
     }
   };
 
@@ -313,15 +296,10 @@
     color: 'Цвет',
     aggregate: 'Агрегат',
     accents: 'Акценты',
-    strips: 'Саргели · разделители',
-    sargel: 'Саргели · разделители',
-    sargelPattern: 'Узор саргели',
-    multiZone: 'Зонирование',
+    strips: 'Саргелим',
     finish: 'Финиш',
-    finishSlider: 'Финиш · matte → wet-look',
     flecks: 'Флеки',
     broadcast: 'Кварц-broadcast',
-    broadcastDensity: 'Плотность broadcast',
     aggregateExposure: 'Степень обнажения · CPC class',
     trowelPattern: 'Затирка · Pandomo',
     pattern: 'Узор',
@@ -332,13 +310,7 @@
     thickness: 'Толщина',
     coveBase: 'Cove-base (плинтус-галтель)',
     drain: 'Водоотвод',
-    certification: 'Сертификация',
-    woodSpecies: 'Порода дерева',
-    plankSize: 'Размер планки',
-    plankPattern: 'Узор укладки',
-    polishLevel: 'Полировка',
-    densifier: 'Упрочнитель',
-    stainDye: 'Тонировка'
+    certification: 'Сертификация'
   };
   const CONTROL_SCHEMAS = {
     /* terrazzo-dark — populated below from buildSchemasFromConfig or fallback */
@@ -396,17 +368,16 @@
   const INLINE_CONFIG_FALLBACK = {
     version: 1,
     materials: [
-      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо · эпоксидное (тёмное)', swatch: '#1c1c1e', controls: ['color','aggregate','accents','strips','sargelPattern','multiZone','finishSlider','thickness'], defaults: { color:'charcoal', aggregate:'basalt', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, thickness:'12mm' } },
-      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо · эпоксидное (мульти)', swatch: '#f0ece2', controls: ['color','aggregate','accents','strips','sargelPattern','multiZone','finishSlider','thickness'], defaults: { color:'white', aggregate:'carrara', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, thickness:'12mm' } },
-      { id: 'terrazzo',       group: 'decor',      label: 'Терраццо · цементное',           swatch: '#efe7d6', controls: ['color','aggregate','accents','strips','sargelPattern','multiZone','finishSlider','thickness'], defaults: { color:'white', aggregate:'carrara', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, thickness:'15mm' } },
-      { id: 'micro',          group: 'decor',      label: 'Микротопинг',                    swatch: '#cfc4b3', controls: ['color','trowelPattern','finishSlider','thickness'], defaults: { color:'cream-pa-w2', trowelPattern:'smooth-loft', finishSlider:30, thickness:'2.5mm' } },
-      { id: 'rubber',         group: 'decor',      label: 'Резиновое покрытие',             swatch: '#2a2a2a', controls: ['color','pattern','thickness'], defaults: { color:'black', pattern:'solid', thickness:'6mm' } },
-      { id: 'concrete',       group: 'decor',      label: 'Бетон дизайнерский · Меда декоративи', swatch: '#7a7468', controls: ['color','aggregateExposure','finishSlider','thickness'], defaults: { color:'salt', aggregateExposure:'classB-saltPepper', finishSlider:50, thickness:'0mm' } },
-      { id: 'parquet',        group: 'decor',      label: 'Паркет',                         swatch: '#8a5a2a', controls: ['color','woodSpecies','plankSize','plankPattern','finishSlider','thickness'], defaults: { color:'oak-natural', woodSpecies:'oak-natural', plankSize:'medium', plankPattern:'herringbone', finishSlider:60, thickness:'15mm' } },
-      { id: 'mma',            group: 'industrial', label: 'MMA Pronto',                     swatch: '#3c3a35', controls: ['color','flecks','broadcast','cureMode','marking','finishSlider','thickness'], defaults: { color:'9005', flecks:'off', broadcast:'off', cureMode:'standard', marking:'off', finishSlider:30, thickness:'3mm' } },
-      { id: 'purcem',         group: 'industrial', label: 'PU-cement / ПУ-цемент',          swatch: '#9a9690', controls: ['color','broadcastMedia','coveBase','drain','marking','finishSlider','thickness'], defaults: { color:'7037', broadcastMedia:'aluminum-oxide', coveBase:'off', drain:'off', marking:'off', finishSlider:30, thickness:'6mm' } },
-      { id: 'epoxy',          group: 'industrial', label: 'Эпоксидная заливка',             swatch: '#2a2620', controls: ['color','flecks','broadcast','certification','marking','finishSlider','thickness'], defaults: { color:'9005', flecks:'off', broadcast:'off', certification:'standard', marking:'off', finishSlider:30, thickness:'2.5mm' } },
-      { id: 'epoxy-light',    group: 'industrial', label: 'Декоративная эпоксидка',         swatch: '#c2bcb0', controls: ['color','flecks','finishSlider','thickness'], defaults: { color:'7044', flecks:'off', finishSlider:25, thickness:'2.5mm' } }
+      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо тёмный',     swatch: '#1c1c1e', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'charcoal', aggregate:'basalt', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо светлый',    swatch: '#f0ece2', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'white',    aggregate:'carrara', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'terrazzo',       group: 'decor',      label: 'Терраццо венецианский', swatch: '#efe7d6', controls: ['color','aggregate','strips','roughness','finish'], defaults: { color:'white', aggregate:'carrara', strips:'off', roughness:'smooth', finish:'matte' } },
+      { id: 'epoxy-light',    group: 'decor',      label: 'Эпоксид',             swatch: '#c2bcb0', controls: ['color','flecks','strips','roughness','finish','marking'], defaults: { color:'7044', flecks:'off', strips:'off', roughness:'smooth', finish:'matte', marking:'off' } },
+      { id: 'micro',          group: 'decor',      label: 'Микротопинг',         swatch: '#cfc4b3', controls: ['color','strips','roughness','finish'], defaults: { color:'cream', strips:'off', roughness:'smooth', finish:'satin' } },
+      { id: 'mma',            group: 'decor',      label: 'MMA Pronto',          swatch: '#3c3a35', controls: ['color','flecks','strips','roughness','finish','marking'], defaults: { color:'9005', flecks:'off', strips:'off', roughness:'smooth', finish:'satin', marking:'off' } },
+      { id: 'concrete',       group: 'industrial', label: 'Полированный цемент', swatch: '#7a7468', controls: ['color','strips','roughness','finish','marking'], defaults: { color:'salt', strips:'off', roughness:'smooth', finish:'polished', marking:'off' } },
+      { id: 'purcem',         group: 'industrial', label: 'PU-cement / ПУ-цемент', swatch: '#9a9690', controls: ['color','roughness','finish','marking'], defaults: { color:'7037', roughness:'smooth', finish:'satin', marking:'off' } },
+      { id: 'rubber',         group: 'industrial', label: 'Резиновое покрытие',  swatch: '#2a2a2a', controls: ['color','roughness','marking'], defaults: { color:'black', roughness:'smooth', marking:'off' } },
+      { id: 'epoxy',          group: 'industrial', label: 'Эпоксидная заливка',  swatch: '#2a2620', controls: ['color','roughness','finish','marking'], defaults: { color:'9005', roughness:'smooth', finish:'satin', marking:'off' } }
     ],
     controlOptions: {
       color: {
@@ -419,8 +390,7 @@
         'purcem':         [{id:'7037',label:'RAL 7037',hex:'#7d7f7d',swatch:'#7d7f7d'},{id:'1015',label:'RAL 1015',hex:'#e6d2b5',swatch:'#e6d2b5'},{id:'8004',label:'RAL 8004',hex:'#a04125',swatch:'#a04125'},{id:'6011',label:'RAL 6011',hex:'#587246',swatch:'#587246'},{id:'7035',label:'RAL 7035',hex:'#cbd0cc',swatch:'#cbd0cc'}],
         'mma':            [{id:'9005',label:'RAL 9005',hex:'#0a0a0a',swatch:'#0a0a0a'},{id:'7044',label:'RAL 7044',hex:'#b3aea1',swatch:'#b3aea1'},{id:'1001',label:'RAL 1001',hex:'#c2b078',swatch:'#c2b078'},{id:'5024',label:'RAL 5024',hex:'#5d9b9b',swatch:'#5d9b9b'},{id:'clear',label:'Clear pigmented',hex:'#3c3a35',swatch:'#3c3a35'}],
         'concrete':       [{id:'salt',label:'Salt-pepper',hex:'#7a7468',swatch:'#7a7468'},{id:'cream',label:'Cream',hex:'#9a9286',swatch:'#9a9286'},{id:'full',label:'Full-aggregate',hex:'#5d5448',swatch:'#5d5448'}],
-        'rubber':         [{id:'black',label:'Black',hex:'#1a1a1a',swatch:'#1a1a1a'},{id:'red',label:'Red',hex:'#a82a28',swatch:'#a82a28'},{id:'blue',label:'Blue',hex:'#1d4f8a',swatch:'#1d4f8a'},{id:'sand',label:'Sand',hex:'#bca27a',swatch:'#bca27a'},{id:'multicolor',label:'Multicolor',hex:'#3a3a3a',swatch:'#5a5a5a'}],
-        'parquet':        [{id:'oak-natural',label:'Дуб натуральный',hex:'#a07842',swatch:'#a07842'},{id:'oak-rustic',label:'Дуб рустик',hex:'#7a5530',swatch:'#7a5530'},{id:'walnut',label:'Орех',hex:'#5a3825',swatch:'#5a3825'},{id:'ash',label:'Ясень',hex:'#c8a878',swatch:'#c8a878'},{id:'teak',label:'Тик',hex:'#8a5a2a',swatch:'#8a5a2a'},{id:'whitewashed',label:'Беленый дуб',hex:'#d8c8b0',swatch:'#d8c8b0'}]
+        'rubber':         [{id:'black',label:'Black',hex:'#1a1a1a',swatch:'#1a1a1a'},{id:'red',label:'Red',hex:'#a82a28',swatch:'#a82a28'},{id:'blue',label:'Blue',hex:'#1d4f8a',swatch:'#1d4f8a'},{id:'sand',label:'Sand',hex:'#bca27a',swatch:'#bca27a'},{id:'multicolor',label:'Multicolor',hex:'#3a3a3a',swatch:'#5a5a5a'}]
       },
       aggregate: {
         'terrazzo-dark':  [{id:'basalt',label:'Basalt'},{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}],
@@ -428,16 +398,10 @@
         'terrazzo':       [{id:'carrara',label:'Carrara'},{id:'verona',label:'Verona'},{id:'basalt',label:'Basalt'},{id:'mirror',label:'Glass-mirror'},{id:'brass',label:'Brass-flake'}]
       },
       strips: [{id:'off',label:'Без полос'},{id:'brass4',label:'Латунь 4мм',hex:'#b8902a'},{id:'alu4',label:'Алюминий 4мм',hex:'#cdd0d4'},{id:'black6',label:'Чёрный 6мм',hex:'#0a0a0a'},{id:'mixed',label:'Смешанные',hex:'#7a5a18'}],
-      sargelPattern: [{id:'off',label:'Без узора'},{id:'linear',label:'Линейные · 4 полосы'},{id:'grid-3x3',label:'Сетка 3×3'},{id:'grid-2x2',label:'Сетка 2×2'},{id:'diagonal',label:'Диагональная'},{id:'decorative-meander',label:'Декоративный меандр'}],
-      multiZone: [{id:'single',label:'Одна зона'},{id:'two-zones',label:'2 зоны'},{id:'three-zones',label:'3 зоны'},{id:'quadrants',label:'4 квадранта'}],
-      finishSlider: [{id:'matte',label:'Matte'},{id:'satin',label:'Satin'},{id:'polished',label:'Polished'},{id:'glossy',label:'Glossy'},{id:'wetlook',label:'Wet-look'}],
       finish: [{id:'matte',label:'Matte'},{id:'satin',label:'Satin'},{id:'polished',label:'Polished'},{id:'glossy',label:'Glossy'},{id:'wetlook',label:'Wet-look'}],
       flecks: [{id:'off',label:'Без флеков'},{id:'fine',label:'Vinyl chips'},{id:'coarse',label:'Coarse 1/8″'},{id:'mica',label:'Mica'},{id:'metallic',label:'Metallic FX'}],
       roughness: [{id:'smooth',label:'Smooth'},{id:'fine',label:'Fine grit'},{id:'coarse',label:'Coarse anti-slip'}],
-      marking: [{id:'off',label:'Без разметки'},{id:'yellow-zone',label:'Жёлтая зона'},{id:'white-grid',label:'Белая сетка'},{id:'red-safety',label:'Красная зона'},{id:'pedestrian',label:'Зебра'}],
-      woodSpecies: { 'parquet': [{id:'oak-natural',label:'Дуб натуральный',hex:'#a07842',swatch:'#a07842'},{id:'walnut',label:'Орех',hex:'#5a3825',swatch:'#5a3825'},{id:'ash',label:'Ясень',hex:'#c8a878',swatch:'#c8a878'},{id:'teak',label:'Тик',hex:'#8a5a2a',swatch:'#8a5a2a'}] },
-      plankSize: { 'parquet': [{id:'narrow',label:'Узкая · 70-90мм'},{id:'medium',label:'Средняя · 120-150мм'},{id:'wide',label:'Широкая · 180-220мм'},{id:'extra-wide',label:'Палубная · 250+мм'}] },
-      plankPattern: { 'parquet': [{id:'straight',label:'Прямая'},{id:'herringbone',label:'Ёлочка'},{id:'chevron',label:'Шеврон'},{id:'fishbone',label:'Рыбья кость'},{id:'versailles',label:'Версаль'},{id:'modular',label:'Модульный'}] }
+      marking: [{id:'off',label:'Без разметки'},{id:'yellow-zone',label:'Жёлтая зона'},{id:'white-grid',label:'Белая сетка'},{id:'red-safety',label:'Красная зона'},{id:'pedestrian',label:'Зебра'}]
     }
   };
 
@@ -851,16 +815,7 @@
     function defaultStateFor(material) {
       const schema = CONTROL_SCHEMAS[material] || [];
       const st = {};
-      schema.forEach(g => {
-        if (g.id === 'finishSlider') {
-          // numeric default (slider 0..100) — pull from material.defaults if set
-          const cfgMat = (window.__floordsgnMaterials && window.__floordsgnMaterials.materials || []).find(m => m.id === material);
-          const dv = cfgMat && cfgMat.defaults && cfgMat.defaults.finishSlider;
-          st[g.id] = (typeof dv === 'number') ? dv : (parseInt(dv, 10) || 25);
-        } else {
-          st[g.id] = (g.options[0] && g.options[0].id) || '';
-        }
-      });
+      schema.forEach(g => { st[g.id] = (g.options[0] && g.options[0].id) || ''; });
       return st;
     }
     function ensureState(material) {
@@ -908,28 +863,6 @@
       const colorGroup = schema.find(g => g.id === 'color');
       const customColor = (st.color === 'custom' && st.customHex) ? st.customHex : '';
       controlsRoot.innerHTML = schema.map(group => {
-        // v11 — render finishSlider as a range input rather than buttons
-        if (group.id === 'finishSlider') {
-          const cur = (typeof st.finishSlider === 'number') ? st.finishSlider :
-                      (parseInt(st.finishSlider, 10) || 25);
-          const tickName = (() => {
-            if (cur <= 15) return 'matte';
-            if (cur <= 35) return 'satin';
-            if (cur <= 55) return 'polished';
-            if (cur <= 75) return 'glossy';
-            return 'wetlook';
-          })();
-          return `<div class="fx-hero-lab__group fx-hero-lab__group--slider">
-            <p class="fx-hero-lab__ctrl-label">${localize(group.label)}</p>
-            <div class="fx-hero-lab__slider-row">
-              <input type="range" min="0" max="100" step="5" value="${cur}" class="fx-hero-lab__finish-slider" data-control="finishSlider" aria-label="${localize(group.label)}" />
-              <span class="fx-hero-lab__finish-tick" data-fx="finishTick">${tickName}</span>
-            </div>
-            <div class="fx-hero-lab__slider-scale" aria-hidden="true">
-              <span>matte</span><span>satin</span><span>polished</span><span>glossy</span><span>wet</span>
-            </div>
-          </div>`;
-        }
         const buttons = group.options.map(opt => {
           const isOn = st[group.id] === opt.id;
           const swatch = opt.swatch ? `<span class="fx-hero-lab__btn-dot" style="background:${opt.swatch}"></span>` : '';
@@ -1128,29 +1061,9 @@
 
       // 7) Finish / gloss → CSS vars (controls sheen overlay).
       //    glossInfo = { gloss, shine, reflection, filter } — 5 distinct levels.
-      // v11 — finishSlider (continuous 0..100) overrides discrete finish if present.
       let glossInfo = null;
-      let finishOpt = selectedOption(material, 'finish');
-      const sliderVal = (typeof st.finishSlider === 'number') ? st.finishSlider :
-                        (parseInt(st.finishSlider, 10));
-      if (Number.isFinite(sliderVal)) {
-        const finishId = (sliderVal <= 15) ? 'matte' :
-                         (sliderVal <= 35) ? 'satin' :
-                         (sliderVal <= 55) ? 'polished' :
-                         (sliderVal <= 75) ? 'glossy' : 'wetlook';
-        finishOpt = { id: finishId, label: finishId };
-        // Continuous gloss from slider 0..1
-        const t = Math.max(0, Math.min(1, sliderVal / 100));
-        glossInfo = glossVarsFor(finishId);
-        // Override gloss with continuous value (smoother feel)
-        glossInfo = Object.assign({}, glossInfo, {
-          gloss: t.toFixed(3),
-          shine: (t * 0.95).toFixed(3),
-          reflection: (t * 0.92).toFixed(3)
-        });
-      } else if (finishOpt) {
-        glossInfo = glossVarsFor(finishOpt.id);
-      }
+      const finishOpt = selectedOption(material, 'finish');
+      if (finishOpt) glossInfo = glossVarsFor(finishOpt.id);
       if (material === 'concrete') {
         const gritOpt = selectedOption(material, 'grit');
         if (gritOpt) glossInfo = gritGlossVars(gritOpt.id);
@@ -1168,12 +1081,10 @@
       const thOpt = selectedOption(material, 'thickness');
       if (thOpt) {
         const thMap = {
-          '0mm': '6px',
           '1.5mm': '8px', '2mm': '10px', '2.5mm': '12px', '3mm': '14px',
           '4mm': '16px', '6mm': '20px', '9mm': '26px', '12mm': '32px',
-          '14mm': '36px', '15mm': '38px', '20mm': '46px', '22mm': '48px',
-          '25mm': '52px', '40mm': '64px',
-          '55mm': '72px', '80mm': '88px', '120mm': '108px'
+          '15mm': '38px', '20mm': '46px', '25mm': '52px', '40mm': '64px',
+          '55mm': '72px', '80mm': '88px'
         };
         plate.style.setProperty('--plate-body-h', thMap[thOpt.id] || '20px');
       } else {
@@ -1221,25 +1132,13 @@
 
       // v10 — additional class hooks so CSS can paint per-id fidelity rules
       // (strips, flecks, marking, roughness, finish) — each is a single-select control.
-      // v11 — added sargelPattern / multiZone / woodSpecies / plankSize / plankPattern hooks
       const v10Controls = [
-        { ctrl: 'strips',        prefix: 'is-strip-',   skip: 'off' },
-        { ctrl: 'flecks',        prefix: 'is-fleck-',   skip: 'off' },
-        { ctrl: 'marking',       prefix: 'is-mark-',    skip: 'off' },
-        { ctrl: 'roughness',     prefix: 'is-rgh-',     skip: 'smooth' },
-        { ctrl: 'finish',        prefix: 'is-fin-',     skip: null },
-        { ctrl: 'sargelPattern', prefix: 'is-sargel-',  skip: 'off' },
-        { ctrl: 'multiZone',     prefix: 'is-zones-',   skip: 'single' },
-        { ctrl: 'woodSpecies',   prefix: 'is-wood-',    skip: null },
-        { ctrl: 'plankSize',     prefix: 'is-plank-',   skip: null },
-        { ctrl: 'plankPattern',  prefix: 'is-pattern-', skip: null }
+        { ctrl: 'strips',    prefix: 'is-strip-',   skip: 'off' },
+        { ctrl: 'flecks',    prefix: 'is-fleck-',   skip: 'off' },
+        { ctrl: 'marking',   prefix: 'is-mark-',    skip: 'off' },
+        { ctrl: 'roughness', prefix: 'is-rgh-',     skip: 'smooth' },
+        { ctrl: 'finish',    prefix: 'is-fin-',     skip: null }
       ];
-      // v11 — finishSlider class for current discrete tier (matte/satin/polished/glossy/wetlook)
-      Array.from(plate.classList).forEach(cn => { if (cn.indexOf('is-fin-') === 0) plate.classList.remove(cn); });
-      if (Number.isFinite(sliderVal)) {
-        const fid = (sliderVal <= 15) ? 'matte' : (sliderVal <= 35) ? 'satin' : (sliderVal <= 55) ? 'polished' : (sliderVal <= 75) ? 'glossy' : 'wetlook';
-        plate.classList.add('is-fin-' + fid);
-      }
       v10Controls.forEach(({ ctrl, prefix, skip }) => {
         Array.from(plate.classList).forEach(cn => {
           if (cn.indexOf(prefix) === 0) plate.classList.remove(cn);
@@ -1389,19 +1288,11 @@
       const st = state[matId];
       const schema = CONTROL_SCHEMAS[matId] || [];
       // Reset to defaults first, then layer preset values where valid
-      const baseDefaults = defaultStateFor(matId);
-      schema.forEach(g => { st[g.id] = baseDefaults[g.id]; });
+      schema.forEach(g => { st[g.id] = (g.options[0] && g.options[0].id) || ''; });
       const cs = preset.controlState || {};
       Object.keys(cs).forEach(k => {
         const g = schema.find(grp => grp.id === k);
-        if (!g) return;
-        // v11 — finishSlider accepts numeric value 0..100
-        if (k === 'finishSlider') {
-          const v = (typeof cs[k] === 'number') ? cs[k] : parseInt(cs[k], 10);
-          if (Number.isFinite(v)) st[k] = Math.max(0, Math.min(100, v));
-          return;
-        }
-        if (g.options.find(o => o.id === cs[k])) st[k] = cs[k];
+        if (g && g.options.find(o => o.id === cs[k])) st[k] = cs[k];
       });
       selectMaterial(matId, { persist: true });
       // Mark active preset chip
@@ -1590,18 +1481,6 @@
         persistState();
       };
       controlsRoot.addEventListener('input', (e) => {
-        // v11 — finish slider drives --plate-gloss continuously
-        if (e.target && e.target.matches('.fx-hero-lab__finish-slider')) {
-          const v = parseInt(e.target.value, 10) || 0;
-          const st = ensureState(curMat);
-          st.finishSlider = v;
-          const tickName = (v <= 15) ? 'matte' : (v <= 35) ? 'satin' : (v <= 55) ? 'polished' : (v <= 75) ? 'glossy' : 'wetlook';
-          const tickEl = controlsRoot.querySelector('[data-fx="finishTick"]');
-          if (tickEl) tickEl.textContent = tickName;
-          applyAllForMaterial(curMat);
-          persistState();
-          return;
-        }
         if (e.target && e.target.matches('[data-fx="customColorPicker"]')) {
           handleCustomColor(e.target.value);
           const txt = controlsRoot.querySelector('[data-fx="customColorText"]');
