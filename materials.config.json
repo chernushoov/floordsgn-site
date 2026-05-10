@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "groups": {
     "decor": {
       "label": "Декоративные",
@@ -90,6 +90,7 @@
       "controls": [
         "color",
         "aggregate",
+        "aggregateSize",
         "accents",
         "strips",
         "sargelPattern",
@@ -106,7 +107,8 @@
         "roughness": "smooth",
         "finish": "matte",
         "thickness": "12mm",
-        "crackBridging": "fibreglass-4x4"
+        "crackBridging": "fibreglass-4x4",
+        "aggregateSize": "medium"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -181,6 +183,7 @@
       "controls": [
         "color",
         "aggregate",
+        "aggregateSize",
         "accents",
         "strips",
         "sargelPattern",
@@ -197,7 +200,8 @@
         "roughness": "smooth",
         "finish": "matte",
         "thickness": "15mm",
-        "crackBridging": "fibreglass-4x4"
+        "crackBridging": "fibreglass-4x4",
+        "aggregateSize": "medium"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -2768,6 +2772,20 @@
       {
         "id": "dry-mix-mesh",
         "label": "Сухая сетка в скретч-коате"
+      }
+    ],
+    "aggregateSize": [
+      {
+        "id": "small",
+        "label": "Мелкий · 4–8 мм"
+      },
+      {
+        "id": "medium",
+        "label": "Средний · 8–16 мм"
+      },
+      {
+        "id": "large",
+        "label": "Крупный · 16–25 мм (палладиана)"
       }
     ]
   },

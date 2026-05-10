@@ -312,6 +312,7 @@
   const CONTROL_LABELS = {
     color: 'Цвет',
     aggregate: 'Агрегат',
+    aggregateSize: 'Размер камня',
     accents: 'Акценты',
     strips: 'Саргели · разделители',
     sargel: 'Саргели · разделители',
@@ -655,7 +656,8 @@
     for (let i = 0; i < effectiveCount; i++) {
       const cx = rnd(-10, W + 10), cy = rnd(-10, H + 10);
       const isTerr = key === 'terrazzo' || key === 'terrazzo-dark' || key === 'terrazzo-light';
-      const sz = isTerr ? rnd(3, 32) * scale : rnd(1, 5);
+      const userSize = p.userSizeScale || 1;
+      const sz = isTerr ? rnd(3, 32) * scale * userSize : rnd(1, 5);
       if (useCircles && isTerr) {
         const c = document.createElementNS(ns, 'circle');
         c.setAttribute('cx', cx.toFixed(1));
@@ -1014,6 +1016,12 @@
       // builder can pick geometry variants (palladiana scale, antique-coin circles, nero-marquina veins).
       const origPalette = PALETTES[material];
       tempPalette.aggId = aggOpt && aggOpt.id;
+      // v17 — aggregateSize control: scale chip dimensions by user choice.
+      const aggSizeOpt = selectedOption(material, 'aggregateSize');
+      const sizeScale = aggSizeOpt && aggSizeOpt.id === 'small' ? 0.6
+                      : aggSizeOpt && aggSizeOpt.id === 'large' ? 1.7
+                      : 1.0;
+      tempPalette.userSizeScale = sizeScale;
       PALETTES[material] = tempPalette;
       // v16 — seed RNG by (material+aggregate) so chip layout stays stable when only
       // strips/finish/sargel/etc. change. Owner reported "клик саргели меняет агрегат"
@@ -1264,7 +1272,9 @@
         { ctrl: 'polishLevel',      prefix: 'is-polishLevel-',      skip: null },
         { ctrl: 'densifier',        prefix: 'is-densifier-',        skip: null },
         { ctrl: 'stainDye',         prefix: 'is-stainDye-',         skip: 'off' },
-        { ctrl: 'broadcastDensity', prefix: 'is-broadcastDensity-', skip: null }
+        { ctrl: 'broadcastDensity', prefix: 'is-broadcastDensity-', skip: null },
+        // v17 — aggregate size (small/medium/large) → CSS hint class
+        { ctrl: 'aggregateSize',    prefix: 'is-aggsize-',          skip: null }
       ];
       // v11 — finishSlider class for current discrete tier (matte/satin/polished/glossy/wetlook)
       Array.from(plate.classList).forEach(cn => { if (cn.indexOf('is-fin-') === 0) plate.classList.remove(cn); });

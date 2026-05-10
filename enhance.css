@@ -5346,4 +5346,76 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   filter: drop-shadow(0 1px 1px rgba(0,0,0,.18));
 }
 
+/* ===== HERO LAB v17 — wide perimeter sargel + aggregate-size hint =====
+   Owner feedback: "саргели запуски по канту широкую и несколько дизайнерских
+   рисунков из саргели на самом полотне модели должно появляться".
+   Strips control (Латунь / Алюминий / Чёрный) now also paints a wide perimeter
+   border in the same metallic gradient. Internal stripes from stripsBackground
+   stay; perimeter is added on top via a thick outline-style box-shadow inset. */
+
+.fx-plate.is-strip-brass4 .fx-l-body .fx-face-top,
+.fx-plate.is-strip-brass-3mm-arch .fx-l-body .fx-face-top,
+.fx-plate.is-strip-mixed .fx-l-body .fx-face-top {
+  box-shadow:
+    inset 0 0  0  4px #b8902a,
+    inset 0 0  0  5px rgba(255,255,255,.35),
+    inset 0 0 10px 5px rgba(0,0,0,.18);
+}
+.fx-plate.is-strip-alu4 .fx-l-body .fx-face-top,
+.fx-plate.is-strip-aluminum-yellow-forklift .fx-l-body .fx-face-top {
+  box-shadow:
+    inset 0 0  0  4px #cdd0d4,
+    inset 0 0  0  5px rgba(255,255,255,.45),
+    inset 0 0 10px 5px rgba(0,0,0,.16);
+}
+.fx-plate.is-strip-black6 .fx-l-body .fx-face-top,
+.fx-plate.is-strip-pvc-black-compensation .fx-l-body .fx-face-top {
+  box-shadow:
+    inset 0 0  0  6px #0a0a0a,
+    inset 0 0  0  7px rgba(255,255,255,.20);
+}
+
+/* Aggregate-size visible cue — slight chip-edge sharpness diff so user feels
+   the change even while we just rescaled the SVG geometry. */
+.fx-plate.is-aggsize-large .fx-l-body .fx-face-top {
+  filter: contrast(var(--plate-body-contrast, 1.04)) saturate(1.05);
+}
+.fx-plate.is-aggsize-small .fx-l-body .fx-face-top {
+  filter: contrast(0.98) saturate(.98);
+}
+
+/* End HERO LAB v17 */
+
+/* ===== Decision tool polish (v17) =====
+   Owner showed the "Где будет пол?" page feeling sparse. Tighten card weight
+   with a soft ring-shadow + scale-on-hover, and put a subtle gradient backdrop
+   so the whole page reads as a focused step instead of an empty form. */
+.fx-decision {
+  position: relative;
+  padding-top: clamp(48px, 8vh, 96px);
+  padding-bottom: clamp(64px, 10vh, 128px);
+}
+.fx-decision::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(29,29,31,.04) 0, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(29,29,31,.03) 0, transparent 70%);
+  pointer-events: none;
+}
+.fx-decision__option {
+  box-shadow: 0 1px 0 rgba(29,29,31,.04);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.fx-decision__option:hover {
+  box-shadow: 0 8px 24px rgba(29,29,31,.10), 0 2px 6px rgba(29,29,31,.06);
+}
+.fx-decision__option-name {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+/* End HERO LAB v17 (decision tool) */
 /* End HERO LAB v16 */
