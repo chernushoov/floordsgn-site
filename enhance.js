@@ -1232,7 +1232,12 @@
         { ctrl: 'multiZone',     prefix: 'is-zones-',   skip: 'single' },
         { ctrl: 'woodSpecies',   prefix: 'is-wood-',    skip: null },
         { ctrl: 'plankSize',     prefix: 'is-plank-',   skip: null },
-        { ctrl: 'plankPattern',  prefix: 'is-pattern-', skip: null }
+        { ctrl: 'plankPattern',  prefix: 'is-pattern-', skip: null },
+        // v13 — concrete + purcem controls paint per-id classes for CSS overlays
+        { ctrl: 'polishLevel',      prefix: 'is-polishLevel-',      skip: null },
+        { ctrl: 'densifier',        prefix: 'is-densifier-',        skip: null },
+        { ctrl: 'stainDye',         prefix: 'is-stainDye-',         skip: 'off' },
+        { ctrl: 'broadcastDensity', prefix: 'is-broadcastDensity-', skip: null }
       ];
       // v11 — finishSlider class for current discrete tier (matte/satin/polished/glossy/wetlook)
       Array.from(plate.classList).forEach(cn => { if (cn.indexOf('is-fin-') === 0) plate.classList.remove(cn); });
@@ -1309,6 +1314,21 @@
           if (p.mesh && p.buildup.mesh) {
             const tag = meshLayer.querySelector('.fx-layer-tag');
             if (tag) tag.innerHTML = localize(p.buildup.mesh.name) + (p.buildup.mesh.sku ? `<b>${localize(p.buildup.mesh.sku)}</b>` : '');
+          }
+          // v13 — crackBridging control overrides mesh layer visibility/type
+          // when the active material exposes the control.
+          var __cbOpt = selectedOption(material, 'crackBridging');
+          if (__cbOpt) {
+            if (__cbOpt.id && __cbOpt.id !== 'off') {
+              meshLayer.style.display = '';
+              meshLayer.dataset.cbType = __cbOpt.id;
+            } else {
+              meshLayer.style.display = 'none';
+              delete meshLayer.dataset.cbType;
+            }
+          } else {
+            // Material has no crackBridging control — clear marker so default fibreglass CSS applies
+            delete meshLayer.dataset.cbType;
           }
         }
         const sheetList = document.querySelector('[data-fx="plateSheetList"]');

@@ -5005,3 +5005,215 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .fx-plate[data-system="parquet"] .fx-plate-pattern { opacity: 0 !important; }
 
 /* End HERO LAB v11 — strict per-material taxonomy + parquet + multi-zone + sargel patterns + finish slider */
+
+/* ===================================================================== */
+/* HERO LAB v13 — fix dead button states + crackBridging mesh layer       */
+/* ADDITIVE only. Do not remove or modify v7-v11 rules above.             */
+/* ===================================================================== */
+
+/* MMA cure mode — 'cold' has frost rim (v10). Add 'standard' (neutral) and 'fast'. */
+.fx-plate.is-cure-standard .fx-l-body .fx-face-top { /* neutral baseline */ }
+.fx-plate.is-cure-fast .fx-l-body .fx-face-top {
+  filter: contrast(1.04) saturate(1.05);
+}
+
+/* Sargel pattern: linear (4 vertical brass strips) */
+.fx-plate.is-sargel-linear .fx-hero-lab__strips {
+  opacity: 1;
+  background-image:
+    linear-gradient(to right, transparent 23%, var(--sargel-color, #b8902a) 23% 24%, transparent 24% 25%),
+    linear-gradient(to right, transparent 48%, var(--sargel-color, #b8902a) 48% 49%, transparent 49% 50%),
+    linear-gradient(to right, transparent 73%, var(--sargel-color, #b8902a) 73% 74%, transparent 74% 75%);
+}
+
+/* Cove-base (purcem) — radius hint at bottom edge of plate body */
+.fx-plate.is-cove-R50  .fx-l-body::after,
+.fx-plate.is-cove-R75  .fx-l-body::after,
+.fx-plate.is-cove-R100 .fx-l-body::after,
+.fx-plate.is-cove-R150 .fx-l-body::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background: linear-gradient(to top, rgba(200,137,61,.55) 0, transparent);
+  pointer-events: none;
+}
+.fx-plate.is-cove-R75  .fx-l-body::after { height: 11px; }
+.fx-plate.is-cove-R100 .fx-l-body::after { height: 14px; }
+.fx-plate.is-cove-R150 .fx-l-body::after { height: 18px; }
+
+/* Marking — add `is-mark-` prefixed siblings to existing v7 rules.
+   (Existing unprefixed `.yellow-zone`/`.white-grid`/`.red-safety`/`.pedestrian`
+   remain untouched.) */
+.fx-plate.is-mark-yellow-zone .fx-hero-lab__marking {
+  opacity: 1;
+  background-image:
+    repeating-linear-gradient(45deg,
+      rgba(244,196,48,.85) 0 8px,
+      rgba(15,15,15,.7) 8px 16px);
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-mark-white-grid .fx-hero-lab__marking {
+  opacity: 1;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.85) 0 2px, transparent 2px 60px),
+    linear-gradient(to bottom, rgba(255,255,255,.85) 0 2px, transparent 2px 60px);
+  background-size: 60px 60px;
+  mix-blend-mode: screen;
+}
+.fx-plate.is-mark-red-safety .fx-hero-lab__marking {
+  opacity: 1;
+  background-image:
+    repeating-linear-gradient(-45deg,
+      rgba(208,40,40,.8) 0 6px,
+      rgba(255,255,255,.7) 6px 12px);
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-mark-pedestrian .fx-hero-lab__marking {
+  opacity: 1;
+  background-image:
+    repeating-linear-gradient(to right,
+      rgba(255,255,255,.85) 0 18px,
+      transparent 18px 36px);
+  mix-blend-mode: screen;
+}
+
+/* Flecks — paint a visible overlay per id (covers all 15 fleck options
+   from controlOptions.flecks). Different density / colour per family. */
+.fx-plate.is-fleck-fine .fx-hero-lab__flecks,
+.fx-plate.is-fleck-fine-vinyl-1-16 .fx-hero-lab__flecks,
+.fx-plate.is-fleck-medium-vinyl-1-8 .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image: radial-gradient(circle at 25% 30%, rgba(0,0,0,.45) 0 1.5px, transparent 2px);
+  background-size: 12px 12px;
+}
+.fx-plate.is-fleck-coarse .fx-hero-lab__flecks,
+.fx-plate.is-fleck-large-vinyl-1-4 .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(0,0,0,.55) 0 4px, transparent 5px),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,.40) 0 3px, transparent 4px);
+  background-size: 30px 30px;
+}
+.fx-plate.is-fleck-xl-vinyl-1-2 .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(0,0,0,.6) 0 8px, transparent 10px),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,.5) 0 7px, transparent 9px);
+  background-size: 50px 50px;
+}
+.fx-plate.is-fleck-mica .fx-hero-lab__flecks,
+.fx-plate.is-fleck-mica-pearl-iriodin .fx-hero-lab__flecks {
+  opacity: 1;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55) 0 1px, transparent 2px);
+  background-size: 8px 8px;
+}
+.fx-plate.is-fleck-metallic .fx-hero-lab__flecks,
+.fx-plate.is-fleck-metallic-bronze-stapa .fx-hero-lab__flecks {
+  opacity: 1;
+  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(184,144,42,.7) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 70%, rgba(106,77,18,.6) 0 1.5px, transparent 2.5px);
+  background-size: 16px 16px;
+}
+.fx-plate.is-fleck-metallic-copper-stapa .fx-hero-lab__flecks {
+  opacity: 1;
+  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(184,115,51,.7) 0 2px, transparent 3px);
+  background-size: 14px 14px;
+}
+.fx-plate.is-fleck-full-broadcast .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0,0,0,.5) 0 5px, transparent 6px),
+    radial-gradient(circle at 60% 60%, rgba(0,0,0,.45) 0 5px, transparent 6px),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.4) 0 4px, transparent 5px);
+  background-size: 16px 16px;
+}
+
+/* Certification — fix truncated cleanroom rule */
+.fx-plate.cert-standard { /* no overlay */ }
+.fx-plate.cert-cleanroom-ISO5 .fx-l-body .fx-face-top {
+  filter: brightness(1.05) saturate(0.92);
+}
+.fx-plate.cert-cleanroom-ISO5 .fx-l-body .fx-face-top::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+
+/* Concrete polishLevel — gradient of gloss (matches finishSlider semantics) */
+.fx-plate.is-polishLevel-L1-ground-matte .fx-l-body .fx-face-top {
+  filter: contrast(0.96) saturate(0.92);
+}
+.fx-plate.is-polishLevel-L2-honed-satin .fx-l-body .fx-face-top {
+  filter: contrast(1.0) saturate(1.0);
+}
+.fx-plate.is-polishLevel-L3-polished-gloss .fx-l-body .fx-face-top {
+  filter: contrast(1.05) saturate(1.05) brightness(1.03);
+}
+.fx-plate.is-polishLevel-L4-mirror .fx-l-body .fx-face-top {
+  filter: contrast(1.1) saturate(1.08) brightness(1.06);
+}
+.fx-plate.is-polishLevel-L4-mirror .fx-l-body .fx-face-top::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.18) 0%, transparent 35%, transparent 65%, rgba(255,255,255,.10) 100%);
+  pointer-events: none;
+}
+
+/* Concrete densifier — subtle sheen difference */
+.fx-plate.is-densifier-lithium-silicate .fx-l-body .fx-face-top { filter: brightness(1.02); }
+.fx-plate.is-densifier-sodium-silicate .fx-l-body .fx-face-top { filter: brightness(1.0); }
+.fx-plate.is-densifier-potassium-silicate .fx-l-body .fx-face-top { filter: brightness(1.01) saturate(1.02); }
+.fx-plate.is-densifier-colloidal-silica .fx-l-body .fx-face-top { filter: brightness(1.03) saturate(1.04); }
+
+/* Concrete stainDye — coloured wash overlay */
+.fx-plate.is-stainDye-acid-stain .fx-l-body .fx-face-top {
+  background-image: radial-gradient(ellipse at 30% 40%, rgba(120,68,30,.35) 0%, transparent 60%);
+  mix-blend-mode: multiply;
+}
+.fx-plate.is-stainDye-water-dye .fx-l-body .fx-face-top {
+  background-image: linear-gradient(120deg, rgba(70,90,140,.18) 0%, rgba(70,90,140,.10) 100%);
+}
+.fx-plate.is-stainDye-reactive-stain .fx-l-body .fx-face-top {
+  background-image: radial-gradient(ellipse at 60% 60%, rgba(70,40,90,.35) 0%, transparent 70%);
+  mix-blend-mode: multiply;
+}
+
+/* Purcem broadcastDensity — varying speckle density */
+.fx-plate.is-broadcastDensity-light .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,.35) 0 1.5px, transparent 2.5px);
+  background-size: 18px 18px;
+}
+.fx-plate.is-broadcastDensity-medium .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,.45) 0 2px, transparent 3px);
+  background-size: 12px 12px;
+}
+.fx-plate.is-broadcastDensity-heavy .fx-hero-lab__flecks {
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(0,0,0,.55) 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 70% 70%, rgba(0,0,0,.4) 0 2px, transparent 3px);
+  background-size: 8px 8px;
+}
+
+/* CrackBridging — mesh layer variants per type.
+   default fibreglass-4x4 keeps existing v9 mesh rule. */
+.fx-l-mesh[data-cb-type="aramid-mat"] .fx-face-top {
+  background:
+    repeating-linear-gradient(45deg, rgba(220,200,140,.85) 0 .8px, transparent .8px 5px),
+    repeating-linear-gradient(-45deg, rgba(220,200,140,.85) 0 .8px, transparent .8px 5px);
+}
+.fx-l-mesh[data-cb-type="dry-mix-mesh"] .fx-face-top {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.5) 0 .6px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* End HERO LAB v13 */

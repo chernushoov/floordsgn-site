@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 13,
   "groups": {
     "decor": {
       "label": "Декоративные",
@@ -79,6 +79,7 @@
         "sargelPattern",
         "multiZone",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
@@ -88,7 +89,8 @@
         "strips": "off",
         "roughness": "smooth",
         "finish": "matte",
-        "thickness": "12mm"
+        "thickness": "12mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -172,6 +174,7 @@
         "sargelPattern",
         "multiZone",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
@@ -181,7 +184,8 @@
         "strips": "off",
         "roughness": "smooth",
         "finish": "matte",
-        "thickness": "12mm"
+        "thickness": "12mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -257,6 +261,7 @@
         "sargelPattern",
         "multiZone",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
@@ -266,7 +271,8 @@
         "strips": "off",
         "roughness": "smooth",
         "finish": "matte",
-        "thickness": "15mm"
+        "thickness": "15mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -389,15 +395,18 @@
         "color",
         "trowelPattern",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
         "color": "cream-pa-w2",
         "trowelPattern": "smooth-loft",
         "finishSlider": 30,
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "crackBridging": "fibreglass-4x4"
       },
-      "systemHref": "floors/microtopping.html"
+      "systemHref": "floors/microtopping.html",
+      "topPhoto": "images/microtopping/install-1.jpg"
     },
     {
       "id": "mma",
@@ -455,6 +464,7 @@
         "cureMode",
         "marking",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
@@ -464,7 +474,8 @@
         "cureMode": "standard",
         "marking": "off",
         "finishSlider": 30,
-        "thickness": "3mm"
+        "thickness": "3mm",
+        "crackBridging": "off"
       },
       "systemHref": "floors/mma.html"
     },
@@ -527,15 +538,18 @@
         "densifier",
         "stainDye",
         "finishSlider",
+        "crackBridging",
         "thickness"
       ],
       "defaults": {
         "color": "salt",
         "aggregateExposure": "classB-saltPepper",
         "finishSlider": 50,
-        "thickness": "0mm"
+        "thickness": "0mm",
+        "crackBridging": "off"
       },
-      "systemHref": "floors/concrete.html"
+      "systemHref": "floors/concrete.html",
+      "topPhoto": "images/concrete-decorative/macro-1.jpg"
     },
     {
       "id": "purcem",
@@ -746,7 +760,8 @@
         "finishSlider": 30,
         "thickness": "2.5mm"
       },
-      "systemHref": "floors/epoxy.html"
+      "systemHref": "floors/epoxy.html",
+      "topPhoto": "images/epoxy-industrial/install-1.jpg"
     },
     {
       "id": "parquet",
@@ -781,15 +796,36 @@
         "thickness": "15mm"
       },
       "buildup": {
-        "topcoat":   { "name": "Лак / масло", "sku": "Loba 2K Invisible / Osmo Hartwachs · 2-3 слоя" },
-        "body":      { "name": "Массив / трёхслой", "sku": "Дуб / орех / ясень · 14-22мм" },
-        "primer":    { "name": "Подложка", "sku": "Tuplex / пробка 2-3мм" },
-        "substrate": { "name": "Основание", "sku": "Стяжка ≤2мм/2м · влажность ≤2%" }
+        "topcoat": {
+          "name": "Лак / масло",
+          "sku": "Loba 2K Invisible / Osmo Hartwachs · 2-3 слоя"
+        },
+        "body": {
+          "name": "Массив / трёхслой",
+          "sku": "Дуб / орех / ясень · 14-22мм"
+        },
+        "primer": {
+          "name": "Подложка",
+          "sku": "Tuplex / пробка 2-3мм"
+        },
+        "substrate": {
+          "name": "Основание",
+          "sku": "Стяжка ≤2мм/2м · влажность ≤2%"
+        }
       },
       "chips": [
-        {"c": "#8a5a2a", "w": 0.55},
-        {"c": "#a0703a", "w": 0.25},
-        {"c": "#6a4520", "w": 0.20}
+        {
+          "c": "#8a5a2a",
+          "w": 0.55
+        },
+        {
+          "c": "#a0703a",
+          "w": 0.25
+        },
+        {
+          "c": "#6a4520",
+          "w": 0.2
+        }
       ],
       "estimatedDaysMin": 3,
       "estimatedDaysMax": 7,
@@ -799,9 +835,22 @@
       "sampleSize": "100×300 мм",
       "simpleDescription": "Натуральный массив или инженерный паркет. Дуб, орех, ясень, тик. Ёлочка, шеврон, классика.",
       "professionalDescription": "Многослойный инженерный паркет, толщина 14-22мм, верхний слой массив 4-6мм. Возможны переснятие и тонировка. Совместим с тёплым полом (T<28°C).",
-      "bestFor": ["Жилые интерьеры", "Бутик-отели", "Шоурумы", "Офисы класса A"],
-      "notIdealFor": ["Мокрые зоны без обработки", "Промышленные нагрузки", "Зоны с интенсивным трафиком на каблуках"],
-      "inspectFirst": ["Влажность стяжки ≤2%", "Ровность ≤2мм на 2м", "Стабильная температура +18..+24°C"],
+      "bestFor": [
+        "Жилые интерьеры",
+        "Бутик-отели",
+        "Шоурумы",
+        "Офисы класса A"
+      ],
+      "notIdealFor": [
+        "Мокрые зоны без обработки",
+        "Промышленные нагрузки",
+        "Зоны с интенсивным трафиком на каблуках"
+      ],
+      "inspectFirst": [
+        "Влажность стяжки ≤2%",
+        "Ровность ≤2мм на 2м",
+        "Стабильная температура +18..+24°C"
+      ],
       "_todo": "Конфирм размеры/цены/породы у Alexey",
       "systemHref": "floors/parquet.html"
     }
@@ -813,11 +862,10 @@
       "materialId": "epoxy",
       "controlState": {
         "color": "7016",
-        "roughness": "fine",
-        "finish": "satin",
         "marking": "yellow-zone",
         "thickness": "2.5mm",
-        "broadcast": "medium"
+        "broadcast": "medium",
+        "finishSlider": 30
       },
       "badge": [
         "heavy-duty"
@@ -830,9 +878,8 @@
       "materialId": "mma",
       "controlState": {
         "color": "9005",
-        "roughness": "fine",
-        "finish": "satin",
-        "thickness": "3mm"
+        "thickness": "3mm",
+        "finishSlider": 30
       },
       "badge": [
         "fast-cure",
@@ -845,13 +892,12 @@
       "materialId": "purcem",
       "controlState": {
         "color": "7037",
-        "broadcast": "coarse",
-        "roughness": "fine",
-        "finish": "matte",
         "thickness": "9mm",
         "coveBase": "R100",
         "drain": "linear-slot",
-        "broadcastMedia": "silicon-carbide"
+        "broadcastMedia": "silicon-carbide",
+        "finishSlider": 10,
+        "broadcastDensity": "heavy"
       },
       "badge": [
         "HACCP",
@@ -865,12 +911,11 @@
       "materialId": "purcem",
       "controlState": {
         "color": "1015",
-        "broadcast": "heavy",
-        "roughness": "fine",
-        "finish": "matte",
         "thickness": "9mm",
         "coveBase": "R150",
-        "broadcastMedia": "aluminum-oxide"
+        "broadcastMedia": "aluminum-oxide",
+        "finishSlider": 10,
+        "broadcastDensity": "medium"
       },
       "badge": [
         "food-grade"
@@ -885,9 +930,8 @@
         "color": "white",
         "aggregate": "carrara",
         "strips": "brass4",
-        "finish": "polished",
-        "roughness": "smooth",
-        "thickness": "12mm"
+        "thickness": "12mm",
+        "finishSlider": 50
       }
     },
     {
@@ -896,9 +940,8 @@
       "materialId": "epoxy-light",
       "controlState": {
         "color": "9010",
-        "roughness": "smooth",
-        "finish": "glossy",
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "finishSlider": 70
       },
       "badge": [
         "ESD"
@@ -910,10 +953,9 @@
       "materialId": "epoxy",
       "controlState": {
         "color": "7016",
-        "roughness": "coarse",
-        "finish": "satin",
         "marking": "yellow-zone",
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "finishSlider": 30
       }
     },
     {
@@ -922,10 +964,9 @@
       "materialId": "epoxy",
       "controlState": {
         "color": "7016",
-        "roughness": "coarse-r12",
-        "finish": "satin",
         "marking": "white-grid",
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "finishSlider": 30
       }
     },
     {
@@ -933,9 +974,8 @@
       "label": "Бутик-отель",
       "materialId": "micro",
       "controlState": {
-        "color": "sand",
-        "finish": "satin",
-        "roughness": "smooth"
+        "color": "sand-pa-k3",
+        "finishSlider": 30
       }
     },
     {
@@ -945,9 +985,8 @@
       "controlState": {
         "color": "1015",
         "flecks": "metallic",
-        "finish": "glossy",
-        "roughness": "smooth",
-        "thickness": "2.5mm"
+        "thickness": "2.5mm",
+        "finishSlider": 70
       }
     },
     {
@@ -958,9 +997,8 @@
         "color": "white",
         "aggregate": "verona",
         "strips": "brass4",
-        "finish": "polished",
-        "roughness": "smooth",
-        "thickness": "12mm"
+        "thickness": "12mm",
+        "finishSlider": 50
       }
     },
     {
@@ -969,8 +1007,7 @@
       "materialId": "rubber",
       "controlState": {
         "color": "multicolor",
-        "pattern": "safety",
-        "roughness": "fine",
+        "pattern": "sport-lines",
         "thickness": "14mm"
       },
       "state": {}
@@ -982,7 +1019,6 @@
       "controlState": {
         "color": "multicolor",
         "pattern": "blend-2tone",
-        "roughness": "fine",
         "thickness": "80mm"
       },
       "badge": [
@@ -997,8 +1033,7 @@
       "controlState": {
         "color": "full",
         "aggregateExposure": "classD-fullExposed",
-        "finish": "wetlook",
-        "roughness": "smooth"
+        "finishSlider": 90
       },
       "state": {}
     },
@@ -1007,9 +1042,8 @@
       "label": "Офис open-space",
       "materialId": "micro",
       "controlState": {
-        "color": "cement",
-        "finish": "satin",
-        "roughness": "smooth"
+        "color": "cream-pa-w2",
+        "finishSlider": 30
       },
       "badge": [
         "acoustic"
@@ -1020,9 +1054,8 @@
       "label": "SPA",
       "materialId": "micro",
       "controlState": {
-        "color": "sand",
-        "finish": "satin",
-        "roughness": "barefoot-b"
+        "color": "sand-pa-k3",
+        "finishSlider": 30
       },
       "badge": [
         "barefoot"
@@ -1040,7 +1073,9 @@
         "finishSlider": 65,
         "thickness": "15mm"
       },
-      "badge": ["residential"]
+      "badge": [
+        "residential"
+      ]
     },
     {
       "id": "boutique-walnut-versailles",
@@ -1054,7 +1089,9 @@
         "finishSlider": 15,
         "thickness": "20mm"
       },
-      "badge": ["boutique"]
+      "badge": [
+        "boutique"
+      ]
     }
   ],
   "glossary": {
@@ -1470,13 +1507,48 @@
         }
       ],
       "parquet": [
-        {"id": "oak-natural", "label": "Дуб натуральный", "hex": "#a07842", "swatch": "#a07842"},
-        {"id": "oak-rustic", "label": "Дуб рустик", "hex": "#7a5530", "swatch": "#7a5530"},
-        {"id": "oak-smoked", "label": "Дуб дымчатый", "hex": "#5a3e22", "swatch": "#5a3e22"},
-        {"id": "walnut", "label": "Орех американский", "hex": "#5a3825", "swatch": "#5a3825"},
-        {"id": "ash", "label": "Ясень", "hex": "#c8a878", "swatch": "#c8a878"},
-        {"id": "teak", "label": "Тик бирманский", "hex": "#8a5a2a", "swatch": "#8a5a2a"},
-        {"id": "whitewashed", "label": "Беленый дуб", "hex": "#d8c8b0", "swatch": "#d8c8b0"}
+        {
+          "id": "oak-natural",
+          "label": "Дуб натуральный",
+          "hex": "#a07842",
+          "swatch": "#a07842"
+        },
+        {
+          "id": "oak-rustic",
+          "label": "Дуб рустик",
+          "hex": "#7a5530",
+          "swatch": "#7a5530"
+        },
+        {
+          "id": "oak-smoked",
+          "label": "Дуб дымчатый",
+          "hex": "#5a3e22",
+          "swatch": "#5a3e22"
+        },
+        {
+          "id": "walnut",
+          "label": "Орех американский",
+          "hex": "#5a3825",
+          "swatch": "#5a3825"
+        },
+        {
+          "id": "ash",
+          "label": "Ясень",
+          "hex": "#c8a878",
+          "swatch": "#c8a878"
+        },
+        {
+          "id": "teak",
+          "label": "Тик бирманский",
+          "hex": "#8a5a2a",
+          "swatch": "#8a5a2a"
+        },
+        {
+          "id": "whitewashed",
+          "label": "Беленый дуб",
+          "hex": "#d8c8b0",
+          "swatch": "#d8c8b0"
+        }
       ]
     },
     "aggregate": {
@@ -2451,17 +2523,38 @@
         }
       ],
       "parquet": [
-        {"id": "14mm", "label": "14 мм · инженерный"},
-        {"id": "15mm", "label": "15 мм · инженерный"},
-        {"id": "20mm", "label": "20 мм · массив"},
-        {"id": "22mm", "label": "22 мм · массив премиум"}
+        {
+          "id": "14mm",
+          "label": "14 мм · инженерный"
+        },
+        {
+          "id": "15mm",
+          "label": "15 мм · инженерный"
+        },
+        {
+          "id": "20mm",
+          "label": "20 мм · массив"
+        },
+        {
+          "id": "22mm",
+          "label": "22 мм · массив премиум"
+        }
       ],
       "concrete": [
-        {"id": "0mm", "label": "0 мм · без наращивания"}
+        {
+          "id": "0mm",
+          "label": "0 мм · без наращивания"
+        }
       ],
       "micro": [
-        {"id": "2.5mm", "label": "2.5 мм"},
-        {"id": "3mm", "label": "3 мм"}
+        {
+          "id": "2.5mm",
+          "label": "2.5 мм"
+        },
+        {
+          "id": "3mm",
+          "label": "3 мм"
+        }
       ]
     },
     "coveBase": [
@@ -2569,58 +2662,289 @@
       ]
     },
     "sargelPattern": [
-      {"id": "off", "label": "Без узора"},
-      {"id": "linear", "label": "Линейные · 4 полосы"},
-      {"id": "grid-3x3", "label": "Сетка 3×3 (9 ячеек)"},
-      {"id": "grid-2x2", "label": "Сетка 2×2 (4 ячейки)"},
-      {"id": "diagonal", "label": "Диагональная сетка"},
-      {"id": "decorative-meander", "label": "Декоративный меандр"}
+      {
+        "id": "off",
+        "label": "Без узора"
+      },
+      {
+        "id": "linear",
+        "label": "Линейные · 4 полосы"
+      },
+      {
+        "id": "grid-3x3",
+        "label": "Сетка 3×3 (9 ячеек)"
+      },
+      {
+        "id": "grid-2x2",
+        "label": "Сетка 2×2 (4 ячейки)"
+      },
+      {
+        "id": "diagonal",
+        "label": "Диагональная сетка"
+      },
+      {
+        "id": "decorative-meander",
+        "label": "Декоративный меандр"
+      }
     ],
     "multiZone": [
-      {"id": "single", "label": "Одна зона"},
-      {"id": "two-zones", "label": "2 зоны (вертикальное деление)"},
-      {"id": "three-zones", "label": "3 зоны (триптих)"},
-      {"id": "quadrants", "label": "4 квадранта"}
+      {
+        "id": "single",
+        "label": "Одна зона"
+      },
+      {
+        "id": "two-zones",
+        "label": "2 зоны (вертикальное деление)"
+      },
+      {
+        "id": "three-zones",
+        "label": "3 зоны (триптих)"
+      },
+      {
+        "id": "quadrants",
+        "label": "4 квадранта"
+      }
     ],
     "finishSlider": [
-      {"id": "matte", "label": "Matte · 0-15", "value": 10},
-      {"id": "satin", "label": "Satin · 16-35", "value": 25},
-      {"id": "polished", "label": "Polished · 36-55", "value": 45},
-      {"id": "glossy", "label": "Glossy · 56-75", "value": 65},
-      {"id": "wetlook", "label": "Wet-look · 76-100", "value": 90}
+      {
+        "id": "matte",
+        "label": "Matte · 0-15",
+        "value": 10
+      },
+      {
+        "id": "satin",
+        "label": "Satin · 16-35",
+        "value": 25
+      },
+      {
+        "id": "polished",
+        "label": "Polished · 36-55",
+        "value": 45
+      },
+      {
+        "id": "glossy",
+        "label": "Glossy · 56-75",
+        "value": 65
+      },
+      {
+        "id": "wetlook",
+        "label": "Wet-look · 76-100",
+        "value": 90
+      }
     ],
     "woodSpecies": {
       "parquet": [
-        {"id": "oak-natural", "label": "Дуб натуральный", "hex": "#a07842", "swatch": "#a07842"},
-        {"id": "oak-rustic", "label": "Дуб рустик", "hex": "#7a5530", "swatch": "#7a5530"},
-        {"id": "oak-smoked", "label": "Дуб дымчатый", "hex": "#5a3e22", "swatch": "#5a3e22"},
-        {"id": "walnut", "label": "Орех американский", "hex": "#5a3825", "swatch": "#5a3825"},
-        {"id": "ash", "label": "Ясень", "hex": "#c8a878", "swatch": "#c8a878"},
-        {"id": "maple", "label": "Клён канадский", "hex": "#d8b890", "swatch": "#d8b890"},
-        {"id": "teak", "label": "Тик бирманский", "hex": "#8a5a2a", "swatch": "#8a5a2a"},
-        {"id": "cherry", "label": "Вишня", "hex": "#9a4a2a", "swatch": "#9a4a2a"},
-        {"id": "rosewood", "label": "Палисандр", "hex": "#5a2820", "swatch": "#5a2820"},
-        {"id": "whitewashed", "label": "Беленый дуб", "hex": "#d8c8b0", "swatch": "#d8c8b0"}
+        {
+          "id": "oak-natural",
+          "label": "Дуб натуральный",
+          "hex": "#a07842",
+          "swatch": "#a07842"
+        },
+        {
+          "id": "oak-rustic",
+          "label": "Дуб рустик",
+          "hex": "#7a5530",
+          "swatch": "#7a5530"
+        },
+        {
+          "id": "oak-smoked",
+          "label": "Дуб дымчатый",
+          "hex": "#5a3e22",
+          "swatch": "#5a3e22"
+        },
+        {
+          "id": "walnut",
+          "label": "Орех американский",
+          "hex": "#5a3825",
+          "swatch": "#5a3825"
+        },
+        {
+          "id": "ash",
+          "label": "Ясень",
+          "hex": "#c8a878",
+          "swatch": "#c8a878"
+        },
+        {
+          "id": "maple",
+          "label": "Клён канадский",
+          "hex": "#d8b890",
+          "swatch": "#d8b890"
+        },
+        {
+          "id": "teak",
+          "label": "Тик бирманский",
+          "hex": "#8a5a2a",
+          "swatch": "#8a5a2a"
+        },
+        {
+          "id": "cherry",
+          "label": "Вишня",
+          "hex": "#9a4a2a",
+          "swatch": "#9a4a2a"
+        },
+        {
+          "id": "rosewood",
+          "label": "Палисандр",
+          "hex": "#5a2820",
+          "swatch": "#5a2820"
+        },
+        {
+          "id": "whitewashed",
+          "label": "Беленый дуб",
+          "hex": "#d8c8b0",
+          "swatch": "#d8c8b0"
+        }
       ]
     },
     "plankSize": {
       "parquet": [
-        {"id": "narrow", "label": "Узкая · 70-90 мм"},
-        {"id": "medium", "label": "Средняя · 120-150 мм"},
-        {"id": "wide", "label": "Широкая · 180-220 мм"},
-        {"id": "extra-wide", "label": "Палубная · 250+ мм"}
+        {
+          "id": "narrow",
+          "label": "Узкая · 70-90 мм"
+        },
+        {
+          "id": "medium",
+          "label": "Средняя · 120-150 мм"
+        },
+        {
+          "id": "wide",
+          "label": "Широкая · 180-220 мм"
+        },
+        {
+          "id": "extra-wide",
+          "label": "Палубная · 250+ мм"
+        }
       ]
     },
     "plankPattern": {
       "parquet": [
-        {"id": "straight", "label": "Палубная · прямая"},
-        {"id": "herringbone", "label": "Ёлочка"},
-        {"id": "chevron", "label": "Шеврон (французская ёлочка)"},
-        {"id": "fishbone", "label": "Рыбья кость"},
-        {"id": "versailles", "label": "Версаль"},
-        {"id": "modular", "label": "Модульный"}
+        {
+          "id": "straight",
+          "label": "Палубная · прямая"
+        },
+        {
+          "id": "herringbone",
+          "label": "Ёлочка"
+        },
+        {
+          "id": "chevron",
+          "label": "Шеврон (французская ёлочка)"
+        },
+        {
+          "id": "fishbone",
+          "label": "Рыбья кость"
+        },
+        {
+          "id": "versailles",
+          "label": "Версаль"
+        },
+        {
+          "id": "modular",
+          "label": "Модульный"
+        }
       ]
-    }
+    },
+    "polishLevel": {
+      "concrete": [
+        {
+          "id": "L1-ground-matte",
+          "label": "L1 · ground matte (200/400 grit)",
+          "doi": "<10"
+        },
+        {
+          "id": "L2-honed-satin",
+          "label": "L2 · honed satin (800/1500)",
+          "doi": "40-69"
+        },
+        {
+          "id": "L3-polished-gloss",
+          "label": "L3 · polished (1500/3000)",
+          "doi": "70-79"
+        },
+        {
+          "id": "L4-mirror",
+          "label": "L4 · mirror (3000/8000)",
+          "doi": "80+"
+        }
+      ]
+    },
+    "densifier": {
+      "concrete": [
+        {
+          "id": "lithium-silicate",
+          "label": "Lithium silicate (Sika ProSeal W)"
+        },
+        {
+          "id": "sodium-silicate",
+          "label": "Sodium silicate"
+        },
+        {
+          "id": "potassium-silicate",
+          "label": "Potassium silicate"
+        },
+        {
+          "id": "colloidal-silica",
+          "label": "Colloidal silica"
+        }
+      ]
+    },
+    "stainDye": {
+      "concrete": [
+        {
+          "id": "off",
+          "label": "Без окраски"
+        },
+        {
+          "id": "acid-stain",
+          "label": "Acid stain · мраморный мотив"
+        },
+        {
+          "id": "water-dye",
+          "label": "Water-based dye · чистый цвет"
+        },
+        {
+          "id": "reactive-stain",
+          "label": "Reactive stain"
+        }
+      ]
+    },
+    "broadcastDensity": {
+      "purcem": [
+        {
+          "id": "light",
+          "label": "Light (R10)",
+          "rate": "0.6 кг/м²"
+        },
+        {
+          "id": "medium",
+          "label": "Medium (R11-R12)",
+          "rate": "1.2 кг/м²"
+        },
+        {
+          "id": "heavy",
+          "label": "Heavy/saturated (R12-R13)",
+          "rate": "1.8 кг/м²"
+        }
+      ]
+    },
+    "crackBridging": [
+      {
+        "id": "off",
+        "label": "Без сетки"
+      },
+      {
+        "id": "fibreglass-4x4",
+        "label": "Стеклосетка 4×4 мм (Sika MonoTop)"
+      },
+      {
+        "id": "aramid-mat",
+        "label": "Арамидный мат (для стресс-зон)"
+      },
+      {
+        "id": "dry-mix-mesh",
+        "label": "Сухая сетка в скретч-коате"
+      }
+    ]
   },
   "controlLabels": {}
 }
