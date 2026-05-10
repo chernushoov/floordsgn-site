@@ -313,6 +313,7 @@
     color: 'Цвет',
     aggregate: 'Агрегат',
     aggregateSize: 'Размер камня',
+    aggregateColor: 'Цвет агрегата',
     accents: 'Акценты',
     strips: 'Саргели · разделители',
     sargel: 'Саргели · разделители',
@@ -397,9 +398,9 @@
   const INLINE_CONFIG_FALLBACK = {
     version: 1,
     materials: [
-      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо · эпоксидное (тёмное)', swatch: '#1c1c1e', controls: ['color','aggregate','aggregateSize','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'charcoal', aggregate:'basalt', aggregateSize:'medium', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
-      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо · эпоксидное (мульти)', swatch: '#f0ece2', controls: ['color','aggregate','aggregateSize','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
-      { id: 'terrazzo',       group: 'decor',      label: 'Терраццо · цементное',           swatch: '#efe7d6', controls: ['color','aggregate','aggregateSize','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'15mm' } },
+      { id: 'terrazzo-dark',  group: 'decor',      label: 'Терраццо · эпоксидное (тёмное)', swatch: '#1c1c1e', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'charcoal', aggregate:'basalt', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
+      { id: 'terrazzo-light', group: 'decor',      label: 'Терраццо · эпоксидное (мульти)', swatch: '#f0ece2', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'12mm' } },
+      { id: 'terrazzo',       group: 'decor',      label: 'Терраццо · цементное',           swatch: '#efe7d6', controls: ['color','aggregate','aggregateSize','aggregateColor','accents','strips','sargelPattern','multiZone','finishSlider','crackBridging','thickness'], defaults: { color:'white', aggregate:'carrara', aggregateSize:'medium', aggregateColor:'natural', accents:'off', strips:'off', sargelPattern:'off', multiZone:'single', finishSlider:25, crackBridging:'fibreglass-4x4', thickness:'15mm' } },
       { id: 'micro',          group: 'decor',      label: 'Микротопинг',                    swatch: '#cfc4b3', controls: ['color','trowelPattern','finishSlider','thickness'], defaults: { color:'cream-pa-w2', trowelPattern:'smooth-loft', finishSlider:30, thickness:'2.5mm' } },
       { id: 'rubber',         group: 'decor',      label: 'Резиновое покрытие',             swatch: '#2a2a2a', controls: ['color','pattern','thickness'], defaults: { color:'black', pattern:'solid', thickness:'6mm' } },
       { id: 'concrete',       group: 'decor',      label: 'Бетон дизайнерский · Меда декоративи', swatch: '#7a7468', controls: ['color','aggregateExposure','finishSlider','thickness'], defaults: { color:'salt', aggregateExposure:'classB-saltPepper', finishSlider:50, thickness:'0mm' } },
@@ -609,6 +610,16 @@
   }
   function setRngSeed(key) { __rng = mulberry32(strHash(key || 'default')); }
   function rnd(min, max) { return min + __rng() * (max - min); }
+  // v18 — hex mixer for aggregateColor chip tinting.
+  function mixHex(a, b, t) {
+    if (!a || !b) return a || b;
+    const pa = /^#?([0-9a-f]{6})$/i.exec(a); const pb = /^#?([0-9a-f]{6})$/i.exec(b);
+    if (!pa || !pb) return a;
+    const ar = parseInt(pa[1].slice(0,2),16), ag = parseInt(pa[1].slice(2,4),16), ab = parseInt(pa[1].slice(4,6),16);
+    const br = parseInt(pb[1].slice(0,2),16), bg = parseInt(pb[1].slice(2,4),16), bb = parseInt(pb[1].slice(4,6),16);
+    const r = Math.round(ar + (br - ar) * t), g = Math.round(ag + (bg - ag) * t), bl = Math.round(ab + (bb - ab) * t);
+    return '#' + [r,g,bl].map(v => v.toString(16).padStart(2,'0')).join('');
+  }
 
   function buildTerrazzo(svg, key) {
     if (!svg) return;
@@ -638,11 +649,14 @@
     function pickColor() {
       const r = __rng();
       let acc = 0;
+      let base = p.chips[0].c;
       for (const c of p.chips) {
         acc += c.w;
-        if (r <= acc) return c.c;
+        if (r <= acc) { base = c.c; break; }
       }
-      return p.chips[0].c;
+      // v18 — aggregateColor: tint the chip towards user-chosen hex without crushing variation.
+      if (p.chipTint) return mixHex(base, p.chipTint, p.chipTintStrength != null ? p.chipTintStrength : 0.55);
+      return base;
     }
 
     // v10 — per-aggregate geometry tweaks
@@ -1022,11 +1036,19 @@
                       : aggSizeOpt && aggSizeOpt.id === 'large' ? 1.7
                       : 1.0;
       tempPalette.userSizeScale = sizeScale;
+      // v18 — aggregateColor: tint each chip toward user-chosen hex (chip-only, not body).
+      const aggColorOpt = selectedOption(material, 'aggregateColor');
+      if (aggColorOpt && aggColorOpt.id !== 'natural' && aggColorOpt.hex) {
+        tempPalette.chipTint = aggColorOpt.hex;
+        tempPalette.chipTintStrength = 0.55;
+      } else {
+        tempPalette.chipTint = null;
+      }
       PALETTES[material] = tempPalette;
-      // v16 — seed RNG by (material+aggregate) so chip layout stays stable when only
+      // v16 — seed RNG by (material+aggregate+aggregateColor) so chip layout stays stable when only
       // strips/finish/sargel/etc. change. Owner reported "клик саргели меняет агрегат"
       // because the SVG was being reshuffled on every applyAllForMaterial.
-      setRngSeed(material + ':' + ((aggOpt && aggOpt.id) || 'default'));
+      setRngSeed(material + ':' + ((aggOpt && aggOpt.id) || 'default') + ':' + ((aggColorOpt && aggColorOpt.id) || 'natural'));
       buildTerrazzo(topPattern, material);
       PALETTES[material] = origPalette;
       // v10 — pearl-iridescent flag (mix-blend-mode glow on plate top)

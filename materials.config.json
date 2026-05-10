@@ -91,6 +91,7 @@
         "color",
         "aggregate",
         "aggregateSize",
+        "aggregateColor",
         "accents",
         "strips",
         "sargelPattern",
@@ -108,7 +109,8 @@
         "finish": "matte",
         "thickness": "12mm",
         "crackBridging": "fibreglass-4x4",
-        "aggregateSize": "medium"
+        "aggregateSize": "medium",
+        "aggregateColor": "natural"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -184,6 +186,7 @@
         "color",
         "aggregate",
         "aggregateSize",
+        "aggregateColor",
         "accents",
         "strips",
         "sargelPattern",
@@ -201,7 +204,8 @@
         "finish": "matte",
         "thickness": "15mm",
         "crackBridging": "fibreglass-4x4",
-        "aggregateSize": "medium"
+        "aggregateSize": "medium",
+        "aggregateColor": "natural"
       },
       "systemHref": "floors/terrazzo.html"
     },
@@ -2787,6 +2791,18 @@
         "id": "large",
         "label": "Крупный · 16–25 мм (палладиана)"
       }
+    ],
+    "aggregateColor": [
+      { "id": "natural",      "label": "Естественный",  "swatch": "#cfc4b3" },
+      { "id": "white-marble", "label": "Белый мрамор",  "swatch": "#f4f1ea", "hex": "#f4f1ea" },
+      { "id": "black-marble", "label": "Чёрный мрамор", "swatch": "#1a1816", "hex": "#1a1816" },
+      { "id": "warm-beige",   "label": "Тёплый беж",    "swatch": "#c9b08a", "hex": "#c9b08a" },
+      { "id": "honey",        "label": "Медовый",       "swatch": "#c79a4a", "hex": "#c79a4a" },
+      { "id": "forest-green", "label": "Лесной зелёный","swatch": "#3f5b3a", "hex": "#3f5b3a" },
+      { "id": "deep-blue",    "label": "Глубокий синий","swatch": "#2d4f7a", "hex": "#2d4f7a" },
+      { "id": "brick-red",    "label": "Кирпичный",     "swatch": "#a5432b", "hex": "#a5432b" },
+      { "id": "brass",        "label": "Латунь",        "swatch": "#b8902a", "hex": "#b8902a" },
+      { "id": "nickel",       "label": "Никель",        "swatch": "#b5b8bd", "hex": "#b5b8bd" }
     ]
   },
   "controlLabels": {}
