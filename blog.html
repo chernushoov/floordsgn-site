@@ -250,19 +250,27 @@
     </script>
     <script>
     (function(){
+      // v18 — submit via Netlify Forms (form has data-netlify="true").
+      // POST as URL-encoded body to "/" so the page doesn't navigate away,
+      // then show inline thank-you. /api/contact was a phantom endpoint on
+      // the static Netlify deploy and was always failing silently.
       var form = document.querySelector('.newsletter-form');
       if (!form) return;
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        var email = form.querySelector('input[type="email"]').value;
+        var data = new FormData(form);
+        var body = new URLSearchParams();
+        data.forEach(function(v, k){ body.append(k, v); });
         try {
-          var res = await fetch('/api/contact', {
+          var res = await fetch('/', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ type: 'newsletter', email: email })
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: body.toString()
           });
           if (res.ok) {
             form.innerHTML = '<p style="color: var(--black); font-weight: 500;">Thank you for subscribing!</p>';
+          } else {
+            alert('Something went wrong. Please try again.');
           }
         } catch(err) {
           alert('Something went wrong. Please try again.');
