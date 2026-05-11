@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Floor.DSGN — 3D block (editable workspace)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+
+<style>
+/* ============================================================
+   TOKENS — taken from existing Floor.DSGN files
+   ============================================================ */
+:root{
+  --paper:#ffffff;
+  --paper-2:#f5f5f7;
+  --paper-3:#eeeeee;
+  --ink:#1d1d1f;
+  --ink-2:#2d2d2d;
+  --ink-3:#6e6e73;
+  --ink-4:#a0a0a4;
+  --line:#d2d2d7;
+  --line-2:#b8b8be;
+  --accent:#0071e3;
+  --sans:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Montserrat','Helvetica Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+::selection{background:var(--accent);color:#fff}
+.mono{font-family:var(--mono);font-feature-settings:"zero","ss01"}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+.sec{position:relative;padding:56px 32px 80px;min-height:100vh;background:var(--paper);overflow:hidden}
+
+/* tiny eyebrow strip */
+.eyebrow{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:48px}
+.eyebrow .l{display:flex;gap:18px;align-items:center}
+.eyebrow .l b{color:var(--ink);font-weight:500}
+.eyebrow .l .num{background:var(--ink);color:#fff;padding:3px 8px;letter-spacing:.16em}
+.eyebrow .l .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.4;transform:scale(.8)}}
+.eyebrow .r{display:flex;gap:24px}
+.eyebrow .r b{color:var(--ink);font-weight:500}
+
+/* heading block */
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:end;margin-bottom:56px}
+.h1{font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,104px);line-height:1.0;letter-spacing:-.035em;margin:0;color:var(--ink);text-wrap:balance}
+.h1 em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
+.h1 mark{background:none;color:var(--accent)}
+.lede{color:var(--ink-3);font-size:15px;line-height:1.55;max-width:440px;margin:0 0 0 auto}
+.lede b{color:var(--ink);font-weight:500}
+
+/* ============================================================
+   MAIN 3-COL GRID
+   ============================================================ */
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr) 280px;gap:40px;align-items:stretch;min-height:640px}
+
+/* ============ LEFT RAIL — MATERIALS ============ */
+.matlist{border-top:1px solid var(--line);padding-top:14px;font-family:var(--sans)}
+.matlist .grp{margin-bottom:28px}
+.matlist .grp-h{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-4);margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
+.matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
+.matlist li{position:relative;cursor:pointer;padding:10px 0 10px 0;color:var(--ink-3);font-size:15px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s, padding-left .25s}
+.matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
+.matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
+.matlist li:hover{color:var(--ink);padding-left:6px}
+.matlist li:hover .tag{opacity:1}
+.matlist li.on{color:var(--ink);font-weight:500;padding-left:14px;background:var(--paper-2)}
+.matlist li.on .idx{color:var(--accent);font-weight:500}
+.matlist li.on .tag{opacity:1;color:var(--ink)}
+.matlist li.on::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;background:var(--accent);transform:translateY(-50%);border-radius:50%}
+
+/* ============ MIDDLE — 3D STAGE ============ */
+.stage{position:relative;background:linear-gradient(180deg,#fafafa 0%, #f0f0f3 100%);border:1px solid var(--line);overflow:hidden;min-height:680px;display:flex;flex-direction:column}
+.stage::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 30% 18%, rgba(255,255,255,.6), transparent 55%),
+  radial-gradient(circle at 78% 100%, rgba(0,0,0,.08), transparent 55%);
+  pointer-events:none;z-index:0}
+.stage::after{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(10,10,10,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(10,10,10,.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center, #000 28%, transparent 78%);pointer-events:none;z-index:0}
+.stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;z-index:1;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+
+/* stage chrome */
+.s-tl{position:absolute;top:18px;left:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);display:flex;flex-direction:column;gap:5px}
+.s-tl b{color:var(--ink);font-weight:500}
+.s-tl .live{display:inline-flex;align-items:center;gap:6px}
+.s-tl .live i{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.6s infinite}
+
+.s-tr{position:absolute;top:18px;right:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);text-align:right}
+.s-tr .ttl{color:var(--ink);font-weight:500;font-size:13px;letter-spacing:-.01em;font-family:var(--sans);text-transform:none;display:block}
+
+.s-bl{position:absolute;bottom:18px;left:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);max-width:260px;line-height:1.6}
+.s-bl b{color:var(--ink);font-weight:500}
+
+.s-br{position:absolute;bottom:18px;right:18px;z-index:5;display:flex;gap:4px}
+.s-br button{background:rgba(255,255,255,.7);border:1px solid var(--line-2);color:var(--ink-3);padding:7px 11px;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:.15s}
+.s-br button:hover{background:#fff;color:var(--ink)}
+.s-br button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* layer callouts — visible when exploded */
+.callouts{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .35s}
+.callouts.on{opacity:1}
+.callouts .co{position:absolute;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.94);padding:7px 12px;border:1px solid var(--line-2);white-space:nowrap;backdrop-filter:blur(4px);right:8%}
+.callouts .co b{display:block;font-family:var(--sans);font-weight:500;font-size:12.5px;letter-spacing:-.005em;text-transform:none;color:var(--ink);margin-bottom:1px}
+.callouts .co::before{content:"";position:absolute;right:100%;top:50%;width:48px;height:1px;background:var(--ink)}
+.callouts .co::after{content:"";position:absolute;right:calc(100% + 48px);top:50%;width:7px;height:7px;background:var(--accent);transform:translateY(-50%);border-radius:50%}
+
+/* ============ RIGHT RAIL — SPECS ============ */
+.specs{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column}
+.specs h4{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-4);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+.specs h4 .k{color:var(--accent)}
+.specs h4::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.specrows{display:flex;flex-direction:column}
+.specrow{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.specrow .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+.specrow .v{text-align:right;font-family:var(--sans);font-weight:500;color:var(--ink);font-size:15px;letter-spacing:-.005em}
+.specrow .v small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);font-weight:400;text-transform:uppercase;margin-left:6px}
+
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.badges span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line-2);padding:5px 9px;background:#fff}
+.badges span.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+.badges span.warn{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.cta-stack{margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:8px}
+.cta-primary{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--ink);color:#fff;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:-.005em;transition:background .2s}
+.cta-primary:hover{background:var(--accent)}
+.cta-primary svg{transition:transform .25s}
+.cta-primary:hover svg{transform:translateX(6px)}
+.cta-ghost{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border:1px solid var(--line-2);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
+.cta-ghost:hover{border-color:var(--ink);background:#fff}
+.cta-ghost span:last-child{color:var(--ink-4)}
+
+/* ============ BOTTOM HINT BAR ============ */
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.foot b{color:var(--ink);font-weight:500}
+
+@media (max-width:1100px){
+  .grid{grid-template-columns:1fr;gap:28px}
+  .head{grid-template-columns:1fr;gap:24px}
+  .stage{min-height:480px}
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================================
+     EDITABLE WORKSPACE — mirrors live 3D block at floordsgn
+     Edit anything: copy, materials, specs, layer composition.
+     Three.js renders the slab from data-driven config below.
+     ============================================================= -->
+
+<section class="sec" id="block3d" data-screen-label="01 · 3D Configurator">
+
+  <!-- eyebrow ribbon -->
+  <div class="eyebrow">
+    <div class="l">
+      <span class="dot"></span>
+      <span class="num">01 / 06</span>
+      <span>Floor.DSGN · Israel · <b>Engineering</b></span>
+    </div>
+    <div class="r">
+      <span>Sika installer · <b>Certified</b></span>
+      <span>WebGL · <b>60 FPS</b></span>
+      <span>v <b>2.04</b></span>
+    </div>
+  </div>
+
+  <!-- headline -->
+  <div class="head">
+    <h1 class="h1">Полы, которые <em>проектируют</em><br>— а не кладут</h1>
+    <p class="lede">
+      Соберите образец под вашу задачу. Слева — <b>материал</b>, справа — <b>параметры</b>.
+      Тяните плиту чтобы вращать, нажмите чтобы разнести на слои.
+    </p>
+  </div>
+
+  <!-- main grid -->
+  <div class="grid">
+
+    <!-- ========== LEFT: MATERIAL LIST ========== -->
+    <aside class="matlist" id="matlist">
+      <div class="grp">
+        <div class="grp-h"><span class="k">D</span>Декоративные</div>
+        <ul>
+          <li data-id="tz-cem"><span class="idx">01</span><span>Терраццо · цементное</span><span class="tag">TZ·C</span></li>
+          <li class="on" data-id="tz-ep-dark"><span class="idx">02</span><span>Терраццо · эпоксидное <em style="color:var(--ink-4);font-style:normal">(тёмное)</em></span><span class="tag">TZ·D</span></li>
+          <li data-id="tz-ep-multi"><span class="idx">03</span><span>Терраццо · эпоксидное <em style="color:var(--ink-4);font-style:normal">(мульти)</em></span><span class="tag">TZ·M</span></li>
+          <li data-id="micro"><span class="idx">04</span><span>Микротопинг</span><span class="tag">MT</span></li>
+          <li data-id="rubber"><span class="idx">05</span><span>Резиновое покрытие</span><span class="tag">RB</span></li>
+          <li data-id="meda"><span class="idx">06</span><span>Бетон · Меда декоративи</span><span class="tag">MD</span></li>
+          <li data-id="parquet"><span class="idx">07</span><span>Паркет</span><span class="tag">PQ</span></li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h"><span class="k">I</span>Промышленные</div>
+        <ul>
+          <li data-id="mma"><span class="idx">08</span><span>MMA Pronto</span><span class="tag">MMA</span></li>
+          <li data-id="pucem"><span class="idx">09</span><span>PU-cement / ПУ-цемент</span><span class="tag">PU</span></li>
+          <li data-id="epoxy-i"><span class="idx">10</span><span>Эпоксидная заливка</span><span class="tag">EP·I</span></li>
+          <li data-id="epoxy-d"><span class="idx">11</span><span>Декоративная эпоксидка</span><span class="tag">EP·D</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ========== MIDDLE: 3D STAGE ========== -->
+    <div class="stage" id="stage">
+      <div class="s-tl">
+        <span class="live"><i></i>Render · live</span>
+        <span>Drag <b>↻</b> orbit · Click <b>↕</b> explode</span>
+      </div>
+      <div class="s-tr">
+        <span>Active sample</span>
+        <span class="ttl" id="stTitle">Терраццо · эпоксидное (тёмное)</span>
+        <span style="color:var(--ink-4)">TZ-EP-DK · 12 мм</span>
+      </div>
+
+      <!-- callouts shown when exploded -->
+      <div class="callouts" id="callouts">
+        <div class="co" style="top:14%"><b id="co0">Топкоат</b>Sikafloor-264 · 0.5 мм</div>
+        <div class="co" style="top:32%"><b id="co1">Тело системы</b>Sikafloor-263 SL · 3 мм</div>
+        <div class="co" style="top:50%"><b id="co2">Стеклосетка</b>Fibreglass mesh 4×4 мм · 60 г/м²</div>
+        <div class="co" style="top:66%"><b id="co3">Праймер</b>Sikafloor-156 · 0.3 мм</div>
+        <div class="co" style="top:82%"><b id="co4">Подложка</b>Бетон C25/30 · ≥ 25 МПа</div>
+      </div>
+
+      <div class="s-bl">
+        <b>Слои системы</b><br>тяните чтобы вращать · нажмите чтобы разнести на слои
+      </div>
+      <div class="s-br">
+        <button data-view="solid" class="on">Solid</button>
+        <button data-view="layers">Layers</button>
+        <button data-view="top">Top</button>
+        <button data-view="reset">Reset</button>
+      </div>
+    </div>
+
+    <!-- ========== RIGHT: SPECS ========== -->
+    <aside class="specs">
+      <h4><span class="k">S</span>Параметры</h4>
+      <div class="specrows" id="specrows">
+        <div class="specrow"><span class="k">тип</span><span class="v" id="spType">терраццо · тёмный</span></div>
+        <div class="specrow"><span class="k">толщина</span><span class="v" id="spThick">12 мм</span></div>
+        <div class="specrow"><span class="k">основа</span><span class="v" id="spBase">эпоксидная смола</span></div>
+        <div class="specrow"><span class="k">cure-time</span><span class="v" id="spCure">24ч <small>walk</small> / 72ч <small>full</small></span></div>
+        <div class="specrow"><span class="k">гарантия</span><span class="v" id="spWarr">10 лет</span></div>
+        <div class="specrow"><span class="k">цена</span><span class="v" id="spPrice">₪380—720 / м²</span></div>
+      </div>
+      <div class="badges" id="badges">
+        <span class="solid">R9</span>
+        <span>ESD</span>
+        <span class="warn">HACCP-ready</span>
+      </div>
+
+      <div class="cta-stack">
+        <button class="cta-primary">
+          Получить смету
+          <svg width="34" height="12" viewBox="0 0 34 12" fill="none"><path d="M0 6H31M31 6L26 1M31 6L26 11" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <button class="cta-ghost">
+          <span>Заказать sample-kit · 100×100 мм</span>
+          <span>↘</span>
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- foot ribbon -->
+  <div class="foot">
+    <span>FD-CFG · v2.04 · <b>floor.dsgn / configurator</b></span>
+    <span>scroll · далее — <b>Выберите систему</b> · 6 семейств покрытий →</span>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SCRIPT — Three.js scene + material registry
+     ============================================================ -->
+<script>
+/* ============ MATERIAL REGISTRY — edit me ============ */
+/* Each entry can override: title, layers (top→bottom), specs, badges */
+const MATERIALS = {
+  'tz-cem': {
+    title:'Терраццо · цементное', code:'TZ-CEM-08',
+    layers:[
+      {label:'Полировка · 800–3000 grit', color:0xe6e0d2, thk:0.04},
+      {label:'Цементная матрица + крошка · 16 мм', color:0xd8cdb6, thk:0.34, chips:true},
+      {label:'Грунт минеральный · 0.5 мм', color:0xa89878, thk:0.06},
+      {label:'Бетон C25/30 · ≥ 25 МПа', color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'терраццо · цементное', thick:'16–22 мм', base:'цементная матрица', cure:'24ч walk / 14дн full', warr:'10 лет', price:'₪520—780 / м²'},
+    badges:[{t:'R10',k:'solid'},{t:'Минер.'},{t:'Натур.',k:'warn'}]
+  },
+
+  'tz-ep-dark': {
+    title:'Терраццо · эпоксидное (тёмное)', code:'TZ-EP-DK',
+    body:0x2a2722, chips:'light',
+    layers:[
+      {label:'Топкоат',          mat:'Sikafloor-264 · 0.5 мм',          color:0x3a3530, thk:0.05, roughness:0.18, clearcoat:0.8},
+      {label:'Тело системы',     mat:'Sikafloor-263 SL · 3 мм',         color:0x2a2722, thk:0.32, chips:true},
+      {label:'Стеклосетка',      mat:'Fibreglass mesh 4×4 мм · 60 г/м²', color:0xe6dcc4, thk:0.04, mesh:true},
+      {label:'Праймер',          mat:'Sikafloor-156 · 0.3 мм',          color:0x5a5044, thk:0.05},
+      {label:'Подложка',         mat:'Бетон C25/30 · ≥ 25 МПа',          color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'терраццо · тёмный', thick:'12 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'10 лет', price:'₪380—720 / м²'},
+    badges:[{t:'R9',k:'solid'},{t:'ESD'},{t:'HACCP-ready',k:'warn'}]
+  },
+
+  'tz-ep-multi': {
+    title:'Терраццо · эпоксидное (мульти)', code:'TZ-EP-MX',
+    body:0xeae3d0, chips:'multi',
+    layers:[
+      {label:'Топкоат',          mat:'Sikafloor-264 · 0.5 мм',          color:0xf2ede0, thk:0.05, clearcoat:0.85},
+      {label:'Тело системы',     mat:'Sikafloor-263 SL · 3 мм',         color:0xeae3d0, thk:0.32, chips:true},
+      {label:'Стеклосетка',      mat:'Fibreglass mesh 4×4 мм · 60 г/м²', color:0xd0c8b0, thk:0.04, mesh:true},
+      {label:'Праймер',          mat:'Sikafloor-156 · 0.3 мм',          color:0xc0b298, thk:0.05},
+      {label:'Подложка',         mat:'Бетон C25/30 · ≥ 25 МПа',          color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'терраццо · мульти', thick:'12 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'10 лет', price:'₪380—720 / м²'},
+    badges:[{t:'R9',k:'solid'},{t:'ESD'},{t:'HACCP-ready',k:'warn'}]
+  },
+
+  'micro': {
+    title:'Микротопинг', code:'MT-NAT-08',
+    layers:[
+      {label:'PU защита · 2 слоя',     mat:'Sikafloor-304 W · 2 × 0.075 мм',       color:0xece6d3, thk:0.04, clearcoat:0.6},
+      {label:'Финиш-микротопинг',      mat:'Sika MonoTop decorative · 1 мм',       color:0xe2d8c0, thk:0.10},
+      {label:'База + стеклосетка',     mat:'Sika MonoTop base · 1.5 мм',           color:0xc8b994, thk:0.14, mesh:true},
+      {label:'Праймер',                mat:'Sika Primer MB · 0.2 мм',              color:0x9a8e74, thk:0.04},
+      {label:'Подложка',               mat:'Бетон / стяжка C20/25',                 color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'микротопинг', thick:'2.5–3 мм', base:'минеральная', cure:'24ч walk / 7дн full', warr:'7 лет', price:'₪280—440 / м²'},
+    badges:[{t:'R10',k:'solid'},{t:'WET-AREA'},{t:'Дизайн',k:'warn'}]
+  },
+
+  'rubber': {
+    title:'Резиновое покрытие', code:'RB-EPD-10',
+    layers:[
+      {label:'EPDM финиш-гранулы',  mat:'Гранулят 1–4 мм · 7 мм слой',    color:0x2c2624, thk:0.20, chips:true, chipColors:[0xd03828,0xc08838,0xe6e6e6,0x2a2a2a]},
+      {label:'SBR подушка',         mat:'Гранулят · 10 мм',                color:0x40342a, thk:0.18},
+      {label:'PU клей-грунт',       mat:'Sika Primer PU · 0.3 мм',         color:0x6a4a3a, thk:0.05},
+      {label:'Подложка',            mat:'Бетон / асфальт',                 color:0x9a948a, thk:0.50}
+    ],
+    specs:{type:'EPDM · резиновый', thick:'10–20 мм', base:'каучук + PU', cure:'24ч full', warr:'7 лет', price:'₪260—420 / м²'},
+    badges:[{t:'R11',k:'solid'},{t:'Sport'},{t:'Outdoor',k:'warn'}]
+  },
+
+  'meda': {
+    title:'Бетон · Меда декоративи', code:'MD-DEC-06',
+    layers:[
+      {label:'Финиш-воск + полировка', mat:'Wax · 800–3000 grit',          color:0xeae6dc, thk:0.03},
+      {label:'Меда декоративи',        mat:'Tadelakt-style · 4–6 мм',      color:0xc8b896, thk:0.20},
+      {label:'База минеральная',       mat:'Sika MonoTop · 2 мм',          color:0x9a8a70, thk:0.10},
+      {label:'Праймер',                mat:'Sika Primer MB · 0.2 мм',      color:0x7a6a54, thk:0.04},
+      {label:'Подложка',               mat:'Бетон / стяжка',                color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'дизайнерский бетон', thick:'6 мм', base:'известково-цементная', cure:'48ч walk / 21дн full', warr:'5 лет', price:'₪420—680 / м²'},
+    badges:[{t:'R9',k:'solid'},{t:'Дизайн'},{t:'Натур.',k:'warn'}]
+  },
+
+  'parquet': {
+    title:'Паркет', code:'PQ-OAK-14',
+    layers:[
+      {label:'UV-лак · 7 слоёв',       mat:'Bona Traffic HD · 0.12 мм',     color:0xa07650, thk:0.04, clearcoat:0.9},
+      {label:'Дуб селект · 14 мм',     mat:'Engineered oak select',          color:0x9c6a3e, thk:0.30, wood:true},
+      {label:'HDF-основа · 8 мм',      mat:'Sumica HDF',                     color:0x6a4a30, thk:0.14},
+      {label:'Шумоизол. подложка',     mat:'Sika Layer · 2 мм',              color:0x3a2820, thk:0.06},
+      {label:'Подложка',               mat:'Бетон / стяжка ровная',          color:0x9a948a, thk:0.50}
+    ],
+    specs:{type:'паркет инженерный', thick:'14 мм', base:'дуб + HDF', cure:'24ч / готов', warr:'15 лет', price:'₪380—1200 / м²'},
+    badges:[{t:'AC4',k:'solid'},{t:'Жилое'},{t:'Натур.',k:'warn'}]
+  },
+
+  'mma': {
+    title:'MMA Pronto · быстрый', code:'MMA-RP-04',
+    layers:[
+      {label:'MMA финиш-глянец',  mat:'Sikafloor-381 · 0.5 мм',     color:0xeaeae2, thk:0.05, clearcoat:0.92},
+      {label:'MMA цвет + флеки',  mat:'Sikafloor-390 · 3 мм',       color:0xa8b0bc, thk:0.30, chips:true, chipColors:[0xeeeae0,0x4a4a4a,0xa0a0a0]},
+      {label:'MMA грунт',         mat:'Sikafloor-110 · 0.3 мм',     color:0x707684, thk:0.05},
+      {label:'Подложка',          mat:'Бетон / металл',              color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'MMA · быстрый', thick:'3–6 мм', base:'метилметакрилат', cure:'1ч walk / 2ч full', warr:'7 лет', price:'₪520—740 / м²'},
+    badges:[{t:'R11',k:'solid'},{t:'COLD'},{t:'1H cure',k:'warn'}]
+  },
+
+  'pucem': {
+    title:'PU-cement / ПУ-цемент', code:'PU-CEM-06',
+    layers:[
+      {label:'ПУ-цемент финиш',   mat:'Sikafloor PurCem HM · 1 мм',  color:0xc5ad88, thk:0.10, roughness:0.7},
+      {label:'ПУ-цемент тело',    mat:'Sikafloor PurCem · 6 мм',     color:0xb89c70, thk:0.30},
+      {label:'Эпокси-грунт',      mat:'Sikafloor-156 · 0.2 мм',      color:0x8a7050, thk:0.04},
+      {label:'Подложка',          mat:'Бетон C25/30',                 color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'ПУ-цемент', thick:'6–9 мм', base:'PU + цемент', cure:'24ч walk / 7дн full', warr:'10 лет', price:'₪380—560 / м²'},
+    badges:[{t:'R12',k:'solid'},{t:'HACCP',k:'warn'},{t:'Thermal'}]
+  },
+
+  'epoxy-i': {
+    title:'Эпоксидная заливка', code:'EP-IND-04',
+    layers:[
+      {label:'PU защита',         mat:'Sikafloor-304 W · 0.1 мм',    color:0xa8b6c4, thk:0.04, clearcoat:0.7},
+      {label:'Эпоксид цвет',      mat:'Sikafloor-264 SL · 2 мм',     color:0x8090a8, thk:0.22},
+      {label:'Грунт-эпоксид',     mat:'Sikafloor-156 · 0.3 мм',      color:0x506478, thk:0.06},
+      {label:'Подложка',          mat:'Бетон C20/25',                 color:0x9a948a, thk:0.55}
+    ],
+    specs:{type:'эпоксидная промышл.', thick:'1.5–3 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'7 лет', price:'₪140—320 / м²'},
+    badges:[{t:'R9',k:'solid'},{t:'CHEM'},{t:'Industrial',k:'warn'}]
+  },
+
+  'epoxy-d': {
+    title:'Декоративная эпоксидка', code:'EP-DEC-08',
+    layers:[
+      {label:'PU защита',          mat:'Sikafloor-304 W · 0.15 мм',  color:0xeaeae6, thk:0.05, clearcoat:0.85},
+      {label:'Эпоксид цвет + флеки',mat:'Sikafloor-264 · 2.5 мм',     color:0xc8d4cc, thk:0.26, chips:true, chipColors:[0xeaeae0,0x4a4a4a,0x9a8a70]},
+      {label:'Эпоксид база',       mat:'Sikafloor-263 · 0.5 мм',     color:0x6a7a72, thk:0.07},
+      {label:'Грунт + бетон',      mat:'Sikafloor-156 + C20/25',     color:0x9a948a, thk:0.50}
+    ],
+    specs:{type:'декоративный эпоксид', thick:'2–4 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'7 лет', price:'₪320—520 / м²'},
+    badges:[{t:'R10',k:'solid'},{t:'CHIPS'},{t:'Дизайн',k:'warn'}]
+  }
+};
+
+/* ============================================================
+   THREE.JS SCENE
+   ============================================================ */
+const stageEl = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+stageEl.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
+camera.position.set(4.5, 3.3, 5.2);
+camera.lookAt(0,0,0);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xb0a890, 0.55));
+const key = new THREE.DirectionalLight(0xfff4dd, 1.4); key.position.set(5,7,4); scene.add(key);
+const fill = new THREE.DirectionalLight(0xc9d4e0, 0.45); fill.position.set(-5,3,-3); scene.add(fill);
+const rim = new THREE.PointLight(0xff9a6a, 0.5, 12); rim.position.set(-3,1.5,3); scene.add(rim);
+
+/* === beveled slab geometry === */
+function makeBeveledSlab(w,d,h,bevel){
+  const shape = new THREE.Shape();
+  const r = bevel*0.6;
+  shape.moveTo(-w/2+r,-d/2);
+  shape.lineTo(w/2-r,-d/2);
+  shape.quadraticCurveTo(w/2,-d/2,w/2,-d/2+r);
+  shape.lineTo(w/2,d/2-r);
+  shape.quadraticCurveTo(w/2,d/2,w/2-r,d/2);
+  shape.lineTo(-w/2+r,d/2);
+  shape.quadraticCurveTo(-w/2,d/2,-w/2,d/2-r);
+  shape.lineTo(-w/2,-d/2+r);
+  shape.quadraticCurveTo(-w/2,-d/2,-w/2+r,-d/2);
+  const geo = new THREE.ExtrudeGeometry(shape,{depth:h, bevelEnabled:true, bevelThickness:bevel, bevelSize:bevel, bevelSegments:3, curveSegments:6});
+  geo.translate(0,0,-h/2); geo.rotateX(-Math.PI/2);
+  return geo;
+}
+
+const SLAB_W = 2.8, SLAB_D = 3.6;
+const slabGroup = new THREE.Group(); scene.add(slabGroup);
+
+/* ground shadow */
+const groundGeo = new THREE.CircleGeometry(3.6, 64);
+const groundMat = new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:0.08});
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI/2;
+ground.position.y = -0.55;
+scene.add(ground);
+
+let layerMeshes = [], chipMeshes = [], meshOverlays = [];
+
+/* terrazzo chip generator (instanced) */
+function spawnChips(parentMesh, slabH, opts){
+  const count = opts.count || 900;
+  const palette = opts.colors || [0xeae0c8,0xc8b894,0x9a8a70,0x6a5a48];
+  const geo = new THREE.IcosahedronGeometry(0.022, 0);
+  const mat = new THREE.MeshStandardMaterial({roughness:0.4, metalness:0.04, vertexColors:true});
+  const inst = new THREE.InstancedMesh(geo, mat, count);
+  const dummy = new THREE.Object3D();
+  const colArr = new Float32Array(count*3);
+  for(let i=0;i<count;i++){
+    const x = (Math.random()-0.5)*(SLAB_W-0.14);
+    const z = (Math.random()-0.5)*(SLAB_D-0.14);
+    const y = (Math.random()-0.3)*slabH*0.45;
+    dummy.position.set(x, y, z);
+    const s = 0.45 + Math.random()*1.9;
+    dummy.scale.set(s, s*0.55, s);
+    dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+    dummy.updateMatrix();
+    inst.setMatrixAt(i, dummy.matrix);
+    const c = new THREE.Color(palette[Math.floor(Math.random()*palette.length)]);
+    colArr[i*3]=c.r; colArr[i*3+1]=c.g; colArr[i*3+2]=c.b;
+  }
+  geo.setAttribute('color', new THREE.InstancedBufferAttribute(colArr, 3));
+  parentMesh.add(inst);
+  chipMeshes.push(inst);
+}
+
+/* fibreglass mesh visual */
+function spawnMesh(parentMesh){
+  /* draw a grid texture on a thin plane */
+  const c = document.createElement('canvas'); c.width=512; c.height=512;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#e8e0c8'; ctx.fillRect(0,0,512,512);
+  ctx.strokeStyle = '#9a8a6a'; ctx.lineWidth = 6;
+  for(let i=0;i<=16;i++){
+    ctx.beginPath(); ctx.moveTo(i*32, 0); ctx.lineTo(i*32, 512); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, i*32); ctx.lineTo(512, i*32); ctx.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(3,4);
+  const geo = new THREE.PlaneGeometry(SLAB_W-0.08, SLAB_D-0.08);
+  const mat = new THREE.MeshStandardMaterial({map:tex, roughness:0.8, transparent:true, opacity:0.95});
+  const m = new THREE.Mesh(geo, mat);
+  m.rotation.x = -Math.PI/2;
+  m.position.y = 0;
+  parentMesh.add(m);
+  meshOverlays.push(m);
+}
+
+/* wood grain texture */
+function woodTexture(baseHex){
+  const c = document.createElement('canvas'); c.width=512; c.height=512;
+  const ctx = c.getContext('2d');
+  const base = new THREE.Color(baseHex);
+  ctx.fillStyle = `rgb(${base.r*255|0},${base.g*255|0},${base.b*255|0})`;
+  ctx.fillRect(0,0,512,512);
+  for(let i=0;i<80;i++){
+    const y = Math.random()*512;
+    ctx.strokeStyle = `rgba(0,0,0,${0.04+Math.random()*0.12})`;
+    ctx.lineWidth = 0.6 + Math.random()*1.2;
+    ctx.beginPath();
+    for(let x=0;x<=512;x+=8){
+      const yy = y + Math.sin(x*0.04 + i)*1.5 + (Math.random()-0.5)*0.8;
+      x===0 ? ctx.moveTo(x,yy) : ctx.lineTo(x,yy);
+    }
+    ctx.stroke();
+  }
+  /* 4 plank seams */
+  for(let i=1;i<4;i++){
+    ctx.strokeStyle = 'rgba(0,0,0,.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(0, 128*i); ctx.lineTo(512, 128*i); ctx.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  return tex;
+}
+
+/* === build a system from MATERIALS entry === */
+function buildSystem(M){
+  /* clear */
+  layerMeshes.forEach(m=>{ slabGroup.remove(m); m.geometry.dispose(); m.material.dispose(); });
+  layerMeshes = []; chipMeshes = []; meshOverlays = [];
+
+  /* compute Y stack — top at +0.5, going down */
+  let yTop = 0.5;
+  M.layers.forEach((L, i)=>{
+    const t = L.thk || 0.1;
+    const geo = makeBeveledSlab(SLAB_W, SLAB_D, t, 0.02);
+
+    let mat;
+    if(L.wood){
+      const tex = woodTexture(L.color);
+      mat = new THREE.MeshPhysicalMaterial({map:tex, roughness:0.35, clearcoat:L.clearcoat||0.4, clearcoatRoughness:0.18});
+    } else {
+      mat = new THREE.MeshPhysicalMaterial({
+        color:new THREE.Color(L.color),
+        roughness: L.roughness !== undefined ? L.roughness : (i===0 ? 0.3 : 0.65),
+        metalness: 0.02,
+        clearcoat: L.clearcoat || (i===0?0.4:0),
+        clearcoatRoughness: 0.22
+      });
+    }
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.y = yTop - t/2;
+    mesh.userData.targetY = mesh.position.y;
+    mesh.userData.idx = i;
+    mesh.userData.layer = L;
+    slabGroup.add(mesh);
+    layerMeshes.push(mesh);
+
+    if(L.chips){
+      spawnChips(mesh, t, {colors: L.chipColors});
+    }
+    if(L.mesh){
+      spawnMesh(mesh);
+    }
+
+    yTop -= t;
+  });
+
+  /* update callouts */
+  M.layers.forEach((L,i)=>{
+    const el = document.getElementById('co'+i);
+    if(el){ el.parentElement.style.display = ''; el.textContent = L.label; el.nextSibling && (el.nextSibling.textContent = L.mat || ''); el.parentElement.innerHTML = `<b>${L.label}</b>${L.mat||''}`; }
+  });
+  /* hide unused callout slots */
+  for(let i=M.layers.length;i<5;i++){
+    const el = document.getElementById('co'+i);
+    if(el) el.parentElement.style.display = 'none';
+  }
+
+  /* title + specs */
+  document.getElementById('stTitle').textContent = M.title;
+  document.getElementById('spType').textContent = M.specs.type;
+  document.getElementById('spThick').textContent = M.specs.thick;
+  document.getElementById('spBase').textContent = M.specs.base;
+  document.getElementById('spCure').innerHTML = M.specs.cure;
+  document.getElementById('spWarr').textContent = M.specs.warr;
+  document.getElementById('spPrice').textContent = M.specs.price;
+
+  /* badges */
+  const bEl = document.getElementById('badges');
+  bEl.innerHTML = '';
+  (M.badges||[]).forEach(b=>{
+    const s = document.createElement('span');
+    if(b.k) s.className = b.k;
+    s.textContent = b.t;
+    bEl.appendChild(s);
+  });
+}
+
+/* ============================================================
+   INTERACTION — orbit, zoom, explode, view buttons
+   ============================================================ */
+let isDown=false, moved=false, lx=0, ly=0;
+let rotY=-0.45, rotX=0.55, camDist=7.2;
+let tRotY=rotY, tRotX=rotX, tDist=camDist;
+let explodeT=0, tExplode=0;
+
+stageEl.addEventListener('pointerdown',e=>{ isDown=true; moved=false; lx=e.clientX; ly=e.clientY; });
+window.addEventListener('pointerup',e=>{
+  if(isDown && !moved){
+    /* click → toggle explode */
+    tExplode = tExplode>0.5 ? 0 : 1;
+    updateViewBtn(tExplode>0.5?'layers':'solid');
+  }
+  isDown=false;
+});
+window.addEventListener('pointermove',e=>{
+  if(!isDown) return;
+  const dx=e.clientX-lx, dy=e.clientY-ly;
+  if(Math.abs(dx)>2 || Math.abs(dy)>2) moved=true;
+  tRotY += dx*0.005;
+  tRotX = Math.max(0.1, Math.min(1.25, tRotX + dy*0.004));
+  lx=e.clientX; ly=e.clientY;
+});
+stageEl.addEventListener('wheel',e=>{
+  e.preventDefault();
+  tDist = Math.max(4, Math.min(11, tDist + e.deltaY*0.005));
+},{passive:false});
+
+function updateViewBtn(view){
+  document.querySelectorAll('.s-br button').forEach(b=>b.classList.toggle('on', b.dataset.view===view));
+}
+document.querySelectorAll('.s-br button').forEach(b=>{
+  b.onclick = (e)=>{
+    e.stopPropagation();
+    const v = b.dataset.view;
+    updateViewBtn(v);
+    if(v==='solid'){ tExplode=0; }
+    if(v==='layers'){ tExplode=1; }
+    if(v==='top'){ tExplode=0; tRotX=1.2; tRotY=0; }
+    if(v==='reset'){ tExplode=0; tRotX=0.55; tRotY=-0.45; tDist=7.2; updateViewBtn('solid'); }
+  };
+});
+
+/* ============================================================
+   MATERIAL LIST
+   ============================================================ */
+document.querySelectorAll('#matlist li').forEach(li=>{
+  li.onclick = ()=>{
+    document.querySelectorAll('#matlist li').forEach(x=>x.classList.remove('on'));
+    li.classList.add('on');
+    const M = MATERIALS[li.dataset.id];
+    if(M) buildSystem(M);
+  };
+});
+
+/* ============================================================
+   RENDER LOOP
+   ============================================================ */
+const callouts = document.getElementById('callouts');
+function tick(){
+  rotY += (tRotY-rotY)*0.08;
+  rotX += (tRotX-rotX)*0.08;
+  camDist += (tDist-camDist)*0.08;
+  explodeT += (tExplode-explodeT)*0.08;
+
+  const cy = Math.sin(rotX)*camDist;
+  const cr = Math.cos(rotX)*camDist;
+  camera.position.set(Math.sin(rotY)*cr, cy, Math.cos(rotY)*cr);
+  camera.lookAt(0,0,0);
+
+  /* explode — each layer slides apart along Y */
+  let yTop = 0.5;
+  layerMeshes.forEach((m,i)=>{
+    const t = m.userData.layer.thk || 0.1;
+    const targetY = yTop - t/2 - i*explodeT*0.32;
+    m.position.y += (targetY - m.position.y)*0.16;
+    yTop -= t;
+  });
+
+  callouts.classList.toggle('on', explodeT > 0.4);
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+function resize(){
+  const r = stageEl.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect = r.width / r.height;
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize);
+resize();
+
+/* init */
+buildSystem(MATERIALS['tz-ep-dark']);
+tick();
+</script>
+
+</body>
+</html>
