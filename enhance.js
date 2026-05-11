@@ -822,6 +822,73 @@
       }
     } catch (e) { /* prefill is best-effort; ignore failures */ }
 
+    // v21.6 — config-summary panel + lead-form wiring.
+    // (a) Render "Ваша конфигурация" from URL params if any meaningful state.
+    // (b) Wire the lead form: AJAX POST to "/" (Netlify Forms canonical),
+    //     hidden fields capture material + config URL + computed estimate.
+    try {
+      const qs2 = new URLSearchParams(window.location.search);
+      const configEl = document.querySelector('[data-fx="calcConfig"]');
+      const listEl = document.querySelector('[data-fx="calcConfigList"]');
+      const LABELS = {
+        m: 'Материал', color: 'Цвет', aggregate: 'Каменная крошка',
+        aggregateSize: 'Размер крошки', aggregateColor: 'Цвет крошки',
+        strips: 'Разделительные планки', sargelPattern: 'Узор планок',
+        crackBridging: 'Армирующая сетка', thickness: 'Толщина',
+        finishSlider: 'Финиш', flecks: 'Флеки', broadcast: 'Кварц-посыпка',
+        cureMode: 'Скорость отверждения', accents: 'Акценты',
+        multiZone: 'Зонирование', cx: 'Свой цвет'
+      };
+      const interesting = [];
+      qs2.forEach((v, k) => {
+        if (!LABELS[k] || v === 'off' || v === 'natural' || v === 'standard') return;
+        interesting.push([LABELS[k], v]);
+      });
+      if (interesting.length && configEl && listEl) {
+        listEl.innerHTML = interesting.map(([k, v]) =>
+          `<dt>${k}</dt><dd>${v}</dd>`
+        ).join('');
+        configEl.hidden = false;
+      }
+      // Lead form wiring.
+      const lf = document.querySelector('[data-fx="leadForm"]');
+      const lfThanks = document.querySelector('[data-fx="leadThanks"]');
+      if (lf) {
+        const lfMat = lf.querySelector('[data-fx="leadMaterial"]');
+        const lfUrl = lf.querySelector('[data-fx="leadConfigUrl"]');
+        const lfEst = lf.querySelector('[data-fx="leadEstimate"]');
+        if (lfMat) lfMat.value = qs2.get('m') || qs2.get('material') || '';
+        if (lfUrl) lfUrl.value = window.location.href;
+        lf.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (lfEst) {
+            const total = document.querySelector('[data-fx="cTotalIls"]');
+            const perM2 = document.querySelector('[data-fx="cPerM2"]');
+            const area = document.querySelector('[data-fx="cAreaVal"]');
+            lfEst.value = `${total ? total.textContent : '?'} ₪ total · ${perM2 ? perM2.textContent : '?'} ₪/м² · ${area ? area.textContent : '?'} м²`;
+          }
+          const data = new FormData(lf);
+          const body = new URLSearchParams();
+          data.forEach((v, k) => body.append(k, v));
+          try {
+            const res = await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: body.toString()
+            });
+            if (res.ok) {
+              lf.hidden = true;
+              if (lfThanks) lfThanks.hidden = false;
+            } else {
+              alert('Не удалось отправить. Попробуйте ещё раз или напишите в WhatsApp.');
+            }
+          } catch (err) {
+            alert('Сеть недоступна. Напишите в WhatsApp вместо формы.');
+          }
+        });
+      }
+    } catch (e) { /* best-effort */ }
+
     set();
   };
 
