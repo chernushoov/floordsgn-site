@@ -7,3 +7,6 @@
 node_modules/
 .parcel-cache/
 .env.local
+
+# Local screenshots from scripts/snap.js
+_screens/
