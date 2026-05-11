@@ -110,7 +110,8 @@
         "thickness": "12mm",
         "crackBridging": "fibreglass-4x4",
         "aggregateSize": "medium",
-        "aggregateColor": "natural"
+        "aggregateColor": "natural",
+        "finishSlider": 25
       },
       "systemHref": "floors/terrazzo.html",
       "loadCapacity": "жилое · коммерческое"
@@ -206,7 +207,8 @@
         "thickness": "15mm",
         "crackBridging": "fibreglass-4x4",
         "aggregateSize": "medium",
-        "aggregateColor": "natural"
+        "aggregateColor": "natural",
+        "finishSlider": 25
       },
       "systemHref": "floors/terrazzo.html",
       "loadCapacity": "жилое · коммерческое"
@@ -490,14 +492,12 @@
         "densifier",
         "stainDye",
         "finishSlider",
-        "crackBridging",
-        "thickness"
+        "crackBridging"
       ],
       "defaults": {
         "color": "salt",
         "aggregateExposure": "classB-saltPepper",
         "finishSlider": 50,
-        "thickness": "0mm",
         "crackBridging": "aramid-mat"
       },
       "systemHref": "floors/concrete.html",
@@ -1374,11 +1374,6 @@
           "id": "charcoal-pa-k12",
           "hex": "#3a3838",
           "label": "Charcoal · PA-K12"
-        },
-        {
-          "id": "custom",
-          "hex": "#888888",
-          "label": "Custom NCS/RAL match"
         }
       ],
       "purcem": [
@@ -1498,7 +1493,7 @@
         },
         {
           "id": "multicolor",
-          "label": "Multicolor",
+          "label": "Тёмно-серый",
           "hex": "#3a3a3a",
           "swatch": "#5a5a5a"
         }
@@ -1556,7 +1551,8 @@
         },
         {
           "id": "verona",
-          "label": "Verona"
+          "label": "Verona",
+          "tooltip": "Розоватый мрамор Verona — отличие в чипах"
         },
         {
           "id": "basalt",
@@ -1564,7 +1560,8 @@
         },
         {
           "id": "brass",
-          "label": "Brass-flake"
+          "label": "Brass-flake",
+          "tooltip": "Латунный flake — отличие в чипах"
         },
         {
           "id": "nero-marquina",
@@ -1684,7 +1681,8 @@
         },
         {
           "id": "verona",
-          "label": "Verona"
+          "label": "Verona",
+          "tooltip": "Розоватый мрамор Verona — отличие в чипах"
         },
         {
           "id": "basalt",
@@ -1692,7 +1690,8 @@
         },
         {
           "id": "brass",
-          "label": "Brass-flake"
+          "label": "Brass-flake",
+          "tooltip": "Латунный flake — отличие в чипах"
         },
         {
           "id": "nero-marquina",
@@ -2854,7 +2853,7 @@
       },
       {
         "id": "brass",
-        "label": "Латунь",
+        "label": "Тёплый металл",
         "swatch": "#b8902a",
         "hex": "#b8902a"
       },

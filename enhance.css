@@ -5055,6 +5055,9 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   background: linear-gradient(to top, rgba(200,137,61,.55) 0, transparent);
   pointer-events: none;
 }
+/* v21.6 audit fix — R50 was sharing base 8px height with R75/R100/R150 fallthrough.
+   Explicit step so R50 < R75 < R100 < R150 is visible. */
+.fx-plate.is-cove-R50  .fx-l-body::after { height: 8px; }
 .fx-plate.is-cove-R75  .fx-l-body::after { height: 11px; }
 .fx-plate.is-cove-R100 .fx-l-body::after { height: 14px; }
 .fx-plate.is-cove-R150 .fx-l-body::after { height: 18px; }
@@ -5183,7 +5186,8 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 /* Concrete densifier — subtle sheen difference */
 .fx-plate.is-densifier-lithium-silicate .fx-l-body .fx-face-top { filter: brightness(1.02); }
-.fx-plate.is-densifier-sodium-silicate .fx-l-body .fx-face-top { filter: brightness(1.0); }
+/* v21.6 audit fix — was brightness(1.0) = no-op. Subtle tweak so button click registers. */
+.fx-plate.is-densifier-sodium-silicate .fx-l-body .fx-face-top { filter: brightness(.985) saturate(.97); }
 .fx-plate.is-densifier-potassium-silicate .fx-l-body .fx-face-top { filter: brightness(1.01) saturate(1.02); }
 .fx-plate.is-densifier-colloidal-silica .fx-l-body .fx-face-top { filter: brightness(1.03) saturate(1.04); }
 
