@@ -934,6 +934,17 @@
       return grp.options.find(o => o.id === id) || grp.options[0] || null;
     }
 
+    // v21.6 — tech-heavy controls go under a collapsed <details> ("Технические
+    // параметры") so industrials don't show 12+ buttons on first paint.
+    // Look-first groups remain visible. Owner asked: "оставить только самое
+    // важное". Color + finish slider + декор-крошка остаётся, химия/нагрузка/
+    // sertификация прячется.
+    const CTRL_TECH = new Set([
+      'crackBridging','broadcast','broadcastMedia','broadcastDensity',
+      'cureMode','certification','marking','densifier','coveBase','drain',
+      'roughness','thickness','flecks'
+    ]);
+
     // Build the right-panel controls for the active material
     function renderControls(material) {
       if (!controlsRoot) return;
@@ -941,9 +952,23 @@
       const st = ensureState(material);
       const colorGroup = schema.find(g => g.id === 'color');
       const customColor = (st.color === 'custom' && st.customHex) ? st.customHex : '';
-      controlsRoot.innerHTML = schema.map(group => {
-        // v11 — render finishSlider as a range input rather than buttons
-        if (group.id === 'finishSlider') {
+      const lookHtml = [];
+      const techHtml = [];
+      schema.forEach(group => {
+        const html = renderGroupHTML(group, st, customColor, colorGroup);
+        const dest = CTRL_TECH.has(group.id) ? techHtml : lookHtml;
+        dest.push(html);
+      });
+      controlsRoot.innerHTML = lookHtml.join('') + (techHtml.length
+        ? `<details class="fx-hero-lab__tech"><summary class="fx-hero-lab__tech-summary">${text('Технические параметры','Technical parameters')}<span class="fx-hero-lab__tech-caret" aria-hidden="true">›</span></summary><div class="fx-hero-lab__tech-body">${techHtml.join('')}</div></details>`
+        : '');
+    }
+
+    // Render one control group → HTML string. Extracted from renderControls
+    // so the look/tech bucketing can share the same renderer.
+    function renderGroupHTML(group, st, customColor, colorGroup) {
+      // v11 — render finishSlider as a range input rather than buttons
+      if (group.id === 'finishSlider') {
           const cur = (typeof st.finishSlider === 'number') ? st.finishSlider :
                       (parseInt(st.finishSlider, 10) || 25);
           const tickName = (() => {
@@ -1009,12 +1034,11 @@
         }
         const gloss = CONTROL_GLOSSARY[group.id];
         const hint  = gloss ? `<span class="fx-hero-lab__hint" data-glossary="${gloss.replace(/"/g,'&quot;')}" tabindex="0" aria-label="${gloss.replace(/"/g,'&quot;')}">?</span>` : '';
-        return `<div class="fx-hero-lab__group">
-          <p class="fx-hero-lab__ctrl-label">${localize(group.label)}${hint}</p>
-          <div class="fx-hero-lab__btnrow">${buttons}</div>
-          ${extra}
-        </div>`;
-      }).join('');
+      return `<div class="fx-hero-lab__group">
+        <p class="fx-hero-lab__ctrl-label">${localize(group.label)}${hint}</p>
+        <div class="fx-hero-lab__btnrow">${buttons}</div>
+        ${extra}
+      </div>`;
     }
 
     // Resolve final palette + apply CSS vars / overlays for current material+state

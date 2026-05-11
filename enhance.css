@@ -2519,8 +2519,11 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   position: relative;
   display: grid;
   grid-template-columns: clamp(150px, 13vw, 200px) minmax(0, 1fr);
-  column-gap: clamp(16px, 1.8vw, 32px);
-  align-items: center;
+  /* v21.6 — bumped from clamp(16,1.8vw,32) to clamp(32,4vw,72) so tilted
+     plate's left edge doesn't overlap spec-rail cards (owner screenshot
+     11 May 12:08 — "картинка наплывает"). */
+  column-gap: clamp(32px, 4vw, 72px);
+  align-items: start;
   min-height: 600px;
 }
 @media (max-width: 1180px) {
@@ -5432,6 +5435,54 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 /* End HERO LAB v17 (decision tool) */
 /* End HERO LAB v16 */
+
+/* v21.6 — "Технические параметры" collapsible block. Industrial materials
+   (mma, purcem, epoxy) have 8+ tech controls — broadcast, cureMode, marking,
+   crackBridging, certification, thickness, flecks — these drown first-paint.
+   Hide under <details> closed by default; click summary to expand. */
+.fx-hero-lab__tech {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #e8e8ed;
+}
+.fx-hero-lab__tech-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #6e6e73;
+  list-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 4px 0;
+  transition: color .2s;
+}
+.fx-hero-lab__tech-summary::-webkit-details-marker { display: none; }
+.fx-hero-lab__tech-summary:hover { color: #1d1d1f; }
+.fx-hero-lab__tech-caret {
+  font-size: 16px;
+  font-weight: 400;
+  transition: transform .25s ease;
+  color: #c7c7cc;
+}
+.fx-hero-lab__tech[open] .fx-hero-lab__tech-caret { transform: rotate(90deg); }
+.fx-hero-lab__tech-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 18px;
+}
+.fx-hero-lab__tech-body .fx-hero-lab__group { padding-bottom: 0; border-bottom: 0; }
+.fx-hero-lab__tech-body .fx-hero-lab__group + .fx-hero-lab__group {
+  padding-top: 18px;
+  border-top: 1px dashed #ececf0;
+}
 
 /* v21 — summary bar under the plate: цена · срок · гарантия · применение · R-class.
    Answers first questions of 7-of-8 UX-test personas: where's the price,

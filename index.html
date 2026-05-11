@@ -292,15 +292,14 @@
         <!-- RIGHT: dynamic controls -->
         <aside class="fx-hero-lab__panel" aria-label="Параметры образца">
           <div class="fx-hero-lab__controls" data-fx="controls"></div>
-          <div class="fx-hero-lab__meta" aria-live="polite" aria-atomic="false">
-            <div><span class="fx-hero-lab__meta-lbl">тип</span><b data-fx="pmType">терраццо · тёмный</b></div>
-            <div><span class="fx-hero-lab__meta-lbl">толщина</span><b data-fx="pmThick">12 мм</b></div>
-            <div><span class="fx-hero-lab__meta-lbl">основа</span><b data-fx="pmBase">эпоксидная смола</b></div>
-            <div><span class="fx-hero-lab__meta-lbl">cure-time</span><b data-fx="pmCure">24ч / 72ч</b></div>
-            <div><span class="fx-hero-lab__meta-lbl">гарантия</span><b data-fx="pmWarranty">10 лет</b></div>
-            <div><span class="fx-hero-lab__meta-lbl">цена</span><b data-fx="pmPrice">₪380-720/м²</b></div>
-            <div><span class="fx-hero-lab__meta-lbl"><span data-gloss="rclass">R-класс</span></span><b data-fx="pmRClass">R9</b></div>
-            <div style="display:none"><span class="fx-hero-lab__meta-lbl"><span data-gloss="esd">ESD</span></span><b data-fx="pmCert"></b></div>
+          <!-- v21.6 — right-side meta panel hidden. It duplicated the
+               summary-bar (цена/cure/гарантия/R-class) and owner asked to
+               remove prices from the right column. Kept as hidden shells
+               only because enhance.js setBadge() selectors target them. -->
+          <div class="fx-hero-lab__meta" hidden aria-hidden="true">
+            <b data-fx="pmType"></b><b data-fx="pmThick"></b><b data-fx="pmBase"></b>
+            <b data-fx="pmCure"></b><b data-fx="pmWarranty"></b><b data-fx="pmPrice"></b>
+            <b data-fx="pmRClass"></b><b data-fx="pmCert"></b>
           </div>
           <div class="fx-hero-lab__cta">
             <a href="quote.html" class="btn btn-dark fx-hero-lab__cta-primary" data-fx="systemLink">Получить смету <span aria-hidden="true">→</span></a>
