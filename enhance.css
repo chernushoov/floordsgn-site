@@ -5433,6 +5433,130 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 /* End HERO LAB v17 (decision tool) */
 /* End HERO LAB v16 */
 
+/* v21 — summary bar under the plate: цена · срок · гарантия · применение · R-class.
+   Answers first questions of 7-of-8 UX-test personas: where's the price,
+   when's it ready, what's the warranty, what loads does it handle. */
+.fx-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 20px auto 0;
+  max-width: 100%;
+  padding: 16px 4px;
+  border-top: 1px solid #e8e8ed;
+  border-bottom: 1px solid #e8e8ed;
+  justify-content: space-between;
+}
+.fx-summary-bar__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 16px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.fx-summary-bar__item + .fx-summary-bar__item {
+  border-left: 1px solid #e8e8ed;
+}
+.fx-summary-bar__lbl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #86868b;
+  white-space: nowrap;
+}
+.fx-summary-bar__val {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+@media (max-width: 980px) {
+  .fx-summary-bar { flex-direction: column; padding: 12px 0; }
+  .fx-summary-bar__item { flex-direction: row; justify-content: space-between; padding: 8px 12px; }
+  .fx-summary-bar__item + .fx-summary-bar__item { border-left: 0; border-top: 1px solid #e8e8ed; }
+}
+
+/* v21 — glossary hint badge "?" next to control labels (jargon explainer). */
+.fx-hero-lab__ctrl-label { display: inline-flex; align-items: center; gap: 6px; }
+.fx-hero-lab__hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: #6e6e73;
+  background: transparent;
+  border: 1px solid #c7c7cc;
+  border-radius: 50%;
+  cursor: help;
+  letter-spacing: 0;
+  transition: color .2s, border-color .2s, background .2s;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.fx-hero-lab__hint:hover,
+.fx-hero-lab__hint:focus {
+  color: #fff;
+  background: #1d1d1f;
+  border-color: #1d1d1f;
+  outline: none;
+}
+.fx-hero-lab__hint::after {
+  content: attr(data-glossary);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: max-content;
+  max-width: 280px;
+  padding: 10px 14px;
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #f5f5f7;
+  background: #1d1d1f;
+  border-radius: 10px;
+  white-space: normal;
+  text-align: left;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s, transform .2s;
+  z-index: 30;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.fx-hero-lab__hint::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1d1d1f;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+  z-index: 30;
+}
+.fx-hero-lab__hint:hover::after,
+.fx-hero-lab__hint:focus::after,
+.fx-hero-lab__hint:hover::before,
+.fx-hero-lab__hint:focus::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* v19 — collapsible "Ещё N…" for control groups with > 6 options */
 .fx-hero-lab__more { display: contents; }
 .fx-hero-lab__more-hidden {

@@ -112,7 +112,8 @@
         "aggregateSize": "medium",
         "aggregateColor": "natural"
       },
-      "systemHref": "floors/terrazzo.html"
+      "systemHref": "floors/terrazzo.html",
+      "loadCapacity": "жилое · коммерческое"
     },
     {
       "id": "terrazzo",
@@ -207,7 +208,8 @@
         "aggregateSize": "medium",
         "aggregateColor": "natural"
       },
-      "systemHref": "floors/terrazzo.html"
+      "systemHref": "floors/terrazzo.html",
+      "loadCapacity": "жилое · коммерческое"
     },
     {
       "id": "epoxy-light",
@@ -276,7 +278,8 @@
         "thickness": "2.5mm",
         "crackBridging": "off"
       },
-      "systemHref": "floors/epoxy.html"
+      "systemHref": "floors/epoxy.html",
+      "loadCapacity": "коммерческое · лёгкая промышленность"
     },
     {
       "id": "micro",
@@ -345,7 +348,8 @@
         "crackBridging": "fibreglass-4x4"
       },
       "systemHref": "floors/microtopping.html",
-      "topPhoto": "images/microtopping/install-1.jpg"
+      "topPhoto": "images/microtopping/install-1.jpg",
+      "loadCapacity": "жилое · коммерческое"
     },
     {
       "id": "mma",
@@ -420,7 +424,8 @@
         "thickness": "3mm",
         "crackBridging": "fibreglass-4x4"
       },
-      "systemHref": "floors/mma.html"
+      "systemHref": "floors/mma.html",
+      "loadCapacity": "промышленность · до 5 т/ось"
     },
     {
       "id": "concrete",
@@ -496,7 +501,8 @@
         "crackBridging": "aramid-mat"
       },
       "systemHref": "floors/concrete.html",
-      "topPhoto": "images/concrete-decorative/macro-1.jpg"
+      "topPhoto": "images/concrete-decorative/macro-1.jpg",
+      "loadCapacity": "жилое · коммерческое · лёгкая промышленность"
     },
     {
       "id": "purcem",
@@ -570,7 +576,8 @@
         "finishSlider": 30,
         "thickness": "6mm"
       },
-      "systemHref": "floors/pu-cement.html"
+      "systemHref": "floors/pu-cement.html",
+      "loadCapacity": "пищевое · промышленность · до 8 т/ось"
     },
     {
       "id": "rubber",
@@ -638,7 +645,8 @@
         "pattern": "solid",
         "thickness": "6mm"
       },
-      "systemHref": "floors/rubber.html"
+      "systemHref": "floors/rubber.html",
+      "loadCapacity": "жилое · спорт · коммерческое"
     },
     {
       "id": "epoxy",
@@ -714,7 +722,8 @@
         "crackBridging": "off"
       },
       "systemHref": "floors/epoxy.html",
-      "topPhoto": "images/epoxy-industrial/install-1.jpg"
+      "topPhoto": "images/epoxy-industrial/install-1.jpg",
+      "loadCapacity": "промышленность · до 6 т/ось"
     },
     {
       "id": "parquet",
@@ -805,7 +814,8 @@
         "Стабильная температура +18..+24°C"
       ],
       "_todo": "Конфирм размеры/цены/породы у Alexey",
-      "systemHref": "floors/parquet.html"
+      "systemHref": "floors/parquet.html",
+      "loadCapacity": "жилое"
     }
   ],
   "presets": [
@@ -1933,9 +1943,20 @@
         "label": "Смешанные",
         "hex": "#7a5a18"
       },
-      { "id": "brass-3mm-arch",          "label": "Латунь 3мм" },
-      { "id": "aluminum-yellow-forklift","label": "Жёлтый · forklift", "hex": "#d6b13a" },
-      { "id": "pvc-black-compensation",  "label": "PVC compensation",  "hex": "#1a1a1a" }
+      {
+        "id": "brass-3mm-arch",
+        "label": "Латунь 3мм"
+      },
+      {
+        "id": "aluminum-yellow-forklift",
+        "label": "Жёлтый · forklift",
+        "hex": "#d6b13a"
+      },
+      {
+        "id": "pvc-black-compensation",
+        "label": "PVC compensation",
+        "hex": "#1a1a1a"
+      }
     ],
     "finish": [
       {
@@ -1964,20 +1985,62 @@
         "id": "off",
         "label": "Без флеков"
       },
-      { "id": "fine",                  "label": "Vinyl · fine" },
-      { "id": "medium",                "label": "Vinyl · medium" },
-      { "id": "coarse",                "label": "Vinyl · coarse" },
-      { "id": "full-broadcast",        "label": "Full-broadcast" },
-      { "id": "mica",                  "label": "Mica" },
-      { "id": "metallic",              "label": "Metallic FX" },
-      { "id": "metallic-bronze",       "label": "Bronze" },
-      { "id": "metallic-copper",       "label": "Copper" },
-      { "id": "metallic-pearl",        "label": "Pearl" },
-      { "id": "fine-vinyl-1-16",       "label": "Vinyl · 1/16″" },
-      { "id": "large-vinyl-1-4",       "label": "Vinyl · 1/4″" },
-      { "id": "metallic-bronze-stapa", "label": "Bronze · Eckart" },
-      { "id": "metallic-copper-stapa", "label": "Copper · Eckart" },
-      { "id": "mica-pearl-iriodin",    "label": "Mica · Iriodin" }
+      {
+        "id": "fine",
+        "label": "Vinyl · fine"
+      },
+      {
+        "id": "medium",
+        "label": "Vinyl · medium"
+      },
+      {
+        "id": "coarse",
+        "label": "Vinyl · coarse"
+      },
+      {
+        "id": "full-broadcast",
+        "label": "Full-broadcast"
+      },
+      {
+        "id": "mica",
+        "label": "Mica"
+      },
+      {
+        "id": "metallic",
+        "label": "Metallic FX"
+      },
+      {
+        "id": "metallic-bronze",
+        "label": "Bronze"
+      },
+      {
+        "id": "metallic-copper",
+        "label": "Copper"
+      },
+      {
+        "id": "metallic-pearl",
+        "label": "Pearl"
+      },
+      {
+        "id": "fine-vinyl-1-16",
+        "label": "Vinyl · 1/16″"
+      },
+      {
+        "id": "large-vinyl-1-4",
+        "label": "Vinyl · 1/4″"
+      },
+      {
+        "id": "metallic-bronze-stapa",
+        "label": "Bronze · Eckart"
+      },
+      {
+        "id": "metallic-copper-stapa",
+        "label": "Copper · Eckart"
+      },
+      {
+        "id": "mica-pearl-iriodin",
+        "label": "Mica · Iriodin"
+      }
     ],
     "accents": [
       {
@@ -2006,11 +2069,26 @@
         "id": "off",
         "label": "Без посыпки"
       },
-      { "id": "fine",   "label": "Fine · R10" },
-      { "id": "medium", "label": "Medium · R11" },
-      { "id": "coarse", "label": "Coarse · R12" },
-      { "id": "heavy",  "label": "Heavy · R13" },
-      { "id": "full",   "label": "Full" }
+      {
+        "id": "fine",
+        "label": "Fine · R10"
+      },
+      {
+        "id": "medium",
+        "label": "Medium · R11"
+      },
+      {
+        "id": "coarse",
+        "label": "Coarse · R12"
+      },
+      {
+        "id": "heavy",
+        "label": "Heavy · R13"
+      },
+      {
+        "id": "full",
+        "label": "Full"
+      }
     ],
     "aggregateExposure": {
       "concrete": [
@@ -2429,12 +2507,30 @@
       ]
     },
     "sargelPattern": [
-      { "id": "off",                "label": "Без узора" },
-      { "id": "linear",             "label": "Линейный" },
-      { "id": "grid-3x3",           "label": "Сетка 3×3" },
-      { "id": "grid-2x2",           "label": "Сетка 2×2" },
-      { "id": "diagonal",           "label": "Диагональ" },
-      { "id": "decorative-meander", "label": "Меандр" }
+      {
+        "id": "off",
+        "label": "Без узора"
+      },
+      {
+        "id": "linear",
+        "label": "Линейный"
+      },
+      {
+        "id": "grid-3x3",
+        "label": "Сетка 3×3"
+      },
+      {
+        "id": "grid-2x2",
+        "label": "Сетка 2×2"
+      },
+      {
+        "id": "diagonal",
+        "label": "Диагональ"
+      },
+      {
+        "id": "decorative-meander",
+        "label": "Меандр"
+      }
     ],
     "multiZone": [
       {
@@ -2455,11 +2551,31 @@
       }
     ],
     "finishSlider": [
-      { "id": "matte", "label": "Matte", "value": 10 },
-      { "id": "satin",    "label": "Satin",    "value": 25 },
-      { "id": "polished", "label": "Polished", "value": 45 },
-      { "id": "glossy",   "label": "Glossy",   "value": 65 },
-      { "id": "wetlook",  "label": "Wet-look", "value": 90 }
+      {
+        "id": "matte",
+        "label": "Matte",
+        "value": 10
+      },
+      {
+        "id": "satin",
+        "label": "Satin",
+        "value": 25
+      },
+      {
+        "id": "polished",
+        "label": "Polished",
+        "value": 45
+      },
+      {
+        "id": "glossy",
+        "label": "Glossy",
+        "value": 65
+      },
+      {
+        "id": "wetlook",
+        "label": "Wet-look",
+        "value": 90
+      }
     ],
     "woodSpecies": {
       "parquet": [
@@ -2689,16 +2805,65 @@
       }
     ],
     "aggregateColor": [
-      { "id": "natural",      "label": "Естественный",  "swatch": "#cfc4b3" },
-      { "id": "white-marble", "label": "Белый мрамор",  "swatch": "#f4f1ea", "hex": "#f4f1ea" },
-      { "id": "black-marble", "label": "Чёрный мрамор", "swatch": "#1a1816", "hex": "#1a1816" },
-      { "id": "warm-beige",   "label": "Тёплый беж",    "swatch": "#c9b08a", "hex": "#c9b08a" },
-      { "id": "honey",        "label": "Медовый",       "swatch": "#c79a4a", "hex": "#c79a4a" },
-      { "id": "forest-green", "label": "Лесной зелёный","swatch": "#3f5b3a", "hex": "#3f5b3a" },
-      { "id": "deep-blue",    "label": "Глубокий синий","swatch": "#2d4f7a", "hex": "#2d4f7a" },
-      { "id": "brick-red",    "label": "Кирпичный",     "swatch": "#a5432b", "hex": "#a5432b" },
-      { "id": "brass",        "label": "Латунь",        "swatch": "#b8902a", "hex": "#b8902a" },
-      { "id": "nickel",       "label": "Никель",        "swatch": "#b5b8bd", "hex": "#b5b8bd" }
+      {
+        "id": "natural",
+        "label": "Естественный",
+        "swatch": "#cfc4b3"
+      },
+      {
+        "id": "white-marble",
+        "label": "Белый мрамор",
+        "swatch": "#f4f1ea",
+        "hex": "#f4f1ea"
+      },
+      {
+        "id": "black-marble",
+        "label": "Чёрный мрамор",
+        "swatch": "#1a1816",
+        "hex": "#1a1816"
+      },
+      {
+        "id": "warm-beige",
+        "label": "Тёплый беж",
+        "swatch": "#c9b08a",
+        "hex": "#c9b08a"
+      },
+      {
+        "id": "honey",
+        "label": "Медовый",
+        "swatch": "#c79a4a",
+        "hex": "#c79a4a"
+      },
+      {
+        "id": "forest-green",
+        "label": "Лесной зелёный",
+        "swatch": "#3f5b3a",
+        "hex": "#3f5b3a"
+      },
+      {
+        "id": "deep-blue",
+        "label": "Глубокий синий",
+        "swatch": "#2d4f7a",
+        "hex": "#2d4f7a"
+      },
+      {
+        "id": "brick-red",
+        "label": "Кирпичный",
+        "swatch": "#a5432b",
+        "hex": "#a5432b"
+      },
+      {
+        "id": "brass",
+        "label": "Латунь",
+        "swatch": "#b8902a",
+        "hex": "#b8902a"
+      },
+      {
+        "id": "nickel",
+        "label": "Никель",
+        "swatch": "#b5b8bd",
+        "hex": "#b5b8bd"
+      }
     ]
   },
   "controlLabels": {}

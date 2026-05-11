@@ -253,6 +253,30 @@
               </div>
             </div>
             <div class="fx-plate-hint" data-fx="plateHint">тяните чтобы вращать · нажмите чтобы разнести на слои</div>
+            <!-- v21 — summary bar: цена · срок · гарантия · нагрузка · R-класс
+                 Видна сразу под плитой, отвечает на первые вопросы 7 из 8 персон. -->
+            <div class="fx-summary-bar" data-fx="summaryBar" aria-label="Ключевые характеристики">
+              <div class="fx-summary-bar__item">
+                <span class="fx-summary-bar__lbl">Цена</span>
+                <b class="fx-summary-bar__val" data-fx="sbPrice">—</b>
+              </div>
+              <div class="fx-summary-bar__item">
+                <span class="fx-summary-bar__lbl">Готов через</span>
+                <b class="fx-summary-bar__val" data-fx="sbCure">—</b>
+              </div>
+              <div class="fx-summary-bar__item">
+                <span class="fx-summary-bar__lbl">Гарантия</span>
+                <b class="fx-summary-bar__val" data-fx="sbWarranty">—</b>
+              </div>
+              <div class="fx-summary-bar__item">
+                <span class="fx-summary-bar__lbl">Применение</span>
+                <b class="fx-summary-bar__val" data-fx="sbLoad">—</b>
+              </div>
+              <div class="fx-summary-bar__item">
+                <span class="fx-summary-bar__lbl">Антискольжение</span>
+                <b class="fx-summary-bar__val" data-fx="sbRClass">—</b>
+              </div>
+            </div>
             <!-- Mobile bottom-sheet с подписями слоёв -->
             <aside class="fx-plate-sheet" data-fx="plateSheet" aria-hidden="true">
               <div class="fx-plate-sheet__grab" aria-hidden="true"></div>

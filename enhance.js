@@ -293,28 +293,28 @@
   // Fallback inline schemas live below — used when fetch fails.
   const CONTROL_LABELS = {
     color: 'Цвет',
-    aggregate: 'Агрегат',
-    aggregateSize: 'Размер камня',
-    aggregateColor: 'Цвет агрегата',
+    aggregate: 'Каменная крошка',
+    aggregateSize: 'Размер крошки',
+    aggregateColor: 'Цвет крошки',
     accents: 'Акценты',
-    strips: 'Саргели · разделители',
-    sargel: 'Саргели · разделители',
-    sargelPattern: 'Узор саргели',
+    strips: 'Разделительные планки',
+    sargel: 'Разделительные планки',
+    sargelPattern: 'Узор планок',
     multiZone: 'Зонирование',
     finish: 'Финиш',
     finishSlider: 'Финиш · matte → wet-look',
     flecks: 'Флеки',
-    broadcast: 'Кварц-broadcast',
-    broadcastDensity: 'Плотность broadcast',
-    aggregateExposure: 'Степень обнажения · CPC class',
+    broadcast: 'Кварц-посыпка',
+    broadcastDensity: 'Плотность посыпки',
+    aggregateExposure: 'Обнажение крошки · CPC',
     trowelPattern: 'Затирка · Pandomo',
     pattern: 'Узор',
-    broadcastMedia: 'Broadcast media',
-    cureMode: 'Режим отверждения',
-    roughness: 'Текстура · R-класс',
+    broadcastMedia: 'Тип посыпки',
+    cureMode: 'Скорость отверждения',
+    roughness: 'Антискольжение · R',
     marking: 'Дорожная разметка',
     thickness: 'Толщина',
-    coveBase: 'Cove-base (плинтус-галтель)',
+    coveBase: 'Плинтус-галтель',
     drain: 'Водоотвод',
     certification: 'Сертификация',
     woodSpecies: 'Порода дерева',
@@ -323,6 +323,28 @@
     polishLevel: 'Полировка',
     densifier: 'Упрочнитель',
     stainDye: 'Тонировка'
+  };
+  // v21 — glossary tooltips for jargon controls. Shown as a "?" badge next to
+  // the control label, hover/tap reveals plain-language explanation.
+  const CONTROL_GLOSSARY = {
+    aggregate:         'Каменная крошка в полу: мрамор, базальт, гранит. Дает характер и цвет.',
+    aggregateSize:     'Фракция камня в мм. Мелкая = классика; крупная = палладиана (плиты).',
+    aggregateColor:    'Подкраска самих камней (не пола). Например белый мрамор + медовый.',
+    strips:            'Латунные или алюминиевые рейки 4-6 мм. Делят пол на ячейки, декор + компенсация деформации.',
+    sargelPattern:     'Раскладка планок по полу: линейная, сеткой, диагональю или меандром.',
+    crackBridging:     'Армирующая сетка в основании. Защищает от трещин при усадке/деформации основания.',
+    broadcast:         'Посыпка кварцем по свежей смоле. Дает антискольжение (R-класс).',
+    broadcastMedia:    'Чем посыпают: кварцевый песок (R10-12) или корунд (R13).',
+    accents:           'Дополнительные декоративные включения: перламутр, мика, латунная пыль.',
+    cureMode:          'Скорость отверждения. Fast = пешеходка через 1-2 часа (важно для цехов).',
+    roughness:         'R-класс антискольжения по DIN 51130. R9 = ровный, R13 = промышленный.',
+    finishSlider:      'Глянец финишного слоя. Matte матовый → wet-look зеркальный.',
+    multiZone:         'Деление пола на несколько цветовых зон.',
+    flecks:            'Декоративные вкрапления в финишный слой: винил, металлик, мика.',
+    coveBase:          'Поднятая галтель у стены — для влажных и пищевых помещений (мыть из шланга).',
+    aggregateExposure: 'Сколько камня видно после шлифовки. Class A = только цемент, Class C = много камня.',
+    trowelPattern:     'Затирка вручную или Pandomo-машиной. Дает рисунок поверхности.',
+    polishLevel:       'Грит финальной шлифовки. 800 = матовое сатин, 3000 = зеркало.'
   };
   const CONTROL_SCHEMAS = {
     /* schemas populated by buildSchemasFromConfig() from materials.config.json */
@@ -931,8 +953,10 @@
             if (cur <= 75) return 'glossy';
             return 'wetlook';
           })();
+          const glossSlider = CONTROL_GLOSSARY[group.id];
+          const hintSlider  = glossSlider ? `<span class="fx-hero-lab__hint" data-glossary="${glossSlider.replace(/"/g,'&quot;')}" tabindex="0" aria-label="${glossSlider.replace(/"/g,'&quot;')}">?</span>` : '';
           return `<div class="fx-hero-lab__group fx-hero-lab__group--slider">
-            <p class="fx-hero-lab__ctrl-label">${localize(group.label)}</p>
+            <p class="fx-hero-lab__ctrl-label">${localize(group.label)}${hintSlider}</p>
             <div class="fx-hero-lab__slider-row">
               <input type="range" min="0" max="100" step="5" value="${cur}" class="fx-hero-lab__finish-slider" data-control="finishSlider" aria-label="${localize(group.label)}" />
               <span class="fx-hero-lab__finish-tick" data-fx="finishTick">${tickName}</span>
@@ -983,8 +1007,10 @@
             </span>
           </div>`;
         }
+        const gloss = CONTROL_GLOSSARY[group.id];
+        const hint  = gloss ? `<span class="fx-hero-lab__hint" data-glossary="${gloss.replace(/"/g,'&quot;')}" tabindex="0" aria-label="${gloss.replace(/"/g,'&quot;')}">?</span>` : '';
         return `<div class="fx-hero-lab__group">
-          <p class="fx-hero-lab__ctrl-label">${localize(group.label)}</p>
+          <p class="fx-hero-lab__ctrl-label">${localize(group.label)}${hint}</p>
           <div class="fx-hero-lab__btnrow">${buttons}</div>
           ${extra}
         </div>`;
@@ -1331,6 +1357,19 @@
       setBadge('[data-fx="pmWarranty"]', matCfg.warranty || '');
       setBadge('[data-fx="pmPrice"]', matCfg.priceRange || '');
       setBadge('[data-fx="pmRClass"]', rgLabel || '');
+      // v21 — duplicate to the more visible summary bar under the plate.
+      const setBar = (sel, txt) => {
+        const el = document.querySelector(sel); if (!el) return;
+        const wrap = el.closest('.fx-summary-bar__item');
+        if (!txt) { if (wrap) wrap.style.display = 'none'; return; }
+        if (wrap) wrap.style.display = '';
+        el.textContent = txt;
+      };
+      setBar('[data-fx="sbPrice"]',    matCfg.priceRange || '');
+      setBar('[data-fx="sbCure"]',     matCfg.cureTime || '');
+      setBar('[data-fx="sbWarranty"]', matCfg.warranty || '');
+      setBar('[data-fx="sbLoad"]',     matCfg.loadCapacity || '');
+      setBar('[data-fx="sbRClass"]',   rgLabel || 'R9');
       // Certification badge (if active)
       const certEl = document.querySelector('[data-fx="pmCert"]');
       if (certEl) {
