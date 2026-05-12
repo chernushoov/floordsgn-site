@@ -1,12 +1,58 @@
-# Local Netlify folder
+# --- Netlify / Vercel local state ---
 .netlify
 .vercel
 
+# --- OS noise ---
 .DS_Store
 **/.DS_Store
+
+# --- Node / build caches ---
 node_modules/
 .parcel-cache/
-.env.local
+dist/
 
-# Local screenshots from scripts/snap.js
+# --- Local env ---
+.env
+.env.local
+.env.*.local
+
+# --- Local screenshots from scripts/snap.js ---
 _screens/
+
+# --- Internal openclaw control plane (never commit) ---
+.openclaw/
+
+# --- Operational docs that aren't part of the public site ---
+AGENTS.md
+BOOTSTRAP.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+
+# --- Backup snapshots (local etalon references, don't commit) ---
+_backups/
+
+# --- Audit / planning docs (local only) ---
+docs/*_AUDIT_*.md
+docs/MATERIAL_LAB_TAXONOMY*.md
+PROJECT_PLAN.md
+SITE_BLUEPRINT.md
+SITE_TREE.md
+RESEARCH.md
+SIKA_CATALOG.md
+I18N_IMPLEMENTATION.md
+I18N_SETUP.md
+CLEANUP_PLAN.md
+SYSTEM/
+
+# --- Owner's raw photo references ---
+portfolio-research/
+
+# --- Server-side scraper (not part of static site) ---
+competitor-monitor/
+
+# --- Build artifacts ---
+*.log
+*.map

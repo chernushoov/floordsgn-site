@@ -1,0 +1,58 @@
+[build]
+  publish = "."
+  command = ""
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = false
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+[build.environment]
+  NODE_ENV = "production"
+  SECRETS_SCAN_OMIT_PATHS = "_backups/**,_screens/**,research/**,competitor-monitor/**,docs/**,admin/**,scripts/**,astro/**,SYSTEM/**,node_modules/**"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-DNS-Prefetch-Control = "on"
+
+[context.production]
+  [context.production.environment]
+    NOINDEX = "false"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    NOINDEX = "true"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    NOINDEX = "true"
+
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Apex/www canonicalisation once floordsgn.com goes live
+[[redirects]]
+  from = "https://www.floordsgn.com/*"
+  to = "https://floordsgn.com/:splat"
+  status = 301
+  force = true
