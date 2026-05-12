@@ -1,17 +1,20 @@
 [build]
-  publish = "."
-  command = ""
+  publish = "dist"
+  command = "npm run build"
 
+# Custom build pipeline (scripts/build-prod.js) already minifies HTML/CSS/JS
+# and strips internal comments. Disable Netlify's redundant post-processing
+# to avoid double-transformation surprises around the three.js importmap.
 [build.processing]
   skip_processing = false
 
 [build.processing.css]
   bundle = false
-  minify = true
+  minify = false
 
 [build.processing.js]
   bundle = false
-  minify = true
+  minify = false
 
 [build.processing.html]
   pretty_urls = true
