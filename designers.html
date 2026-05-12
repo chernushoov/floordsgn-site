@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +13,23 @@
     <meta property="og:title" content="Flooring for Designers & Architects | Floor.DSGN">
     <meta property="og:description" content="We handle floors so you can focus on design. Terrazzo, microtopping, decorative concrete.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn-site.vercel.app/designers">
+    <meta property="og:url" content="https://floordsgn.netlify.app/designers">
     <meta property="og:image" content="/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn-site.vercel.app/designers">
+    <link rel="canonical" href="https://floordsgn.netlify.app/designers">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="chrome-fix.css?v=3">
 </head>
 <body>
 
     <header class="header">
         <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
+        <nav><ul class="nav"><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li></ul></nav>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
@@ -37,7 +38,7 @@
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
 
     <!-- HERO: Market B -->
     <section class="landing-hero landing-hero-light">
@@ -48,6 +49,7 @@
                 <p class="landing-tagline" data-i18n="designers_hero_tagline">We handle floors so you can focus on design.</p>
                 <p class="landing-text" data-i18n="designers_hero_desc">Partner with a reliable flooring contractor for your projects. Terrazzo, microtopping, decorative concrete — samples, specifications, and predictable delivery. Less operational chaos, more creative control.</p>
                 <a href="#designer-form" class="btn btn-dark" data-i18n="designers_hero_cta">Work With Us</a>
+                <a href="quote.html?audience=design" class="btn btn-outline" style="margin-left:8px">Calculate cost →</a>
             </div>
         </div>
         <div class="landing-hero-bg" style="background-image: url('images/terrazzo/scale_2400.jpeg');"></div>
@@ -119,7 +121,7 @@
                     </div>
                 </a>
                 <a href="materials/rubber.html" class="material-showcase-card">
-                    <div class="material-showcase-image" style="background-image: url('images/rubber/construction-worker-renovates-balcony-floor-spreads-waterproof-polyurethane-resin-glue.jpg');"></div>
+                    <div class="material-showcase-image" style="background-image: url('images/rubber/g12ground.jpg');"></div>
                     <div class="material-showcase-content">
                         <h3 data-i18n="designers_mat_rubber_title">Rubber Flooring</h3>
                         <p data-i18n="designers_mat_rubber_desc">Acoustic, comfortable, contemporary colors.</p>
@@ -336,30 +338,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
-                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
-            </div>
-            <div class="footer-badges">
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span data-i18n="footer_badge_warranty">System Warranty</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span data-i18n="footer_badge_experience">Documented Track Record</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span data-i18n="footer_badge_iso">Documented Process</span></div>
-                <div class="badge-item"><div class="badge-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span data-i18n="footer_badge_visit">Free Site Visit</span></div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://facebook.com/floordsgn" target="_blank" rel="noopener noreferrer">Facebook</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
 
     <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20designer%20partnership%20or%20a%20flooring%20project." class="sticky-cta sticky-cta-whatsapp" id="stickyCta" target="_blank" rel="noopener">
         <span>WhatsApp</span>

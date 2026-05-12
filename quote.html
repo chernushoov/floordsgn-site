@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости — Floor.DSGN</title>
+
+    <meta name="description" content="Ориентировочная стоимость пола за 30 секунд: тип покрытия, назначение, площадь.">
+    <meta name="keywords" content="калькулятор пола, стоимость эпокси, цена терраццо, расчёт стоимости пола Israel">
+    <meta name="author" content="Floor.DSGN">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.netlify.app/quote.html">
+    <meta property="og:title" content="Калькулятор стоимости — Floor.DSGN">
+    <meta property="og:description" content="Ориентировочная стоимость пола за 30 секунд: тип покрытия, назначение, площадь.">
+    <meta property="og:image" content="https://floordsgn.netlify.app/images/og-preview.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Калькулятор стоимости — Floor.DSGN">
+    <meta name="twitter:description" content="Ориентировочная стоимость пола за 30 секунд.">
+
+    <link rel="canonical" href="https://floordsgn.netlify.app/quote.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="enhance.css?v=6">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            
+            <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
+            <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <main class="fx-quote-shell">
+        <section class="fx-quote-hero">
+            <p class="fx-quote-eyebrow">Ориентир за 30 секунд</p>
+            <h1 class="fx-quote-h1">Калькулятор<br/><em>стоимости</em></h1>
+            <p class="fx-quote-meta">Не точная смета — рабочий ориентир. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</p>
+        </section>
+
+        <section class="fx-quote-grid">
+            <div class="fx-quote-info">
+                <h3>Что входит в смету</h3>
+                <ul>
+                    <li>Замер и CM-тест на влажность основания</li>
+                    <li>Подготовка: ремонт трещин, шлифовка, праймер</li>
+                    <li>Материалы европейских поставщиков</li>
+                    <li>Работа сертифицированных бригад</li>
+                    <li>Защитные пропитки, финиш</li>
+                    <li>Документированная гарантия по системе</li>
+                </ul>
+            </div>
+
+            <!-- v21.6 — config-summary panel: shows the hero-lab choices that
+                 brought the visitor here. Populated from URL params by
+                 enhance.js initCalc. Hidden when no params present. -->
+            <div class="fx-calc-config" data-fx="calcConfig" hidden>
+              <p class="fx-calc-config__title">Ваша конфигурация из 3D-сэмпла</p>
+              <dl class="fx-calc-config__list" data-fx="calcConfigList"></dl>
+              <a href="index.html" class="fx-calc-config__edit">← изменить параметры</a>
+            </div>
+
+            <div class="fx-calc-card">
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Тип покрытия</span>
+                    <div class="fx-calc-chips" data-fx="cMat">
+                        <button type="button" class="on" data-v="terrazzo" data-p="280">Терраццо</button>
+                        <button type="button" data-v="epoxy" data-p="110">Эпокси (4 мм)</button>
+                        <button type="button" data-v="micro" data-p="170">Микротопинг</button>
+                        <button type="button" data-v="concrete" data-p="80">Бетон полированный</button>
+                        <button type="button" data-v="pucement" data-p="200">PU-cement</button>
+                        <button type="button" data-v="mma" data-p="240">MMA</button>
+                    </div>
+                </div>
+
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Назначение</span>
+                    <div class="fx-calc-chips" data-fx="cUse">
+                        <button type="button" class="on" data-v="resi" data-k="1.0">Жильё</button>
+                        <button type="button" data-v="design" data-k="1.15">Шоурум / офис</button>
+                        <button type="button" data-v="indus" data-k="1.20">Производство / склад</button>
+                        <button type="button" data-v="hosp" data-k="1.25">Кафе / ритейл / гостиницы</button>
+                    </div>
+                </div>
+
+                <div class="fx-calc-row">
+                    <span class="fx-calc-lbl">Площадь · <span data-fx="cAreaLbl">120</span> м²</span>
+                    <div class="fx-calc-slider">
+                        <input type="range" min="20" max="10000" value="120" step="10" data-fx="cAreaInput" aria-label="Площадь в квадратных метрах"/>
+                        <span class="fx-calc-val"><span data-fx="cAreaVal">120</span><small>м²</small></span>
+                    </div>
+                </div>
+
+                <div class="fx-calc-out">
+                    <div class="fx-calc-num">₪ <span data-fx="cTotalIls">122 800</span></div>
+                    <div class="fx-calc-num-secondary">≈ $<span data-fx="cTotal">33 600</span> · за весь проект · ~₪<span data-fx="cPerM2">1 023</span>/м²</div>
+                    <div class="fx-calc-note">Это рабочий ориентир, а не смета. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</div>
+                </div>
+
+                <!-- v21.6 — inline lead-capture form (was a link to
+                     contact.html). Visitor gets a number → fills form →
+                     Floor.DSGN follows up. Netlify Forms canonical setup. -->
+                <form class="fx-calc-lead" name="quote-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-fx="leadForm">
+                    <input type="hidden" name="form-name" value="quote-lead">
+                    <input type="hidden" name="config_url" data-fx="leadConfigUrl" value="">
+                    <input type="hidden" name="material" data-fx="leadMaterial" value="">
+                    <input type="hidden" name="estimate" data-fx="leadEstimate" value="">
+                    <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+                    <p class="fx-calc-lead__lede">Оставьте контакты — пришлём точную смету за 48 часов после короткого замера.</p>
+                    <div class="fx-calc-lead__row">
+                        <input type="text" name="name" required placeholder="Имя" autocomplete="name" aria-label="Имя">
+                        <input type="tel" name="phone" required placeholder="Телефон / WhatsApp" autocomplete="tel" aria-label="Телефон">
+                    </div>
+                    <div class="fx-calc-lead__row">
+                        <input type="email" name="email" required placeholder="Email" autocomplete="email" aria-label="Email">
+                        <input type="text" name="address" placeholder="Адрес объекта (опционально)" aria-label="Адрес">
+                    </div>
+                    <button type="submit" class="btn btn-dark fx-calc-cta">Получить точную смету →</button>
+                    <p class="fx-calc-lead__legal">Отправляя, вы соглашаетесь на обработку контактов. Никакого спама.</p>
+                </form>
+                <div class="fx-calc-lead__thanks" data-fx="leadThanks" hidden>
+                    <h4>Спасибо!</h4>
+                    <p>Заявка получена. Перезвоним в рабочие часы (Sun-Thu 9:00-18:00).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+
+    <a href="contact.html" class="sticky-cta" id="stickyCta">
+        <span data-i18n="sticky_cta">Получить смету</span>
+    </a>
+
+    <script src="script.js?v=6"></script>
+    <script>
+        const stickyCta = document.getElementById('stickyCta');
+        if (stickyCta) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 600) stickyCta.classList.add('visible');
+                else stickyCta.classList.remove('visible');
+            });
+        }
+    </script>
+    <script src="translations.js"></script>
+    <script src="enhance.js?v=5" defer></script>
+</body>
+</html>

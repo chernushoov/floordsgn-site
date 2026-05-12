@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подбор системы — Floor.DSGN | 6 вопросов → готовая рекомендация</title>
+<meta name="description" content="6 простых вопросов о вашем объекте → подобранная Sika-система с обоснованием. За 60 секунд понять что заказывать.">
+<link rel="canonical" href="https://floordsgn.netlify.app/decision-tool">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=8"><link rel="stylesheet" href="chrome-fix.css?v=3"><link rel="stylesheet" href="enhance.css?v=6">
+</head><body data-fx-page="Подбор системы">
+<header class="header"><a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a><nav><ul class="nav"><li><a href="index.html">Главная</a></li><li><a href="floors.html">Системы</a></li><li><a href="projects.html">Проекты</a></li><li><a href="about.html">О нас</a></li><li><a href="blog.html">Блог</a></li></ul></nav><div class="lang-switch"><button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button><button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button></div><a href="contact.html" class="btn btn-dark">Связаться</a><button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button></header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Главная</a></li><li><a href="floors.html">Системы</a></li><li><a href="projects.html">Проекты</a></li><li><a href="about.html">О нас</a></li><li><a href="blog.html">Блог</a></li><li><a href="contact.html">Связаться</a></li></ul></div>
+
+<main class="fx-decision" data-fx="decisionTool">
+  <p class="fx-decision__progress" data-fx="dtProgress">Вопрос 1 из 6</p>
+
+  <div data-step="place">
+    <h2 class="fx-decision__q">Где будет пол?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="industrial"><div class="fx-decision__option-name">Производство · склад</div><div class="fx-decision__option-desc">Цех, фабрика, логистика, гараж, паркинг</div></button>
+      <button class="fx-decision__option" data-answer="food"><div class="fx-decision__option-name">Пищевое · фарма</div><div class="fx-decision__option-desc">Молочка, мясо, рыба, пивоварня, лаборатория</div></button>
+      <button class="fx-decision__option" data-answer="commercial"><div class="fx-decision__option-name">Коммерческое</div><div class="fx-decision__option-desc">Шоурум, ресторан, гостиница, ритейл, офис</div></button>
+      <button class="fx-decision__option" data-answer="designer"><div class="fx-decision__option-name">Дизайнерское</div><div class="fx-decision__option-desc">Бутик, галерея, премиум-интерьер</div></button>
+      <button class="fx-decision__option" data-answer="residential"><div class="fx-decision__option-name">Жильё</div><div class="fx-decision__option-desc">Квартира, вилла, частная резиденция</div></button>
+      <button class="fx-decision__option" data-answer="healthcare"><div class="fx-decision__option-name">Healthcare · образование</div><div class="fx-decision__option-desc">Больница, клиника, школа, фитнес</div></button>
+    </div>
+  </div>
+
+  <div data-step="traffic" style="display:none">
+    <h2 class="fx-decision__q">Какая нагрузка?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="foot"><div class="fx-decision__option-name">Только пешая</div><div class="fx-decision__option-desc">Люди, ручные тележки</div></button>
+      <button class="fx-decision__option" data-answer="wheels"><div class="fx-decision__option-name">Колёсная лёгкая</div><div class="fx-decision__option-desc">Мебель, легковые машины</div></button>
+      <button class="fx-decision__option" data-answer="forklift"><div class="fx-decision__option-name">Forklift / ричтрак</div><div class="fx-decision__option-desc">Погрузчик до 5 тонн</div></button>
+      <button class="fx-decision__option" data-answer="heavy"><div class="fx-decision__option-name">Тяжёлая &gt; 5 тонн</div><div class="fx-decision__option-desc">Heavy forklift, грузовики</div></button>
+    </div>
+  </div>
+
+  <div data-step="chemicals" style="display:none">
+    <h2 class="fx-decision__q">Контакт с химией?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="none"><div class="fx-decision__option-name">Нет / минимально</div><div class="fx-decision__option-desc">Бытовое использование</div></button>
+      <button class="fx-decision__option" data-answer="mild"><div class="fx-decision__option-name">Лёгкая</div><div class="fx-decision__option-desc">Машинное масло, бытовые средства</div></button>
+      <button class="fx-decision__option" data-answer="aggressive"><div class="fx-decision__option-name">Агрессивная</div><div class="fx-decision__option-desc">Кислоты, щёлочи, растворители, CIP</div></button>
+      <button class="fx-decision__option" data-answer="thermal"><div class="fx-decision__option-name">Термошок</div><div class="fx-decision__option-desc">Горячая→холодная вода, пар</div></button>
+    </div>
+  </div>
+
+  <div data-step="aesthetic" style="display:none">
+    <h2 class="fx-decision__q">Эстетика важна?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="function"><div class="fx-decision__option-name">Только функция</div><div class="fx-decision__option-desc">Главное чтобы работал</div></button>
+      <button class="fx-decision__option" data-answer="clean"><div class="fx-decision__option-name">Чистый минимализм</div><div class="fx-decision__option-desc">Аккуратный современный финиш</div></button>
+      <button class="fx-decision__option" data-answer="decorative"><div class="fx-decision__option-name">Декоративный</div><div class="fx-decision__option-desc">Цвет, текстура важны</div></button>
+      <button class="fx-decision__option" data-answer="signature"><div class="fx-decision__option-name">Architectural signature</div><div class="fx-decision__option-desc">Пол как часть концепции</div></button>
+    </div>
+  </div>
+
+  <div data-step="downtime" style="display:none">
+    <h2 class="fx-decision__q">Сколько можно простоя?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="weeks"><div class="fx-decision__option-name">2+ недели</div><div class="fx-decision__option-desc">Новостройка, капремонт</div></button>
+      <button class="fx-decision__option" data-answer="week"><div class="fx-decision__option-name">5–7 дней</div><div class="fx-decision__option-desc">Стандартный график</div></button>
+      <button class="fx-decision__option" data-answer="days"><div class="fx-decision__option-name">2–3 дня</div><div class="fx-decision__option-desc">Сжатый график</div></button>
+      <button class="fx-decision__option" data-answer="overnight"><div class="fx-decision__option-name">Только overnight</div><div class="fx-decision__option-desc">22:00 → 09:00</div></button>
+    </div>
+  </div>
+
+  <div data-step="budget" style="display:none">
+    <h2 class="fx-decision__q">Бюджет на материал?</h2>
+    <div class="fx-decision__options">
+      <button class="fx-decision__option" data-answer="economy"><div class="fx-decision__option-name">Economy<br/>до ₪200/м²</div><div class="fx-decision__option-desc">Базовые системы</div></button>
+      <button class="fx-decision__option" data-answer="mid"><div class="fx-decision__option-name">Mid<br/>200–500 ₪/м²</div><div class="fx-decision__option-desc">Industrial-grade Sika</div></button>
+      <button class="fx-decision__option" data-answer="premium"><div class="fx-decision__option-name">Premium<br/>500–1200 ₪/м²</div><div class="fx-decision__option-desc">Designer / food / ESD</div></button>
+      <button class="fx-decision__option" data-answer="any"><div class="fx-decision__option-name">Любой<br/>под задачу</div><div class="fx-decision__option-desc">Главное чтобы решало</div></button>
+    </div>
+  </div>
+
+  <div data-step="result" style="display:none">
+    <p class="fx-decision__progress">Готово</p>
+    <h2 class="fx-decision__q">Подобранные<br/>системы</h2>
+    <p style="font-family: Montserrat, sans-serif; font-size: 16px; color: #424245; line-height: 1.6; margin: 0 0 32px;">На основе ваших ответов рекомендуем рассмотреть:</p>
+    <ul data-fx="dtRec" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1.4; color: #1d1d1f; list-style: none; padding: 0; margin: 0 0 40px;"></ul>
+    <p style="font-family: Montserrat, sans-serif; font-size: 14px; color: #6e6e73; margin: 0 0 32px;">Это рабочий ориентир. Финальная рекомендация — после выезда инженера с pull-off test и RH probe (бесплатно, 48 часов).</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <a href="contact.html" class="btn btn-dark">Запросить выезд</a>
+      <a href="floors.html" class="btn btn-outline">Все системы</a>
+      <a href="quote.html" class="btn btn-outline">Калькулятор</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+
+<a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span>Написать в WhatsApp</a>
+
+<script src="script.js"></script><script src="translations.js" defer></script><script src="enhance.js?v=5" defer></script>
+</body></html>

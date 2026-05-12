@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,17 @@
     <meta property="og:title" content="Contact Floor.DSGN | Get Free Quote">
     <meta property="og:description" content="Free flooring consultation. Detailed quote within 48 hours.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn-site.vercel.app/contact">
+    <meta property="og:url" content="https://floordsgn.netlify.app/contact">
     <meta property="og:image" content="/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn-site.vercel.app/contact">
+    <link rel="canonical" href="https://floordsgn.netlify.app/contact">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="chrome-fix.css?v=3">
 </head>
 <body>
 
@@ -37,7 +38,7 @@
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
 
     <section class="contact-hero">
         <div class="container">
@@ -179,17 +180,11 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
-                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
-            </div>
-            <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener">LinkedIn</a></div></div>
-        </div>
-    </footer>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+
+    <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20a%20flooring%20project." class="sticky-cta sticky-cta-whatsapp" id="stickyCta" target="_blank" rel="noopener">
+        <span>WhatsApp</span>
+    </a>
 
     <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20a%20flooring%20project." class="sticky-cta sticky-cta-whatsapp" id="stickyCta" target="_blank" rel="noopener">
         <span>WhatsApp</span>
@@ -251,20 +246,76 @@
     })();
     </script>
     <script>
-    // Pre-fill the floor system select from ?system= query param.
+    // Pre-fill from ?system=&area=&use=&estimate_usd=&estimate_ils=&intent=
+    // (legacy hash fragment also supported for backwards compatibility).
     (function() {
       try {
-        var params = new URLSearchParams(window.location.search);
-        var sys = params.get('system');
-        if (!sys) return;
-        var select = document.querySelector('select[name*="system"]');
-        if (!select) return;
-        var match = sys.toLowerCase();
-        for (var i = 0; i < select.options.length; i++) {
-          if (select.options[i].value.toLowerCase() === match) {
-            select.selectedIndex = i;
-            break;
+        var search = new URLSearchParams(window.location.search);
+        var hash   = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        function param(name) { return search.get(name) || hash.get(name); }
+
+        // System select
+        var sys = param('system');
+        if (sys) {
+          var sysSelect = document.querySelector('select[name*="system"]');
+          if (sysSelect) {
+            var match = sys.toLowerCase();
+            for (var i = 0; i < sysSelect.options.length; i++) {
+              if (sysSelect.options[i].value.toLowerCase() === match) {
+                sysSelect.selectedIndex = i; break;
+              }
+            }
           }
+        }
+
+        // Approximate area
+        var area = param('area');
+        if (area && /^\d+$/.test(area)) {
+          var areaInput = document.getElementById('area');
+          if (areaInput) areaInput.value = area;
+        }
+
+        // Project type — map calculator `use` to the contact form values
+        var use = param('use');
+        if (use) {
+          var typeMap = {
+            indus: 'industrial',
+            design: 'commercial',
+            hosp: 'commercial',
+            resi: 'residential'
+          };
+          var typeVal = typeMap[use];
+          if (typeVal) {
+            var typeSelect = document.getElementById('project-type');
+            if (typeSelect) {
+              for (var j = 0; j < typeSelect.options.length; j++) {
+                if (typeSelect.options[j].value.toLowerCase() === typeVal) {
+                  typeSelect.selectedIndex = j; break;
+                }
+              }
+            }
+          }
+        }
+
+        // Compose a starter message for the textarea, prepended only if empty
+        var estUsd = param('estimate_usd');
+        var estIls = param('estimate_ils');
+        var intent = param('intent');
+        var msgEl  = document.getElementById('message');
+        if (msgEl && !msgEl.value) {
+          var lines = [];
+          if (intent === 'sample') {
+            lines.push('Хочу заказать физический образец материала.');
+          } else if (sys || area || estIls) {
+            lines.push('Запрос из калькулятора:');
+            if (sys)    lines.push('• Система: ' + sys);
+            if (use)    lines.push('• Назначение: ' + use);
+            if (area)   lines.push('• Площадь: ' + area + ' м²');
+            if (estIls) lines.push('• Ориентир: ₪ ' + estIls + (estUsd ? ' (~$ ' + estUsd + ')' : ''));
+            lines.push('');
+            lines.push('Прошу подтвердить смету и сроки.');
+          }
+          if (lines.length) msgEl.value = lines.join('\n');
         }
       } catch (e) { /* no-op */ }
     })();

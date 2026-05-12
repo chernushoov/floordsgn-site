@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Готовность основания — Floor.DSGN | 10 вопросов о вашей плите</title>
+<meta name="description" content="10 простых вопросов о существующей бетонной плите → readiness score. Узнаем за 2 минуты что нужно сделать перед укладкой полимерного пола.">
+<link rel="canonical" href="https://floordsgn.netlify.app/substrate-check">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=8"><link rel="stylesheet" href="chrome-fix.css?v=3"><link rel="stylesheet" href="enhance.css?v=6">
+<style>
+.fx-sub-shell { max-width: 920px; margin: 0 auto; padding: 100px 36px; font-family: Montserrat, sans-serif; }
+.fx-sub-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 88px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin: 0 0 20px; color: #1d1d1f; }
+.fx-sub-lede { font-size: 17px; line-height: 1.6; color: #424245; max-width: 720px; margin: 0 0 48px; }
+.fx-sub-q { background: #fff; border: 1px solid #e8e8ed; border-radius: 18px; padding: 28px; margin-bottom: 16px; transition: border-color .25s ease; }
+.fx-sub-q:has(input:checked) { border-color: #1d1d1f; }
+.fx-sub-q__title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; line-height: 1.2; margin: 0 0 16px; color: #1d1d1f; }
+.fx-sub-q__opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.fx-sub-q__opt { display: inline-flex; align-items: center; padding: 10px 18px; border: 1px solid #d2d2d7; border-radius: 980px; cursor: pointer; font-size: 13px; font-weight: 500; transition: .2s; user-select: none; background: #fff; }
+.fx-sub-q__opt:hover { border-color: #1d1d1f; }
+.fx-sub-q__opt input { display: none; }
+.fx-sub-q__opt:has(input:checked) { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+.fx-sub-result { background: #f5f5f7; border-radius: 28px; padding: 40px; margin-top: 40px; display: none; }
+.fx-sub-result.show { display: block; }
+.fx-sub-score { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 400; color: #1d1d1f; line-height: 1; }
+.fx-sub-score em { color: #6e6e73; font-style: italic; font-size: 36px; }
+.fx-sub-status { font-size: 12px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: #6e6e73; margin: 16px 0 8px; }
+.fx-sub-issues { margin: 24px 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: #424245; }
+.fx-sub-issues li { margin-bottom: 8px; }
+.fx-sub-submit { display: inline-block; margin-top: 16px; }
+</style>
+</head><body data-fx-page="Готовность основания">
+<header class="header"><a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a><nav><ul class="nav"><li><a href="index.html">Главная</a></li><li><a href="floors.html">Системы</a></li><li><a href="projects.html">Проекты</a></li><li><a href="about.html">О нас</a></li><li><a href="blog.html">Блог</a></li></ul></nav><div class="lang-switch"><button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button><button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button></div><a href="contact.html" class="btn btn-dark">Связаться</a><button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button></header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Главная</a></li><li><a href="floors.html">Системы</a></li><li><a href="projects.html">Проекты</a></li><li><a href="about.html">О нас</a></li><li><a href="blog.html">Блог</a></li><li><a href="contact.html">Связаться</a></li></ul></div>
+
+<main class="fx-sub-shell" data-fx="subCheck">
+  <p class="fx-eyebrow">Инструмент</p>
+  <h1 class="fx-sub-h1">Готовность<br/>основания</h1>
+  <p class="fx-sub-lede">10 простых вопросов о существующей бетонной плите — чтобы понять что нужно сделать перед укладкой полимерного пола. Не заменяет реальный замер, но помогает оценить сроки и бюджет на подготовку.</p>
+
+  <div class="fx-sub-q" data-q="age"><h3 class="fx-sub-q__title">1. Сколько дней с момента заливки бетона?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="0" checked>≥ 28 дней (норма)</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="2">14–28 дней (только polish)</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="5">&lt; 14 дней</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="grade"><h3 class="fx-sub-q__title">2. Класс бетона</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="0" checked>C25 / B25 или выше</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="3">C20 / B20</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="6">C15 / B15 или ниже</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="2">Не знаю</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="moisture"><h3 class="fx-sub-q__title">3. Влажность (если измеряли) или есть ли подложка-гидроизоляция?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="0" checked>Сухой, есть гидроизоляция</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3">Кажется сухим</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="6">Влажный, есть пятна</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3">Не знаю</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="cracks"><h3 class="fx-sub-q__title">4. Есть ли видимые трещины?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="0" checked>Нет</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="2">Мелкие усадочные</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="5">Крупные / активные</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="oil"><h3 class="fx-sub-q__title">5. Загрязнения (масло, жир, силикон)?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="0" checked>Нет</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="3">Есть пятна</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="6">Сильное проникновение</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="coating"><h3 class="fx-sub-q__title">6. Существующее покрытие?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="0" checked>Чистый бетон</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="2">Краска, легко снимается</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="4">Старый эпокси/PU</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="3">Плитка</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="flat"><h3 class="fx-sub-q__title">7. Ровность плиты</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="0" checked>SR1 / SR2 (хорошо)</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="2">Неровная, но без волн</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="4">Заметные волны / ямы</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="joints"><h3 class="fx-sub-q__title">8. Деформационные швы / стыки карт?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="0" checked>Нет, монолит</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="2">Есть закрытые</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="3">Есть рабочие швы (нужно сохранить)</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="dust"><h3 class="fx-sub-q__title">9. Пылит ли бетон когда метёшь?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="0" checked>Нет</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="3">Слегка</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="5">Сильно (слабый верхний слой)</label>
+    </div>
+  </div>
+
+  <div class="fx-sub-q" data-q="access"><h3 class="fx-sub-q__title">10. Доступ для дробеструйки 380 В + большой пылесос?</h3>
+    <div class="fx-sub-q__opts">
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="0" checked>Да</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="2">Только 220 В</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="3">Электричества нет</label>
+    </div>
+  </div>
+
+  <button class="btn btn-dark" data-fx="subSubmit" style="margin-top: 24px;">Получить оценку</button>
+
+  <div class="fx-sub-result" data-fx="subResult">
+    <p class="fx-sub-status" data-fx="subStatus">Готовность</p>
+    <div class="fx-sub-score"><span data-fx="subScore">—</span><em>/100</em></div>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; margin: 24px 0 8px;" data-fx="subVerdict">—</h3>
+    <ul class="fx-sub-issues" data-fx="subIssues"></ul>
+    <p style="font-size: 13px; color: #6e6e73; margin: 16px 0 0;">Это рабочий ориентир. Реальную смету и план подготовки получите после выезда инженера с pull-off test и RH probe — бесплатно, в течение 48 часов.</p>
+    <a href="contact.html?intent=substrate-check" class="btn btn-dark fx-sub-submit">Запросить выезд</a>
+  </div>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors.html">Все системы</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор</a></li><li><a href="compare.html">Сравнение</a></li><li><a href="substrate-check.html">Готовность</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+
+<a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span>Написать в WhatsApp</a>
+
+<script>
+(function() {
+  const root = document.querySelector('[data-fx="subCheck"]');
+  const submit = document.querySelector('[data-fx="subSubmit"]');
+  const resultEl = document.querySelector('[data-fx="subResult"]');
+  if (!submit) return;
+
+  const ISSUE_TEXT = {
+    age: { 2: 'Бетон 14–28 дней — допустимо только для шлифовки/полировки, не для топпингов.', 5: 'Бетон моложе 14 дней — ждём минимум до 14 дней (polish-only) или до 28 дней (топпинги).' },
+    grade: { 3: 'C20: возможна установка, но прочность системы будет ограничена прочностью основания.', 6: 'C15 и ниже: рекомендуем topping (наливная стяжка C40+) или замену плиты.', 2: 'Класс бетона неизвестен — проведём склерометрию на замере.' },
+    moisture: { 3: 'Влажность не подтверждена — обязателен RH probe ASTM F2170 перед сметой.', 6: 'Высокая влажность: moisture-mitigation primer (+30% к подготовке) или переход на PU-cement.' },
+    cracks: { 2: 'Усадочные трещины — расшивка + injection полиуретаном/эпокси на этапе подготовки.', 5: 'Активные трещины: crack-isolation мембрана обязательна. Может потребоваться предварительное усиление основания.' },
+    oil: { 3: 'Масло/жир: агрессивная шлифовка + дегриз. +1 день к графику.', 6: 'Сильное проникновение масла: фрезеровка верхних 5 мм + дегриз. +2–3 дня и +20–30% к стоимости подготовки.' },
+    coating: { 2: 'Краска: механическое снятие шлифмашиной перед укладкой.', 4: 'Старый эпокси/PU: pull-off test обязателен. Адгезия > 1.5 МПа = recoat возможен. Иначе — полное снятие.', 3: 'Плитка: adhesion test + специальный праймер для гладких поверхностей.' },
+    flat: { 2: 'Неровность: возможна тонкая шпаклёвка перед заливкой.', 4: 'Серьёзные перепады: наливная стяжка SR1 (+₪40–80/м²).' },
+    joints: { 2: 'Закрытые швы — сохранение или расшивка по проекту.', 3: 'Рабочие швы: divider-strips или гибкий герметик после укладки. Эпокси через рабочий шов не льётся.' },
+    dust: { 3: 'Слабая поверхностная пыль: densifier перед основной укладкой.', 5: 'Сильное пылеобразование: верхний слой нужно снять механически и упрочнить.' },
+    access: { 2: 'Только 220 В: тяжёлая дробеструйка не работает. Альтернатива — алмазная шлифовка (медленнее, дороже).', 3: 'Без электричества: дизель-генератор за наш счёт + 1 день логистики.' },
+  };
+
+  function calc() {
+    const inputs = root.querySelectorAll('input[type="radio"]:checked');
+    let penalty = 0;
+    const issues = [];
+    inputs.forEach(inp => {
+      const val = parseInt(inp.value, 10);
+      if (val > 0) {
+        penalty += val;
+        const qkey = inp.name;
+        const text = ISSUE_TEXT[qkey] && ISSUE_TEXT[qkey][val];
+        if (text) issues.push(text);
+      }
+    });
+    const score = Math.max(0, 100 - penalty * 2);
+    let status = 'Хорошая готовность';
+    let verdict = 'Стандартная подготовка, можно начинать.';
+    if (score < 80) { status = 'Средняя готовность'; verdict = 'Нужна расширенная подготовка — внимание к нюансам ниже.'; }
+    if (score < 60) { status = 'Низкая готовность'; verdict = 'Подготовка займёт +50% времени и +25–40% бюджета.'; }
+    if (score < 40) { status = 'Критично'; verdict = 'Рекомендуем рассмотреть альтернативную систему или замену плиты. Скажем честно на выезде.'; }
+
+    document.querySelector('[data-fx="subStatus"]').textContent = status;
+    document.querySelector('[data-fx="subScore"]').textContent = score;
+    document.querySelector('[data-fx="subVerdict"]').textContent = verdict;
+    const ul = document.querySelector('[data-fx="subIssues"]');
+    ul.innerHTML = issues.length ? issues.map(i => `<li>${i}</li>`).join('') : '<li>Никаких блокеров не обнаружено. Стандартная подготовка по протоколу Sika.</li>';
+
+    resultEl.classList.add('show');
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  submit.addEventListener('click', calc);
+})();
+</script>
+
+<script src="script.js"></script><script src="translations.js" defer></script><script src="enhance.js?v=5" defer></script>
+</body></html>

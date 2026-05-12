@@ -20,10 +20,12 @@ const translations = {
         hero_cta_secondary: "See Work Examples",
 
         // Trust Section
-        trust_projects: "Work examples and site assessment",
+        trust_projects: "Documented project examples",
         trust_years: "Documented track record",
-        trust_systems: "Floor Systems",
-        trust_warranty: "Warranty by selected system",
+        trust_systems: "Floor system families",
+        trust_warranty: "System-specific warranty",
+        industries_title: "Industries we work in",
+        industries_note: "Sectors our floor systems are specified for. Logos shown are industry references, not client endorsements.",
 
         // Services
         services_subtitle: "Our Expertise",
@@ -89,25 +91,40 @@ const translations = {
         cta_btn_call: "Call Now",
 
         // Home — Hero Split
-        home_hero_overline: "Floor.DSGN &bull; Israel",
-        home_hero_title: "Floor systems built for traffic, moisture and deadlines.",
-        home_hero_text: "We design and install industrial, commercial and design-led floor systems across Israel, balancing durability, downtime, and finish quality from the first technical brief.",
-        home_hero_point1: "48-hour technical quote",
-        home_hero_point2: "European systems, local execution",
-        home_hero_point3: "Industrial, hospitality, retail and private interiors",
-        home_routes_label: "Choose the route that matches the project.",
+        home_hero_overline: "Floor.DSGN • Israel",
+        home_hero_title: "What brings you here?",
+
+        // Hero3D — 3D configurator preview block (the dominant landing visual)
+        home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
+        home_hero3d_h1: "Design your floor<br><em>in 3D — and we'll lay it.</em>",
+        home_hero3d_lede: "WebGL configurator with real PBR textures. 10 systems — terrazzo, epoxy, microtopping, polished concrete, PU-cement, MMA, rubber, ComfortFloor. Change material, thickness, color, aggregate — get an order formula and a precise quote.",
+        home_hero3d_btn_primary: "Open 3D configurator",
+        home_hero3d_btn_ghost: "All systems",
+        home_hero3d_spec_materials: "materials",
+        home_hero3d_spec_textures: "real textures",
+        home_hero3d_spec_quote: "to quote",
+        home_hero3d_caption: "Live configurator preview · click to open the full scene",
+
+        // Picker section
+        home_picker_eyebrow: "Floor.DSGN · Israel · Engineering",
+        home_picker_h1: "Choose your <em>system</em>",
+        home_picker_lede: "Eight families of industrial and design floors. Inside each — variants by load, thickness and price. Not sure — try the <a href=\"decision-tool.html\" class=\"fx-picker__inline-link\">6-question wizard</a>.",
+
+        // Sticky mobile CTA bar
+        sticky_cta_sample: "Sample",
+        sticky_cta_estimate: "Estimate",
         home_market_a_label: "For Business Owners",
         home_market_a_title: "Industrial &<br>Commercial",
-        home_market_a_desc: "Factories, warehouses, logistics, restaurants, parking. Fast installation planning, minimal downtime, practical durability.",
-        home_market_a_feat1: "Epoxy &bull; PU-Cement &bull; MMA",
-        home_market_a_feat2: "48h direction &bull; system-specific warranty",
-        home_market_a_cta: "Get Industrial Quote &rarr;",
+        home_market_a_desc: "Factories, warehouses, logistics, restaurants, parking. Fast installation, minimal downtime, maximum durability.",
+        home_market_a_feat1: "Epoxy • PU-Cement • MMA",
+        home_market_a_feat2: "48h quote • 10-year warranty",
+        home_market_a_cta: "Get Industrial Quote →",
         home_market_b_label: "For Designers & Architects",
         home_market_b_title: "Design &<br>Finishes",
         home_market_b_desc: "Terrazzo, microtopping, decorative concrete. We handle floors so you can focus on design.",
-        home_market_b_feat1: "Terrazzo &bull; Microtopping &bull; Concrete",
-        home_market_b_feat2: "Samples &bull; Specs &bull; Reliable delivery",
-        home_market_b_cta: "Partner With Us &rarr;",
+        home_market_b_feat1: "Terrazzo • Microtopping • Concrete",
+        home_market_b_feat2: "Samples • Specs • Reliable delivery",
+        home_market_b_cta: "Partner With Us →",
 
         // Home — Services
         home_services_subtitle: "Our Expertise",
@@ -505,16 +522,16 @@ const translations = {
         designers_mat_terrazzo_tag: "Signature Material",
         designers_mat_terrazzo_title: "Terrazzo",
         designers_mat_terrazzo_desc: "Venetian and epoxy terrazzo. Custom aggregates, unlimited colors. The ultimate statement floor.",
-        designers_mat_terrazzo_link: "Explore Terrazzo &rarr;",
+        designers_mat_terrazzo_link: "Explore Terrazzo →",
         designers_mat_micro_title: "Microtopping",
         designers_mat_micro_desc: "Ultra-thin cement coating. Seamless, modern, minimal.",
-        designers_mat_micro_link: "Explore &rarr;",
+        designers_mat_micro_link: "Explore →",
         designers_mat_concrete_title: "Decorative Concrete",
         designers_mat_concrete_desc: "Polished, stained, textured. Industrial aesthetic refined.",
-        designers_mat_concrete_link: "Explore &rarr;",
+        designers_mat_concrete_link: "Explore →",
         designers_mat_rubber_title: "Rubber Flooring",
         designers_mat_rubber_desc: "Acoustic, comfortable, contemporary colors.",
-        designers_mat_rubber_link: "Explore &rarr;",
+        designers_mat_rubber_link: "Explore →",
         designers_process_overline: "Process",
         designers_process_title: "How We Work With Designers",
         designers_step1_title: "Initial Consultation",
@@ -587,7 +604,7 @@ const translations = {
         industrial_systems_title: "Industrial Floor Systems",
         industrial_sys_epoxy_title: "Epoxy Systems",
         industrial_sys_epoxy_desc: "Self-leveling, quartz broadcast, ESD, anti-static",
-        industrial_sys_link: "Learn More &rarr;",
+        industrial_sys_link: "Learn More →",
         industrial_sys_pu_title: "PU-Cement",
         industrial_sys_pu_desc: "Thermal shock, wet processing, kitchens, production zones",
         industrial_sys_mma_title: "MMA Resin",
@@ -751,6 +768,25 @@ const translations = {
         epoxy_rel1: "PU-Cement Flooring",
         epoxy_rel2: "MMA Resin Systems",
         epoxy_rel3: "Microtopping",
+
+        // Epoxy decision-spec table (materials/epoxy.html)
+        spec_subtitle: "Spec at a glance",
+        spec_title_epoxy: "Epoxy decision specs",
+        spec_moisture_label: "Substrate moisture",
+        spec_epoxy_moisture: "≤ 4% by weight (CM-method); confirm before priming",
+        spec_load_label: "Load class",
+        spec_epoxy_load: "Light–heavy traffic; forklift load with thicker self-leveling buildup",
+        spec_downtime_label: "Realistic downtime",
+        spec_epoxy_downtime: "3–7 days from substrate prep to full chemical cure",
+        spec_thermal_label: "Thermal range",
+        spec_epoxy_thermal: "Typically rated −20°C to +60°C in service; system-dependent",
+        spec_chemical_label: "Chemical exposure",
+        spec_epoxy_chemical: "Acids, fuels, oils — system-specific topcoat needed",
+        spec_system_label: "System buildup",
+        spec_epoxy_system: "Primer + body (2–4 mm) + topcoat; quartz broadcast for slip resistance",
+        spec_warranty_label: "Warranty",
+        spec_epoxy_warranty: "System-specific; documented in project proposal",
+        spec_note: "Real numbers depend on substrate, environment and selected system family. We confirm everything before quoting.",
 
         // MMA
         mma_category: "Rapid-Cure Technology",
@@ -1346,10 +1382,12 @@ const translations = {
         hero_cta_secondary: "Примеры работ",
 
         // Trust Section
-        trust_projects: "Примеры работ и оценка объекта",
+        trust_projects: "Документированные примеры проектов",
         trust_years: "Документированный опыт",
-        trust_systems: "Систем покрытий",
-        trust_warranty: "Гарантия по выбранной системе",
+        trust_systems: "Семейства напольных систем",
+        trust_warranty: "Гарантия по конкретной системе",
+        industries_title: "Отрасли, в которых мы работаем",
+        industries_note: "Секторы, для которых проектируются наши системы покрытий. Показанные логотипы — отраслевые ориентиры, не утверждение клиентских отношений.",
 
         // Services
         services_subtitle: "Наша экспертиза",
@@ -1424,25 +1462,40 @@ const translations = {
         cta_btn_call: "Позвонить",
 
         // Home — Hero Split
-        home_hero_overline: "Floor.DSGN &bull; Израиль",
-        home_hero_title: "Напольные системы, рассчитанные на трафик, влагу и жёсткие сроки.",
-        home_hero_text: "Мы проектируем и реализуем промышленные, коммерческие и дизайнерские напольные системы по всему Израилю, балансируя износостойкость, сроки простоя и качество финиша с первого технического брифа.",
-        home_hero_point1: "Техническая смета за 48 часов",
-        home_hero_point2: "Европейские системы, локальная реализация",
-        home_hero_point3: "Промышленные объекты, horeca, retail и частные интерьеры",
-        home_routes_label: "Выберите направление под ваш проект.",
+        home_hero_overline: "Floor.DSGN • Израиль",
+        home_hero_title: "Чем мы можем помочь?",
+
+        // Hero3D — главный визуальный блок лендинга
+        home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
+        home_hero3d_h1: "Соберите свой пол<br><em>в 3D — а потом мы его уложим.</em>",
+        home_hero3d_lede: "WebGL-конструктор с реальными PBR-текстурами. 10 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA, резина, ComfortFloor. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.",
+        home_hero3d_btn_primary: "Открыть 3D-конфигуратор",
+        home_hero3d_btn_ghost: "Все системы",
+        home_hero3d_spec_materials: "материалов",
+        home_hero3d_spec_textures: "real textures",
+        home_hero3d_spec_quote: "до сметы",
+        home_hero3d_caption: "Превью реального конфигуратора · клик откроет полную сцену",
+
+        // Picker · выбор системы
+        home_picker_eyebrow: "Floor.DSGN · Israel · Engineering",
+        home_picker_h1: "Выберите <em>систему</em>",
+        home_picker_lede: "Восемь семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href=\"decision-tool.html\" class=\"fx-picker__inline-link\">подбор за 6 вопросов</a>.",
+
+        // Sticky mobile CTA bar
+        sticky_cta_sample: "Образец",
+        sticky_cta_estimate: "Расчёт",
         home_market_a_label: "Для бизнеса",
         home_market_a_title: "Промышленные и<br>коммерческие полы",
-        home_market_a_desc: "Заводы, склады, логистика, рестораны, паркинги. Планирование быстрых работ, минимальный простой, практичная износостойкость.",
-        home_market_a_feat1: "Эпоксид &bull; PU-цемент &bull; MMA",
-        home_market_a_feat2: "Направление за 48ч &bull; гарантия по системе",
-        home_market_a_cta: "Запросить расчёт &rarr;",
+        home_market_a_desc: "Заводы, склады, логистика, рестораны, паркинги. Быстрый монтаж, минимальный простой, максимальная прочность.",
+        home_market_a_feat1: "Эпоксид • PU-цемент • MMA",
+        home_market_a_feat2: "Смета за 48ч • Гарантия 10 лет",
+        home_market_a_cta: "Запросить расчёт →",
         home_market_b_label: "Для дизайнеров и архитекторов",
         home_market_b_title: "Дизайн и<br>финишные покрытия",
         home_market_b_desc: "Терраццо, микротоппинг, декоративный бетон. Мы берём полы на себя, чтобы вы сосредоточились на дизайне.",
-        home_market_b_feat1: "Терраццо &bull; Микротоппинг &bull; Бетон",
-        home_market_b_feat2: "Образцы &bull; Спецификации &bull; Точные сроки",
-        home_market_b_cta: "Стать партнёром &rarr;",
+        home_market_b_feat1: "Терраццо • Микротоппинг • Бетон",
+        home_market_b_feat2: "Образцы • Спецификации • Точные сроки",
+        home_market_b_cta: "Стать партнёром →",
 
         // Home — Services
         home_services_subtitle: "Наша экспертиза",
@@ -1770,16 +1823,16 @@ const translations = {
         designers_mat_terrazzo_tag: "Фирменный материал",
         designers_mat_terrazzo_title: "Терраццо",
         designers_mat_terrazzo_desc: "Венецианское и эпоксидное терраццо. Индивидуальные заполнители, неограниченные цвета.",
-        designers_mat_terrazzo_link: "Терраццо &rarr;",
+        designers_mat_terrazzo_link: "Терраццо →",
         designers_mat_micro_title: "Микротоппинг",
         designers_mat_micro_desc: "Ультратонкое цементное покрытие. Бесшовное, современное, минималистичное.",
-        designers_mat_micro_link: "Подробнее &rarr;",
+        designers_mat_micro_link: "Подробнее →",
         designers_mat_concrete_title: "Декоративный бетон",
         designers_mat_concrete_desc: "Полированный, тонированный, текстурированный. Промышленная эстетика, утончённый стиль.",
-        designers_mat_concrete_link: "Подробнее &rarr;",
+        designers_mat_concrete_link: "Подробнее →",
         designers_mat_rubber_title: "Резиновое покрытие",
         designers_mat_rubber_desc: "Акустика, комфорт, современные цвета.",
-        designers_mat_rubber_link: "Подробнее &rarr;",
+        designers_mat_rubber_link: "Подробнее →",
         designers_process_overline: "Процесс",
         designers_process_title: "Как мы работаем с дизайнерами",
         designers_step1_title: "Первичная консультация",
@@ -1852,7 +1905,7 @@ const translations = {
         industrial_systems_title: "Промышленные системы полов",
         industrial_sys_epoxy_title: "Эпоксидные системы",
         industrial_sys_epoxy_desc: "Самовыравнивающиеся, кварцевые, ESD, антистатические",
-        industrial_sys_link: "Подробнее &rarr;",
+        industrial_sys_link: "Подробнее →",
         industrial_sys_pu_title: "PU-цемент",
         industrial_sys_pu_desc: "Термоудар, мокрые процессы, кухни, производственные зоны",
         industrial_sys_mma_title: "MMA-смола",
@@ -2077,6 +2130,25 @@ const translations = {
         epoxy_rel1: "PU-цемент",
         epoxy_rel2: "MMA-системы",
         epoxy_rel3: "Микротоппинг",
+
+        // Эпокси · спек-таблица (materials/epoxy.html)
+        spec_subtitle: "Спека на одном экране",
+        spec_title_epoxy: "Эпокси · ключевые спеки",
+        spec_moisture_label: "Влажность основания",
+        spec_epoxy_moisture: "≤ 4% массовых (CM-метод); подтверждаем перед грунтованием",
+        spec_load_label: "Класс нагрузки",
+        spec_epoxy_load: "Лёгкая–тяжёлая, до forklift с более толстым SL-слоем",
+        spec_downtime_label: "Реальный простой",
+        spec_epoxy_downtime: "3–7 дней от подготовки до полной химической полимеризации",
+        spec_thermal_label: "Температурный диапазон",
+        spec_epoxy_thermal: "Обычно −20…+60°C в эксплуатации, зависит от системы",
+        spec_chemical_label: "Химическая стойкость",
+        spec_epoxy_chemical: "Кислоты, топливо, масла — топкоут подбирается под конкретный состав",
+        spec_system_label: "Структура пирога",
+        spec_epoxy_system: "Праймер + тело (2–4 мм) + топкоут; кварц-broadcast для R-класса",
+        spec_warranty_label: "Гарантия",
+        spec_epoxy_warranty: "Зависит от системы; точные сроки в коммерческом предложении",
+        spec_note: "Реальные цифры зависят от основания, среды и выбранной системы. Подтверждаем всё до сметы.",
 
         // Microtopping
         micro_category: "Архитектурное покрытие",
@@ -2664,8 +2736,9 @@ function setLanguage(lang) {
             const value = translations[lang][key];
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = value;
-            } else if (value.includes('<br>') || value.includes('<strong>') || value.includes('<em>')) {
+            } else if (value.includes('<br>') || value.includes('<strong>') || value.includes('<em>') || value.includes('<a ')) {
                 // Only use innerHTML for trusted content with specific HTML tags
+                // (<a> is required for inline links inside translatable copy, e.g. picker lede)
                 element.innerHTML = value;
             } else {
                 // Use textContent for security (prevents XSS)
@@ -2684,8 +2757,16 @@ function setLanguage(lang) {
 }
 
 function initLanguage() {
-    const savedLang = localStorage.getItem('floordsgn_lang') || 'en';
-    setLanguage(savedLang);
+    // First-time: detect browser locale. Returning: use saved preference.
+    // RU is primary positioning audience (IL native readers).
+    // HE dict not yet populated — falls back to RU until translations.he exists.
+    let lang = localStorage.getItem('floordsgn_lang');
+    if (!lang) {
+        const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (nav.startsWith('en')) lang = 'en';
+        else lang = 'ru';
+    }
+    setLanguage(lang);
 }
 
 // Initialize on DOM ready

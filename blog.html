@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +13,23 @@
     <meta property="og:title" content="Floor Engineering Blog | Floor.DSGN">
     <meta property="og:description" content="Expert flooring knowledge and technical guides from Floor.DSGN Israel.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn-site.vercel.app/blog">
+    <meta property="og:url" content="https://floordsgn.netlify.app/blog">
     <meta property="og:image" content="/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn-site.vercel.app/blog">
+    <link rel="canonical" href="https://floordsgn.netlify.app/blog">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="chrome-fix.css?v=3">
 </head>
 <body>
 
     <header class="header">
         <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
+        <nav><ul class="nav"><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
@@ -37,7 +38,7 @@
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
 
     <section class="blog-hero">
         <div class="container">
@@ -49,39 +50,39 @@
 
     <nav class="category-filter">
         <div class="filter-inner">
-            <button class="filter-btn active" data-i18n="blog_filter_all">All</button>
-            <button class="filter-btn" data-i18n="blog_filter_materials">Material Guides</button>
-            <button class="filter-btn" data-i18n="blog_filter_installation">Installation</button>
-            <button class="filter-btn" data-i18n="blog_filter_maintenance">Maintenance</button>
-            <button class="filter-btn" data-i18n="blog_filter_comparisons">Comparisons</button>
-            <button class="filter-btn" data-i18n="blog_filter_trends">Trends</button>
+            <button class="filter-btn active" data-cat="all"          data-i18n="blog_filter_all">All</button>
+            <button class="filter-btn"        data-cat="materials"    data-i18n="blog_filter_materials">Material Guides</button>
+            <button class="filter-btn"        data-cat="installation" data-i18n="blog_filter_installation">Installation</button>
+            <button class="filter-btn"        data-cat="maintenance"  data-i18n="blog_filter_maintenance">Maintenance</button>
+            <button class="filter-btn"        data-cat="comparisons"  data-i18n="blog_filter_comparisons">Comparisons</button>
+            <button class="filter-btn"        data-cat="trends"       data-i18n="blog_filter_trends">Trends</button>
         </div>
     </nav>
 
     <section class="blog-section">
         <div class="container">
             <div class="blog-grid">
-                <article class="blog-card featured">
+                <article class="blog-card featured" data-cat="trends">
                     <div class="blog-image"><img src="images/terrazzo/vysota-2.jpg" alt="Modern terrazzo flooring in interior" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article1_cat">Trends</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article1_meta">February 2026 | 10 min read</p>
                         <h3 data-i18n="blog_article1_title">Terrazzo in Modern Interiors: A Timeless Material Reimagined</h3>
                         <p data-i18n="blog_article1_desc">From ancient Roman origins to cutting-edge Israeli design — how modern terrazzo is transforming residential and commercial spaces.</p>
-                        <a href="articles/terrazzo-modern-interiors.html" class="read-more" data-i18n="blog_article1_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="comparisons">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Microtopping vs epoxy comparison" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article2_cat">Comparison</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article2_meta">February 2026 | 8 min read</p>
                         <h3 data-i18n="blog_article2_title">Microtopping vs Epoxy: Which Is Right for Your Space?</h3>
                         <p data-i18n="blog_article2_desc">A detailed side-by-side comparison of aesthetics, durability, cost, and best-use scenarios for two popular seamless flooring systems.</p>
-                        <a href="articles/microtopping-vs-epoxy.html" class="read-more" data-i18n="blog_article2_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="materials">
                     <div class="blog-image"><img src="images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg" alt="Epoxy flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article3_cat">Material Guide</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article3_meta">January 2026 | 12 min read</p>
@@ -91,17 +92,17 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/terrazzo/vysota-2.jpg" alt="Concrete substrate testing" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article4_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article4_meta">January 2026 | 8 min</p>
                         <h3 data-i18n="blog_article4_title">Substrate Moisture Testing: Methods and Limits</h3>
                         <p data-i18n="blog_article4_desc">Why 90% of coating failures trace back to moisture.</p>
-                        <a href="articles/substrate-moisture-testing.html" class="read-more" data-i18n="blog_article4_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="maintenance">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Floor maintenance" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article5_cat">Maintenance</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article5_meta">January 2026 | 6 min</p>
@@ -111,27 +112,27 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="comparisons">
                     <div class="blog-image"><img src="images/terrazzo/macrophotography-terrazzo-slab-texture.jpg" alt="Terrazzo texture" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article6_cat">Comparison</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article6_meta">December 2025 | 9 min</p>
                         <h3 data-i18n="blog_article6_title">Terrazzo vs. Microtopping Analysis</h3>
                         <p data-i18n="blog_article6_desc">Understanding the technical differences that matter.</p>
-                        <a href="articles/terrazzo-vs-microtopping.html" class="read-more" data-i18n="blog_article6_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/terrazzo/svoboda-2.jpg" alt="MMA fast-cure flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article7_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article7_meta">December 2025 | 7 min</p>
                         <h3 data-i18n="blog_article7_title">MMA: When 2-Hour Cure Is Critical</h3>
                         <p data-i18n="blog_article7_desc">Applications where fast-cure is the only solution.</p>
-                        <a href="articles/mma-fast-cure.html" class="read-more" data-i18n="blog_article7_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="trends">
                     <div class="blog-image"><img src="images/terrazzo/5285493171318544266.jpg" alt="Modern flooring" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article8_cat">Trends</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article8_meta">November 2025 | 5 min</p>
@@ -141,27 +142,27 @@
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="materials">
                     <div class="blog-image"><img src="images/microtopping/gray-old-scratched-textured-surface-background.jpg" alt="Self-leveling floor" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article9_cat">Material Guide</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article9_meta">November 2025 | 11 min</p>
                         <h3 data-i18n="blog_article9_title">Self-Leveling Screeds: Deep Dive</h3>
                         <p data-i18n="blog_article9_desc">Binder types and achieving perfect flatness.</p>
-                        <a href="articles/self-leveling-screeds.html" class="read-more" data-i18n="blog_article9_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="maintenance">
                     <div class="blog-image"><img src="images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="Floor recoating" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article10_cat">Maintenance</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article10_meta">November 2025 | 6 min</p>
                         <h3 data-i18n="blog_article10_title">When to Recoat Your Floor</h3>
                         <p data-i18n="blog_article10_desc">Signs your industrial floor needs attention.</p>
-                        <a href="articles/when-to-recoat.html" class="read-more" data-i18n="blog_article10_link">Read Article</a>
+                        <span class="read-more is-soon" data-i18n="blog_article_soon">Скоро · в подготовке</span>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" data-cat="installation">
                     <div class="blog-image"><img src="images/microtopping/full-frame-shot-wall.jpg" alt="Concrete repair" loading="lazy"><span class="blog-category-tag" data-i18n="blog_article11_cat">Installation</span></div>
                     <div class="blog-content">
                         <p class="blog-meta" data-i18n="blog_article11_meta">October 2025 | 8 min</p>
@@ -174,12 +175,23 @@
         </div>
     </section>
 
+    <section class="encyclopedia-cta" style="padding:80px 24px;background:#1a1a1a;color:#f7f7f3;">
+        <div class="container" style="max-width:840px;margin:0 auto;text-align:center;">
+            <p class="overline" style="opacity:0.6;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;margin:0 0 16px;">Floor.DSGN Encyclopedia</p>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;margin:0 0 18px;color:#f7f7f3;">Справочник для практиков</h2>
+            <p style="font-family:'Montserrat',sans-serif;font-size:1.05rem;line-height:1.6;margin:0 0 28px;opacity:0.85;">Подробные инженерные разборы по диагностике бетона, ремонту, гидроизоляции и полимерным системам. Нормативы ICRI/ACI/EN, реальные кейсы из Израиля.</p>
+            <a href="articles/encyclopedia/index.html" class="btn" style="display:inline-block;padding:14px 32px;background:#f7f7f3;color:#1a1a1a;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:500;letter-spacing:0.05em;">Открыть энциклопедию →</a>
+        </div>
+    </section>
+
     <section class="newsletter">
         <div class="container">
             <h2 data-i18n="blog_newsletter_title">Stay Updated</h2>
             <p data-i18n="blog_newsletter_desc">Monthly technical insights. No marketing noise.</p>
-            <form class="newsletter-form">
-                <input type="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="newsletter">
+                <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+                <input type="email" name="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
                 <button type="submit" data-i18n="blog_newsletter_btn">Subscribe</button>
             </form>
         </div>
@@ -188,12 +200,36 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
-                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
+                <div class="footer-brand">
+                    <img src="images/logo/logo-horizontal-white.svg" alt="Floor.DSGN" class="footer-logo">
+                    <p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Системы</h4>
+                    <ul>
+                        <li><a href="floors/epoxy.html">Эпокси</a></li>
+                        <li><a href="floors/terrazzo.html">Терраццо</a></li>
+                        <li><a href="floors/microtopping.html">Микротопинг</a></li>
+                        <li><a href="floors/concrete.html">Бетон</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Инструменты</h4>
+                    <ul>
+                        <li><a href="quote.html">Калькулятор</a></li>
+                        <li><a href="decision-tool.html">Подбор системы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Связь</h4>
+                    <ul>
+                        <li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li>
+                        <li><a href="tel:+972559661459">+972 55 966 1459</a></li>
+                        <li>Tel Aviv</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener">LinkedIn</a></div></div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div>
         </div>
     </footer>
 
@@ -211,12 +247,11 @@
         btn.addEventListener('click', function(){
           btns.forEach(function(b){ b.classList.remove('active'); });
           btn.classList.add('active');
-          var cat = btn.textContent.trim();
+          var cat = btn.getAttribute('data-cat') || 'all';
           cards.forEach(function(card){
-            if (cat === 'All') { card.style.display = ''; return; }
-            var tag = card.querySelector('.blog-category-tag');
-            var match = tag && tag.textContent.trim().toLowerCase().indexOf(cat.toLowerCase()) !== -1;
-            card.style.display = match ? '' : 'none';
+            if (cat === 'all') { card.style.display = ''; return; }
+            var cardCat = card.getAttribute('data-cat') || '';
+            card.style.display = (cardCat === cat) ? '' : 'none';
           });
         });
       });
@@ -224,19 +259,27 @@
     </script>
     <script>
     (function(){
+      // v18 — submit via Netlify Forms (form has data-netlify="true").
+      // POST as URL-encoded body to "/" so the page doesn't navigate away,
+      // then show inline thank-you. /api/contact was a phantom endpoint on
+      // the static Netlify deploy and was always failing silently.
       var form = document.querySelector('.newsletter-form');
       if (!form) return;
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        var email = form.querySelector('input[type="email"]').value;
+        var data = new FormData(form);
+        var body = new URLSearchParams();
+        data.forEach(function(v, k){ body.append(k, v); });
         try {
-          var res = await fetch('/api/contact', {
+          var res = await fetch('/', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ type: 'newsletter', email: email })
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: body.toString()
           });
           if (res.ok) {
             form.innerHTML = '<p style="color: var(--black); font-weight: 500;">Thank you for subscribing!</p>';
+          } else {
+            alert('Something went wrong. Please try again.');
           }
         } catch(err) {
           alert('Something went wrong. Please try again.');

@@ -1,0 +1,52 @@
+# --- Internal docs (never publish) ---
+AGENTS.md
+BOOTSTRAP.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+PROJECT_PLAN.md
+RESEARCH.md
+SIKA_CATALOG.md
+SITE_BLUEPRINT.md
+SITE_TREE.md
+I18N_IMPLEMENTATION.md
+I18N_SETUP.md
+README.md
+
+# --- Dev sandboxes & internal tooling (never publish) ---
+_backups/
+_screens/
+research/
+competitor-monitor/
+astro/
+docs/
+SYSTEM/
+portfolio-research/
+specs/
+plate3d/
+.openclaw/
+.parcel-cache/
+scripts/
+
+# --- Local Parcel build output (Phase 2 will switch to this; for now exclude to avoid /dist/* leaks) ---
+dist/
+
+# --- Source-control & OS noise ---
+.DS_Store
+**/.DS_Store
+.gitignore
+.gitattributes
+
+# --- Logs / build artifacts ---
+*.log
+*.map
+
+# --- Old Vercel leftovers (site is Netlify-hosted) ---
+vercel.json
+api/
+
+# --- Local env (defence-in-depth) ---
+.env
+.env.*

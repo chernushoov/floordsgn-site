@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,17 @@
     <meta property="og:title" content="Floor Systems | Floor.DSGN Israel">
     <meta property="og:description" content="Epoxy, terrazzo, microtopping, polished concrete. Find the right flooring system.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn-site.vercel.app/floors">
+    <meta property="og:url" content="https://floordsgn.netlify.app/floors">
     <meta property="og:image" content="/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn-site.vercel.app/floors">
+    <link rel="canonical" href="https://floordsgn.netlify.app/floors">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="chrome-fix.css?v=3">
 </head>
 <body>
 
@@ -31,7 +32,7 @@
         <a href="index.html" class="logo">
             <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img">
         </a>
-        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" class="active" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
+        <nav><ul class="nav"><li><a href="floors.html" class="active" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li></ul></nav>
         <div class="lang-switch">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
@@ -40,7 +41,7 @@
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
 
     <!-- HERO -->
     <section class="floors-hero">
@@ -81,7 +82,7 @@
                     <p class="description" data-i18n="floors_epoxy_desc">High-performance seamless coating for maximum durability. Chemical-resistant, impact-proof surfaces engineered for industrial loads and continuous operation.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_epoxy_app1">Factories</span><span class="app-tag" data-i18n="floors_epoxy_app2">Warehouses</span><span class="app-tag" data-i18n="floors_epoxy_app3">Parking</span><span class="app-tag" data-i18n="floors_epoxy_app4">Garages</span><span class="app-tag" data-i18n="floors_epoxy_app5">Restaurants</span></div></div>
                     <div class="advantages"><ul><li data-i18n="floors_epoxy_adv1">Chemical & oil resistant</li><li data-i18n="floors_epoxy_adv2">Heavy load capacity</li><li data-i18n="floors_epoxy_adv3">Seamless & hygienic</li><li data-i18n="floors_epoxy_adv4">20+ year lifespan</li></ul></div>
-                    <a href="materials/epoxy.html" class="btn btn-outline" data-i18n="floors_epoxy_btn">View Epoxy Systems</a>
+                    <a href="floors/epoxy.html" class="btn btn-outline" data-i18n="floors_epoxy_btn">View Epoxy Systems</a>
                 </div>
                 <div class="section-image"><img src="images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg" alt="Epoxy flooring installation" loading="lazy"></div>
             </div>
@@ -97,8 +98,8 @@
                     <h2 data-i18n="floors_mma_title">MMA<br>Flooring</h2>
                     <p class="description" data-i18n="floors_mma_desc">Methyl methacrylate systems cure in 1-2 hours at temperatures down to -25°C. Minimal downtime for operational facilities.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_mma_app1">Cold Storage</span><span class="app-tag" data-i18n="floors_mma_app2">Food & Beverage</span><span class="app-tag" data-i18n="floors_mma_app3">Pharmaceutical</span><span class="app-tag" data-i18n="floors_mma_app4">24/7 Operations</span></div></div>
-                    <div class="advantages"><ul><li data-i18n="floors_mma_adv1">Rapid cure window</li><li data-i18n="floors_mma_adv2">Cold-room capable</li><li data-i18n="floors_mma_adv3">Fast phased repairs</li><li data-i18n="floors_mma_adv4">Reduced shutdown planning</li></ul></div>
-                    <a href="materials/mma.html" class="btn btn-outline-white" data-i18n="floors_mma_btn">View MMA Systems</a>
+                    <div class="advantages"><ul><li data-i18n="floors_mma_adv1">1-2 hour cure time</li><li data-i18n="floors_mma_adv2">Works at -25°C</li><li data-i18n="floors_mma_adv3">FDA compliant</li><li data-i18n="floors_mma_adv4">No production stop</li></ul></div>
+                    <a href="floors/mma.html" class="btn btn-outline-white" data-i18n="floors_mma_btn">View MMA Systems</a>
                 </div>
                 <div class="section-image"><img src="images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="MMA flooring" loading="lazy"></div>
             </div>
@@ -114,8 +115,8 @@
                     <h2 data-i18n="floors_pu_title">Polyurethane-<br>Cement</h2>
                     <p class="description" data-i18n="floors_pu_desc">The ultimate floor for food processing. Withstands thermal shock from -40°C to +120°C, steam cleaning, and aggressive chemicals.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_pu_app1">Dairies</span><span class="app-tag" data-i18n="floors_pu_app2">Breweries</span><span class="app-tag" data-i18n="floors_pu_app3">Meat Processing</span><span class="app-tag" data-i18n="floors_pu_app4">Commercial Kitchens</span></div></div>
-                    <div class="advantages"><ul><li data-i18n="floors_pu_adv1">Thermal shock resistant</li><li data-i18n="floors_pu_adv2">Steam cleanable</li><li data-i18n="floors_pu_adv3">Coved, cleanable detailing</li><li data-i18n="floors_pu_adv4">Wet-process texture options</li></ul></div>
-                    <a href="materials/pu-cement.html" class="btn btn-outline" data-i18n="floors_pu_btn">View PU-Cement</a>
+                    <div class="advantages"><ul><li data-i18n="floors_pu_adv1">Thermal shock proof</li><li data-i18n="floors_pu_adv2">Steam cleanable</li><li data-i18n="floors_pu_adv3">HACCP compliant</li><li data-i18n="floors_pu_adv4">Anti-microbial</li></ul></div>
+                    <a href="floors/pu-cement.html" class="btn btn-outline" data-i18n="floors_pu_btn">View PU-Cement</a>
                 </div>
                 <div class="section-image"><img src="images/terrazzo/svoboda-4.jpg" alt="PU-Cement flooring" loading="lazy"></div>
             </div>
@@ -132,7 +133,7 @@
                     <p class="description" data-i18n="floors_micro_desc">2-3mm polymer-cement overlay transforming any surface without demolition. Seamless contemporary aesthetic for floors, walls, and countertops.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_micro_app1">Renovations</span><span class="app-tag" data-i18n="floors_micro_app2">Bathrooms</span><span class="app-tag" data-i18n="floors_micro_app3">Kitchens</span><span class="app-tag" data-i18n="floors_micro_app4">Retail</span><span class="app-tag" data-i18n="floors_micro_app5">Hospitality</span></div></div>
                     <div class="advantages"><ul><li data-i18n="floors_micro_adv1">No demolition needed</li><li data-i18n="floors_micro_adv2">Only 2-3mm thick</li><li data-i18n="floors_micro_adv3">Waterproof finish</li><li data-i18n="floors_micro_adv4">Any RAL color</li></ul></div>
-                    <a href="materials/microtopping.html" class="btn btn-outline-white" data-i18n="floors_micro_btn">View Microtopping</a>
+                    <a href="floors/microtopping.html" class="btn btn-outline-white" data-i18n="floors_micro_btn">View Microtopping</a>
                 </div>
                 <div class="section-image"><img src="images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg" alt="Microtopping flooring" loading="lazy"></div>
             </div>
@@ -149,7 +150,7 @@
                     <p class="description" data-i18n="floors_rubber_desc">High-performance rubber surfaces for gyms, playgrounds, and industrial zones. Impact absorption, noise reduction, and extreme durability.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_rubber_app1">Gyms</span><span class="app-tag" data-i18n="floors_rubber_app2">Playgrounds</span><span class="app-tag" data-i18n="floors_rubber_app3">Sports Halls</span><span class="app-tag" data-i18n="floors_rubber_app4">Industrial</span></div></div>
                     <div class="advantages"><ul><li data-i18n="floors_rubber_adv1">Impact absorption</li><li data-i18n="floors_rubber_adv2">Sound dampening</li><li data-i18n="floors_rubber_adv3">Anti-fatigue</li><li data-i18n="floors_rubber_adv4">Slip resistant</li></ul></div>
-                    <a href="materials/rubber.html" class="btn btn-outline" data-i18n="floors_rubber_btn">View Rubber Systems</a>
+                    <a href="floors/rubber.html" class="btn btn-outline" data-i18n="floors_rubber_btn">View Rubber Systems</a>
                 </div>
                 <div class="section-image"><img src="images/rubber/g12ground.jpg" alt="Rubber gym flooring" loading="lazy"></div>
             </div>
@@ -163,9 +164,9 @@
             <h2 class="section-title" data-i18n="floors_terrazzo_title">Terrazzo</h2>
             <p class="lead" data-i18n="floors_terrazzo_desc">Handcrafted composite surfaces with marble, glass, and stone aggregates. Each floor is unique.</p>
             <div class="cards-grid" style="margin-top:60px;">
-                <div class="floor-card"><span class="card-number">01</span><h3 data-i18n="floors_terrazzo_card1_title">Cement Terrazzo</h3><p class="subtitle" data-i18n="floors_terrazzo_card1_sub">Traditional</p><p data-i18n="floors_terrazzo_card1_desc">Classic Portland cement matrix. 75+ year lifespan. Indoor/outdoor.</p><a href="materials/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
-                <div class="floor-card"><span class="card-number">02</span><h3 data-i18n="floors_terrazzo_card2_title">Epoxy Terrazzo</h3><p class="subtitle" data-i18n="floors_terrazzo_card2_sub">Contemporary</p><p data-i18n="floors_terrazzo_card2_desc">Thin-set epoxy matrix. Unlimited colors. Fast installation.</p><a href="materials/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
-                <div class="floor-card"><span class="card-number">03</span><h3 data-i18n="floors_terrazzo_card3_title">Palladiana</h3><p class="subtitle" data-i18n="floors_terrazzo_card3_sub">Artistic</p><p data-i18n="floors_terrazzo_card3_desc">Large irregular marble pieces. Maximum visual impact.</p><a href="materials/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
+                <div class="floor-card"><span class="card-number">01</span><h3 data-i18n="floors_terrazzo_card1_title">Cement Terrazzo</h3><p class="subtitle" data-i18n="floors_terrazzo_card1_sub">Traditional</p><p data-i18n="floors_terrazzo_card1_desc">Classic Portland cement matrix. 75+ year lifespan. Indoor/outdoor.</p><a href="floors/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
+                <div class="floor-card"><span class="card-number">02</span><h3 data-i18n="floors_terrazzo_card2_title">Epoxy Terrazzo</h3><p class="subtitle" data-i18n="floors_terrazzo_card2_sub">Contemporary</p><p data-i18n="floors_terrazzo_card2_desc">Thin-set epoxy matrix. Unlimited colors. Fast installation.</p><a href="floors/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
+                <div class="floor-card"><span class="card-number">03</span><h3 data-i18n="floors_terrazzo_card3_title">Palladiana</h3><p class="subtitle" data-i18n="floors_terrazzo_card3_sub">Artistic</p><p data-i18n="floors_terrazzo_card3_desc">Large irregular marble pieces. Maximum visual impact.</p><a href="floors/terrazzo.html" class="card-link" data-i18n="floors_terrazzo_explore">Explore</a></div>
             </div>
         </div>
     </section>
@@ -180,7 +181,7 @@
                     <p class="description" data-i18n="floors_concrete_desc">Polished, stained, and stamped concrete transforming structural slabs into architectural surfaces.</p>
                     <div class="applications"><h4 data-i18n="floors_applications">Applications</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_concrete_app1">Lofts</span><span class="app-tag" data-i18n="floors_concrete_app2">Retail</span><span class="app-tag" data-i18n="floors_concrete_app3">Restaurants</span><span class="app-tag" data-i18n="floors_concrete_app4">Offices</span><span class="app-tag" data-i18n="floors_concrete_app5">Outdoor</span></div></div>
                     <div class="advantages"><ul><li data-i18n="floors_concrete_adv1">Uses existing slab</li><li data-i18n="floors_concrete_adv2">High thermal mass</li><li data-i18n="floors_concrete_adv3">Extremely durable</li><li data-i18n="floors_concrete_adv4">Low maintenance</li></ul></div>
-                    <a href="materials/concrete.html" class="btn btn-outline" data-i18n="floors_concrete_btn">View Concrete</a>
+                    <a href="floors/concrete.html" class="btn btn-outline" data-i18n="floors_concrete_btn">View Concrete</a>
                 </div>
                 <div class="section-image"><img src="images/terrazzo/cement-concrete-texture-copy-space.jpg" alt="Decorative concrete" loading="lazy"></div>
             </div>
@@ -197,7 +198,7 @@
                     <p class="description" data-i18n="floors_restore_desc">Professional renewal of existing floor coatings. Sealer replacement, surface repair, and protective treatments.</p>
                     <div class="applications"><h4 data-i18n="floors_services">Services</h4><div class="app-tags"><span class="app-tag" data-i18n="floors_restore_app1">Sealer Renewal</span><span class="app-tag" data-i18n="floors_restore_app2">Re-polishing</span><span class="app-tag" data-i18n="floors_restore_app3">Crack Repair</span><span class="app-tag" data-i18n="floors_restore_app4">Color Refresh</span></div></div>
                     <div class="advantages"><ul><li data-i18n="floors_restore_adv1">Extend floor life</li><li data-i18n="floors_restore_adv2">Cost-effective</li><li data-i18n="floors_restore_adv3">Minimal disruption</li><li data-i18n="floors_restore_adv4">Updated appearance</li></ul></div>
-                    <a href="materials/restoration.html" class="btn btn-outline-white" data-i18n="floors_restore_btn">View Restoration</a>
+                    <a href="floors/restoration.html" class="btn btn-outline-white" data-i18n="floors_restore_btn">View Restoration</a>
                 </div>
                 <div class="section-image"><img src="images/terrazzo/vysota-3.jpg" alt="Floor restoration" loading="lazy"></div>
             </div>
@@ -288,57 +289,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
-                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
-                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
-            </div>
-            <div class="footer-badges">
-                <div class="badge-item">
-                    <div class="badge-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <span data-i18n="footer_badge_warranty">System Warranty</span>
-                </div>
-                <div class="badge-item">
-                    <div class="badge-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </div>
-                    <span data-i18n="footer_badge_experience">Documented Track Record</span>
-                </div>
-                <div class="badge-item">
-                    <div class="badge-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                    </div>
-                    <span data-i18n="footer_badge_iso">Documented Process</span>
-                </div>
-                <div class="badge-item">
-                    <div class="badge-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="1" y="3" width="15" height="13" rx="2"/>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                            <circle cx="5.5" cy="18.5" r="2.5"/>
-                            <circle cx="18.5" cy="18.5" r="2.5"/>
-                        </svg>
-                    </div>
-                    <span data-i18n="footer_badge_visit">Free Site Visit</span>
-                </div>
-            </div>
-            <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p><div class="social-links"><a href="https://instagram.com/floor.dsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram">Instagram</a><a href="https://linkedin.com/company/floordsgn" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn">LinkedIn</a></div></div>
-        </div>
-    </footer>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
 
     <script src="script.js"></script>
     <script src="translations.js" defer></script>
