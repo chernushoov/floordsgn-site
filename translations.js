@@ -2676,8 +2676,16 @@ function setLanguage(lang) {
 }
 
 function initLanguage() {
-    const savedLang = localStorage.getItem('floordsgn_lang') || 'en';
-    setLanguage(savedLang);
+    // First-time: detect browser locale. Returning: use saved preference.
+    // RU is primary positioning audience (IL native readers).
+    // HE dict not yet populated — falls back to RU until translations.he exists.
+    let lang = localStorage.getItem('floordsgn_lang');
+    if (!lang) {
+        const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (nav.startsWith('en')) lang = 'en';
+        else lang = 'ru';
+    }
+    setLanguage(lang);
 }
 
 // Initialize on DOM ready
