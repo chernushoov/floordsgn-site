@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floor.DSGN | Industrial & Commercial Flooring Systems | Israel</title>
+    <title>Floor.DSGN — полы, которые проектируют. А не кладут.</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Premium industrial and commercial flooring installation in Israel. Epoxy, terrazzo, microtopping systems. European materials, 10-year warranty. 500+ completed projects.">
-    <meta name="keywords" content="epoxy flooring Israel, industrial flooring, terrazzo Israel, microtopping, commercial flooring Tel Aviv, warehouse flooring">
+    <meta name="description" content="Инженерные напольные системы по Израилю: терраццо, эпокси, микротопинг, PU-cement, MMA. 3D-конфигуратор, Sika-формулы, 10-летняя гарантия.">
+    <meta name="keywords" content="полы Израиль, эпокси Тель-Авив, terrazzo Israel, terrazzo Tel Aviv, микротопинг, polished concrete Israel, PU-cement, Sikafloor installer">
     <meta name="author" content="Floor.DSGN">
     <meta name="robots" content="index, follow">
 
+    <!-- Hreflang — точка входа определит контент по locale switcher -->
+    <link rel="alternate" hreflang="ru" href="https://floordsgn.netlify.app/">
+    <link rel="alternate" hreflang="en" href="https://floordsgn.netlify.app/en/">
+    <link rel="alternate" hreflang="x-default" href="https://floordsgn.netlify.app/">
+
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn-site.vercel.app/">
-    <meta property="og:title" content="Floor.DSGN | Industrial & Commercial Flooring Systems">
-    <meta property="og:description" content="Premium flooring installation in Israel. Epoxy, terrazzo, microtopping. European materials, 10-year warranty.">
-    <meta property="og:image" content="https://floordsgn-site.vercel.app/images/og-preview.jpg">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="he_IL">
+    <meta property="og:site_name" content="Floor.DSGN">
+    <meta property="og:url" content="https://floordsgn.netlify.app/">
+    <meta property="og:title" content="Floor.DSGN — полы, которые проектируют. А не кладут.">
+    <meta property="og:description" content="3D-конфигуратор + Sika-формула + sample-kit. Терраццо, эпокси, микротопинг, PU-cement, MMA. Инженерные полы по Израилю, 10-летняя гарантия.">
+    <meta property="og:image" content="https://floordsgn.netlify.app/images/og-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Floor.DSGN — 3D-конфигуратор напольных систем">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Floor.DSGN | Industrial & Commercial Flooring">
-    <meta name="twitter:description" content="Premium flooring installation in Israel. European materials, 10-year warranty.">
+    <meta name="twitter:title" content="Floor.DSGN — полы, которые проектируют">
+    <meta name="twitter:description" content="3D-конфигуратор · Sika-формула · sample-kit. Инженерные полы по Израилю.">
+    <meta name="twitter:image" content="https://floordsgn.netlify.app/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn-site.vercel.app/">
+    <link rel="canonical" href="https://floordsgn.netlify.app/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
@@ -34,10 +47,10 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Floor.DSGN",
-        "description": "Premium industrial and commercial flooring installation in Israel. Epoxy, terrazzo, microtopping systems.",
-        "url": "https://floordsgn-site.vercel.app",
-        "logo": "https://floordsgn-site.vercel.app/images/logo/Black1_tr.png",
-        "image": "https://floordsgn-site.vercel.app/images/og-preview.jpg",
+        "description": "Инженерные напольные системы по Израилю: терраццо, эпокси, микротопинг, PU-cement, MMA. 3D-конфигуратор + Sika-формулы.",
+        "url": "https://floordsgn.netlify.app",
+        "logo": "https://floordsgn.netlify.app/images/logo/Black1_tr.png",
+        "image": "https://floordsgn.netlify.app/images/og-preview.jpg",
         "telephone": "+972559661459",
         "email": "floors.dsgn@gmail.com",
         "address": {
@@ -62,18 +75,15 @@
             "@type": "OfferCatalog",
             "name": "Floor Systems",
             "itemListElement": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Epoxy Flooring"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terrazzo Flooring"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Terrazzo"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Epoxy Self-Leveling"}},
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Microtopping"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "MMA Flooring"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "PU-Cement Flooring"}},
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Polished Concrete"}}
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "MMA Pronto"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "PU-Cement (PurCem)"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sika ComfortFloor"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Decorative Concrete"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Polymer Rubber"}}
             ]
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "127"
         }
     }
     </script>
