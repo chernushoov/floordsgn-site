@@ -748,6 +748,25 @@ const translations = {
         epoxy_rel2: "MMA Resin Systems",
         epoxy_rel3: "Microtopping",
 
+        // Epoxy decision-spec table (materials/epoxy.html)
+        spec_subtitle: "Spec at a glance",
+        spec_title_epoxy: "Epoxy decision specs",
+        spec_moisture_label: "Substrate moisture",
+        spec_epoxy_moisture: "≤ 4% by weight (CM-method); confirm before priming",
+        spec_load_label: "Load class",
+        spec_epoxy_load: "Light–heavy traffic; forklift load with thicker self-leveling buildup",
+        spec_downtime_label: "Realistic downtime",
+        spec_epoxy_downtime: "3–7 days from substrate prep to full chemical cure",
+        spec_thermal_label: "Thermal range",
+        spec_epoxy_thermal: "Typically rated −20°C to +60°C in service; system-dependent",
+        spec_chemical_label: "Chemical exposure",
+        spec_epoxy_chemical: "Acids, fuels, oils — system-specific topcoat needed",
+        spec_system_label: "System buildup",
+        spec_epoxy_system: "Primer + body (2–4 mm) + topcoat; quartz broadcast for slip resistance",
+        spec_warranty_label: "Warranty",
+        spec_epoxy_warranty: "System-specific; documented in project proposal",
+        spec_note: "Real numbers depend on substrate, environment and selected system family. We confirm everything before quoting.",
+
         // MMA
         mma_category: "Rapid-Cure Technology",
         mma_title: "MMA Resin Flooring",
@@ -2069,6 +2088,25 @@ const translations = {
         epoxy_rel1: "PU-цемент",
         epoxy_rel2: "MMA-системы",
         epoxy_rel3: "Микротоппинг",
+
+        // Эпокси · спек-таблица (materials/epoxy.html)
+        spec_subtitle: "Спека на одном экране",
+        spec_title_epoxy: "Эпокси · ключевые спеки",
+        spec_moisture_label: "Влажность основания",
+        spec_epoxy_moisture: "≤ 4% массовых (CM-метод); подтверждаем перед грунтованием",
+        spec_load_label: "Класс нагрузки",
+        spec_epoxy_load: "Лёгкая–тяжёлая, до forklift с более толстым SL-слоем",
+        spec_downtime_label: "Реальный простой",
+        spec_epoxy_downtime: "3–7 дней от подготовки до полной химической полимеризации",
+        spec_thermal_label: "Температурный диапазон",
+        spec_epoxy_thermal: "Обычно −20…+60°C в эксплуатации, зависит от системы",
+        spec_chemical_label: "Химическая стойкость",
+        spec_epoxy_chemical: "Кислоты, топливо, масла — топкоут подбирается под конкретный состав",
+        spec_system_label: "Структура пирога",
+        spec_epoxy_system: "Праймер + тело (2–4 мм) + топкоут; кварц-broadcast для R-класса",
+        spec_warranty_label: "Гарантия",
+        spec_epoxy_warranty: "Зависит от системы; точные сроки в коммерческом предложении",
+        spec_note: "Реальные цифры зависят от основания, среды и выбранной системы. Подтверждаем всё до сметы.",
 
         // Microtopping
         micro_category: "Архитектурное покрытие",
