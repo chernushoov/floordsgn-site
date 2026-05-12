@@ -16,7 +16,7 @@
 
     <link rel="canonical" href="https://floordsgn.netlify.app/articles/encyclopedia/">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css?v=8">
@@ -25,66 +25,46 @@
 
     <style>
       /* ───────────────────────────────────────────────────────────
-         Encyclopedia-specific — dark cinematic frame + tile system
-         using Floor.DSGN brand tokens (Cormorant + Montserrat).
+         Encyclopedia — Floor.DSGN brand palette (cream + carbon +
+         signal accent). Technical adaptations for designers /
+         architects / builders: filter chips, compare ribbon, TDS
+         download, copy-formula, designer/builder mode toggle.
          ─────────────────────────────────────────────────────────── */
-      :root {
-        --enc-ink: #0d0d0f;
-        --enc-line: rgba(255,255,255,.10);
-        --enc-line-strong: rgba(255,255,255,.22);
-        --enc-mute: rgba(245,245,247,.62);
-        --enc-warm: #c8b08a;
+      .enc-page {
+        background: var(--concrete, #F3F0EA);
+        color: var(--carbon, #151515);
       }
 
-      /* full-screen dark stage that hosts the logo-morph entry */
-      .enc-stage {
-        position: relative;
-        background: var(--enc-ink);
-        color: #f5f5f7;
-        overflow: hidden;
-      }
-      .enc-stage::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(120% 80% at 50% 0%, rgba(200,176,138,.10), transparent 60%),
-          radial-gradient(80% 60% at 50% 100%, rgba(0,0,0,.6), transparent 70%);
-        pointer-events: none;
-      }
-
-      /* logo-morph curtain — sits over everything until JS removes it */
+      /* logo-morph entry — cream curtain, dark logo */
       .enc-curtain {
         position: fixed;
         inset: 0;
-        background: var(--enc-ink);
+        background: var(--concrete, #F3F0EA);
         z-index: 9999;
         display: flex; align-items: center; justify-content: center;
-        animation: encCurtainOut 1.4s cubic-bezier(.7,0,.2,1) .9s forwards;
+        animation: encCurtainOut 1.2s cubic-bezier(.7,0,.2,1) .9s forwards;
       }
       .enc-curtain__logo {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(64px, 11vw, 132px);
+        font-size: clamp(56px, 10vw, 120px);
         font-weight: 400;
         letter-spacing: -.02em;
-        color: #f5f5f7;
+        color: var(--carbon);
         opacity: 0;
-        animation: encLogoIn .9s cubic-bezier(.22,1,.36,1) .15s forwards,
-                   encLogoMorph .9s cubic-bezier(.7,0,.2,1) .9s forwards;
+        animation: encLogoIn .8s cubic-bezier(.22,1,.36,1) .15s forwards,
+                   encLogoOut .8s cubic-bezier(.7,0,.2,1) .8s forwards;
       }
       .enc-curtain__logo em {
-        font-style: italic;
-        font-weight: 500;
-        color: var(--enc-warm);
+        font-style: italic; font-weight: 500;
+        color: var(--signal, #C86B3C);
       }
       @keyframes encLogoIn {
-        0%   { opacity: 0; transform: translateY(24px) scale(.96); letter-spacing: .04em; }
-        100% { opacity: 1; transform: translateY(0)   scale(1);   letter-spacing: -.02em; }
+        0%   { opacity: 0; transform: translateY(18px) scale(.97); letter-spacing: .04em; }
+        100% { opacity: 1; transform: translateY(0) scale(1); letter-spacing: -.02em; }
       }
-      @keyframes encLogoMorph {
-        0%   { transform: translateY(0)    scale(1);   opacity: 1; }
-        70%  { transform: translateY(-30vh) scale(.18); opacity: .8; }
-        100% { transform: translateY(-30vh) scale(.18); opacity: 0; }
+      @keyframes encLogoOut {
+        0%   { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-28vh) scale(.16); opacity: 0; }
       }
       @keyframes encCurtainOut {
         0%   { opacity: 1; pointer-events: all; }
@@ -92,18 +72,16 @@
         100% { opacity: 0; pointer-events: none; visibility: hidden; }
       }
 
-      /* hero — dark editorial intro */
+      /* hero — light editorial */
       .enc-hero {
         max-width: 1240px;
         margin: 0 auto;
-        padding: clamp(120px, 14vh, 170px) clamp(20px, 4vw, 56px) clamp(60px, 9vh, 100px);
-        position: relative;
-        z-index: 1;
+        padding: clamp(120px, 14vh, 170px) clamp(20px, 4vw, 56px) clamp(40px, 7vh, 70px);
         opacity: 0;
-        animation: encContentIn 1s cubic-bezier(.22,1,.36,1) 1.6s forwards;
+        animation: encContentIn .9s cubic-bezier(.22,1,.36,1) 1.4s forwards;
       }
       @keyframes encContentIn {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(16px); }
         to   { opacity: 1; transform: translateY(0); }
       }
       .enc-hero__eyebrow {
@@ -112,115 +90,201 @@
         font-weight: 600;
         letter-spacing: .26em;
         text-transform: uppercase;
-        color: var(--enc-warm);
-        margin: 0 0 28px;
+        color: var(--signal, #C86B3C);
+        margin: 0 0 24px;
         display: inline-flex; gap: 12px; align-items: center;
       }
-      .enc-hero__eyebrow::before, .enc-hero__eyebrow::after {
-        content: ""; height: 1px; width: 36px; background: rgba(200,176,138,.5);
+      .enc-hero__eyebrow::before {
+        content: ""; height: 1px; width: 36px; background: var(--signal);
       }
       .enc-hero__h1 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(48px, 7.5vw, 96px);
+        font-size: clamp(44px, 6.5vw, 88px);
         font-weight: 400;
-        line-height: 1.02;
+        line-height: 1.04;
         letter-spacing: -.018em;
-        color: #f5f5f7;
-        margin: 0 0 28px;
+        color: var(--carbon);
+        margin: 0 0 24px;
         max-width: 11ch;
       }
       .enc-hero__h1 em {
         font-style: italic; font-weight: 500;
-        color: var(--enc-warm);
+        color: var(--signal, #C86B3C);
         white-space: nowrap;
       }
       .enc-hero__lede {
         font-family: 'Montserrat', sans-serif;
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.65;
-        color: rgba(245,245,247,.78);
-        max-width: 56ch;
-        margin: 0 0 36px;
+        color: var(--graphite, #2D2D2D);
+        max-width: 58ch;
+        margin: 0 0 32px;
         font-weight: 300;
       }
       .enc-hero__meta {
-        display: flex; gap: clamp(20px, 4vw, 56px);
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px clamp(20px, 4vw, 48px);
         font-family: 'Montserrat', sans-serif;
-        font-size: 12px;
-        letter-spacing: .12em;
+        font-size: 11px;
+        letter-spacing: .14em;
         text-transform: uppercase;
-        color: var(--enc-mute);
-        padding-top: 28px;
-        border-top: 1px solid var(--enc-line);
+        color: var(--steel, #72716D);
+        padding-top: 24px;
+        border-top: 1px solid rgba(21,21,21,.12);
       }
-      .enc-hero__meta b {
+      .enc-hero__meta > div b {
         display: block;
         font-family: 'Cormorant Garamond', serif;
         font-size: 28px;
         font-weight: 500;
         letter-spacing: -.01em;
         text-transform: none;
-        color: #f5f5f7;
-        margin-bottom: 4px;
-      }
-      .enc-hero__meta em {
-        font-style: normal;
-        color: var(--enc-warm);
+        color: var(--carbon);
+        margin-bottom: 2px;
       }
 
-      /* taxonomy block — group label between hero and grid */
-      .enc-section {
-        background: #f5f5f7;
-        padding: clamp(60px, 8vh, 100px) 0 clamp(80px, 12vh, 140px);
+      /* B2B audience selector — designer / architect / builder */
+      .enc-audience {
+        display: inline-flex;
+        gap: 4px;
+        background: rgba(21,21,21,.06);
+        padding: 4px;
+        border-radius: 999px;
+        margin-top: 28px;
       }
-      .enc-section--dark {
-        background: var(--enc-ink);
-        color: #f5f5f7;
+      .enc-audience__btn {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        padding: 9px 16px;
+        border-radius: 999px;
+        border: 0;
+        background: transparent;
+        color: var(--steel);
+        cursor: pointer;
+        transition: background .25s ease, color .25s ease;
+      }
+      .enc-audience__btn[aria-pressed="true"] {
+        background: var(--carbon);
+        color: #fff;
+      }
+      .enc-audience__btn:hover:not([aria-pressed="true"]) { color: var(--carbon); }
+
+      /* sticky toolbar — search + filter chips + compare drawer */
+      .enc-toolbar {
+        position: sticky;
+        top: 64px;
+        z-index: 50;
+        background: rgba(243,240,234,.92);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(21,21,21,.08);
+        border-bottom: 1px solid rgba(21,21,21,.08);
+      }
+      .enc-toolbar__inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 16px clamp(20px, 4vw, 56px);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .enc-search {
+        position: relative;
+        flex: 1 1 280px;
+        min-width: 200px;
+      }
+      .enc-search input {
+        width: 100%;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        padding: 11px 16px 11px 38px;
+        background: #fff;
+        border: 1px solid rgba(21,21,21,.10);
+        border-radius: 999px;
+        color: var(--carbon);
+        outline: none;
+        transition: border-color .25s ease;
+      }
+      .enc-search input:focus { border-color: var(--signal); }
+      .enc-search::before {
+        content: "";
+        position: absolute;
+        left: 14px; top: 50%;
+        width: 14px; height: 14px;
+        transform: translateY(-50%);
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2372716D' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center/contain no-repeat;
+        pointer-events: none;
+      }
+      .enc-chips {
+        display: flex; gap: 8px; flex-wrap: wrap;
+      }
+      .enc-chip {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(21,21,21,.12);
+        background: transparent;
+        color: var(--graphite);
+        cursor: pointer;
+        transition: background .2s, color .2s, border-color .2s;
+      }
+      .enc-chip:hover { border-color: var(--carbon); color: var(--carbon); }
+      .enc-chip[aria-pressed="true"] {
+        background: var(--carbon);
+        color: #fff;
+        border-color: var(--carbon);
+      }
+
+      /* sections */
+      .enc-section {
+        padding: clamp(48px, 7vh, 80px) 0;
+      }
+      .enc-section--paper {
+        background: #fff;
       }
       .enc-section__inner {
         max-width: 1240px;
         margin: 0 auto;
         padding: 0 clamp(20px, 4vw, 56px);
       }
-      .enc-group {
-        margin-bottom: clamp(48px, 7vh, 88px);
-      }
-      .enc-group:last-child { margin-bottom: 0; }
       .enc-group__head {
         display: flex; align-items: baseline; gap: 24px;
-        margin-bottom: 36px;
-        padding-bottom: 18px;
-        border-bottom: 1px solid #d2d2d7;
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(21,21,21,.12);
       }
-      .enc-section--dark .enc-group__head { border-color: var(--enc-line); }
       .enc-group__eyebrow {
         font-family: 'Montserrat', sans-serif;
         font-size: 11px;
         font-weight: 600;
         letter-spacing: .26em;
         text-transform: uppercase;
-        color: #86868b;
+        color: var(--signal);
       }
-      .enc-section--dark .enc-group__eyebrow { color: var(--enc-warm); }
       .enc-group__h2 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(28px, 4vw, 42px);
+        font-size: clamp(28px, 4vw, 44px);
         font-weight: 400;
         letter-spacing: -.01em;
-        color: #1d1d1f;
+        color: var(--carbon);
         margin: 0;
       }
-      .enc-section--dark .enc-group__h2 { color: #f5f5f7; }
       .enc-group__count {
         margin-left: auto;
         font-family: 'Montserrat', sans-serif;
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: .14em;
         text-transform: uppercase;
-        color: #86868b;
+        color: var(--steel);
       }
-      .enc-section--dark .enc-group__count { color: var(--enc-mute); }
 
       /* tile grid */
       .enc-grid {
@@ -231,34 +295,34 @@
       .enc-tile {
         position: relative;
         background: #fff;
-        border-radius: 22px;
+        border-radius: 20px;
         overflow: hidden;
         text-decoration: none;
         color: inherit;
         display: flex; flex-direction: column;
-        border: 1px solid #e8e8ed;
-        transition: transform .45s cubic-bezier(.22,1,.36,1),
-                    box-shadow .45s cubic-bezier(.22,1,.36,1),
-                    border-color .35s ease;
+        border: 1px solid rgba(21,21,21,.08);
+        transition: transform .4s cubic-bezier(.22,1,.36,1),
+                    box-shadow .4s cubic-bezier(.22,1,.36,1),
+                    border-color .3s ease;
       }
-      .enc-section--dark .enc-tile {
-        background: #15151a;
-        border-color: var(--enc-line);
-        color: #f5f5f7;
+      .enc-section--paper .enc-tile {
+        background: var(--concrete, #F3F0EA);
+        border-color: rgba(21,21,21,.08);
       }
       .enc-tile:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 28px 56px rgba(0,0,0,.12), 0 6px 14px rgba(0,0,0,.06);
-        border-color: #d2d2d7;
+        transform: translateY(-4px);
+        box-shadow: 0 22px 44px rgba(21,21,21,.08), 0 6px 14px rgba(21,21,21,.04);
+        border-color: rgba(21,21,21,.18);
       }
-      .enc-section--dark .enc-tile:hover {
-        border-color: var(--enc-line-strong);
-        box-shadow: 0 30px 60px rgba(0,0,0,.5);
+      .enc-tile.is-filtered-out { display: none; }
+      .enc-tile.is-compare-on {
+        border-color: var(--signal);
+        box-shadow: 0 0 0 2px rgba(200,107,60,.18);
       }
       .enc-tile__media {
         position: relative;
-        aspect-ratio: 5/4;
-        background: #e5e5ea;
+        aspect-ratio: 4/3;
+        background: rgba(21,21,21,.06);
         overflow: hidden;
       }
       .enc-tile__media img {
@@ -266,23 +330,41 @@
         display: block;
         transition: transform .9s cubic-bezier(.22,1,.36,1);
       }
-      .enc-tile:hover .enc-tile__media img { transform: scale(1.06); }
+      .enc-tile:hover .enc-tile__media img { transform: scale(1.05); }
       .enc-tile__tag {
         position: absolute;
-        top: 14px; left: 14px;
-        padding: 6px 10px;
+        top: 12px; left: 12px;
+        padding: 5px 9px;
         font-family: 'Montserrat', sans-serif;
         font-size: 10px;
         font-weight: 600;
         letter-spacing: .2em;
         text-transform: uppercase;
-        background: rgba(13,13,15,.78);
-        color: #f5f5f7;
-        border-radius: 6px;
+        background: rgba(21,21,21,.85);
+        color: #fff;
+        border-radius: 4px;
         backdrop-filter: blur(8px);
       }
+      .enc-tile__compare {
+        position: absolute;
+        top: 12px; right: 12px;
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.4);
+        background: rgba(21,21,21,.72);
+        color: #fff;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1;
+        backdrop-filter: blur(8px);
+        transition: background .2s, transform .2s;
+      }
+      .enc-tile__compare:hover { background: var(--signal); transform: scale(1.06); }
+      .enc-tile__compare[aria-pressed="true"] { background: var(--signal); }
       .enc-tile__body {
-        padding: 24px 24px 22px;
+        padding: 22px 22px 20px;
         display: flex; flex-direction: column;
         flex: 1;
       }
@@ -291,73 +373,156 @@
         font-size: 28px;
         font-weight: 400;
         letter-spacing: -.01em;
-        line-height: 1.08;
-        margin: 0 0 8px;
-        color: inherit;
+        line-height: 1.06;
+        margin: 0 0 6px;
+        color: var(--carbon);
       }
       .enc-tile__type {
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
-        letter-spacing: .08em;
-        color: #86868b;
+        letter-spacing: .04em;
+        color: var(--steel);
         margin: 0 0 16px;
       }
-      .enc-section--dark .enc-tile__type { color: var(--enc-mute); }
       .enc-tile__meta {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6px 18px;
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
-        color: #6e6e73;
         padding-top: 14px;
-        border-top: 1px solid #ececf0;
-        margin-top: auto;
+        border-top: 1px solid rgba(21,21,21,.08);
       }
-      .enc-section--dark .enc-tile__meta {
-        color: var(--enc-mute);
-        border-top-color: var(--enc-line);
-      }
-      .enc-tile__meta dt { color: #86868b; margin: 0; }
-      .enc-section--dark .enc-tile__meta dt { color: var(--enc-mute); }
-      .enc-tile__meta dd {
+      .enc-tile__meta dt {
+        color: var(--steel);
         margin: 0;
-        color: #1d1d1f;
+        font-size: 10px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .enc-tile__meta dd {
+        margin: 0 0 2px;
+        color: var(--carbon);
         font-weight: 500;
       }
-      .enc-section--dark .enc-tile__meta dd { color: #f5f5f7; }
-      .enc-tile__link {
-        margin-top: 16px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: .26em;
-        text-transform: uppercase;
-        color: #1d1d1f;
-        display: inline-flex; align-items: center; gap: 8px;
-      }
-      .enc-section--dark .enc-tile__link { color: var(--enc-warm); }
-      .enc-tile__link::after { content: "→"; transition: transform .25s ease; }
-      .enc-tile:hover .enc-tile__link::after { transform: translateX(4px); }
       .enc-tile__related {
         margin-top: 14px;
         padding-top: 14px;
-        border-top: 1px dashed #ececf0;
+        border-top: 1px dashed rgba(21,21,21,.10);
         font-family: 'Montserrat', sans-serif;
         font-size: 11px;
         line-height: 1.6;
-        color: #86868b;
+        color: var(--steel);
       }
-      .enc-section--dark .enc-tile__related {
-        border-top-color: var(--enc-line);
-        color: var(--enc-mute);
+      .enc-tile__related b {
+        color: var(--carbon);
+        font-weight: 600;
       }
-      .enc-tile__related b { color: #1d1d1f; font-weight: 600; }
-      .enc-section--dark .enc-tile__related b { color: #f5f5f7; }
+      .enc-tile__actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(21,21,21,.08);
+      }
+      .enc-tile__action {
+        flex: 1;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        padding: 9px 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(21,21,21,.12);
+        background: transparent;
+        color: var(--carbon);
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: background .2s, border-color .2s;
+      }
+      .enc-tile__action:hover {
+        background: rgba(21,21,21,.04);
+        border-color: var(--carbon);
+      }
+      .enc-tile__action--solid {
+        background: var(--carbon);
+        color: #fff;
+        border-color: var(--carbon);
+      }
+      .enc-tile__action--solid:hover {
+        background: var(--signal);
+        border-color: var(--signal);
+        color: #fff;
+      }
+
+      /* persona-conditional content blocks */
+      [data-show="designer"], [data-show="architect"], [data-show="builder"] {
+        display: none;
+      }
+      body[data-persona="designer"] [data-show="designer"],
+      body[data-persona="architect"] [data-show="architect"],
+      body[data-persona="builder"] [data-show="builder"] {
+        display: block;
+      }
+
+      /* compare ribbon — sticky bottom */
+      .enc-compare-ribbon {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(120%);
+        background: var(--carbon);
+        color: #fff;
+        border-radius: 999px;
+        padding: 12px 18px;
+        display: flex; gap: 14px; align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 24px 48px rgba(21,21,21,.28);
+        transition: transform .4s cubic-bezier(.22,1,.36,1);
+        z-index: 200;
+        max-width: calc(100vw - 32px);
+      }
+      .enc-compare-ribbon.is-visible {
+        transform: translateX(-50%) translateY(0);
+      }
+      .enc-compare-ribbon__count {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 1;
+      }
+      .enc-compare-ribbon__cta {
+        padding: 8px 14px;
+        background: var(--signal);
+        color: #fff;
+        border: 0;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background .2s;
+      }
+      .enc-compare-ribbon__cta:hover { background: #b25a30; }
+      .enc-compare-ribbon__clear {
+        background: transparent;
+        border: 0;
+        color: rgba(255,255,255,.6);
+        cursor: pointer;
+        font-size: 11px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .enc-compare-ribbon__clear:hover { color: #fff; }
 
       /* bottom CTA strip */
       .enc-bottom {
-        background: #f5f5f7;
+        background: var(--concrete, #F3F0EA);
         padding: clamp(60px, 9vh, 100px) clamp(20px, 4vw, 56px);
         text-align: center;
       }
@@ -367,27 +532,57 @@
         font-weight: 400;
         letter-spacing: -.015em;
         max-width: 18ch;
-        margin: 0 auto 18px;
-        color: #1d1d1f;
+        margin: 0 auto 16px;
+        color: var(--carbon);
       }
-      .enc-bottom__h2 em { font-style: italic; font-weight: 500; }
+      .enc-bottom__h2 em {
+        font-style: italic; font-weight: 500;
+        color: var(--signal);
+      }
       .enc-bottom__lede {
         font-family: 'Montserrat', sans-serif;
-        font-size: 15px; color: #4a4a4f;
-        max-width: 50ch; margin: 0 auto 32px;
+        font-size: 15px; color: var(--graphite);
+        max-width: 50ch; margin: 0 auto 28px;
         line-height: 1.6;
       }
       .enc-bottom__cta {
-        display: inline-flex; gap: 16px; flex-wrap: wrap;
+        display: inline-flex; gap: 14px; flex-wrap: wrap;
         justify-content: center;
       }
 
+      /* toast for copy actions */
+      .enc-toast {
+        position: fixed;
+        left: 50%;
+        bottom: 96px;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--carbon);
+        color: #fff;
+        padding: 11px 22px;
+        border-radius: 999px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 14px 32px rgba(21,21,21,.28);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease;
+        z-index: 250;
+      }
+      .enc-toast.is-visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
       @media (max-width: 720px) {
-        .enc-hero__meta { gap: 24px; }
-        .enc-hero__meta > div { flex: 1 0 40%; }
+        .enc-toolbar { top: 56px; }
+        .enc-toolbar__inner { padding: 12px 16px; }
+        .enc-search { flex-basis: 100%; }
+        .enc-chips { flex-basis: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+        .enc-chip { flex-shrink: 0; }
         .enc-group__head { flex-wrap: wrap; gap: 12px; }
         .enc-group__count { margin-left: 0; }
         .enc-tile__media { aspect-ratio: 16/10; }
+        .enc-hero__meta { grid-template-columns: 1fr 1fr; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -398,7 +593,7 @@
       }
     </style>
 </head>
-<body>
+<body class="enc-page" data-persona="designer">
 
     <!-- HEADER -->
     <header class="header">
@@ -422,227 +617,337 @@
     </div>
 
     <main>
-      <!-- HERO — dark editorial intro -->
-      <section class="enc-stage">
-        <div class="enc-hero">
-          <p class="enc-hero__eyebrow">Floor.DSGN · Encyclopedia</p>
-          <h1 class="enc-hero__h1">Библиотека<br/><em>напольных систем</em></h1>
-          <p class="enc-hero__lede">
-            8 семейств напольных покрытий — от тонкого микротопинга до промышленного PU-cement.
-            Что для жилья, что для производства, чем отличается терраццо от литого бетона, когда нужен MMA вместо эпокси.
-            Спецификации, толщины, реальные цены — без воды. От практика, который лично уложил тысячи м².
-          </p>
-          <div class="enc-hero__meta">
-            <div><b>8</b><em>систем</em></div>
-            <div><b>2</b>группы · декор / индустриал</div>
-            <div><b>Sika</b>сертифицированный applicator</div>
-            <div><b>10<em>+</em></b>лет гарантии на систему</div>
-          </div>
+      <!-- HERO -->
+      <section class="enc-hero">
+        <p class="enc-hero__eyebrow">Floor.DSGN · Encyclopedia</p>
+        <h1 class="enc-hero__h1">Библиотека<br/><em>напольных систем</em></h1>
+        <p class="enc-hero__lede">
+          8 семейств напольных покрытий — от тонкого микротопинга до промышленного PU-cement.
+          Для жилья, шоурумов, производств, hospitality. Спецификации, толщины, реальные цены, видео укладки,
+          логические связи между материалами. От практика, который лично уложил тысячи м².
+        </p>
+        <div class="enc-hero__meta">
+          <div><b>8</b>систем</div>
+          <div><b>2</b>группы · декор/индустриал</div>
+          <div><b>Sika</b>certified applicator</div>
+          <div><b>10+</b>лет гарантии</div>
+        </div>
+
+        <div class="enc-audience" role="tablist" aria-label="Аудитория">
+          <button class="enc-audience__btn" data-persona-btn="designer" aria-pressed="true" type="button">Дизайнер</button>
+          <button class="enc-audience__btn" data-persona-btn="architect" aria-pressed="false" type="button">Архитектор</button>
+          <button class="enc-audience__btn" data-persona-btn="builder" aria-pressed="false" type="button">Прораб</button>
         </div>
       </section>
+
+      <!-- STICKY TOOLBAR -->
+      <div class="enc-toolbar">
+        <div class="enc-toolbar__inner">
+          <label class="enc-search" aria-label="Поиск">
+            <input type="search" id="encSearch" placeholder="Поиск по толщине, нагрузке, температуре, SKU…">
+          </label>
+          <div class="enc-chips" role="group" aria-label="Фильтры">
+            <button class="enc-chip" data-filter="all" aria-pressed="true" type="button">Все</button>
+            <button class="enc-chip" data-filter="decorative" aria-pressed="false" type="button">Декор</button>
+            <button class="enc-chip" data-filter="industrial" aria-pressed="false" type="button">Промка</button>
+            <button class="enc-chip" data-filter="wet" aria-pressed="false" type="button">Влажные зоны</button>
+            <button class="enc-chip" data-filter="thin" aria-pressed="false" type="button">Тонкие &lt;5 мм</button>
+            <button class="enc-chip" data-filter="fast" aria-pressed="false" type="button">Fast-cure</button>
+            <button class="enc-chip" data-filter="wall" aria-pressed="false" type="button">Можно на стены</button>
+          </div>
+        </div>
+      </div>
 
       <!-- DECORATIVE FAMILY -->
       <section class="enc-section">
         <div class="enc-section__inner">
-          <div class="enc-group">
-            <div class="enc-group__head">
-              <span class="enc-group__eyebrow">Группа 01</span>
-              <h2 class="enc-group__h2">Декоративные системы</h2>
-              <span class="enc-group__count">5 семейств</span>
-            </div>
+          <div class="enc-group__head">
+            <span class="enc-group__eyebrow">Группа 01</span>
+            <h2 class="enc-group__h2">Декоративные системы</h2>
+            <span class="enc-group__count">5 семейств</span>
+          </div>
 
-            <div class="enc-grid">
-              <!-- Терраццо -->
-              <a class="enc-tile" href="../../floors/terrazzo.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/terrazzo-cement_hero_00.webp" alt="Терраццо — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Decorative · DC</span>
-                </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">Терраццо</h3>
-                  <p class="enc-tile__type">Минеральное CS-31 · эпокси EM-10 · палладиана</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>12—18 мм</dd>
-                    <dt>Цена</dt><dd>₪1000—2400/м²</dd>
-                    <dt>Срок службы</dt><dd>30+ лет</dd>
-                    <dt>Cure</dt><dd>10—14 дней</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> микротопинг (декор тоньше), литой бетон (декор толще), эпокси-террацо (industrial-grade)
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
-                </div>
-              </a>
+          <div class="enc-grid" id="encGrid">
 
-              <!-- Микротопинг -->
-              <a class="enc-tile" href="../../floors/microtopping.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/microtopping_hero_04.webp" alt="Микротопинг — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Decorative · MT</span>
+            <!-- Терраццо -->
+            <article class="enc-tile" data-tile="terrazzo" data-tags="decorative thick wet" data-name="терраццо cs-31 em-10">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/terrazzo-cement_hero_00.webp" alt="Терраццо — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Decorative · DC</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение" title="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">Терраццо</h3>
+                <p class="enc-tile__type">Минеральное CS-31 · эпокси EM-10 · палладиана</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>12—18 мм</dd>
+                  <dt>Цена</dt><dd>₪1000—2400/м²</dd>
+                  <dt>Срок службы</dt><dd>30+ лет</dd>
+                  <dt>Cure</dt><dd>10—14 дней</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> белый/чёрный/охра матрица + 4 фракции заполнителя (стекло, мрамор, металл). Сэмплинг — 100×100 мм за 5 дней.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">Микротопинг</h3>
-                  <p class="enc-tile__type">Sikafloor-470 · цементное декоративное</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>2—3 мм</dd>
-                    <dt>Цена</dt><dd>₪500—900/м²</dd>
-                    <dt>Применение</dt><dd>пол · стена · ванная</dd>
-                    <dt>Cure</dt><dd>5—7 дней</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> терраццо (декор толще), полированный бетон (без слоя сверху). <b>На стены</b> — да, тот же материал.
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> микротопинг (декор тоньше · 2-3 мм), литой бетон (декор толще · 40-80 мм), эпокси-терраццо EM-10 (industrial grade). R10/ECO/&gt;35 МПа.
                 </div>
-              </a>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> CEM I + полимер. бетон M250+, %RH &lt;3, шероховатость ICRI CSP 3. Финиш: 3 шлифовки 30→60→120 grit + 2 кристаллизатора.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/terrazzo.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="terrazzo">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/decorative-flooring.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
 
-              <!-- Меда декоративи / литой бетон -->
-              <a class="enc-tile" href="../../floors/concrete.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/decorative-concrete_hero_06.webp" alt="Меда декоративи — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Decorative · DCN</span>
+            <!-- Микротопинг -->
+            <article class="enc-tile" data-tile="microtopping" data-tags="decorative thin wall wet" data-name="микротопинг sikafloor-470">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/microtopping_hero_04.webp" alt="Микротопинг — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Decorative · MT</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">Микротопинг</h3>
+                <p class="enc-tile__type">Sikafloor-470 · цементное декоративное</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>2—3 мм</dd>
+                  <dt>Цена</dt><dd>₪500—900/м²</dd>
+                  <dt>Применение</dt><dd>пол · стена · ванная</dd>
+                  <dt>Cure</dt><dd>5—7 дней</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 14 базовых оттенков + custom NCS. Текстура: матовая / шёлк / венецианский глянец. Шов — ноль.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">Меда декоративи</h3>
-                  <p class="enc-tile__type">Литой архитектурный бетон · полированный</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>40—80 мм</dd>
-                    <dt>Цена</dt><dd>₪650—1200/м²</dd>
-                    <dt>Подложка</dt><dd>самостоятельный слой</dd>
-                    <dt>Cure</dt><dd>21—28 дней</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> терраццо (с заполнителем), микротопинг (декор тоньше). Только пол, на стены не делаем.
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> терраццо (декор толще), полированный бетон (без слоя сверху). <b>На стены — да</b>, тот же материал, тот же процесс. R9-R10 после sealer.
                 </div>
-              </a>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> любой жёсткий ровный — бетон, стяжка, ГВЛ, плитка с праймером. 2 слоя по 1-1.5 мм + 2 слоя sealer PU/акрил. Renewal sealer — 2-4 года.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/microtopping.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="microtopping">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/decorative-flooring.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
 
-              <!-- Резина -->
-              <a class="enc-tile" href="../../floors/rubber.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/rubber_hero_10.webp" alt="Резиновые полы — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Decorative · RB</span>
+            <!-- Меда декоративи -->
+            <article class="enc-tile" data-tile="decorative-concrete" data-tags="decorative thick" data-name="меда декоративи литой бетон concrete">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/decorative-concrete_hero_06.webp" alt="Меда декоративи — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Decorative · DCN</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">Меда декоративи</h3>
+                <p class="enc-tile__type">Литой архитектурный бетон · полированный</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>40—80 мм</dd>
+                  <dt>Цена</dt><dd>₪650—1200/м²</dd>
+                  <dt>Подложка</dt><dd>самостоят. слой</dd>
+                  <dt>Cure</dt><dd>21—28 дней</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 6 серых тонов, охра, индиго (пигментация в массе), 3 финиша полировки. Швы 4×4 или 6×6 м с латунным/анодом разделителем.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">Резина EPDM</h3>
-                  <p class="enc-tile__type">Sheet · tile · поурный 2K PU</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>7—15 мм</dd>
-                    <dt>Цена</dt><dd>₪380—650/м²</dd>
-                    <dt>Акустика</dt><dd>ΔLw до 28 dB</dd>
-                    <dt>Применение</dt><dd>пол · стена-панель</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> ComfortFloor (эластика без EPDM-крошки). <b>На стены</b> — да, акустические панели из того же материала.
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> терраццо (с открытым заполнителем), микротопинг (декор тоньше). Только пол — на стены не делаем. Прочность ≥30 МПа.
                 </div>
-              </a>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон по армированной сетке или PE-плёнка изоляция. Заливка по маякам, виброрейка, 2-3 шлифовки + litho-densifier. Movement-швы каждые 25 м².
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/concrete.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="decorative-concrete">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="../../floors/concrete.html" target="_self">Спека ↓</a>
+                </div>
+              </div>
+            </article>
 
-              <!-- ComfortFloor -->
-              <a class="enc-tile" href="../../floors/rubber.html#comfortfloor">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/rubber_lifestyle_11.webp" alt="ComfortFloor — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Decorative · CF</span>
+            <!-- Резина EPDM -->
+            <article class="enc-tile" data-tile="rubber" data-tags="decorative wall" data-name="резина rubber epdm comfortfloor">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/rubber_hero_10.webp" alt="Резиновые полы — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Decorative · RB</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">Резина EPDM</h3>
+                <p class="enc-tile__type">Sheet · tile · поурный 2K PU</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>7—15 мм</dd>
+                  <dt>Цена</dt><dd>₪380—650/м²</dd>
+                  <dt>Акустика</dt><dd>ΔLw до 28 dB</dd>
+                  <dt>Применение</dt><dd>пол · стена-панель</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 24 цветовых крошки EPDM, кастом-микс под пантон. Узоры — flake / chip / solid. Бесшовная заливка.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">ComfortFloor PS-65</h3>
-                  <p class="enc-tile__type">Sika эластичный PU · recycled pad</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>7—8 мм</dd>
-                    <dt>Цена</dt><dd>₪590—780/м²</dd>
-                    <dt>Подложка</dt><dd>2 мм recycled-PU pad</dd>
-                    <dt>Cure</dt><dd>5—7 дней</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> резина EPDM (комфорт+декор), эпокси (без эластики). Только пол.
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> ComfortFloor (без EPDM-крошки, чище). <b>На стены — да</b>, акустические панели из того же материала. Slip class R10-R11.
                 </div>
-              </a>
-            </div>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон CEM-I/M200+, ≤3% RH, праймер PU. EPDM 1-2 мм крошка + 2K PU binder, шпатель + ёж. Cure 24-48 ч, finish PU топкоут.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/rubber.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="rubber">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="../../floors/rubber.html" target="_self">Спека ↓</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- ComfortFloor -->
+            <article class="enc-tile" data-tile="comfortfloor" data-tags="decorative" data-name="comfortfloor ps-65 sika эластичный">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/rubber_lifestyle_11.webp" alt="ComfortFloor — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Decorative · CF</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">ComfortFloor PS-65</h3>
+                <p class="enc-tile__type">Sika эластичный PU · recycled pad</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>7—8 мм</dd>
+                  <dt>Цена</dt><dd>₪590—780/м²</dd>
+                  <dt>Подложка</dt><dd>2 мм recycled-PU</dd>
+                  <dt>Cure</dt><dd>5—7 дней</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 30 RAL-цветов, матовый / шёлк / глянец финиш. Бесшовно. Эффект "soft underfoot" — заметная разница тактильно.
+                </div>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> резина EPDM (комфорт+декор), эпокси (без эластики). Только пол. Snowman ergonomic, Slip R10.
+                </div>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон M250+, ≤4% RH, праймер PU. Шаги: pad 2 мм → SikaComfortFloor PS-65 5 мм → топкоут PU. Анти-стат опция.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/rubber.html#comfortfloor">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="comfortfloor">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/comfortfloor.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
 
       <!-- INDUSTRIAL FAMILY -->
-      <section class="enc-section enc-section--dark">
+      <section class="enc-section enc-section--paper">
         <div class="enc-section__inner">
-          <div class="enc-group">
-            <div class="enc-group__head">
-              <span class="enc-group__eyebrow">Группа 02</span>
-              <h2 class="enc-group__h2">Промышленные системы</h2>
-              <span class="enc-group__count">3 семейства</span>
-            </div>
+          <div class="enc-group__head">
+            <span class="enc-group__eyebrow">Группа 02</span>
+            <h2 class="enc-group__h2">Промышленные системы</h2>
+            <span class="enc-group__count">3 семейства</span>
+          </div>
 
-            <div class="enc-grid">
-              <!-- Эпокси -->
-              <a class="enc-tile" href="../../floors/epoxy.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/epoxy_hero_16.webp" alt="Эпокси-полы — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Industrial · EP</span>
-                </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">Эпокси SL</h3>
-                  <p class="enc-tile__type">Sikafloor-263 SL · self-leveling</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>3—5 мм</dd>
-                    <dt>Цена</dt><dd>₪400—650/м²</dd>
-                    <dt>Семейств</dt><dd>5 (seal-coat → HBS)</dd>
-                    <dt>Cure</dt><dd>5—7 дней</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> PU-cement (для влаги), MMA (для скорости), микротопинг (декор тоньше)
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
-                </div>
-              </a>
+          <div class="enc-grid">
 
-              <!-- PU-cement -->
-              <a class="enc-tile" href="../../floors/pu-cement.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/pu-cement_hero_14.webp" alt="PU-cement — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Industrial · PUC</span>
+            <!-- Эпокси -->
+            <article class="enc-tile" data-tile="epoxy" data-tags="industrial thin fast" data-name="эпокси epoxy sikafloor-263 sl">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/epoxy_hero_16.webp" alt="Эпокси-полы — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Industrial · EP</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">Эпокси SL</h3>
+                <p class="enc-tile__type">Sikafloor-263 SL · self-leveling</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>3—5 мм</dd>
+                  <dt>Цена</dt><dd>₪400—650/м²</dd>
+                  <dt>Семейств</dt><dd>5 (seal → HBS)</dd>
+                  <dt>Cure</dt><dd>5—7 дней</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> любой RAL. Финиш матовый/шёлк/глянец. Чипсы (декоративные хлопья), металлик-эффект.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">PU-cement</h3>
-                  <p class="enc-tile__type">Sikafloor PurCem · термошок-стойкий</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>4—9 мм</dd>
-                    <dt>Цена</dt><dd>₪380—650/м²</dd>
-                    <dt>Температура</dt><dd>−40…+120 °C</dd>
-                    <dt>Влажность</dt><dd>до 95% RH</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> эпокси (для сухого пола), MMA (для overnight). Только пол индустриал.
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> PU-cement (для влаги/+120°C), MMA (для скорости/-30°C), микротопинг (декор тоньше). HBS 12 мм для тяжёлой логистики.
                 </div>
-              </a>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон M250+, ≤4% RH (CM-тест обяз.), shot-blast или фрезеровка. Праймер EpoCem или 156 → SL 3-5 мм → топкоут PU.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/epoxy.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="epoxy">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/industrial-flooring.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
 
-              <!-- MMA -->
-              <a class="enc-tile" href="../../floors/mma.html">
-                <div class="enc-tile__media">
-                  <img src="../../3d-assets/previews/mma_hero_12.webp" alt="MMA-полы — Floor.DSGN" loading="lazy">
-                  <span class="enc-tile__tag">Industrial · MMA</span>
+            <!-- PU-cement -->
+            <article class="enc-tile" data-tile="pu-cement" data-tags="industrial wet" data-name="pu-cement sikafloor purcem">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/pu-cement_hero_14.webp" alt="PU-cement — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Industrial · PUC</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">PU-cement</h3>
+                <p class="enc-tile__type">Sikafloor PurCem · термошок-стойкий</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>4—9 мм</dd>
+                  <dt>Цена</dt><dd>₪380—650/м²</dd>
+                  <dt>Температура</dt><dd>−40…+120 °C</dd>
+                  <dt>Влажность</dt><dd>до 95% RH</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 8 промышленных цветов (RAL 1014, 7035, 7032, 6011, 5024, 3020, 9002, 8003). Финиш матовый, антискольжение R12-R13.
                 </div>
-                <div class="enc-tile__body">
-                  <h3 class="enc-tile__name">MMA Pronto</h3>
-                  <p class="enc-tile__type">Sikafloor Pronto · fast-cure</p>
-                  <dl class="enc-tile__meta">
-                    <dt>Толщина</dt><dd>3—6 мм</dd>
-                    <dt>Цена</dt><dd>₪780—1100/м²</dd>
-                    <dt>Cure</dt><dd>1—2 ч</dd>
-                    <dt>Температура</dt><dd>от −30 °C</dd>
-                  </dl>
-                  <div class="enc-tile__related">
-                    <b>Связано:</b> эпокси (стандартный темп), PU-cement (для влажных и горячих)
-                  </div>
-                  <span class="enc-tile__link">Смотреть систему</span>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> эпокси (для сухого пола), MMA (для overnight). Пищевое производство, морозильные камеры, химия. HACCP-ready.
                 </div>
-              </a>
-            </div>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон M300+, влажность до 95% RH (можно на свежий бетон 7 дней!), пескоструй CSP 4-5. Закладные полусухие смеси, рекаств. Шаги: грунт PurCem 21 → слой 21N 4-9 мм → топкоут опц.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/pu-cement.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="pu-cement">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/industrial-flooring.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- MMA -->
+            <article class="enc-tile" data-tile="mma" data-tags="industrial fast" data-name="mma sikafloor pronto fast-cure">
+              <div class="enc-tile__media">
+                <img src="../../3d-assets/previews/mma_hero_12.webp" alt="MMA-полы — Floor.DSGN" loading="lazy">
+                <span class="enc-tile__tag">Industrial · MMA</span>
+                <button class="enc-tile__compare" type="button" aria-pressed="false" aria-label="Добавить в сравнение">+</button>
+              </div>
+              <div class="enc-tile__body">
+                <h3 class="enc-tile__name">MMA Pronto</h3>
+                <p class="enc-tile__type">Sikafloor Pronto · fast-cure</p>
+                <dl class="enc-tile__meta">
+                  <dt>Толщина</dt><dd>3—6 мм</dd>
+                  <dt>Цена</dt><dd>₪780—1100/м²</dd>
+                  <dt>Cure</dt><dd>1—2 ч</dd>
+                  <dt>Температура</dt><dd>от −30 °C</dd>
+                </dl>
+                <div class="enc-tile__related" data-show="designer">
+                  <b>Палитра:</b> 16 цветов, чипсы, кварц. Глянец / матовый. Для retail с overnight ребрендингом.
+                </div>
+                <div class="enc-tile__related" data-show="architect">
+                  <b>Тех-связки:</b> эпокси (стандартный темп), PU-cement (для влаги/высоких темп). Cold storage до -30°C, retail с overnight установкой.
+                </div>
+                <div class="enc-tile__related" data-show="builder">
+                  <b>Substrate:</b> бетон M250+, ≤4% RH, shot-blast. Праймер MMA 18 (даже при -10°C), SikaFloor Pronto 24N (5-7 мм) + топкоут. Запах — нужна вытяжка, ограничение по PEL.
+                </div>
+                <div class="enc-tile__actions">
+                  <a class="enc-tile__action" href="../../floors/mma.html">Система →</a>
+                  <button class="enc-tile__action" type="button" data-copy="mma">Скопир. формулу</button>
+                  <a class="enc-tile__action enc-tile__action--solid" href="https://www.sika.com/en/construction/flooring/industrial-flooring.html" target="_blank" rel="noopener">TDS ↓</a>
+                </div>
+              </div>
+            </article>
+
           </div>
         </div>
       </section>
@@ -658,19 +963,159 @@
       </section>
     </main>
 
+    <!-- compare ribbon -->
+    <div class="enc-compare-ribbon" id="encCompareRibbon" aria-live="polite">
+      <span class="enc-compare-ribbon__count" id="encCompareCount">0</span>
+      <span>выбрано · до 3</span>
+      <a class="enc-compare-ribbon__cta" id="encCompareGo" href="../../compare.html">Сравнить →</a>
+      <button class="enc-compare-ribbon__clear" id="encCompareClear" type="button">Сброс</button>
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="../../floors/epoxy.html">Эпокси</a></li><li><a href="../../floors/terrazzo.html">Терраццо</a></li><li><a href="../../floors/microtopping.html">Микротопинг</a></li><li><a href="../../floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="../../quote.html">Калькулятор</a></li><li><a href="../../decision-tool.html">Подбор системы</a></li><li><a href="../../configurator.html">3D-конфигуратор</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
 
     <script src="../../script.js" defer></script>
     <script>
-      // Remove curtain from DOM after animation so it can't trap focus.
-      const curtain = document.getElementById('encCurtain');
-      if (curtain) {
+      // ─── Encyclopedia interactivity ──────────────────────────
+      // 1. Curtain cleanup
+      (function() {
+        const curtain = document.getElementById('encCurtain');
+        if (!curtain) return;
         curtain.addEventListener('animationend', e => {
           if (e.animationName === 'encCurtainOut') curtain.remove();
         });
-        // Safety: if reduced-motion or animation skipped, kill curtain after 3s
-        setTimeout(() => curtain.remove(), 3500);
+        setTimeout(() => curtain.remove(), 3000);
+      })();
+
+      // 2. Persona toggle — designer / architect / builder
+      (function() {
+        document.querySelectorAll('[data-persona-btn]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const persona = btn.dataset.personaBtn;
+            document.body.dataset.persona = persona;
+            document.querySelectorAll('[data-persona-btn]').forEach(b =>
+              b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            try { localStorage.setItem('floordsgnEncPersona', persona); } catch(_) {}
+          });
+        });
+        try {
+          const saved = localStorage.getItem('floordsgnEncPersona');
+          if (saved) {
+            const btn = document.querySelector(`[data-persona-btn="${saved}"]`);
+            if (btn) btn.click();
+          }
+        } catch(_) {}
+      })();
+
+      // 3. Filter chips
+      (function() {
+        const chips = document.querySelectorAll('[data-filter]');
+        const tiles = document.querySelectorAll('.enc-tile');
+        let activeFilter = 'all';
+        function applyFilter() {
+          const q = (document.getElementById('encSearch').value || '').toLowerCase().trim();
+          tiles.forEach(t => {
+            const tags = (t.dataset.tags || '').split(/\s+/);
+            const name = (t.dataset.name || '').toLowerCase();
+            const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+            const matchesSearch = !q || name.includes(q) || t.textContent.toLowerCase().includes(q);
+            t.classList.toggle('is-filtered-out', !(matchesFilter && matchesSearch));
+          });
+        }
+        chips.forEach(chip => {
+          chip.addEventListener('click', () => {
+            activeFilter = chip.dataset.filter;
+            chips.forEach(c => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
+            applyFilter();
+          });
+        });
+        document.getElementById('encSearch').addEventListener('input', applyFilter);
+      })();
+
+      // 4. Compare ribbon — up to 3 tiles
+      (function() {
+        const compareBtns = document.querySelectorAll('.enc-tile__compare');
+        const ribbon = document.getElementById('encCompareRibbon');
+        const countEl = document.getElementById('encCompareCount');
+        const goBtn = document.getElementById('encCompareGo');
+        const clearBtn = document.getElementById('encCompareClear');
+        const selected = new Set();
+        function update() {
+          countEl.textContent = selected.size;
+          ribbon.classList.toggle('is-visible', selected.size > 0);
+          const slugs = [...selected].join(',');
+          goBtn.href = '../../compare.html' + (slugs ? '?materials=' + encodeURIComponent(slugs) : '');
+        }
+        compareBtns.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.preventDefault(); e.stopPropagation();
+            const tile = btn.closest('.enc-tile');
+            const slug = tile.dataset.tile;
+            if (selected.has(slug)) {
+              selected.delete(slug);
+              btn.setAttribute('aria-pressed', 'false');
+              btn.textContent = '+';
+              tile.classList.remove('is-compare-on');
+            } else {
+              if (selected.size >= 3) { showToast('Максимум 3 материала'); return; }
+              selected.add(slug);
+              btn.setAttribute('aria-pressed', 'true');
+              btn.textContent = '✓';
+              tile.classList.add('is-compare-on');
+            }
+            update();
+          });
+        });
+        clearBtn.addEventListener('click', () => {
+          selected.clear();
+          compareBtns.forEach(b => {
+            b.setAttribute('aria-pressed', 'false');
+            b.textContent = '+';
+          });
+          document.querySelectorAll('.is-compare-on').forEach(t => t.classList.remove('is-compare-on'));
+          update();
+        });
+      })();
+
+      // 5. Copy formula — copies slug + spec block to clipboard
+      (function() {
+        document.querySelectorAll('[data-copy]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const tile = btn.closest('.enc-tile');
+            const slug = btn.dataset.copy;
+            const name = tile.querySelector('.enc-tile__name').textContent.trim();
+            const type = tile.querySelector('.enc-tile__type').textContent.trim();
+            const meta = [...tile.querySelectorAll('.enc-tile__meta > *')].map(el => el.textContent.trim());
+            const pairs = [];
+            for (let i = 0; i < meta.length; i += 2) pairs.push(`${meta[i]}: ${meta[i+1] || ''}`);
+            const formula = `${name} (${slug})\n${type}\n${pairs.join('\n')}\nfloordsgn.netlify.app/articles/encyclopedia/`;
+            try {
+              await navigator.clipboard.writeText(formula);
+              showToast('Формула скопирована');
+            } catch (e) {
+              const ta = document.createElement('textarea');
+              ta.value = formula; document.body.appendChild(ta); ta.select();
+              document.execCommand('copy'); document.body.removeChild(ta);
+              showToast('Формула скопирована');
+            }
+          });
+        });
+      })();
+
+      // 6. Toast helper
+      function showToast(msg) {
+        let t = document.querySelector('.enc-toast');
+        if (!t) {
+          t = document.createElement('div');
+          t.className = 'enc-toast';
+          t.setAttribute('role', 'status');
+          t.setAttribute('aria-live', 'polite');
+          document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.classList.add('is-visible');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => t.classList.remove('is-visible'), 2200);
       }
     </script>
     <script src="../../translations.js"></script>
