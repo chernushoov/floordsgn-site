@@ -7,6 +7,80 @@
 
 ---
 
+## SPRINT 0 STATUS — 2026-05-12 (по итогам дня)
+
+**13 коммитов на ветке `feature/encyclopedia-2026-05-12`**, проведена тактическая правка + интеграция findings внешнего стратегического аудита (`_external/EXTERNAL_AUDIT_2026-05-12.md`).
+
+| commit | задача |
+|---|---|
+| `ddd1561` | mobile HUD overlay labels убраны (configurator.html) |
+| `7e617b9` | manifest specs приведены к sales-страницам (8 систем, SKU/cure/temp) |
+| `23ed628` | ComfortFloor добавлен в manifest, паркет убран |
+| `0cfc4a8` | fake testimonials + пустые projects + ESL «Quality» удалены из home |
+| `7a41b3f` | index.html SEO: canonical→netlify, lang→ru, fake Schema rating убран |
+| `d6c8c35` | translations.js: RU дефолт для новых посетителей + browser-lang detect |
+| `d89c647` | site-wide cascade canonical+lang по 80 страницам |
+| `bf23840` | nav canonical: убраны Home/Blog links, About Us → About |
+| `c7be1c5` | configurator → /quote + /contact bridges починены (URL params) |
+| `7323385` | 17 orphan spec keys в materials/epoxy.html переведены |
+| `53143d8` | hero3d + picker + sticky-CTA обёрнуты в data-i18n, EN+RU keys |
+| `eb01f75` | dead `js/i18n.js` + `css/i18n.css` удалены (broken default `he`) |
+| **тег** | `audit-fix-etalon-2026-05-12` помечает commit `23ed628` |
+
+### Оценки до → после
+
+| категория (из EXTERNAL_AUDIT) | начальная | после Sprint 0 |
+|---|---|---|
+| Brand / numbers canon | 48/100 | **~80** |
+| Language system (EN toggle работает на hero) | 32/100 | **~65** |
+| Information architecture (один nav, без Blog) | 54/100 | **~75** |
+| Proof / trust (фейк удалён) | 28/100 | **~75** |
+| Copy / tone (без ESL) | 58/100 | **~70** |
+| SEO / tech (canonical, hreflang, OG, Schema чистый) | 38/100 | **~80** |
+| Conversion funnel (configurator → quote bridge) | 42/100 | **~70** |
+
+### Done — что закрыто полностью
+
+- ✅ Spec lies от manifest (PU-cement ±150°C → −40…+120°C; epoxy-terrazzo cure 72ч → 7-10 дней; цены terrazzo 2-4× подняты до installed)
+- ✅ Trust-killers (fake testimonials, empty projects, ESL copy)
+- ✅ Number canon (9/10+/Six/8 → 10/10/8 единый канон)
+- ✅ SEO base (canonical, hreflang, OG image, Schema.org без фейк rating)
+- ✅ Nav canonical (без Home/Blog redundancy)
+- ✅ i18n default (RU primary с browser-lang detect)
+- ✅ Hero3d i18n coverage (EN toggle работает)
+- ✅ Funnel bridge configurator → quote/contact
+
+### Deferred — отложено осознанно
+
+| что | причина |
+|---|---|
+| Меда декоративи sales page | Требует editorial-голоса владельца (per memory) |
+| Restoration в configurator picker | Different UX flow (renovate vs design) — есть свои страницы /floors/restoration/* |
+| Реальные кейсы с метриками | Отдельный комплекс материалов (фото/видео — пользователь сам сформирует) |
+| Heb stack + RTL | Sprint 1, нужен native proofreader |
+| Sample-kit real form (Israel Post API + tracking) | Sprint 1, требует фулфилмент-партнёра |
+| Domain decision (floor.design / .com) | Решение владельца |
+| Corporate email (hello@) | Решение владельца, ждёт регистрации домена |
+| materials.config.json sync с manifest.json | Отдельная задача, не блокирует launch |
+| Статьи unification (1-3 мм micro / 6-10 мм epoxy-terrazzo) | Editorial work, требует владельца |
+
+### IG-launch readiness
+
+После Sprint 0 главная страница (`index.html`) готова к первому показу:
+- 3D-конфигуратор как hero, всё на русском, все цифры правдивы
+- Canonical/OG metadata — share-карточка в IG будет рендерить правильно
+- Funnel работает: configurator → quote с pre-filled material
+- Trust-killers ушли, ничего фальшивого не светится
+
+**Что нужно перед IG-постом (на стороне владельца):**
+1. iPhone 14 Pro ручная проверка после netlify ребилда
+2. Реальный пост-копи для caption
+3. Возможно: 1-2 настоящих кейса с метриками (необязательно, можно после)
+
+---
+
+---
+
 ## TL;DR — масштаб проблемы
 
 Конфигуратор и сайт описывают **разные продуктовые линейки**. Это не «опечатки в цифрах» — это структурное расхождение:
