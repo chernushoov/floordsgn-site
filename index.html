@@ -80,7 +80,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=10">
-    <link rel="stylesheet" href="enhance.css?v=17">
+    <link rel="stylesheet" href="enhance.css?v=18">
     <!-- v5: Preload hero plate LCP image (terrazzo default top) — injected via JS to avoid parcel resolution mismatch -->
     <script>(function(){try{var l=document.createElement('link');l.rel='preload';l.as='image';var p=(location.pathname.indexOf('/en/')===0?'../':'')+'images/terrazzo/dark-mosaic-textured-background.jpg';l.href=p;l.setAttribute('fetchpriority','high');document.head.appendChild(l);}catch(e){}})();</script>
 </head>
@@ -162,20 +162,58 @@
       </div>
     </section>
 
-    <!-- 3D Configurator v2 entry — replaces the legacy inline HERO LAB v3 (hidden below). -->
-    <section class="fx-plate-section" id="material-lab-entry" style="padding:48px 32px;background:var(--paper-2,#f5f5f7);border-top:1px solid var(--line,#d2d2d7);border-bottom:1px solid var(--line,#d2d2d7)">
-      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center">
-        <div>
-          <p style="font-family:var(--mono,monospace);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3,#6e6e73);margin:0 0 10px">Floor.DSGN · 3D Configurator</p>
-          <h2 style="margin:0 0 8px;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.05;letter-spacing:-.02em;color:var(--ink,#1d1d1f);text-wrap:balance">Соберите свой пол в 3D — <span style="font-family:var(--serif,Georgia);font-style:italic">9 материалов, ваши параметры</span></h2>
-          <p style="margin:0;color:var(--ink-3,#6e6e73);max-width:640px;font-size:15px;line-height:1.55">Интерактивный WebGL-конструктор: меняйте материал, цвет, заполнитель, финиш. Получите готовую формулу для расчёта сметы.</p>
+    <!-- HERO 3D — cinematic entry into the WebGL configurator. -->
+    <section class="hero3d" id="hero-3d">
+      <div class="hero3d__bg" aria-hidden="true"></div>
+      <div class="hero3d__veil" aria-hidden="true"></div>
+      <div class="hero3d__grid" aria-hidden="true"></div>
+
+      <div class="hero3d__inner">
+        <div class="hero3d__copy">
+          <p class="hero3d__eyebrow">
+            <span class="hero3d__dot" aria-hidden="true"></span>
+            Floor.DSGN · 3D Configurator · v2
+          </p>
+          <h1 class="hero3d__h1">
+            Соберите свой пол<br>
+            <em>в 3D — а потом мы его уложим.</em>
+          </h1>
+          <p class="hero3d__lede">
+            WebGL-конструктор с реальными PBR-текстурами. 9 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.
+          </p>
+          <div class="hero3d__cta">
+            <a href="configurator.html" class="hero3d__btn hero3d__btn--primary">
+              <span>Открыть 3D-конфигуратор</span>
+              <span class="hero3d__btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#material-picker" class="hero3d__btn hero3d__btn--ghost">
+              <span>Все системы</span>
+            </a>
+          </div>
+          <ul class="hero3d__specs" aria-label="Specs">
+            <li><b>9</b><span>материалов</span></li>
+            <li><b>PBR</b><span>real textures</span></li>
+            <li><b>WebGL</b><span>three.js</span></li>
+            <li><b>≈12s</b><span>до сметы</span></li>
+          </ul>
         </div>
-        <a href="configurator.html" class="btn btn-dark" style="white-space:nowrap;padding:18px 28px;font-size:15px">Открыть 3D-конфигуратор <span aria-hidden="true">→</span></a>
+
+        <a href="configurator.html" class="hero3d__preview" aria-label="Открыть 3D-конфигуратор">
+          <div class="hero3d__frame">
+            <span class="hero3d__chrome"><i></i><i></i><i></i></span>
+            <img src="images/hero/configurator-preview.jpg" alt="Floor.DSGN 3D Configurator — превью" loading="eager" fetchpriority="high">
+            <span class="hero3d__play" aria-hidden="true">
+              <svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.92)"/><path d="M26 21 L46 32 L26 43 Z" fill="#1d1d1f"/></svg>
+            </span>
+            <span class="hero3d__badge">Live · WebGL</span>
+          </div>
+          <p class="hero3d__caption">Превью реального конфигуратора · клик откроет полную сцену</p>
+        </a>
       </div>
     </section>
 
     <!-- HERO — выбор системы по материалу -->
-    <section class="fx-picker">
+    <section class="fx-picker" id="material-picker">
       <div class="fx-picker__head">
         <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Engineering</p>
         <h1 class="fx-picker__h1">Выберите <em>систему</em></h1>
