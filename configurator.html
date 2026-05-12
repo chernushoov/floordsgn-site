@@ -7,7 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.180.0/examples/jsm/"
+  }
+}
+</script>
 
 <style>
 /* ============================================================
@@ -285,7 +292,10 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 <!-- ============================================================
      SCRIPT — Three.js scene + material registry
      ============================================================ -->
-<script>
+<script type="module">
+import * as THREE from 'three';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
 /* ============ MATERIAL REGISTRY — edit me ============ */
 /* Each entry can override: title, layers (top→bottom), specs, badges */
 const MATERIALS = {
@@ -436,6 +446,8 @@ const stageEl = document.getElementById('stage');
 const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
 stageEl.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
@@ -443,10 +455,22 @@ const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
 camera.position.set(4.5, 3.3, 5.2);
 camera.lookAt(0,0,0);
 
-scene.add(new THREE.HemisphereLight(0xffffff, 0xb0a890, 0.55));
-const key = new THREE.DirectionalLight(0xfff4dd, 1.4); key.position.set(5,7,4); scene.add(key);
-const fill = new THREE.DirectionalLight(0xc9d4e0, 0.45); fill.position.set(-5,3,-3); scene.add(fill);
+const hemi = new THREE.HemisphereLight(0xffffff, 0xb0a890, 0.35); scene.add(hemi);
+const key = new THREE.DirectionalLight(0xfff4dd, 1.1); key.position.set(5,7,4); scene.add(key);
+const fill = new THREE.DirectionalLight(0xc9d4e0, 0.35); fill.position.set(-5,3,-3); scene.add(fill);
 const rim = new THREE.PointLight(0xff9a6a, 0.5, 12); rim.position.set(-3,1.5,3); scene.add(rim);
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+new RGBELoader().load('plate3d/env/studio_small_08_1k.hdr', (hdr) => {
+  const envMap = pmrem.fromEquirectangular(hdr).texture;
+  scene.environment = envMap;
+  scene.environmentIntensity = 1.0;
+  hdr.dispose();
+  pmrem.dispose();
+}, undefined, (err) => {
+  console.warn('HDRI load failed, falling back to lights only:', err);
+});
 
 /* === beveled slab geometry === */
 function makeBeveledSlab(w,d,h,bevel){

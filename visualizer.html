@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Floor.DSGN — Визуализатор материалов · образец и в комнате</title>
+<meta name="description" content="9 материалов Floor.DSGN — образец рядом с реальной комнатой. Compare slider: тяните, чтобы сравнить два материала или одну системы в двух средах.">
+<link rel="canonical" href="https://floor.dsgn/visualizer.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="chrome-fix.css?v=3">
+<link rel="stylesheet" href="enhance.css?v=6">
+<style>
+  :root {
+    --paper:#fff; --paper-2:#f5f5f7; --ink:#1d1d1f; --ink-2:#424245; --ink-3:#6e6e73;
+    --line:#d2d2d7; --accent:#0071e3;
+    --sans:'Montserrat','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --serif:'Cormorant Garamond',Georgia,serif;
+  }
+  .vz-shell { max-width: 1400px; margin: 0 auto; padding: 96px 32px 120px; font-family: var(--sans); color: var(--ink); }
+  .vz-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 18px; }
+  .vz-h1 { font-family: var(--serif); font-size: clamp(48px, 6.4vw, 96px); font-weight: 400; line-height: 1.02; letter-spacing: -.025em; margin: 0 0 24px; }
+  .vz-h1 em { font-style: italic; }
+  .vz-lede { max-width: 680px; font-size: 17px; line-height: 1.6; color: var(--ink-2); margin: 0 0 56px; }
+
+  /* Slider stage */
+  .vz-stage { position: relative; background: var(--paper-2); border-radius: 20px; overflow: hidden; aspect-ratio: 16/10; user-select: none; touch-action: pan-y; }
+  .vz-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .vz-stage .vz-after { clip-path: inset(0 0 0 50%); }
+  .vz-handle { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; left: 50%; transform: translateX(-50%); box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 4px 24px rgba(0,0,0,.18); cursor: ew-resize; z-index: 3; }
+  .vz-handle::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.18); }
+  .vz-handle::before { content: "⇄"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 18px; color: var(--ink); z-index: 1; font-family: var(--mono); }
+  .vz-label { position: absolute; top: 18px; padding: 8px 14px; background: rgba(29,29,31,.78); color: #fff; font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; backdrop-filter: blur(8px); border-radius: 4px; z-index: 2; pointer-events: none; }
+  .vz-label.l { left: 18px; }
+  .vz-label.r { right: 18px; }
+
+  /* Controls */
+  .vz-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
+  .vz-control h3 { font-family: var(--mono); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
+  .vz-pick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .vz-pick button { font-family: var(--sans); font-size: 13px; padding: 10px 12px; background: var(--paper-2); border: 1px solid transparent; color: var(--ink-2); cursor: pointer; border-radius: 12px; text-align: left; transition: all .18s; line-height: 1.25; min-height: 56px; display: flex; align-items: center; }
+  .vz-pick button:hover { background: #ecedef; color: var(--ink); }
+  .vz-pick button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .vz-modes { display: inline-flex; padding: 4px; background: var(--paper-2); border-radius: 12px; }
+  .vz-modes button { font-family: var(--sans); font-size: 13px; padding: 10px 16px; border: none; background: transparent; color: var(--ink-3); cursor: pointer; border-radius: 8px; transition: all .18s; }
+  .vz-modes button.on { background: #fff; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+
+  /* Spec strip */
+  .vz-spec { margin-top: 48px; padding: 28px 32px; background: var(--paper-2); border-radius: 16px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+  .vz-spec dt { font-family: var(--mono); font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+  .vz-spec dd { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--ink); margin: 0; line-height: 1.1; }
+  .vz-spec dd small { font-family: var(--sans); font-size: 13px; color: var(--ink-3); display: block; margin-top: 4px; }
+
+  .vz-cta { margin-top: 56px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .vz-cta .btn { font-family: var(--sans); font-weight: 500; font-size: 14px; padding: 14px 26px; border-radius: 999px; text-decoration: none; transition: all .18s; }
+  .vz-cta .btn-dark { background: var(--ink); color: #fff; }
+  .vz-cta .btn-dark:hover { background: #000; }
+  .vz-cta .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .vz-cta .btn-ghost:hover { background: var(--paper-2); }
+
+  @media (max-width: 800px) {
+    .vz-shell { padding: 72px 20px 96px; }
+    .vz-stage { aspect-ratio: 4/5; }
+    .vz-controls { grid-template-columns: 1fr; gap: 24px; }
+    .vz-pick { grid-template-columns: 1fr 1fr; }
+    .vz-spec { grid-template-columns: 1fr 1fr; gap: 18px; padding: 22px; }
+  }
+</style>
+</head>
+<body data-fx-page="Визуализатор">
+
+<header class="header">
+  <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
+  <nav><ul class="nav">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="floors.html">Системы</a></li>
+    <li><a href="visualizer.html" class="active">Визуализатор</a></li>
+    <li><a href="configurator.html">3D-конфигуратор</a></li>
+    <li><a href="projects.html">Проекты</a></li>
+    <li><a href="blog.html">Блог</a></li>
+  </ul></nav>
+  <a href="contact.html" class="btn btn-dark">Связаться</a>
+</header>
+
+<main class="vz-shell">
+  <p class="vz-eyebrow">01 — visualizer · compare</p>
+  <h1 class="vz-h1">Образец <em>и</em> комната<br/>— тяните полосу</h1>
+  <p class="vz-lede">9 систем Floor.DSGN. Слева — образец материала рядом и крупно. Справа — тот же материал, уложенный в интерьере. Тяните ползунок и сравнивайте как угодно: образец/комнату одного материала или два материала рядом.</p>
+
+  <!-- COMPARE STAGE -->
+  <div class="vz-stage" id="vz-stage">
+    <img class="vz-before" id="vz-img-l" src="plate3d/previews/terrazzo-cement_hero_00.webp" alt="">
+    <img class="vz-after"  id="vz-img-r" src="plate3d/previews/terrazzo-cement_lifestyle_01.webp" alt="">
+    <div class="vz-label l" id="vz-label-l">образец</div>
+    <div class="vz-label r" id="vz-label-r">в комнате</div>
+    <div class="vz-handle" id="vz-handle"></div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="vz-controls">
+    <div class="vz-control">
+      <h3>Материал <span id="vz-side-l-label">слева</span></h3>
+      <div class="vz-pick" data-side="L"></div>
+    </div>
+    <div class="vz-control">
+      <h3>Материал <span id="vz-side-r-label">справа</span></h3>
+      <div class="vz-pick" data-side="R"></div>
+    </div>
+  </div>
+
+  <div class="vz-control" style="margin-top: 28px;">
+    <h3>Режим</h3>
+    <div class="vz-modes" id="vz-modes">
+      <button data-mode="sample-vs-room" class="on">Образец / в комнате</button>
+      <button data-mode="two-materials">Два материала</button>
+    </div>
+  </div>
+
+  <!-- SPEC strip — updates with selection -->
+  <dl class="vz-spec" id="vz-spec">
+    <div><dt>Тип системы</dt><dd id="sp-type">—</dd></div>
+    <div><dt>Толщина</dt><dd id="sp-thick">—</dd></div>
+    <div><dt>Срок укладки</dt><dd id="sp-cure">—</dd></div>
+    <div><dt>Цена ориентир</dt><dd id="sp-price">—</dd></div>
+  </dl>
+
+  <div class="vz-cta">
+    <a href="contact.html" class="btn btn-dark">Заказать sample-kit</a>
+    <a href="configurator.html" class="btn btn-ghost">Открыть 3D-конфигуратор →</a>
+  </div>
+</main>
+
+<script>
+const MATERIALS = [
+  { id:'terrazzo-cement',   name:'Терраццо · цемент',     type:'минеральный',   thick:'10–18 мм', cure:'7–10 дней',  price:'₪520–880 / м²' },
+  { id:'terrazzo-epoxy',    name:'Терраццо · эпоксид',    type:'эпоксидный',    thick:'8–14 мм',  cure:'24h walk · 72h full', price:'₪650–1020 / м²' },
+  { id:'microtopping',      name:'Микротопинг',           type:'цементный',     thick:'2–4 мм',   cure:'48–72 ч',    price:'₪380–620 / м²' },
+  { id:'decorative-concrete', name:'Бетон · меда декор.', type:'цементный',     thick:'8–12 мм',  cure:'5–7 дней',   price:'₪320–540 / м²' },
+  { id:'epoxy',             name:'Эпоксидная заливка',    type:'эпоксидный',    thick:'2–4 мм',   cure:'24h walk · 72h full', price:'₪240–460 / м²' },
+  { id:'mma',               name:'MMA Pronto',            type:'метакрилат',    thick:'4–8 мм',   cure:'2 часа !',    price:'₪780–1180 / м²' },
+  { id:'pu-cement',         name:'PU-cement',             type:'полиуретан-цемент', thick:'4–9 мм', cure:'24h walk · 5d full', price:'₪520–720 / м²' },
+  { id:'rubber',            name:'Резиновое покрытие',    type:'каучук EPDM',   thick:'8–15 мм',  cure:'12 ч',       price:'₪280–420 / м²' },
+  { id:'parquet',           name:'Паркет · инжен.',       type:'дерево',        thick:'14–20 мм', cure:'1 день',     price:'₪460–980 / м²' },
+];
+
+const state = { L: 'terrazzo-cement', R: 'terrazzo-cement', mode: 'sample-vs-room' };
+
+const $ = (q,r=document) => r.querySelector(q);
+const $$ = (q,r=document) => Array.from(r.querySelectorAll(q));
+
+function renderPickers() {
+  $$('.vz-pick').forEach(grid => {
+    const side = grid.dataset.side;
+    grid.innerHTML = MATERIALS.map(m =>
+      `<button data-id="${m.id}" class="${state[side]===m.id?'on':''}">${m.name}</button>`
+    ).join('');
+    grid.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      state[side] = b.dataset.id;
+      renderPickers();
+      paint();
+    }, { once: true });
+  });
+}
+
+function paint() {
+  const ml = MATERIALS.find(m => m.id === state.L);
+  const mr = MATERIALS.find(m => m.id === state.R);
+  const heroSrc = id => `plate3d/previews/${id}_hero_${heroIdx(id)}.webp`;
+  const lifeSrc = id => `plate3d/previews/${id}_lifestyle_${lifeIdx(id)}.webp`;
+
+  if (state.mode === 'sample-vs-room') {
+    $('#vz-img-l').src = heroSrc(state.L);
+    $('#vz-img-r').src = lifeSrc(state.L);
+    $('#vz-label-l').textContent = 'образец';
+    $('#vz-label-r').textContent = 'в комнате';
+    $('#vz-side-r-label').textContent = '(зеркало слева в режиме «образец / в комнате»)';
+    state.R = state.L;
+  } else {
+    $('#vz-img-l').src = lifeSrc(state.L);
+    $('#vz-img-r').src = lifeSrc(state.R);
+    $('#vz-label-l').textContent = ml.name;
+    $('#vz-label-r').textContent = mr.name;
+    $('#vz-side-r-label').textContent = 'справа';
+  }
+  $('#sp-type').textContent = ml.type;
+  $('#sp-thick').textContent = ml.thick;
+  $('#sp-cure').textContent = ml.cure;
+  $('#sp-price').textContent = ml.price;
+  renderPickers();
+}
+
+const HERO_IDX = {'terrazzo-cement':'00','terrazzo-epoxy':'02','microtopping':'04','decorative-concrete':'06','parquet':'08','rubber':'10','mma':'12','pu-cement':'14','epoxy':'16'};
+const LIFE_IDX = {'terrazzo-cement':'01','terrazzo-epoxy':'03','microtopping':'05','decorative-concrete':'07','parquet':'09','rubber':'11','mma':'13','pu-cement':'15','epoxy':'17'};
+function heroIdx(id) { return HERO_IDX[id]; }
+function lifeIdx(id) { return LIFE_IDX[id]; }
+
+/* Drag handle */
+(() => {
+  const stage = $('#vz-stage');
+  const handle = $('#vz-handle');
+  const after  = $('#vz-img-r');
+  let dragging = false;
+
+  function setSplit(clientX) {
+    const r = stage.getBoundingClientRect();
+    const x = Math.max(0, Math.min(r.width, clientX - r.left));
+    const pct = (x / r.width) * 100;
+    handle.style.left = pct + '%';
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+  }
+  const start = e => { dragging = true; setSplit((e.touches?e.touches[0]:e).clientX); };
+  const move  = e => { if(!dragging) return; setSplit((e.touches?e.touches[0]:e).clientX); };
+  const end   = () => { dragging = false; };
+
+  stage.addEventListener('mousedown', start);
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  stage.addEventListener('touchstart', start, { passive: true });
+  window.addEventListener('touchmove', move, { passive: true });
+  window.addEventListener('touchend', end);
+})();
+
+/* Mode toggle */
+$('#vz-modes').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  $$('#vz-modes button').forEach(x => x.classList.toggle('on', x === b));
+  state.mode = b.dataset.mode;
+  paint();
+});
+
+paint();
+</script>
+
+</body>
+</html>
