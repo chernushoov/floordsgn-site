@@ -1,6 +1,7 @@
 {
-  "version": "2.06",
-  "generated": "2026-05-12T07:40:00Z",
+  "version": "2.07",
+  "generated": "2026-05-12T14:30:00Z",
+  "_audit_note": "Specs aligned to floors/* sales pages + compare.html (installed prices, real SKUs, real cure times). See CONFIGURATOR_SITE_AUDIT_2026-05-12.md for the full delta.",
   "geometry": {
     "procedural": true,
     "dimensions_mm": [
@@ -43,18 +44,18 @@
         "finish"
       ],
       "spec": {
-        "type": "Терраццо · цементное",
-        "thk": "20 мм",
-        "base": "цементная смесь",
-        "cure": "7 сут / 28 сут",
-        "warr": "20 лет",
-        "price": "₪450—780/м²",
-        "load": "жилое · коммерческое"
+        "type": "Минеральное терраццо · CS-31",
+        "thk": "12—18 мм",
+        "base": "CEM I + полимерные добавки",
+        "cure": "10—14 дней",
+        "warr": "10 лет · срок службы 30+ лет",
+        "price": "₪1000—1800/м²",
+        "load": "жилое · коммерческое · паблик"
       },
       "badges": [
         "R10",
         "ECO",
-        "FOOD-SAFE"
+        ">35 МПа"
       ],
       "chips": [
         {
@@ -87,10 +88,10 @@
         }
       ],
       "buildup": {
-        "topcoat": "Sealer · литой воск, 0.1 мм",
-        "body": "Цементное терраццо · 18 мм + крошка",
-        "primer": "Грунт · Sika Primer-3N",
-        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+        "topcoat": "Sealer · литой воск / lithium silicate, 0.1 мм",
+        "body": "Sikafloor Terrazzo CS-31 · 12—18 мм + мраморная крошка 4—12 мм",
+        "primer": "Sika Primer-3N",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа · ≥ 60 дней"
       },
       "pbr": {
         "diffuse": "textures/terrazzo-cement/diffuse.jpg",
@@ -121,17 +122,17 @@
         "gloss"
       ],
       "spec": {
-        "type": "Терраццо · эпоксидное мульти",
-        "thk": "12 мм",
-        "base": "эпоксидная смола",
-        "cure": "24ч / 72ч",
+        "type": "Эпокси-терраццо · EM-10 мульти",
+        "thk": "12—18 мм",
+        "base": "Sikafloor Terrazzo EM-10",
+        "cure": "7—10 дней",
         "warr": "10 лет",
-        "price": "₪520—980/м²",
-        "load": "жилое · коммерческое"
+        "price": "₪1400—2400/м²",
+        "load": "жилое · коммерческое · ритейл"
       },
       "badges": [
-        "R10",
-        "ESD",
+        "R9—R10",
+        ">80 МПа",
         "HACCP-READY"
       ],
       "chips": [
@@ -174,9 +175,9 @@
       ],
       "buildup": {
         "topcoat": "PU-топ · 2 слоя · Sikafloor-304 W · 2 × 0.1 мм",
-        "body": "Терраццо-масса · Sikafloor-264 white + multicolor chips · 8 мм",
-        "primer": "Праймер + кварц · Sikafloor-156 + кварц · 0.8 мм",
-        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+        "body": "Sikafloor Terrazzo EM-10 · multicolor chips · 12—18 мм + crack-isolation 2 мм",
+        "primer": "Sikafloor-156 + кварц-broadcast · 0.8 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       },
       "pbr": {
         "diffuse": "textures/terrazzo-multi/diffuse.jpg",
@@ -214,24 +215,24 @@
         "gloss"
       ],
       "spec": {
-        "type": "Терраццо · эпоксидное",
-        "thk": "12 мм",
-        "base": "эпоксидная смола",
-        "cure": "24ч / 72ч",
+        "type": "Эпокси-терраццо · EM-10 (тёмное)",
+        "thk": "12—18 мм",
+        "base": "Sikafloor Terrazzo EM-10",
+        "cure": "7—10 дней",
         "warr": "10 лет",
-        "price": "₪480—820/м²",
-        "load": "жилое · коммерческое"
+        "price": "₪1400—2400/м²",
+        "load": "жилое · коммерческое · ритейл"
       },
       "badges": [
-        "R10",
-        "ESD",
+        "R9—R10",
+        ">80 МПа",
         "HACCP-READY"
       ],
       "buildup": {
         "topcoat": "Sikafloor-264 · 0.5 мм (глянцевый лак)",
-        "body": "Эпоксидное терраццо · 6 мм · цветная крошка",
-        "primer": "Sikafloor-156 · 0.3 мм",
-        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+        "body": "Sikafloor Terrazzo EM-10 · 12—18 мм · цветная крошка 4—18 мм",
+        "primer": "Sikafloor-156 · 0.15 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       }
     },
     {
@@ -256,24 +257,25 @@
         "finish"
       ],
       "spec": {
-        "type": "Микроцемент / микротопинг",
-        "thk": "3 мм",
-        "base": "цементная смесь",
-        "cure": "48ч / 7 сут",
-        "warr": "7 лет",
-        "price": "₪280—520/м²",
-        "load": "жилое"
+        "type": "Микротопинг · Sikafloor-470",
+        "thk": "2—3 мм",
+        "base": "полимер-цементная смесь",
+        "cure": "5—7 дней",
+        "warr": "5 лет",
+        "price": "₪500—900/м²",
+        "load": "жилое · ритейл · коммерческое"
       },
       "badges": [
-        "R9",
-        "ECO"
+        "R9—R10",
+        "ECO",
+        ">30 МПа"
       ],
       "buildup": {
-        "topcoat": "PU-защита · 2 слоя, матовая",
-        "body": "Микроцемент · 2 × 1 мм",
-        "mesh": "Fibreglass mesh 4×4 мм · 60 г/м²",
-        "primer": "Sikafloor-156 · 0.3 мм",
-        "substrate": "Бетон / стяжка / ГВЛ"
+        "topcoat": "ProSeal-22 · 2 слоя · матовая",
+        "body": "Sikafloor-470 Level · 2 × 1.2 мм",
+        "mesh": "Fibreglass mesh 4×4 мм · 60 г/м² (для стен/wet-зон)",
+        "primer": "Грунт-бондер по бетону · 0.15 мм",
+        "substrate": "Бетон / стяжка / ГВЛ · ≤ 75% RH"
       },
       "pbr": {
         "diffuse": "textures/microtopping/diffuse.jpg",
@@ -304,13 +306,13 @@
         "marking"
       ],
       "spec": {
-        "type": "EPDM-резина / PU-связующее",
-        "thk": "8—15 мм",
-        "base": "PU-связующее",
-        "cure": "24ч / 48ч",
-        "warr": "8 лет",
-        "price": "₪220—420/м²",
-        "load": "спорт · детские · промзоны"
+        "type": "Резина · EPDM + 2K PU",
+        "thk": "7—15 мм",
+        "base": "2K полиуретан + EPDM granules 1—4 мм",
+        "cure": "24ч / 3—5 дней",
+        "warr": "10 лет",
+        "price": "₪380—650/м²",
+        "load": "спорт · детские · healthcare · промзоны"
       },
       "badges": [
         "R12",
@@ -318,10 +320,10 @@
         "SHOCK"
       ],
       "buildup": {
-        "topcoat": "EPDM-крошка / PU-связующее",
-        "body": "Резиновое покрытие · 8—15 мм",
-        "primer": "PU-Primer",
-        "substrate": "Бетон / асфальт"
+        "topcoat": "EPDM-крошка + UV-стабилизированное PU-связующее",
+        "body": "Поливная резина (EPDM 1—4 мм) · 7—15 мм",
+        "primer": "Sikafloor-161 · 0.15 мм",
+        "substrate": "Бетон C25/30 / асфальт"
       },
       "pbr": {
         "diffuse": "textures/rubber/diffuse.jpg",
@@ -476,23 +478,23 @@
         "gloss"
       ],
       "spec": {
-        "type": "MMA · метилметакрилат",
-        "thk": "5—9 мм",
-        "base": "MMA-смола",
-        "cure": "2ч / 4ч (включая разметку)",
-        "warr": "8 лет",
-        "price": "₪420—780/м²",
-        "load": "пром · пищевое · ремонт"
+        "type": "MMA · Sikafloor Pronto fast-cure",
+        "thk": "3—6 мм",
+        "base": "MMA-смола (метилметакрилат)",
+        "cure": "1.5ч / 2—3ч (вкл. разметку)",
+        "warr": "5—10 лет",
+        "price": "₪780—1100/м²",
+        "load": "пром · пищевое · cold-storage · ночной ремонт"
       },
       "badges": [
-        "R12",
-        "RAPID",
-        "−25°C OK"
+        "R10—R12",
+        "RAPID 2ч",
+        "−30°C OK"
       ],
       "buildup": {
-        "topcoat": "MMA-топкоат · 1 мм",
-        "body": "MMA-system · 4—8 мм",
-        "primer": "MMA-Primer · 0.5 мм",
+        "topcoat": "Sikafloor-71 TC Pronto · 1 мм",
+        "body": "Sikafloor-61 BC Pronto · 3—6 мм",
+        "primer": "Sikafloor-41 P Pronto · 0.5 мм",
         "substrate": "Бетон / металл"
       },
       "pbr": {
@@ -524,24 +526,24 @@
         "marking"
       ],
       "spec": {
-        "type": "Полиуретан-цемент",
-        "thk": "6—9 мм",
-        "base": "PU + цемент",
-        "cure": "24ч / 7 сут",
+        "type": "PU-cement · Sikafloor PurCem",
+        "thk": "4—9 мм",
+        "base": "Polyurethane-cement (Sikafloor-21N PurCem)",
+        "cure": "6ч / 5—7 дней",
         "warr": "10 лет",
-        "price": "₪520—980/м²",
-        "load": "тяжпром · пищевое · мокрое"
+        "price": "₪380—650/м²",
+        "load": "тяжпром · пищевое (HACCP) · мокрое · cold-storage"
       },
       "badges": [
-        "R12",
+        "R10—R13",
         "HACCP",
-        "THERMAL ±150°C"
+        "−40…+120°C"
       ],
       "buildup": {
-        "topcoat": "PU-Cement топкоат · 0.5 мм",
-        "body": "PU-Cement · 6—9 мм",
+        "topcoat": "Sikafloor-21N PurCem топкоат · 0.5 мм",
+        "body": "Sikafloor-21N PurCem · 4—9 мм",
         "primer": "Праймер по бетону",
-        "substrate": "Бетон C25/30"
+        "substrate": "Бетон C25/30 · ≤ 95% RH"
       },
       "pbr": {
         "diffuse": "textures/pu-cement/diffuse.jpg",
@@ -574,24 +576,24 @@
         "gloss"
       ],
       "spec": {
-        "type": "Эпоксидная самонивелирующаяся",
-        "thk": "2—3 мм",
+        "type": "Эпокси self-leveling · Sikafloor-263 SL",
+        "thk": "3—5 мм",
         "base": "эпоксидная смола",
-        "cure": "24ч / 72ч",
+        "cure": "12ч пешая / 24ч light / 7 дней forklift",
         "warr": "10 лет",
-        "price": "₪280—520/м²",
-        "load": "пром · паркинг · склад"
+        "price": "₪400—650/м²",
+        "load": "пром · паркинг · склад · forklift до 5 т"
       },
       "badges": [
-        "R9",
-        "ESD",
+        "R9—R12",
+        ">70 МПа",
         "GLOSS"
       ],
       "buildup": {
-        "topcoat": "Sikafloor-264 · 0.5 мм",
-        "body": "Sikafloor-263 SL · 3 мм",
-        "primer": "Sikafloor-156 · 0.3 мм",
-        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+        "topcoat": "Sikafloor-264 · алифатический PU · 0.2 мм",
+        "body": "Sikafloor-263 SL · 3—5 мм",
+        "primer": "Sikafloor-156 · 0.15 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       },
       "pbr": {
         "diffuse": "textures/epoxy/diffuse.jpg",
