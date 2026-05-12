@@ -292,6 +292,10 @@
 
 ### 2.1. Двойной источник правды: `materials.config.json` vs `3d-assets/manifest.json`
 
+**ПОПРАВКА (2026-05-12 после грепа):** `materials.config.json` НЕ legacy. Используется `enhance.js` (sample-builder / lab control schemas) и `scripts/build-site.js` (static passthrough). Это отдельная схема для UI-флоу sample-card на главной, не для 3D-конфигуратора. Удалять НЕ нужно. Синхронизация спеков с manifest.json — отдельная задача на потом.
+
+
+
 - `materials.config.json` v17, 10 материалов, **не используется** конфигуратором (legacy).
 - `3d-assets/manifest.json` v2.06, 10 материалов, **active**.
 - **Схема разная**: `id` vs `slug`, `decor` vs `decorative`, `{name, sku}` vs flat string.

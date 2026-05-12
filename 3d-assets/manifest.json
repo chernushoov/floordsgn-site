@@ -333,6 +333,44 @@
       }
     },
     {
+      "slug": "comfortfloor",
+      "label_ru": "Sika ComfortFloor",
+      "group": "decorative",
+      "tag": "CF",
+      "code": "CF",
+      "swatch": "#c5b9a4",
+      "procedural": {
+        "color": "#c5b9a4",
+        "roughness": 0.75,
+        "metalness": 0.0
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "finish"
+      ],
+      "spec": {
+        "type": "Эластичный PU · ComfortFloor PS-65",
+        "thk": "7—8 мм",
+        "base": "recycled-PU pad + elastic PU body",
+        "cure": "4—5 дней",
+        "warr": "10 лет (Sika certified-applicator)",
+        "price": "₪590—780/м²",
+        "load": "healthcare · retail · hospitality"
+      },
+      "badges": [
+        "ACOUSTIC ΔLw 21—23 dB",
+        "ANTI-FATIGUE",
+        "R9—R10"
+      ],
+      "buildup": {
+        "topcoat": "PU-топкоат · 0.3 мм",
+        "body": "Sika ComfortFloor PS-65 · elastic PU · 2.4 мм",
+        "primer": "Sikafloor-161 + recycled-PU pad · 5 мм",
+        "substrate": "Бетон C25/30 · ≤ 4% RH"
+      }
+    },
+    {
       "slug": "decorative-concrete",
       "label_ru": "Бетон дизайнерский",
       "group": "decorative",
@@ -405,54 +443,6 @@
         "normal": "textures/decorative-concrete/normal.png",
         "roughness": "textures/decorative-concrete/roughness.png",
         "ao": "textures/decorative-concrete/ao.png"
-      }
-    },
-    {
-      "slug": "parquet",
-      "label_ru": "Паркет",
-      "group": "decorative",
-      "tag": "PQ",
-      "code": "PQ",
-      "swatch": "#8a5a2a",
-      "previews": {
-        "light": "previews/parquet_hero_08.webp",
-        "dark": "previews/parquet_lifestyle_09.webp"
-      },
-      "procedural": {
-        "color": "#8a5a2a",
-        "roughness": 0.45,
-        "metalness": 0.0
-      },
-      "tile": 1,
-      "controls": [
-        "color",
-        "finish"
-      ],
-      "spec": {
-        "type": "Паркет · массив / инжен.",
-        "thk": "14—22 мм",
-        "base": "дерево",
-        "cure": "1 сут (масло) / 3 сут (лак)",
-        "warr": "15 лет",
-        "price": "₪380—1100/м²",
-        "load": "жилое"
-      },
-      "badges": [
-        "ECO",
-        "WARM",
-        "PRE-FINISHED"
-      ],
-      "buildup": {
-        "topcoat": "Масло / лак UV",
-        "body": "Дуб / орех / ясень · 14—22 мм",
-        "primer": "Фанера / стяжка с грунтом",
-        "substrate": "Бетон C25/30"
-      },
-      "pbr": {
-        "diffuse": "textures/parquet/diffuse.jpg",
-        "normal": "textures/parquet/normal.png",
-        "roughness": "textures/parquet/roughness.png",
-        "ao": "textures/parquet/ao.png"
       }
     },
     {
