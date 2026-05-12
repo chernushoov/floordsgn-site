@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample-kit · 100×100 мм — Floor.DSGN</title>
+
+    <meta name="description" content="Закажите физический образец пола 100×100 мм по вашей конфигурации. Бесплатная доставка по Израилю, 3–5 рабочих дней.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.netlify.app/sample-kit.html">
+    <meta property="og:title" content="Sample-kit 100×100 мм — Floor.DSGN">
+    <meta property="og:description" content="Физический образец пола под вашу конфигурацию. Бесплатно по Израилю.">
+    <meta property="og:image" content="https://floordsgn.netlify.app/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.netlify.app/sample-kit.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="enhance.css?v=6">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="floors.html" data-i18n="nav_floors">Floors</a></li>
+            <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <main class="fx-quote-shell">
+        <section class="fx-quote-hero">
+            <p class="fx-quote-eyebrow">Физический образец</p>
+            <h1 class="fx-quote-h1">Sample-kit<br/><em>100×100 мм</em></h1>
+            <p class="fx-quote-meta">Реальный кусочек выбранной системы — тот же материал, тот же финиш, тот же цвет. Доставим бесплатно по Израилю за 3–5 рабочих дней.</p>
+        </section>
+
+        <section class="fx-quote-grid">
+            <div class="fx-quote-info">
+                <h3>Что вы получите</h3>
+                <ul>
+                    <li>Образец 100×100 мм по вашей конфигурации</li>
+                    <li>Карточка со спецификацией: тип, толщина, расход, цена/м²</li>
+                    <li>Ссылка на 3D-конфигуратор с сохранённой сборкой</li>
+                    <li>Контакт инженера, который курирует вашу заявку</li>
+                    <li>Бесплатная доставка по Израилю</li>
+                </ul>
+                <p class="fx-quote-meta" style="margin-top:18px;font-size:14px;opacity:.7;">Можно потрогать, положить рядом с интерьером, показать заказчику. Когда готовы — собираем формулу и выезжаем на замер.</p>
+            </div>
+
+            <div class="fx-calc-card">
+                <form class="fx-calc-lead" name="sample-kit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+                    <input type="hidden" name="form-name" value="sample-kit">
+                    <input type="hidden" name="material_slug" id="skMaterial" value="">
+                    <input type="hidden" name="fd_state" id="skState" value="">
+                    <input type="hidden" name="config_url" id="skConfigUrl" value="">
+                    <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+
+                    <p class="fx-calc-lead__lede">Заполните адрес — отправим образец в течение 3–5 рабочих дней.</p>
+
+                    <div class="fx-calc-lead__row">
+                        <input type="text" name="name" required placeholder="Имя*" autocomplete="name" aria-label="Имя">
+                        <input type="tel" name="phone" required placeholder="Телефон / WhatsApp*" autocomplete="tel" aria-label="Телефон">
+                    </div>
+                    <div class="fx-calc-lead__row">
+                        <input type="email" name="email" required placeholder="Email*" autocomplete="email" aria-label="Email">
+                        <input type="text" name="address" required placeholder="Адрес доставки*" autocomplete="street-address" aria-label="Адрес доставки">
+                    </div>
+                    <div class="fx-calc-lead__row">
+                        <input type="number" name="project_sqm" min="0" placeholder="Площадь объекта, м² (опционально)" aria-label="Площадь объекта">
+                        <input type="text" name="material_label" id="skMaterialLabel" readonly placeholder="Материал (из 3D-конфигуратора)" aria-label="Выбранный материал" style="background:rgba(0,0,0,.04);">
+                    </div>
+                    <div class="fx-calc-lead__row">
+                        <textarea name="message" rows="3" placeholder="Комментарий (опционально): размер объекта, дедлайны, особенности" aria-label="Комментарий" style="grid-column:1/-1;width:100%;font-family:inherit;padding:14px 16px;border:1px solid rgba(0,0,0,.12);border-radius:10px;resize:vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark fx-calc-cta">Заказать образец →</button>
+                    <p class="fx-calc-lead__legal">Отправляя, вы соглашаетесь на обработку контактов. Образец и доставка бесплатные.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>Системы</h4><ul><li><a href="floors/epoxy.html">Эпокси</a></li><li><a href="floors/terrazzo.html">Терраццо</a></li><li><a href="floors/microtopping.html">Микротопинг</a></li><li><a href="floors/concrete.html">Бетон</a></li></ul></div><div class="footer-column"><h4>Инструменты</h4><ul><li><a href="quote.html">Калькулятор</a></li><li><a href="decision-tool.html">Подбор системы</a></li></ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li><li>Tel Aviv</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+
+    <script src="script.js?v=6"></script>
+    <script>
+    // Pre-fill hidden + readonly fields from URL params set by configurator's ctaSample bridge.
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const system = params.get('system') || params.get('material') || '';
+      const fdState = params.get('fd_state') || '';
+      const configUrl = params.get('config_url') || '';
+
+      const labelMap = {
+        'terrazzo-cement': 'Терраццо · цементное',
+        'terrazzo-multi':  'Терраццо эпокси · мульти',
+        'terrazzo-epoxy':  'Терраццо эпокси · тёмное',
+        'microtopping':    'Микротопинг · Sikafloor-470',
+        'rubber':          'Резина EPDM · 2K PU',
+        'comfortfloor':    'ComfortFloor PS-65',
+        'decorative-concrete': 'Меда декоративи · литой бетон',
+        'mma':             'MMA · Sikafloor Pronto',
+        'pu-cement':       'PU-cement · Sikafloor PurCem',
+        'epoxy':           'Эпокси SL · Sikafloor-263 SL'
+      };
+
+      const matEl = document.getElementById('skMaterial');
+      const matLabelEl = document.getElementById('skMaterialLabel');
+      const stateEl = document.getElementById('skState');
+      const cfgEl = document.getElementById('skConfigUrl');
+
+      if (system && matEl) matEl.value = system;
+      if (system && matLabelEl) matLabelEl.value = labelMap[system] || system;
+      if (fdState && stateEl) stateEl.value = fdState;
+      if (configUrl && cfgEl) cfgEl.value = configUrl;
+    })();
+    </script>
+    <script src="translations.js"></script>
+    <script src="enhance.js?v=5" defer></script>
+</body>
+</html>

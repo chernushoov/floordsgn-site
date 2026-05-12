@@ -1367,18 +1367,16 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  // Bridge to /contact for sample-kit request — passes:
-  //   system: configurator's material slug → contact.html's system select pre-fill
-  //   intent: 'sample' → hash flag (#intent=sample) for contact form's sample-kit context
-  //   fd_state: opaque config state for the audit trail
+  // Bridge to /sample-kit standalone form — passes:
+  //   system: configurator's material slug → sample-kit's hidden material_slug + readonly label
+  //   fd_state: opaque config state for the audit trail in Netlify submission
   //   config_url: link back to user's exact 3D assembly
   const params = new URLSearchParams({
     system: activeSlug || '',
-    intent: 'sample',
     fd_state: JSON.stringify(orderState[activeSlug] || {}),
     config_url: window.location.href
   });
-  window.location.href = 'contact.html?' + params.toString() + '#intent=sample';
+  window.location.href = 'sample-kit.html?' + params.toString();
 });
 
 let lastUserInputT = performance.now();
