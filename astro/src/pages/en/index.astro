@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('materials', ({ data }) => data.draft_status === 'published');
+
+type Group = 'decorative' | 'industrial';
+
+const families: Record<string, { en: string; group: Group; order: number }> = {
+  'terrazzo-cement':       { en: 'Cement terrazzo',     group: 'decorative', order: 1 },
+  'terrazzo-epoxy':        { en: 'Epoxy terrazzo',      group: 'decorative', order: 2 },
+  'microtopping':          { en: 'Microtopping',        group: 'decorative', order: 3 },
+  'rubber':                { en: 'Rubber',              group: 'decorative', order: 4 },
+  'decorative-concrete':   { en: 'Decorative concrete', group: 'decorative', order: 5 },
+  'parquet':               { en: 'Parquet',             group: 'decorative', order: 6 },
+  'mma':                   { en: 'MMA',                 group: 'industrial', order: 7 },
+  'pu-cement':             { en: 'PU-cement',           group: 'industrial', order: 8 },
+  'epoxy':                 { en: 'Epoxy',               group: 'industrial', order: 9 },
+};
+
+const groupLabels: Record<Group, string> = {
+  decorative: 'Decorative',
+  industrial: 'Industrial',
+};
+
+const byFamily = all.reduce((acc, m) => {
+  const f = m.data.family;
+  if (!acc[f]) acc[f] = [];
+  acc[f].push(m);
+  return acc;
+}, {} as Record<string, typeof all>);
+
+const sortedFamilies = Object.entries(byFamily).sort(
+  ([a], [b]) => (families[a]?.order || 99) - (families[b]?.order || 99)
+);
+
+const groupedFamilies: Record<Group, [string, typeof all][]> = { decorative: [], industrial: [] };
+for (const [family, items] of sortedFamilies) {
+  const g = families[family]?.group;
+  if (g) groupedFamilies[g].push([family, items]);
+}
+---
+<BaseLayout
+  lang="en"
+  title="Floor.DSGN — Floor Encyclopedia"
+  description="Reference for polymer and decorative flooring, screeds and concrete repair. No marketing — numbers, TDS citations, code references. For contractors, architects, owners."
+>
+
+  <section class="encyc-index-hero">
+    <p class="fx-eyebrow">Floor.DSGN · Encyclopedia · {all.length} materials published</p>
+    <h1>Floor systems<br/>reference</h1>
+    <p>What fits your case, what it costs, what goes wrong. Numbers and TDS citations — no marketing. For contractors, architects, owners and DIYers.</p>
+  </section>
+
+  {(['decorative', 'industrial'] as Group[]).map((group) => (
+    groupedFamilies[group].length > 0 && (
+      <section style="padding: 40px 36px 0; max-width: 1280px; margin: 0 auto;">
+        <p class="fx-eyebrow" style="margin-bottom: 8px;">{groupLabels[group]}</p>
+        {groupedFamilies[group].map(([family, items]) => (
+          <section class="encyc-family">
+            <div class="encyc-family__head">
+              <h2 class="encyc-family__name">{families[family]?.en || family}</h2>
+              <span class="encyc-family__count">{items.length} {items.length === 1 ? 'material' : 'materials'}</span>
+            </div>
+            <div class="fx-systems-grid">
+              {items.map((m) => (
+                <a class="fx-system-card" href={`/en/floors/${m.data.slug}`}>
+                  <p class="fx-system-card__thickness">{m.data.thickness_mm[0]}–{m.data.thickness_mm[1]} mm</p>
+                  <h3 class="fx-system-card__name">{m.data.display_name.en}</h3>
+                  <p class="fx-system-card__desc">{m.data.one_liner.en}</p>
+                  <div class="fx-system-card__meta">
+                    <span>from <b>₪{m.data.price_ils_m2.range[0]}/m²</b></span>
+                    <span>{m.data.installation.typical_time_days} days</span>
+                  </div>
+                  <span class="fx-system-card__link">Learn more</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+      </section>
+    )
+  ))}
+
+  <div style="height: 80px;"></div>
+
+</BaseLayout>

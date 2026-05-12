@@ -1,0 +1,80 @@
+/* ============================================================
+   chrome-fix.css — REQUIRED on every legacy-header page.
+   Constrains the square 1871×1871 PNG logo on legacy markup
+   and provides mobile chrome behaviour.
+   ============================================================ */
+
+header.header > .logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 clamp(20px, 4vw, 56px);
+  text-decoration: none;
+  overflow: hidden;
+}
+header.header > .logo .logo-img {
+  height: 110px;
+  width: auto;
+  margin: -16px 0 -8px;
+  display: block;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+header.header > .logo:hover .logo-img { opacity: 0.6; }
+
+@media (max-width: 768px) {
+  header.header > .logo .logo-img {
+    height: 110px;
+    margin: -22px 0;
+  }
+  /* Hide nav + lang on mobile, show hamburger only */
+  header.header > nav,
+  header.header > .lang-switch,
+  header.header > a.btn { display: none !important; }
+  header.header { padding: 0 16px; height: 60px; justify-content: space-between; }
+  header.header > .logo { margin: 0; }
+  header.header .mobile-menu-btn { display: flex; }
+}
+
+header.header > nav .nav {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+header.header > nav .nav a {
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+header.header > nav .nav a:hover { opacity: .55; }
+header.header > nav .nav a.active { color: #1d1d1f; font-weight: 600; }
+
+header.header > .lang-switch { display: inline-flex; gap: 4px; }
+header.header > .lang-switch .lang-btn {
+  border: none;
+  background: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: #6e6e73;
+  cursor: pointer;
+  padding: 6px 8px;
+}
+header.header > .lang-switch .lang-btn.active { color: #1d1d1f; }
+
+/* Footer logo (square PNG) */
+.footer .footer-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+  opacity: 0.95;
+}
+@media (max-width: 768px) {
+  .footer .footer-logo { height: 56px; }
+}
