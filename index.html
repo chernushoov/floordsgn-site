@@ -162,8 +162,22 @@
       </div>
     </section>
 
-    <!-- HERO LAB v3 (2026-05-09) — 3-column material configurator -->
-    <section class="fx-plate-section fx-hero-lab" id="material-lab">
+    <!-- 3D Configurator v2 entry — replaces the legacy inline HERO LAB v3 (hidden below). -->
+    <section class="fx-plate-section" id="material-lab-entry" style="padding:48px 32px;background:var(--paper-2,#f5f5f7);border-top:1px solid var(--line,#d2d2d7);border-bottom:1px solid var(--line,#d2d2d7)">
+      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center">
+        <div>
+          <p style="font-family:var(--mono,monospace);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3,#6e6e73);margin:0 0 10px">Floor.DSGN · 3D Configurator</p>
+          <h2 style="margin:0 0 8px;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.05;letter-spacing:-.02em;color:var(--ink,#1d1d1f);text-wrap:balance">Соберите свой пол в 3D — <span style="font-family:var(--serif,Georgia);font-style:italic">9 материалов, ваши параметры</span></h2>
+          <p style="margin:0;color:var(--ink-3,#6e6e73);max-width:640px;font-size:15px;line-height:1.55">Интерактивный WebGL-конструктор: меняйте материал, цвет, заполнитель, финиш. Получите готовую формулу для расчёта сметы.</p>
+        </div>
+        <a href="configurator.html" class="btn btn-dark" style="white-space:nowrap;padding:18px 28px;font-size:15px">Открыть 3D-конфигуратор <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- HERO LAB v3 (2026-05-09) — legacy 3-column material configurator. Hidden 2026-05-12;
+         superseded by configurator.html (FD-CFG v2.05). Kept in-place so existing JS hooks
+         (enhance.js: data-fx="plate", data-fx="materialsRoot", etc.) don't error. -->
+    <section class="fx-plate-section fx-hero-lab" id="material-lab" hidden style="display:none">
       <div class="fx-hero-lab__intro">
         <p class="fx-plate-eyebrow anim-up">Floor.DSGN · Israel · Engineering</p>
         <h2 class="fx-plate-h2 anim-up anim-d1">Полы, которые<br/><em>проектируют</em><br/>— а не кладут</h2>

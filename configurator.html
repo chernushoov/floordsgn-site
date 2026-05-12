@@ -3,49 +3,38 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Floor.DSGN — 3D block (editable workspace)</title>
+<title>Floor.DSGN — 3D Configurator v2</title>
+<meta name="description" content="Floor.DSGN · соберите образец премиум-пола под вашу задачу. WebGL-конфигуратор: 9 материалов, реальные текстуры, экспорт формулы заказа."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <script type="importmap">
 {
   "imports": {
-    "three": "https://unpkg.com/three@0.180.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.180.0/examples/jsm/"
+    "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
   }
 }
 </script>
 
 <style>
-/* ============================================================
-   TOKENS — taken from existing Floor.DSGN files
-   ============================================================ */
 :root{
-  --paper:#ffffff;
-  --paper-2:#f5f5f7;
-  --paper-3:#eeeeee;
-  --ink:#1d1d1f;
-  --ink-2:#2d2d2d;
-  --ink-3:#6e6e73;
-  --ink-4:#a0a0a4;
-  --line:#d2d2d7;
-  --line-2:#b8b8be;
-  --accent:#0071e3;
+  --paper:#ffffff;--paper-2:#f5f5f7;--paper-3:#eeeeee;
+  --ink:#1d1d1f;--ink-2:#2d2d2d;--ink-3:#6e6e73;--ink-4:#a0a0a4;
+  --line:#d2d2d7;--line-2:#b8b8be;--accent:#0071e3;
   --sans:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Montserrat','Helvetica Neue',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
   --serif:'Cormorant Garamond',Georgia,serif;
+  --header-height:0px;
 }
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
 ::selection{background:var(--accent);color:#fff}
 .mono{font-family:var(--mono);font-feature-settings:"zero","ss01"}
 
-/* ============================================================
-   SECTION SHELL
-   ============================================================ */
-.sec{position:relative;padding:56px 32px 80px;min-height:100vh;background:var(--paper);overflow:hidden}
+.sec{position:relative;padding:56px 32px 80px;min-height:100vh;background:var(--paper);overflow:hidden;scroll-margin-top:var(--header-height)}
 
-/* tiny eyebrow strip */
 .eyebrow{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:48px}
 .eyebrow .l{display:flex;gap:18px;align-items:center}
 .eyebrow .l b{color:var(--ink);font-weight:500}
@@ -54,8 +43,9 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 @keyframes pulse{50%{opacity:.4;transform:scale(.8)}}
 .eyebrow .r{display:flex;gap:24px}
 .eyebrow .r b{color:var(--ink);font-weight:500}
+.eyebrow .home{color:var(--ink-3);text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+.eyebrow .home:hover{color:var(--ink);border-color:var(--ink)}
 
-/* heading block */
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:end;margin-bottom:56px}
 .h1{font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,104px);line-height:1.0;letter-spacing:-.035em;margin:0;color:var(--ink);text-wrap:balance}
 .h1 em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
@@ -63,19 +53,16 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .lede{color:var(--ink-3);font-size:15px;line-height:1.55;max-width:440px;margin:0 0 0 auto}
 .lede b{color:var(--ink);font-weight:500}
 
-/* ============================================================
-   MAIN 3-COL GRID
-   ============================================================ */
-.grid{display:grid;grid-template-columns:280px minmax(0,1fr) 280px;gap:40px;align-items:stretch;min-height:640px}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr) 320px;gap:40px;align-items:stretch;min-height:680px}
 
-/* ============ LEFT RAIL — MATERIALS ============ */
+/* Left rail */
 .matlist{border-top:1px solid var(--line);padding-top:14px;font-family:var(--sans)}
 .matlist .grp{margin-bottom:28px}
 .matlist .grp-h{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-4);margin:0 0 12px;display:flex;align-items:center;gap:10px}
 .matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
 .matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
 .matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
-.matlist li{position:relative;cursor:pointer;padding:10px 0 10px 0;color:var(--ink-3);font-size:15px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s, padding-left .25s}
+.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
 .matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
 .matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
 .matlist li:hover{color:var(--ink);padding-left:6px}
@@ -85,162 +72,188 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matlist li.on .tag{opacity:1;color:var(--ink)}
 .matlist li.on::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;background:var(--accent);transform:translateY(-50%);border-radius:50%}
 
-/* ============ MIDDLE — 3D STAGE ============ */
-.stage{position:relative;background:linear-gradient(180deg,#fafafa 0%, #f0f0f3 100%);border:1px solid var(--line);overflow:hidden;min-height:680px;display:flex;flex-direction:column}
-.stage::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(circle at 30% 18%, rgba(255,255,255,.6), transparent 55%),
-  radial-gradient(circle at 78% 100%, rgba(0,0,0,.08), transparent 55%);
-  pointer-events:none;z-index:0}
-.stage::after{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(10,10,10,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(10,10,10,.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center, #000 28%, transparent 78%);pointer-events:none;z-index:0}
-.stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;z-index:1;cursor:grab}
+/* Stage */
+.stage{position:relative;background:#ffffff;border:1px solid var(--line);overflow:hidden;min-height:720px;display:flex;flex-direction:column}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 18%,rgba(255,255,255,.6),transparent 55%),radial-gradient(circle at 78% 100%,rgba(0,0,0,.08),transparent 55%);pointer-events:none;z-index:0}
+.stage::after{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(10,10,10,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(10,10,10,.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center,#000 28%,transparent 78%);pointer-events:none;z-index:0}
+.stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;z-index:1;cursor:grab;touch-action:none}
 .stage canvas:active{cursor:grabbing}
-
-/* stage chrome */
 .s-tl{position:absolute;top:18px;left:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);display:flex;flex-direction:column;gap:5px}
 .s-tl b{color:var(--ink);font-weight:500}
 .s-tl .live{display:inline-flex;align-items:center;gap:6px}
 .s-tl .live i{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.6s infinite}
-
-.s-tr{position:absolute;top:18px;right:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);text-align:right}
-.s-tr .ttl{color:var(--ink);font-weight:500;font-size:13px;letter-spacing:-.01em;font-family:var(--sans);text-transform:none;display:block}
-
-.s-bl{position:absolute;bottom:18px;left:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);max-width:260px;line-height:1.6}
+.s-tr{position:absolute;top:18px;right:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);text-align:right;max-width:60%}
+.s-tr .ttl{color:var(--ink);font-weight:500;font-size:15px;letter-spacing:-.01em;font-family:var(--sans);text-transform:none;display:block;line-height:1.2}
+.s-bl{position:absolute;bottom:18px;left:18px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);max-width:280px;line-height:1.6}
 .s-bl b{color:var(--ink);font-weight:500}
-
 .s-br{position:absolute;bottom:18px;right:18px;z-index:5;display:flex;gap:4px}
 .s-br button{background:rgba(255,255,255,.7);border:1px solid var(--line-2);color:var(--ink-3);padding:7px 11px;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:.15s}
 .s-br button:hover{background:#fff;color:var(--ink)}
 .s-br button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-/* layer callouts — visible when exploded */
+/* Layer callouts — visible when exploded. Right-edge labels with leader line + accent dot. */
 .callouts{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .35s}
 .callouts.on{opacity:1}
-.callouts .co{position:absolute;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.94);padding:7px 12px;border:1px solid var(--line-2);white-space:nowrap;backdrop-filter:blur(4px);right:8%}
+.callouts .co{position:absolute;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.94);padding:7px 12px;border:1px solid var(--line-2);white-space:nowrap;backdrop-filter:blur(4px);right:8%;transform:translateY(-50%)}
 .callouts .co b{display:block;font-family:var(--sans);font-weight:500;font-size:12.5px;letter-spacing:-.005em;text-transform:none;color:var(--ink);margin-bottom:1px}
 .callouts .co::before{content:"";position:absolute;right:100%;top:50%;width:48px;height:1px;background:var(--ink)}
 .callouts .co::after{content:"";position:absolute;right:calc(100% + 48px);top:50%;width:7px;height:7px;background:var(--accent);transform:translateY(-50%);border-radius:50%}
+.callouts .co.is-hidden{display:none}
+@media (max-width:1100px){
+  .callouts .co{right:4%;font-size:8.5px;padding:5px 8px}
+  .callouts .co b{font-size:11px}
+  .callouts .co::before{width:24px}
+  .callouts .co::after{right:calc(100% + 24px);width:5px;height:5px}
+}
 
-/* ============ RIGHT RAIL — SPECS ============ */
+/* Loading overlay */
+.boot{position:absolute;inset:0;z-index:10;background:#ffffff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);transition:opacity .5s,visibility 0s linear .5s;opacity:1;visibility:visible}
+.boot.gone{opacity:0;visibility:hidden}
+.boot i{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.0s infinite;margin-right:10px}
+
+/* Right rail */
 .specs{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column}
 .specs h4{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-4);margin:0 0 16px;display:flex;align-items:center;gap:10px}
 .specs h4 .k{color:var(--accent)}
 .specs h4::after{content:"";flex:1;height:1px;background:var(--line)}
 
-.specrows{display:flex;flex-direction:column}
-.specrow{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line)}
-.specrow .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
-.specrow .v{text-align:right;font-family:var(--sans);font-weight:500;color:var(--ink);font-size:15px;letter-spacing:-.005em}
-.specrow .v small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);font-weight:400;text-transform:uppercase;margin-left:6px}
+.controls{display:flex;flex-direction:column;gap:18px}
+.ctrl{display:flex;flex-direction:column;gap:8px}
+.ctrl .ctrl-k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4)}
+.ctrl .opts{display:flex;flex-wrap:wrap;gap:5px}
+.ctrl button{font-family:var(--sans);font-size:12.5px;letter-spacing:-.005em;background:#fff;border:1px solid var(--line);color:var(--ink-3);padding:7px 10px;cursor:pointer;transition:.15s;border-radius:0}
+.ctrl button:hover{border-color:var(--ink-3);color:var(--ink)}
+.ctrl button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ctrl button.sw{display:inline-flex;align-items:center;gap:6px;padding:5px 9px 5px 5px}
+.ctrl button.sw .chip{width:20px;height:20px;border:1px solid rgba(0,0,0,.15);display:block;flex:0 0 auto}
+.ctrl button.sw.on .chip{outline:2px solid var(--accent);outline-offset:1px}
+.ctrl .empty{color:var(--ink-4);font-style:italic;font-size:12px}
 
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.badges span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line-2);padding:5px 9px;background:#fff}
-.badges span.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
-.badges span.warn{background:var(--accent);color:#fff;border-color:var(--accent)}
+.buildup{margin-top:24px;padding-top:18px;border-top:1px dashed var(--line)}
+.buildup h5{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);margin:0 0 10px}
+.buildup .row{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:6px 0;font-size:12px;color:var(--ink-3)}
+.buildup .row .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+.buildup .row .v{color:var(--ink-2)}
+
+/* System spec table — readonly key/value rows derived from manifest.spec */
+.specs-tbl{display:flex;flex-direction:column;margin-bottom:18px}
+.specs-tbl .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.specs-tbl .row:last-child{border-bottom:0}
+.specs-tbl .row .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+.specs-tbl .row .v{color:var(--ink);text-align:right;font-weight:500;letter-spacing:-.005em}
+
+/* Compliance / class badges (R-class slip, ESD, HACCP, etc.) */
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}
+.badges .b{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--line-2);color:var(--ink-2);background:#fff}
+.badges .b.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+.badges .b.warn{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.specs h4 + h4{margin-top:6px}
 
 .cta-stack{margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:8px}
-.cta-primary{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--ink);color:#fff;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:-.005em;transition:background .2s}
+.cta-primary{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--ink);color:#fff;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:-.005em;transition:background .2s;border:0}
 .cta-primary:hover{background:var(--accent)}
 .cta-primary svg{transition:transform .25s}
 .cta-primary:hover svg{transform:translateX(6px)}
 .cta-ghost{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border:1px solid var(--line-2);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
 .cta-ghost:hover{border-color:var(--ink);background:#fff}
-.cta-ghost span:last-child{color:var(--ink-4)}
 
-/* ============ BOTTOM HINT BAR ============ */
 .foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
 .foot b{color:var(--ink);font-weight:500}
 
+/* Hover preview popover */
+.matprev{position:fixed;z-index:200;pointer-events:none;background:#fff;border:1px solid var(--line-2);box-shadow:0 12px 40px rgba(0,0,0,.12);width:200px;height:150px;background-size:cover;background-position:center;transform:translate(-50%,-110%);opacity:0;transition:opacity .15s;border-radius:0}
+.matprev.show{opacity:1}
+
 @media (max-width:1100px){
-  .grid{grid-template-columns:1fr;gap:28px}
+  .grid{grid-template-columns:1fr;gap:24px}
   .head{grid-template-columns:1fr;gap:24px}
-  .stage{min-height:480px}
+  .stage{min-height:520px;order:1}
+
+  .matlist{order:2;border-top:1px solid var(--line);padding-top:14px}
+  .matlist .grp{margin-bottom:14px}
+  .matlist .grp-h::after{display:none}
+  .matlist ul{flex-direction:row;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .matlist ul::-webkit-scrollbar{display:none}
+  .matlist li{flex:0 0 auto;border:1px solid var(--line);padding:8px 12px;grid-template-columns:auto auto;gap:8px}
+  .matlist li::before{display:none}
+  .matlist li.on{padding-left:12px;border-color:var(--ink);background:var(--ink);color:#fff}
+  .matlist li.on .idx{color:#fff}
+  .matlist li .tag{display:none}
+
+  .specs{order:3}
+  .controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  .cta-stack{padding-top:18px}
+}
+@media (max-width:600px){
+  .sec{padding:32px 18px 56px}
+  .h1{font-size:38px}
+  .controls{grid-template-columns:1fr}
+  .stage{min-height:380px}
+  .s-tl,.s-tr,.s-bl{font-size:9px;letter-spacing:.16em}
+  .s-tr .ttl{font-size:13px}
 }
 </style>
 </head>
 <body>
 
-<!-- =============================================================
-     EDITABLE WORKSPACE — mirrors live 3D block at floordsgn
-     Edit anything: copy, materials, specs, layer composition.
-     Three.js renders the slab from data-driven config below.
-     ============================================================= -->
+<section class="sec" id="block3d">
 
-<section class="sec" id="block3d" data-screen-label="01 · 3D Configurator">
-
-  <!-- eyebrow ribbon -->
   <div class="eyebrow">
     <div class="l">
       <span class="dot"></span>
       <span class="num">01 / 06</span>
-      <span>Floor.DSGN · Israel · <b>Engineering</b></span>
+      <span><a href="/" class="home">Floor.DSGN</a> · Israel · <b>3D Configurator</b></span>
     </div>
     <div class="r">
-      <span>Sika installer · <b>Certified</b></span>
-      <span>WebGL · <b>60 FPS</b></span>
-      <span>v <b>2.04</b></span>
+      <span>WebGL · <b id="fps">— FPS</b></span>
+      <span>PBR · <b>Real Textures</b></span>
+      <span>v <b>2.05</b></span>
     </div>
   </div>
 
-  <!-- headline -->
   <div class="head">
     <h1 class="h1">Полы, которые <em>проектируют</em><br>— а не кладут</h1>
     <p class="lede">
       Соберите образец под вашу задачу. Слева — <b>материал</b>, справа — <b>параметры</b>.
-      Тяните плиту чтобы вращать, нажмите чтобы разнести на слои.
+      Тяните плиту чтобы вращать, скроллом — менять угол обзора.
     </p>
   </div>
 
-  <!-- main grid -->
   <div class="grid">
 
-    <!-- ========== LEFT: MATERIAL LIST ========== -->
     <aside class="matlist" id="matlist">
-      <div class="grp">
+      <div class="grp" data-grp="decorative">
         <div class="grp-h"><span class="k">D</span>Декоративные</div>
-        <ul>
-          <li data-id="tz-cem"><span class="idx">01</span><span>Терраццо · цементное</span><span class="tag">TZ·C</span></li>
-          <li class="on" data-id="tz-ep-dark"><span class="idx">02</span><span>Терраццо · эпоксидное <em style="color:var(--ink-4);font-style:normal">(тёмное)</em></span><span class="tag">TZ·D</span></li>
-          <li data-id="tz-ep-multi"><span class="idx">03</span><span>Терраццо · эпоксидное <em style="color:var(--ink-4);font-style:normal">(мульти)</em></span><span class="tag">TZ·M</span></li>
-          <li data-id="micro"><span class="idx">04</span><span>Микротопинг</span><span class="tag">MT</span></li>
-          <li data-id="rubber"><span class="idx">05</span><span>Резиновое покрытие</span><span class="tag">RB</span></li>
-          <li data-id="meda"><span class="idx">06</span><span>Бетон · Меда декоративи</span><span class="tag">MD</span></li>
-          <li data-id="parquet"><span class="idx">07</span><span>Паркет</span><span class="tag">PQ</span></li>
-        </ul>
+        <ul id="grpDecorative"></ul>
       </div>
-      <div class="grp">
+      <div class="grp" data-grp="industrial">
         <div class="grp-h"><span class="k">I</span>Промышленные</div>
-        <ul>
-          <li data-id="mma"><span class="idx">08</span><span>MMA Pronto</span><span class="tag">MMA</span></li>
-          <li data-id="pucem"><span class="idx">09</span><span>PU-cement / ПУ-цемент</span><span class="tag">PU</span></li>
-          <li data-id="epoxy-i"><span class="idx">10</span><span>Эпоксидная заливка</span><span class="tag">EP·I</span></li>
-          <li data-id="epoxy-d"><span class="idx">11</span><span>Декоративная эпоксидка</span><span class="tag">EP·D</span></li>
-        </ul>
+        <ul id="grpIndustrial"></ul>
       </div>
     </aside>
 
-    <!-- ========== MIDDLE: 3D STAGE ========== -->
     <div class="stage" id="stage">
+      <div class="boot" id="boot"><i></i>Загрузка геометрии и текстур…</div>
       <div class="s-tl">
         <span class="live"><i></i>Render · live</span>
-        <span>Drag <b>↻</b> orbit · Click <b>↕</b> explode</span>
+        <span>Drag <b>↻</b> orbit · scroll · explode</span>
       </div>
       <div class="s-tr">
-        <span>Active sample</span>
-        <span class="ttl" id="stTitle">Терраццо · эпоксидное (тёмное)</span>
-        <span style="color:var(--ink-4)">TZ-EP-DK · 12 мм</span>
+        <span class="ttl" id="stTitle">—</span>
+        <span style="color:var(--ink-4)" id="stTag">—</span>
       </div>
-
-      <!-- callouts shown when exploded -->
+      <!-- Layer callouts — populated from manifest.buildup, visible when explode > 0.5 -->
       <div class="callouts" id="callouts">
-        <div class="co" style="top:14%"><b id="co0">Топкоат</b>Sikafloor-264 · 0.5 мм</div>
-        <div class="co" style="top:32%"><b id="co1">Тело системы</b>Sikafloor-263 SL · 3 мм</div>
-        <div class="co" style="top:50%"><b id="co2">Стеклосетка</b>Fibreglass mesh 4×4 мм · 60 г/м²</div>
-        <div class="co" style="top:66%"><b id="co3">Праймер</b>Sikafloor-156 · 0.3 мм</div>
-        <div class="co" style="top:82%"><b id="co4">Подложка</b>Бетон C25/30 · ≥ 25 МПа</div>
+        <div class="co" data-slot="topcoat"  style="top:14%"><b>—</b><span></span></div>
+        <div class="co" data-slot="body"     style="top:32%"><b>—</b><span></span></div>
+        <div class="co" data-slot="mesh"     style="top:50%"><b>—</b><span></span></div>
+        <div class="co" data-slot="primer"   style="top:66%"><b>—</b><span></span></div>
+        <div class="co" data-slot="substrate" style="top:82%"><b>—</b><span></span></div>
       </div>
-
       <div class="s-bl">
-        <b>Слои системы</b><br>тяните чтобы вращать · нажмите чтобы разнести на слои
+        <b>30×30 см</b> · фаска 2 мм · слоистый торец
       </div>
       <div class="s-br">
         <button data-view="solid" class="on">Solid</button>
@@ -250,30 +263,22 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       </div>
     </div>
 
-    <!-- ========== RIGHT: SPECS ========== -->
     <aside class="specs">
-      <h4><span class="k">S</span>Параметры</h4>
-      <div class="specrows" id="specrows">
-        <div class="specrow"><span class="k">тип</span><span class="v" id="spType">терраццо · тёмный</span></div>
-        <div class="specrow"><span class="k">толщина</span><span class="v" id="spThick">12 мм</span></div>
-        <div class="specrow"><span class="k">основа</span><span class="v" id="spBase">эпоксидная смола</span></div>
-        <div class="specrow"><span class="k">cure-time</span><span class="v" id="spCure">24ч <small>walk</small> / 72ч <small>full</small></span></div>
-        <div class="specrow"><span class="k">гарантия</span><span class="v" id="spWarr">10 лет</span></div>
-        <div class="specrow"><span class="k">цена</span><span class="v" id="spPrice">₪380—720 / м²</span></div>
-      </div>
-      <div class="badges" id="badges">
-        <span class="solid">R9</span>
-        <span>ESD</span>
-        <span class="warn">HACCP-ready</span>
-      </div>
+      <h4><span class="k">P</span>Параметры системы</h4>
+      <div class="specs-tbl" id="specsTbl"></div>
+      <div class="badges" id="specsBadges"></div>
+
+      <h4><span class="k">S</span>Настройка</h4>
+      <div class="controls" id="controls"></div>
+      <div class="buildup" id="buildup"></div>
 
       <div class="cta-stack">
-        <button class="cta-primary">
-          Получить смету
+        <button class="cta-primary" id="ctaOrder">
+          Заказать эту формулу
           <svg width="34" height="12" viewBox="0 0 34 12" fill="none"><path d="M0 6H31M31 6L26 1M31 6L26 11" stroke="currentColor" stroke-width="1.4"/></svg>
         </button>
-        <button class="cta-ghost">
-          <span>Заказать sample-kit · 100×100 мм</span>
+        <button class="cta-ghost" id="ctaSample">
+          <span>Получить sample-kit · 100×100 мм</span>
           <span>↘</span>
         </button>
       </div>
@@ -281,478 +286,1069 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 
   </div>
 
-  <!-- foot ribbon -->
   <div class="foot">
-    <span>FD-CFG · v2.04 · <b>floor.dsgn / configurator</b></span>
-    <span>scroll · далее — <b>Выберите систему</b> · 6 семейств покрытий →</span>
+    <span>FD-CFG · v2.05 · <b>floor.dsgn / configurator</b></span>
+    <span>Геометрия — Three.js · Текстуры — Floor.DSGN · WebGL · Voronoi-композит</span>
   </div>
 
 </section>
 
-<!-- ============================================================
-     SCRIPT — Three.js scene + material registry
-     ============================================================ -->
 <script type="module">
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
-/* ============ MATERIAL REGISTRY — edit me ============ */
-/* Each entry can override: title, layers (top→bottom), specs, badges */
-const MATERIALS = {
-  'tz-cem': {
-    title:'Терраццо · цементное', code:'TZ-CEM-08',
-    layers:[
-      {label:'Полировка · 800–3000 grit', color:0xe6e0d2, thk:0.04},
-      {label:'Цементная матрица + крошка · 16 мм', color:0xd8cdb6, thk:0.34, chips:true},
-      {label:'Грунт минеральный · 0.5 мм', color:0xa89878, thk:0.06},
-      {label:'Бетон C25/30 · ≥ 25 МПа', color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'терраццо · цементное', thick:'16–22 мм', base:'цементная матрица', cure:'24ч walk / 14дн full', warr:'10 лет', price:'₪520—780 / м²'},
-    badges:[{t:'R10',k:'solid'},{t:'Минер.'},{t:'Натур.',k:'warn'}]
-  },
+const ASSET_ROOT = '3d-assets/';
 
-  'tz-ep-dark': {
-    title:'Терраццо · эпоксидное (тёмное)', code:'TZ-EP-DK',
-    body:0x2a2722, chips:'light',
-    layers:[
-      {label:'Топкоат',          mat:'Sikafloor-264 · 0.5 мм',          color:0x3a3530, thk:0.05, roughness:0.18, clearcoat:0.8},
-      {label:'Тело системы',     mat:'Sikafloor-263 SL · 3 мм',         color:0x2a2722, thk:0.32, chips:true},
-      {label:'Стеклосетка',      mat:'Fibreglass mesh 4×4 мм · 60 г/м²', color:0xe6dcc4, thk:0.04, mesh:true},
-      {label:'Праймер',          mat:'Sikafloor-156 · 0.3 мм',          color:0x5a5044, thk:0.05},
-      {label:'Подложка',         mat:'Бетон C25/30 · ≥ 25 МПа',          color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'терраццо · тёмный', thick:'12 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'10 лет', price:'₪380—720 / м²'},
-    badges:[{t:'R9',k:'solid'},{t:'ESD'},{t:'HACCP-ready',k:'warn'}]
-  },
-
-  'tz-ep-multi': {
-    title:'Терраццо · эпоксидное (мульти)', code:'TZ-EP-MX',
-    body:0xeae3d0, chips:'multi',
-    layers:[
-      {label:'Топкоат',          mat:'Sikafloor-264 · 0.5 мм',          color:0xf2ede0, thk:0.05, clearcoat:0.85},
-      {label:'Тело системы',     mat:'Sikafloor-263 SL · 3 мм',         color:0xeae3d0, thk:0.32, chips:true},
-      {label:'Стеклосетка',      mat:'Fibreglass mesh 4×4 мм · 60 г/м²', color:0xd0c8b0, thk:0.04, mesh:true},
-      {label:'Праймер',          mat:'Sikafloor-156 · 0.3 мм',          color:0xc0b298, thk:0.05},
-      {label:'Подложка',         mat:'Бетон C25/30 · ≥ 25 МПа',          color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'терраццо · мульти', thick:'12 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'10 лет', price:'₪380—720 / м²'},
-    badges:[{t:'R9',k:'solid'},{t:'ESD'},{t:'HACCP-ready',k:'warn'}]
-  },
-
-  'micro': {
-    title:'Микротопинг', code:'MT-NAT-08',
-    layers:[
-      {label:'PU защита · 2 слоя',     mat:'Sikafloor-304 W · 2 × 0.075 мм',       color:0xece6d3, thk:0.04, clearcoat:0.6},
-      {label:'Финиш-микротопинг',      mat:'Sika MonoTop decorative · 1 мм',       color:0xe2d8c0, thk:0.10},
-      {label:'База + стеклосетка',     mat:'Sika MonoTop base · 1.5 мм',           color:0xc8b994, thk:0.14, mesh:true},
-      {label:'Праймер',                mat:'Sika Primer MB · 0.2 мм',              color:0x9a8e74, thk:0.04},
-      {label:'Подложка',               mat:'Бетон / стяжка C20/25',                 color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'микротопинг', thick:'2.5–3 мм', base:'минеральная', cure:'24ч walk / 7дн full', warr:'7 лет', price:'₪280—440 / м²'},
-    badges:[{t:'R10',k:'solid'},{t:'WET-AREA'},{t:'Дизайн',k:'warn'}]
-  },
-
-  'rubber': {
-    title:'Резиновое покрытие', code:'RB-EPD-10',
-    layers:[
-      {label:'EPDM финиш-гранулы',  mat:'Гранулят 1–4 мм · 7 мм слой',    color:0x2c2624, thk:0.20, chips:true, chipColors:[0xd03828,0xc08838,0xe6e6e6,0x2a2a2a]},
-      {label:'SBR подушка',         mat:'Гранулят · 10 мм',                color:0x40342a, thk:0.18},
-      {label:'PU клей-грунт',       mat:'Sika Primer PU · 0.3 мм',         color:0x6a4a3a, thk:0.05},
-      {label:'Подложка',            mat:'Бетон / асфальт',                 color:0x9a948a, thk:0.50}
-    ],
-    specs:{type:'EPDM · резиновый', thick:'10–20 мм', base:'каучук + PU', cure:'24ч full', warr:'7 лет', price:'₪260—420 / м²'},
-    badges:[{t:'R11',k:'solid'},{t:'Sport'},{t:'Outdoor',k:'warn'}]
-  },
-
-  'meda': {
-    title:'Бетон · Меда декоративи', code:'MD-DEC-06',
-    layers:[
-      {label:'Финиш-воск + полировка', mat:'Wax · 800–3000 grit',          color:0xeae6dc, thk:0.03},
-      {label:'Меда декоративи',        mat:'Tadelakt-style · 4–6 мм',      color:0xc8b896, thk:0.20},
-      {label:'База минеральная',       mat:'Sika MonoTop · 2 мм',          color:0x9a8a70, thk:0.10},
-      {label:'Праймер',                mat:'Sika Primer MB · 0.2 мм',      color:0x7a6a54, thk:0.04},
-      {label:'Подложка',               mat:'Бетон / стяжка',                color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'дизайнерский бетон', thick:'6 мм', base:'известково-цементная', cure:'48ч walk / 21дн full', warr:'5 лет', price:'₪420—680 / м²'},
-    badges:[{t:'R9',k:'solid'},{t:'Дизайн'},{t:'Натур.',k:'warn'}]
-  },
-
-  'parquet': {
-    title:'Паркет', code:'PQ-OAK-14',
-    layers:[
-      {label:'UV-лак · 7 слоёв',       mat:'Bona Traffic HD · 0.12 мм',     color:0xa07650, thk:0.04, clearcoat:0.9},
-      {label:'Дуб селект · 14 мм',     mat:'Engineered oak select',          color:0x9c6a3e, thk:0.30, wood:true},
-      {label:'HDF-основа · 8 мм',      mat:'Sumica HDF',                     color:0x6a4a30, thk:0.14},
-      {label:'Шумоизол. подложка',     mat:'Sika Layer · 2 мм',              color:0x3a2820, thk:0.06},
-      {label:'Подложка',               mat:'Бетон / стяжка ровная',          color:0x9a948a, thk:0.50}
-    ],
-    specs:{type:'паркет инженерный', thick:'14 мм', base:'дуб + HDF', cure:'24ч / готов', warr:'15 лет', price:'₪380—1200 / м²'},
-    badges:[{t:'AC4',k:'solid'},{t:'Жилое'},{t:'Натур.',k:'warn'}]
-  },
-
-  'mma': {
-    title:'MMA Pronto · быстрый', code:'MMA-RP-04',
-    layers:[
-      {label:'MMA финиш-глянец',  mat:'Sikafloor-381 · 0.5 мм',     color:0xeaeae2, thk:0.05, clearcoat:0.92},
-      {label:'MMA цвет + флеки',  mat:'Sikafloor-390 · 3 мм',       color:0xa8b0bc, thk:0.30, chips:true, chipColors:[0xeeeae0,0x4a4a4a,0xa0a0a0]},
-      {label:'MMA грунт',         mat:'Sikafloor-110 · 0.3 мм',     color:0x707684, thk:0.05},
-      {label:'Подложка',          mat:'Бетон / металл',              color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'MMA · быстрый', thick:'3–6 мм', base:'метилметакрилат', cure:'1ч walk / 2ч full', warr:'7 лет', price:'₪520—740 / м²'},
-    badges:[{t:'R11',k:'solid'},{t:'COLD'},{t:'1H cure',k:'warn'}]
-  },
-
-  'pucem': {
-    title:'PU-cement / ПУ-цемент', code:'PU-CEM-06',
-    layers:[
-      {label:'ПУ-цемент финиш',   mat:'Sikafloor PurCem HM · 1 мм',  color:0xc5ad88, thk:0.10, roughness:0.7},
-      {label:'ПУ-цемент тело',    mat:'Sikafloor PurCem · 6 мм',     color:0xb89c70, thk:0.30},
-      {label:'Эпокси-грунт',      mat:'Sikafloor-156 · 0.2 мм',      color:0x8a7050, thk:0.04},
-      {label:'Подложка',          mat:'Бетон C25/30',                 color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'ПУ-цемент', thick:'6–9 мм', base:'PU + цемент', cure:'24ч walk / 7дн full', warr:'10 лет', price:'₪380—560 / м²'},
-    badges:[{t:'R12',k:'solid'},{t:'HACCP',k:'warn'},{t:'Thermal'}]
-  },
-
-  'epoxy-i': {
-    title:'Эпоксидная заливка', code:'EP-IND-04',
-    layers:[
-      {label:'PU защита',         mat:'Sikafloor-304 W · 0.1 мм',    color:0xa8b6c4, thk:0.04, clearcoat:0.7},
-      {label:'Эпоксид цвет',      mat:'Sikafloor-264 SL · 2 мм',     color:0x8090a8, thk:0.22},
-      {label:'Грунт-эпоксид',     mat:'Sikafloor-156 · 0.3 мм',      color:0x506478, thk:0.06},
-      {label:'Подложка',          mat:'Бетон C20/25',                 color:0x9a948a, thk:0.55}
-    ],
-    specs:{type:'эпоксидная промышл.', thick:'1.5–3 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'7 лет', price:'₪140—320 / м²'},
-    badges:[{t:'R9',k:'solid'},{t:'CHEM'},{t:'Industrial',k:'warn'}]
-  },
-
-  'epoxy-d': {
-    title:'Декоративная эпоксидка', code:'EP-DEC-08',
-    layers:[
-      {label:'PU защита',          mat:'Sikafloor-304 W · 0.15 мм',  color:0xeaeae6, thk:0.05, clearcoat:0.85},
-      {label:'Эпоксид цвет + флеки',mat:'Sikafloor-264 · 2.5 мм',     color:0xc8d4cc, thk:0.26, chips:true, chipColors:[0xeaeae0,0x4a4a4a,0x9a8a70]},
-      {label:'Эпоксид база',       mat:'Sikafloor-263 · 0.5 мм',     color:0x6a7a72, thk:0.07},
-      {label:'Грунт + бетон',      mat:'Sikafloor-156 + C20/25',     color:0x9a948a, thk:0.50}
-    ],
-    specs:{type:'декоративный эпоксид', thick:'2–4 мм', base:'эпоксидная смола', cure:'24ч walk / 72ч full', warr:'7 лет', price:'₪320—520 / м²'},
-    badges:[{t:'R10',k:'solid'},{t:'CHIPS'},{t:'Дизайн',k:'warn'}]
-  }
-};
-
-/* ============================================================
-   THREE.JS SCENE
-   ============================================================ */
 const stageEl = document.getElementById('stage');
-const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const bootEl = document.getElementById('boot');
+
+/* ---------- renderer / scene / camera ---------- */
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.15;
+renderer.toneMappingExposure = 1.0;
 stageEl.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-camera.position.set(4.5, 3.3, 5.2);
-camera.lookAt(0,0,0);
-
-const hemi = new THREE.HemisphereLight(0xffffff, 0xb0a890, 0.35); scene.add(hemi);
-const key = new THREE.DirectionalLight(0xfff4dd, 1.1); key.position.set(5,7,4); scene.add(key);
-const fill = new THREE.DirectionalLight(0xc9d4e0, 0.35); fill.position.set(-5,3,-3); scene.add(fill);
-const rim = new THREE.PointLight(0xff9a6a, 0.5, 12); rim.position.set(-3,1.5,3); scene.add(rim);
+const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
+camera.position.set(0.55, 0.42, 0.55);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 pmrem.compileEquirectangularShader();
-new RGBELoader().load('plate3d/env/studio_small_08_1k.hdr', (hdr) => {
-  const envMap = pmrem.fromEquirectangular(hdr).texture;
-  scene.environment = envMap;
-  scene.environmentIntensity = 1.0;
-  hdr.dispose();
-  pmrem.dispose();
-}, undefined, (err) => {
-  console.warn('HDRI load failed, falling back to lights only:', err);
-});
 
-/* === beveled slab geometry === */
-function makeBeveledSlab(w,d,h,bevel){
-  const shape = new THREE.Shape();
-  const r = bevel*0.6;
-  shape.moveTo(-w/2+r,-d/2);
-  shape.lineTo(w/2-r,-d/2);
-  shape.quadraticCurveTo(w/2,-d/2,w/2,-d/2+r);
-  shape.lineTo(w/2,d/2-r);
-  shape.quadraticCurveTo(w/2,d/2,w/2-r,d/2);
-  shape.lineTo(-w/2+r,d/2);
-  shape.quadraticCurveTo(-w/2,d/2,-w/2,d/2-r);
-  shape.lineTo(-w/2,-d/2+r);
-  shape.quadraticCurveTo(-w/2,-d/2,-w/2+r,-d/2);
-  const geo = new THREE.ExtrudeGeometry(shape,{depth:h, bevelEnabled:true, bevelThickness:bevel, bevelSize:bevel, bevelSegments:3, curveSegments:6});
-  geo.translate(0,0,-h/2); geo.rotateX(-Math.PI/2);
-  return geo;
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+new RGBELoader()
+  .setPath(ASSET_ROOT + 'textures/_hdri/')
+  .load('brown_photostudio_02.hdr', (hdr) => {
+    const env = pmrem.fromEquirectangular(hdr).texture;
+    scene.environment = env;
+    hdr.dispose();
+  }, undefined, () => { /* HDRI optional — RoomEnvironment fallback already in place */ });
+
+const key = new THREE.DirectionalLight(0xfff4dd, 0.8);  key.position.set(0.6, 0.9, 0.4);  scene.add(key);
+const fill = new THREE.DirectionalLight(0xc9d4e0, 0.25); fill.position.set(-0.5, 0.5, -0.3); scene.add(fill);
+
+const shadowTex = (() => {
+  const c = document.createElement('canvas');
+  c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const grd = g.createRadialGradient(128,128,8, 128,128,128);
+  grd.addColorStop(0, 'rgba(0,0,0,0.55)');
+  grd.addColorStop(0.55, 'rgba(0,0,0,0.18)');
+  grd.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = grd; g.fillRect(0,0,256,256);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+})();
+const shadow = new THREE.Mesh(
+  new THREE.PlaneGeometry(0.55, 0.55),
+  new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, opacity: 0.6 })
+);
+shadow.rotation.x = -Math.PI/2;
+shadow.position.y = -0.0148;
+scene.add(shadow);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0, 0);
+controls.minDistance = 0.35;
+controls.maxDistance = 1.2;
+controls.minPolarAngle = Math.PI * 0.18;
+controls.maxPolarAngle = Math.PI * 0.50;
+controls.enablePan = false;
+controls.update();
+
+function resize() {
+  const r = stageEl.getBoundingClientRect();
+  const w = Math.max(1, r.width), h = Math.max(1, r.height);
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(stageEl);
+resize();
+
+const texLoader = new THREE.TextureLoader();
+const texCache = new Map();
+function loadTex(path, opts = {}) {
+  const key = path + '|' + (opts.srgb ? 's' : 'l');
+  if (texCache.has(key)) return texCache.get(key);
+  const t = texLoader.load(ASSET_ROOT + path, tt => { tt.needsUpdate = true; });
+  t.colorSpace = opts.srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.anisotropy = 8;
+  texCache.set(key, t);
+  return t;
 }
 
-const SLAB_W = 2.8, SLAB_D = 3.6;
-const slabGroup = new THREE.Group(); scene.add(slabGroup);
-
-/* ground shadow */
-const groundGeo = new THREE.CircleGeometry(3.6, 64);
-const groundMat = new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:0.08});
-const ground = new THREE.Mesh(groundGeo, groundMat);
-ground.rotation.x = -Math.PI/2;
-ground.position.y = -0.55;
-scene.add(ground);
-
-let layerMeshes = [], chipMeshes = [], meshOverlays = [];
-
-/* terrazzo chip generator (instanced) */
-function spawnChips(parentMesh, slabH, opts){
-  const count = opts.count || 900;
-  const palette = opts.colors || [0xeae0c8,0xc8b894,0x9a8a70,0x6a5a48];
-  const geo = new THREE.IcosahedronGeometry(0.022, 0);
-  const mat = new THREE.MeshStandardMaterial({roughness:0.4, metalness:0.04, vertexColors:true});
-  const inst = new THREE.InstancedMesh(geo, mat, count);
-  const dummy = new THREE.Object3D();
-  const colArr = new Float32Array(count*3);
-  for(let i=0;i<count;i++){
-    const x = (Math.random()-0.5)*(SLAB_W-0.14);
-    const z = (Math.random()-0.5)*(SLAB_D-0.14);
-    const y = (Math.random()-0.3)*slabH*0.45;
-    dummy.position.set(x, y, z);
-    const s = 0.45 + Math.random()*1.9;
-    dummy.scale.set(s, s*0.55, s);
-    dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
-    dummy.updateMatrix();
-    inst.setMatrixAt(i, dummy.matrix);
-    const c = new THREE.Color(palette[Math.floor(Math.random()*palette.length)]);
-    colArr[i*3]=c.r; colArr[i*3+1]=c.g; colArr[i*3+2]=c.b;
-  }
-  geo.setAttribute('color', new THREE.InstancedBufferAttribute(colArr, 3));
-  parentMesh.add(inst);
-  chipMeshes.push(inst);
+const imgCache = new Map();
+function loadImg(path) {
+  if (imgCache.has(path)) return imgCache.get(path);
+  const p = new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = ASSET_ROOT + path;
+  });
+  imgCache.set(path, p);
+  return p;
 }
 
-/* fibreglass mesh visual */
-function spawnMesh(parentMesh){
-  /* draw a grid texture on a thin plane */
-  const c = document.createElement('canvas'); c.width=512; c.height=512;
-  const ctx = c.getContext('2d');
-  ctx.fillStyle = '#e8e0c8'; ctx.fillRect(0,0,512,512);
-  ctx.strokeStyle = '#9a8a6a'; ctx.lineWidth = 6;
-  for(let i=0;i<=16;i++){
-    ctx.beginPath(); ctx.moveTo(i*32, 0); ctx.lineTo(i*32, 512); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(0, i*32); ctx.lineTo(512, i*32); ctx.stroke();
-  }
-  const tex = new THREE.CanvasTexture(c);
-  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.repeat.set(3,4);
-  const geo = new THREE.PlaneGeometry(SLAB_W-0.08, SLAB_D-0.08);
-  const mat = new THREE.MeshStandardMaterial({map:tex, roughness:0.8, transparent:true, opacity:0.95});
-  const m = new THREE.Mesh(geo, mat);
-  m.rotation.x = -Math.PI/2;
-  m.position.y = 0;
-  parentMesh.add(m);
-  meshOverlays.push(m);
-}
+const AGG_PALETTE = {
+  'marble-white':  ['#f0ece2','#e6dec8','#d9ce9b','#cabf9a','#a89c80','#fff'],
+  'marble-black':  ['#1a1816','#2c2a26','#3a352e','#62584a','#a09384','#fff'],
+  'glass-color':   ['#2c5e88','#d8a82e','#c66a3a','#7a8a78','#9a9594','#1d1d1f'],
+  'pearl':         ['#e6dccc','#d6c7b4','#c8b9a2','#ece2d2','#bba894','#fff'],
+  'mirror':        ['#cfd4d8','#b0b4b8','#888a8c','#e8eaec','#5e6064','#fff']
+};
+const FLECK_DEFS = {
+  'neutral-s': { density: 240, size: [0.005, 0.011], palette: ['#fff','#e8e6e0','#bbb6ac','#777'] },
+  'neutral-m': { density: 110, size: [0.012, 0.022], palette: ['#fff','#cfc8b8','#7a766c','#444'] },
+  'blue-m':    { density: 110, size: [0.012, 0.022], palette: ['#3563a8','#7da7d0','#0e2f5c','#fff'] },
+  'red-l':     { density: 80,  size: [0.018, 0.034], palette: ['#c33b2e','#e68876','#5a1f17','#fff'] },
+  'metallic':  { density: 95,  size: [0.012, 0.024], palette: ['#c7c7c7','#a08e6a','#5a5a5a','#fff'] }
+};
+const STRIPE_COLORS = { brass:'#b08746', steel:'#cfd2d6', black:'#1d1d1f' };
+const MARKING_COLORS = { yellow:'#f1c40f', white:'#f6f6f4', red:'#d63027' };
 
-/* wood grain texture */
-function woodTexture(baseHex){
-  const c = document.createElement('canvas'); c.width=512; c.height=512;
-  const ctx = c.getContext('2d');
-  const base = new THREE.Color(baseHex);
-  ctx.fillStyle = `rgb(${base.r*255|0},${base.g*255|0},${base.b*255|0})`;
-  ctx.fillRect(0,0,512,512);
-  for(let i=0;i<80;i++){
-    const y = Math.random()*512;
-    ctx.strokeStyle = `rgba(0,0,0,${0.04+Math.random()*0.12})`;
-    ctx.lineWidth = 0.6 + Math.random()*1.2;
-    ctx.beginPath();
-    for(let x=0;x<=512;x+=8){
-      const yy = y + Math.sin(x*0.04 + i)*1.5 + (Math.random()-0.5)*0.8;
-      x===0 ? ctx.moveTo(x,yy) : ctx.lineTo(x,yy);
+function hashSeed(s) { let h=2166136261; for (let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return h>>>0; }
+function mulberry32(seed){ return function(){let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
+
+async function buildCompositeMap(def, state) {
+  const SIZE = 1024;
+  const cv = document.createElement('canvas');
+  cv.width = cv.height = SIZE;
+  const ctx = cv.getContext('2d');
+
+  if (def.pbr && def.pbr.diffuse) {
+    try {
+      const img = await loadImg(def.pbr.diffuse);
+      ctx.drawImage(img, 0, 0, SIZE, SIZE);
+    } catch (e) { ctx.fillStyle = '#7c7770'; ctx.fillRect(0,0,SIZE,SIZE); }
+  } else if (def.procedural) {
+    ctx.fillStyle = def.procedural.color || '#2e2e32';
+    ctx.fillRect(0,0,SIZE,SIZE);
+    const rnd = mulberry32(hashSeed(def.slug));
+    ctx.globalAlpha = 0.4;
+    for (let i = 0; i < 4000; i++) {
+      ctx.fillStyle = rnd() > 0.5 ? '#ffffff' : '#000000';
+      ctx.fillRect(rnd()*SIZE, rnd()*SIZE, 1, 1);
     }
+    ctx.globalAlpha = 1;
+  }
+
+  const rnd = mulberry32(hashSeed(def.slug + (state.aggregates||'')+(state.flecks||'')+(state.stripes||'')+(state.marking||'')));
+
+  /* Decide aggregates source:
+     - User picked an explicit AGG_PALETTE entry (marble-white, glass-color, …) → use it (Voronoi over photo).
+     - No explicit pick AND material has its own def.chips AND no real photo → use chips with weighted sampling.
+     - Material has a real photo → the photo IS the chips; no Voronoi by default.
+     - Otherwise no Voronoi pass. */
+  const userPickedAgg = state.aggregates && state.aggregates !== 'default' && AGG_PALETTE[state.aggregates];
+  const hasRealPhoto = !!(def.pbr && def.pbr.diffuse);
+  const useAutoChips = (!userPickedAgg) && (!hasRealPhoto) && Array.isArray(def.chips) && def.chips.length > 0;
+
+  if (userPickedAgg || useAutoChips) {
+    let palRGB, weights;
+    if (userPickedAgg) {
+      palRGB = AGG_PALETTE[state.aggregates].map(hex => {
+        const c = new THREE.Color(hex);
+        return [Math.round(c.r*255), Math.round(c.g*255), Math.round(c.b*255)];
+      });
+      weights = palRGB.map(() => 1);
+    } else {
+      palRGB = def.chips.map(ch => {
+        const c = new THREE.Color(ch.c);
+        return [Math.round(c.r*255), Math.round(c.g*255), Math.round(c.b*255)];
+      });
+      weights = def.chips.map(ch => Math.max(0.001, ch.w || 1));
+    }
+    // Build cumulative-weight array for weighted-random chip selection.
+    const cumulative = [];
+    let total = 0;
+    weights.forEach(w => { total += w; cumulative.push(total); });
+    const pickWeighted = () => {
+      const r = rnd() * total;
+      for (let i = 0; i < cumulative.length; i++) if (r <= cumulative[i]) return i;
+      return cumulative.length - 1;
+    };
+
+    const GRID = 9;
+    const seeds = [];
+    for (let gy = 0; gy < GRID; gy++) {
+      for (let gx = 0; gx < GRID; gx++) {
+        const cellW = SIZE / GRID;
+        const x = (gx + 0.15 + rnd()*0.70) * cellW;
+        const y = (gy + 0.15 + rnd()*0.70) * cellW;
+        const ci = pickWeighted();
+        const v = 0.85 + rnd()*0.30;
+        const c = palRGB[ci];
+        seeds.push({
+          x, y,
+          r: Math.min(255, Math.round(c[0]*v)),
+          g: Math.min(255, Math.round(c[1]*v)),
+          b: Math.min(255, Math.round(c[2]*v))
+        });
+      }
+    }
+    const R = 256;
+    const off = document.createElement('canvas');
+    off.width = off.height = R;
+    const oc = off.getContext('2d');
+    const img = oc.createImageData(R, R);
+    const ass = new Uint16Array(R*R);
+    for (let py = 0; py < R; py++) {
+      for (let px = 0; px < R; px++) {
+        let best = 0, bd = Infinity;
+        const fx = (px+0.5) * (SIZE/R), fy = (py+0.5) * (SIZE/R);
+        for (let si = 0; si < seeds.length; si++) {
+          const s = seeds[si];
+          const dx = fx - s.x, dy = fy - s.y;
+          const d = dx*dx + dy*dy;
+          if (d < bd) { bd = d; best = si; }
+        }
+        ass[py*R + px] = best;
+        const s = seeds[best];
+        const di = (py*R + px) * 4;
+        img.data[di]   = s.r;
+        img.data[di+1] = s.g;
+        img.data[di+2] = s.b;
+        img.data[di+3] = 255;
+      }
+    }
+    for (let py = 0; py < R; py++) {
+      for (let px = 0; px < R; px++) {
+        const a = ass[py*R + px];
+        const r = (py > 0 && ass[(py-1)*R+px] !== a) ||
+                  (py < R-1 && ass[(py+1)*R+px] !== a) ||
+                  (px > 0 && ass[py*R+px-1] !== a) ||
+                  (px < R-1 && ass[py*R+px+1] !== a);
+        if (r) {
+          const di = (py*R + px) * 4;
+          img.data[di]   = (img.data[di]   * 0.35) | 0;
+          img.data[di+1] = (img.data[di+1] * 0.35) | 0;
+          img.data[di+2] = (img.data[di+2] * 0.35) | 0;
+        }
+      }
+    }
+    oc.putImageData(img, 0, 0);
+    ctx.globalAlpha = 0.88;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(off, 0, 0, SIZE, SIZE);
+    ctx.globalAlpha = 1;
+  }
+
+  if (state.flecks && state.flecks !== 'none' && FLECK_DEFS[state.flecks]) {
+    const F = FLECK_DEFS[state.flecks];
+    ctx.globalAlpha = 0.9;
+    for (let i = 0; i < F.density; i++) {
+      const cx = rnd()*SIZE, cy = rnd()*SIZE;
+      const sz = (F.size[0] + rnd()*(F.size[1]-F.size[0])) * SIZE;
+      ctx.fillStyle = F.palette[Math.floor(rnd()*F.palette.length)];
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, sz*0.5, sz*0.35, rnd()*Math.PI, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  if (state.stripes && state.stripes !== 'none' && STRIPE_COLORS[state.stripes]) {
+    ctx.strokeStyle = STRIPE_COLORS[state.stripes];
+    ctx.lineWidth = 8;
+    ctx.globalAlpha = 0.85;
+    ctx.beginPath();
+    ctx.moveTo(SIZE*0.15, 0);
+    ctx.lineTo(SIZE*0.15, SIZE);
     ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(SIZE*0.78, 0);
+    ctx.lineTo(SIZE*0.78, SIZE);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
   }
-  /* 4 plank seams */
-  for(let i=1;i<4;i++){
-    ctx.strokeStyle = 'rgba(0,0,0,.35)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(0, 128*i); ctx.lineTo(512, 128*i); ctx.stroke();
+
+  if (state.marking && state.marking !== 'none' && MARKING_COLORS[state.marking]) {
+    ctx.strokeStyle = MARKING_COLORS[state.marking];
+    ctx.lineWidth = 28;
+    ctx.globalAlpha = 0.92;
+    ctx.beginPath();
+    ctx.moveTo(0, SIZE*0.42);
+    ctx.lineTo(SIZE, SIZE*0.42);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
   }
-  const tex = new THREE.CanvasTexture(c);
+
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.anisotropy = 8;
+  const tile = def.tile || 1;
+  tex.repeat.set(tile, tile);
   return tex;
 }
 
-/* === build a system from MATERIALS entry === */
-function buildSystem(M){
-  /* clear */
-  layerMeshes.forEach(m=>{ slabGroup.remove(m); m.geometry.dispose(); m.material.dispose(); });
-  layerMeshes = []; chipMeshes = []; meshOverlays = [];
+/* Glass topcoat — used by materials where the visible chip-pattern lives on the body
+   slab (real photo texture) and the topcoat is a thin transparent gloss layer.
+   We use MeshPhysicalMaterial for clearcoat + envMap reflections; we keep opacity
+   moderate so the seam between topcoat and body still reads in the explode view. */
+function buildGlassTopcoatMaterial(roughness = 0.06) {
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness,
+    metalness: 0,
+    transparent: true,
+    opacity: 0.18,
+    clearcoat: 1.0,
+    clearcoatRoughness: roughness * 0.5,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+  });
+  return mat;
+}
 
-  /* compute Y stack — top at +0.5, going down */
-  let yTop = 0.5;
-  M.layers.forEach((L, i)=>{
-    const t = L.thk || 0.1;
-    const geo = makeBeveledSlab(SLAB_W, SLAB_D, t, 0.02);
+/* Fallback colours per chip variant — used when the photo texture has not been
+   dropped into 3d-assets/textures/<slug>/ yet. Keeps the body looking plausible
+   instead of a black slab while we wait for the real photos. */
+const CHIPS_FALLBACK_COLOR = {
+  grey:  '#9a9a98',
+  white: '#e8e8e4',
+  black: '#2b2b2b'
+};
 
-    let mat;
-    if(L.wood){
-      const tex = woodTexture(L.color);
-      mat = new THREE.MeshPhysicalMaterial({map:tex, roughness:0.35, clearcoat:L.clearcoat||0.4, clearcoatRoughness:0.18});
-    } else {
-      mat = new THREE.MeshPhysicalMaterial({
-        color:new THREE.Color(L.color),
-        roughness: L.roughness !== undefined ? L.roughness : (i===0 ? 0.3 : 0.65),
-        metalness: 0.02,
-        clearcoat: L.clearcoat || (i===0?0.4:0),
-        clearcoatRoughness: 0.22
+/* Body texture material — real photograph from the user. sRGB diffuse, tiled.
+   If the file is missing (404), gracefully falls back to a solid colour matching
+   the chip variant, so the configurator stays usable before photos are dropped. */
+function buildBodyPhotoMaterial(def, variantId) {
+  const path = def.body_textures && def.body_textures[variantId];
+  if (!path) return null;
+  const tile = def.body_tile || 1;
+  const fallback = CHIPS_FALLBACK_COLOR[variantId] || '#9a9a98';
+  const mat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(fallback),
+    roughness: 0.55,
+    metalness: 0.0,
+  });
+  // Load the texture separately so we can detect errors and keep the fallback colour.
+  const t = new THREE.TextureLoader().load(
+    ASSET_ROOT + path,
+    (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.anisotropy = 8;
+      tex.repeat.set(tile, tile);
+      mat.map = tex;
+      mat.color.set(0xffffff); // Let the texture drive colour now.
+      mat.needsUpdate = true;
+    },
+    undefined,
+    () => { /* 404 — keep fallback colour, no error spam */ }
+  );
+  return mat;
+}
+
+function buildPbrMaterial(def) {
+  if (def.procedural) {
+    return new THREE.MeshStandardMaterial({
+      color: new THREE.Color(def.procedural.color),
+      roughness: def.procedural.roughness ?? 0.9,
+      metalness: def.procedural.metalness ?? 0.0,
+    });
+  }
+  if (!def.pbr) return new THREE.MeshStandardMaterial({ color: 0x888888 });
+
+  const tile = def.tile || 4;
+  const mat = new THREE.MeshStandardMaterial({
+    roughness: def.roughness_override ?? 1.0,
+    metalness: 0.02,
+  });
+
+  const map = loadTex(def.pbr.diffuse, { srgb: true });
+  map.repeat.set(tile, tile);
+  mat.map = map;
+  if (def.tint) {
+    mat.color = new THREE.Color(def.tint).lerp(new THREE.Color('#ffffff'), 1 - (def.tint_amount ?? 0.4));
+  }
+
+  if (def.pbr.normal) {
+    const nm = loadTex(def.pbr.normal);
+    nm.repeat.set(tile, tile);
+    mat.normalMap = nm;
+    mat.normalScale = new THREE.Vector2(0.7, 0.7);
+  }
+  if (def.pbr.roughness && def.roughness_override == null) {
+    const rm = loadTex(def.pbr.roughness);
+    rm.repeat.set(tile, tile);
+    mat.roughnessMap = rm;
+    mat.roughness = 1.0;
+  }
+  if (def.pbr.ao) {
+    const ao = loadTex(def.pbr.ao);
+    ao.repeat.set(tile, tile);
+    mat.aoMap = ao;
+    mat.aoMapIntensity = 0.6;
+  }
+  return mat;
+}
+
+let scrollAzimuth = 0;
+function onScroll() {
+  const r = stageEl.getBoundingClientRect();
+  const vh = window.innerHeight;
+  const center = (r.top + r.bottom) / 2;
+  const progress = Math.max(0, Math.min(1, 1 - center / vh));
+  scrollAzimuth = (progress - 0.5) * (10 * Math.PI / 180);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+let explodeAmount = 0;
+let explodeTarget = 0;
+const ORIG_POS = new Map();
+
+function setView(view) {
+  if (view === 'solid')  { explodeTarget = 0; controls.enabled = true; }
+  if (view === 'layers') { explodeTarget = 1; controls.enabled = true; }
+  if (view === 'top')    { explodeTarget = 0; controls.enabled = false; camera.position.set(0.001, 0.85, 0.001); controls.target.set(0,0,0); }
+  if (view === 'reset')  { explodeTarget = 0; controls.enabled = true; camera.position.set(0.55, 0.42, 0.55); controls.target.set(0,0,0); }
+  document.querySelectorAll('.s-br button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+}
+document.querySelectorAll('.s-br button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+let plateRoot = null;
+let topcoatMesh = null;
+let bodyMesh = null;
+let meshLayerMesh = null;   // fibreglass mesh slab (hairline)
+let primerMesh = null;
+let substrateMesh = null;
+
+function findMeshesByMaterialIndex(root) {
+  const found = { topcoat: null, body: null, mesh: null, primer: null, substrate: null };
+  root.traverse(o => {
+    if (o.isMesh) {
+      const matName = (o.material && o.material.name) || '';
+      const objName = o.name || '';
+      const key = (matName + ' ' + objName).toLowerCase();
+      // Order matters: mesh-layer check before "primer" to avoid mis-match
+      if (/topcoat|var_/i.test(key)) found.topcoat = o;
+      else if (/\bbody\b/i.test(key)) found.body = o;
+      else if (/mesh-?layer|fibreglass/i.test(key)) found.mesh = o;
+      else if (/primer/i.test(key)) found.primer = o;
+      else if (/substrate/i.test(key)) found.substrate = o;
+    }
+  });
+  return found;
+}
+
+/* Bevel-slab — a flat tile with rounded corners (radius bv) and bevelled top/bottom
+   edges (depth bv). Uses ExtrudeGeometry over a rounded-rectangle Shape so the
+   resulting plate looks like a real physical sample, not a sharp BoxGeometry primitive.
+   Borrowed from configurator.v3 (Claude.ai build) and adapted to our 5-slab stack. */
+function bevelSlab(w, d, h, bv) {
+  const r = Math.max(0.0005, bv * 0.6);
+  const sh = new THREE.Shape();
+  sh.moveTo(-w/2 + r, -d/2);                                          sh.lineTo(w/2 - r, -d/2);
+  sh.quadraticCurveTo(w/2,  -d/2,  w/2,  -d/2 + r);                   sh.lineTo(w/2,  d/2 - r);
+  sh.quadraticCurveTo(w/2,   d/2,  w/2 - r,  d/2);                    sh.lineTo(-w/2 + r,  d/2);
+  sh.quadraticCurveTo(-w/2,  d/2, -w/2,  d/2 - r);                    sh.lineTo(-w/2, -d/2 + r);
+  sh.quadraticCurveTo(-w/2, -d/2, -w/2 + r, -d/2);
+  const geo = new THREE.ExtrudeGeometry(sh, {
+    depth: h,
+    bevelEnabled: true,
+    bevelThickness: bv,
+    bevelSize: bv,
+    bevelSegments: 4,
+    curveSegments: 8,
+  });
+  // Extrusion is along +Z by default; rotate so depth maps to Y for our top-down stack.
+  geo.translate(0, 0, -h/2);
+  geo.rotateX(-Math.PI / 2);
+  // AO maps in Three.js r158 use the second UV channel — clone uv → uv2 so the AO
+  // texture lines up with the diffuse without authoring a separate lightmap UV.
+  if (geo.attributes.uv && !geo.attributes.uv2) {
+    geo.setAttribute('uv2', geo.attributes.uv.clone());
+  }
+  return geo;
+}
+
+/* Build a procedural 5-layer plate when no GLB is available.
+   Stack from bottom up: substrate, primer, mesh (hairline), body, topcoat.
+   Each slab is slightly inset versus the one above it (wedding-cake step) so
+   layers read separately in the explode view but blend in the solid view.
+   World units: meters. Heights tuned so the visible top sits at y ≈ 0. */
+function buildProceduralPlate() {
+  const root = new THREE.Group();
+  root.name = 'plateRoot';
+
+  const W = 0.30, D = 0.30;
+  // Slab heights — exaggerated for visibility in explode view.
+  const tcH = 0.006;   // topcoat
+  const bdH = 0.012;   // body system
+  const msH = 0.0015;  // fibreglass mesh (hairline)
+  const prH = 0.003;   // primer
+  const subH = 0.020;  // substrate
+
+  // Inset factor per layer so lower slabs are slightly smaller — gives a stepped
+  // edge profile when exploded, like a real sample with each coating offset.
+  const tcS = 1.000, bdS = 0.998, msS = 0.996, prS = 0.994, subS = 0.992;
+
+  const yTop = 0;
+  const yTopcoat   = yTop - tcH * 0.5;
+  const yBody      = yTop - tcH - bdH * 0.5;
+  const yMeshLayer = yTop - tcH - bdH - msH * 0.5;
+  const yPrimer    = yTop - tcH - bdH - msH - prH * 0.5;
+  const ySubstrate = yTop - tcH - bdH - msH - prH - subH * 0.5;
+
+  const topcoat = new THREE.Mesh(
+    bevelSlab(W * tcS, D * tcS, tcH, 0.0018),
+    new THREE.MeshStandardMaterial({ name: 'VAR_topcoat', color: 0xcccccc, roughness: 0.5 })
+  );
+  topcoat.name = 'topcoat';
+  topcoat.position.y = yTopcoat;
+
+  const body = new THREE.Mesh(
+    bevelSlab(W * bdS, D * bdS, bdH, 0.0015),
+    new THREE.MeshStandardMaterial({ name: 'body', color: 0xb8b0a0, roughness: 0.7 })
+  );
+  body.name = 'body';
+  body.position.y = yBody;
+
+  const meshLayer = new THREE.Mesh(
+    bevelSlab(W * msS, D * msS, msH, 0.0004),
+    new THREE.MeshStandardMaterial({ name: 'mesh-layer fibreglass', color: 0xe6dcc4, roughness: 0.4 })
+  );
+  meshLayer.name = 'mesh-layer';
+  meshLayer.position.y = yMeshLayer;
+
+  const primer = new THREE.Mesh(
+    bevelSlab(W * prS, D * prS, prH, 0.0008),
+    new THREE.MeshStandardMaterial({ name: 'primer', color: 0xc8b08a, roughness: 0.6 })
+  );
+  primer.name = 'primer';
+  primer.position.y = yPrimer;
+
+  const substrate = new THREE.Mesh(
+    bevelSlab(W * subS, D * subS, subH, 0.0010),
+    new THREE.MeshStandardMaterial({ name: 'substrate', color: 0x9a9a98, roughness: 0.85 })
+  );
+  substrate.name = 'substrate';
+  substrate.position.y = ySubstrate;
+
+  root.add(substrate);
+  root.add(primer);
+  root.add(meshLayer);
+  root.add(body);
+  root.add(topcoat);
+  return root;
+}
+
+const loader = new GLTFLoader();
+let manifest = null;
+let activeSlug = null;
+
+async function init() {
+  const res = await fetch(ASSET_ROOT + 'manifest.json');
+  manifest = await res.json();
+
+  const grpD = document.getElementById('grpDecorative');
+  const grpI = document.getElementById('grpIndustrial');
+  const prevEl = (() => { const e = document.createElement('div'); e.className = 'matprev'; document.body.appendChild(e); return e; })();
+  manifest.materials.forEach((m, idx) => {
+    const li = document.createElement('li');
+    li.dataset.slug = m.slug;
+    li.tabIndex = 0;
+    li.innerHTML = `
+      <span class="idx">${String(idx+1).padStart(2,'0')}</span>
+      <span>${m.label_ru}</span>
+      <span class="tag">${m.tag}</span>`;
+    li.addEventListener('click', () => selectMaterial(m.slug));
+    li.addEventListener('mouseenter', e => {
+      if (matchMedia('(max-width:1100px)').matches) return;
+      if (m.previews && m.previews.light) {
+        prevEl.style.backgroundImage = `url(${ASSET_ROOT}${m.previews.light})`;
+        prevEl.classList.add('show');
+      }
+    });
+    li.addEventListener('mousemove', e => {
+      prevEl.style.left = e.clientX + 'px';
+      prevEl.style.top = e.clientY - 14 + 'px';
+    });
+    li.addEventListener('mouseleave', () => prevEl.classList.remove('show'));
+    (m.group === 'industrial' ? grpI : grpD).appendChild(li);
+  });
+
+  window.addEventListener('keydown', ev => {
+    if (ev.target && /^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName)) return;
+    const slugs = manifest.materials.map(x => x.slug);
+    const cur = slugs.indexOf(activeSlug);
+    if (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
+      ev.preventDefault();
+      selectMaterial(slugs[(cur + 1 + slugs.length) % slugs.length]);
+    } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') {
+      ev.preventDefault();
+      selectMaterial(slugs[(cur - 1 + slugs.length) % slugs.length]);
+    } else if (ev.key === ' ' || ev.code === 'Space') {
+      ev.preventDefault();
+      setView(explodeTarget < 0.5 ? 'layers' : 'solid');
+    } else if (ev.key === 't' || ev.key === 'T') {
+      setView('top');
+    } else if (ev.key === 'r' || ev.key === 'R') {
+      setView('reset');
+    }
+  });
+
+  renderer.domElement.addEventListener('dblclick', () => {
+    setView(explodeTarget < 0.5 ? 'layers' : 'solid');
+  });
+
+  // Geometry source: either a baked GLB or procedural stacked boxes.
+  if (manifest.geometry && manifest.geometry.glb && !manifest.geometry.procedural) {
+    await new Promise((resolve, reject) => {
+      loader.load(ASSET_ROOT + manifest.geometry.glb, gltf => {
+        plateRoot = gltf.scene;
+        const box = new THREE.Box3().setFromObject(plateRoot);
+        const center = box.getCenter(new THREE.Vector3());
+        plateRoot.position.sub(center);
+        plateRoot.position.y += 0.005;
+        scene.add(plateRoot);
+        const meshes = findMeshesByMaterialIndex(plateRoot);
+        topcoatMesh = meshes.topcoat;
+        bodyMesh = meshes.body;
+        meshLayerMesh = meshes.mesh;
+        primerMesh = meshes.primer;
+        substrateMesh = meshes.substrate;
+        resolve();
+      }, undefined, reject);
+    });
+  } else {
+    plateRoot = buildProceduralPlate();
+    scene.add(plateRoot);
+    const meshes = findMeshesByMaterialIndex(plateRoot);
+    topcoatMesh = meshes.topcoat;
+    bodyMesh = meshes.body;
+    meshLayerMesh = meshes.mesh;
+    primerMesh = meshes.primer;
+    substrateMesh = meshes.substrate;
+  }
+
+  const sm = manifest.static_materials || {};
+  if (primerMesh && sm.primer) {
+    primerMesh.material = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(sm.primer.color),
+      roughness: sm.primer.roughness ?? 0.6, metalness: 0,
+    });
+  }
+  if (substrateMesh && sm.substrate) {
+    substrateMesh.material = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(sm.substrate.color),
+      roughness: sm.substrate.roughness ?? 0.85, metalness: 0,
+    });
+  }
+
+  [topcoatMesh, bodyMesh, meshLayerMesh, primerMesh, substrateMesh].forEach(m => {
+    if (m) ORIG_POS.set(m.uuid, m.position.y);
+  });
+
+  const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
+  selectMaterial(manifest.materials[defaultIdx].slug);
+  bootEl.classList.add('gone');
+}
+
+const transition = { active: false, t: 0, dur: 0.45, from: null, to: null };
+
+function selectMaterial(slug) {
+  if (slug === activeSlug) return;
+  const def = manifest.materials.find(m => m.slug === slug);
+  if (!def || !topcoatMesh) return;
+  activeSlug = slug;
+
+  /* PHOTO MODE: material has real photo textures on body + transparent gloss topcoat.
+     The chip pattern reads from the body diffuse map instead of the procedural Voronoi. */
+  const photoMode = !!(def.body_textures && def.topcoat_glass);
+
+  let newMat;
+  if (photoMode) {
+    newMat = buildGlassTopcoatMaterial();
+  } else {
+    newMat = buildPbrMaterial(def);
+  }
+  const oldMat = topcoatMesh.material;
+
+  const fromColor = oldMat && oldMat.color ? oldMat.color.clone() : new THREE.Color('#ffffff');
+  const fromRough = oldMat ? oldMat.roughness : 0.8;
+  topcoatMesh.material = newMat;
+  const targetColor = newMat.color.clone();
+  const targetRough = newMat.roughness;
+  if (!photoMode) {
+    // Crossfade only when both old and new materials are opaque standards.
+    newMat.color.copy(fromColor);
+    newMat.roughness = fromRough;
+    transition.active = true;
+    transition.t = 0;
+    transition.from = { color: fromColor, roughness: fromRough };
+    transition.to = { color: targetColor, roughness: targetRough };
+  } else {
+    transition.active = false;
+  }
+  if (oldMat && oldMat !== newMat && oldMat.dispose) {
+    setTimeout(() => oldMat.dispose(), 600);
+  }
+  bumpIdle();
+
+  renderSpecs(def);
+  renderBadges(def);
+  renderControls(def);
+  renderBuildup(def);
+  renderCallouts(def);
+
+  // Body slab: in photo mode load real diffuse; otherwise tint towards topcoat colour.
+  if (bodyMesh) {
+    const oldBodyMat = bodyMesh.material;
+    if (photoMode) {
+      const variant = def.body_default || Object.keys(def.body_textures)[0];
+      const photoMat = buildBodyPhotoMaterial(def, variant);
+      if (photoMat) bodyMesh.material = photoMat;
+    } else if (def.procedural) {
+      // Reset to a tinted standard material in case we just left photo mode.
+      const bodyColor = new THREE.Color(def.procedural.color);
+      bodyColor.lerp(new THREE.Color('#9c9484'), 0.45);
+      bodyMesh.material = new THREE.MeshStandardMaterial({
+        name: 'body',
+        color: bodyColor,
+        roughness: 0.7,
       });
     }
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.y = yTop - t/2;
-    mesh.userData.targetY = mesh.position.y;
-    mesh.userData.idx = i;
-    mesh.userData.layer = L;
-    slabGroup.add(mesh);
-    layerMeshes.push(mesh);
-
-    if(L.chips){
-      spawnChips(mesh, t, {colors: L.chipColors});
+    if (oldBodyMat && oldBodyMat !== bodyMesh.material && oldBodyMat.dispose) {
+      setTimeout(() => oldBodyMat.dispose(), 600);
     }
-    if(L.mesh){
-      spawnMesh(mesh);
-    }
-
-    yTop -= t;
-  });
-
-  /* update callouts */
-  M.layers.forEach((L,i)=>{
-    const el = document.getElementById('co'+i);
-    if(el){ el.parentElement.style.display = ''; el.textContent = L.label; el.nextSibling && (el.nextSibling.textContent = L.mat || ''); el.parentElement.innerHTML = `<b>${L.label}</b>${L.mat||''}`; }
-  });
-  /* hide unused callout slots */
-  for(let i=M.layers.length;i<5;i++){
-    const el = document.getElementById('co'+i);
-    if(el) el.parentElement.style.display = 'none';
   }
 
-  /* title + specs */
-  document.getElementById('stTitle').textContent = M.title;
-  document.getElementById('spType').textContent = M.specs.type;
-  document.getElementById('spThick').textContent = M.specs.thick;
-  document.getElementById('spBase').textContent = M.specs.base;
-  document.getElementById('spCure').innerHTML = M.specs.cure;
-  document.getElementById('spWarr').textContent = M.specs.warr;
-  document.getElementById('spPrice').textContent = M.specs.price;
+  document.getElementById('stTitle').textContent = def.label_ru;
+  const dims = (manifest.geometry && manifest.geometry.dimensions_mm) ? manifest.geometry.dimensions_mm.join('×') : '300×300';
+  document.getElementById('stTag').textContent = `${def.tag} · ${dims} мм`;
 
-  /* badges */
-  const bEl = document.getElementById('badges');
-  bEl.innerHTML = '';
-  (M.badges||[]).forEach(b=>{
-    const s = document.createElement('span');
-    if(b.k) s.className = b.k;
-    s.textContent = b.t;
-    bEl.appendChild(s);
+  document.querySelectorAll('#matlist li').forEach(li => {
+    li.classList.toggle('on', li.dataset.slug === slug);
+  });
+
+  // In photo mode the chips come from the photo; skip the Voronoi/canvas composite
+  // so we don't double-paint chips on top of the body texture.
+  if (!photoMode) refreshCompositeMap(def);
+}
+
+const orderState = {};
+
+function renderControls(def) {
+  const root = document.getElementById('controls');
+  root.innerHTML = '';
+  orderState[def.slug] ||= {};
+  const ctrlIds = def.controls || [];
+  if (!ctrlIds.length) {
+    root.innerHTML = `<div class="ctrl"><div class="empty">Базовый материал — без дополнительных параметров.</div></div>`;
+    return;
+  }
+  ctrlIds.forEach(cid => {
+    const spec = manifest.control_options[cid];
+    if (!spec) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'ctrl';
+    const k = document.createElement('div');
+    k.className = 'ctrl-k';
+    k.textContent = spec.label_ru;
+    wrap.appendChild(k);
+    const opts = document.createElement('div');
+    opts.className = 'opts';
+    spec.options.forEach((opt, i) => {
+      const b = document.createElement('button');
+      const hasChip = !!opt.hex;
+      b.className = hasChip ? 'sw' : '';
+      if (hasChip) {
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.style.background = opt.hex;
+        b.appendChild(chip);
+      }
+      const t = document.createElement('span');
+      t.textContent = opt.name;
+      b.appendChild(t);
+      b.addEventListener('click', () => {
+        orderState[def.slug][cid] = opt.id;
+        opts.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        applyControlEffect(def, cid, opt);
+      });
+      if (i === 0) {
+        b.classList.add('on');
+        orderState[def.slug][cid] = opt.id;
+      }
+      opts.appendChild(b);
+    });
+    wrap.appendChild(opts);
+    root.appendChild(wrap);
   });
 }
 
-/* ============================================================
-   INTERACTION — orbit, zoom, explode, view buttons
-   ============================================================ */
-let isDown=false, moved=false, lx=0, ly=0;
-let rotY=-0.45, rotX=0.55, camDist=7.2;
-let tRotY=rotY, tRotX=rotX, tDist=camDist;
-let explodeT=0, tExplode=0;
-
-stageEl.addEventListener('pointerdown',e=>{ isDown=true; moved=false; lx=e.clientX; ly=e.clientY; });
-window.addEventListener('pointerup',e=>{
-  if(isDown && !moved){
-    /* click → toggle explode */
-    tExplode = tExplode>0.5 ? 0 : 1;
-    updateViewBtn(tExplode>0.5?'layers':'solid');
-  }
-  isDown=false;
-});
-window.addEventListener('pointermove',e=>{
-  if(!isDown) return;
-  const dx=e.clientX-lx, dy=e.clientY-ly;
-  if(Math.abs(dx)>2 || Math.abs(dy)>2) moved=true;
-  tRotY += dx*0.005;
-  tRotX = Math.max(0.1, Math.min(1.25, tRotX + dy*0.004));
-  lx=e.clientX; ly=e.clientY;
-});
-stageEl.addEventListener('wheel',e=>{
-  e.preventDefault();
-  tDist = Math.max(4, Math.min(11, tDist + e.deltaY*0.005));
-},{passive:false});
-
-function updateViewBtn(view){
-  document.querySelectorAll('.s-br button').forEach(b=>b.classList.toggle('on', b.dataset.view===view));
+/* Right-rail "Параметры системы" — readonly key/value table from manifest.spec.
+   Spec keys are mapped to Russian labels here; missing fields are gracefully skipped. */
+function renderSpecs(def) {
+  const root = document.getElementById('specsTbl');
+  if (!root) return;
+  const sp = def.spec || {};
+  const labels = {
+    type: 'тип', thk: 'толщина', base: 'основа', cure: 'cure-time',
+    warr: 'гарантия', price: 'цена', load: 'нагрузка'
+  };
+  const rows = ['type', 'thk', 'base', 'cure', 'warr', 'price', 'load']
+    .filter(k => sp[k])
+    .map(k => `<div class="row"><span class="k">${labels[k]}</span><span class="v">${sp[k]}</span></div>`)
+    .join('');
+  root.innerHTML = rows || '<div class="row"><span class="k">—</span><span class="v">нет данных</span></div>';
 }
-document.querySelectorAll('.s-br button').forEach(b=>{
-  b.onclick = (e)=>{
-    e.stopPropagation();
-    const v = b.dataset.view;
-    updateViewBtn(v);
-    if(v==='solid'){ tExplode=0; }
-    if(v==='layers'){ tExplode=1; }
-    if(v==='top'){ tExplode=0; tRotX=1.2; tRotY=0; }
-    if(v==='reset'){ tExplode=0; tRotX=0.55; tRotY=-0.45; tDist=7.2; updateViewBtn('solid'); }
+
+/* Compliance / class badges. First badge gets `solid` (filled-dark), accent badge
+   (R12, HACCP, RAPID — anything urgent/notable) gets `warn` (filled-orange).
+   Default badges keep the outlined look. */
+function renderBadges(def) {
+  const root = document.getElementById('specsBadges');
+  if (!root) return;
+  const list = def.badges || [];
+  const accentRe = /R12|HACCP|RAPID|−|GLOSS|ANTI-SLIP|FOOD-SAFE/i;
+  root.innerHTML = list.map((b, i) => {
+    const cls = (i === 0) ? 'solid' : (accentRe.test(b) ? 'warn' : '');
+    return `<span class="b ${cls}">${b}</span>`;
+  }).join('');
+}
+
+function renderBuildup(def) {
+  const root = document.getElementById('buildup');
+  const bu = def.buildup || {};
+  const meshRow = bu.mesh ? `<div class="row"><span class="k">сетка</span><span class="v">${bu.mesh}</span></div>` : '';
+  root.innerHTML = `
+    <h5>Системный пирог</h5>
+    <div class="row"><span class="k">топкоат</span><span class="v">${bu.topcoat||'—'}</span></div>
+    <div class="row"><span class="k">тело</span><span class="v">${bu.body||'—'}</span></div>
+    ${meshRow}
+    <div class="row"><span class="k">праймер</span><span class="v">${bu.primer||'—'}</span></div>
+    <div class="row"><span class="k">основа</span><span class="v">${bu.substrate||'—'}</span></div>
+  `;
+}
+
+/* Populate the stage-side callouts from the manifest buildup. Each `.co` block has
+   a `data-slot="topcoat|body|mesh|primer|substrate"` and is hidden when the slot
+   is missing from the material's buildup (e.g. `mesh` is only set on microtopping). */
+function renderCallouts(def) {
+  const bu = def.buildup || {};
+  const labels = {
+    topcoat: 'Топкоат',
+    body: 'Тело системы',
+    mesh: 'Стеклосетка',
+    primer: 'Праймер',
+    substrate: 'Подложка'
   };
-});
-
-/* ============================================================
-   MATERIAL LIST
-   ============================================================ */
-document.querySelectorAll('#matlist li').forEach(li=>{
-  li.onclick = ()=>{
-    document.querySelectorAll('#matlist li').forEach(x=>x.classList.remove('on'));
-    li.classList.add('on');
-    const M = MATERIALS[li.dataset.id];
-    if(M) buildSystem(M);
-  };
-});
-
-/* ============================================================
-   RENDER LOOP
-   ============================================================ */
-const callouts = document.getElementById('callouts');
-function tick(){
-  rotY += (tRotY-rotY)*0.08;
-  rotX += (tRotX-rotX)*0.08;
-  camDist += (tDist-camDist)*0.08;
-  explodeT += (tExplode-explodeT)*0.08;
-
-  const cy = Math.sin(rotX)*camDist;
-  const cr = Math.cos(rotX)*camDist;
-  camera.position.set(Math.sin(rotY)*cr, cy, Math.cos(rotY)*cr);
-  camera.lookAt(0,0,0);
-
-  /* explode — each layer slides apart along Y */
-  let yTop = 0.5;
-  layerMeshes.forEach((m,i)=>{
-    const t = m.userData.layer.thk || 0.1;
-    const targetY = yTop - t/2 - i*explodeT*0.32;
-    m.position.y += (targetY - m.position.y)*0.16;
-    yTop -= t;
+  // Recompute top positions so visible callouts spread evenly along the stage edge.
+  const slots = ['topcoat', 'body', 'mesh', 'primer', 'substrate'];
+  const visible = slots.filter(s => bu[s]);
+  const root = document.getElementById('callouts');
+  if (!root) return;
+  const span = 72;   // total vertical % range used by callouts
+  const top0 = 14;   // first callout starts at top:14%
+  const step = visible.length > 1 ? span / (visible.length - 1) : 0;
+  root.querySelectorAll('.co').forEach(co => {
+    const slot = co.dataset.slot;
+    const idx = visible.indexOf(slot);
+    if (idx === -1 || !bu[slot]) {
+      co.classList.add('is-hidden');
+      return;
+    }
+    co.classList.remove('is-hidden');
+    co.style.top = (top0 + idx * step) + '%';
+    co.querySelector('b').textContent = labels[slot];
+    co.querySelector('span').textContent = bu[slot];
   });
+}
 
-  callouts.classList.toggle('on', explodeT > 0.4);
+function applyControlEffect(def, cid, opt) {
+  if (!topcoatMesh) return;
+  const mat = topcoatMesh.material;
+  const photoMode = !!(def.body_textures && def.topcoat_glass);
+
+  if (cid === 'color' && opt.hex && !photoMode) {
+    const c = new THREE.Color(opt.hex);
+    const lum = 0.2126*c.r + 0.7152*c.g + 0.0722*c.b;
+    const lerpAmount = 0.55 + (1 - lum) * 0.25;
+    c.lerp(new THREE.Color('#ffffff'), lerpAmount);
+    mat.color.copy(c);
+  }
+  // Chips color: swap the body diffuse texture (real photo of terrazzo crumb).
+  if (cid === 'chips_color' && opt.body_variant && bodyMesh) {
+    const newBody = buildBodyPhotoMaterial(def, opt.body_variant);
+    if (newBody) {
+      const oldBody = bodyMesh.material;
+      bodyMesh.material = newBody;
+      if (oldBody && oldBody.dispose) setTimeout(() => oldBody.dispose(), 600);
+    }
+  }
+  if (cid === 'gloss') {
+    const m = { low: 0.7, mid: 0.4, high: 0.08 };
+    mat.roughness = m[opt.id] ?? mat.roughness;
+    mat.roughnessMap = null;
+    // Glass topcoat: also vary opacity slightly with gloss level.
+    if (photoMode) {
+      const o = { low: 0.28, mid: 0.22, high: 0.14 };
+      mat.opacity = o[opt.id] ?? mat.opacity;
+      if (mat.clearcoatRoughness !== undefined) mat.clearcoatRoughness = mat.roughness * 0.5;
+    }
+    mat.needsUpdate = true;
+  }
+  if (cid === 'finish') {
+    const r = { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id];
+    if (r != null) { mat.roughness = r; mat.roughnessMap = null; mat.needsUpdate = true; }
+  }
+  if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
+    if (!photoMode) refreshCompositeMap(def);
+  }
+}
+
+let pendingCompositeBuild = false;
+async function refreshCompositeMap(def) {
+  if (pendingCompositeBuild) return;
+  pendingCompositeBuild = true;
+  try {
+    const state = orderState[def.slug] || {};
+    const tex = await buildCompositeMap(def, state);
+    if (topcoatMesh && def.slug === activeSlug) {
+      const mat = topcoatMesh.material;
+      const oldMap = mat.map;
+      mat.map = tex;
+      const tile = def.tile || 1;
+
+      // Normal map — tangent-space relief, lights the chips. Tiled like the diffuse.
+      if (def.pbr && def.pbr.normal) {
+        const nm = loadTex(def.pbr.normal); // linear, NoColorSpace by default
+        nm.repeat.set(tile, tile);
+        mat.normalMap = nm;
+        if (mat.normalScale) mat.normalScale.set(0.85, 0.85);
+      } else {
+        mat.normalMap = null;
+      }
+
+      // Roughness map — modulates the scalar `mat.roughness` (final = scalar * map.r).
+      // So the gloss/finish controls still work as a master, the map just shapes the
+      // distribution per chip vs matrix.
+      if (def.pbr && def.pbr.roughness) {
+        const rm = loadTex(def.pbr.roughness); // linear
+        rm.repeat.set(tile, tile);
+        mat.roughnessMap = rm;
+      } else {
+        mat.roughnessMap = null;
+      }
+
+      // AO map — darkens recessed areas. Three.js r158 reads it from the second UV
+      // channel (uv2), which bevelSlab() already populated for us.
+      if (def.pbr && def.pbr.ao) {
+        const ao = loadTex(def.pbr.ao); // linear
+        ao.repeat.set(tile, tile);
+        mat.aoMap = ao;
+        mat.aoMapIntensity = 0.55;
+      } else {
+        mat.aoMap = null;
+      }
+
+      mat.needsUpdate = true;
+      if (oldMap && oldMap.dispose) oldMap.dispose();
+    } else if (tex.dispose) {
+      tex.dispose();
+    }
+  } finally {
+    pendingCompositeBuild = false;
+  }
+}
+
+document.getElementById('ctaOrder').addEventListener('click', () => {
+  const payload = { material: activeSlug, options: orderState[activeSlug] };
+  const params = new URLSearchParams({
+    fd_material: payload.material,
+    fd_state: JSON.stringify(payload.options)
+  });
+  console.log('[FD-CFG] order payload', payload);
+  // Route into the existing lead-capture flow with the assembled formula in the URL.
+  window.location.href = 'quote.html?' + params.toString();
+});
+
+document.getElementById('ctaSample').addEventListener('click', () => {
+  const params = new URLSearchParams({ subject: 'sample-kit', fd_material: activeSlug || '' });
+  window.location.href = 'contact.html?' + params.toString();
+});
+
+let lastUserInputT = performance.now();
+let idleSpin = 0;
+let idleSpinTarget = 0;
+function bumpIdle() { lastUserInputT = performance.now(); idleSpinTarget = idleSpin; }
+['pointerdown','wheel','touchstart','keydown'].forEach(ev =>
+  window.addEventListener(ev, bumpIdle, { passive: true }));
+
+let lastT = performance.now();
+let fpsEMA = 60;
+const fpsEl = document.getElementById('fps');
+const easeOutCubic = x => 1 - Math.pow(1 - x, 3);
+
+function animate(t) {
+  const dt = Math.min(0.05, (t - lastT) / 1000); lastT = t;
+  if (dt > 0) fpsEMA = fpsEMA * 0.92 + (1/dt) * 0.08;
+  if (Math.random() < 0.05) fpsEl.textContent = `${Math.round(fpsEMA)} FPS`;
+
+  const idleSec = (t - lastUserInputT) / 1000;
+  if (idleSec > 4) {
+    const ramp = Math.min(1, (idleSec - 4) / 1.2);
+    idleSpinTarget += dt * 0.18 * ramp;
+  }
+  idleSpin = THREE.MathUtils.lerp(idleSpin, idleSpinTarget, 0.18);
+
+  if (plateRoot) {
+    const target = scrollAzimuth + idleSpin;
+    plateRoot.rotation.y = THREE.MathUtils.lerp(plateRoot.rotation.y, target, 0.08);
+  }
+
+  if (transition.active && topcoatMesh) {
+    transition.t += dt / transition.dur;
+    const k = easeOutCubic(Math.min(1, transition.t));
+    const mat = topcoatMesh.material;
+    mat.color.copy(transition.from.color).lerp(transition.to.color, k);
+    mat.roughness = THREE.MathUtils.lerp(transition.from.roughness, transition.to.roughness, k);
+    if (transition.t >= 1) transition.active = false;
+  }
+
+  explodeAmount = THREE.MathUtils.lerp(explodeAmount, explodeTarget, 0.10);
+  // 5-layer explode (top→bottom). Distances chosen so the gaps match the callout
+  // distribution (top:14% → 86%) when the stage is fully exploded.
+  if (topcoatMesh)    topcoatMesh.position.y    = (ORIG_POS.get(topcoatMesh.uuid)    ?? 0) + 0.080 * explodeAmount;
+  if (bodyMesh)       bodyMesh.position.y       = (ORIG_POS.get(bodyMesh.uuid)       ?? 0) + 0.045 * explodeAmount;
+  if (meshLayerMesh)  meshLayerMesh.position.y  = (ORIG_POS.get(meshLayerMesh.uuid)  ?? 0) + 0.018 * explodeAmount;
+  if (primerMesh)     primerMesh.position.y     = (ORIG_POS.get(primerMesh.uuid)     ?? 0) - 0.012 * explodeAmount;
+  if (substrateMesh)  substrateMesh.position.y  = (ORIG_POS.get(substrateMesh.uuid)  ?? 0) - 0.045 * explodeAmount;
+
+  // Show callouts only when sufficiently exploded.
+  const calloutsEl = document.getElementById('callouts');
+  if (calloutsEl) calloutsEl.classList.toggle('on', explodeAmount > 0.5);
+
+  controls.update();
   renderer.render(scene, camera);
-  requestAnimationFrame(tick);
+  requestAnimationFrame(animate);
 }
+requestAnimationFrame(animate);
 
-function resize(){
-  const r = stageEl.getBoundingClientRect();
-  renderer.setSize(r.width, r.height, false);
-  camera.aspect = r.width / r.height;
-  camera.updateProjectionMatrix();
-}
-window.addEventListener('resize', resize);
-resize();
-
-/* init */
-buildSystem(MATERIALS['tz-ep-dark']);
-tick();
+init().catch(err => {
+  console.error(err);
+  bootEl.innerHTML = '<i></i>Ошибка загрузки: ' + (err.message || err);
+});
 </script>
 
 </body>

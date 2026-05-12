@@ -1,0 +1,809 @@
+{
+  "version": "2.06",
+  "generated": "2026-05-12T07:40:00Z",
+  "geometry": {
+    "procedural": true,
+    "dimensions_mm": [
+      300,
+      300,
+      26
+    ]
+  },
+  "static_materials": {
+    "primer": {
+      "color": "#c8b08a",
+      "roughness": 0.6
+    },
+    "substrate": {
+      "color": "#9a9a98",
+      "roughness": 0.85
+    }
+  },
+  "materials": [
+    {
+      "slug": "terrazzo-cement",
+      "label_ru": "Терраццо · цементное",
+      "group": "decorative",
+      "tag": "TC",
+      "code": "TC",
+      "swatch": "#efe7d6",
+      "previews": {
+        "light": "previews/terrazzo-cement_hero_00.webp",
+        "dark": "previews/terrazzo-cement_lifestyle_01.webp"
+      },
+      "procedural": {
+        "color": "#efe7d6",
+        "roughness": 0.55,
+        "metalness": 0.0
+      },
+      "tile": 3,
+      "controls": [
+        "color",
+        "aggregates",
+        "finish"
+      ],
+      "spec": {
+        "type": "Терраццо · цементное",
+        "thk": "20 мм",
+        "base": "цементная смесь",
+        "cure": "7 сут / 28 сут",
+        "warr": "20 лет",
+        "price": "₪450—780/м²",
+        "load": "жилое · коммерческое"
+      },
+      "badges": [
+        "R10",
+        "ECO",
+        "FOOD-SAFE"
+      ],
+      "chips": [
+        {
+          "c": "#f0ece2",
+          "w": 0.32
+        },
+        {
+          "c": "#e6dec8",
+          "w": 0.2
+        },
+        {
+          "c": "#d9ce9b",
+          "w": 0.12
+        },
+        {
+          "c": "#cabf9a",
+          "w": 0.1
+        },
+        {
+          "c": "#a89c80",
+          "w": 0.1
+        },
+        {
+          "c": "#7a766c",
+          "w": 0.08
+        },
+        {
+          "c": "#ffffff",
+          "w": 0.08
+        }
+      ],
+      "buildup": {
+        "topcoat": "Sealer · литой воск, 0.1 мм",
+        "body": "Цементное терраццо · 18 мм + крошка",
+        "primer": "Грунт · Sika Primer-3N",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+      },
+      "pbr": {
+        "diffuse": "textures/terrazzo-cement/diffuse.jpg",
+        "normal": "textures/terrazzo-cement/normal.png",
+        "roughness": "textures/terrazzo-cement/roughness.png",
+        "ao": "textures/terrazzo-cement/ao.png"
+      }
+    },
+    {
+      "slug": "terrazzo-multi",
+      "label_ru": "Терраццо · мульти-цвет",
+      "group": "decorative",
+      "tag": "TM",
+      "code": "TM",
+      "swatch": "#f0ece2",
+      "previews": {
+        "light": "previews/terrazzo-cement_hero_00.webp",
+        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp"
+      },
+      "procedural": {
+        "color": "#dcd3c0",
+        "roughness": 0.35,
+        "metalness": 0.0
+      },
+      "tile": 3,
+      "controls": [
+        "aggregates",
+        "gloss"
+      ],
+      "spec": {
+        "type": "Терраццо · эпоксидное мульти",
+        "thk": "12 мм",
+        "base": "эпоксидная смола",
+        "cure": "24ч / 72ч",
+        "warr": "10 лет",
+        "price": "₪520—980/м²",
+        "load": "жилое · коммерческое"
+      },
+      "badges": [
+        "R10",
+        "ESD",
+        "HACCP-READY"
+      ],
+      "chips": [
+        {
+          "c": "#2c5e88",
+          "w": 0.1
+        },
+        {
+          "c": "#d8a82e",
+          "w": 0.08
+        },
+        {
+          "c": "#c66a3a",
+          "w": 0.07
+        },
+        {
+          "c": "#7a8a78",
+          "w": 0.07
+        },
+        {
+          "c": "#9a9594",
+          "w": 0.15
+        },
+        {
+          "c": "#1d1d1f",
+          "w": 0.08
+        },
+        {
+          "c": "#d6d2c8",
+          "w": 0.25
+        },
+        {
+          "c": "#c4a878",
+          "w": 0.1
+        },
+        {
+          "c": "#ffffff",
+          "w": 0.1
+        }
+      ],
+      "buildup": {
+        "topcoat": "PU-топ · 2 слоя · Sikafloor-304 W · 2 × 0.1 мм",
+        "body": "Терраццо-масса · Sikafloor-264 white + multicolor chips · 8 мм",
+        "primer": "Праймер + кварц · Sikafloor-156 + кварц · 0.8 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+      },
+      "pbr": {
+        "diffuse": "textures/terrazzo-multi/diffuse.jpg",
+        "normal": "textures/terrazzo-multi/normal.png",
+        "roughness": "textures/terrazzo-multi/roughness.png",
+        "ao": "textures/terrazzo-multi/ao.png"
+      }
+    },
+    {
+      "slug": "terrazzo-epoxy",
+      "label_ru": "Терраццо · эпоксидное (тёмное)",
+      "group": "decorative",
+      "tag": "TE",
+      "code": "TE",
+      "swatch": "#3a3833",
+      "previews": {
+        "light": "previews/terrazzo-epoxy_hero_02.webp",
+        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp"
+      },
+      "procedural": {
+        "color": "#dad3c2",
+        "roughness": 0.35,
+        "metalness": 0.0
+      },
+      "body_textures": {
+        "grey": "textures/terrazzo-epoxy/grey.jpg",
+        "white": "textures/terrazzo-epoxy/white.jpg",
+        "black": "textures/terrazzo-epoxy/black.jpg"
+      },
+      "body_default": "grey",
+      "topcoat_glass": true,
+      "tile": 1,
+      "controls": [
+        "chips_color",
+        "gloss"
+      ],
+      "spec": {
+        "type": "Терраццо · эпоксидное",
+        "thk": "12 мм",
+        "base": "эпоксидная смола",
+        "cure": "24ч / 72ч",
+        "warr": "10 лет",
+        "price": "₪480—820/м²",
+        "load": "жилое · коммерческое"
+      },
+      "badges": [
+        "R10",
+        "ESD",
+        "HACCP-READY"
+      ],
+      "buildup": {
+        "topcoat": "Sikafloor-264 · 0.5 мм (глянцевый лак)",
+        "body": "Эпоксидное терраццо · 6 мм · цветная крошка",
+        "primer": "Sikafloor-156 · 0.3 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+      }
+    },
+    {
+      "slug": "microtopping",
+      "label_ru": "Микротопинг",
+      "group": "decorative",
+      "tag": "MC",
+      "code": "MC",
+      "swatch": "#cfc4b3",
+      "previews": {
+        "light": "previews/microtopping_hero_04.webp",
+        "dark": "previews/microtopping_lifestyle_05.webp"
+      },
+      "procedural": {
+        "color": "#cfc4b3",
+        "roughness": 0.7,
+        "metalness": 0.0
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "finish"
+      ],
+      "spec": {
+        "type": "Микроцемент / микротопинг",
+        "thk": "3 мм",
+        "base": "цементная смесь",
+        "cure": "48ч / 7 сут",
+        "warr": "7 лет",
+        "price": "₪280—520/м²",
+        "load": "жилое"
+      },
+      "badges": [
+        "R9",
+        "ECO"
+      ],
+      "buildup": {
+        "topcoat": "PU-защита · 2 слоя, матовая",
+        "body": "Микроцемент · 2 × 1 мм",
+        "mesh": "Fibreglass mesh 4×4 мм · 60 г/м²",
+        "primer": "Sikafloor-156 · 0.3 мм",
+        "substrate": "Бетон / стяжка / ГВЛ"
+      },
+      "pbr": {
+        "diffuse": "textures/microtopping/diffuse.jpg",
+        "normal": "textures/microtopping/normal.png",
+        "roughness": "textures/microtopping/roughness.png",
+        "ao": "textures/microtopping/ao.png"
+      }
+    },
+    {
+      "slug": "rubber",
+      "label_ru": "Резиновое покрытие",
+      "group": "decorative",
+      "tag": "RB",
+      "code": "RB",
+      "swatch": "#2a2a2a",
+      "previews": {
+        "light": "previews/rubber_hero_10.webp",
+        "dark": "previews/rubber_lifestyle_11.webp"
+      },
+      "procedural": {
+        "color": "#2a2a2a",
+        "roughness": 0.95,
+        "metalness": 0.0
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "marking"
+      ],
+      "spec": {
+        "type": "EPDM-резина / PU-связующее",
+        "thk": "8—15 мм",
+        "base": "PU-связующее",
+        "cure": "24ч / 48ч",
+        "warr": "8 лет",
+        "price": "₪220—420/м²",
+        "load": "спорт · детские · промзоны"
+      },
+      "badges": [
+        "R12",
+        "ANTI-SLIP",
+        "SHOCK"
+      ],
+      "buildup": {
+        "topcoat": "EPDM-крошка / PU-связующее",
+        "body": "Резиновое покрытие · 8—15 мм",
+        "primer": "PU-Primer",
+        "substrate": "Бетон / асфальт"
+      },
+      "pbr": {
+        "diffuse": "textures/rubber/diffuse.jpg",
+        "normal": "textures/rubber/normal.png",
+        "roughness": "textures/rubber/roughness.png",
+        "ao": "textures/rubber/ao.png"
+      }
+    },
+    {
+      "slug": "decorative-concrete",
+      "label_ru": "Бетон дизайнерский",
+      "group": "decorative",
+      "tag": "DC",
+      "code": "DC",
+      "swatch": "#7a7468",
+      "previews": {
+        "light": "previews/decorative-concrete_hero_06.webp",
+        "dark": "previews/decorative-concrete_lifestyle_07.webp"
+      },
+      "procedural": {
+        "color": "#7a7468",
+        "roughness": 0.78,
+        "metalness": 0.0
+      },
+      "tile": 3,
+      "controls": [
+        "color",
+        "finish",
+        "stripes"
+      ],
+      "spec": {
+        "type": "Меда декоративи · литой бетон",
+        "thk": "40—80 мм",
+        "base": "цементная смесь",
+        "cure": "7 сут / 28 сут",
+        "warr": "25 лет",
+        "price": "₪650—1200/м²",
+        "load": "жилое · паблик"
+      },
+      "badges": [
+        "R10",
+        "MASS",
+        "POLISHED"
+      ],
+      "chips": [
+        {
+          "c": "#7a7468",
+          "w": 0.4
+        },
+        {
+          "c": "#a39785",
+          "w": 0.2
+        },
+        {
+          "c": "#544f47",
+          "w": 0.15
+        },
+        {
+          "c": "#c4b8a3",
+          "w": 0.1
+        },
+        {
+          "c": "#3a3631",
+          "w": 0.1
+        },
+        {
+          "c": "#ffffff",
+          "w": 0.05
+        }
+      ],
+      "buildup": {
+        "topcoat": "Литая пропитка / воск",
+        "body": "Меда декоративи · 40—80 мм",
+        "primer": "Адгезионный мост",
+        "substrate": "Бетон / стяжка"
+      },
+      "pbr": {
+        "diffuse": "textures/decorative-concrete/diffuse.jpg",
+        "normal": "textures/decorative-concrete/normal.png",
+        "roughness": "textures/decorative-concrete/roughness.png",
+        "ao": "textures/decorative-concrete/ao.png"
+      }
+    },
+    {
+      "slug": "parquet",
+      "label_ru": "Паркет",
+      "group": "decorative",
+      "tag": "PQ",
+      "code": "PQ",
+      "swatch": "#8a5a2a",
+      "previews": {
+        "light": "previews/parquet_hero_08.webp",
+        "dark": "previews/parquet_lifestyle_09.webp"
+      },
+      "procedural": {
+        "color": "#8a5a2a",
+        "roughness": 0.45,
+        "metalness": 0.0
+      },
+      "tile": 1,
+      "controls": [
+        "color",
+        "finish"
+      ],
+      "spec": {
+        "type": "Паркет · массив / инжен.",
+        "thk": "14—22 мм",
+        "base": "дерево",
+        "cure": "1 сут (масло) / 3 сут (лак)",
+        "warr": "15 лет",
+        "price": "₪380—1100/м²",
+        "load": "жилое"
+      },
+      "badges": [
+        "ECO",
+        "WARM",
+        "PRE-FINISHED"
+      ],
+      "buildup": {
+        "topcoat": "Масло / лак UV",
+        "body": "Дуб / орех / ясень · 14—22 мм",
+        "primer": "Фанера / стяжка с грунтом",
+        "substrate": "Бетон C25/30"
+      },
+      "pbr": {
+        "diffuse": "textures/parquet/diffuse.jpg",
+        "normal": "textures/parquet/normal.png",
+        "roughness": "textures/parquet/roughness.png",
+        "ao": "textures/parquet/ao.png"
+      }
+    },
+    {
+      "slug": "mma",
+      "label_ru": "MMA Pronto",
+      "group": "industrial",
+      "tag": "MM",
+      "code": "MM",
+      "swatch": "#3c3a35",
+      "previews": {
+        "light": "previews/mma_hero_12.webp",
+        "dark": "previews/mma_lifestyle_13.webp"
+      },
+      "procedural": {
+        "color": "#3c3a35",
+        "roughness": 0.3,
+        "metalness": 0.05
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "marking",
+        "gloss"
+      ],
+      "spec": {
+        "type": "MMA · метилметакрилат",
+        "thk": "5—9 мм",
+        "base": "MMA-смола",
+        "cure": "2ч / 4ч (включая разметку)",
+        "warr": "8 лет",
+        "price": "₪420—780/м²",
+        "load": "пром · пищевое · ремонт"
+      },
+      "badges": [
+        "R12",
+        "RAPID",
+        "−25°C OK"
+      ],
+      "buildup": {
+        "topcoat": "MMA-топкоат · 1 мм",
+        "body": "MMA-system · 4—8 мм",
+        "primer": "MMA-Primer · 0.5 мм",
+        "substrate": "Бетон / металл"
+      },
+      "pbr": {
+        "diffuse": "textures/mma/diffuse.jpg",
+        "normal": "textures/mma/normal.png",
+        "roughness": "textures/mma/roughness.png",
+        "ao": "textures/mma/ao.png"
+      }
+    },
+    {
+      "slug": "pu-cement",
+      "label_ru": "PU-cement",
+      "group": "industrial",
+      "tag": "PU",
+      "code": "PU",
+      "swatch": "#9a9690",
+      "previews": {
+        "light": "previews/pu-cement_hero_14.webp",
+        "dark": "previews/pu-cement_lifestyle_15.webp"
+      },
+      "procedural": {
+        "color": "#9a9690",
+        "roughness": 0.55,
+        "metalness": 0.0
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "marking"
+      ],
+      "spec": {
+        "type": "Полиуретан-цемент",
+        "thk": "6—9 мм",
+        "base": "PU + цемент",
+        "cure": "24ч / 7 сут",
+        "warr": "10 лет",
+        "price": "₪520—980/м²",
+        "load": "тяжпром · пищевое · мокрое"
+      },
+      "badges": [
+        "R12",
+        "HACCP",
+        "THERMAL ±150°C"
+      ],
+      "buildup": {
+        "topcoat": "PU-Cement топкоат · 0.5 мм",
+        "body": "PU-Cement · 6—9 мм",
+        "primer": "Праймер по бетону",
+        "substrate": "Бетон C25/30"
+      },
+      "pbr": {
+        "diffuse": "textures/pu-cement/diffuse.jpg",
+        "normal": "textures/pu-cement/normal.png",
+        "roughness": "textures/pu-cement/roughness.png",
+        "ao": "textures/pu-cement/ao.png"
+      }
+    },
+    {
+      "slug": "epoxy",
+      "label_ru": "Эпоксидная заливка",
+      "group": "industrial",
+      "tag": "EP",
+      "code": "EP",
+      "swatch": "#2a2620",
+      "previews": {
+        "light": "previews/epoxy_hero_16.webp",
+        "dark": "previews/epoxy_lifestyle_17.webp"
+      },
+      "procedural": {
+        "color": "#2a2620",
+        "roughness": 0.15,
+        "metalness": 0.02
+      },
+      "tile": 2,
+      "controls": [
+        "color",
+        "flecks",
+        "marking",
+        "gloss"
+      ],
+      "spec": {
+        "type": "Эпоксидная самонивелирующаяся",
+        "thk": "2—3 мм",
+        "base": "эпоксидная смола",
+        "cure": "24ч / 72ч",
+        "warr": "10 лет",
+        "price": "₪280—520/м²",
+        "load": "пром · паркинг · склад"
+      },
+      "badges": [
+        "R9",
+        "ESD",
+        "GLOSS"
+      ],
+      "buildup": {
+        "topcoat": "Sikafloor-264 · 0.5 мм",
+        "body": "Sikafloor-263 SL · 3 мм",
+        "primer": "Sikafloor-156 · 0.3 мм",
+        "substrate": "Бетон C25/30 · ≥ 25 МПа"
+      },
+      "pbr": {
+        "diffuse": "textures/epoxy/diffuse.jpg",
+        "normal": "textures/epoxy/normal.png",
+        "roughness": "textures/epoxy/roughness.png",
+        "ao": "textures/epoxy/ao.png"
+      }
+    }
+  ],
+  "control_options": {
+    "chips_color": {
+      "label_ru": "Цвет крошки",
+      "options": [
+        {
+          "id": "grey",
+          "name": "Серый",
+          "hex": "#9a9a98",
+          "body_variant": "grey"
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "hex": "#e8e8e4",
+          "body_variant": "white"
+        },
+        {
+          "id": "black",
+          "name": "Чёрный",
+          "hex": "#2b2b2b",
+          "body_variant": "black"
+        }
+      ]
+    },
+    "color": {
+      "label_ru": "Цвет / RAL",
+      "options": [
+        {
+          "id": "neutral",
+          "name": "Нейтральный",
+          "hex": "#cfc7b5"
+        },
+        {
+          "id": "warm",
+          "name": "Тёплый",
+          "hex": "#b89572"
+        },
+        {
+          "id": "cool",
+          "name": "Холодный",
+          "hex": "#7d8a92"
+        },
+        {
+          "id": "graphite",
+          "name": "Графит",
+          "hex": "#3b3c40"
+        },
+        {
+          "id": "ral7035",
+          "name": "RAL 7035",
+          "hex": "#cbd0cc"
+        },
+        {
+          "id": "ral7016",
+          "name": "RAL 7016",
+          "hex": "#383e42"
+        },
+        {
+          "id": "ral9003",
+          "name": "RAL 9003",
+          "hex": "#f1f1ec"
+        }
+      ]
+    },
+    "gloss": {
+      "label_ru": "Блеск",
+      "options": [
+        {
+          "id": "low",
+          "name": "Матовый"
+        },
+        {
+          "id": "mid",
+          "name": "Полуматовый"
+        },
+        {
+          "id": "high",
+          "name": "Глянец"
+        }
+      ]
+    },
+    "finish": {
+      "label_ru": "Финиш",
+      "options": [
+        {
+          "id": "matte",
+          "name": "Matte"
+        },
+        {
+          "id": "satin",
+          "name": "Satin"
+        },
+        {
+          "id": "polished",
+          "name": "Polished"
+        }
+      ]
+    },
+    "aggregates": {
+      "label_ru": "Заполнитель",
+      "options": [
+        {
+          "id": "default",
+          "name": "Авто (по материалу)"
+        },
+        {
+          "id": "marble-white",
+          "name": "Мрамор белый"
+        },
+        {
+          "id": "marble-black",
+          "name": "Мрамор чёрный"
+        },
+        {
+          "id": "glass-color",
+          "name": "Цветное стекло"
+        },
+        {
+          "id": "pearl",
+          "name": "Перламутр"
+        },
+        {
+          "id": "mirror",
+          "name": "Зеркало"
+        }
+      ]
+    },
+    "flecks": {
+      "label_ru": "Чипсы",
+      "options": [
+        {
+          "id": "none",
+          "name": "Без чипсов"
+        },
+        {
+          "id": "neutral-s",
+          "name": "Нейтрал · мелкий"
+        },
+        {
+          "id": "neutral-m",
+          "name": "Нейтрал · средний"
+        },
+        {
+          "id": "blue-m",
+          "name": "Синие · средний"
+        },
+        {
+          "id": "red-l",
+          "name": "Красные · крупный"
+        },
+        {
+          "id": "metallic",
+          "name": "Металлик"
+        }
+      ]
+    },
+    "stripes": {
+      "label_ru": "Декор-инлей",
+      "options": [
+        {
+          "id": "none",
+          "name": "Без полос"
+        },
+        {
+          "id": "brass",
+          "name": "Латунь",
+          "hex": "#b08746"
+        },
+        {
+          "id": "steel",
+          "name": "Сталь",
+          "hex": "#cfd2d6"
+        },
+        {
+          "id": "black",
+          "name": "Чёрный",
+          "hex": "#1d1d1f"
+        }
+      ]
+    },
+    "marking": {
+      "label_ru": "Разметка",
+      "options": [
+        {
+          "id": "none",
+          "name": "Без разметки"
+        },
+        {
+          "id": "yellow",
+          "name": "Жёлтая",
+          "hex": "#f1c40f"
+        },
+        {
+          "id": "white",
+          "name": "Белая",
+          "hex": "#f6f6f4"
+        },
+        {
+          "id": "red",
+          "name": "Красная",
+          "hex": "#d63027"
+        }
+      ]
+    }
+  }
+}
