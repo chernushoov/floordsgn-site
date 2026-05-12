@@ -93,6 +93,26 @@ const translations = {
         // Home — Hero Split
         home_hero_overline: "Floor.DSGN • Israel",
         home_hero_title: "What brings you here?",
+
+        // Hero3D — 3D configurator preview block (the dominant landing visual)
+        home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
+        home_hero3d_h1: "Design your floor<br><em>in 3D — and we'll lay it.</em>",
+        home_hero3d_lede: "WebGL configurator with real PBR textures. 10 systems — terrazzo, epoxy, microtopping, polished concrete, PU-cement, MMA, rubber, ComfortFloor. Change material, thickness, color, aggregate — get an order formula and a precise quote.",
+        home_hero3d_btn_primary: "Open 3D configurator",
+        home_hero3d_btn_ghost: "All systems",
+        home_hero3d_spec_materials: "materials",
+        home_hero3d_spec_textures: "real textures",
+        home_hero3d_spec_quote: "to quote",
+        home_hero3d_caption: "Live configurator preview · click to open the full scene",
+
+        // Picker section
+        home_picker_eyebrow: "Floor.DSGN · Israel · Engineering",
+        home_picker_h1: "Choose your <em>system</em>",
+        home_picker_lede: "Eight families of industrial and design floors. Inside each — variants by load, thickness and price. Not sure — try the <a href=\"decision-tool.html\" class=\"fx-picker__inline-link\">6-question wizard</a>.",
+
+        // Sticky mobile CTA bar
+        sticky_cta_sample: "Sample",
+        sticky_cta_estimate: "Estimate",
         home_market_a_label: "For Business Owners",
         home_market_a_title: "Industrial &<br>Commercial",
         home_market_a_desc: "Factories, warehouses, logistics, restaurants, parking. Fast installation, minimal downtime, maximum durability.",
@@ -1443,6 +1463,26 @@ const translations = {
         // Home — Hero Split
         home_hero_overline: "Floor.DSGN • Израиль",
         home_hero_title: "Чем мы можем помочь?",
+
+        // Hero3D — главный визуальный блок лендинга
+        home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
+        home_hero3d_h1: "Соберите свой пол<br><em>в 3D — а потом мы его уложим.</em>",
+        home_hero3d_lede: "WebGL-конструктор с реальными PBR-текстурами. 10 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA, резина, ComfortFloor. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.",
+        home_hero3d_btn_primary: "Открыть 3D-конфигуратор",
+        home_hero3d_btn_ghost: "Все системы",
+        home_hero3d_spec_materials: "материалов",
+        home_hero3d_spec_textures: "real textures",
+        home_hero3d_spec_quote: "до сметы",
+        home_hero3d_caption: "Превью реального конфигуратора · клик откроет полную сцену",
+
+        // Picker · выбор системы
+        home_picker_eyebrow: "Floor.DSGN · Israel · Engineering",
+        home_picker_h1: "Выберите <em>систему</em>",
+        home_picker_lede: "Восемь семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href=\"decision-tool.html\" class=\"fx-picker__inline-link\">подбор за 6 вопросов</a>.",
+
+        // Sticky mobile CTA bar
+        sticky_cta_sample: "Образец",
+        sticky_cta_estimate: "Расчёт",
         home_market_a_label: "Для бизнеса",
         home_market_a_title: "Промышленные и<br>коммерческие полы",
         home_market_a_desc: "Заводы, склады, логистика, рестораны, паркинги. Быстрый монтаж, минимальный простой, максимальная прочность.",
@@ -2694,8 +2734,9 @@ function setLanguage(lang) {
             const value = translations[lang][key];
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = value;
-            } else if (value.includes('<br>') || value.includes('<strong>') || value.includes('<em>')) {
+            } else if (value.includes('<br>') || value.includes('<strong>') || value.includes('<em>') || value.includes('<a ')) {
                 // Only use innerHTML for trusted content with specific HTML tags
+                // (<a> is required for inline links inside translatable copy, e.g. picker lede)
                 element.innerHTML = value;
             } else {
                 // Use textContent for security (prevents XSS)

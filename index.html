@@ -133,8 +133,8 @@
 
     <!-- Sticky mobile CTA bar — появляется после 40% скролла -->
     <nav class="fx-sticky-cta" data-fx="stickyCta" aria-label="Быстрые действия">
-      <a href="contact.html#intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost">Образец</a>
-      <a href="quote.html" class="fx-sticky-cta__btn fx-sticky-cta__btn--solid">Расчёт</a>
+      <a href="contact.html#intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost" data-i18n="sticky_cta_sample">Образец</a>
+      <a href="quote.html" class="fx-sticky-cta__btn fx-sticky-cta__btn--solid" data-i18n="sticky_cta_estimate">Расчёт</a>
       <a href="tel:+972559661459" class="fx-sticky-cta__btn fx-sticky-cta__btn--call" aria-label="Позвонить">✆</a>
     </nav>
 
@@ -182,29 +182,26 @@
         <div class="hero3d__copy">
           <p class="hero3d__eyebrow">
             <span class="hero3d__dot" aria-hidden="true"></span>
-            Floor.DSGN · 3D Configurator · v2
+            <span data-i18n="home_hero3d_eyebrow">Floor.DSGN · 3D Configurator · v2</span>
           </p>
-          <h1 class="hero3d__h1">
-            Соберите свой пол<br>
-            <em>в 3D — а потом мы его уложим.</em>
-          </h1>
-          <p class="hero3d__lede">
+          <h1 class="hero3d__h1" data-i18n="home_hero3d_h1">Соберите свой пол<br><em>в 3D — а потом мы его уложим.</em></h1>
+          <p class="hero3d__lede" data-i18n="home_hero3d_lede">
             WebGL-конструктор с реальными PBR-текстурами. 10 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA, резина, ComfortFloor. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.
           </p>
           <div class="hero3d__cta">
             <a href="configurator.html" class="hero3d__btn hero3d__btn--primary">
-              <span>Открыть 3D-конфигуратор</span>
+              <span data-i18n="home_hero3d_btn_primary">Открыть 3D-конфигуратор</span>
               <span class="hero3d__btn-arrow" aria-hidden="true">→</span>
             </a>
             <a href="#material-picker" class="hero3d__btn hero3d__btn--ghost">
-              <span>Все системы</span>
+              <span data-i18n="home_hero3d_btn_ghost">Все системы</span>
             </a>
           </div>
           <ul class="hero3d__specs" aria-label="Specs">
-            <li><b>10</b><span>материалов</span></li>
-            <li><b>PBR</b><span>real textures</span></li>
+            <li><b>10</b><span data-i18n="home_hero3d_spec_materials">материалов</span></li>
+            <li><b>PBR</b><span data-i18n="home_hero3d_spec_textures">real textures</span></li>
             <li><b>WebGL</b><span>three.js</span></li>
-            <li><b>≈12s</b><span>до сметы</span></li>
+            <li><b>≈12s</b><span data-i18n="home_hero3d_spec_quote">до сметы</span></li>
           </ul>
         </div>
 
@@ -217,7 +214,7 @@
             </span>
             <span class="hero3d__badge">Live · WebGL</span>
           </div>
-          <p class="hero3d__caption">Превью реального конфигуратора · клик откроет полную сцену</p>
+          <p class="hero3d__caption" data-i18n="home_hero3d_caption">Превью реального конфигуратора · клик откроет полную сцену</p>
         </a>
       </div>
     </section>
@@ -225,9 +222,9 @@
     <!-- HERO — выбор системы по материалу -->
     <section class="fx-picker" id="material-picker">
       <div class="fx-picker__head">
-        <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Engineering</p>
-        <h1 class="fx-picker__h1">Выберите <em>систему</em></h1>
-        <p class="fx-picker__lede">Восемь семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href="decision-tool.html" class="fx-picker__inline-link">подбор за 6 вопросов</a>.</p>
+        <p class="fx-picker__eyebrow" data-i18n="home_picker_eyebrow">Floor.DSGN · Israel · Engineering</p>
+        <h1 class="fx-picker__h1" data-i18n="home_picker_h1">Выберите <em>систему</em></h1>
+        <p class="fx-picker__lede" data-i18n="home_picker_lede">Восемь семейств промышленных и дизайнерских полов. Внутри каждого — варианты под нагрузку, толщину и цену. Не уверены — пройдите <a href="decision-tool.html" class="fx-picker__inline-link">подбор за 6 вопросов</a>.</p>
       </div>
       <div class="fx-picker__grid">
         <a href="floors/epoxy.html" class="fx-tile">

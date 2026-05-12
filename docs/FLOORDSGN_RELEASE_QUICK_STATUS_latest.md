@@ -1,13 +1,9 @@
 # FloorDSGN Release Quick Status
-Tue May 12 18:56:37 IDT 2026
+Tue May 12 21:11:52 IDT 2026
 
 ## Git status
- M .DS_Store
-?? LANGUAGE_STRATEGY_2026-05-12.md
-?? README.md
-?? astro/
-?? docs/
-?? research/
+ M docs/FLOORDSGN_MEDIA_QUEUE_DIGEST_latest.md
+ M docs/FLOORDSGN_RELEASE_QUICK_STATUS_latest.md
 
 ## Accessibility smoke
 
