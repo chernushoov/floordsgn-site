@@ -200,24 +200,48 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 @media (max-width:600px){
   /* iPhone 14 Pro: 393px logical. Respect notch + safe-area on rotate. */
   .sec{padding:32px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
-  .eyebrow{font-size:9.5px;flex-wrap:wrap;gap:10px;margin-bottom:32px;padding-bottom:12px}
-  .eyebrow .l,.eyebrow .r{flex-wrap:wrap;gap:10px}
-  .eyebrow .r{gap:14px}
+  .eyebrow{font-size:9px;flex-wrap:wrap;gap:8px;margin-bottom:28px;padding-bottom:12px;letter-spacing:.18em}
+  .eyebrow .l,.eyebrow .r{flex-wrap:wrap;gap:8px}
+  .eyebrow .r{gap:12px;display:none} /* hide secondary meta on phone — reduces top noise */
+  .eyebrow .l .num{padding:2px 6px}
   .h1{font-size:clamp(34px,10vw,46px);line-height:1.04}
   .lede{font-size:14px;line-height:1.5}
   .controls{grid-template-columns:1fr 1fr;gap:12px}
+
+  /* Stage gets a clean canvas on mobile: layer callouts, .s-bl HUD text, and .s-tr title
+     all clash with the model on a 393px-wide stage. Hide them — equivalent info lives in
+     the .specs rail (.buildup, .specs-tbl) below the stage. */
   .stage{min-height:62vh;max-height:560px}
-  .s-tl,.s-tr,.s-bl{font-size:9px;letter-spacing:.16em}
-  .s-tr .ttl{font-size:13px}
-  /* Stage HUD/callouts: pull off the edges so they don't get clipped by the rounded canvas frame */
-  .callouts .co{right:6px;font-size:8px;padding:4px 7px}
-  .callouts .co::before{width:18px}
-  .callouts .co::after{right:calc(100% + 18px)}
+  .stage::after{background-size:32px 32px}
+  .s-tl{font-size:9px;letter-spacing:.16em;top:12px;left:12px;gap:3px}
+  .s-tr{display:none}
+  .s-bl{display:none}
+  .s-br{bottom:12px;right:12px;gap:3px}
+  .s-br button{padding:8px 10px;font-size:9.5px;min-height:36px}
+  .callouts{display:none} /* leader-line pills cut through the model on narrow screens */
   .matprev{display:none}
+
+  /* Material list: bigger tap target + right-edge fade so users see it scrolls */
+  .matlist ul{
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent);
+            mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent);
+    padding-right:24px;
+  }
+  .matlist li{padding:11px 14px;min-height:44px;align-items:center}
+
+  /* Tap-target floor on all control buttons (filler / gloss / colour swatches) */
+  .ctrl button{min-height:44px;padding:10px 12px;font-size:12.5px}
+  .ctrl button.sw{padding:6px 11px 6px 6px}
+  .ctrl button.sw .chip{width:26px;height:26px}
+
+  .cta-primary{padding:18px 20px;font-size:15px;min-height:56px}
+  .cta-ghost{min-height:48px}
+
   .foot{flex-direction:column;gap:8px;align-items:flex-start;font-size:9px}
 }
 @media (max-width:420px){
   .controls{grid-template-columns:1fr}
+  .s-br button{padding:7px 9px;font-size:9px}
 }
 </style>
 </head>
