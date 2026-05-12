@@ -461,7 +461,7 @@
         "roughness": 0.3,
         "metalness": 0.05
       },
-      "tile": 2,
+      "tile": 4,
       "controls": [
         "color",
         "marking",
@@ -488,11 +488,14 @@
         "substrate": "Бетон / металл"
       },
       "pbr": {
-        "diffuse": "textures/mma/diffuse.jpg",
-        "normal": "textures/mma/normal.png",
-        "roughness": "textures/mma/roughness.png",
-        "ao": "textures/mma/ao.png"
-      }
+        "diffuse": "textures/concrete_floor_01/Diffuse.jpg",
+        "roughness": "textures/concrete_floor_01/Rough.jpg",
+        "normal": "textures/concrete_floor_01/nor_gl.jpg",
+        "ao": "textures/concrete_floor_01/AO.jpg"
+      },
+      "tint": "#f2e6d9",
+      "tint_amount": 0.3,
+      "roughness_override": 0.18
     },
     {
       "slug": "pu-cement",
@@ -510,7 +513,7 @@
         "roughness": 0.55,
         "metalness": 0.0
       },
-      "tile": 2,
+      "tile": 4,
       "controls": [
         "color",
         "marking"
@@ -536,11 +539,14 @@
         "substrate": "Бетон C25/30 · ≤ 95% RH"
       },
       "pbr": {
-        "diffuse": "textures/pu-cement/diffuse.jpg",
-        "normal": "textures/pu-cement/normal.png",
-        "roughness": "textures/pu-cement/roughness.png",
-        "ao": "textures/pu-cement/ao.png"
-      }
+        "diffuse": "textures/concrete_floor_02/Diffuse.jpg",
+        "roughness": "textures/concrete_floor_02/Rough.jpg",
+        "normal": "textures/concrete_floor_02/nor_gl.jpg",
+        "ao": "textures/concrete_floor_02/AO.jpg"
+      },
+      "tint": "#8c9485",
+      "tint_amount": 0.5,
+      "roughness_override": 0.5
     },
     {
       "slug": "epoxy",
@@ -558,7 +564,7 @@
         "roughness": 0.15,
         "metalness": 0.02
       },
-      "tile": 2,
+      "tile": 5,
       "controls": [
         "color",
         "flecks",
@@ -586,11 +592,14 @@
         "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       },
       "pbr": {
-        "diffuse": "textures/epoxy/diffuse.jpg",
-        "normal": "textures/epoxy/normal.png",
-        "roughness": "textures/epoxy/roughness.png",
-        "ao": "textures/epoxy/ao.png"
-      }
+        "diffuse": "textures/brushed_concrete/Diffuse.jpg",
+        "roughness": "textures/brushed_concrete/Rough.jpg",
+        "normal": "textures/brushed_concrete/nor_gl.jpg",
+        "ao": "textures/brushed_concrete/AO.jpg"
+      },
+      "tint": "#5a737f",
+      "tint_amount": 0.6,
+      "roughness_override": 0.12
     }
   ],
   "control_options": {
