@@ -1343,19 +1343,42 @@ async function refreshCompositeMap(def) {
 }
 
 document.getElementById('ctaOrder').addEventListener('click', () => {
-  const payload = { material: activeSlug, options: orderState[activeSlug] };
+  // Bridge to /quote — passes:
+  //   m: material slug for quote.html's calculator pre-select (LABELS["m"] in enhance.js)
+  //   config_url: full configurator URL so lead-form can include link to the user's exact assembly
+  //   fd_state: opaque state JSON for the audit trail in Netlify Forms submission
+  // Mapping slugs: configurator uses 'terrazzo-cement', quote uses 'terrazzo' etc.
+  const slugMap = {
+    'terrazzo-cement': 'terrazzo', 'terrazzo-multi': 'terrazzo', 'terrazzo-epoxy': 'terrazzo',
+    'microtopping': 'micro', 'decorative-concrete': 'concrete',
+    'pu-cement': 'pucement', 'epoxy': 'epoxy', 'mma': 'mma',
+    'rubber': 'epoxy', 'comfortfloor': 'epoxy'
+  };
+  const quoteMat = slugMap[activeSlug] || 'epoxy';
   const params = new URLSearchParams({
-    fd_material: payload.material,
-    fd_state: JSON.stringify(payload.options)
+    material: quoteMat,                                  // enhance.js line 807 — pre-selects calculator chip
+    m: quoteMat,                                          // enhance.js line 860 — config-summary label
+    fd_material: activeSlug,                              // original full slug, audit trail
+    fd_state: JSON.stringify(orderState[activeSlug] || {}),
+    config_url: window.location.href                      // hidden field in lead-form, link back to user's exact assembly
   });
-  console.log('[FD-CFG] order payload', payload);
-  // Route into the existing lead-capture flow with the assembled formula in the URL.
+  console.log('[FD-CFG] order payload', { material: activeSlug, quoteMat, options: orderState[activeSlug] });
   window.location.href = 'quote.html?' + params.toString();
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  const params = new URLSearchParams({ subject: 'sample-kit', fd_material: activeSlug || '' });
-  window.location.href = 'contact.html?' + params.toString();
+  // Bridge to /contact for sample-kit request — passes:
+  //   system: configurator's material slug → contact.html's system select pre-fill
+  //   intent: 'sample' → hash flag (#intent=sample) for contact form's sample-kit context
+  //   fd_state: opaque config state for the audit trail
+  //   config_url: link back to user's exact 3D assembly
+  const params = new URLSearchParams({
+    system: activeSlug || '',
+    intent: 'sample',
+    fd_state: JSON.stringify(orderState[activeSlug] || {}),
+    config_url: window.location.href
+  });
+  window.location.href = 'contact.html?' + params.toString() + '#intent=sample';
 });
 
 let lastUserInputT = performance.now();
