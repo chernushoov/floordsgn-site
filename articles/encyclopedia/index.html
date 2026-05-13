@@ -25,10 +25,10 @@
 
     <style>
       /* ───────────────────────────────────────────────────────────
-         Encyclopedia — Floor.DSGN brand palette (cream + carbon +
-         signal accent). Technical adaptations for designers /
+         Encyclopedia — Floor.DSGN brand palette (cream + carbon,
+         monochrome). Technical adaptations for designers /
          architects / builders: filter chips, compare ribbon, TDS
-         download, copy-formula, designer/builder mode toggle.
+         download, copy-formula, persona toggle.
          ─────────────────────────────────────────────────────────── */
       .enc-page {
         background: var(--concrete, #F3F0EA);
@@ -56,7 +56,7 @@
       }
       .enc-curtain__logo em {
         font-style: italic; font-weight: 500;
-        color: var(--signal, #C86B3C);
+        color: var(--carbon, #151515);
       }
       @keyframes encLogoIn {
         0%   { opacity: 0; transform: translateY(18px) scale(.97); letter-spacing: .04em; }
@@ -90,12 +90,12 @@
         font-weight: 600;
         letter-spacing: .26em;
         text-transform: uppercase;
-        color: var(--signal, #C86B3C);
+        color: var(--carbon, #151515);
         margin: 0 0 24px;
         display: inline-flex; gap: 12px; align-items: center;
       }
       .enc-hero__eyebrow::before {
-        content: ""; height: 1px; width: 36px; background: var(--signal);
+        content: ""; height: 1px; width: 36px; background: var(--carbon);
       }
       .enc-hero__h1 {
         font-family: 'Cormorant Garamond', serif;
@@ -109,7 +109,7 @@
       }
       .enc-hero__h1 em {
         font-style: italic; font-weight: 500;
-        color: var(--signal, #C86B3C);
+        color: var(--carbon, #151515);
         white-space: nowrap;
       }
       .enc-hero__lede {
@@ -144,22 +144,37 @@
         margin-bottom: 2px;
       }
 
-      /* B2B audience selector — designer / architect / builder */
+      /* B2B persona selector — designer / architect / builder
+         Lives in the sticky toolbar; affects which "related" block
+         is visible per tile (via body[data-persona] selectors). */
+      .enc-toolbar__persona {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        margin-left: auto;
+      }
+      .enc-toolbar__persona-label {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--steel);
+      }
       .enc-audience {
         display: inline-flex;
-        gap: 4px;
+        gap: 2px;
         background: rgba(21,21,21,.06);
-        padding: 4px;
+        padding: 3px;
         border-radius: 999px;
-        margin-top: 28px;
       }
       .enc-audience__btn {
         font-family: 'Montserrat', sans-serif;
         font-size: 11px;
         font-weight: 600;
-        letter-spacing: .12em;
+        letter-spacing: .10em;
         text-transform: uppercase;
-        padding: 9px 16px;
+        padding: 7px 14px;
         border-radius: 999px;
         border: 0;
         background: transparent;
@@ -209,7 +224,7 @@
         outline: none;
         transition: border-color .25s ease;
       }
-      .enc-search input:focus { border-color: var(--signal); }
+      .enc-search input:focus { border-color: var(--carbon); }
       .enc-search::before {
         content: "";
         position: absolute;
@@ -267,7 +282,7 @@
         font-weight: 600;
         letter-spacing: .26em;
         text-transform: uppercase;
-        color: var(--signal);
+        color: var(--carbon);
       }
       .enc-group__h2 {
         font-family: 'Cormorant Garamond', serif;
@@ -316,8 +331,8 @@
       }
       .enc-tile.is-filtered-out { display: none; }
       .enc-tile.is-compare-on {
-        border-color: var(--signal);
-        box-shadow: 0 0 0 2px rgba(200,107,60,.18);
+        border-color: var(--carbon);
+        box-shadow: 0 0 0 2px rgba(21,21,21,.14);
       }
       .enc-tile__media {
         position: relative;
@@ -361,8 +376,8 @@
         backdrop-filter: blur(8px);
         transition: background .2s, transform .2s;
       }
-      .enc-tile__compare:hover { background: var(--signal); transform: scale(1.06); }
-      .enc-tile__compare[aria-pressed="true"] { background: var(--signal); }
+      .enc-tile__compare:hover { background: var(--carbon); transform: scale(1.06); }
+      .enc-tile__compare[aria-pressed="true"] { background: var(--carbon); }
       .enc-tile__body {
         padding: 22px 22px 20px;
         display: flex; flex-direction: column;
@@ -452,8 +467,8 @@
         border-color: var(--carbon);
       }
       .enc-tile__action--solid:hover {
-        background: var(--signal);
-        border-color: var(--signal);
+        background: var(--graphite, #2D2D2D);
+        border-color: var(--graphite, #2D2D2D);
         color: #fff;
       }
 
@@ -496,8 +511,8 @@
       }
       .enc-compare-ribbon__cta {
         padding: 8px 14px;
-        background: var(--signal);
-        color: #fff;
+        background: #fff;
+        color: var(--carbon);
         border: 0;
         border-radius: 999px;
         font-size: 11px;
@@ -506,9 +521,9 @@
         text-transform: uppercase;
         cursor: pointer;
         text-decoration: none;
-        transition: background .2s;
+        transition: background .2s, color .2s;
       }
-      .enc-compare-ribbon__cta:hover { background: #b25a30; }
+      .enc-compare-ribbon__cta:hover { background: var(--concrete, #F3F0EA); }
       .enc-compare-ribbon__clear {
         background: transparent;
         border: 0;
@@ -537,7 +552,7 @@
       }
       .enc-bottom__h2 em {
         font-style: italic; font-weight: 500;
-        color: var(--signal);
+        color: var(--carbon);
       }
       .enc-bottom__lede {
         font-family: 'Montserrat', sans-serif;
@@ -579,6 +594,8 @@
         .enc-search { flex-basis: 100%; }
         .enc-chips { flex-basis: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
         .enc-chip { flex-shrink: 0; }
+        .enc-toolbar__persona { margin-left: 0; flex-basis: 100%; justify-content: space-between; padding-top: 4px; border-top: 1px solid rgba(21,21,21,.08); }
+        .enc-audience__btn { padding: 7px 10px; font-size: 10px; letter-spacing: .08em; }
         .enc-group__head { flex-wrap: wrap; gap: 12px; }
         .enc-group__count { margin-left: 0; }
         .enc-tile__media { aspect-ratio: 16/10; }
@@ -633,11 +650,6 @@
           <div><b>10+</b>лет гарантии</div>
         </div>
 
-        <div class="enc-audience" role="tablist" aria-label="Аудитория">
-          <button class="enc-audience__btn" data-persona-btn="designer" aria-pressed="true" type="button">Дизайнер</button>
-          <button class="enc-audience__btn" data-persona-btn="architect" aria-pressed="false" type="button">Архитектор</button>
-          <button class="enc-audience__btn" data-persona-btn="builder" aria-pressed="false" type="button">Прораб</button>
-        </div>
       </section>
 
       <!-- STICKY TOOLBAR -->
@@ -654,6 +666,14 @@
             <button class="enc-chip" data-filter="thin" aria-pressed="false" type="button">Тонкие &lt;5 мм</button>
             <button class="enc-chip" data-filter="fast" aria-pressed="false" type="button">Fast-cure</button>
             <button class="enc-chip" data-filter="wall" aria-pressed="false" type="button">Можно на стены</button>
+          </div>
+          <div class="enc-toolbar__persona">
+            <span class="enc-toolbar__persona-label">Я —</span>
+            <div class="enc-audience" role="tablist" aria-label="Аудитория">
+              <button class="enc-audience__btn" data-persona-btn="designer" aria-pressed="true" type="button">Дизайнер</button>
+              <button class="enc-audience__btn" data-persona-btn="architect" aria-pressed="false" type="button">Архитектор</button>
+              <button class="enc-audience__btn" data-persona-btn="builder" aria-pressed="false" type="button">Прораб</button>
+            </div>
           </div>
         </div>
       </div>
