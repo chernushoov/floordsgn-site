@@ -28,5 +28,6 @@
   <url><loc>https://floordsgn.netlify.app/articles/2026-trends.html</loc></url>
   <url><loc>https://floordsgn.netlify.app/articles/terrazzo-modern-interiors.html</loc></url>
   <url><loc>https://floordsgn.netlify.app/articles/microtopping-vs-epoxy.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/epoxy-sl.html</loc><priority>0.7</priority></url>
 </urlset>

@@ -103,9 +103,31 @@ const FX_ROWS = [
       sel.appendChild(opt);
     });
   }
-  fillSelect($a, 'epoxy-sl');
-  fillSelect($b, 'pu-cement');
-  fillSelect($c, '');
+  // Allow preloading via ?materials=slug1,slug2,slug3 — used by the
+  // encyclopedia compare ribbon. Slugs from the encyclopedia ("terrazzo",
+  // "decorative-concrete" etc.) get mapped to compare.html's keys.
+  const ENC_SLUG_MAP = {
+    'terrazzo': 'terrazzo-venetian',
+    'terrazzo-cement': 'terrazzo-venetian',
+    'terrazzo-epoxy': 'terrazzo-epoxy',
+    'microtopping': 'microtopping',
+    'decorative-concrete': 'concrete-polished',
+    'concrete': 'concrete-polished',
+    'rubber': 'rubber-sheet',
+    'comfortfloor': 'comfortfloor',
+    'epoxy': 'epoxy-sl',
+    'pu-cement': 'pu-cement',
+    'mma': 'mma',
+  };
+  const params = new URLSearchParams(window.location.search);
+  const requested = (params.get('materials') || '')
+    .split(',')
+    .map(s => s.trim().toLowerCase())
+    .map(s => ENC_SLUG_MAP[s] || s)
+    .filter(s => s && FX_MATERIALS[s]);
+  fillSelect($a, requested[0] || 'epoxy-sl');
+  fillSelect($b, requested[1] || 'pu-cement');
+  fillSelect($c, requested[2] || '');
 
   function render() {
     const a = FX_MATERIALS[$a.value];
