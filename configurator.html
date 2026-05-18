@@ -934,6 +934,24 @@ async function init() {
   const res = await fetch(ASSET_ROOT + 'manifest.json');
   manifest = await res.json();
 
+  /* textures-v2 sandbox: when `?textures=v2` is set, swap diffuse paths for the
+     5 materials with broken/missing textures. Etalon textures/ stays intact. */
+  if (new URLSearchParams(location.search).get('textures') === 'v2') {
+    const V2_SLUGS = new Set(['epoxy', 'microtopping', 'mma', 'pu-cement', 'comfortfloor']);
+    const COMFORT_FALLBACK = { normal: 'textures/mma/normal.png', roughness: 'textures/mma/roughness.png', ao: 'textures/mma/ao.png' };
+    for (const m of manifest.materials) {
+      if (!V2_SLUGS.has(m.slug)) continue;
+      m.pbr = m.pbr || {};
+      m.pbr.diffuse = `textures-v2/${m.slug}/diffuse.jpg`;
+      m.pbr.normal = `textures-v2/${m.slug}/normal.png`;
+      m.pbr.roughness = `textures-v2/${m.slug}/roughness.png`;
+      m.pbr.ao = `textures-v2/${m.slug}/ao.png`;
+      if (m.slug === 'comfortfloor') {
+        for (const k of ['normal', 'roughness', 'ao']) m.pbr[k] = m.pbr[k] || COMFORT_FALLBACK[k];
+      }
+    }
+  }
+
   const grpD = document.getElementById('grpDecorative');
   const grpI = document.getElementById('grpIndustrial');
   const prevEl = (() => { const e = document.createElement('div'); e.className = 'matprev'; document.body.appendChild(e); return e; })();
