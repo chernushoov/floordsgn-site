@@ -1375,11 +1375,13 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
   //   config_url: full configurator URL so lead-form can include link to the user's exact assembly
   //   fd_state: opaque state JSON for the audit trail in Netlify Forms submission
   // Mapping slugs: configurator uses 'terrazzo-cement', quote uses 'terrazzo' etc.
+  /* Map configurator slugs to /quote calculator material IDs (see enhance.js LABELS).
+     Closest-chemistry fallback for slugs /quote doesn't handle natively: comfortfloor → purcem. */
   const slugMap = {
     'terrazzo-cement': 'terrazzo', 'terrazzo-multi': 'terrazzo', 'terrazzo-epoxy': 'terrazzo',
     'microtopping': 'micro', 'decorative-concrete': 'concrete',
-    'pu-cement': 'pucement', 'epoxy': 'epoxy', 'mma': 'mma',
-    'rubber': 'epoxy', 'comfortfloor': 'epoxy'
+    'pu-cement': 'purcem', 'epoxy': 'epoxy', 'mma': 'mma',
+    'rubber': 'rubber', 'comfortfloor': 'purcem'
   };
   const quoteMat = slugMap[activeSlug] || 'epoxy';
   const params = new URLSearchParams({
