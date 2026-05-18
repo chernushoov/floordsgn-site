@@ -100,6 +100,7 @@ const translations = {
         home_hero3d_lede: "WebGL configurator with real PBR textures. 10 systems — terrazzo, epoxy, microtopping, polished concrete, PU-cement, MMA, rubber, ComfortFloor. Change material, thickness, color, aggregate — get an order formula and a precise quote.",
         home_hero3d_btn_primary: "Open 3D configurator",
         home_hero3d_btn_ghost: "All systems",
+        home_hero3d_decision: "Not sure? 6-question picker →",
         home_hero3d_spec_materials: "materials",
         home_hero3d_spec_textures: "real textures",
         home_hero3d_spec_quote: "to quote",
@@ -1359,7 +1360,47 @@ const translations = {
         micro_warranty_guide: "Maintenance Guide",
         micro_rel1: "Terrazzo",
         micro_rel2: "Decorative Concrete",
-        micro_rel3: "Epoxy Systems"
+        micro_rel3: "Epoxy Systems",
+
+        // Index page material tiles
+        tile_tag_industrial: "Industrial",
+        tile_tag_designer: "Designer",
+        tile_tag_decorative: "Decorative",
+        tile_tag_minimal: "Minimal",
+        tile_tag_foodpharma: "Food / Pharma",
+        tile_tag_fastcure: "Fast-cure",
+        tile_name_epoxy: "Epoxy",
+        tile_name_terrazzo: "Terrazzo",
+        tile_name_microtopping: "Microtopping",
+        tile_name_concrete: "Polished concrete",
+        tile_name_pucement: "PU-cement",
+        tile_name_mma: "MMA",
+        tile_meta_epoxy: "5 systems · 0.5–12 mm · from ₪140/m²",
+        tile_meta_terrazzo: "4 systems · 8–20 mm · from ₪380/m²",
+        tile_meta_microtopping: "3 systems · 2–3 mm · from ₪280/m²",
+        tile_meta_concrete: "3 finishes · 0 mm buildup · from ₪120/m²",
+        tile_meta_pucement: "4 systems · 6–9 mm · from ₪380/m² · HACCP",
+        tile_meta_mma: "3 systems · 2–4 mm · cure 1–2 h · from ₪320/m²",
+        picker_all_systems: "All systems",
+        picker_calculator: "Cost calculator",
+
+        // Trust section
+        trust_certified_title: "Certified installer",
+        trust_certified_label: "We work to the technical specs of leading material manufacturers",
+        trust_systems_title: "10 systems",
+        trust_systems_label: "Epoxy, terrazzo, microtopping, PU-cement, MMA, rubber, ComfortFloor, concrete",
+        trust_industries_title: "5 industries",
+        trust_warranty_title: "10 years",
+        trust_warranty_label: "System warranty — adhesion and wear resistance",
+
+        // Footer
+        footer_brand_copy: "Engineered floor systems across Israel. Sika-certified contractor.",
+        footer_col_systems: "Systems",
+        footer_col_tools: "Tools",
+        footer_col_contact: "Contact",
+        footer_link_concrete: "Concrete",
+        footer_link_calc: "Calculator",
+        footer_link_decision: "System finder"
     },
 
     ru: {
@@ -1471,6 +1512,7 @@ const translations = {
         home_hero3d_lede: "WebGL-конструктор с реальными PBR-текстурами. 10 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA, резина, ComfortFloor. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.",
         home_hero3d_btn_primary: "Открыть 3D-конфигуратор",
         home_hero3d_btn_ghost: "Все системы",
+        home_hero3d_decision: "Не уверены? Подбор за 6 вопросов →",
         home_hero3d_spec_materials: "материалов",
         home_hero3d_spec_textures: "real textures",
         home_hero3d_spec_quote: "до сметы",
@@ -2721,7 +2763,47 @@ const translations = {
         rest_related_title: "Связанные услуги",
         rest_rel1: "Эпоксидные системы",
         rest_rel2: "Микротоппинг",
-        rest_rel3: "Полированный бетон"
+        rest_rel3: "Полированный бетон",
+
+        // Index page material tiles
+        tile_tag_industrial: "Промышленные",
+        tile_tag_designer: "Дизайнерские",
+        tile_tag_decorative: "Декоративные",
+        tile_tag_minimal: "Минимализм",
+        tile_tag_foodpharma: "Food / Pharma",
+        tile_tag_fastcure: "Fast-cure",
+        tile_name_epoxy: "Эпокси",
+        tile_name_terrazzo: "Терраццо",
+        tile_name_microtopping: "Микротопинг",
+        tile_name_concrete: "Полированный бетон",
+        tile_name_pucement: "PU‑cement",
+        tile_name_mma: "MMA",
+        tile_meta_epoxy: "5 систем · 0.5–12 мм · от ₪140/м²",
+        tile_meta_terrazzo: "4 системы · 8–20 мм · от ₪380/м²",
+        tile_meta_microtopping: "3 системы · 2–3 мм · от ₪280/м²",
+        tile_meta_concrete: "3 финиша · 0 мм buildup · от ₪120/м²",
+        tile_meta_pucement: "4 системы · 6–9 мм · от ₪380/м² · HACCP",
+        tile_meta_mma: "3 системы · 2–4 мм · cure 1–2 ч · от ₪320/м²",
+        picker_all_systems: "Все системы",
+        picker_calculator: "Калькулятор сметы",
+
+        // Trust section
+        trust_certified_title: "Сертифицированный installer",
+        trust_certified_label: "Работаем по технологическим картам ведущих производителей материалов",
+        trust_systems_title: "10 систем",
+        trust_systems_label: "Эпокси, терраццо, микротопинг, PU‑cement, MMA, резина, ComfortFloor, бетон",
+        trust_industries_title: "5 индустрий",
+        trust_warranty_title: "10 лет",
+        trust_warranty_label: "Гарантия на систему — адгезия и износостойкость",
+
+        // Footer
+        footer_brand_copy: "Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.",
+        footer_col_systems: "Системы",
+        footer_col_tools: "Инструменты",
+        footer_col_contact: "Связь",
+        footer_link_concrete: "Бетон",
+        footer_link_calc: "Калькулятор",
+        footer_link_decision: "Подбор системы"
     }
 };
 

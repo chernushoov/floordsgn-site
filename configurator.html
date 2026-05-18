@@ -264,6 +264,8 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
   .controls{grid-template-columns:1fr}
   .s-br button{padding:7px 9px;font-size:9px}
 }
+.fd-toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-family:var(--sans);font-size:13px;letter-spacing:-.005em;box-shadow:0 12px 32px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:9999}
+.fd-toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
@@ -350,6 +352,10 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
         <button class="cta-ghost" id="ctaSample">
           <span>Получить sample-kit · 100×100 мм</span>
           <span>↘</span>
+        </button>
+        <button class="cta-ghost" id="ctaShare" type="button">
+          <span>Поделиться этой формулой</span>
+          <span>⎘</span>
         </button>
       </div>
     </aside>
@@ -1367,19 +1373,53 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  // Bridge to /contact for sample-kit request — passes:
-  //   system: configurator's material slug → contact.html's system select pre-fill
-  //   intent: 'sample' → hash flag (#intent=sample) for contact form's sample-kit context
-  //   fd_state: opaque config state for the audit trail
+  // Bridge to /sample-kit standalone form — passes:
+  //   system: configurator's material slug → sample-kit's hidden material_slug + readonly label
+  //   fd_state: opaque config state for the audit trail in Netlify submission
   //   config_url: link back to user's exact 3D assembly
   const params = new URLSearchParams({
     system: activeSlug || '',
-    intent: 'sample',
     fd_state: JSON.stringify(orderState[activeSlug] || {}),
     config_url: window.location.href
   });
-  window.location.href = 'contact.html?' + params.toString() + '#intent=sample';
+  window.location.href = 'sample-kit.html?' + params.toString();
 });
+
+// Share-link — copies current configurator URL (URL already encodes
+// fd_state / fd_material via earlier ctaOrder/ctaSample work).
+(function() {
+  const btn = document.getElementById('ctaShare');
+  if (!btn) return;
+  let toast = document.querySelector('.fd-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'fd-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+  }
+  btn.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+      }
+      showToast('Ссылка скопирована');
+    } catch (e) {
+      showToast('Не удалось скопировать — скопируйте из адресной строки');
+    }
+  });
+})();
 
 let lastUserInputT = performance.now();
 let idleSpin = 0;
