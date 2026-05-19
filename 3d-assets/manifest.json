@@ -35,7 +35,7 @@
       "procedural": {
         "color": "#efe7d6",
         "roughness": 0.55,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 3,
       "controls": [
@@ -98,7 +98,8 @@
         "normal": "textures/terrazzo-cement/normal.png",
         "roughness": "textures/terrazzo-cement/roughness.png",
         "ao": "textures/terrazzo-cement/ao.png"
-      }
+      },
+      "glb_plate": "plates/terrazzo-cement.glb"
     },
     {
       "slug": "terrazzo-multi",
@@ -114,7 +115,7 @@
       "procedural": {
         "color": "#dcd3c0",
         "roughness": 0.35,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 3,
       "controls": [
@@ -184,7 +185,8 @@
         "normal": "textures/terrazzo-multi/normal.png",
         "roughness": "textures/terrazzo-multi/roughness.png",
         "ao": "textures/terrazzo-multi/ao.png"
-      }
+      },
+      "glb_plate": "plates/terrazzo-multi.glb"
     },
     {
       "slug": "terrazzo-epoxy",
@@ -200,7 +202,7 @@
       "procedural": {
         "color": "#dad3c2",
         "roughness": 0.35,
-        "metalness": 0.0
+        "metalness": 0
       },
       "body_textures": {
         "grey": "textures/terrazzo-epoxy/grey.jpg",
@@ -233,7 +235,8 @@
         "body": "Sikafloor Terrazzo EM-10 · 12—18 мм · цветная крошка 4—18 мм",
         "primer": "Sikafloor-156 · 0.15 мм",
         "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
-      }
+      },
+      "glb_plate": "plates/terrazzo-epoxy.glb"
     },
     {
       "slug": "microtopping",
@@ -249,7 +252,7 @@
       "procedural": {
         "color": "#cfc4b3",
         "roughness": 0.7,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 2,
       "controls": [
@@ -282,7 +285,8 @@
         "normal": "textures/microtopping/normal.png",
         "roughness": "textures/microtopping/roughness.png",
         "ao": "textures/microtopping/ao.png"
-      }
+      },
+      "glb_plate": "plates/microtopping.glb"
     },
     {
       "slug": "rubber",
@@ -298,7 +302,7 @@
       "procedural": {
         "color": "#2a2a2a",
         "roughness": 0.95,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 2,
       "controls": [
@@ -330,19 +334,20 @@
         "normal": "textures/rubber/normal.png",
         "roughness": "textures/rubber/roughness.png",
         "ao": "textures/rubber/ao.png"
-      }
+      },
+      "glb_plate": "plates/rubber.glb"
     },
     {
       "slug": "comfortfloor",
       "label_ru": "Sika ComfortFloor",
-      "group": "decorative",
+      "group": "industrial",
       "tag": "CF",
       "code": "CF",
       "swatch": "#c5b9a4",
       "procedural": {
         "color": "#c5b9a4",
         "roughness": 0.75,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 2,
       "controls": [
@@ -366,9 +371,11 @@
       "buildup": {
         "topcoat": "PU-топкоат · 0.3 мм",
         "body": "Sika ComfortFloor PS-65 · elastic PU · 2.4 мм",
-        "primer": "Sikafloor-161 + recycled-PU pad · 5 мм",
-        "substrate": "Бетон C25/30 · ≤ 4% RH"
-      }
+        "primer": "Sikafloor-161 · 0.15 мм",
+        "substrate": "Бетон C25/30 · ≤ 4% RH",
+        "membrane": "Recycled-PU acoustic pad · 5 мм"
+      },
+      "glb_plate": "plates/comfortfloor.glb"
     },
     {
       "slug": "decorative-concrete",
@@ -384,7 +391,7 @@
       "procedural": {
         "color": "#7a7468",
         "roughness": 0.78,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 3,
       "controls": [
@@ -443,7 +450,8 @@
         "normal": "textures/decorative-concrete/normal.png",
         "roughness": "textures/decorative-concrete/roughness.png",
         "ao": "textures/decorative-concrete/ao.png"
-      }
+      },
+      "glb_plate": "plates/decorative-concrete.glb"
     },
     {
       "slug": "mma",
@@ -492,7 +500,8 @@
         "normal": "textures/mma/normal.png",
         "roughness": "textures/mma/roughness.png",
         "ao": "textures/mma/ao.png"
-      }
+      },
+      "glb_plate": "plates/mma.glb"
     },
     {
       "slug": "pu-cement",
@@ -508,7 +517,7 @@
       "procedural": {
         "color": "#9a9690",
         "roughness": 0.55,
-        "metalness": 0.0
+        "metalness": 0
       },
       "tile": 2,
       "controls": [
@@ -540,7 +549,8 @@
         "normal": "textures/pu-cement/normal.png",
         "roughness": "textures/pu-cement/roughness.png",
         "ao": "textures/pu-cement/ao.png"
-      }
+      },
+      "glb_plate": "plates/pu-cement.glb"
     },
     {
       "slug": "epoxy",
@@ -590,7 +600,8 @@
         "normal": "textures/epoxy/normal.png",
         "roughness": "textures/epoxy/roughness.png",
         "ao": "textures/epoxy/ao.png"
-      }
+      },
+      "glb_plate": "plates/epoxy.glb"
     }
   ],
   "control_options": {

@@ -1,0 +1,252 @@
+{
+  "terrazzo-cement": {
+    "file": "terrazzo-cement.glb",
+    "totalThicknessMm": 75.3,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.1
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 15.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.2
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 60.0
+      }
+    ]
+  },
+  "terrazzo-multi": {
+    "file": "terrazzo-multi.glb",
+    "totalThicknessMm": 76.0,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.2
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 15.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.8
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 60.0
+      }
+    ]
+  },
+  "terrazzo-epoxy": {
+    "file": "terrazzo-epoxy.glb",
+    "totalThicknessMm": 75.65,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.5
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 15.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.15
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 60.0
+      }
+    ]
+  },
+  "microtopping": {
+    "file": "microtopping.glb",
+    "totalThicknessMm": 42.95,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.1
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 2.4
+      },
+      {
+        "slot": "mesh-layer",
+        "thicknessMm": 0.3
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.15
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 40.0
+      }
+    ]
+  },
+  "rubber": {
+    "file": "rubber.glb",
+    "totalThicknessMm": 61.65,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.5
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 11.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.15
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 50.0
+      }
+    ]
+  },
+  "parquet": {
+    "file": "parquet.glb",
+    "totalThicknessMm": 68.1,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.1
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 15.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 3.0
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 50.0
+      }
+    ]
+  },
+  "mma": {
+    "file": "mma.glb",
+    "totalThicknessMm": 46.0,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 1.0
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 4.5
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.5
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 40.0
+      }
+    ]
+  },
+  "pu-cement": {
+    "file": "pu-cement.glb",
+    "totalThicknessMm": 57.2,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.5
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 6.5
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.2
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 50.0
+      }
+    ]
+  },
+  "epoxy": {
+    "file": "epoxy.glb",
+    "totalThicknessMm": 54.35,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.2
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 4.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.15
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 50.0
+      }
+    ]
+  },
+  "comfortfloor": {
+    "file": "comfortfloor.glb",
+    "totalThicknessMm": 57.85,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.3
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 2.4
+      },
+      {
+        "slot": "membrane",
+        "thicknessMm": 5.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.15
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 50.0
+      }
+    ]
+  },
+  "decorative-concrete": {
+    "file": "decorative-concrete.glb",
+    "totalThicknessMm": 100.3,
+    "layers": [
+      {
+        "slot": "topcoat",
+        "thicknessMm": 0.2
+      },
+      {
+        "slot": "body",
+        "thicknessMm": 60.0
+      },
+      {
+        "slot": "primer",
+        "thicknessMm": 0.1
+      },
+      {
+        "slot": "substrate",
+        "thicknessMm": 40.0
+      }
+    ]
+  }
+}
