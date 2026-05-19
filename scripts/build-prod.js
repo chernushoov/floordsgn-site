@@ -14,7 +14,7 @@ const DIST = path.join(ROOT, 'dist');
 const ASSET_DIRS = [
   'images', 'fonts', 'css', 'js', '3d-assets', 'articles',
   'encyclopedia', 'en', 'floors', 'verticals', 'content',
-  'materials', 'public'
+  'materials', 'public', 'assets'
 ];
 
 const ASSET_EXT_PASSTHROUGH = new Set([

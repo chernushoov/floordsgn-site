@@ -321,6 +321,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
         <div class="co" data-slot="topcoat"  style="top:14%"><b>—</b><span></span></div>
         <div class="co" data-slot="body"     style="top:32%"><b>—</b><span></span></div>
         <div class="co" data-slot="mesh"     style="top:50%"><b>—</b><span></span></div>
+        <div class="co" data-slot="membrane" style="top:58%"><b>—</b><span></span></div>
         <div class="co" data-slot="primer"   style="top:66%"><b>—</b><span></span></div>
         <div class="co" data-slot="substrate" style="top:82%"><b>—</b><span></span></div>
       </div>
@@ -803,20 +804,32 @@ let plateRoot = null;
 let topcoatMesh = null;
 let bodyMesh = null;
 let meshLayerMesh = null;   // fibreglass mesh slab (hairline)
+let membraneMesh = null;    // acoustic/recycled-PU pad (only comfortfloor + future)
 let primerMesh = null;
 let substrateMesh = null;
 
+/* Plate registry: tracks which GLB (or 'procedural') is in scene right now,
+   plus an in-memory cache so swapping back doesn't reload. Allows per-material
+   GLB plates from `def.glb_plate` while keeping the procedural fallback when a
+   material has no GLB delivered yet. */
+let proceduralPlateRoot = null;
+const glbPlateCache = {};
+let activePlateKey = '__procedural__';
+
 function findMeshesByMaterialIndex(root) {
-  const found = { topcoat: null, body: null, mesh: null, primer: null, substrate: null };
+  const found = { topcoat: null, body: null, mesh: null, membrane: null, primer: null, substrate: null };
   root.traverse(o => {
     if (o.isMesh) {
       const matName = (o.material && o.material.name) || '';
       const objName = o.name || '';
       const key = (matName + ' ' + objName).toLowerCase();
-      // Order matters: mesh-layer check before "primer" to avoid mis-match
-      if (/topcoat|var_/i.test(key)) found.topcoat = o;
+      // Order matters: mesh-layer + membrane checks BEFORE the broad "topcoat/body" branches.
+      // Note: designer's plate-gen 1.0 uses VAR_ prefix on both topcoat AND body materials,
+      // so we match on the slot keyword itself, not on the VAR_ shortcut.
+      if (/mesh-?layer|fibreglass/i.test(key)) found.mesh = o;
+      else if (/membrane|acoustic/i.test(key)) found.membrane = o;
+      else if (/topcoat/i.test(key)) found.topcoat = o;
       else if (/\bbody\b/i.test(key)) found.body = o;
-      else if (/mesh-?layer|fibreglass/i.test(key)) found.mesh = o;
       else if (/primer/i.test(key)) found.primer = o;
       else if (/substrate/i.test(key)) found.substrate = o;
     }
@@ -955,6 +968,24 @@ async function init() {
     }
   }
 
+  /* textures-v3 — owner's real-photo close-ups (diffuse only, normal/ao stay procedural).
+     Opt-in via `?textures=v3` so we can compare against etalon before promoting to default. */
+  if (new URLSearchParams(location.search).get('textures') === 'v3') {
+    const V3 = {
+      'terrazzo-cement': { rough: 0.30 },   // honed cement terrazzo — semi-matte
+      'terrazzo-multi':  { rough: 0.35 },   // honed terrazzo with mixed aggregates
+      'terrazzo-epoxy':  { rough: 0.20 },   // epoxy terrazzo — polished
+      microtopping:      { rough: 0.85 },   // matte hand-trowel micro-cement
+      rubber:            { rough: 0.75 },   // rubber surface — matte
+    };
+    for (const m of manifest.materials) {
+      const v3 = V3[m.slug];
+      if (!v3) continue;
+      m.pbr = { diffuse: `textures-v3/${m.slug}/diffuse.jpg` };
+      m.roughness_override = v3.rough;
+    }
+  }
+
   const grpD = document.getElementById('grpDecorative');
   const grpI = document.getElementById('grpIndustrial');
   const prevEl = (() => { const e = document.createElement('div'); e.className = 'matprev'; document.body.appendChild(e); return e; })();
@@ -1016,24 +1047,15 @@ async function init() {
         plateRoot.position.sub(center);
         plateRoot.position.y += 0.005;
         scene.add(plateRoot);
-        const meshes = findMeshesByMaterialIndex(plateRoot);
-        topcoatMesh = meshes.topcoat;
-        bodyMesh = meshes.body;
-        meshLayerMesh = meshes.mesh;
-        primerMesh = meshes.primer;
-        substrateMesh = meshes.substrate;
+        applyPlateMeshRefs(plateRoot);
         resolve();
       }, undefined, reject);
     });
   } else {
-    plateRoot = buildProceduralPlate();
+    proceduralPlateRoot = buildProceduralPlate();
+    plateRoot = proceduralPlateRoot;
     scene.add(plateRoot);
-    const meshes = findMeshesByMaterialIndex(plateRoot);
-    topcoatMesh = meshes.topcoat;
-    bodyMesh = meshes.body;
-    meshLayerMesh = meshes.mesh;
-    primerMesh = meshes.primer;
-    substrateMesh = meshes.substrate;
+    applyPlateMeshRefs(plateRoot);
   }
 
   const sm = manifest.static_materials || {};
@@ -1068,10 +1090,73 @@ async function init() {
 
 const transition = { active: false, t: 0, dur: 0.45, from: null, to: null };
 
+/* Update module-level mesh refs from a freshly-mounted plateRoot. */
+function applyPlateMeshRefs(root) {
+  const meshes = findMeshesByMaterialIndex(root);
+  topcoatMesh   = meshes.topcoat;
+  bodyMesh      = meshes.body;
+  meshLayerMesh = meshes.mesh;
+  membraneMesh  = meshes.membrane;
+  primerMesh    = meshes.primer;
+  substrateMesh = meshes.substrate;
+}
+
+/* Swap to the correct plate (per-material GLB if def.glb_plate is set, otherwise
+   procedural fallback). Cached after first load. Returns a Promise that resolves
+   once the plate is in scene and mesh refs are updated. Safe to call repeatedly. */
+async function ensureCorrectPlate(def) {
+  const targetKey = def.glb_plate ? def.slug : '__procedural__';
+  if (targetKey === activePlateKey) return;
+
+  // Detach current plate (don't dispose — cache it for reuse).
+  if (plateRoot && plateRoot.parent) plateRoot.parent.remove(plateRoot);
+
+  if (targetKey === '__procedural__') {
+    if (!proceduralPlateRoot) proceduralPlateRoot = buildProceduralPlate();
+    plateRoot = proceduralPlateRoot;
+  } else {
+    if (!glbPlateCache[def.slug]) {
+      try {
+        const gltf = await new Promise((resolve, reject) =>
+          loader.load(ASSET_ROOT + def.glb_plate, resolve, undefined, reject));
+        const root = gltf.scene;
+        // Normalise pivot to top-center, same convention as procedural plate.
+        const box = new THREE.Box3().setFromObject(root);
+        const center = box.getCenter(new THREE.Vector3());
+        root.position.sub(center);
+        root.position.y += 0.005;
+        glbPlateCache[def.slug] = root;
+      } catch (e) {
+        console.warn('[FD-CFG] failed to load GLB plate', def.glb_plate, '— falling back to procedural', e);
+        if (!proceduralPlateRoot) proceduralPlateRoot = buildProceduralPlate();
+        plateRoot = proceduralPlateRoot;
+        scene.add(plateRoot);
+        applyPlateMeshRefs(plateRoot);
+        activePlateKey = '__procedural__';
+        return;
+      }
+    }
+    plateRoot = glbPlateCache[def.slug];
+  }
+  scene.add(plateRoot);
+  applyPlateMeshRefs(plateRoot);
+  activePlateKey = targetKey;
+}
+
 function selectMaterial(slug) {
   if (slug === activeSlug) return;
   const def = manifest.materials.find(m => m.slug === slug);
   if (!def || !topcoatMesh) return;
+
+  // Plate swap is async; defer the material/state update so refs are current.
+  ensureCorrectPlate(def).then(() => _applyMaterialState(def, slug)).catch(e => {
+    console.warn('[FD-CFG] ensureCorrectPlate error', e);
+    _applyMaterialState(def, slug);
+  });
+}
+
+function _applyMaterialState(def, slug) {
+  if (!topcoatMesh) return;
   activeSlug = slug;
 
   /* PHOTO MODE: material has real photo textures on body + transparent gloss topcoat.
@@ -1142,6 +1227,16 @@ function selectMaterial(slug) {
   document.querySelectorAll('#matlist li').forEach(li => {
     li.classList.toggle('on', li.dataset.slug === slug);
   });
+
+  /* Honest-geometry pass: hide procedural slabs whose layer is absent from manifest.buildup.
+     Without this, every material shows a phantom mesh/primer layer in explode view
+     even though only microtopping actually uses a fibreglass mesh. Body+topcoat+substrate
+     are always visible (every floor system has them). Real-world fix needs per-material
+     GLB geometry from Blender — this is the interim accuracy bandaid. */
+  const bu = def.buildup || {};
+  if (meshLayerMesh) meshLayerMesh.visible = !!bu.mesh;
+  if (membraneMesh)  membraneMesh.visible  = !!bu.membrane;
+  if (primerMesh)    primerMesh.visible    = !!bu.primer;
 
   // In photo mode the chips come from the photo; skip the Voronoi/canvas composite
   // so we don't double-paint chips on top of the body texture.
@@ -1234,12 +1329,14 @@ function renderBadges(def) {
 function renderBuildup(def) {
   const root = document.getElementById('buildup');
   const bu = def.buildup || {};
-  const meshRow = bu.mesh ? `<div class="row"><span class="k">сетка</span><span class="v">${bu.mesh}</span></div>` : '';
+  const meshRow     = bu.mesh     ? `<div class="row"><span class="k">сетка</span><span class="v">${bu.mesh}</span></div>` : '';
+  const membraneRow = bu.membrane ? `<div class="row"><span class="k">мембрана</span><span class="v">${bu.membrane}</span></div>` : '';
   root.innerHTML = `
     <h5>Системный пирог</h5>
     <div class="row"><span class="k">топкоат</span><span class="v">${bu.topcoat||'—'}</span></div>
     <div class="row"><span class="k">тело</span><span class="v">${bu.body||'—'}</span></div>
     ${meshRow}
+    ${membraneRow}
     <div class="row"><span class="k">праймер</span><span class="v">${bu.primer||'—'}</span></div>
     <div class="row"><span class="k">основа</span><span class="v">${bu.substrate||'—'}</span></div>
   `;
@@ -1254,11 +1351,12 @@ function renderCallouts(def) {
     topcoat: 'Топкоат',
     body: 'Тело системы',
     mesh: 'Стеклосетка',
+    membrane: 'Мембрана / акустика',
     primer: 'Праймер',
     substrate: 'Подложка'
   };
   // Recompute top positions so visible callouts spread evenly along the stage edge.
-  const slots = ['topcoat', 'body', 'mesh', 'primer', 'substrate'];
+  const slots = ['topcoat', 'body', 'mesh', 'membrane', 'primer', 'substrate'];
   const visible = slots.filter(s => bu[s]);
   const root = document.getElementById('callouts');
   if (!root) return;

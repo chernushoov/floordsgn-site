@@ -56,3 +56,6 @@ competitor-monitor/
 # --- Build artifacts ---
 *.log
 *.map
+
+# Raw source photos from Samsung drive (web-optimized copies live in assets/portfolio/)
+assets/real-portfolio/

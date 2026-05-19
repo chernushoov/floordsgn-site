@@ -223,6 +223,51 @@
         </div>
     </article>
 
+    <!-- REAL PROJECT GALLERY -->
+    <section class="real-projects-section" id="real-projects">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">From our portfolio</p>
+                <h2 class="section-title">Rubber flooring installations</h2>
+                <p class="section-lead">Surface details, in-context installs and process shots from our rubber-flooring work.</p>
+            </div>
+
+            <div class="proj-block">
+                <div class="proj-block__head">
+                    <span class="proj-block__num">01</span>
+                    <h3 class="proj-block__title">Process &amp; install detail</h3>
+                </div>
+                <div class="proj-grid">
+                    <a class="proj-tile" href="../assets/portfolio/rubber/construction-worker-apply-grey-epoxy-resin-industrial-hall.jpg"><img src="../assets/portfolio/rubber/construction-worker-apply-grey-epoxy-resin-industrial-hall.jpg" alt="Rubber flooring industrial install" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg"><img src="../assets/portfolio/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg" alt="Rubber flooring application" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/construction-worker-renovates-balcony-floor-spreads-waterproof-polyurethane-resin-glue.jpg"><img src="../assets/portfolio/rubber/construction-worker-renovates-balcony-floor-spreads-waterproof-polyurethane-resin-glue.jpg" alt="Rubber renovation" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/er-floor-covering-works-with-selflevelling-cement-mortar-uses-needle-roller.jpg"><img src="../assets/portfolio/rubber/er-floor-covering-works-with-selflevelling-cement-mortar-uses-needle-roller.jpg" alt="Rubber leveling stage" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/plerer-renovating-indoor-walls.jpg"><img src="../assets/portfolio/rubber/plerer-renovating-indoor-walls.jpg" alt="Rubber indoor renovation" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/cropped-hand-man-working-beach.jpg"><img src="../assets/portfolio/rubber/cropped-hand-man-working-beach.jpg" alt="Rubber on-site work" loading="lazy"></a>
+                    <a class="proj-tile" href="../assets/portfolio/rubber/g12ground.jpg"><img src="../assets/portfolio/rubber/g12ground.jpg" alt="Rubber ground texture" loading="lazy"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .real-projects-section { padding: 80px 0; background: #fafaf7; }
+        .real-projects-section .section-lead { max-width: 720px; margin: 16px auto 0; font-size: 16px; line-height: 1.6; color: #4a4a4a; text-align: center; }
+        .proj-block { max-width: 1280px; margin: 48px auto 0; padding: 0 24px; }
+        .proj-block__head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .proj-block__num { font-family: 'Cormorant Garamond', serif; font-size: 48px; line-height: 1; color: #C86B3C; font-weight: 400; }
+        .proj-block__title { font-family: 'Cormorant Garamond', serif; font-size: 28px; line-height: 1.2; color: #1d1d1f; font-weight: 400; margin: 0; }
+        .proj-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .proj-tile { display: block; aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; background: #ebe8e1; }
+        .proj-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+        .proj-tile:hover img { transform: scale(1.04); }
+        @media (max-width: 720px) {
+            .real-projects-section { padding: 56px 0; }
+            .proj-block__num { font-size: 36px; }
+            .proj-block__title { font-size: 22px; }
+            .proj-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+
     <!-- ENHANCE: spec table -->
     <section class="fx-spec-table-section" data-mat="rubber">
         <div class="container">
