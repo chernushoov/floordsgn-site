@@ -47,21 +47,21 @@
 
     <main class="fx-quote-shell">
         <section class="fx-quote-hero">
-            <p class="fx-quote-eyebrow">Ориентир за 30 секунд</p>
-            <h1 class="fx-quote-h1">Калькулятор<br/><em>стоимости</em></h1>
-            <p class="fx-quote-meta">Не точная смета — рабочий ориентир. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</p>
+            <p class="fx-quote-eyebrow" data-i18n="q_eyebrow">30-second estimate</p>
+            <h1 class="fx-quote-h1" data-i18n="q_h1">Cost<br><em>calculator</em></h1>
+            <p class="fx-quote-meta" data-i18n="q_meta">Not an exact quote — a working benchmark. The exact price comes after a surveyor's visit with a substrate test. Free, within 48 hours.</p>
         </section>
 
         <section class="fx-quote-grid">
             <div class="fx-quote-info">
-                <h3>Что входит в смету</h3>
+                <h3 data-i18n="q_incl_title">What's included in the estimate</h3>
                 <ul>
-                    <li>Замер и CM-тест на влажность основания</li>
-                    <li>Подготовка: ремонт трещин, шлифовка, праймер</li>
-                    <li>Материалы европейских поставщиков</li>
-                    <li>Работа сертифицированных бригад</li>
-                    <li>Защитные пропитки, финиш</li>
-                    <li>Документированная гарантия по системе</li>
+                    <li data-i18n="q_incl1">Survey and CM moisture test of the substrate</li>
+                    <li data-i18n="q_incl2">Prep: crack repair, grinding, primer</li>
+                    <li data-i18n="q_incl3">Materials from European suppliers</li>
+                    <li data-i18n="q_incl4">Work by certified crews</li>
+                    <li data-i18n="q_incl5">Protective sealers, finish</li>
+                    <li data-i18n="q_incl6">Documented system warranty</li>
                 </ul>
             </div>
 
@@ -69,46 +69,46 @@
                  brought the visitor here. Populated from URL params by
                  enhance.js initCalc. Hidden when no params present. -->
             <div class="fx-calc-config" data-fx="calcConfig" hidden>
-              <p class="fx-calc-config__title">Ваша конфигурация из 3D-сэмпла</p>
+              <p class="fx-calc-config__title" data-i18n="q_config_title">Your configuration from the 3D sample</p>
               <dl class="fx-calc-config__list" data-fx="calcConfigList"></dl>
-              <a href="index.html" class="fx-calc-config__edit">← изменить параметры</a>
+              <a href="index.html" class="fx-calc-config__edit" data-i18n="q_config_edit">← edit parameters</a>
             </div>
 
             <div class="fx-calc-card">
                 <div class="fx-calc-row">
-                    <span class="fx-calc-lbl">Тип покрытия</span>
+                    <span class="fx-calc-lbl" data-i18n="q_lbl_type">Floor type</span>
                     <div class="fx-calc-chips" data-fx="cMat">
-                        <button type="button" class="on" data-v="terrazzo" data-p="280">Терраццо</button>
-                        <button type="button" data-v="epoxy" data-p="110">Эпокси (4 мм)</button>
-                        <button type="button" data-v="micro" data-p="170">Микротопинг</button>
-                        <button type="button" data-v="concrete" data-p="80">Бетон полированный</button>
+                        <button type="button" class="on" data-v="terrazzo" data-p="280" data-i18n="q_mat_terrazzo">Terrazzo</button>
+                        <button type="button" data-v="epoxy" data-p="110" data-i18n="q_mat_epoxy">Epoxy (4 mm)</button>
+                        <button type="button" data-v="micro" data-p="170" data-i18n="q_mat_micro">Microtopping</button>
+                        <button type="button" data-v="concrete" data-p="80" data-i18n="q_mat_concrete">Polished concrete</button>
                         <button type="button" data-v="pucement" data-p="200">PU-cement</button>
                         <button type="button" data-v="mma" data-p="240">MMA</button>
                     </div>
                 </div>
 
                 <div class="fx-calc-row">
-                    <span class="fx-calc-lbl">Назначение</span>
+                    <span class="fx-calc-lbl" data-i18n="q_lbl_use">Use case</span>
                     <div class="fx-calc-chips" data-fx="cUse">
-                        <button type="button" class="on" data-v="resi" data-k="1.0">Жильё</button>
-                        <button type="button" data-v="design" data-k="1.15">Шоурум / офис</button>
-                        <button type="button" data-v="indus" data-k="1.20">Производство / склад</button>
-                        <button type="button" data-v="hosp" data-k="1.25">Кафе / ритейл / гостиницы</button>
+                        <button type="button" class="on" data-v="resi" data-k="1.0" data-i18n="q_use_resi">Residential</button>
+                        <button type="button" data-v="design" data-k="1.15" data-i18n="q_use_design">Showroom / office</button>
+                        <button type="button" data-v="indus" data-k="1.20" data-i18n="q_use_indus">Production / warehouse</button>
+                        <button type="button" data-v="hosp" data-k="1.25" data-i18n="q_use_hosp">Café / retail / hospitality</button>
                     </div>
                 </div>
 
                 <div class="fx-calc-row">
-                    <span class="fx-calc-lbl">Площадь · <span data-fx="cAreaLbl">120</span> м²</span>
+                    <span class="fx-calc-lbl"><span data-i18n="q_area_lbl">Area</span> · <span data-fx="cAreaLbl">120</span> m²</span>
                     <div class="fx-calc-slider">
-                        <input type="range" min="20" max="10000" value="120" step="10" data-fx="cAreaInput" aria-label="Площадь в квадратных метрах"/>
-                        <span class="fx-calc-val"><span data-fx="cAreaVal">120</span><small>м²</small></span>
+                        <input type="range" min="20" max="10000" value="120" step="10" data-fx="cAreaInput" aria-label="Area in square meters"/>
+                        <span class="fx-calc-val"><span data-fx="cAreaVal">120</span><small>m²</small></span>
                     </div>
                 </div>
 
                 <div class="fx-calc-out">
                     <div class="fx-calc-num">₪ <span data-fx="cTotalIls">122 800</span></div>
-                    <div class="fx-calc-num-secondary">≈ $<span data-fx="cTotal">33 600</span> · за весь проект · ~₪<span data-fx="cPerM2">1 023</span>/м²</div>
-                    <div class="fx-calc-note">Это рабочий ориентир, а не смета. Точная цена — после выезда замерщика с тестом основания. Бесплатно, в течение 48 часов.</div>
+                    <div class="fx-calc-num-secondary">≈ $<span data-fx="cTotal">33 600</span> · <span data-i18n="q_total_suffix">total project</span> · ~₪<span data-fx="cPerM2">1 023</span>/m²</div>
+                    <div class="fx-calc-note" data-i18n="q_note">This is a working benchmark, not a quote. The exact price comes after a surveyor's visit with a substrate test. Free, within 48 hours.</div>
                 </div>
 
                 <!-- v21.6 — inline lead-capture form (was a link to
@@ -120,21 +120,21 @@
                     <input type="hidden" name="material" data-fx="leadMaterial" value="">
                     <input type="hidden" name="estimate" data-fx="leadEstimate" value="">
                     <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
-                    <p class="fx-calc-lead__lede">Оставьте контакты — пришлём точную смету за 48 часов после короткого замера.</p>
+                    <p class="fx-calc-lead__lede" data-i18n="q_lead_lede">Leave your contacts — we'll send an exact quote within 48 hours after a short survey.</p>
                     <div class="fx-calc-lead__row">
-                        <input type="text" name="name" required placeholder="Имя" autocomplete="name" aria-label="Имя">
-                        <input type="tel" name="phone" required placeholder="Телефон / WhatsApp" autocomplete="tel" aria-label="Телефон">
+                        <input type="text" name="name" required placeholder="Name" data-i18n="q_ph_name" autocomplete="name" aria-label="Name">
+                        <input type="tel" name="phone" required placeholder="Phone / WhatsApp" data-i18n="q_ph_phone" autocomplete="tel" aria-label="Phone">
                     </div>
                     <div class="fx-calc-lead__row">
-                        <input type="email" name="email" required placeholder="Email" autocomplete="email" aria-label="Email">
-                        <input type="text" name="address" placeholder="Адрес объекта (опционально)" aria-label="Адрес">
+                        <input type="email" name="email" required placeholder="Email" data-i18n="q_ph_email" autocomplete="email" aria-label="Email">
+                        <input type="text" name="address" placeholder="Site address (optional)" data-i18n="q_ph_address" aria-label="Address">
                     </div>
-                    <button type="submit" class="btn btn-dark fx-calc-cta">Получить точную смету →</button>
-                    <p class="fx-calc-lead__legal">Отправляя, вы соглашаетесь на обработку контактов. Никакого спама.</p>
+                    <button type="submit" class="btn btn-dark fx-calc-cta" data-i18n="q_submit">Get an exact quote →</button>
+                    <p class="fx-calc-lead__legal" data-i18n="q_legal">By submitting, you agree to the processing of your contacts. No spam.</p>
                 </form>
                 <div class="fx-calc-lead__thanks" data-fx="leadThanks" hidden>
-                    <h4>Спасибо!</h4>
-                    <p>Заявка получена. Перезвоним в рабочие часы (Sun-Thu 9:00-18:00).</p>
+                    <h4 data-i18n="q_thanks_title">Thank you!</h4>
+                    <p data-i18n="q_thanks_desc">We've received your request. We'll call back during business hours (Sun–Thu 9:00–18:00).</p>
                 </div>
             </div>
         </section>
