@@ -1181,15 +1181,15 @@
       // 3a) Pick top photo: per-aggregate override for terrazzo, else material default
       const aggregatePhoto = {
         basalt:  'images/terrazzo/dark-mosaic-textured-background.jpg',
-        carrara: 'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
-        verona:  'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg',
+        carrara: 'images/terrazzo/terrazzo-light-cream.jpg',
+        verona:  'images/terrazzo/terrazzo-colorful.jpg',
         mirror:  'images/terrazzo/scale_2400.jpeg',
         brass:   'images/terrazzo/macrophotography-terrazzo-slab-texture.jpg'
       };
       const aggregateFilter = {
         basalt:  'none',
-        carrara: 'brightness(1.45) saturate(.55) contrast(1.05)',
-        verona:  'hue-rotate(-12deg) saturate(1.45) brightness(.95)',
+        carrara: 'none',
+        verona:  'none',
         mirror:  'brightness(1.10) saturate(1.20) contrast(1.05)',
         brass:   'sepia(.45) brightness(.96) saturate(1.5) hue-rotate(-22deg)'
       };

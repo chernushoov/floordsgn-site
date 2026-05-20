@@ -19,7 +19,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=20260520b">
     <link rel="stylesheet" href="enhance.css?v=6">
 </head>
 <body>
@@ -41,22 +41,22 @@
 
     <main class="fx-quote-shell">
         <section class="fx-quote-hero">
-            <p class="fx-quote-eyebrow">Физический образец</p>
-            <h1 class="fx-quote-h1">Sample-kit<br/><em>100×100 мм</em></h1>
-            <p class="fx-quote-meta">Реальный кусочек выбранной системы — тот же материал, тот же финиш, тот же цвет. Доставим бесплатно по Израилю за 3–5 рабочих дней.</p>
+            <p class="fx-quote-eyebrow" data-i18n="tsb_sk_eyebrow">Физический образец</p>
+            <h1 class="fx-quote-h1" data-i18n="tsb_sk_h1">Sample-kit<br/><em>100×100 мм</em></h1>
+            <p class="fx-quote-meta" data-i18n="tsb_sk_meta">Реальный кусочек выбранной системы — тот же материал, тот же финиш, тот же цвет. Доставим бесплатно по Израилю за 3–5 рабочих дней.</p>
         </section>
 
         <section class="fx-quote-grid">
             <div class="fx-quote-info">
-                <h3>Что вы получите</h3>
+                <h3 data-i18n="tsb_sk_get_title">Что вы получите</h3>
                 <ul>
-                    <li>Образец 100×100 мм по вашей конфигурации</li>
-                    <li>Карточка со спецификацией: тип, толщина, расход, цена/м²</li>
-                    <li>Ссылка на 3D-конфигуратор с сохранённой сборкой</li>
-                    <li>Контакт инженера, который курирует вашу заявку</li>
-                    <li>Бесплатная доставка по Израилю</li>
+                    <li data-i18n="tsb_sk_get1">Образец 100×100 мм по вашей конфигурации</li>
+                    <li data-i18n="tsb_sk_get2">Карточка со спецификацией: тип, толщина, расход, цена/м²</li>
+                    <li data-i18n="tsb_sk_get3">Ссылка на 3D-конфигуратор с сохранённой сборкой</li>
+                    <li data-i18n="tsb_sk_get4">Контакт инженера, который курирует вашу заявку</li>
+                    <li data-i18n="tsb_sk_get5">Бесплатная доставка по Израилю</li>
                 </ul>
-                <p class="fx-quote-meta" style="margin-top:18px;font-size:14px;opacity:.7;">Можно потрогать, положить рядом с интерьером, показать заказчику. Когда готовы — собираем формулу и выезжаем на замер.</p>
+                <p class="fx-quote-meta" style="margin-top:18px;font-size:14px;opacity:.7;" data-i18n="tsb_sk_get_note">Можно потрогать, положить рядом с интерьером, показать заказчику. Когда готовы — собираем формулу и выезжаем на замер.</p>
             </div>
 
             <div class="fx-calc-card">
@@ -67,26 +67,26 @@
                     <input type="hidden" name="config_url" id="skConfigUrl" value="">
                     <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
 
-                    <p class="fx-calc-lead__lede">Заполните адрес — отправим образец в течение 3–5 рабочих дней.</p>
+                    <p class="fx-calc-lead__lede" data-i18n="tsb_sk_form_lede">Заполните адрес — отправим образец в течение 3–5 рабочих дней.</p>
 
                     <div class="fx-calc-lead__row">
-                        <input type="text" name="name" required placeholder="Имя*" autocomplete="name" aria-label="Имя">
-                        <input type="tel" name="phone" required placeholder="Телефон / WhatsApp*" autocomplete="tel" aria-label="Телефон">
+                        <input type="text" name="name" required placeholder="Имя*" autocomplete="name" aria-label="Имя" data-i18n="tsb_sk_ph_name">
+                        <input type="tel" name="phone" required placeholder="Телефон / WhatsApp*" autocomplete="tel" aria-label="Телефон" data-i18n="tsb_sk_ph_phone">
                     </div>
                     <div class="fx-calc-lead__row">
-                        <input type="email" name="email" required placeholder="Email*" autocomplete="email" aria-label="Email">
-                        <input type="text" name="address" required placeholder="Адрес доставки*" autocomplete="street-address" aria-label="Адрес доставки">
+                        <input type="email" name="email" required placeholder="Email*" autocomplete="email" aria-label="Email" data-i18n="tsb_sk_ph_email">
+                        <input type="text" name="address" required placeholder="Адрес доставки*" autocomplete="street-address" aria-label="Адрес доставки" data-i18n="tsb_sk_ph_address">
                     </div>
                     <div class="fx-calc-lead__row">
-                        <input type="number" name="project_sqm" min="0" placeholder="Площадь объекта, м² (опционально)" aria-label="Площадь объекта">
-                        <input type="text" name="material_label" id="skMaterialLabel" readonly placeholder="Материал (из 3D-конфигуратора)" aria-label="Выбранный материал" style="background:rgba(0,0,0,.04);">
+                        <input type="number" name="project_sqm" min="0" placeholder="Площадь объекта, м² (опционально)" aria-label="Площадь объекта" data-i18n="tsb_sk_ph_sqm">
+                        <input type="text" name="material_label" id="skMaterialLabel" readonly placeholder="Материал (из 3D-конфигуратора)" aria-label="Выбранный материал" style="background:rgba(0,0,0,.04);" data-i18n="tsb_sk_ph_material">
                     </div>
                     <div class="fx-calc-lead__row">
-                        <textarea name="message" rows="3" placeholder="Комментарий (опционально): размер объекта, дедлайны, особенности" aria-label="Комментарий" style="grid-column:1/-1;width:100%;font-family:inherit;padding:14px 16px;border:1px solid rgba(0,0,0,.12);border-radius:10px;resize:vertical;"></textarea>
+                        <textarea name="message" rows="3" placeholder="Комментарий (опционально): размер объекта, дедлайны, особенности" aria-label="Комментарий" style="grid-column:1/-1;width:100%;font-family:inherit;padding:14px 16px;border:1px solid rgba(0,0,0,.12);border-radius:10px;resize:vertical;" data-i18n="tsb_sk_ph_message"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-dark fx-calc-cta">Заказать образец →</button>
-                    <p class="fx-calc-lead__legal">Отправляя, вы соглашаетесь на обработку контактов. Образец и доставка бесплатные.</p>
+                    <button type="submit" class="btn btn-dark fx-calc-cta" data-i18n="tsb_sk_submit">Заказать образец →</button>
+                    <p class="fx-calc-lead__legal" data-i18n="tsb_sk_legal">Отправляя, вы соглашаетесь на обработку контактов. Образец и доставка бесплатные.</p>
                 </form>
             </div>
         </section>
@@ -109,6 +109,7 @@
     <script>
     // Pre-fill hidden + readonly fields from URL params set by configurator's ctaSample bridge.
     (function() {
+      function _t(k,f){var L=(document.documentElement.lang||'ru');return (window.translations&&translations[L]&&translations[L][k])||f;}
       const params = new URLSearchParams(window.location.search);
       const system = params.get('system') || params.get('material') || '';
       const fdState = params.get('fd_state') || '';
@@ -126,6 +127,7 @@
         'pu-cement':       'PU-cement · Sikafloor PurCem',
         'epoxy':           'Эпокси SL · Sikafloor-263 SL'
       };
+      function labelFor(slug) { return _t('tsb_sk_mat_' + slug, labelMap[slug] || slug); }
 
       const matEl = document.getElementById('skMaterial');
       const matLabelEl = document.getElementById('skMaterialLabel');
@@ -133,12 +135,12 @@
       const cfgEl = document.getElementById('skConfigUrl');
 
       if (system && matEl) matEl.value = system;
-      if (system && matLabelEl) matLabelEl.value = labelMap[system] || system;
+      if (system && matLabelEl) matLabelEl.value = labelFor(system);
       if (fdState && stateEl) stateEl.value = fdState;
       if (configUrl && cfgEl) cfgEl.value = configUrl;
     })();
     </script>
-    <script src="translations.js"></script>
-    <script src="enhance.js?v=5" defer></script>
+    <script src="translations.js?v=20260520b"></script>
+    <script src="enhance.js?v=20260520c" defer></script>
 </body>
 </html>

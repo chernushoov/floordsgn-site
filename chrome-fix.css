@@ -13,9 +13,9 @@ header.header > .logo {
   overflow: hidden;
 }
 header.header > .logo .logo-img {
-  height: 110px;
+  height: 30px;
   width: auto;
-  margin: -16px 0 -8px;
+  margin: 0;
   display: block;
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -23,8 +23,8 @@ header.header > .logo:hover .logo-img { opacity: 0.6; }
 
 @media (max-width: 768px) {
   header.header > .logo .logo-img {
-    height: 110px;
-    margin: -22px 0;
+    height: 28px;
+    margin: 0;
   }
   /* Hide nav + lang on mobile, show hamburger only */
   header.header > nav,

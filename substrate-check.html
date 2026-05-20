@@ -6,7 +6,7 @@
 <link rel="canonical" href="https://floordsgn.netlify.app/substrate-check">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8"><link rel="stylesheet" href="chrome-fix.css?v=3"><link rel="stylesheet" href="enhance.css?v=6">
+<link rel="stylesheet" href="styles.css?v=20260520b"><link rel="stylesheet" href="chrome-fix.css?v=20260520c"><link rel="stylesheet" href="enhance.css?v=6">
 <style>
 .fx-sub-shell { max-width: 920px; margin: 0 auto; padding: 100px 36px; font-family: Montserrat, sans-serif; }
 .fx-sub-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 88px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin: 0 0 20px; color: #1d1d1f; }
@@ -42,102 +42,102 @@
 <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
 <main class="fx-sub-shell" data-fx="subCheck">
-  <p class="fx-eyebrow">Инструмент</p>
-  <h1 class="fx-sub-h1">Готовность<br/>основания</h1>
-  <p class="fx-sub-lede">10 простых вопросов о существующей бетонной плите — чтобы понять что нужно сделать перед укладкой полимерного пола. Не заменяет реальный замер, но помогает оценить сроки и бюджет на подготовку.</p>
+  <p class="fx-eyebrow" data-i18n="tsb_eyebrow">Инструмент</p>
+  <h1 class="fx-sub-h1" data-i18n="tsb_h1">Готовность<br/>основания</h1>
+  <p class="fx-sub-lede" data-i18n="tsb_lede">10 простых вопросов о существующей бетонной плите — чтобы понять что нужно сделать перед укладкой полимерного пола. Не заменяет реальный замер, но помогает оценить сроки и бюджет на подготовку.</p>
 
-  <div class="fx-sub-q" data-q="age"><h3 class="fx-sub-q__title">1. Сколько дней с момента заливки бетона?</h3>
+  <div class="fx-sub-q" data-q="age"><h3 class="fx-sub-q__title" data-i18n="tsb_q1">1. Сколько дней с момента заливки бетона?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="age" value="0" checked>≥ 28 дней (норма)</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="age" value="2">14–28 дней (только polish)</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="age" value="5">&lt; 14 дней</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="0" checked><span data-i18n="tsb_q1_o1">≥ 28 дней (норма)</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="2"><span data-i18n="tsb_q1_o2">14–28 дней (только polish)</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="age" value="5"><span data-i18n="tsb_q1_o3">&lt; 14 дней</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="grade"><h3 class="fx-sub-q__title">2. Класс бетона</h3>
+  <div class="fx-sub-q" data-q="grade"><h3 class="fx-sub-q__title" data-i18n="tsb_q2">2. Класс бетона</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="0" checked>C25 / B25 или выше</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="3">C20 / B20</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="6">C15 / B15 или ниже</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="2">Не знаю</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="0" checked><span data-i18n="tsb_q2_o1">C25 / B25 или выше</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="3"><span data-i18n="tsb_q2_o2">C20 / B20</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="6"><span data-i18n="tsb_q2_o3">C15 / B15 или ниже</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="grade" value="2"><span data-i18n="tsb_q2_o4">Не знаю</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="moisture"><h3 class="fx-sub-q__title">3. Влажность (если измеряли) или есть ли подложка-гидроизоляция?</h3>
+  <div class="fx-sub-q" data-q="moisture"><h3 class="fx-sub-q__title" data-i18n="tsb_q3">3. Влажность (если измеряли) или есть ли подложка-гидроизоляция?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="0" checked>Сухой, есть гидроизоляция</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3">Кажется сухим</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="6">Влажный, есть пятна</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3">Не знаю</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="0" checked><span data-i18n="tsb_q3_o1">Сухой, есть гидроизоляция</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3"><span data-i18n="tsb_q3_o2">Кажется сухим</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="6"><span data-i18n="tsb_q3_o3">Влажный, есть пятна</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="moisture" value="3"><span data-i18n="tsb_q3_o4">Не знаю</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="cracks"><h3 class="fx-sub-q__title">4. Есть ли видимые трещины?</h3>
+  <div class="fx-sub-q" data-q="cracks"><h3 class="fx-sub-q__title" data-i18n="tsb_q4">4. Есть ли видимые трещины?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="0" checked>Нет</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="2">Мелкие усадочные</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="5">Крупные / активные</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="0" checked><span data-i18n="tsb_q4_o1">Нет</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="2"><span data-i18n="tsb_q4_o2">Мелкие усадочные</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="cracks" value="5"><span data-i18n="tsb_q4_o3">Крупные / активные</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="oil"><h3 class="fx-sub-q__title">5. Загрязнения (масло, жир, силикон)?</h3>
+  <div class="fx-sub-q" data-q="oil"><h3 class="fx-sub-q__title" data-i18n="tsb_q5">5. Загрязнения (масло, жир, силикон)?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="0" checked>Нет</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="3">Есть пятна</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="6">Сильное проникновение</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="0" checked><span data-i18n="tsb_q5_o1">Нет</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="3"><span data-i18n="tsb_q5_o2">Есть пятна</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="oil" value="6"><span data-i18n="tsb_q5_o3">Сильное проникновение</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="coating"><h3 class="fx-sub-q__title">6. Существующее покрытие?</h3>
+  <div class="fx-sub-q" data-q="coating"><h3 class="fx-sub-q__title" data-i18n="tsb_q6">6. Существующее покрытие?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="0" checked>Чистый бетон</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="2">Краска, легко снимается</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="4">Старый эпокси/PU</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="3">Плитка</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="0" checked><span data-i18n="tsb_q6_o1">Чистый бетон</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="2"><span data-i18n="tsb_q6_o2">Краска, легко снимается</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="4"><span data-i18n="tsb_q6_o3">Старый эпокси/PU</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="coating" value="3"><span data-i18n="tsb_q6_o4">Плитка</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="flat"><h3 class="fx-sub-q__title">7. Ровность плиты</h3>
+  <div class="fx-sub-q" data-q="flat"><h3 class="fx-sub-q__title" data-i18n="tsb_q7">7. Ровность плиты</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="0" checked>SR1 / SR2 (хорошо)</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="2">Неровная, но без волн</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="4">Заметные волны / ямы</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="0" checked><span data-i18n="tsb_q7_o1">SR1 / SR2 (хорошо)</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="2"><span data-i18n="tsb_q7_o2">Неровная, но без волн</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="flat" value="4"><span data-i18n="tsb_q7_o3">Заметные волны / ямы</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="joints"><h3 class="fx-sub-q__title">8. Деформационные швы / стыки карт?</h3>
+  <div class="fx-sub-q" data-q="joints"><h3 class="fx-sub-q__title" data-i18n="tsb_q8">8. Деформационные швы / стыки карт?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="0" checked>Нет, монолит</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="2">Есть закрытые</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="3">Есть рабочие швы (нужно сохранить)</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="0" checked><span data-i18n="tsb_q8_o1">Нет, монолит</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="2"><span data-i18n="tsb_q8_o2">Есть закрытые</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="joints" value="3"><span data-i18n="tsb_q8_o3">Есть рабочие швы (нужно сохранить)</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="dust"><h3 class="fx-sub-q__title">9. Пылит ли бетон когда метёшь?</h3>
+  <div class="fx-sub-q" data-q="dust"><h3 class="fx-sub-q__title" data-i18n="tsb_q9">9. Пылит ли бетон когда метёшь?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="0" checked>Нет</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="3">Слегка</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="5">Сильно (слабый верхний слой)</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="0" checked><span data-i18n="tsb_q9_o1">Нет</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="3"><span data-i18n="tsb_q9_o2">Слегка</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="dust" value="5"><span data-i18n="tsb_q9_o3">Сильно (слабый верхний слой)</span></label>
     </div>
   </div>
 
-  <div class="fx-sub-q" data-q="access"><h3 class="fx-sub-q__title">10. Доступ для дробеструйки 380 В + большой пылесос?</h3>
+  <div class="fx-sub-q" data-q="access"><h3 class="fx-sub-q__title" data-i18n="tsb_q10">10. Доступ для дробеструйки 380 В + большой пылесос?</h3>
     <div class="fx-sub-q__opts">
-      <label class="fx-sub-q__opt"><input type="radio" name="access" value="0" checked>Да</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="access" value="2">Только 220 В</label>
-      <label class="fx-sub-q__opt"><input type="radio" name="access" value="3">Электричества нет</label>
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="0" checked><span data-i18n="tsb_q10_o1">Да</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="2"><span data-i18n="tsb_q10_o2">Только 220 В</span></label>
+      <label class="fx-sub-q__opt"><input type="radio" name="access" value="3"><span data-i18n="tsb_q10_o3">Электричества нет</span></label>
     </div>
   </div>
 
-  <button class="btn btn-dark" data-fx="subSubmit" style="margin-top: 24px;">Получить оценку</button>
+  <button class="btn btn-dark" data-fx="subSubmit" data-i18n="tsb_submit" style="margin-top: 24px;">Получить оценку</button>
 
   <div class="fx-sub-result" data-fx="subResult">
-    <p class="fx-sub-status" data-fx="subStatus">Готовность</p>
+    <p class="fx-sub-status" data-fx="subStatus" data-i18n="tsb_result_status">Готовность</p>
     <div class="fx-sub-score"><span data-fx="subScore">—</span><em>/100</em></div>
     <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; margin: 24px 0 8px;" data-fx="subVerdict">—</h3>
     <ul class="fx-sub-issues" data-fx="subIssues"></ul>
-    <p style="font-size: 13px; color: #6e6e73; margin: 16px 0 0;">Это рабочий ориентир. Реальную смету и план подготовки получите после выезда инженера с pull-off test и RH probe — бесплатно, в течение 48 часов.</p>
-    <a href="contact.html?intent=substrate-check" class="btn btn-dark fx-sub-submit">Запросить выезд</a>
+    <p style="font-size: 13px; color: #6e6e73; margin: 16px 0 0;" data-i18n="tsb_result_note">Это рабочий ориентир. Реальную смету и план подготовки получите после выезда инженера с pull-off test и RH probe — бесплатно, в течение 48 часов.</p>
+    <a href="contact.html?intent=substrate-check" class="btn btn-dark fx-sub-submit" data-i18n="tsb_result_cta">Запросить выезд</a>
   </div>
 </main>
 
@@ -157,10 +157,15 @@
 
 <script>
 (function() {
+  function _t(k,f){var L=(document.documentElement.lang||'ru');return (window.translations&&translations[L]&&translations[L][k])||f;}
   const root = document.querySelector('[data-fx="subCheck"]');
   const submit = document.querySelector('[data-fx="subSubmit"]');
   const resultEl = document.querySelector('[data-fx="subResult"]');
   if (!submit) return;
+
+  function ISSUE_AT(qkey, val) {
+    return _t('tsb_issue_' + qkey + '_' + val, ISSUE_TEXT[qkey] && ISSUE_TEXT[qkey][val]);
+  }
 
   const ISSUE_TEXT = {
     age: { 2: 'Бетон 14–28 дней — допустимо только для шлифовки/полировки, не для топпингов.', 5: 'Бетон моложе 14 дней — ждём минимум до 14 дней (polish-only) или до 28 дней (топпинги).' },
@@ -184,22 +189,22 @@
       if (val > 0) {
         penalty += val;
         const qkey = inp.name;
-        const text = ISSUE_TEXT[qkey] && ISSUE_TEXT[qkey][val];
+        const text = ISSUE_AT(qkey, val);
         if (text) issues.push(text);
       }
     });
     const score = Math.max(0, 100 - penalty * 2);
-    let status = 'Хорошая готовность';
-    let verdict = 'Стандартная подготовка, можно начинать.';
-    if (score < 80) { status = 'Средняя готовность'; verdict = 'Нужна расширенная подготовка — внимание к нюансам ниже.'; }
-    if (score < 60) { status = 'Низкая готовность'; verdict = 'Подготовка займёт +50% времени и +25–40% бюджета.'; }
-    if (score < 40) { status = 'Критично'; verdict = 'Рекомендуем рассмотреть альтернативную систему или замену плиты. Скажем честно на выезде.'; }
+    let status = _t('tsb_status_good', 'Хорошая готовность');
+    let verdict = _t('tsb_verdict_good', 'Стандартная подготовка, можно начинать.');
+    if (score < 80) { status = _t('tsb_status_mid', 'Средняя готовность'); verdict = _t('tsb_verdict_mid', 'Нужна расширенная подготовка — внимание к нюансам ниже.'); }
+    if (score < 60) { status = _t('tsb_status_low', 'Низкая готовность'); verdict = _t('tsb_verdict_low', 'Подготовка займёт +50% времени и +25–40% бюджета.'); }
+    if (score < 40) { status = _t('tsb_status_crit', 'Критично'); verdict = _t('tsb_verdict_crit', 'Рекомендуем рассмотреть альтернативную систему или замену плиты. Скажем честно на выезде.'); }
 
     document.querySelector('[data-fx="subStatus"]').textContent = status;
     document.querySelector('[data-fx="subScore"]').textContent = score;
     document.querySelector('[data-fx="subVerdict"]').textContent = verdict;
     const ul = document.querySelector('[data-fx="subIssues"]');
-    ul.innerHTML = issues.length ? issues.map(i => `<li>${i}</li>`).join('') : '<li>Никаких блокеров не обнаружено. Стандартная подготовка по протоколу Sika.</li>';
+    ul.innerHTML = issues.length ? issues.map(i => `<li>${i}</li>`).join('') : ('<li>' + _t('tsb_no_issues', 'Никаких блокеров не обнаружено. Стандартная подготовка по протоколу Sika.') + '</li>');
 
     resultEl.classList.add('show');
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -209,5 +214,5 @@
 })();
 </script>
 
-<script src="script.js"></script><script src="translations.js" defer></script><script src="enhance.js?v=5" defer></script>
+<script src="script.js"></script><script src="translations.js?v=20260520b" defer></script><script src="enhance.js?v=20260520c" defer></script>
 </body></html>

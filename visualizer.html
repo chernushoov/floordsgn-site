@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
-<link rel="stylesheet" href="chrome-fix.css?v=3">
+<link rel="stylesheet" href="styles.css?v=20260520b">
+<link rel="stylesheet" href="chrome-fix.css?v=20260520c">
 <link rel="stylesheet" href="enhance.css?v=6">
 <style>
   :root {
@@ -85,8 +85,8 @@
 
 <main class="vz-shell">
   <p class="vz-eyebrow">01 — visualizer · compare</p>
-  <h1 class="vz-h1">Образец <em>и</em> комната<br/>— тяните полосу</h1>
-  <p class="vz-lede">9 систем Floor.DSGN. Слева — образец материала рядом и крупно. Справа — тот же материал, уложенный в интерьере. Тяните ползунок и сравнивайте как угодно: образец/комнату одного материала или два материала рядом.</p>
+  <h1 class="vz-h1" data-i18n="tcv_vz_h1">Образец <em>и</em> комната<br/>— тяните полосу</h1>
+  <p class="vz-lede" data-i18n="tcv_vz_lede">9 систем Floor.DSGN. Слева — образец материала рядом и крупно. Справа — тот же материал, уложенный в интерьере. Тяните ползунок и сравнивайте как угодно: образец/комнату одного материала или два материала рядом.</p>
 
   <!-- COMPARE STAGE -->
   <div class="vz-stage" id="vz-stage">
@@ -100,38 +100,40 @@
   <!-- CONTROLS -->
   <div class="vz-controls">
     <div class="vz-control">
-      <h3>Материал <span id="vz-side-l-label">слева</span></h3>
+      <h3><span data-i18n="tcv_vz_material">Материал</span> <span id="vz-side-l-label">слева</span></h3>
       <div class="vz-pick" data-side="L"></div>
     </div>
     <div class="vz-control">
-      <h3>Материал <span id="vz-side-r-label">справа</span></h3>
+      <h3><span data-i18n="tcv_vz_material">Материал</span> <span id="vz-side-r-label">справа</span></h3>
       <div class="vz-pick" data-side="R"></div>
     </div>
   </div>
 
   <div class="vz-control" style="margin-top: 28px;">
-    <h3>Режим</h3>
+    <h3 data-i18n="tcv_vz_mode">Режим</h3>
     <div class="vz-modes" id="vz-modes">
-      <button data-mode="sample-vs-room" class="on">Образец / в комнате</button>
-      <button data-mode="two-materials">Два материала</button>
+      <button data-mode="sample-vs-room" class="on" data-i18n="tcv_vz_mode_sample">Образец / в комнате</button>
+      <button data-mode="two-materials" data-i18n="tcv_vz_mode_two">Два материала</button>
     </div>
   </div>
 
   <!-- SPEC strip — updates with selection -->
   <dl class="vz-spec" id="vz-spec">
-    <div><dt>Тип системы</dt><dd id="sp-type">—</dd></div>
-    <div><dt>Толщина</dt><dd id="sp-thick">—</dd></div>
-    <div><dt>Срок укладки</dt><dd id="sp-cure">—</dd></div>
-    <div><dt>Цена ориентир</dt><dd id="sp-price">—</dd></div>
+    <div><dt data-i18n="tcv_vz_sp_type">Тип системы</dt><dd id="sp-type">—</dd></div>
+    <div><dt data-i18n="tcv_vz_sp_thick">Толщина</dt><dd id="sp-thick">—</dd></div>
+    <div><dt data-i18n="tcv_vz_sp_cure">Срок укладки</dt><dd id="sp-cure">—</dd></div>
+    <div><dt data-i18n="tcv_vz_sp_price">Цена ориентир</dt><dd id="sp-price">—</dd></div>
   </dl>
 
   <div class="vz-cta">
-    <a href="contact.html" class="btn btn-dark">Заказать sample-kit</a>
-    <a href="configurator.html" class="btn btn-ghost">Открыть 3D-конфигуратор →</a>
+    <a href="contact.html" class="btn btn-dark" data-i18n="tcv_vz_cta_sample">Заказать sample-kit</a>
+    <a href="configurator.html" class="btn btn-ghost" data-i18n="tcv_vz_cta_cfg">Открыть 3D-конфигуратор →</a>
   </div>
 </main>
 
 <script>
+// i18n helper: look up PREFIX key in the active language, fall back to RU source literal.
+function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (window.translations && translations[L] && translations[L][k]) || f; }
 const MATERIALS = [
   { id:'terrazzo-cement',   name:'Терраццо · цемент',     type:'минеральный',   thick:'10–18 мм', cure:'7–10 дней',  price:'₪520–880 / м²' },
   { id:'terrazzo-epoxy',    name:'Терраццо · эпоксид',    type:'эпоксидный',    thick:'8–14 мм',  cure:'24h walk · 72h full', price:'₪650–1020 / м²' },

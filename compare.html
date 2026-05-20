@@ -6,7 +6,7 @@
 <link rel="canonical" href="https://floordsgn.netlify.app/compare">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8"><link rel="stylesheet" href="chrome-fix.css?v=3"><link rel="stylesheet" href="enhance.css?v=6">
+<link rel="stylesheet" href="styles.css?v=20260520b"><link rel="stylesheet" href="chrome-fix.css?v=20260520c"><link rel="stylesheet" href="enhance.css?v=6">
 <style>
 .fx-compare-shell { max-width: 1280px; margin: 0 auto; padding: 100px 36px; }
 .fx-compare-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 88px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin: 0 0 20px; color: #1d1d1f; }
@@ -78,6 +78,8 @@
 <a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span><span data-i18n="cta_wa_write">Написать в WhatsApp</span></a>
 
 <script>
+// i18n helper: look up PREFIX key in the active language, fall back to RU source literal.
+function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (window.translations && translations[L] && translations[L][k]) || f; }
 const FX_MATERIALS = {
   'epoxy-sl': { name: 'Эпокси SL 4 мм', sku: 'Sikafloor-263 SL', thickness: '3–5 мм', load: 'Forklift до 5 т', moisture: '≤ 4% RH', strength: '>95 МПа', slip: 'R9–R12', cure: '4–5 дней', thermal: '−20…+60°C', chem: 'Средняя', price: '₪200–260/м²', warranty: '10 лет', useFor: 'Склад, шоурум, light production' },
   'epoxy-hbs': { name: 'Эпокси HBS 8 мм', sku: 'Sikafloor-381 ECF', thickness: '6–12 мм', load: 'Heavy-duty 10+ т', moisture: '≤ 4% RH', strength: '>95 МПа', slip: 'R10–R13', cure: '5–7 дней', thermal: '−20…+80°C', chem: 'Высокая', price: '₪480–650/м²', warranty: '10 лет', useFor: 'Пищ. производство, фарма' },
@@ -117,10 +119,18 @@ const FX_ROWS = [
   function fillSelect(sel, defaultKey) {
     Object.entries(FX_MATERIALS).forEach(([k, m]) => {
       const opt = document.createElement('option');
-      opt.value = k; opt.textContent = m.name;
+      opt.value = k; opt.textContent = _t('tcv_name_' + k, m.name);
       if (k === defaultKey) opt.selected = true;
       sel.appendChild(opt);
     });
+  }
+  // Re-fill selects keeping the current selection (used on language toggle).
+  function refillSelect(sel) {
+    const cur = sel.value;
+    sel.innerHTML = '';
+    if (sel === $c) { const o = document.createElement('option'); o.value = ''; o.textContent = '—'; sel.appendChild(o); }
+    fillSelect(sel, cur);
+    sel.value = cur;
   }
   // Allow preloading via ?materials=slug1,slug2,slug3 — used by the
   // encyclopedia compare ribbon. Slugs from the encyclopedia ("terrazzo",
@@ -148,23 +158,28 @@ const FX_ROWS = [
   fillSelect($b, requested[1] || 'pu-cement');
   fillSelect($c, requested[2] || '');
 
+  // Translate one material cell value: key = tcv_v_<materialKey>_<field>, fallback = RU source.
+  function val(mKey, field, raw) { return _t('tcv_v_' + mKey + '_' + field, raw || '—'); }
+  function nm(mKey, m) { return _t('tcv_name_' + mKey, m.name); }
+
   function render() {
-    const a = FX_MATERIALS[$a.value];
-    const b = FX_MATERIALS[$b.value];
-    const c = $c.value ? FX_MATERIALS[$c.value] : null;
+    const aKey = $a.value, bKey = $b.value, cKey = $c.value;
+    const a = FX_MATERIALS[aKey];
+    const b = FX_MATERIALS[bKey];
+    const c = cKey ? FX_MATERIALS[cKey] : null;
     if (!a || !b) return;
 
     let html = '<div class="fx-compare-table-row header-row"><div></div>';
-    html += `<div>${a.name}</div><div>${b.name}</div>`;
-    html += c ? `<div>${c.name}</div>` : '<div></div>';
+    html += `<div>${nm(aKey, a)}</div><div>${nm(bKey, b)}</div>`;
+    html += c ? `<div>${nm(cKey, c)}</div>` : '<div></div>';
     html += '</div>';
 
     FX_ROWS.forEach(row => {
       html += '<div class="fx-compare-table-row">';
-      html += `<div class="key">${row.label}</div>`;
-      html += `<div class="val">${a[row.key] || '—'}</div>`;
-      html += `<div class="val">${b[row.key] || '—'}</div>`;
-      html += c ? `<div class="val">${c[row.key] || '—'}</div>` : '<div></div>';
+      html += `<div class="key">${_t('tcv_row_' + row.key, row.label)}</div>`;
+      html += `<div class="val">${val(aKey, row.key, a[row.key])}</div>`;
+      html += `<div class="val">${val(bKey, row.key, b[row.key])}</div>`;
+      html += c ? `<div class="val">${val(cKey, row.key, c[row.key])}</div>` : '<div></div>';
       html += '</div>';
     });
 
@@ -174,8 +189,14 @@ const FX_ROWS = [
   $b.addEventListener('change', render);
   $c.addEventListener('change', render);
   render();
+
+  // Re-render dynamic content when the language changes (after translations.js + initLanguage,
+  // and on every EN/RU button click — the shared setLanguage doesn't touch JS-built DOM).
+  function relangAll() { refillSelect($a); refillSelect($b); refillSelect($c); render(); }
+  window.addEventListener('load', relangAll);
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', function () { setTimeout(relangAll, 0); }));
 })();
 </script>
 
-<script src="script.js"></script><script src="translations.js" defer></script><script src="enhance.js?v=5" defer></script>
+<script src="script.js"></script><script src="translations.js?v=20260520b" defer></script><script src="enhance.js?v=20260520c" defer></script>
 </body></html>
