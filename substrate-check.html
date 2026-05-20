@@ -157,7 +157,7 @@
 
 <script>
 (function() {
-  function _t(k,f){var L=(document.documentElement.lang||'ru');return (window.translations&&translations[L]&&translations[L][k])||f;}
+  function _t(k,f){var L=(document.documentElement.lang||'ru');var T=(typeof translations!=='undefined'&&translations)||window.translations||{};return (T[L]&&T[L][k])||f;}
   const root = document.querySelector('[data-fx="subCheck"]');
   const submit = document.querySelector('[data-fx="subSubmit"]');
   const resultEl = document.querySelector('[data-fx="subResult"]');

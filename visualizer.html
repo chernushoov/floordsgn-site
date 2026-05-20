@@ -133,7 +133,7 @@
 
 <script>
 // i18n helper: look up PREFIX key in the active language, fall back to RU source literal.
-function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (window.translations && translations[L] && translations[L][k]) || f; }
+function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (typeof translations !== 'undefined' && translations[L] && translations[L][k]) || f; }
 const MATERIALS = [
   { id:'terrazzo-cement',   name:'Терраццо · цемент',     type:'минеральный',   thick:'10–18 мм', cure:'7–10 дней',  price:'₪520–880 / м²' },
   { id:'terrazzo-epoxy',    name:'Терраццо · эпоксид',    type:'эпоксидный',    thick:'8–14 мм',  cure:'24h walk · 72h full', price:'₪650–1020 / м²' },
@@ -155,7 +155,7 @@ function renderPickers() {
   $$('.vz-pick').forEach(grid => {
     const side = grid.dataset.side;
     grid.innerHTML = MATERIALS.map(m =>
-      `<button data-id="${m.id}" class="${state[side]===m.id?'on':''}">${m.name}</button>`
+      `<button data-id="${m.id}" class="${state[side]===m.id?'on':''}">${_t('tcv_vz_name_' + m.id, m.name)}</button>`
     ).join('');
     grid.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
@@ -175,21 +175,23 @@ function paint() {
   if (state.mode === 'sample-vs-room') {
     $('#vz-img-l').src = heroSrc(state.L);
     $('#vz-img-r').src = lifeSrc(state.L);
-    $('#vz-label-l').textContent = 'образец';
-    $('#vz-label-r').textContent = 'в комнате';
-    $('#vz-side-r-label').textContent = '(зеркало слева в режиме «образец / в комнате»)';
+    $('#vz-label-l').textContent = _t('tcv_vz_lbl_sample', 'образец');
+    $('#vz-label-r').textContent = _t('tcv_vz_lbl_room', 'в комнате');
+    $('#vz-side-l-label').textContent = _t('tcv_vz_lbl_left', 'слева');
+    $('#vz-side-r-label').textContent = _t('tcv_vz_lbl_mirror', '(зеркало слева в режиме «образец / в комнате»)');
     state.R = state.L;
   } else {
     $('#vz-img-l').src = lifeSrc(state.L);
     $('#vz-img-r').src = lifeSrc(state.R);
-    $('#vz-label-l').textContent = ml.name;
-    $('#vz-label-r').textContent = mr.name;
-    $('#vz-side-r-label').textContent = 'справа';
+    $('#vz-label-l').textContent = _t('tcv_vz_name_' + ml.id, ml.name);
+    $('#vz-label-r').textContent = _t('tcv_vz_name_' + mr.id, mr.name);
+    $('#vz-side-l-label').textContent = _t('tcv_vz_lbl_left', 'слева');
+    $('#vz-side-r-label').textContent = _t('tcv_vz_lbl_right', 'справа');
   }
-  $('#sp-type').textContent = ml.type;
-  $('#sp-thick').textContent = ml.thick;
-  $('#sp-cure').textContent = ml.cure;
-  $('#sp-price').textContent = ml.price;
+  $('#sp-type').textContent = _t('tcv_vz_type_' + ml.id, ml.type);
+  $('#sp-thick').textContent = _t('tcv_vz_thick_' + ml.id, ml.thick);
+  $('#sp-cure').textContent = _t('tcv_vz_cure_' + ml.id, ml.cure);
+  $('#sp-price').textContent = _t('tcv_vz_price_' + ml.id, ml.price);
   renderPickers();
 }
 
@@ -233,7 +235,16 @@ $('#vz-modes').addEventListener('click', e => {
 });
 
 paint();
+
+// Re-render JS-built DOM (picker buttons, stage labels, spec strip) when the
+// language becomes available (translations.js defers) and on every EN/RU click —
+// the shared setLanguage() only touches elements with data-i18n, not JS-built text.
+window.addEventListener('load', paint);
+document.querySelectorAll('.lang-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () { setTimeout(paint, 0); });
+});
 </script>
 
+<script src="translations.js?v=20260520c" defer></script>
 </body>
 </html>

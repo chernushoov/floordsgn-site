@@ -8,6 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20260520b"><link rel="stylesheet" href="chrome-fix.css?v=20260520c"><link rel="stylesheet" href="enhance.css?v=6">
 </head><body data-fx-page="Подбор системы">
+<script>
+/* Sync body[data-fx-lang] to the active language BEFORE deferred translations.js/enhance.js run,
+   so enhance.js dynamic content (wizard progress counter + recommendations) renders in the right
+   language. Mirrors the static data-fx-lang="en" used on /en/ pages, but computed for this bilingual page. */
+(function(){try{var l=localStorage.getItem('floordsgn_lang');if(!l){var n=(navigator.language||navigator.userLanguage||'').toLowerCase();l=n.indexOf('en')===0?'en':'ru';}if(l==='en')document.body.setAttribute('data-fx-lang','en');else document.body.removeAttribute('data-fx-lang');}catch(e){}})();
+</script>
 <header class="header">
         <a href="index.html" class="logo"><img src="images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
         <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>

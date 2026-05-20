@@ -109,7 +109,7 @@
     <script>
     // Pre-fill hidden + readonly fields from URL params set by configurator's ctaSample bridge.
     (function() {
-      function _t(k,f){var L=(document.documentElement.lang||'ru');return (window.translations&&translations[L]&&translations[L][k])||f;}
+      function _t(k,f){var L=(document.documentElement.lang||'ru');var T=(typeof translations!=='undefined'&&translations)||window.translations||{};return (T[L]&&T[L][k])||f;}
       const params = new URLSearchParams(window.location.search);
       const system = params.get('system') || params.get('material') || '';
       const fdState = params.get('fd_state') || '';
@@ -129,15 +129,24 @@
       };
       function labelFor(slug) { return _t('tsb_sk_mat_' + slug, labelMap[slug] || slug); }
 
-      const matEl = document.getElementById('skMaterial');
-      const matLabelEl = document.getElementById('skMaterialLabel');
-      const stateEl = document.getElementById('skState');
-      const cfgEl = document.getElementById('skConfigUrl');
+      function fill() {
+        const matEl = document.getElementById('skMaterial');
+        const matLabelEl = document.getElementById('skMaterialLabel');
+        const stateEl = document.getElementById('skState');
+        const cfgEl = document.getElementById('skConfigUrl');
 
-      if (system && matEl) matEl.value = system;
-      if (system && matLabelEl) matLabelEl.value = labelFor(system);
-      if (fdState && stateEl) stateEl.value = fdState;
-      if (configUrl && cfgEl) cfgEl.value = configUrl;
+        if (system && matEl) matEl.value = system;
+        if (system && matLabelEl) matLabelEl.value = labelFor(system);
+        if (fdState && stateEl) stateEl.value = fdState;
+        if (configUrl && cfgEl) cfgEl.value = configUrl;
+      }
+      // Run after translations.js has loaded AND language init (DOMContentLoaded) has set the
+      // active lang, so the localized material label resolves to the right language.
+      if (document.readyState === 'complete') {
+        fill();
+      } else {
+        window.addEventListener('load', fill);
+      }
     })();
     </script>
     <script src="translations.js?v=20260520b"></script>

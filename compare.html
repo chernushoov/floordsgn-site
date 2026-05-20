@@ -79,7 +79,7 @@
 
 <script>
 // i18n helper: look up PREFIX key in the active language, fall back to RU source literal.
-function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (window.translations && translations[L] && translations[L][k]) || f; }
+function _t(k, f) { var L = (document.documentElement.lang || 'ru'); return (typeof translations !== 'undefined' && translations[L] && translations[L][k]) || f; }
 const FX_MATERIALS = {
   'epoxy-sl': { name: 'Эпокси SL 4 мм', sku: 'Sikafloor-263 SL', thickness: '3–5 мм', load: 'Forklift до 5 т', moisture: '≤ 4% RH', strength: '>95 МПа', slip: 'R9–R12', cure: '4–5 дней', thermal: '−20…+60°C', chem: 'Средняя', price: '₪200–260/м²', warranty: '10 лет', useFor: 'Склад, шоурум, light production' },
   'epoxy-hbs': { name: 'Эпокси HBS 8 мм', sku: 'Sikafloor-381 ECF', thickness: '6–12 мм', load: 'Heavy-duty 10+ т', moisture: '≤ 4% RH', strength: '>95 МПа', slip: 'R10–R13', cure: '5–7 дней', thermal: '−20…+80°C', chem: 'Высокая', price: '₪480–650/м²', warranty: '10 лет', useFor: 'Пищ. производство, фарма' },
