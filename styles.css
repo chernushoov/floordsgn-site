@@ -205,6 +205,17 @@ img {
 .header__logo-black { display: block; }
 .header__logo-white { display: none; }
 
+/* ---- Inner-page bar header: horizontal logo + ul.nav + lang-switch + contact btn ---- */
+.header .logo { display: flex; align-items: center; flex: 0 0 auto; overflow: hidden; }
+.header .logo-img { height: 30px; width: auto; display: block; }
+.header > nav { display: flex; }
+.header .nav { list-style: none; display: flex; gap: 30px; margin: 0 0 0 32px; padding: 0; align-items: center; }
+.header .nav li { margin: 0; }
+.header .nav a { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #1d1d1f; text-decoration: none; transition: opacity 0.3s; white-space: nowrap; }
+.header .nav a:hover { opacity: 0.5; }
+.header .nav a.active { opacity: 0.45; }
+@media (max-width: 900px) { .header .nav { display: none; } }
+
 /* Lang switch */
 .header__lang {
     position: absolute;
