@@ -73,36 +73,36 @@
                         <div class="form-group">
                             <label for="project-type" data-i18n="contact_label_project_type">Project Type</label>
                             <select id="project-type" name="project-type">
-                                <option value="">Select project type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
-                                <option value="industrial">Industrial</option>
-                                <option value="hospitality">Hospitality</option>
-                                <option value="other">Other</option>
+                                <option value="" data-i18n="c_opt_type_ph">Select project type</option>
+                                <option value="residential" data-i18n="c_opt_residential">Residential</option>
+                                <option value="commercial" data-i18n="c_opt_commercial">Commercial</option>
+                                <option value="industrial" data-i18n="c_opt_industrial">Industrial</option>
+                                <option value="hospitality" data-i18n="c_opt_hospitality">Hospitality</option>
+                                <option value="other" data-i18n="c_opt_other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="floor-system" data-i18n="contact_label_floor_system">Floor System of Interest</label>
                             <select id="floor-system" name="floor-system">
-                                <option value="">Select floor system</option>
-                                <option value="epoxy">Epoxy Systems</option>
-                                <option value="microtopping">Microtopping</option>
-                                <option value="terrazzo">Terrazzo</option>
-                                <option value="pu-cement">PU-Cement</option>
-                                <option value="mma">MMA Resin</option>
-                                <option value="concrete">Decorative Concrete</option>
-                                <option value="rubber">Rubber Flooring</option>
-                                <option value="restoration">Restoration/Sealer</option>
-                                <option value="not-sure">Not Sure - Need Consultation</option>
+                                <option value="" data-i18n="c_opt_system_ph">Select floor system</option>
+                                <option value="epoxy" data-i18n="c_opt_epoxy">Epoxy Systems</option>
+                                <option value="microtopping" data-i18n="c_opt_microtopping">Microtopping</option>
+                                <option value="terrazzo" data-i18n="c_opt_terrazzo">Terrazzo</option>
+                                <option value="pu-cement" data-i18n="c_opt_pucement">PU-Cement</option>
+                                <option value="mma" data-i18n="c_opt_mma">MMA Resin</option>
+                                <option value="concrete" data-i18n="c_opt_concrete">Decorative Concrete</option>
+                                <option value="rubber" data-i18n="c_opt_rubber">Rubber Flooring</option>
+                                <option value="restoration" data-i18n="c_opt_restoration">Restoration/Sealer</option>
+                                <option value="not-sure" data-i18n="c_opt_notsure">Not Sure - Need Consultation</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="area" data-i18n="contact_label_area">Approximate Area (m²)</label>
-                            <input type="text" id="area" name="area" placeholder="e.g., 150">
+                            <input type="text" id="area" name="area" placeholder="e.g., 150" data-i18n="c_ph_area">
                         </div>
                         <div class="form-group">
                             <label for="message" data-i18n="contact_label_message">Project Details</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific concerns..."></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific concerns..." data-i18n="c_ph_message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-dark btn-full" id="submitBtn" data-i18n="contact_submit">Send Inquiry</button>
                     </form>
@@ -112,41 +112,41 @@
                     <div class="info-card">
                         <h3 data-i18n="contact_direct">Direct Contact</h3>
                         <div class="info-item">
-                            <div class="info-label">Phone</div>
+                            <div class="info-label" data-i18n="c_lbl_phone">Phone</div>
                             <a href="tel:+972559661459" class="info-value">+972 55 966 1459</a>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">Email</div>
+                            <div class="info-label" data-i18n="c_lbl_email">Email</div>
                             <a href="mailto:floors.dsgn@gmail.com" class="info-value">floors.dsgn@gmail.com</a>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">WhatsApp</div>
-                            <a href="https://wa.me/972559661459" class="info-value">Message Us</a>
+                            <div class="info-label" data-i18n="c_lbl_whatsapp">WhatsApp</div>
+                            <a href="https://wa.me/972559661459" class="info-value" data-i18n="c_whatsapp_cta">Message Us</a>
                         </div>
                     </div>
                     <div class="info-card">
                         <h3 data-i18n="contact_service_area">Service Area</h3>
-                        <p>We provide flooring services throughout Israel, including Tel Aviv, Jerusalem, Haifa, and surrounding regions.</p>
+                        <p data-i18n="contact_service_body">We provide flooring services throughout Israel, including Tel Aviv, Jerusalem, Haifa, and surrounding regions.</p>
                     </div>
                     <div class="info-card">
                         <h3 data-i18n="contact_hours">Working Hours</h3>
                         <div class="info-item">
-                            <div class="info-label">Sunday - Thursday</div>
+                            <div class="info-label" data-i18n="contact_hours_weekdays">Sunday - Thursday</div>
                             <div class="info-value">08:00 - 18:00</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">Friday</div>
+                            <div class="info-label" data-i18n="contact_hours_fri">Friday</div>
                             <div class="info-value">08:00 - 14:00</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">Saturday</div>
-                            <div class="info-value">Closed</div>
+                            <div class="info-label" data-i18n="contact_hours_sat">Saturday</div>
+                            <div class="info-value" data-i18n="contact_hours_closed">Closed</div>
                         </div>
                     </div>
                     <div class="info-card dark">
                         <h3 data-i18n="contact_free_consult">Free Consultation</h3>
-                        <p>Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
-                        <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+                        <p data-i18n="contact_consult_body">Not sure which floor system fits your project? Schedule a free technical consultation with our engineering team.</p>
+                        <a href="tel:+972559661459" class="btn btn-outline-white" data-i18n="contact_call_now">Call Now</a>
                     </div>
                 </div>
             </div>
@@ -161,20 +161,20 @@
             </div>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h4>What information do you need for a quote?</h4>
-                    <p>For an accurate quote, we need: floor area (m²), current substrate condition, intended use of the space, desired aesthetic, and timeline. Site photos are helpful.</p>
+                    <h4 data-i18n="c_faq1_q">What information do you need for a quote?</h4>
+                    <p data-i18n="c_faq1_a">For an accurate quote, we need: floor area (m²), current substrate condition, intended use of the space, desired aesthetic, and timeline. Site photos are helpful.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Do you offer site assessments?</h4>
-                    <p>Yes. For projects over 50m², we provide complimentary on-site substrate evaluation and system recommendations.</p>
+                    <h4 data-i18n="c_faq2_q">Do you offer site assessments?</h4>
+                    <p data-i18n="c_faq2_a">Yes. For projects over 50m², we provide complimentary on-site substrate evaluation and system recommendations.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>What is your typical project timeline?</h4>
-                    <p>Timeline depends on the system and area. Most residential projects (50-150m²) complete in 3-7 days. Industrial projects may require 1-3 weeks.</p>
+                    <h4 data-i18n="c_faq3_q">What is your typical project timeline?</h4>
+                    <p data-i18n="c_faq3_a">Timeline depends on the system and area. Most residential projects (50-150m²) complete in 3-7 days. Industrial projects may require 1-3 weeks.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Do you work with architects and designers?</h4>
-                    <p>We regularly collaborate with architects and interior designers. We provide technical specifications, material samples, and can attend design meetings.</p>
+                    <h4 data-i18n="c_faq4_q">Do you work with architects and designers?</h4>
+                    <p data-i18n="c_faq4_a">We regularly collaborate with architects and interior designers. We provide technical specifications, material samples, and can attend design meetings.</p>
                 </div>
             </div>
         </div>
