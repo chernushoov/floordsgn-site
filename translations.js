@@ -195,6 +195,38 @@ const translations = {
         footer_copyright: "© 2026 Floor.DSGN. All rights reserved.",
         footer_legal: "Floor.DSGN Ltd. | Service throughout Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva | VAT Registered",
 
+        // Compare tool
+        cmp_eyebrow: "Tool",
+        cmp_h1: "Material<br>Comparison",
+        cmp_lede: "Pick 2-3 systems — get a side-by-side table across 12 parameters. No fluff, based on Sika TDS.",
+        cmp_pick1: "Material 1",
+        cmp_pick2: "Material 2",
+        cmp_pick3: "Material 3 (opt.)",
+        cmp_disclaimer: "These are benchmarks for typical premium-segment projects in Israel. Final price and exact specs follow an engineer's site visit with RH probe and pull-off test. Free, within 48 hours.",
+        cmp_cta_visit: "Request a site visit",
+        cmp_cta_selector: "System selector",
+        cmp_cta_calc: "Calculator",
+
+        // Material-page galleries
+        terrazzo_projects_sub: "From our portfolio",
+        terrazzo_projects_title: "Real installations, real materials",
+        terrazzo_projects_lead: "Five private and commercial terrazzo projects in Israel. Every photo below is from a floor we poured, ground and polished ourselves — not stock imagery.",
+        terrazzo_proj1_title: "Project 01 — Cement terrazzo, private residence",
+        terrazzo_proj2_title: "Project 02 — Custom aggregate selection",
+        terrazzo_proj3_title: "Project 03 — Interior renders & finished floor",
+        terrazzo_proj4_title: "Project 04 — High-traffic terrazzo with custom inserts",
+        terrazzo_proj5_title: "Project 05 — Lobby installation with custom dividers",
+        micro_projects_sub: "From our portfolio",
+        micro_projects_title: "Real microtopping installations",
+        micro_projects_lead: "Surface details and finished installations from our microtopping work. Every photo is from a real floor we troweled by hand.",
+        micro_proj1_title: "Surface textures & finishes",
+        micro_proj2_title: "In-context references & surface variations",
+        blog_article_soon: "Soon · in preparation",
+        proj_loc_il: "Israel",
+        proj_tag_venetian: "Venetian Terrazzo",
+        proj_vysota_title: "VYSOTA — Venetian terrazzo",
+        proj_vysota_desc: "Elite residential complex · 2024",
+
         // Sticky CTA
         sticky_cta: "WhatsApp",
 
@@ -1567,6 +1599,38 @@ const translations = {
         footer_badge_visit: "Бесплатный выезд",
         footer_copyright: "© 2026 Floor.DSGN. Все права защищены.",
         footer_legal: "Floor.DSGN Ltd. | Работаем по всему Израилю: Тель-Авив, Иерусалим, Хайфа, Беэр-Шева | Плательщик НДС",
+
+        // Compare tool
+        cmp_eyebrow: "Инструмент",
+        cmp_h1: "Сравнение<br>материалов",
+        cmp_lede: "Выберите 2-3 системы — получите side-by-side таблицу по 12 параметрам. Без воды, на основе Sika TDS.",
+        cmp_pick1: "Материал 1",
+        cmp_pick2: "Материал 2",
+        cmp_pick3: "Материал 3 (опц.)",
+        cmp_disclaimer: "Эти ориентиры — на типовые объекты в Israel премиум-сегмента. Финальная цена и точные характеристики — после выезда инженера с RH probe и pull-off test. Бесплатно, в течение 48 часов.",
+        cmp_cta_visit: "Запросить выезд",
+        cmp_cta_selector: "Подбор системы",
+        cmp_cta_calc: "Калькулятор",
+
+        // Material-page galleries
+        terrazzo_projects_sub: "Из нашего портфолио",
+        terrazzo_projects_title: "Реальные объекты, реальные материалы",
+        terrazzo_projects_lead: "Пять частных и коммерческих объектов терраццо в Израиле. Каждое фото ниже — пол, который мы залили, отшлифовали и отполировали сами, а не стоковая картинка.",
+        terrazzo_proj1_title: "Объект 01 — Цементное терраццо, частный дом",
+        terrazzo_proj2_title: "Объект 02 — Индивидуальный подбор крошки",
+        terrazzo_proj3_title: "Объект 03 — Визуализации интерьера и готовый пол",
+        terrazzo_proj4_title: "Объект 04 — Терраццо высокой проходимости с инкрустацией",
+        terrazzo_proj5_title: "Объект 05 — Укладка в лобби с латунными разделителями",
+        micro_projects_sub: "Из нашего портфолио",
+        micro_projects_title: "Реальные объекты микротоппинга",
+        micro_projects_lead: "Детали поверхности и готовые объекты из наших работ по микротоппингу. Каждое фото — реальный пол, нанесённый вручную.",
+        micro_proj1_title: "Текстуры и фактуры поверхности",
+        micro_proj2_title: "Примеры в интерьере и вариации поверхности",
+        blog_article_soon: "Скоро · в подготовке",
+        proj_loc_il: "Израиль",
+        proj_tag_venetian: "Венецианское терраццо",
+        proj_vysota_title: "VYSOTA — Венецианское терраццо",
+        proj_vysota_desc: "Элитный жилой комплекс · 2024",
 
         // Sticky CTA
         sticky_cta: "WhatsApp",
