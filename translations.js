@@ -184,6 +184,7 @@ const translations = {
         // Footer
         footer_tagline: "Premium floor design and installation across Israel. Engineering-grade systems for industry, commercial, and architectural projects.",
         footer_systems: "Floor Systems",
+        footer_sys_pucement: "PU-Cement",
         footer_company: "Company",
         footer_contact: "Contact",
         footer_location: "Israel, Tel Aviv",
@@ -1556,6 +1557,7 @@ const translations = {
         // Footer
         footer_tagline: "Профессиональные напольные покрытия по всему Израилю. Инженерные системы для промышленности, коммерции и архитектурных проектов.",
         footer_systems: "Покрытия",
+        footer_sys_pucement: "ПУ-цемент",
         footer_company: "Компания",
         footer_contact: "Контакты",
         footer_location: "Израиль, Тель-Авив",

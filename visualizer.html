@@ -73,17 +73,15 @@
 <body data-fx-page="Визуализатор">
 
 <header class="header">
-  <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
-  <nav><ul class="nav">
-    <li><a href="index.html">Главная</a></li>
-    <li><a href="floors.html">Системы</a></li>
-    <li><a href="visualizer.html" class="active">Визуализатор</a></li>
-    <li><a href="configurator.html">3D-конфигуратор</a></li>
-    <li><a href="projects.html">Проекты</a></li>
-    <li><a href="blog.html">Блог</a></li>
-  </ul></nav>
-  <a href="contact.html" class="btn btn-dark">Связаться</a>
-</header>
+        <a href="index.html" class="logo"><img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
+        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <a href="contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </header>
 
 <main class="vz-shell">
   <p class="vz-eyebrow">01 — visualizer · compare</p>

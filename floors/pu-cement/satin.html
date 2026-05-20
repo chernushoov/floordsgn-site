@@ -8,8 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css?v=8"><link rel="stylesheet" href="../../chrome-fix.css?v=3"><link rel="stylesheet" href="../../enhance.css?v=6">
 </head><body data-fx-page="PurCem 21N Satin">
-<header class="header"><a href="../../index.html" class="logo"><img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a><nav><ul class="nav"><li><a href="../../index.html">Главная</a></li><li><a href="../../floors.html" class="active">Системы</a></li><li><a href="../../projects.html">Проекты</a></li><li><a href="../../about.html">О нас</a></li><li><a href="../../blog.html">Блог</a></li></ul></nav><div class="lang-switch"><button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button><button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button></div><a href="../../contact.html" class="btn btn-dark">Связаться</a><button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button></header>
-<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html">Главная</a></li><li><a href="../../floors.html">Системы</a></li><li><a href="../../projects.html">Проекты</a></li><li><a href="../../about.html">О нас</a></li><li><a href="../../blog.html">Блог</a></li><li><a href="../../contact.html">Связаться</a></li></ul></div>
+<header class="header">
+        <a href="../../index.html" class="logo"><img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="logo-img"></a>
+        <nav><ul class="nav"><li><a href="../../index.html" data-i18n="nav_home">Home</a></li><li><a href="../../floors.html" class="active" data-i18n="nav_floors">Floors</a></li><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../../blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <a href="../../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html" data-i18n="nav_home">Home</a></li><li><a href="../../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
 <section class="fx-mat-hero">
 <div class="fx-mat-hero__content">
@@ -51,11 +60,17 @@
 
 <section class="fx-mat-cta"><h2>Подходит<br/>под вашу задачу?</h2><p>Бесплатный выезд инженера, тест влажности, точная смета в течение 48 часов.</p><div class="fx-mat-cta__row"><a href="../../contact.html?system=pu-cement-satin" class="btn btn-outline-white">Запросить смету</a><a href="#" class="btn btn-outline-white" data-fx="sampleOpen">Заказать образец</a><a href="../../decision-tool.html" class="btn btn-outline-white">Подбор системы</a></div></section>
 
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>Инженерные напольные системы по Израилю. Sika-сертифицированный подрядчик.</p></div><div class="footer-column"><h4>PU-cement</h4><ul><li><a href="standard.html">PurCem</a></li>
-<li><a href="satin.html" class="active">PurCem</a></li>
-<li><a href="heavy-duty.html">PurCem</a></li>
-<li><a href="cove-base.html">PurCem</a></li>
-</ul></div><div class="footer-column"><h4>Связь</h4><ul><li>floors.dsgn@gmail.com</li><li>+972 55 966 1459</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Floor.DSGN</p></div></div></footer>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="../../materials/epoxy.html" data-i18n="nav_epoxy">Epoxy</a></li><li><a href="../../materials/mma.html" data-i18n="nav_mma">MMA</a></li><li><a href="../../materials/pu-cement.html" data-i18n="footer_sys_pucement">PU-Cement</a></li><li><a href="../../materials/microtopping.html" data-i18n="nav_microtopping">Microtopping</a></li><li><a href="../../materials/terrazzo.html" data-i18n="nav_terrazzo">Terrazzo</a></li><li><a href="../../materials/concrete.html" data-i18n="nav_concrete">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../../contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
 <a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span>Написать в WhatsApp</a>
 <div class="fx-sample-overlay" data-fx="sampleOverlay"><div class="fx-sample-modal"><button class="fx-sample-modal__close" data-fx="sampleClose">×</button><h3>Образец PurCem 21N Satin</h3><p>Кусок 100×100 мм системы с тех. описанием. Бесплатно от 100 м².</p><form action="https://formspree.io/f/TBD" method="POST"><input type="hidden" name="system" value="pu-cement-satin"><label>Имя</label><input name="name" required><label>Телефон / email</label><input name="contact" required><label>Город</label><input name="city" placeholder="Tel Aviv…"><button type="submit" class="fx-sample-modal__submit">Отправить</button></form></div></div>
 <script src="../../script.js"></script><script src="../../translations.js" defer></script><script src="../../enhance.js?v=5" defer></script>
