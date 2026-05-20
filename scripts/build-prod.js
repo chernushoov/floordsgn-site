@@ -156,6 +156,9 @@ async function walkDir(srcDir, dstDir) {
   ensureDir(dstDir);
   for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
     if (entry.name === '.DS_Store') continue;
+    // Skip raw, unreferenced source media (4K videos + HEIC) — web galleries
+    // use assets/portfolio/ (converted JPGs). Keeps dist ~480MB not ~1GB.
+    if (entry.isDirectory() && entry.name === 'real-portfolio' && srcDir.endsWith(`${path.sep}assets`)) continue;
     const s = path.join(srcDir, entry.name);
     const d = path.join(dstDir, entry.name);
     if (entry.isDirectory()) {
