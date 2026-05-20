@@ -216,6 +216,12 @@ img {
 .header .nav a.active { opacity: 0.45; }
 @media (max-width: 900px) { .header .nav { display: none; } }
 
+/* Encyclopedia is Russian-only content (19 articles). Hide its entry blocks from
+   English visitors so they never hit untranslated copy or English→Russian links.
+   Remove these rules once the encyclopedia is translated to EN. */
+html[lang="en"] .related-encyclopedia,
+html[lang="en"] .encyclopedia-cta { display: none !important; }
+
 /* Lang switch */
 .header__lang {
     position: absolute;
