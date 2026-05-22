@@ -11,25 +11,41 @@
     <meta property="og:type" content="article">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
-    <link rel="stylesheet" href="../chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../studio.html" data-i18n="nav_studio">Studio</a>
+            <a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a>
+            <a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a>
+            <a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
+            <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../studio.html" data-i18n="nav_studio">Studio</a></li><li><a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a></li><li><a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a></li><li><a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a></li><li><a href="../compare.html" data-i18n="nav_compare">Compare</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
-
-    <article class="article-page">
+    <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
                 <a href="../blog.html" class="back-link">Back to Blog</a>
@@ -208,13 +224,188 @@
         </div>
     </article>
 
-    <section class="cta-section">
+    <section class="cta-section" data-lang-block="en">
         <div class="container">
             <h2>Ready to Start Your Project?</h2>
             <p>Get expert advice on the right flooring solution for your facility.</p>
             <div class="cta-buttons">
                 <a href="../contact.html" class="btn btn-outline-white">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Материалы</span>
+                <h1>Эпокси или полиуретан: полное техническое сравнение для промышленных объектов</h1>
+                <p class="article-meta">Январь 2026 · 12 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg" alt="Монтаж эпоксидного пола" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Выбор между эпоксидной и полиуретановой системой — одно из самых важных решений в спецификации промышленного пола. Оба материала относятся к двухкомпонентным термореактивным полимерам, но ведут себя по-разному при ударах, химии, УФ-свете, перепадах температуры и движении основания. Ниже — сравнение не по маркетинговым ярлыкам, а по реальной эксплуатации.</p>
+
+                    <h2>Базовая химия и почему она важна</h2>
+                    <p>Эпоксид формирует жёсткую, сильно сшитую структуру. Именно поэтому он даёт высокую твёрдость, сильную адгезию к бетону и хорошую химстойкость. Полиуретан строится на более гибкой молекулярной цепи, поэтому лучше переносит удар, вибрацию и температурную деформацию.</p>
+                    <p>Если упростить: эпокси — это жёсткость и химическая дисциплина, полиуретан — это эластичность, устойчивость к динамике и более стабильная визуальная поверхность под УФ.</p>
+
+                    <h2>Сравнение химической стойкости</h2>
+                    <p>Обе системы устойчивы, но сильны в разных сценариях.</p>
+
+                    <h3>Где эпокси сильнее</h3>
+                    <ul>
+                        <li>неорганические кислоты и щёлочи в контролируемых концентрациях;</li>
+                        <li>масла, растворители и нефтепродукты;</li>
+                        <li>жёсткое сцепление с правильно подготовленным бетоном;</li>
+                        <li>участки, где важна именно твёрдая, плотная рабочая поверхность.</li>
+                    </ul>
+
+                    <h3>Где полиуретан выигрывает</h3>
+                    <ul>
+                        <li>органические кислоты, встречающиеся в food и beverage среде;</li>
+                        <li>термошок и повторяющиеся температурные циклы;</li>
+                        <li>зоны с солнечным светом, витражами, открытыми фасадами;</li>
+                        <li>объекты, где пол должен переживать микродвижение основания без раннего растрескивания.</li>
+                    </ul>
+
+                    <h2>Механические свойства</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Параметр</th>
+                                <th>Эпокси</th>
+                                <th>Полиуретан</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Прочность на сжатие</td>
+                                <td>80-100 МПа</td>
+                                <td>60-80 МПа</td>
+                            </tr>
+                            <tr>
+                                <td>Прочность на растяжение</td>
+                                <td>30-40 МПа</td>
+                                <td>20-35 МПа</td>
+                            </tr>
+                            <tr>
+                                <td>Удлинение при разрыве</td>
+                                <td>3-6%</td>
+                                <td>10-30%</td>
+                            </tr>
+                            <tr>
+                                <td>Твёрдость Shore D</td>
+                                <td>80-85</td>
+                                <td>65-75</td>
+                            </tr>
+                            <tr>
+                                <td>Ударная стойкость</td>
+                                <td>Хорошая</td>
+                                <td>Отличная</td>
+                            </tr>
+                            <tr>
+                                <td>Стойкость к абразиву</td>
+                                <td>Отличная</td>
+                                <td>Очень хорошая</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Температура и термошок</h2>
+                    <p>Для многих объектов именно температура решает выбор системы раньше цены.</p>
+                    <p><strong>Эпокси</strong> обычно комфортно работает при постоянной нагрузке в диапазоне примерно от -20°C до +60°C. При кратковременных пиках выдерживает больше, но не любит регулярный термошок.</p>
+                    <p><strong>Полиуретан</strong> гораздо спокойнее относится к морозильникам, горячим мойкам и циклам охлаждение-нагрев. Поэтому именно он чаще оказывается правильным выбором для food production, холодных камер и мокрых технологических зон.</p>
+
+                    <h2>УФ-стабильность и внешний вид</h2>
+                    <p>Обычные эпоксидные системы не любят солнце: желтеют, мелеют, теряют исходный оттенок. Для закрытого склада это не проблема, для showroom или пространства с витражами — уже да.</p>
+                    <p>Алифатический полиуретан значительно стабильнее по цвету и финишу. Если проект живёт в естественном свете или визуальная чистота поверхности критична, полиуретановый верхний слой часто оправдывает свою цену.</p>
+
+                    <h2>Нанесение и отверждение</h2>
+
+                    <h3>Эпокси</h3>
+                    <ul>
+                        <li>рабочее время смеси обычно больше;</li>
+                        <li>легкая нагрузка — через 24-48 часов;</li>
+                        <li>полный набор свойств — около 7 суток;</li>
+                        <li>нормально чувствует себя при умеренной влажности, но не прощает мокрое основание без подготовки.</li>
+                    </ul>
+
+                    <h3>Полиуретан</h3>
+                    <ul>
+                        <li>обычно короче pot life, нужна более дисциплинированная бригада;</li>
+                        <li>легкая нагрузка возможна раньше;</li>
+                        <li>лучше переносит динамику и температурную работу;</li>
+                        <li>во время нанесения может быть чувствительнее к атмосферной влажности, если формула подобрана неправильно.</li>
+                    </ul>
+
+                    <h2>Экономика жизненного цикла</h2>
+                    <p><strong>На старте</strong> эпоксид почти всегда дешевле полиуретана сопоставимой толщины. Но сравнивать надо не только смету на квадратный метр, а всю модель эксплуатации.</p>
+                    <p><strong>В сроке службы</strong> полиуретан может выиграть там, где есть удары, перепады температуры, УФ или движение основания. Если эпоксид в такой среде быстрее уходит в ремонт, начальная экономия превращается в ложную.</p>
+                    <p><strong>В обслуживании</strong> обе системы требуют нормальной уборки и периодического контроля. Но PU-поверхность часто прощает объекту больше эксплуатационного стресса.</p>
+
+                    <h2>Когда выбирать эпокси</h2>
+                    <ul>
+                        <li>если бюджет жёсткий и объект находится в закрытом помещении;</li>
+                        <li>если ожидается серьёзная химическая нагрузка без УФ;</li>
+                        <li>если нужна высокая твёрдость и жёсткая рабочая поверхность;</li>
+                        <li>если основание стабильно и не должно заметно двигаться.</li>
+                    </ul>
+
+                    <h2>Когда выбирать полиуретан</h2>
+                    <ul>
+                        <li>если есть прямой свет, витражи, полупрозрачные фасады;</li>
+                        <li>если пол работает под ударами, вибрацией и тележками;</li>
+                        <li>если важен термошок, влажная мойка или пищевое производство;</li>
+                        <li>если есть риск микродвижения основания или деформационных напряжений.</li>
+                    </ul>
+
+                    <h2>Гибридная схема: часто лучший компромисс</h2>
+                    <p>На практике многие сильные системы совмещают обе технологии: эпоксидный base coat ради адгезии и химстойкости, полиуретановый topcoat ради УФ-стабильности, износостойкости и более спокойного финиша. Это один из самых здравых путей для коммерческих и mixed-use объектов.</p>
+
+                    <div class="article-cta">
+                        <h3>Нужен выбор под ваш сценарий эксплуатации?</h3>
+                        <p>Мы можем разложить решение по химии, трафику, температуре и бюджету, а не по абстрактным «лучше/хуже».</p>
+                        <a href="../contact.html" class="btn btn-dark">Получить техническую консультацию</a>
+                    </div>
+                </div>
+
+                <aside class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Связанные статьи</h4>
+                        <ul>
+                            <li><a href="self-leveling-screeds.html">Самонивелирующиеся стяжки</a></li>
+                            <li><a href="industrial-cleaning.html">Протоколы очистки промышленных полов</a></li>
+                            <li><a href="when-to-recoat.html">Когда перекрывать пол заново</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>Быстрые выводы</h4>
+                        <ul class="quick-facts">
+                            <li><strong>Эпокси:</strong> жёстче и обычно дешевле</li>
+                            <li><strong>PU:</strong> устойчивее к УФ и термошоку</li>
+                            <li><strong>Стратегия:</strong> часто лучше работает гибридная система</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Готовы запустить проект?</h2>
+            <p>Поможем выбрать систему пола под реальную химию, трафик и режим эксплуатации вашего объекта.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить расчёт</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
     </section>
@@ -232,7 +423,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js?v=20260520b" defer></script>
+    <script src="../translations.js?v=20260521a" defer></script>
 
     <script type="application/ld+json">
     {

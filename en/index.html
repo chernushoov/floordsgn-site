@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="Floor.DSGN | Industrial &amp; Commercial Flooring">
     <meta name="twitter:description" content="Premium flooring installation in Israel. European materials, 10-year warranty.">
 
-    <link rel="canonical" href="https://deploy-preview-3--floordsgn.netlify.app/en">
+    <link rel="canonical" href="https://floordsgn.netlify.app/en">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
@@ -77,7 +77,7 @@
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
     <link rel="stylesheet" href="../enhance.css?v=17">
     <!-- v5: Preload hero plate LCP image (terrazzo-dark default top) — injected via JS to avoid parcel resolution mismatch -->
     <script>(function(){try{var l=document.createElement('link');l.rel='preload';l.as='image';var p=(location.pathname.indexOf('/en/')===0?'../':'')+'images/terrazzo/dark-mosaic-textured-background.jpg';l.href=p;l.setAttribute('fetchpriority','high');document.head.appendChild(l);}catch(e){}})();</script>
@@ -86,23 +86,38 @@
 
     <!-- HEADER -->
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../studio.html" data-i18n="nav_studio">Studio</a>
+            <a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a>
+            <a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a>
+            <a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
+            <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
-
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../studio.html" data-i18n="nav_studio">Studio</a></li><li><a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a></li><li><a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a></li><li><a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a></li><li><a href="../compare.html" data-i18n="nav_compare">Compare</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
     <!-- Sticky mobile CTA bar - appears after 40% scroll -->
     <nav class="fx-sticky-cta" data-fx="stickyCta" aria-label="Quick Actions">
-      <a href="contact.html#intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost">Sample</a>
-      <a href="quote.html" class="fx-sticky-cta__btn fx-sticky-cta__btn--solid">Estimate</a>
+      <a href="../contact.html#intent=sample" class="fx-sticky-cta__btn fx-sticky-cta__btn--ghost">Sample</a>
+      <a href="../quote.html" class="fx-sticky-cta__btn fx-sticky-cta__btn--solid">Estimate</a>
       <a href="tel:+972559661459" class="fx-sticky-cta__btn fx-sticky-cta__btn--call" aria-label="Call">✆</a>
     </nav>
 
@@ -110,7 +125,7 @@
     <section class="fx-audience" hidden="" style="display:none">
       <p class="fx-audience__lead anim-up">I'm looking for a floor for...</p>
       <div class="fx-audience__row">
-        <a href="industrial.html" class="fx-audience__card anim-up anim-d1">
+        <a href="../industrial.html" class="fx-audience__card anim-up anim-d1">
           <div class="fx-audience__thumb" style="background-image:url('../images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg')"></div>
           <div class="fx-audience__body">
             <span class="fx-audience__tag">Business</span>
@@ -119,7 +134,7 @@
           </div>
           <span class="fx-audience__arrow" aria-hidden="true">→</span>
         </a>
-        <a href="designers.html" class="fx-audience__card anim-up anim-d2">
+        <a href="../designers.html" class="fx-audience__card anim-up anim-d2">
           <div class="fx-audience__thumb" style="background-image:url('../images/terrazzo/interrior-222942.jpg')"></div>
           <div class="fx-audience__body">
             <span class="fx-audience__tag">Design</span>
@@ -128,7 +143,7 @@
           </div>
           <span class="fx-audience__arrow" aria-hidden="true">→</span>
         </a>
-        <a href="contact.html#audience=home" class="fx-audience__card anim-up anim-d3">
+        <a href="../contact.html#audience=home" class="fx-audience__card anim-up anim-d3">
           <div class="fx-audience__thumb" style="background-image:url('../images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg')"></div>
           <div class="fx-audience__body">
             <span class="fx-audience__tag">House</span>
@@ -157,10 +172,10 @@
       <div class="fx-picker__head">
         <p class="fx-picker__eyebrow">Floor.DSGN · Israel · Engineering</p>
         <h1 class="fx-picker__h1">Select <em>system</em></h1>
-        <p class="fx-picker__lede">Six families of industrial and design floors. Inside each there are options for load, thickness and price. Not sure - go ahead <a href="decision-tool.html" class="fx-picker__inline-link">selection in 6 questions</a>.</p>
+        <p class="fx-picker__lede">Six families of industrial and design floors. Inside each there are options for load, thickness and price. Not sure - go ahead <a href="../decision-tool.html" class="fx-picker__inline-link">selection in 6 questions</a>.</p>
       </div>
       <div class="fx-picker__grid">
-        <a href="floors/epoxy.html" class="fx-tile">
+        <a href="../floors/epoxy.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Industrial</span>
@@ -169,7 +184,7 @@
             <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
         </a>
-        <a href="floors/terrazzo.html" class="fx-tile">
+        <a href="../floors/terrazzo.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Designer</span>
@@ -178,7 +193,7 @@
             <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
         </a>
-        <a href="floors/microtopping.html" class="fx-tile">
+        <a href="../floors/microtopping.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Decorative</span>
@@ -187,7 +202,7 @@
             <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
         </a>
-        <a href="floors/concrete.html" class="fx-tile">
+        <a href="../floors/concrete.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/microtopping/gray-old-scratched-textured-surface-background.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Minimalism</span>
@@ -196,7 +211,7 @@
             <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
         </a>
-        <a href="floors/pu-cement.html" class="fx-tile">
+        <a href="../floors/pu-cement.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Food / Pharma</span>
@@ -205,7 +220,7 @@
             <span class="fx-tile__arrow" aria-hidden="true">→</span>
           </div>
         </a>
-        <a href="floors/mma.html" class="fx-tile">
+        <a href="../floors/mma.html" class="fx-tile">
           <div class="fx-tile__img" style="background-image:url('../images/terrazzo/cement-concrete-texture-copy-space.jpg')"></div>
           <div class="fx-tile__body">
             <span class="fx-tile__tag">Fast-cure</span>
@@ -216,8 +231,8 @@
         </a>
       </div>
       <div class="fx-picker__foot">
-        <a href="floors.html" class="btn btn-dark">All systems</a>
-        <a href="quote.html" class="btn btn-outline">Estimate calculator</a>
+        <a href="../floors.html" class="btn btn-dark">All systems</a>
+        <a href="../quote.html" class="btn btn-outline">Estimate calculator</a>
       </div>
     </section>
 
@@ -340,28 +355,28 @@
                 <h2 class="section-title" data-i18n="home_services_title">Flooring Systems</h2>
             </div>
             <div class="services-grid">
-                <a href="materials/epoxy.html" class="service-card">
+                <a href="../materials/epoxy.html" class="service-card">
                     <div class="service-image" style="background-image: url('../images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="service-content">
                         <span class="service-label" data-i18n="home_service_epoxy_label">Industrial</span>
                         <h3 data-i18n="home_service_epoxy">Epoxy</h3>
                     </div>
                 </a>
-                <a href="materials/microtopping.html" class="service-card">
+                <a href="../materials/microtopping.html" class="service-card">
                     <div class="service-image" style="background-image: url('../images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="service-content">
                         <span class="service-label" data-i18n="home_service_micro_label">Decorative</span>
                         <h3 data-i18n="home_service_micro">Micro-Topping</h3>
                     </div>
                 </a>
-                <a href="materials/terrazzo.html" class="service-card">
+                <a href="../materials/terrazzo.html" class="service-card">
                     <div class="service-image" style="background-image: url('../images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="service-content">
                         <span class="service-label" data-i18n="home_service_terrazzo_label">Timeless</span>
                         <h3 data-i18n="home_service_terrazzo">Terrazzo</h3>
                     </div>
                 </a>
-                <a href="materials/concrete.html" class="service-card">
+                <a href="../materials/concrete.html" class="service-card">
                     <div class="service-image" style="background-image: url('../images/microtopping/gray-old-scratched-textured-surface-background.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="service-content">
                         <span class="service-label" data-i18n="home_service_concrete_label">Modern</span>
@@ -370,7 +385,7 @@
                 </a>
             </div>
             <div class="services-cta">
-                <a href="floors.html" class="btn btn-outline" data-i18n="home_services_btn">View All Systems</a>
+                <a href="../floors.html" class="btn btn-outline" data-i18n="home_services_btn">View All Systems</a>
             </div>
         </div>
     </section>
@@ -389,7 +404,7 @@
                         <li data-i18n="home_quality_item3">Full project warranty</li>
                         <li data-i18n="home_quality_item4">Ongoing maintenance support</li>
                     </ul>
-                    <a href="about.html" class="btn btn-outline" data-i18n="home_quality_btn">Learn More</a>
+                    <a href="../about.html" class="btn btn-outline" data-i18n="home_quality_btn">Learn More</a>
                 </div>
                 <div class="quality-image">
                     <img src="../images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="Professional floor installation" loading="lazy">
@@ -508,7 +523,7 @@
                 </div>
             </div>
             <div class="projects-cta">
-                <a href="projects.html" class="btn btn-dark" data-i18n="home_projects_btn">View All Projects</a>
+                <a href="../projects.html" class="btn btn-dark" data-i18n="home_projects_btn">View All Projects</a>
             </div>
         </div>
     </section>
@@ -536,7 +551,7 @@
             <h2 data-i18n="cta_title">Ready to Start?</h2>
             <p data-i18n="cta_text">Free consultation, site assessment, and detailed quote within 48 hours.</p>
             <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-outline-white" data-i18n="cta_btn_quote">Get Free Quote</a>
+                <a href="../contact.html" class="btn btn-outline-white" data-i18n="cta_btn_quote">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white" data-i18n="cta_btn_call">Call Now</a>
             </div>
             <div class="cta-contact">
@@ -560,7 +575,7 @@
     </footer>
 
     <!-- STICKY CTA -->
-    <a href="contact.html" class="sticky-cta" id="stickyCta">
+    <a href="../contact.html" class="sticky-cta" id="stickyCta">
         <span data-i18n="sticky_cta">Get Quote</span>
     </a>
 
@@ -587,8 +602,8 @@
         }, { threshold: 0.1 });
         fadeElements.forEach(el => fadeObserver.observe(el));
     </script>
-    <script src="../translations.js?v=20260520b"></script>
-    <script src="../enhance.js?v=20260520c" defer=""></script>
+    <script src="../translations.js?v=20260521a"></script>
+    <script src="../enhance.js?v=20260522a" defer=""></script>
 
 
 

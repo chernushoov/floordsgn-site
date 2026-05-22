@@ -14,7 +14,7 @@ const DIST = path.join(ROOT, 'dist');
 const ASSET_DIRS = [
   'images', 'fonts', 'css', 'js', '3d-assets', 'articles',
   'encyclopedia', 'en', 'floors', 'verticals', 'content',
-  'materials', 'public', 'assets'
+  'materials', 'specs', 'plate3d', 'public', 'assets'
 ];
 
 const ASSET_EXT_PASSTHROUGH = new Set([
@@ -29,7 +29,7 @@ const ASSET_EXT_PASSTHROUGH = new Set([
 const SKIP_ROOT = new Set([
   'node_modules', '.git', '.parcel-cache', 'dist', 'dist-parcel',
   '_backups', '_screens', 'research', 'competitor-monitor', 'astro',
-  'docs', 'SYSTEM', 'portfolio-research', 'specs', 'plate3d',
+  'docs', 'SYSTEM', 'portfolio-research',
   '.openclaw', 'admin', 'scripts', 'api',
   'AGENTS.md', 'BOOTSTRAP.md', 'HEARTBEAT.md', 'IDENTITY.md',
   'SOUL.md', 'TOOLS.md', 'USER.md',

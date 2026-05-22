@@ -11,25 +11,41 @@
     <meta property="og:type" content="article">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
-    <link rel="stylesheet" href="../chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../studio.html" data-i18n="nav_studio">Studio</a>
+            <a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a>
+            <a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a>
+            <a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
+            <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../studio.html" data-i18n="nav_studio">Studio</a></li><li><a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a></li><li><a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a></li><li><a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a></li><li><a href="../compare.html" data-i18n="nav_compare">Compare</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
-
-    <article class="article-page">
+    <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
                 <a href="../blog.html" class="back-link">Back to Blog</a>
@@ -190,13 +206,140 @@
         </div>
     </article>
 
-    <section class="cta-section">
+    <section class="cta-section" data-lang-block="en">
         <div class="container">
             <h2>Ready to Start Your Project?</h2>
             <p>Get expert advice on substrate preparation and moisture testing.</p>
             <div class="cta-buttons">
                 <a href="../contact.html" class="btn btn-outline-white">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Монтаж</span>
+                <h1>Тестирование влажности основания: методы и предельные значения</h1>
+                <p class="article-meta">Январь 2026 · 8 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/terrazzo/vysota-2.jpg" alt="Контроль влажности бетонного основания" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Влага — один из самых тихих и самых дорогих врагов полимерных полов. Именно она чаще всего стоит за вздутиями, осмосом, отслоением, пятнами и внезапным «почему всё держалось, а потом отвалилось». Почти любая грамотная система пола начинается не с цвета и не с толщины, а с вопроса: что происходит внутри бетона прямо сейчас?</p>
+
+                    <h2>Почему влажность настолько критична</h2>
+                    <p>Полимерный пол работает как относительно плотная мембрана. Если бетон под ним ещё отдаёт влагу или получает её снизу, давление пара и растворённые соли начинают искать выход. Результат — пузыри, осмос, потеря адгезии, белёсые следы, soft spots и разрушение интерфейса между основанием и покрытием.</p>
+                    <p>Особенно опасно то, что бетон может выглядеть «сухим» сверху, но оставаться влажным по глубине. Именно поэтому визуальной оценки никогда недостаточно.</p>
+
+                    <h2>Откуда приходит влага в бетон</h2>
+
+                    <h3>1. Вода затворения</h3>
+                    <p>Свежая плита всегда содержит избыточную влагу после укладки. Её нужно не «переждать на глаз», а подтверждать измерениями.</p>
+
+                    <h3>2. Подсос снизу</h3>
+                    <p>Если под плитой нет рабочей пароизоляции или она повреждена, влага из грунта может подниматься в конструкцию годами.</p>
+
+                    <h3>3. Внешняя среда</h3>
+                    <p>Мойка, дождь, влажный климат, плохая вентиляция, конденсат и технологическая влага на объекте также влияют на равновесие в плите.</p>
+
+                    <h3>4. Локальные утечки</h3>
+                    <p>Сантехника, hidden leaks и мокрые технологические зоны часто дают локальную проблему, которую пропускают, если тесты сделаны формально.</p>
+
+                    <h2>Основные методы измерения</h2>
+
+                    <h3>1. Calcium Chloride Test (ASTM F1869)</h3>
+                    <p>Показывает скорость паровыделения с поверхности. Метод полезный, но поверхностный: он не даёт полной картины того, что происходит в глубине бетона.</p>
+                    <ul>
+                        <li>подходит как дополнительный индикатор;</li>
+                        <li>чувствителен к состоянию поверхности и климату на момент теста;</li>
+                        <li>часто используется там, где так исторически привыкли работать.</li>
+                    </ul>
+
+                    <h3>2. Relative Humidity Test (ASTM F2170)</h3>
+                    <p>На практике это один из самых полезных методов для полимерных полов. Датчик устанавливается в толщу плиты, и вы получаете представление о внутренней влажности, а не только о поведении самой верхней зоны.</p>
+                    <ul>
+                        <li>лучше отражает реальную картину для thick slab;</li>
+                        <li>особенно важен перед смолами и плотными системами;</li>
+                        <li>даёт данные, по которым можно принимать инженерное решение, а не гадать.</li>
+                    </ul>
+
+                    <h3>3. Plastic Sheet Test (ASTM D4263)</h3>
+                    <p>Простейший способ для предварительной оценки. Он может показать, что проблема точно есть, но не может надёжно подтвердить, что проблемы нет. Для серьёзной спецификации этого недостаточно.</p>
+
+                    <h3>4. Электронные влагомеры</h3>
+                    <p>Удобны для быстрого сканирования зоны и поиска подозрительных участков, но не должны быть единственной основой для решения о заливке покрытия.</p>
+
+                    <h2>Сколько тестов и где именно делать</h2>
+                    <p>Недостаточно измерить одну точку «в центре комнаты» и закрыть вопрос. Тестирование должно охватывать:</p>
+                    <ul>
+                        <li>наружные стены и потенциально холодные зоны;</li>
+                        <li>участки у ворот, мокрых зон, санузлов, drains и технологических линий;</li>
+                        <li>разные карты бетонирования и зоны с разной толщиной плиты;</li>
+                        <li>подозрительные участки после мойки, утечек или ремонта.</li>
+                    </ul>
+
+                    <h2>Как интерпретировать результат</h2>
+                    <p>Нет единственного «магического» числа для всех систем. Всегда надо смотреть на требования конкретного материала и на реальную схему пола. Одни покрытия терпят больше, другие требуют более сухого основания.</p>
+                    <p>Но общий принцип неизменен: если вы видите превышение пределов производителя и всё равно идёте в монтаж без mitigation, вы не ускоряете проект — вы переносите аварию на более дорогой этап.</p>
+
+                    <h2>Что делать, если влажность завышена</h2>
+
+                    <h3>1. Подождать естественное высыхание</h3>
+                    <p>Иногда это правильный ответ, особенно на новой плите. Но ожидание должно быть обосновано повторными тестами, а не календарём.</p>
+
+                    <h3>2. Применить moisture mitigation system</h3>
+                    <p>Если сроки проекта жёсткие, а система допускает решение через влагоблокирующий праймер, это может быть рабочим путём. Но только в рамках совместимой спецификации.</p>
+
+                    <h3>3. Выбрать влаготерпимую систему</h3>
+                    <p>Для части объектов разумнее сразу уйти в PU-cement или другую систему, которая лучше переносит остаточную влажность и тяжёлую эксплуатацию.</p>
+
+                    <h3>4. Проверить конструктив</h3>
+                    <p>Если причина — не новая плита, а постоянный подсос снизу, локальная утечка или отсутствие барьера, косметическое решение проблему не закроет. Нужно убирать источник влаги.</p>
+
+                    <div class="article-cta">
+                        <h3>Сомневаетесь в состоянии основания?</h3>
+                        <p>Сначала тестируем плиту, потом обсуждаем систему. Именно в такой последовательности экономятся деньги и нервы.</p>
+                        <a href="../contact.html" class="btn btn-dark">Запросить диагностику основания</a>
+                    </div>
+                </div>
+
+                <aside class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Связанные статьи</h4>
+                        <ul>
+                            <li><a href="concrete-crack-repair.html">Ремонт трещин в бетоне</a></li>
+                            <li><a href="self-leveling-screeds.html">Самонивелирующиеся стяжки</a></li>
+                            <li><a href="epoxy-vs-polyurethane.html">Эпокси vs полиуретан</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>Что помнить</h4>
+                        <ul class="quick-facts">
+                            <li><strong>Главное:</strong> сухой вид бетона ничего не гарантирует</li>
+                            <li><strong>Метод:</strong> RH test чаще полезнее поверхностной оценки</li>
+                            <li><strong>Решение:</strong> не маскировать влагу, а управлять причиной</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Готовы начать проект?</h2>
+            <p>Проверим влажность, прочность и состояние плиты до того, как в проект войдут дорогие материалы.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить расчёт</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
     </section>
@@ -214,7 +357,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js?v=20260520b" defer></script>
+    <script src="../translations.js?v=20260521a" defer></script>
 
     <script type="application/ld+json">
     {

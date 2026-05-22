@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "script"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "_backups/",
+    "_audit/",
+    "_screens/",
+    "_external/",
+    "dist/",
+    "research/",
+    "competitor-monitor/",
+    "astro/",
+    "articles/",
+    "encyclopedia/",
+    "admin/"
+  ],
+  "rules": {
+    "no-undef": "error",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-redeclare": "error"
+  }
+}

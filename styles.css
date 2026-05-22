@@ -1543,7 +1543,8 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     padding: 0 20px;
 }
 
-.filter-btn {
+.filter-btn,
+.blog-filter-btn {
     padding: 12px 24px;
     font-size: 13px;
     font-weight: 500;
@@ -1558,11 +1559,13 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     color: var(--black);
 }
 
-.filter-btn:hover {
+.filter-btn:hover,
+.blog-filter-btn:hover {
     background: rgba(0,0,0,0.08);
 }
 
-.filter-btn.active {
+.filter-btn.active,
+.blog-filter-btn.active {
     background: var(--black);
     color: var(--white);
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -1570,6 +1573,34 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 
 .blog-section {
     padding: 80px 0;
+}
+
+.blog-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.blog-group-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.blog-group-head h2 {
+    margin: 0;
+    font-size: 42px;
+}
+
+.blog-group-head p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--grey-text);
+    line-height: 1.7;
 }
 
 .blog-grid {
@@ -3670,9 +3701,25 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
         padding: 0 16px;
     }
 
-    .filter-btn {
+    .filter-btn,
+    .blog-filter-btn {
         padding: 8px 12px;
         font-size: 12px;
+    }
+
+    .blog-groups {
+        gap: 48px;
+    }
+
+    .blog-group-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+    }
+
+    .blog-group-head h2 {
+        font-size: 32px;
     }
 }
 /* ==================== ARTICLE PAGE STYLES - PREMIUM APPLE-STYLE ==================== */
@@ -5046,7 +5093,8 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     padding: 0 40px;
 }
 
-.filter-btn {
+.filter-btn,
+.blog-filter-btn {
     padding: 10px 24px;
     font-size: 14px;
     font-weight: 500;
@@ -5059,7 +5107,9 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .filter-btn:hover,
-.filter-btn.active {
+.filter-btn.active,
+.blog-filter-btn:hover,
+.blog-filter-btn.active {
     background: var(--black);
     color: #fff;
 }
@@ -5283,6 +5333,38 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 .blog-section {
     padding: 80px 0;
     background: #f8f9fa;
+}
+
+.blog-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.blog-group-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+}
+
+.blog-group-head h2 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: var(--black);
+}
+
+.blog-group-head p {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--grey-text);
 }
 
 .blog-grid {

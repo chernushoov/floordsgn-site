@@ -749,7 +749,7 @@
     // Approx USD->ILS for orientational dual display. Updated periodically.
     const ILS_PER_USD = 3.65;
     const cta = card.querySelector('.fx-calc-cta');
-    const baseHref = cta ? cta.getAttribute('href') : 'contact.html';
+    const baseHref = (cta && cta.getAttribute('href')) || 'contact.html';
 
     const set = () => {
       const m2 = +$area.value;
@@ -2113,15 +2113,16 @@
         if (submit) submit.disabled = true;
         status.textContent = text('Отправляем...', 'Sending...');
 
-        const data = Object.fromEntries(new FormData(form).entries());
-        data.page = window.location.pathname;
-        data.source = data.source || 'sample-modal';
+        const body = new URLSearchParams();
+        new FormData(form).forEach((v, k) => body.append(k, v));
+        body.append('page', window.location.pathname);
+        if (!body.has('source')) body.append('source', 'sample-modal');
 
         try {
-          const response = await fetch(form.getAttribute('action') || '/api/contact', {
+          const response = await fetch('/', {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            body: body.toString(),
           });
 
           if (!response.ok) throw new Error('Sample request failed');

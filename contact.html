@@ -22,23 +22,39 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260520b">
-    <link rel="stylesheet" href="chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="styles.css?v=20260521a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="index.html" class="logo"><img src="images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="studio.html" data-i18n="nav_studio">Studio</a>
+            <a href="substrate-check.html" data-i18n="nav_substrate">Substrate Check</a>
+            <a href="decision-tool.html" data-i18n="nav_decision">System Finder</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
+            <a href="compare.html" data-i18n="nav_compare">Compare</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="contact.html" class="btn btn-dark active" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
-
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="studio.html" data-i18n="nav_studio">Studio</a></li><li><a href="substrate-check.html" data-i18n="nav_substrate">Substrate Check</a></li><li><a href="decision-tool.html" data-i18n="nav_decision">System Finder</a></li><li><a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a></li><li><a href="compare.html" data-i18n="nav_compare">Compare</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
     <section class="contact-hero">
         <div class="container">
@@ -55,7 +71,9 @@
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
                     <h2 data-i18n="contact_form_title">Send Us a Message</h2>
-                    <form class="contact-form" id="contactForm" name="contact" method="POST">
+                    <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name" data-i18n="contact_label_name">Name *</label>
@@ -196,53 +214,34 @@
         <span>WhatsApp</span>
     </a>
 
-    <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20a%20flooring%20project." class="sticky-cta sticky-cta-whatsapp" id="stickyCta" target="_blank" rel="noopener">
-        <span>WhatsApp</span>
-    </a>
-
     <script src="script.js"></script>
-    <script src="translations.js?v=20260520b" defer></script>
+    <script src="translations.js?v=20260521a" defer></script>
     <script>
     (function() {
-      // Stable Vercel API endpoint (no cloudflared dependency)
-      var WEBHOOK = '/api/contact';
-
       var form = document.getElementById('contactForm');
       var msgBox = document.getElementById('form-message');
       var btn = document.getElementById('submitBtn');
 
       if (!form) return;
 
+      // Netlify Forms (reliable on the static Netlify deploy) — replaces the
+      // dead /api/contact endpoint that silently dropped leads.
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         btn.disabled = true;
         btn.textContent = 'Sending...';
         msgBox.style.display = 'none';
 
-        var data = {
-          name:         form.querySelector('[name=name]')?.value || '',
-          phone:        form.querySelector('[name=phone]')?.value || '',
-          email:        form.querySelector('[name=email]')?.value || '',
-          project_type: form.querySelector('[name=project-type]')?.value || '',
-          floor_system: form.querySelector('[name=floor-system]')?.value || '',
-          area:         form.querySelector('[name=area]')?.value || '',
-          message:      form.querySelector('[name=message]')?.value || '',
-          page:         'contact',
-          source:       'floordsgn-website',
-          ts:           new Date().toISOString()
-        };
+        var body = new URLSearchParams();
+        new FormData(form).forEach(function(v, k){ body.append(k, v); });
 
-        fetch(WEBHOOK, {
+        fetch('/', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
         })
         .then(function(r) {
-          if (!r.ok) throw new Error('Lead relay failed');
-          return r.json();
-        })
-        .then(function(payload) {
-          if (payload && payload.ok === false) throw new Error('Lead relay failed');
+          if (!r.ok) throw new Error('submit failed');
           form.reset();
           window.location.href = 'thank-you.html?source=contact';
         })

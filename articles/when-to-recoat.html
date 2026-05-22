@@ -11,25 +11,41 @@
     <meta property="og:type" content="article">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
-    <link rel="stylesheet" href="../chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../studio.html" data-i18n="nav_studio">Studio</a>
+            <a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a>
+            <a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a>
+            <a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
+            <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../studio.html" data-i18n="nav_studio">Studio</a></li><li><a href="../substrate-check.html" data-i18n="nav_substrate">Substrate Check</a></li><li><a href="../decision-tool.html" data-i18n="nav_decision">System Finder</a></li><li><a href="../visualizer.html" data-i18n="nav_visualizer">Visualizer</a></li><li><a href="../compare.html" data-i18n="nav_compare">Compare</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
-
-    <article class="article-page">
+    <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
                 <a href="../blog.html" class="back-link">Back to Blog</a>
@@ -239,13 +255,234 @@
         </div>
     </article>
 
-    <section class="cta-section">
+    <section class="cta-section" data-lang-block="en">
         <div class="container">
             <h2>Ready to Extend Your Floor's Life?</h2>
             <p>Get expert advice on floor maintenance and recoating.</p>
             <div class="cta-buttons">
                 <a href="../contact.html" class="btn btn-outline-white">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Обслуживание</span>
+                <h1>Когда пора перекрывать пол заново</h1>
+                <p class="article-meta">Ноябрь 2025 · 6 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/terrazzo/worker-applies-gray-epoxy-resin-new-floor.jpg" alt="Процесс перекрытия пола" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Промышленные покрытия почти никогда не разрушаются мгновенно. До серьёзного отказа система обычно долго показывает предупреждающие признаки. Если заметить их вовремя, можно ограничиться грамотным recoating и продлить жизнь полу без дорогой полной замены. Вопрос не в том, есть ли износ, а в том, где проходит граница между нормальным старением и моментом, когда тянуть уже невыгодно.</p>
+
+                    <h2>Визуальные сигналы</h2>
+
+                    <h3>1. Зоны выработки по траекториям трафика</h3>
+                    <p>Самый очевидный индикатор — следы там, где движение концентрируется сильнее всего.</p>
+                    <ul>
+                        <li>изменение цвета на проходах и разворотах техники;</li>
+                        <li>просвечивание заполнителя или основания;</li>
+                        <li>явно читаемые дорожки от погрузчиков, рокл и пешеходного потока;</li>
+                        <li>разница между защищёнными и постоянно нагруженными зонами.</li>
+                    </ul>
+                    <p><strong>Порог решения:</strong> если рисунок износа уже виден, но рабочий слой ещё не полностью пробит, это идеальный момент для перекрытия.</p>
+
+                    <h3>2. Потеря блеска</h3>
+                    <p>Тусклая поверхность часто говорит о том, что верхний защитный слой начинает уходить.</p>
+                    <ul>
+                        <li>сравните активные зоны с участками под оборудованием или у стен;</li>
+                        <li>посмотрите на разницу отражения в косом свете;</li>
+                        <li>обратите внимание, не стала ли поверхность более шероховатой на ощупь.</li>
+                    </ul>
+                    <p><strong>Важно:</strong> потеря блеска сама по себе не означает срочную аварию, но показывает, что износ ускоряется.</p>
+
+                    <h3>3. Царапины и абразивное повреждение</h3>
+                    <p>Следы от техники, инструмента и твёрдых загрязнений могут быть как косметикой, так и первым предупреждением.</p>
+                    <ul>
+                        <li>дуговые следы от разворотов погрузчиков;</li>
+                        <li>линейные царапины от перетаскивания оборудования;</li>
+                        <li>локальные выбоины от падения тяжёлых предметов.</li>
+                    </ul>
+                    <p><strong>Оценка риска:</strong> поверхностные царапины обычно не критичны. Глубокие повреждения, вскрывающие основание, уже требуют вмешательства.</p>
+
+                    <h3>4. Химические пятна</h3>
+                    <p>Если покрытие начало заметно окрашиваться или размягчаться, это сигнал, что его химическая стойкость уже не соответствует рабочей среде.</p>
+                    <ul>
+                        <li>пятна, которые не уходят после нормальной очистки;</li>
+                        <li>мягкие или липкие зоны после контакта с химией;</li>
+                        <li>травление поверхности и рост шероховатости.</li>
+                    </ul>
+
+                    <h3>5. Отслоение и шелушение</h3>
+                    <p>Это уже более серьёзная история.</p>
+                    <ul>
+                        <li>поднятие покрытия у кромок или пластами;</li>
+                        <li>вздутия, часто связанные с влагой;</li>
+                        <li>разделение слоёв в многослойной системе.</li>
+                    </ul>
+                    <p><strong>Предупреждение:</strong> delamination почти всегда означает проблему адгезии. Простого recoating может быть недостаточно, если не устранена причина.</p>
+
+                    <h2>Какие проверки помогают принять решение</h2>
+
+                    <h3>Тест на адгезию</h3>
+                    <p>Pull-off testing по ASTM D4541 показывает фактическую прочность связи с основанием.</p>
+                    <ul>
+                        <li>первичная спецификация обычно находится в диапазоне 1.5-2.5 МПа;</li>
+                        <li>минимум для адекватного перекрытия — около 1.0 МПа;</li>
+                        <li>ниже 1.0 МПа уже стоит рассматривать снятие и полное восстановление системы.</li>
+                    </ul>
+
+                    <h3>Измерение толщины</h3>
+                    <p>Ультразвуковые или магнитные приборы помогают понять, сколько слоя реально осталось.</p>
+                    <ul>
+                        <li>замеры делают в разных сценариях: трафик, периферия, защищённые зоны;</li>
+                        <li>сравнение с исходной толщиной показывает реальную скорость износа;</li>
+                        <li>по этим данным можно спрогнозировать остаточный ресурс.</li>
+                    </ul>
+
+                    <h3>Простой тест с каплей воды</h3>
+                    <p>Он не заменяет полноценную диагностику, но хорошо показывает состояние поверхности.</p>
+                    <ul>
+                        <li>нанесите несколько капель в разных зонах;</li>
+                        <li>если вода быстро распластывается, защитный верхний слой, скорее всего, уже выработан;</li>
+                        <li>сравнивайте поведение с малонагруженными участками.</li>
+                    </ul>
+
+                    <h2>Recoating или полная замена</h2>
+
+                    <h3>Перекрытие оправдано, когда:</h3>
+                    <ul>
+                        <li>износ носит косметический характер или ограничен верхним слоем;</li>
+                        <li>адгезия остаётся достаточной, то есть выше 1.0 МПа;</li>
+                        <li>нет массового отслоения и вздутий;</li>
+                        <li>основание конструктивно здорово;</li>
+                        <li>новый продукт совместим с существующей системой.</li>
+                    </ul>
+
+                    <h3>Полная замена нужна, когда:</h3>
+                    <ul>
+                        <li>адгезия уже провалена по значительной площади;</li>
+                        <li>влажностная проблема не решена;</li>
+                        <li>покрытие выработано до основания большими полями;</li>
+                        <li>химическая атака прошла через всю толщину системы;</li>
+                        <li>само основание требует ремонта или изменения конструкции.</li>
+                    </ul>
+
+                    <h2>Как проходит перекрытие</h2>
+
+                    <h3>Подготовка поверхности</h3>
+                    <p>Ключевой этап для новой адгезии.</p>
+                    <ul>
+                        <li>полная очистка от загрязнений и остатков химии;</li>
+                        <li>механическая активация поверхности шлифовкой или дробеструем;</li>
+                        <li>создание рабочего профиля под новый слой;</li>
+                        <li>локальный ремонт дефектов до нанесения.</li>
+                    </ul>
+
+                    <h3>Подбор материала</h3>
+                    <ul>
+                        <li>новый продукт должен быть совместим со старым покрытием;</li>
+                        <li>чаще всего безопаснее оставаться в одной продуктовой семье или у рекомендованного производителя;</li>
+                        <li>иногда имеет смысл сразу поднять класс topcoat по химии или износу;</li>
+                        <li>в зависимости от состояния поверхности может потребоваться отдельный праймер.</li>
+                    </ul>
+
+                    <h3>Нанесение</h3>
+                    <ul>
+                        <li>важно буквально соблюдать регламент производителя;</li>
+                        <li>температура и влажность должны находиться в допустимом окне;</li>
+                        <li>типичный recoating даёт 150-300 микрон в один слой;</li>
+                        <li>для heavy-duty сценариев делают 300-500+ микрон, иногда в несколько проходов.</li>
+                    </ul>
+
+                    <h2>Профилактический график</h2>
+                    <p>Частота инспекций зависит от среды, а не только от возраста покрытия.</p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Среда</th>
+                                <th>Осмотр</th>
+                                <th>Типичный интервал перекрытия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Тяжёлая промышленность</td>
+                                <td>Раз в квартал</td>
+                                <td>3-5 лет</td>
+                            </tr>
+                            <tr>
+                                <td>Производство</td>
+                                <td>Раз в полгода</td>
+                                <td>5-7 лет</td>
+                            </tr>
+                            <tr>
+                                <td>Склад</td>
+                                <td>Раз в год</td>
+                                <td>7-10 лет</td>
+                            </tr>
+                            <tr>
+                                <td>Коммерческая среда</td>
+                                <td>Раз в год</td>
+                                <td>10-15 лет</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Экономика вопроса</h2>
+                    <p>Перекрытие обычно стоит 30-50% от полной замены системы.</p>
+                    <ul>
+                        <li><strong>Recoating:</strong> примерно $15-40/м² в зависимости от системы;</li>
+                        <li><strong>Полная замена:</strong> примерно $50-120/м²;</li>
+                        <li><strong>Простой объекта:</strong> 1-2 дня против 5-7+ дней при полном цикле замены.</li>
+                    </ul>
+                    <p>Если сделать recoating вовремя, общий ресурс системы может вырасти ещё на 50-100%, что делает такой шаг одним из самых экономичных решений в lifecycle cost.</p>
+
+                    <div class="article-cta">
+                        <h3>Нужна оценка состояния пола?</h3>
+                        <p>Проверим текущий износ, адгезию и совместимость материалов, чтобы предложить не лишние работы, а реально выгодную стратегию обслуживания.</p>
+                        <a href="../contact.html" class="btn btn-dark">Запросить оценку</a>
+                    </div>
+                </div>
+
+                <aside class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Связанные статьи</h4>
+                        <ul>
+                            <li><a href="industrial-cleaning.html">Протоколы очистки полов</a></li>
+                            <li><a href="epoxy-vs-polyurethane.html">Эпокси vs полиуретан</a></li>
+                            <li><a href="substrate-moisture-testing.html">Контроль влажности</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>Короткая справка</h4>
+                        <ul class="quick-facts">
+                            <li><strong>Минимальная адгезия:</strong> 1.0 МПа</li>
+                            <li><strong>Стоимость recoating:</strong> 30-50% от замены</li>
+                            <li><strong>Продление ресурса:</strong> 50-100%</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Готовы продлить жизнь вашему полу?</h2>
+            <p>Подскажем, когда достаточно перекрытия, а когда уже честнее и безопаснее идти в полноценное восстановление.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить расчёт</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
     </section>
@@ -263,7 +500,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js?v=20260520b" defer></script>
+    <script src="../translations.js?v=20260521a" defer></script>
 
     <script type="application/ld+json">
     {
