@@ -138,6 +138,7 @@
     <p class="st-lede">Подберите систему под вашу задачу за 30 секунд, разберитесь в нормах Израиля, соберите послойный «пирог», прикиньте стоимость и скачайте готовую спецификацию. Дальше — образец или точная смета.</p>
     <nav class="st-tabs" aria-label="Разделы студии">
       <a class="st-tab on" href="#guide" data-st-tab="guide">Подбор</a>
+      <a class="st-tab" href="#diag" data-st-tab="diag">Чинить/менять</a>
       <a class="st-tab" href="#norms" data-st-tab="norms">Нормы Израиля</a>
       <a class="st-tab" href="#build" data-st-tab="build">Пирог</a>
       <a class="st-tab" href="#compare" data-st-tab="compare">Сравнение</a>
@@ -202,6 +203,50 @@
         <a class="btn" id="stResCost" href="#cost" data-st-tab="cost">Цена для моей площади</a>
         <a class="btn" href="contact.html">Вызвать замерщика</a>
       </div>
+    </div>
+  </section>
+
+  <!-- 0.5 DIAGNOSE: чинить или менять -->
+  <section class="st-sec" id="diag">
+    <p class="st-kicker">Уже есть пол</p>
+    <h2 class="st-h2">Чинить или менять — диагностика</h2>
+    <p class="st-sub">3 вопроса о состоянии существующего пола → диагноз и что делать: перекрытие, ремонт или замена. Можно сразу прислать фото в WhatsApp.</p>
+    <div class="st-guide">
+      <div class="st-qrow"><p class="st-qlbl">Что сейчас за пол</p><div class="st-opts" data-dq="floor">
+        <button class="st-opt on" data-v="concrete">Бетон / стяжка</button>
+        <button class="st-opt" data-v="epoxy">Старый эпокси / смола</button>
+        <button class="st-opt" data-v="tile">Плитка</button>
+        <button class="st-opt" data-v="paint">Краска / тонкое</button>
+        <button class="st-opt" data-v="self">Наливной</button>
+        <button class="st-opt" data-v="unknown">Не знаю</button>
+      </div></div>
+      <div class="st-qrow"><p class="st-qlbl">Главная проблема</p><div class="st-opts" data-dq="problem">
+        <button class="st-opt on" data-v="cracks">Трещины</button>
+        <button class="st-opt" data-v="delam">Отслоение / пузыри</button>
+        <button class="st-opt" data-v="wear">Износ / пыль</button>
+        <button class="st-opt" data-v="moisture">Влага / сырость</button>
+        <button class="st-opt" data-v="stains">Пятна / химия</button>
+        <button class="st-opt" data-v="uneven">Неровность</button>
+        <button class="st-opt" data-v="look">Устарел / вид</button>
+      </div></div>
+      <div class="st-qrow"><p class="st-qlbl">Масштаб</p><div class="st-opts" data-dq="scale">
+        <button class="st-opt on" data-v="local">Локально</button>
+        <button class="st-opt" data-v="spots">Местами</button>
+        <button class="st-opt" data-v="all">По всей площади</button>
+      </div></div>
+      <button class="st-go" id="stDiagGo">Поставить диагноз →</button>
+    </div>
+    <div class="st-result hide" id="stDiagResult">
+      <h3>Диагноз</h3>
+      <p class="rn" id="stDiagTitle">—</p>
+      <p class="rw"><b>Рекомендация:</b> <span id="stDiagAction">—</span></p>
+      <p class="rw" id="stDiagWhy">—</p>
+      <div class="st-actions">
+        <a class="btn btn-dark" id="stDiagWa" href="#" target="_blank" rel="noopener">Прислать 3 фото в WhatsApp</a>
+        <a class="btn" href="contact.html">Вызвать замерщика</a>
+        <a class="btn" href="substrate-check.html">Проверить готовность основания</a>
+      </div>
+      <p class="st-note">Точный диагноз — после выезда с тестом влажности основания. Бесплатно, 48 ч.</p>
     </div>
   </section>
 
@@ -481,6 +526,34 @@
         cmp.innerHTML='<div class="stc-wrap"><table class="stc-table"><thead><tr><th>Система</th><th>Толщина</th><th>Цена ₪/м²</th><th>R-класс</th><th>Отверждение</th><th>HACCP</th><th>Нормы</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
       }
       if(cmp){ buildCompare(); cmp.addEventListener('click',function(e){var b=e.target.closest('.stc-pick');if(!b)return;selectSystem(b.getAttribute('data-slug'),'build');}); }
+
+      // ---- diagnosis: чинить или менять ----
+      var dans={floor:'concrete',problem:'cracks',scale:'local'};
+      document.querySelectorAll('.st-opts[data-dq]').forEach(function(row){
+        row.addEventListener('click',function(e){var b=e.target.closest('.st-opt');if(!b)return;
+          row.querySelectorAll('.st-opt').forEach(function(x){x.classList.remove('on');});b.classList.add('on');
+          dans[row.getAttribute('data-dq')]=b.getAttribute('data-v');});
+      });
+      var DIAG={
+        cracks:{action:'Ремонт трещин + перекрытие',title:'Трещины основания',why:'Различаем усадочные и активные трещины. Локально — ремонт по EN 1504 и перекрытие; по всей площади — возможна crack-isolation мембрана и новая система. Точно — после осмотра.'},
+        delam:{action:'Снять покрытие + новая система по сухому',title:'Отслоение / пузыри',why:'Чаще причина — влага в основании или плохая адгезия старого слоя. Перекрывать поверх нельзя: нужен тест влажности (RH/CM), снятие отслоившегося покрытия и укладка по сухому.'},
+        wear:{action:'Перекрытие (recoat / overlay)',title:'Износ верхнего слоя',why:'Если основа цела — самый дешёвый сценарий: обеспыливание, шлифовка и перекрытие без полного демонтажа.'},
+        moisture:{action:'Диагностика влаги + гидрозащита',title:'Влага / сырость основания',why:'Влага — причина отказа №1: любое покрытие отслоится, пока не решён источник. Нужен тест RH и паробарьер/гидроизоляция перед новым полом.'},
+        stains:{action:'Перекрытие химстойкой системой',title:'Химповреждение финиша',why:'Повреждён финиш — перекрытие химстойкой системой (PU-cement/эпокси). Если химия проела тело — локальный ремонт и перекрытие.'},
+        uneven:{action:'Выравнивание + новый финиш',title:'Неровность основания',why:'Самовыравнивающаяся стяжка под перепад и новый финиш (микротопинг/эпокси/терраццо).'},
+        look:{action:'Overlay без демонтажа',title:'Устарел / косметика',why:'Если основа в порядке — overlay поверх (микротопинг или терраццо) обновляет вид без демонтажа, быстрее и дешевле замены.'}
+      };
+      var dGo=document.getElementById('stDiagGo');
+      if(dGo){ dGo.addEventListener('click',function(){
+        var r=DIAG[dans.problem]||DIAG.cracks; var action=r.action;
+        if(dans.floor==='unknown'||dans.problem==='moisture'||dans.problem==='delam') action='Нужна диагностика на месте · '+action;
+        else if(dans.scale==='all'&&(dans.problem==='cracks'||dans.problem==='stains')) action='Оценка по всей площади · возможна замена';
+        document.getElementById('stDiagTitle').textContent=r.title;
+        document.getElementById('stDiagAction').textContent=action;
+        document.getElementById('stDiagWhy').textContent=r.why;
+        document.getElementById('stDiagWa').setAttribute('href','https://wa.me/972559661459?text='+encodeURIComponent('Здравствуйте! Нужна диагностика пола. Проблема: '+r.title+'. Прилагаю фото.'));
+        var res=document.getElementById('stDiagResult'); res.classList.remove('hide'); res.scrollIntoView({behavior:'smooth'});
+      }); }
 
       render('epoxy');
     })();
