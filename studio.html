@@ -308,6 +308,7 @@
         <div class="st-actions">
           <button class="btn btn-dark" id="stSpecBtn" type="button">Скачать спецификацию (PDF)</button>
           <a class="btn" id="stOpen3d" href="configurator.html">Открыть в 3D →</a>
+          <a class="btn" id="stRoom" href="room-visualizer.html">Посмотреть в комнате →</a>
           <a class="btn" id="stSample" href="sample-kit.html">Заказать образец</a>
         </div>
       </div>
@@ -482,6 +483,7 @@
         specEl.innerHTML=s.spec.map(function(r){return '<div class="st-specrow"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';}).join('');
         badgesEl.innerHTML=s.badges.map(function(b){return '<span class="st-badge">'+b+'</span>';}).join('');
         open3d.setAttribute('href','configurator.html?mat='+encodeURIComponent(slug));
+        var roomA=document.getElementById('stRoom'); if(roomA) roomA.setAttribute('href','room-visualizer.html?mat='+encodeURIComponent(slug));
         sampleA.setAttribute('href','sample-kit.html?material_slug='+encodeURIComponent(slug)+'&material_label='+encodeURIComponent(s.name));
         chips.querySelectorAll('.st-syschip').forEach(function(x){x.classList.toggle('on', x.getAttribute('data-slug')===slug);});
         renderBoq(slug);

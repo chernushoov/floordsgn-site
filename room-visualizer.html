@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Floor.DSGN — Ваша комната, наш пол · превью в интерьере</title>
+<meta name="description" content="Загрузите фото своей комнаты, отметьте пол — и увидьте, как в нём будет выглядеть пол Floor.DSGN. Эпокси, терраццо, микротопинг, PU-cement и другие системы.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260521a">
+<link rel="stylesheet" href="chrome-fix.css?v=20260521a">
+<style>
+  :root{ --carbon:#151515; --steel:#72716D; --signal:#C86B3C; --concrete:#F3F0EA; --graphite:#2D2D2D; }
+  .rv-shell{ max-width:1280px; margin:0 auto; padding:92px 28px 110px; font-family:'Montserrat',sans-serif; color:var(--carbon); }
+  .rv-eyebrow{ font:600 11px/1 'Montserrat',sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--signal); margin:0 0 16px; }
+  .rv-h1{ font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(40px,5.6vw,80px); line-height:1.03; letter-spacing:-.02em; margin:0 0 20px; }
+  .rv-h1 em{ font-style:italic; color:var(--signal); }
+  .rv-lede{ max-width:640px; font-size:16px; line-height:1.6; color:var(--steel); margin:0 0 40px; }
+
+  .rv-grid{ display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; }
+  .rv-stage{ position:relative; width:100%; aspect-ratio:16/10; background:var(--concrete); border-radius:16px; overflow:hidden; touch-action:none; user-select:none; }
+  .rv-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
+  .rv-tex{ position:absolute; top:0; left:0; width:1000px; height:1000px; transform-origin:0 0; background-repeat:repeat; background-size:200px 200px; pointer-events:none; will-change:transform; display:none; }
+  .rv-empty{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:24px; color:var(--steel); }
+  .rv-empty svg{ width:46px; height:46px; opacity:.5; }
+  .rv-empty b{ font:600 16px 'Montserrat',sans-serif; color:var(--carbon); }
+  .rv-empty span{ font-size:13px; max-width:280px; }
+  .rv-marker{ position:absolute; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%; background:rgba(200,107,60,.18); border:2px solid var(--signal); box-shadow:0 2px 10px rgba(0,0,0,.25); cursor:grab; z-index:5; display:none; touch-action:none; }
+  .rv-marker::after{ content:attr(data-k); position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font:700 10px 'Montserrat',sans-serif; color:#fff; }
+  .rv-marker:active{ cursor:grabbing; transform:scale(1.12); }
+  .rv-quad{ position:absolute; inset:0; pointer-events:none; z-index:4; display:none; }
+  .rv-quad polygon{ fill:none; stroke:rgba(200,107,60,.65); stroke-width:1.5; stroke-dasharray:6 5; }
+
+  .rv-panel{ background:#fff; border:1px solid #e7e2d8; border-radius:16px; padding:20px; position:sticky; top:88px; }
+  .rv-panel h3{ font:600 10px/1 'Montserrat',sans-serif; letter-spacing:.24em; text-transform:uppercase; color:var(--steel); margin:0 0 12px; }
+  .rv-up{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:13px; border:1px dashed #c9c2b4; border-radius:12px; background:var(--concrete); color:var(--carbon); font:600 14px 'Montserrat',sans-serif; cursor:pointer; transition:all .18s; }
+  .rv-up:hover{ border-color:var(--signal); color:var(--signal); }
+  .rv-up input{ display:none; }
+  .rv-mats{ display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; }
+  .rv-mats button{ font:500 12.5px 'Montserrat',sans-serif; padding:9px 10px; background:var(--concrete); border:1px solid transparent; color:var(--steel); cursor:pointer; border-radius:10px; text-align:left; line-height:1.2; transition:all .15s; }
+  .rv-mats button:hover{ background:#ece6da; color:var(--carbon); }
+  .rv-mats button.on{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
+  .rv-row{ margin-top:18px; }
+  .rv-row label{ display:flex; justify-content:space-between; font:500 12px 'Montserrat',sans-serif; color:var(--steel); margin-bottom:7px; }
+  .rv-row input[type=range]{ width:100%; accent-color:var(--signal); }
+  .rv-seg{ display:inline-flex; padding:3px; background:var(--concrete); border-radius:10px; width:100%; }
+  .rv-seg button{ flex:1; font:500 12px 'Montserrat',sans-serif; padding:8px 6px; border:none; background:transparent; color:var(--steel); cursor:pointer; border-radius:7px; transition:all .15s; }
+  .rv-seg button.on{ background:#fff; color:var(--carbon); box-shadow:0 1px 4px rgba(0,0,0,.08); }
+  .rv-reset{ margin-top:16px; width:100%; padding:10px; background:transparent; border:1px solid #e0dacd; border-radius:10px; color:var(--steel); font:500 13px 'Montserrat',sans-serif; cursor:pointer; }
+  .rv-reset:hover{ color:var(--carbon); border-color:#c9c2b4; }
+
+  .rv-spec{ margin-top:34px; padding:22px 26px; background:var(--concrete); border-radius:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .rv-spec dt{ font:600 9.5px/1 'Montserrat',sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--steel); margin:0 0 6px; }
+  .rv-spec dd{ font-family:'Cormorant Garamond',serif; font-size:23px; color:var(--carbon); margin:0; line-height:1.05; }
+  .rv-cta{ margin-top:36px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .rv-cta .btn{ font:500 14px 'Montserrat',sans-serif; padding:13px 26px; border-radius:980px; text-decoration:none; transition:all .18s; }
+  .rv-cta .btn-dark{ background:var(--carbon); color:#fff; }
+  .rv-cta .btn-dark:hover{ background:#000; }
+  .rv-cta .btn-ghost{ background:transparent; color:var(--carbon); border:1px solid #d8d2c6; }
+  .rv-cta .btn-ghost:hover{ background:var(--concrete); }
+  .rv-note{ margin-top:18px; font-size:12.5px; color:var(--steel); max-width:640px; line-height:1.55; }
+
+  @media (max-width:860px){
+    .rv-shell{ padding:72px 18px 90px; }
+    .rv-grid{ grid-template-columns:1fr; }
+    .rv-panel{ position:static; }
+    .rv-stage{ aspect-ratio:4/3; }
+    .rv-spec{ grid-template-columns:1fr 1fr; gap:16px; }
+  }
+</style>
+</head>
+<body data-fx-page="RoomVisualizer">
+
+<header class="header">
+    <nav class="header__nav header__nav--left">
+        <a href="floors.html" data-i18n="nav_floors">Floors</a>
+        <a href="projects.html" data-i18n="nav_projects">Projects</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+    </nav>
+    <a href="index.html" class="header__logo">
+        <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+        <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+    </a>
+    <nav class="header__nav header__nav--right">
+        <a href="about.html" data-i18n="nav_about">About</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="header__lang">
+        <button class="lang-btn active" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+
+<main class="rv-shell">
+  <p class="rv-eyebrow">visualizer · ваше фото</p>
+  <h1 class="rv-h1">Ваша комната, <em>наш</em> пол</h1>
+  <p class="rv-lede">Загрузите фото помещения, перетащите 4 угла по контуру пола — и посмотрите, как в нём ляжет любая система Floor.DSGN. Превью прямо в браузере, ничего не загружается на сервер.</p>
+
+  <div class="rv-grid">
+    <div class="rv-stage" id="rvStage">
+      <img class="rv-photo" id="rvPhoto" alt="">
+      <div class="rv-tex" id="rvTex"></div>
+      <svg class="rv-quad" id="rvQuad" preserveAspectRatio="none"><polygon points=""/></svg>
+      <div class="rv-empty" id="rvEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 16l5-5 4 4 3-3 6 6"/><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
+        <b>Загрузите фото комнаты</b>
+        <span>Лучше всего — общий план с хорошо видимым полом. JPG или PNG.</span>
+      </div>
+      <div class="rv-marker" data-k="1" id="rvM0"></div>
+      <div class="rv-marker" data-k="2" id="rvM1"></div>
+      <div class="rv-marker" data-k="3" id="rvM2"></div>
+      <div class="rv-marker" data-k="4" id="rvM3"></div>
+    </div>
+
+    <aside class="rv-panel">
+      <h3>Фото</h3>
+      <label class="rv-up">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>
+        <span id="rvUpLabel">Загрузить фото</span>
+        <input type="file" id="rvFile" accept="image/*">
+      </label>
+
+      <h3 style="margin-top:22px">Материал</h3>
+      <div class="rv-mats" id="rvMats"></div>
+
+      <div class="rv-row">
+        <label>Плотность рисунка <span id="rvTileVal">средняя</span></label>
+        <input type="range" id="rvTile" min="80" max="420" value="200" step="10">
+      </div>
+      <div class="rv-row">
+        <label>Прозрачность (свет сцены) <span id="rvOpVal">90%</span></label>
+        <input type="range" id="rvOp" min="35" max="100" value="90" step="1">
+      </div>
+      <div class="rv-row">
+        <label>Смешивание</label>
+        <div class="rv-seg" id="rvBlend">
+          <button data-b="normal" class="on">Плотно</button>
+          <button data-b="multiply">Реалистично</button>
+          <button data-b="soft-light">Мягко</button>
+        </div>
+      </div>
+      <button class="rv-reset" id="rvReset">Сбросить углы пола</button>
+    </aside>
+  </div>
+
+  <dl class="rv-spec" id="rvSpecStrip">
+    <div><dt>Система</dt><dd id="rvSpType">—</dd></div>
+    <div><dt>Толщина</dt><dd id="rvSpThick">—</dd></div>
+    <div><dt>Срок укладки</dt><dd id="rvSpCure">—</dd></div>
+    <div><dt>Цена ориентир</dt><dd id="rvSpPrice">—</dd></div>
+  </dl>
+
+  <div class="rv-cta">
+    <a href="studio.html#cost" class="btn btn-dark" id="rvCtaQuote">Рассчитать этот пол →</a>
+    <a href="configurator.html" class="btn btn-ghost" id="rvCta3d">Открыть в 3D</a>
+    <a href="visualizer.html" class="btn btn-ghost">Сравнить материалы</a>
+  </div>
+  <p class="rv-note">Превью ориентировочное: это наложение реальной текстуры на ваше фото, без расчёта света, теней и отражений конкретной сцены. Финальный вид зависит от освещения, подготовки основания и партии материала. Точную раскладку и образец покажем на замере.</p>
+</main>
+
+<script>
+(function(){
+  var MAT = [
+    { id:'terrazzo-cement', name:'Терраццо · цемент', tex:'3d-assets/textures-v3/terrazzo-cement/diffuse.jpg', type:'минеральное', thick:'12–18 мм', cure:'10–14 дней', price:'₪1000–1800/м²' },
+    { id:'terrazzo-epoxy',  name:'Терраццо · эпокси', tex:'3d-assets/textures-v3/terrazzo-epoxy/diffuse.jpg',  type:'эпоксидное',  thick:'8–14 мм',  cure:'24ч / 72ч',  price:'₪900–1500/м²' },
+    { id:'terrazzo-multi',  name:'Терраццо · микс',   tex:'3d-assets/textures-v3/terrazzo-multi/diffuse.jpg',  type:'декоративное', thick:'8–14 мм', cure:'24ч / 72ч',  price:'₪900–1500/м²' },
+    { id:'microtopping',    name:'Микротопинг',       tex:'3d-assets/textures-v2/microtopping/diffuse.jpg',   type:'микроцемент', thick:'2–3 мм',  cure:'5–7 дней',  price:'₪500–900/м²' },
+    { id:'epoxy',           name:'Эпоксидная заливка',tex:'3d-assets/textures-v2/epoxy/diffuse.jpg',          type:'эпокси SR',   thick:'3–5 мм',  cure:'12ч / 7д',  price:'₪400–650/м²' },
+    { id:'pu-cement',       name:'PU-cement',         tex:'3d-assets/textures-v2/pu-cement/diffuse.jpg',      type:'ПУ-цемент',   thick:'4–9 мм',  cure:'6ч / 5–7д', price:'₪380–650/м²' },
+    { id:'mma',             name:'MMA Pronto',        tex:'3d-assets/textures-v2/mma/diffuse.jpg',            type:'метакрилат',  thick:'3–6 мм',  cure:'1.5–3ч',    price:'₪780–1100/м²' },
+    { id:'comfortfloor',    name:'ComfortFloor',      tex:'3d-assets/textures-v2/comfortfloor/diffuse.jpg',   type:'эласт. ПУ',   thick:'2.4 мм',  cure:'4–5 дней',  price:'₪590–780/м²' },
+    { id:'rubber',          name:'Резина EPDM',       tex:'3d-assets/textures-v3/rubber/diffuse.jpg',         type:'каучук EPDM', thick:'7–15 мм', cure:'24ч / 3–5д',price:'₪380–650/м²' }
+  ];
+  var SRC = 1000; // texture-layer source box size (px)
+  var stage=document.getElementById('rvStage'), photo=document.getElementById('rvPhoto'),
+      tex=document.getElementById('rvTex'), empty=document.getElementById('rvEmpty'),
+      quad=document.getElementById('rvQuad'), poly=quad.querySelector('polygon');
+  var markers=[document.getElementById('rvM0'),document.getElementById('rvM1'),document.getElementById('rvM2'),document.getElementById('rvM3')];
+  var state={ mat:'terrazzo-cement', blend:'normal', op:0.9, tile:200, pts:null, loaded:false };
+
+  // ---- perspective math: map source box corners -> 4 destination points ----
+  function adj(m){ return [ m[4]*m[8]-m[5]*m[7], m[2]*m[7]-m[1]*m[8], m[1]*m[5]-m[2]*m[4],
+                            m[5]*m[6]-m[3]*m[8], m[0]*m[8]-m[2]*m[6], m[2]*m[3]-m[0]*m[5],
+                            m[3]*m[7]-m[4]*m[6], m[1]*m[6]-m[0]*m[7], m[0]*m[4]-m[1]*m[3] ]; }
+  function mmm(a,b){ var c=[]; for(var i=0;i<3;i++)for(var j=0;j<3;j++){var s=0;for(var k=0;k<3;k++)s+=a[3*i+k]*b[3*k+j];c[3*i+j]=s;} return c; }
+  function mmv(m,v){ return [ m[0]*v[0]+m[1]*v[1]+m[2]*v[2], m[3]*v[0]+m[4]*v[1]+m[5]*v[2], m[6]*v[0]+m[7]*v[1]+m[8]*v[2] ]; }
+  function basis(p){ var m=[p[0],p[2],p[4], p[1],p[3],p[5], 1,1,1]; var v=mmv(adj(m),[p[6],p[7],1]); return mmm(m,[v[0],0,0, 0,v[1],0, 0,0,v[2]]); }
+  function warp(){
+    if(!state.pts) return;
+    var d=state.pts; // [x0,y0,x1,y1,x2,y2,x3,y3] = TL,TR,BR,BL in stage px
+    var s=[0,0, SRC,0, SRC,SRC, 0,SRC];
+    var t=mmm(basis([d[0],d[1],d[2],d[3],d[4],d[5],d[6],d[7]]), adj(basis(s)));
+    for(var i=0;i<9;i++) t[i]=t[i]/t[8];
+    var mat=[t[0],t[3],0,t[6], t[1],t[4],0,t[7], 0,0,1,0, t[2],t[5],0,t[8]];
+    tex.style.transform='matrix3d('+mat.join(',')+')';
+    poly.setAttribute('points', d[0]+','+d[1]+' '+d[2]+','+d[3]+' '+d[4]+','+d[5]+' '+d[6]+','+d[7]);
+  }
+  function placeMarkers(){ if(!state.pts) return; for(var i=0;i<4;i++){ markers[i].style.left=state.pts[i*2]+'px'; markers[i].style.top=state.pts[i*2+1]+'px'; } }
+  function defaultPts(){ var r=stage.getBoundingClientRect(); var w=r.width,h=r.height;
+    return [ w*0.30,h*0.54,  w*0.70,h*0.54,  w*0.97,h*0.93,  w*0.03,h*0.93 ]; }
+
+  function setMat(id){ state.mat=id; var m=MAT.find(function(x){return x.id===id;}); if(!m)return;
+    tex.style.backgroundImage="url('"+m.tex+"')";
+    document.getElementById('rvSpType').textContent=m.type;
+    document.getElementById('rvSpThick').textContent=m.thick;
+    document.getElementById('rvSpCure').textContent=m.cure;
+    document.getElementById('rvSpPrice').textContent=m.price;
+    document.getElementById('rvCta3d').setAttribute('href','configurator.html?mat='+encodeURIComponent(id));
+    document.getElementById('rvCtaQuote').setAttribute('href','studio.html?mat='+encodeURIComponent(id)+'#cost');
+    Array.prototype.forEach.call(document.querySelectorAll('#rvMats button'),function(b){b.classList.toggle('on',b.getAttribute('data-id')===id);});
+  }
+  function applyStyle(){ tex.style.opacity=state.op; tex.style.mixBlendMode=state.blend; tex.style.backgroundSize=state.tile+'px '+state.tile+'px'; }
+
+  // ---- material picker ----
+  document.getElementById('rvMats').innerHTML=MAT.map(function(m){return '<button data-id="'+m.id+'"'+(m.id===state.mat?' class="on"':'')+'>'+m.name+'</button>';}).join('');
+  document.getElementById('rvMats').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;setMat(b.getAttribute('data-id'));});
+
+  // ---- upload ----
+  document.getElementById('rvFile').addEventListener('change',function(e){
+    var f=e.target.files&&e.target.files[0]; if(!f)return;
+    var url=URL.createObjectURL(f);
+    photo.onload=function(){
+      state.loaded=true; empty.style.display='none'; tex.style.display='block'; quad.style.display='block';
+      markers.forEach(function(mk){mk.style.display='block';});
+      state.pts=defaultPts(); placeMarkers(); warp();
+      document.getElementById('rvUpLabel').textContent='Заменить фото';
+    };
+    photo.src=url;
+  });
+
+  // ---- draggable corners (window-level drag, robust if pointer leaves marker) ----
+  markers.forEach(function(mk,idx){
+    mk.addEventListener('pointerdown',function(e){ e.preventDefault();
+      function move(ev){ var r=stage.getBoundingClientRect();
+        var x=Math.max(0,Math.min(r.width, ev.clientX-r.left));
+        var y=Math.max(0,Math.min(r.height, ev.clientY-r.top));
+        state.pts[idx*2]=x; state.pts[idx*2+1]=y; markers[idx].style.left=x+'px'; markers[idx].style.top=y+'px'; warp();
+      }
+      function up(){ window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); }
+      window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+    });
+  });
+
+  // ---- controls ----
+  var tileVal=document.getElementById('rvTileVal'), opVal=document.getElementById('rvOpVal');
+  document.getElementById('rvTile').addEventListener('input',function(e){ state.tile=+e.target.value; tileVal.textContent=state.tile<140?'крупная':state.tile>300?'мелкая':'средняя'; applyStyle(); });
+  document.getElementById('rvOp').addEventListener('input',function(e){ state.op=(+e.target.value)/100; opVal.textContent=e.target.value+'%'; applyStyle(); });
+  document.getElementById('rvBlend').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return; state.blend=b.getAttribute('data-b'); Array.prototype.forEach.call(this.children,function(x){x.classList.toggle('on',x===b);}); applyStyle();});
+  document.getElementById('rvReset').addEventListener('click',function(){ if(!state.loaded)return; state.pts=defaultPts(); placeMarkers(); warp(); });
+  window.addEventListener('resize',function(){ if(state.loaded){ placeMarkers(); warp(); } });
+
+  var wanted=new URLSearchParams(location.search).get('mat');
+  if(wanted && MAT.some(function(m){return m.id===wanted;})) state.mat=wanted;
+  setMat(state.mat); applyStyle();
+})();
+</script>
+<script src="script.js"></script>
+<script src="translations.js?v=20260521a" defer></script>
+</body>
+</html>
