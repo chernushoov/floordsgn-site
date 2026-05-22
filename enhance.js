@@ -749,7 +749,7 @@
     // Approx USD->ILS for orientational dual display. Updated periodically.
     const ILS_PER_USD = 3.65;
     const cta = card.querySelector('.fx-calc-cta');
-    const baseHref = cta ? cta.getAttribute('href') : 'contact.html';
+    const baseHref = (cta && cta.getAttribute('href')) || 'contact.html';
 
     const set = () => {
       const m2 = +$area.value;

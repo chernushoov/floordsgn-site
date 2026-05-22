@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloorDSGN Studio — нормы Израиля, пирог пола в 3D, расчёт стоимости</title>
-    <meta name="description" content="Профи-инструмент для дизайнеров и архитекторов: нормы и стандарты Израиля (ת״י 466, EN 1504, EN 13813), сборка «пирога» пола и расчёт стоимости.">
+    <title>FloorDSGN Studio — подбор пола, нормы Израиля, пирог в 3D, расчёт стоимости</title>
+    <meta name="description" content="Профи-инструмент для дизайнеров и архитекторов: подбор системы пола под задачу, нормы Израиля (ת״י 466, EN 1504, EN 13813), послойный «пирог», расчёт стоимости и спецификация.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://floordsgn.netlify.app/studio.html">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
@@ -15,19 +15,19 @@
       /* ---- FloorDSGN Studio (page-local; shared CSS / etalon untouched) ---- */
       :root{ --carbon:#151515; --steel:#72716D; --signal:#C86B3C; --concrete:#F3F0EA; --graphite:#2D2D2D; }
       .st-shell{max-width:1200px;margin:0 auto;padding:0 24px}
-      .st-hero{padding:64px 0 28px;border-bottom:1px solid #e7e2d8}
+      .st-hero{padding:56px 0 24px;border-bottom:1px solid #e7e2d8}
       .st-eyebrow{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin:0 0 14px}
-      .st-h1{font:300 clamp(38px,6vw,72px)/0.98 'Cormorant Garamond',serif;color:var(--carbon);margin:0 0 16px;letter-spacing:-.01em}
+      .st-h1{font:300 clamp(36px,6vw,68px)/0.98 'Cormorant Garamond',serif;color:var(--carbon);margin:0 0 16px;letter-spacing:-.01em}
       .st-h1 em{font-style:italic}
       .st-lede{font:400 17px/1.55 Montserrat,sans-serif;color:var(--graphite);max-width:680px;margin:0}
-      .st-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0;position:sticky;top:0;z-index:20;background:#fff;padding:14px 0}
-      .st-tab{font:600 13px/1 Montserrat,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--carbon);background:#f3f0ea;border:1px solid #e2dccf;border-radius:980px;padding:12px 22px;cursor:pointer;text-decoration:none;transition:.18s}
+      .st-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;position:sticky;top:0;z-index:20;background:#fff;padding:14px 0}
+      .st-tab{font:600 13px/1 Montserrat,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--carbon);background:#f3f0ea;border:1px solid #e2dccf;border-radius:980px;padding:12px 20px;cursor:pointer;text-decoration:none;transition:.18s}
       .st-tab:hover{border-color:var(--carbon)}
       .st-tab.on{background:var(--carbon);color:#fff;border-color:var(--carbon)}
-      .st-sec{padding:54px 0;border-bottom:1px solid #ece7dd}
+      .st-sec{padding:50px 0;border-bottom:1px solid #ece7dd}
       .st-kicker{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin:0 0 10px}
       .st-h2{font:300 clamp(28px,4vw,46px)/1.02 'Cormorant Garamond',serif;color:var(--carbon);margin:0 0 12px}
-      .st-sub{font:400 16px/1.55 Montserrat,sans-serif;color:var(--graphite);max-width:720px;margin:0 0 30px}
+      .st-sub{font:400 16px/1.55 Montserrat,sans-serif;color:var(--graphite);max-width:720px;margin:0 0 28px}
       .st-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
       .st-card{background:#fff;border:1px solid #e4ded2;border-radius:14px;padding:24px;transition:.18s}
       .st-card:hover{border-color:var(--carbon);box-shadow:0 10px 30px rgba(21,21,21,.06)}
@@ -40,6 +40,22 @@
       .st-prob:hover{border-color:var(--signal);transform:translateY(-2px)}
       .st-prob b{font:600 14.5px/1.3 Montserrat,sans-serif;color:var(--carbon);display:block;margin:0 0 4px}
       .st-prob span{font:400 13px/1.45 Montserrat,sans-serif;color:var(--steel)}
+      /* Guide / подбор */
+      .st-guide{background:var(--carbon);border-radius:18px;padding:30px 28px;color:#fff}
+      .st-guide .st-qrow{margin:0 0 18px}
+      .st-guide .st-qlbl{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b7b3aa;margin:0 0 10px}
+      .st-opts{display:flex;flex-wrap:wrap;gap:8px}
+      .st-opt{font:600 13px/1 Montserrat,sans-serif;color:#eee;background:#262626;border:1px solid #383838;border-radius:980px;padding:10px 16px;cursor:pointer;transition:.16s}
+      .st-opt:hover{border-color:#6b6b6b}
+      .st-opt.on{background:var(--signal);color:#fff;border-color:var(--signal)}
+      .st-go{font:700 14px/1 Montserrat,sans-serif;letter-spacing:.04em;background:#fff;color:var(--carbon);border:none;border-radius:980px;padding:15px 30px;cursor:pointer;margin:6px 0 0;transition:.16s}
+      .st-go:hover{transform:translateY(-1px)}
+      .st-result{background:#fff;border:1px solid #e4ded2;border-left:4px solid var(--signal);border-radius:14px;padding:24px;margin:22px 0 0}
+      .st-result.hide{display:none}
+      .st-result h3{font:600 13px/1 Montserrat,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);margin:0 0 8px}
+      .st-result .rn{font:300 30px/1.05 'Cormorant Garamond',serif;color:var(--carbon);margin:0 0 8px}
+      .st-result .rw{font:400 15px/1.55 Montserrat,sans-serif;color:var(--graphite);margin:0 0 8px}
+      .st-result .ralt{font:400 13.5px/1.4 Montserrat,sans-serif;color:var(--steel);margin:0 0 16px}
       /* Pie builder */
       .st-build{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
       .st-syschips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
@@ -47,18 +63,34 @@
       .st-syschip:hover{border-color:var(--carbon)}
       .st-syschip.on{background:var(--carbon);color:#fff;border-color:var(--carbon)}
       .st-pie{display:flex;flex-direction:column;gap:6px;margin:0 0 18px}
-      .st-layer{position:relative;border-radius:8px;padding:14px 16px;color:#fff;font:600 13px/1.2 Montserrat,sans-serif;display:flex;justify-content:space-between;align-items:center;overflow:hidden}
-      .st-layer small{font-weight:400;opacity:.85;font-size:12px}
+      .st-layer{position:relative;border-radius:8px;padding:14px 16px;color:#fff;font:600 13px/1.2 Montserrat,sans-serif;display:flex;justify-content:space-between;align-items:center;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+      .st-layer small{font-weight:400;opacity:.9;font-size:12px;white-space:nowrap}
       .st-layer .lt{max-width:74%}
       .st-pieinfo h3{font:600 19px/1.2 Montserrat,sans-serif;color:var(--carbon);margin:0 0 6px}
-      .st-pieinfo .st-thk{font:600 13px/1 Montserrat,sans-serif;color:var(--signal);letter-spacing:.04em;text-transform:uppercase;margin:0 0 16px}
+      .st-pieinfo .st-thk{font:600 12.5px/1.4 Montserrat,sans-serif;color:var(--signal);letter-spacing:.03em;text-transform:uppercase;margin:0 0 16px}
       .st-specrow{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed #e0dacd;font:400 14px/1.4 Montserrat,sans-serif;color:var(--graphite)}
       .st-specrow b{color:var(--carbon);font-weight:600;text-align:right}
       .st-badges{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 0}
       .st-badge{font:600 11px/1 Montserrat,sans-serif;letter-spacing:.04em;color:var(--carbon);border:1px solid #d8d2c4;border-radius:980px;padding:6px 11px}
       .st-actions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
       .st-note{font:400 13px/1.5 Montserrat,sans-serif;color:var(--steel);margin:18px 0 0}
-      @media(max-width:780px){ .st-build{grid-template-columns:1fr} .st-tabs{overflow-x:auto;flex-wrap:nowrap} }
+      @media(max-width:780px){ .st-build{grid-template-columns:1fr} .st-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch} }
+      /* Spec sheet — screen-hidden, print-only one-pager */
+      #stSpecSheet{display:none}
+      @media print{
+        body > *{display:none !important}
+        #stSpecSheet{display:block !important;padding:0;color:#111;font-family:Montserrat,Arial,sans-serif}
+        #stSpecSheet .ss-head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #151515;padding-bottom:10px;margin-bottom:16px}
+        #stSpecSheet .ss-brand{font-weight:700;font-size:20px;letter-spacing:.04em}
+        #stSpecSheet .ss-meta{font-size:11px;color:#555;text-align:right}
+        #stSpecSheet h1{font-size:22px;margin:0 0 4px}
+        #stSpecSheet .ss-thk{font-size:12px;color:#C86B3C;font-weight:700;text-transform:uppercase;margin:0 0 14px}
+        #stSpecSheet table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:12.5px}
+        #stSpecSheet td{padding:6px 8px;border-bottom:1px solid #ddd;vertical-align:top}
+        #stSpecSheet td:first-child{color:#555;width:38%}
+        #stSpecSheet .ss-sec{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#151515;margin:16px 0 6px}
+        #stSpecSheet .ss-foot{margin-top:22px;padding-top:10px;border-top:1px solid #ccc;font-size:11px;color:#555;line-height:1.5}
+      }
     </style>
 </head>
 <body>
@@ -94,67 +126,96 @@
   <section class="st-hero">
     <p class="st-eyebrow">Бесплатный инструмент · для дизайнеров и архитекторов</p>
     <h1 class="st-h1">Студия пола <em>FloorDSGN</em></h1>
-    <p class="st-lede">Один заход — три задачи: разобраться в нормах Израиля (ת״י, EN, классы скольжения, влажность), собрать свой «пирог» пола послойно и сразу прикинуть стоимость. Готовую формулу можно сохранить, заказать образец или запросить точную смету.</p>
+    <p class="st-lede">Подберите систему под вашу задачу за 30 секунд, разберитесь в нормах Израиля, соберите послойный «пирог», прикиньте стоимость и скачайте готовую спецификацию. Дальше — образец или точная смета.</p>
     <nav class="st-tabs" aria-label="Разделы студии">
-      <a class="st-tab on" href="#norms" data-st-tab="norms">1 · Нормы Израиля</a>
-      <a class="st-tab" href="#build" data-st-tab="build">2 · Собери пирог</a>
-      <a class="st-tab" href="#cost" data-st-tab="cost">3 · Стоимость</a>
+      <a class="st-tab on" href="#guide" data-st-tab="guide">Подбор</a>
+      <a class="st-tab" href="#norms" data-st-tab="norms">Нормы Израиля</a>
+      <a class="st-tab" href="#build" data-st-tab="build">Пирог</a>
+      <a class="st-tab" href="#cost" data-st-tab="cost">Стоимость</a>
     </nav>
+  </section>
+
+  <!-- 0. GUIDE / ПОДБОР (the funnel) -->
+  <section class="st-sec" id="guide">
+    <p class="st-kicker">Подбор за 30 секунд</p>
+    <h2 class="st-h2">Какой пол нужен под вашу задачу</h2>
+    <p class="st-sub">Ответьте на 4 вопроса — подберём систему с обоснованием, покажем её «пирог», нормы и цену. Без регистрации.</p>
+
+    <div class="st-guide">
+      <div class="st-qrow">
+        <p class="st-qlbl">Объект</p>
+        <div class="st-opts" data-q="place">
+          <button class="st-opt on" data-v="residential">Жильё</button>
+          <button class="st-opt" data-v="commercial">Коммерция · офис · ритейл</button>
+          <button class="st-opt" data-v="industrial">Производство · склад</button>
+          <button class="st-opt" data-v="food">Пищевое · фарма</button>
+          <button class="st-opt" data-v="healthcare">Healthcare · спорт</button>
+          <button class="st-opt" data-v="designer">Дизайнерское</button>
+        </div>
+      </div>
+      <div class="st-qrow">
+        <p class="st-qlbl">Нагрузка / трафик</p>
+        <div class="st-opts" data-q="traffic">
+          <button class="st-opt on" data-v="foot">Пешая</button>
+          <button class="st-opt" data-v="wheels">Колёсная лёгкая</button>
+          <button class="st-opt" data-v="forklift">Forklift до 5 т</button>
+          <button class="st-opt" data-v="heavy">Тяжёлая &gt; 5 т</button>
+        </div>
+      </div>
+      <div class="st-qrow">
+        <p class="st-qlbl">Влага</p>
+        <div class="st-opts" data-q="wet">
+          <button class="st-opt on" data-v="dry">Сухое</button>
+          <button class="st-opt" data-v="damp">Влажное · моется</button>
+          <button class="st-opt" data-v="wet">Постоянно мокрое</button>
+        </div>
+      </div>
+      <div class="st-qrow">
+        <p class="st-qlbl">Приоритет</p>
+        <div class="st-opts" data-q="priority">
+          <button class="st-opt on" data-v="look">Внешний вид</button>
+          <button class="st-opt" data-v="budget">Бюджет</button>
+          <button class="st-opt" data-v="durable">Срок службы</button>
+          <button class="st-opt" data-v="speed">Скорость монтажа</button>
+        </div>
+      </div>
+      <button class="st-go" id="stRecommend">Подобрать систему →</button>
+    </div>
+
+    <div class="st-result hide" id="stResult">
+      <h3>Рекомендация</h3>
+      <p class="rn" id="stResName">—</p>
+      <p class="rw" id="stResWhy">—</p>
+      <p class="ralt" id="stResAlt"></p>
+      <div class="st-actions">
+        <a class="btn btn-dark" id="stResPie" href="#build" data-st-tab="build">Показать пирог →</a>
+        <a class="btn" id="stResCost" href="#cost" data-st-tab="cost">Цена для моей площади</a>
+        <a class="btn" href="contact.html">Вызвать замерщика</a>
+      </div>
+    </div>
   </section>
 
   <!-- 1. NORMS -->
   <section class="st-sec" id="norms">
     <p class="st-kicker">Раздел 1</p>
     <h2 class="st-h2">Нормы и стандарты Израиля</h2>
-    <p class="st-sub">Что регулирует пол в Израиле — кратко и по делу. Эти стандарты определяют, какой бетон под основание, как ремонтировать, какая стяжка и какой класс противоскольжения нужен под вашу задачу. Дальше — частые проблемы оснований из нашей энциклопедии.</p>
-
+    <p class="st-sub">Что регулирует пол в Израиле — кратко и по делу. Эти стандарты определяют, какой бетон под основание, как ремонтировать, какая стяжка и какой класс противоскольжения нужен под задачу.</p>
     <div class="st-grid">
-      <div class="st-card">
-        <span class="st-code">ת״י 466</span>
-        <h3>Кодекс бетона</h3>
-        <p>Израильский норматив на проектирование и исполнение бетонных конструкций: класс бетона основания (напр. C25/30), прочность на сжатие, защитный слой арматуры.</p>
-        <span class="st-gov">Регулирует: основание «пирога»</span>
-      </div>
-      <div class="st-card">
-        <span class="st-code">EN 1504</span>
-        <h3>Защита и ремонт бетона</h3>
-        <p>Европейская система (10 частей). Ключевые: 1504-2 — защита поверхности, 1504-3 — конструкционный/неконструкционный ремонт, 1504-9 — общие принципы. По ней работают ремонтные и защитные слои.</p>
-        <span class="st-gov">Регулирует: ремонт, защита, праймер</span>
-      </div>
-      <div class="st-card">
-        <span class="st-code">EN 13813</span>
-        <h3>Стяжки и материалы стяжек</h3>
-        <p>Классификация тела системы: CT (цементная), CA (ангидрит), SR (смола/эпокси), MA (магнезиальная) + классы по прочности на сжатие (C), изгиб (F) и износ (AR).</p>
-        <span class="st-gov">Регулирует: тело системы / стяжку</span>
-      </div>
-      <div class="st-card">
-        <span class="st-code">DIN 51130 · R9–R13</span>
-        <h3>Противоскольжение (обувь)</h3>
-        <p>Испытание на наклонной плоскости. R9 — минимум, R13 — максимальный антислип. Для пищевых, мокрых и промышленных полов R-класс нормируется. Для влажных зон босиком — DIN 51097 (A/B/C).</p>
-        <span class="st-gov">Регулирует: финиш, безопасность</span>
-      </div>
-      <div class="st-card">
-        <span class="st-code">Влажность · CM / RH</span>
-        <h3>Сухость основания</h3>
-        <p>Перед смолой/покрытием бетон должен высохнуть: обычно ≤ 4% CM (карбидный метод) или ≤ 75–85% RH (зонд in-situ, ASTM F2170). Превышение — отслоение и пузыри. Причина брака №1.</p>
-        <span class="st-gov">Регулирует: готовность к укладке</span>
-      </div>
-      <div class="st-card">
-        <span class="st-code">HACCP · пищевое</span>
-        <h3>Пищевые и фарма-полы</h3>
-        <p>Беспыльные, моющиеся, химстойкие, с галтелями (cove base) и нужным R-классом. Обычно PU-cement или MMA. Совместимо с пищевым производством и санитарными требованиями.</p>
-        <span class="st-gov">Регулирует: гигиену, чистимость</span>
-      </div>
+      <div class="st-card"><span class="st-code">ת״י 466</span><h3>Кодекс бетона</h3><p>Израильский норматив на проектирование и исполнение бетонных конструкций: класс бетона основания (напр. C25/30), прочность на сжатие, защитный слой арматуры.</p><span class="st-gov">Регулирует: основание «пирога»</span></div>
+      <div class="st-card"><span class="st-code">EN 1504</span><h3>Защита и ремонт бетона</h3><p>Европейская система (10 частей). Ключевые: 1504-2 — защита поверхности, 1504-3 — ремонт, 1504-9 — общие принципы. По ней работают ремонтные и защитные слои.</p><span class="st-gov">Регулирует: ремонт, защита, праймер</span></div>
+      <div class="st-card"><span class="st-code">EN 13813</span><h3>Стяжки и материалы</h3><p>Классификация тела системы: CT (цементная), CA (ангидрит), SR (смола/эпокси), MA (магнезиальная) + классы по прочности на сжатие (C), изгиб (F), износ (AR).</p><span class="st-gov">Регулирует: тело системы / стяжку</span></div>
+      <div class="st-card"><span class="st-code">DIN 51130 · R9–R13</span><h3>Противоскольжение</h3><p>Испытание на наклонной плоскости. R9 — минимум, R13 — максимальный антислип. Для пищевых, мокрых и промышленных полов R-класс нормируется. Босиком (бассейны) — DIN 51097 A/B/C.</p><span class="st-gov">Регулирует: финиш, безопасность</span></div>
+      <div class="st-card"><span class="st-code">Влажность · CM / RH</span><h3>Сухость основания</h3><p>Перед смолой/покрытием бетон должен высохнуть: обычно ≤ 4% CM или ≤ 75–85% RH (зонд in-situ, ASTM F2170). Превышение — отслоение и пузыри. Причина брака №1.</p><span class="st-gov">Регулирует: готовность к укладке</span></div>
+      <div class="st-card"><span class="st-code">HACCP · пищевое</span><h3>Пищевые и фарма-полы</h3><p>Беспыльные, моющиеся, химстойкие, с галтелями (cove base) и нужным R-классом. Обычно PU-cement или MMA. Совместимо с пищевым производством.</p><span class="st-gov">Регулирует: гигиену, чистимость</span></div>
     </div>
-
     <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);margin:34px 0 4px;letter-spacing:.02em">Частые проблемы оснований</h3>
-    <p class="st-sub" style="margin:8px 0 0">Разборы из нашей энциклопедии — что идёт не так и как это лечится.</p>
+    <p class="st-sub" style="margin:8px 0 0">Разборы из энциклопедии — что идёт не так и как лечится.</p>
     <div class="st-problems">
       <a class="st-prob" href="articles/encyclopedia/index.html"><b>Стандарты ת״י 466 / EN 1504</b><span>Полный разбор норм</span></a>
       <a class="st-prob" href="articles/encyclopedia/index.html"><b>Сырость и высокая RH</b><span>Почему отслаивается покрытие</span></a>
-      <a class="st-prob" href="articles/encyclopedia/index.html"><b>Трещины в основании</b><span>5 признаков — когда это опасно</span></a>
+      <a class="st-prob" href="articles/encyclopedia/index.html"><b>Трещины в основании</b><span>5 признаков — когда опасно</span></a>
       <a class="st-prob" href="articles/encyclopedia/index.html"><b>Карбонизация бетона</b><span>Тест за 5 минут</span></a>
-      <a class="st-prob" href="articles/encyclopedia/index.html"><b>Хлориды у моря</b><span>Защита арматуры от коррозии</span></a>
+      <a class="st-prob" href="articles/encyclopedia/index.html"><b>Хлориды у моря</b><span>Защита арматуры</span></a>
       <a class="st-prob" href="articles/encyclopedia/index.html"><b>Высолы (efflorescence)</b><span>Что это и как убрать</span></a>
     </div>
   </section>
@@ -163,14 +224,12 @@
   <section class="st-sec" id="build">
     <p class="st-kicker">Раздел 2</p>
     <h2 class="st-h2">Собери свой «пирог» пола</h2>
-    <p class="st-sub">Выберите систему — увидите её послойный состав (основание → праймер → тело → топкоат) с реальными толщинами, спекой и тем, какие нормы она закрывает. Затем — открыть в 3D, сохранить формулу или заказать образец.</p>
-
+    <p class="st-sub">Выберите систему — увидите послойный состав (основание → праймер → тело → топкоат) с реальными толщинами, спекой и нормами, которые она закрывает. Скачайте спецификацию или откройте в 3D.</p>
     <div class="st-syschips" id="stSysChips" aria-label="Системы пола"></div>
-
     <div class="st-build">
       <div>
         <div class="st-pie" id="stPie"></div>
-        <p class="st-note">Толщины — типовые для системы; точный «пирог» подбирается после замера и теста влажности основания.</p>
+        <p class="st-note">Толщины — типовые; точный «пирог» подбирается после замера и теста влажности основания.</p>
       </div>
       <div class="st-pieinfo">
         <h3 id="stSysName">—</h3>
@@ -178,20 +237,19 @@
         <div id="stSysSpec"></div>
         <div class="st-badges" id="stSysBadges"></div>
         <div class="st-actions">
-          <a class="btn btn-dark" id="stOpen3d" href="configurator.html">Открыть в 3D →</a>
+          <button class="btn btn-dark" id="stSpecBtn" type="button">Скачать спецификацию (PDF)</button>
+          <a class="btn" id="stOpen3d" href="configurator.html">Открыть в 3D →</a>
           <a class="btn" id="stSample" href="sample-kit.html">Заказать образец</a>
-          <a class="btn" href="#cost" data-st-tab="cost">Рассчитать стоимость</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. COST (reuses enhance.js initCalc via data-fx hooks) -->
+  <!-- 3. COST -->
   <section class="st-sec" id="cost" style="border-bottom:none">
     <p class="st-kicker">Раздел 3</p>
     <h2 class="st-h2">Рассчитай стоимость</h2>
-    <p class="st-sub">Ориентир за 30 секунд: тип покрытия × назначение × площадь. Не точная смета — рабочий бенчмарк. Точная цена — после выезда замерщика с тестом основания, бесплатно в течение 48 часов.</p>
-
+    <p class="st-sub">Ориентир за 30 секунд: тип покрытия × назначение × площадь. Не точная смета — рабочий бенчмарк. Точная цена — после выезда замерщика с тестом основания, бесплатно за 48 часов.</p>
     <div class="fx-calc-card">
       <div class="fx-calc-row">
         <span class="fx-calc-lbl" data-i18n="q_lbl_type">Floor type</span>
@@ -202,6 +260,8 @@
           <button type="button" data-v="concrete" data-p="80" data-i18n="q_mat_concrete">Polished concrete</button>
           <button type="button" data-v="pucement" data-p="200">PU-cement</button>
           <button type="button" data-v="mma" data-p="240">MMA</button>
+          <button type="button" data-v="rubber" data-p="140">Rubber</button>
+          <button type="button" data-v="comfortfloor" data-p="185">ComfortFloor</button>
         </div>
       </div>
       <div class="fx-calc-row">
@@ -265,93 +325,119 @@
         </div>
     </footer>
 
+    <!-- Print-only spec sheet (populated by render) -->
+    <div id="stSpecSheet" aria-hidden="true"></div>
+
     <script src="script.js?v=6"></script>
     <script src="translations.js?v=20260521a"></script>
     <script src="enhance.js?v=20260522a" defer></script>
 
-    <!-- Studio: tabs + pie builder (page-local; reads manifest systems) -->
+    <!-- Studio: tabs + guide funnel + pie builder + spec sheet -->
     <script>
     (function(){
-      // Tab highlight on click + smooth anchor
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-st-tab]'));
-      function activate(id){
-        document.querySelectorAll('.st-tab').forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-st-tab')===id); });
-      }
-      tabs.forEach(function(t){ t.addEventListener('click', function(){ activate(t.getAttribute('data-st-tab')); }); });
+      var tabLinks = Array.prototype.slice.call(document.querySelectorAll('.st-tab,[data-st-tab]'));
+      function activate(id){ document.querySelectorAll('.st-tab').forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-st-tab')===id); }); }
+      tabLinks.forEach(function(t){ t.addEventListener('click', function(){ var id=t.getAttribute('data-st-tab'); if(id) activate(id); }); });
 
-      // Pie builder — system buildup data (mirrors 3d-assets/manifest.json buildup+spec).
-      var SYS = [
-        { slug:'epoxy', name:'Эпоксидная заливка', thk:'3–5 мм', layers:[
-            {t:'Топкоат · Sikafloor-264 (алифатический PU)', s:'0.2 мм', c:'#2a2620'},
-            {t:'Тело · Sikafloor-263 SL (self-leveling)', s:'3–5 мм', c:'#3a342b'},
-            {t:'Праймер · Sikafloor-156', s:'0.15 мм', c:'#8a7f63'},
-            {t:'Основание · бетон C25/30 · ≤4% RH', s:'≥25 МПа', c:'#9a9a98'} ],
-          spec:[['Тип','Эпокси self-leveling'],['Цена','₪400–650/м²'],['Отверждение','12ч пеш / 7д forklift'],['Нагрузка','склад · паркинг · forklift до 5т']],
-          badges:['R9–R12','>70 МПа','GLOSS'], norms:'EN 13813 (SR) · EN 1504-2' },
-        { slug:'pu-cement', name:'PU-cement', thk:'4–9 мм', layers:[
-            {t:'Топкоат · Sikafloor-21N PurCem', s:'0.5 мм', c:'#7d7a74'},
-            {t:'Тело · Sikafloor-21N PurCem', s:'4–9 мм', c:'#9a9690'},
-            {t:'Праймер по бетону', s:'—', c:'#b3a98f'},
-            {t:'Основание · бетон C25/30 · ≤95% RH', s:'≥25 МПа', c:'#9a9a98'} ],
-          spec:[['Тип','Polyurethane-cement'],['Цена','₪380–650/м²'],['Отверждение','6ч / 5–7д'],['Нагрузка','тяжпром · пищевое HACCP · мокрое']],
-          badges:['R10–R13','HACCP','−40…+120°C'], norms:'EN 13813 · HACCP · −40…+120°C' },
-        { slug:'mma', name:'MMA Pronto', thk:'3–6 мм', layers:[
-            {t:'Топкоат · Sikafloor-71 TC Pronto', s:'1 мм', c:'#34322d'},
-            {t:'Тело · Sikafloor-61 BC Pronto', s:'3–6 мм', c:'#3c3a35'},
-            {t:'Праймер · Sikafloor-41 P Pronto', s:'0.5 мм', c:'#7a766b'},
-            {t:'Основание · бетон / металл', s:'—', c:'#9a9a98'} ],
-          spec:[['Тип','MMA fast-cure'],['Цена','₪780–1100/м²'],['Отверждение','1.5–3ч (вкл. разметку)'],['Нагрузка','cold-storage · пищевое · ночной ремонт']],
-          badges:['R10–R12','RAPID 2ч','−30°C OK'], norms:'EN 13813 (SR) · RAPID' },
-        { slug:'microtopping', name:'Микротопинг', thk:'2–3 мм', layers:[
-            {t:'Топкоат · ProSeal-22 (2 слоя, матовая)', s:'—', c:'#b9ad99'},
-            {t:'Тело · Sikafloor-470 Level', s:'2×1.2 мм', c:'#cfc4b3'},
-            {t:'Сетка (стены/wet) · 4×4 мм', s:'60 г/м²', c:'#d8cdb8'},
-            {t:'Праймер-бондер по бетону', s:'0.15 мм', c:'#b3a98f'},
-            {t:'Основание · ≤75% RH', s:'—', c:'#9a9a98'} ],
-          spec:[['Тип','Полимер-цементный микротопинг'],['Цена','₪500–900/м²'],['Отверждение','5–7д'],['Нагрузка','жильё · ритейл · коммерч.']],
-          badges:['R9–R10','ECO','>30 МПа'], norms:'EN 13813 (CT) · тонкослойный' },
-        { slug:'terrazzo-cement', name:'Терраццо · цементное', thk:'12–18 мм', layers:[
-            {t:'Sealer · литой воск / lithium silicate', s:'0.1 мм', c:'#cfc6b0'},
-            {t:'Тело · CS-31 + мраморная крошка 4–12 мм', s:'12–18 мм', c:'#efe7d6'},
-            {t:'Праймер · Sika Primer-3N', s:'—', c:'#c8b08a'},
-            {t:'Основание · бетон C25/30 · ≥60 дней', s:'≥25 МПа', c:'#9a9a98'} ],
-          spec:[['Тип','Минеральное терраццо CS-31'],['Цена','₪1000–1800/м²'],['Отверждение','10–14д'],['Срок службы','30+ лет']],
-          badges:['R10','ECO','>35 МПа'], norms:'ת״י 466 (основание) · >35 МПа' },
-        { slug:'rubber', name:'Резиновое покрытие', thk:'7–15 мм', layers:[
-            {t:'Топкоат · EPDM-крошка + UV-PU', s:'—', c:'#3a3a3a'},
-            {t:'Тело · поливная резина EPDM 1–4 мм', s:'7–15 мм', c:'#2a2a2a'},
-            {t:'Праймер · Sikafloor-161', s:'0.15 мм', c:'#6a6a68'},
-            {t:'Основание · бетон / асфальт', s:'—', c:'#9a9a98'} ],
-          spec:[['Тип','Резина EPDM + 2K PU'],['Цена','₪380–650/м²'],['Отверждение','24ч / 3–5д'],['Нагрузка','спорт · детские · healthcare']],
-          badges:['R12','ANTI-SLIP','SHOCK'], norms:'DIN 51130 R12 · ударопоглощение' }
-      ];
-      var chips = document.getElementById('stSysChips');
-      var pie = document.getElementById('stPie');
-      var nameEl = document.getElementById('stSysName');
-      var thkEl = document.getElementById('stSysThk');
-      var specEl = document.getElementById('stSysSpec');
-      var badgesEl = document.getElementById('stSysBadges');
-      var open3d = document.getElementById('stOpen3d');
-      var sampleA = document.getElementById('stSample');
-      function render(sys){
-        pie.innerHTML = sys.layers.map(function(l){
-          return '<div class="st-layer" style="background:'+l.c+'"><span class="lt">'+l.t+'</span><small>'+l.s+'</small></div>';
-        }).join('');
-        nameEl.textContent = sys.name;
-        thkEl.textContent = 'Общая толщина: '+sys.thk+' · нормы: '+sys.norms;
-        specEl.innerHTML = sys.spec.map(function(r){ return '<div class="st-specrow"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'; }).join('');
-        badgesEl.innerHTML = sys.badges.map(function(b){ return '<span class="st-badge">'+b+'</span>'; }).join('');
-        open3d.setAttribute('href','configurator.html?mat='+encodeURIComponent(sys.slug));
-        sampleA.setAttribute('href','sample-kit.html?material_slug='+encodeURIComponent(sys.slug)+'&material_label='+encodeURIComponent(sys.name));
+      // ---- system data (mirrors 3d-assets/manifest.json) ----
+      var SYS = {
+        epoxy:{ name:'Эпоксидная заливка', thk:'3–5 мм', why:'Прочное беспыльное покрытие для склада/паркинга, держит forklift до 5 т, легко моется.',
+          layers:[{t:'Топкоат · Sikafloor-264 (PU)',s:'0.2 мм',c:'#2a2620'},{t:'Тело · Sikafloor-263 SL',s:'3–5 мм',c:'#3a342b'},{t:'Праймер · Sikafloor-156',s:'0.15 мм',c:'#8a7f63'},{t:'Основание · бетон C25/30 · ≤4% RH',s:'≥25 МПа',c:'#9a9a98'}],
+          spec:[['Тип','Эпокси self-leveling SR'],['Цена','₪400–650/м²'],['Отверждение','12ч пеш / 7д forklift'],['Нагрузка','склад · паркинг · forklift до 5т']], badges:['R9–R12','>70 МПа','GLOSS'], norms:'EN 13813 (SR) · EN 1504-2', calc:'epoxy' },
+        'pu-cement':{ name:'PU-cement', thk:'4–9 мм', why:'Король мокрых и пищевых цехов: HACCP, термошок −40…+120°C, химия, тяжёлая нагрузка.',
+          layers:[{t:'Топкоат · Sikafloor-21N PurCem',s:'0.5 мм',c:'#7d7a74'},{t:'Тело · Sikafloor-21N PurCem',s:'4–9 мм',c:'#9a9690'},{t:'Праймер по бетону',s:'—',c:'#b3a98f'},{t:'Основание · бетон C25/30 · ≤95% RH',s:'≥25 МПа',c:'#9a9a98'}],
+          spec:[['Тип','Polyurethane-cement'],['Цена','₪380–650/м²'],['Отверждение','6ч / 5–7д'],['Нагрузка','тяжпром · пищевое HACCP · мокрое']], badges:['R10–R13','HACCP','−40…+120°C'], norms:'EN 13813 · HACCP', calc:'pucement' },
+        mma:{ name:'MMA Pronto', thk:'3–6 мм', why:'Когда нельзя останавливать работу: монтаж и разметка за 2 часа, держит мороз и cold-storage.',
+          layers:[{t:'Топкоат · Sikafloor-71 TC Pronto',s:'1 мм',c:'#34322d'},{t:'Тело · Sikafloor-61 BC Pronto',s:'3–6 мм',c:'#3c3a35'},{t:'Праймер · Sikafloor-41 P Pronto',s:'0.5 мм',c:'#7a766b'},{t:'Основание · бетон / металл',s:'—',c:'#9a9a98'}],
+          spec:[['Тип','MMA fast-cure'],['Цена','₪780–1100/м²'],['Отверждение','1.5–3ч'],['Нагрузка','cold-storage · пищевое · ночной ремонт']], badges:['R10–R12','RAPID 2ч','−30°C OK'], norms:'EN 13813 (SR) · RAPID', calc:'mma' },
+        microtopping:{ name:'Микротопинг', thk:'2–3 мм', why:'Бесшовный современный вид по существующему основанию, тонкий слой, для жилья и шоурумов.',
+          layers:[{t:'Топкоат · ProSeal-22 (2 слоя)',s:'—',c:'#b9ad99'},{t:'Тело · Sikafloor-470 Level',s:'2×1.2 мм',c:'#cfc4b3'},{t:'Сетка (стены/wet)',s:'60 г/м²',c:'#d8cdb8'},{t:'Праймер-бондер',s:'0.15 мм',c:'#b3a98f'},{t:'Основание · ≤75% RH',s:'—',c:'#9a9a98'}],
+          spec:[['Тип','Полимер-цементный микротопинг'],['Цена','₪500–900/м²'],['Отверждение','5–7д'],['Нагрузка','жильё · ритейл · коммерч.']], badges:['R9–R10','ECO','>30 МПа'], norms:'EN 13813 (CT)', calc:'micro' },
+        'terrazzo-cement':{ name:'Терраццо · цементное', thk:'12–18 мм', why:'Премиум-эстетика на 30+ лет: мраморная крошка, бесшовно, статусно для дизайн-объектов.',
+          layers:[{t:'Sealer · воск / lithium silicate',s:'0.1 мм',c:'#cfc6b0'},{t:'Тело · CS-31 + крошка 4–12 мм',s:'12–18 мм',c:'#efe7d6'},{t:'Праймер · Sika Primer-3N',s:'—',c:'#c8b08a'},{t:'Основание · C25/30 · ≥60 дней',s:'≥25 МПа',c:'#9a9a98'}],
+          spec:[['Тип','Минеральное терраццо CS-31'],['Цена','₪1000–1800/м²'],['Отверждение','10–14д'],['Срок службы','30+ лет']], badges:['R10','ECO','>35 МПа'], norms:'ת״י 466 (основание)', calc:'terrazzo' },
+        comfortfloor:{ name:'Sika ComfortFloor', thk:'7–8 мм', why:'Тихий и мягкий пол для healthcare/офиса: акустика ΔLw 21–23 dB, anti-fatigue, тёплый под ногой.',
+          layers:[{t:'Топкоат · PU',s:'0.3 мм',c:'#a99c86'},{t:'Тело · ComfortFloor PS-65 (эласт. PU)',s:'2.4 мм',c:'#c5b9a4'},{t:'Мембрана · recycled-PU pad',s:'5 мм',c:'#7d756a'},{t:'Праймер · Sikafloor-161',s:'0.15 мм',c:'#b3a98f'},{t:'Основание · ≤4% RH',s:'—',c:'#9a9a98'}],
+          spec:[['Тип','Эластичный PU PS-65'],['Цена','₪590–780/м²'],['Отверждение','4–5д'],['Нагрузка','healthcare · retail · офис']], badges:['ACOUSTIC 21–23dB','ANTI-FATIGUE','R9–R10'], norms:'EN 13813 · акустика', calc:'comfortfloor' },
+        rubber:{ name:'Резиновое покрытие', thk:'7–15 мм', why:'Ударопоглощение и безопасность: спортзалы, детские, зоны падения; антислип R12.',
+          layers:[{t:'Топкоат · EPDM-крошка + UV-PU',s:'—',c:'#3a3a3a'},{t:'Тело · поливная резина EPDM 1–4 мм',s:'7–15 мм',c:'#2a2a2a'},{t:'Праймер · Sikafloor-161',s:'0.15 мм',c:'#6a6a68'},{t:'Основание · бетон / асфальт',s:'—',c:'#9a9a98'}],
+          spec:[['Тип','Резина EPDM + 2K PU'],['Цена','₪380–650/м²'],['Отверждение','24ч / 3–5д'],['Нагрузка','спорт · детские · healthcare']], badges:['R12','ANTI-SLIP','SHOCK'], norms:'DIN 51130 R12', calc:'rubber' }
+      };
+      var ORDER = ['epoxy','pu-cement','mma','microtopping','terrazzo-cement','comfortfloor','rubber'];
+
+      var chips=document.getElementById('stSysChips'), pie=document.getElementById('stPie'),
+          nameEl=document.getElementById('stSysName'), thkEl=document.getElementById('stSysThk'),
+          specEl=document.getElementById('stSysSpec'), badgesEl=document.getElementById('stSysBadges'),
+          open3d=document.getElementById('stOpen3d'), sampleA=document.getElementById('stSample'),
+          sheet=document.getElementById('stSpecSheet');
+      var current='epoxy';
+
+      function render(slug){
+        var s=SYS[slug]; if(!s) return; current=slug;
+        pie.innerHTML=s.layers.map(function(l){return '<div class="st-layer" style="background:'+l.c+'"><span class="lt">'+l.t+'</span><small>'+l.s+'</small></div>';}).join('');
+        nameEl.textContent=s.name;
+        thkEl.textContent='Общая толщина: '+s.thk+' · нормы: '+s.norms;
+        specEl.innerHTML=s.spec.map(function(r){return '<div class="st-specrow"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';}).join('');
+        badgesEl.innerHTML=s.badges.map(function(b){return '<span class="st-badge">'+b+'</span>';}).join('');
+        open3d.setAttribute('href','configurator.html?mat='+encodeURIComponent(slug));
+        sampleA.setAttribute('href','sample-kit.html?material_slug='+encodeURIComponent(slug)+'&material_label='+encodeURIComponent(s.name));
+        chips.querySelectorAll('.st-syschip').forEach(function(x){x.classList.toggle('on', x.getAttribute('data-slug')===slug);});
+        // spec sheet
+        sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Спецификация системы пола<br>floordsgn.netlify.app · +972 55 966 1459<br>'+new Date().toLocaleDateString('ru-RU')+'</div></div>'+
+          '<h1>'+s.name+'</h1><p class="ss-thk">Толщина '+s.thk+' · '+s.norms+'</p>'+
+          '<div class="ss-sec">Состав «пирога» (сверху вниз)</div><table>'+s.layers.map(function(l){return '<tr><td>'+l.t+'</td><td>'+l.s+'</td></tr>';}).join('')+'</table>'+
+          '<div class="ss-sec">Характеристики</div><table>'+s.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('')+'<tr><td>Класс / свойства</td><td>'+s.badges.join(' · ')+'</td></tr></table>'+
+          '<div class="ss-foot">Это ориентировочная спецификация для проектирования и тендера. Точный состав и цена — после выезда замерщика с тестом влажности основания (бесплатно, 48 ч). Floor.DSGN · напольные системы инженерного класса по всему Израилю · floors.dsgn@gmail.com · +972 55 966 1459</div>';
       }
-      chips.innerHTML = SYS.map(function(s,i){ return '<button type="button" class="st-syschip'+(i===0?' on':'')+'" data-i="'+i+'">'+s.name+'</button>'; }).join('');
-      chips.addEventListener('click', function(e){
-        var b = e.target.closest('.st-syschip'); if(!b) return;
-        chips.querySelectorAll('.st-syschip').forEach(function(x){ x.classList.remove('on'); });
-        b.classList.add('on');
-        render(SYS[+b.getAttribute('data-i')]);
+      // chips
+      chips.innerHTML=ORDER.map(function(slug,i){return '<button type="button" class="st-syschip'+(i===0?' on':'')+'" data-slug="'+slug+'">'+SYS[slug].name+'</button>';}).join('');
+      chips.addEventListener('click',function(e){var b=e.target.closest('.st-syschip');if(!b)return;render(b.getAttribute('data-slug'));});
+
+      // sync cost calculator material chip (so guide/pirog → price is consistent)
+      function syncCalc(slug){
+        var v=SYS[slug]&&SYS[slug].calc; if(!v)return;
+        var chip=document.querySelector('[data-fx="cMat"] [data-v="'+v+'"]');
+        if(chip) chip.click(); // enhance.js recalculates
+      }
+      function selectSystem(slug,scrollTo){
+        render(slug); syncCalc(slug);
+        if(scrollTo){var el=document.getElementById(scrollTo); if(el){activate(scrollTo); el.scrollIntoView({behavior:'smooth'});}}
+      }
+
+      // spec sheet print
+      document.getElementById('stSpecBtn').addEventListener('click',function(){ window.print(); });
+
+      // ---- guide / подбор ----
+      var ans={place:'residential',traffic:'foot',wet:'dry',priority:'look'};
+      document.querySelectorAll('.st-opts').forEach(function(row){
+        row.addEventListener('click',function(e){var b=e.target.closest('.st-opt');if(!b)return;
+          row.querySelectorAll('.st-opt').forEach(function(x){x.classList.remove('on');}); b.classList.add('on');
+          ans[row.getAttribute('data-q')]=b.getAttribute('data-v');});
       });
-      render(SYS[0]);
+      var SCORE={
+        place:{residential:{microtopping:2,'terrazzo-cement':2},commercial:{microtopping:2,'terrazzo-cement':1,epoxy:1,comfortfloor:1},industrial:{epoxy:3,'pu-cement':2,mma:1},food:{'pu-cement':3,mma:2},healthcare:{comfortfloor:3,rubber:2,'pu-cement':1},designer:{'terrazzo-cement':3,microtopping:2}},
+        traffic:{foot:{microtopping:1,'terrazzo-cement':1,comfortfloor:1},wheels:{epoxy:1,microtopping:1},forklift:{epoxy:2,'pu-cement':2},heavy:{'pu-cement':3,mma:1,epoxy:1}},
+        wet:{dry:{epoxy:1,microtopping:1,'terrazzo-cement':1},damp:{'pu-cement':1,epoxy:1,mma:1},wet:{'pu-cement':3,mma:2,rubber:1}},
+        priority:{budget:{epoxy:1,microtopping:1,rubber:1,'pu-cement':1},look:{'terrazzo-cement':2,microtopping:2},durable:{'pu-cement':1,epoxy:1,'terrazzo-cement':1},speed:{mma:3}}
+      };
+      var LBL={residential:'жилья',commercial:'коммерции',industrial:'производства',food:'пищевого производства',healthcare:'healthcare',designer:'дизайн-объекта',foot:'пешей нагрузки',wheels:'лёгкой колёсной нагрузки',forklift:'forklift',heavy:'тяжёлой нагрузки',dry:'сухих условий',damp:'влажных условий',wet:'постоянно мокрых условий',budget:'бюджета',look:'внешнего вида',durable:'срока службы',speed:'скорости монтажа'};
+      document.getElementById('stRecommend').addEventListener('click',function(){
+        var totals={};
+        ['place','traffic','wet','priority'].forEach(function(q){var m=SCORE[q][ans[q]]||{};for(var k in m){totals[k]=(totals[k]||0)+m[k];}});
+        var ranked=Object.keys(totals).sort(function(a,b){return totals[b]-totals[a];});
+        if(!ranked.length) ranked=['epoxy'];
+        var top=ranked[0], alt=ranked[1];
+        document.getElementById('stResName').textContent=SYS[top].name;
+        document.getElementById('stResWhy').textContent='Под '+LBL[ans.place]+', '+LBL[ans.traffic]+' и '+LBL[ans.wet]+' (приоритет — '+LBL[ans.priority]+'): '+SYS[top].why;
+        document.getElementById('stResAlt').textContent=alt?('Альтернатива: '+SYS[alt].name+'.'):'';
+        document.getElementById('stResult').classList.remove('hide');
+        document.getElementById('stResPie').onclick=function(){selectSystem(top,'build');};
+        document.getElementById('stResCost').onclick=function(){selectSystem(top,'cost');};
+        selectSystem(top); // preselect pirog + calc silently
+        document.getElementById('stResult').scrollIntoView({behavior:'smooth'});
+      });
+
+      render('epoxy');
     })();
     </script>
 </body>
