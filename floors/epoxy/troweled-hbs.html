@@ -6,17 +6,29 @@
 <link rel="canonical" href="https://floordsgn.netlify.app/floors/epoxy/troweled-hbs">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css?v=20260520b"><link rel="stylesheet" href="../../chrome-fix.css?v=20260520c"><link rel="stylesheet" href="../../enhance.css?v=6">
+<link rel="stylesheet" href="../../styles.css?v=20260521a"><link rel="stylesheet" href="../../chrome-fix.css?v=20260521a"><link rel="stylesheet" href="../../enhance.css?v=6">
 </head><body data-fx-page="Troweled HBS Эпокси">
 <header class="header">
-        <a href="../../index.html" class="logo"><img src="../../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../../index.html" data-i18n="nav_home">Home</a></li><li><a href="../../floors.html" class="active" data-i18n="nav_floors">Floors</a></li><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../../blog.html" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../../index.html" class="header__logo">
+            <img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../../about.html" data-i18n="nav_about">About</a>
+            <a href="../../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
 <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html" data-i18n="nav_home">Home</a></li><li><a href="../../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
@@ -74,5 +86,5 @@
     </footer>
 <a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span><span data-i18n="fe1_wa">Написать в WhatsApp</span></a>
 <div class="fx-sample-overlay" data-fx="sampleOverlay"><div class="fx-sample-modal"><button class="fx-sample-modal__close" data-fx="sampleClose">×</button><h3 data-i18n="fe1_hbs_modal_title">Образец Troweled HBS</h3><p data-i18n="fe1_hbs_modal_desc">Кусок 100×100 мм 8 мм системы. Бесплатно от 200 м².</p><form action="https://formspree.io/f/TBD" method="POST"><input type="hidden" name="system" value="epoxy-hbs"><label data-i18n="fe1_form_name">Имя</label><input name="name" required><label data-i18n="fe1_form_contact_slash">Телефон / email</label><input name="contact" required><label data-i18n="fe1_form_city">Город</label><input name="city" placeholder="Tel Aviv…"><button type="submit" class="fx-sample-modal__submit" data-i18n="fe1_form_submit">Отправить</button></form></div></div>
-<script src="../../script.js"></script><script src="../../translations.js?v=20260520b" defer></script><script src="../../enhance.js?v=20260520c" defer></script>
+<script src="../../script.js"></script><script src="../../translations.js?v=20260521a" defer></script><script src="../../enhance.js?v=20260521a" defer></script>
 </body></html>

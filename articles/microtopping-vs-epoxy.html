@@ -11,25 +11,36 @@
     <meta property="og:type" content="article">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
-    <link rel="stylesheet" href="../chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
-
-    <article class="article-page">
+    <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
                 <a href="../blog.html" class="back-link">Back to Blog</a>
@@ -193,13 +204,161 @@
         </div>
     </article>
 
-    <section class="cta-section">
+    <section class="cta-section" data-lang-block="en">
         <div class="container">
             <h2>Ready to Start Your Project?</h2>
             <p>Get expert advice on the right flooring solution for your home, office, or facility.</p>
             <div class="cta-buttons">
                 <a href="../contact.html" class="btn btn-outline-white">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Сравнения</span>
+                <h1>Микротоппинг или эпокси: что правильнее для вашего пространства?</h1>
+                <p class="article-meta">Февраль 2026 · 8 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/microtopping/full-frame-shot-wall.jpg" alt="Сравнение микротоппинга и эпоксидного пола" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Микротоппинг и эпокси часто попадают в один shortlist, потому что оба дают бесшовную поверхность. Но по сути это разные инструменты. Микротоппинг — тонкое декоративное цементно-полимерное покрытие с тактильным, «архитектурным» характером. Эпокси — инженерная смоляная система для механической и химической нагрузки. Ошибка начинается в тот момент, когда их сравнивают только по картинке.</p>
+
+                    <h2>Что такое микротоппинг</h2>
+                    <p>Микротоппинг — это обычно 2-3 мм материала, который наносится поверх стабильного подготовленного основания. Он не создаёт «бронеплиту», а формирует тонкую архитектурную оболочку: бесшовную, пластичную по цвету, удобную для интерьеров, стен, ванных, бутиков и жилых пространств.</p>
+
+                    <h3>Ключевые свойства микротоппинга</h3>
+                    <ul>
+                        <li>тонкий слой и минимальная потеря высоты;</li>
+                        <li>матовый или сатиновый финиш с живой фактурой;</li>
+                        <li>возможность работать по существующему покрытию после правильной подготовки;</li>
+                        <li>дизайнерский результат, а не heavy-duty индустриальный сценарий.</li>
+                    </ul>
+
+                    <h2>Что такое эпоксидный пол</h2>
+                    <p>Эпоксид — это уже полноценная смоляная система, рассчитанная на толщину, химию, ударную и абразивную нагрузку. В зависимости от схемы это может быть seal coat, self-leveling система, broadcast или heavy-duty build-up для производства и склада.</p>
+
+                    <h3>Ключевые свойства эпокси</h3>
+                    <ul>
+                        <li>высокая твёрдость и прочность на сжатие;</li>
+                        <li>хорошая химстойкость и сцепление с бетоном;</li>
+                        <li>более «технический» внешний вид, хотя декоративные версии тоже существуют;</li>
+                        <li>ориентация на эксплуатацию, а не на ручной штукатурный характер поверхности.</li>
+                    </ul>
+
+                    <h2>Сравнение лоб в лоб</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Критерий</th>
+                                <th>Микротоппинг</th>
+                                <th>Эпокси</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Тип системы</td>
+                                <td>цементно-полимерная декоративная оболочка</td>
+                                <td>смоляная инженерная система</td>
+                            </tr>
+                            <tr>
+                                <td>Толщина</td>
+                                <td>2-3 мм</td>
+                                <td>обычно 1-4 мм, heavy-duty — больше</td>
+                            </tr>
+                            <tr>
+                                <td>Эстетика</td>
+                                <td>мягкая, тактильная, интерьерная</td>
+                                <td>более жёсткая, техническая, контролируемая</td>
+                            </tr>
+                            <tr>
+                                <td>Износ</td>
+                                <td>хороший для жилых и light-commercial зон</td>
+                                <td>выше при тяжёлой эксплуатации</td>
+                            </tr>
+                            <tr>
+                                <td>Химия</td>
+                                <td>зависит от защитного слоя</td>
+                                <td>обычно сильнее по химстойкости</td>
+                            </tr>
+                            <tr>
+                                <td>Ремонт</td>
+                                <td>нужен аккуратный локальный matching</td>
+                                <td>ремонт проще стандартизовать</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Когда выбирать микротоппинг</h2>
+
+                    <h3>Жилые интерьеры</h3>
+                    <p>Если проект строится на минимализме, мягком свете и бесшовной плоскости, микротоппинг почти всегда выглядит органичнее. Особенно в open-space квартирах, виллах, кухнях и ванных.</p>
+
+                    <h3>Ритейл и hospitality</h3>
+                    <p>Бутики, cafés, небольшие showrooms и front-of-house зоны часто выигрывают от более «тёплого» характера материала. Микротоппинг даёт ощущение ручной работы и архитектурной тонкости.</p>
+
+                    <h3>Overlay и renovation-проекты</h3>
+                    <p>Когда нельзя наращивать высоту пола и хочется избежать тяжёлого демонтажа, тонкая система даёт огромное преимущество — при условии, что основание стабильно и подготовлено правильно.</p>
+
+                    <h2>Когда выбирать эпокси</h2>
+
+                    <h3>Склады, производство, индустриальные помещения</h3>
+                    <p>Где есть тележки, погрузчики, регулярная химия, удар и абразив, сравнение заканчивается быстро: там работает эпокси или другая тяжёлая смоляная система, а не декоративный микротоппинг.</p>
+
+                    <h3>Гаражи и парковки</h3>
+                    <p>Колёсная нагрузка, песок, масло, мойка и локальные удары лучше переживаются смоляным покрытием. Микротоппинг для таких зон — обычно неправильный выбор.</p>
+
+                    <h3>Лаборатории и clean scenarios</h3>
+                    <p>Если критичны контролируемая химстойкость, плотная поверхность и предсказуемое поведение системы, эпокси выигрывает за счёт инженерной природы материала.</p>
+
+                    <h2>Можно ли их сочетать?</h2>
+                    <p>Да, и иногда это лучший ход. Например: front-of-house, ванная или жилой блок получают микротоппинг ради эстетики, а back-of-house, мокрые технические участки или помещения с серьёзной нагрузкой — эпокси. В одном проекте не обязательно быть верным только одной системе.</p>
+
+                    <div class="article-cta">
+                        <h3>Не уверены, что выбрать?</h3>
+                        <p>Разберём ваш сценарий по трафику, химии, дизайну и бюджету — и быстро станет ясно, где нужен микротоппинг, а где эпокси.</p>
+                        <a href="../contact.html" class="btn btn-dark">Получить совет по системе</a>
+                    </div>
+                </div>
+
+                <aside class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Связанные статьи</h4>
+                        <ul>
+                            <li><a href="terrazzo-vs-microtopping.html">Терраццо vs микротоппинг</a></li>
+                            <li><a href="epoxy-vs-polyurethane.html">Эпокси vs полиуретан</a></li>
+                            <li><a href="2026-trends.html">Тренды полов 2026</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>Быстрые ориентиры</h4>
+                        <ul class="quick-facts">
+                            <li><strong>Микротоппинг:</strong> для архитектурной, тонкой и тактильной поверхности</li>
+                            <li><strong>Эпокси:</strong> для тяжёлой эксплуатации и химии</li>
+                            <li><strong>Комбинация:</strong> часто лучший ответ для mixed-use проекта</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Готовы обсудить проект?</h2>
+            <p>Подскажем, где нужен дизайн-ориентированный финиш, а где покрытие должно в первую очередь держать нагрузку.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить расчёт</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
     </section>
@@ -217,7 +376,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js?v=20260520b" defer></script>
+    <script src="../translations.js?v=20260521a" defer></script>
 
     <script type="application/ld+json">
     {

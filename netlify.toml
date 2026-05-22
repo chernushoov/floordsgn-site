@@ -59,3 +59,158 @@
   to = "https://floordsgn.com/:splat"
   status = 301
   force = true
+
+# Contact form: relay to Netlify Function (mirrors api/contact.js for Vercel)
+# n8n webhook URL is configurable via N8N_WEBHOOK_URL env var in Netlify dashboard.
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
+  force = true
+
+# Short-URL SEO redirects — ported from vercel.json on 2026-05-19 night session.
+# These short paths appear in marketing materials, print, business cards.
+# Material shortlinks → /materials/<slug>
+[[redirects]]
+  from = "/pu-cement"
+  to = "/materials/pu-cement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mma"
+  to = "/materials/mma"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/microtopping"
+  to = "/materials/microtopping"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/epoxy"
+  to = "/materials/epoxy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terrazzo"
+  to = "/materials/terrazzo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/concrete"
+  to = "/materials/concrete"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rubber"
+  to = "/materials/rubber"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/restoration"
+  to = "/materials/restoration"
+  status = 301
+  force = true
+
+# Article shortlinks → /articles/<slug>
+[[redirects]]
+  from = "/terrazzo-vs-microtopping"
+  to = "/articles/terrazzo-vs-microtopping"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2026-trends"
+  to = "/articles/2026-trends"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/epoxy-vs-polyurethane"
+  to = "/articles/epoxy-vs-polyurethane"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/self-leveling-screeds"
+  to = "/articles/self-leveling-screeds"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/microtopping-vs-epoxy"
+  to = "/articles/microtopping-vs-epoxy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mma-fast-cure"
+  to = "/articles/mma-fast-cure"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/concrete-crack-repair"
+  to = "/articles/concrete-crack-repair"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/industrial-cleaning"
+  to = "/articles/industrial-cleaning"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/substrate-moisture-testing"
+  to = "/articles/substrate-moisture-testing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/when-to-recoat"
+  to = "/articles/when-to-recoat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terrazzo-modern-interiors"
+  to = "/articles/terrazzo-modern-interiors"
+  status = 301
+  force = true
+
+# Security + cache headers — ported from vercel.json on 2026-05-19 night session.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

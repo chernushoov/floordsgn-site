@@ -1,6 +1,6 @@
 # Configurator control audit
 
-Run: 2026-05-18T15:56:07.267Z
+Run: 2026-05-19T09:59:46.249Z
 
 ## Findings
 

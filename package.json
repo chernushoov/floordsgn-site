@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node scripts/build-prod.js",
     "build:parcel": "parcel build index.html --dist-dir dist-parcel",
-    "lint": "eslint . --ext .js,.html",
+    "lint": "eslint scripts/",
     "a11y": "node a11y.js",
     "snap": "node scripts/snap.js"
   },

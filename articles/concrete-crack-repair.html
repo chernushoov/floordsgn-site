@@ -11,25 +11,36 @@
     <meta property="og:type" content="article">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=20260520b">
-    <link rel="stylesheet" href="../chrome-fix.css?v=20260520c">
+    <link rel="stylesheet" href="../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260521a">
 </head>
 <body>
 
     <header class="header">
-        <a href="../index.html" class="logo"><img src="../images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="logo-img"></a>
-        <nav><ul class="nav"><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" class="active" data-i18n="nav_blog">Blog</a></li></ul></nav>
-        <div class="lang-switch">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
         </div>
-        <a href="../contact.html" class="btn btn-dark" data-i18n="nav_contact">Contact Us</a>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
-    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
-
-    <article class="article-page">
+    <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
                 <a href="../blog.html" class="back-link">Back to Blog</a>
@@ -283,13 +294,278 @@
         </div>
     </article>
 
-    <section class="cta-section">
+    <section class="cta-section" data-lang-block="en">
         <div class="container">
             <h2>Ready to Start Your Project?</h2>
             <p>Get expert advice on substrate preparation and crack repair.</p>
             <div class="cta-buttons">
                 <a href="../contact.html" class="btn btn-outline-white">Get Free Quote</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Монтаж</span>
+                <h1>Методы ремонта трещин в бетоне</h1>
+                <p class="article-meta">Октябрь 2025 · 8 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/microtopping/full-frame-shot-wall.jpg" alt="Текстура бетонной поверхности" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Трещины в бетоне почти неизбежны. Но то, как именно вы работаете с ними до нанесения покрытия, определяет, останутся ли они скрытыми или очень быстро «прочитаются» через новый пол. Для успешной системы важны не только материалы ремонта, но и понимание природы самой трещины.</p>
+
+                    <h2>Какие бывают трещины в бетоне</h2>
+
+                    <h3>1. Пластические усадочные трещины</h3>
+                    <p>Возникают на ранней стадии, когда поверхность сохнет быстрее внутреннего объёма бетона.</p>
+                    <ul>
+                        <li>обычно неглубокие и поверхностные;</li>
+                        <li>часто формируют хаотичный map-like рисунок;</li>
+                        <li>как правило, остаются неактивными;</li>
+                        <li>чаще дают эстетическую, а не конструктивную проблему.</li>
+                    </ul>
+
+                    <h3>2. Усадочные трещины при высыхании</h3>
+                    <p>Появляются по мере набора прочности и потери влаги.</p>
+                    <ul>
+                        <li>нередко идут по повторяющимся линиям;</li>
+                        <li>могут быть глубже, чем пластические;</li>
+                        <li>после полного созревания часто становятся стабильными;</li>
+                        <li>типичны у внутренних углов и зон изменения сечения.</li>
+                    </ul>
+
+                    <h3>3. Осадочные трещины</h3>
+                    <p>Связаны с дифференциальным движением основания.</p>
+                    <ul>
+                        <li>обычно шире и глубже;</li>
+                        <li>могут сопровождаться перепадом по высоте;</li>
+                        <li>бывают как активными, так и уже остановившимися;</li>
+                        <li>часто требуют конструктивной оценки.</li>
+                    </ul>
+
+                    <h3>4. Конструктивные трещины</h3>
+                    <p>Возникают из-за перегрузки, удара или ошибок расчёта.</p>
+                    <ul>
+                        <li>могут проходить через всю толщину плиты;</li>
+                        <li>нередко остаются активными;</li>
+                        <li>требуют участия инженера;</li>
+                        <li>могут быть симптомом более крупной проблемы.</li>
+                    </ul>
+
+                    <h3>5. Проблемы в зоне контрольных и деформационных швов</h3>
+                    <p>Когда шов перестаёт работать так, как задумывался.</p>
+                    <ul>
+                        <li>появляются трещины рядом со швом;</li>
+                        <li>кромки шва крошатся или разрушаются;</li>
+                        <li>движение блокируется грязью или старым заполнением.</li>
+                    </ul>
+
+                    <h2>Как оценивать трещину</h2>
+
+                    <h3>Главные вопросы</h3>
+                    <ul>
+                        <li><strong>Ширина:</strong> волосная (&lt;0.5 мм), средняя (0.5-2 мм) или широкая (&gt;2 мм)?</li>
+                        <li><strong>Глубина:</strong> только поверхность или полная толщина?</li>
+                        <li><strong>Подвижность:</strong> трещина стабильная или живая?</li>
+                        <li><strong>Причина:</strong> понятна или требует отдельного расследования?</li>
+                        <li><strong>Рисунок:</strong> случайный, линейный или конструктивно обусловленный?</li>
+                    </ul>
+
+                    <h3>Проверка движения</h3>
+                    <p>До выбора метода ремонта важно понять, двигается ли трещина.</p>
+                    <ul>
+                        <li>на representative crack ставят маяки или crack monitor;</li>
+                        <li>наблюдение ведут минимум 2-4 недели;</li>
+                        <li>движение более 0.1 мм указывает на активную трещину;</li>
+                        <li>активные трещины требуют гибких решений, а не жёсткого заполнения «на удачу».</li>
+                    </ul>
+
+                    <h2>Методы ремонта</h2>
+
+                    <h3>1. Расшивка и заполнение</h3>
+                    <p>Лучше всего работает для поверхностных и неактивных трещин, а также для эстетического ремонта.</p>
+                    <p><strong>Процедура:</strong></p>
+                    <ul>
+                        <li>трещину раскрывают алмазным диском или роутером в V-образный или прямоугольный паз;</li>
+                        <li>тщательно очищают пылесосом и сжатым воздухом;</li>
+                        <li>заполняют подходящим материалом: эпокси, полиуретаном или polyurea;</li>
+                        <li>выводят заподлицо с поверхностью;</li>
+                        <li>дают полностью отвердеть до начала работ по покрытию.</li>
+                    </ul>
+                    <p><strong>Материалы:</strong></p>
+                    <ul>
+                        <li>жёсткий эпокси для стабильных трещин под жёсткие покрытия;</li>
+                        <li>гибкий полиуретан для активных трещин или эластичных систем;</li>
+                        <li>polyurea, если критично быстрое возвращение зоны в работу.</li>
+                    </ul>
+
+                    <h3>2. Инъекция эпоксидной смолы</h3>
+                    <p>Подходит для конструктивного ремонта, трещин на полную глубину и восстановления монолитности.</p>
+                    <p><strong>Процедура:</strong></p>
+                    <ul>
+                        <li>вдоль трещины ставят инъекционные порты;</li>
+                        <li>поверхность между ними герметизируют;</li>
+                        <li>низковязкий эпокси закачивают под давлением;</li>
+                        <li>идут последовательно от одного участка к следующему до полного заполнения;</li>
+                        <li>после отверждения снимают порты и доводят поверхность.</li>
+                    </ul>
+                    <p><strong>Плюсы:</strong></p>
+                    <ul>
+                        <li>восстанавливает структурную целостность;</li>
+                        <li>проходит по всей глубине трещины;</li>
+                        <li>формирует монолитную связь.</li>
+                    </ul>
+                    <p><strong>Ограничения:</strong></p>
+                    <ul>
+                        <li>работает только на неактивных трещинах;</li>
+                        <li>требует квалифицированной команды;</li>
+                        <li>на больших площадях с множеством дефектов бывает трудоёмким.</li>
+                    </ul>
+
+                    <h3>3. Заливка низковязким эпокси по поверхности</h3>
+                    <p>Подходит для волосных трещин и больших площадей с частой мелкой сеткой дефектов.</p>
+                    <p><strong>Процедура:</strong></p>
+                    <ul>
+                        <li>поверхность тщательно очищают;</li>
+                        <li>низковязкий эпокси разливают по зоне;</li>
+                        <li>втирают состав в трещины раклей или жёсткой щёткой;</li>
+                        <li>излишки убирают до отверждения;</li>
+                        <li>при необходимости делают несколько проходов.</li>
+                    </ul>
+                    <p><strong>Когда полезно:</strong> когда отдельная расшивка каждой микротрещины нерациональна.</p>
+
+                    <h3>4. Сшивка</h3>
+                    <p>Используется для конструктивных трещин и когда нужно остановить дальнейшее раскрытие.</p>
+                    <p><strong>Процедура:</strong></p>
+                    <ul>
+                        <li>по обе стороны от трещины бурят отверстия под углом;</li>
+                        <li>ставят стальные или углеволоконные скобы;</li>
+                        <li>отверстия и саму трещину заполняют эпоксидным раствором;</li>
+                        <li>таким образом восстанавливают передачу нагрузки через трещину.</li>
+                    </ul>
+                    <p><strong>Когда нужно:</strong> если инженер определил, что ремонт должен вернуть несущую способность, а не только закрыть дефект визуально.</p>
+
+                    <h3>5. Гибкая обработка как шва движения</h3>
+                    <p>Подходит для активных трещин, которые продолжат жить.</p>
+                    <p><strong>Процедура:</strong></p>
+                    <ul>
+                        <li>трещину расшивают под нужное соотношение ширины и глубины;</li>
+                        <li>при глубоком пазе ставят backer rod;</li>
+                        <li>заполняют эластичным материалом, например полиуретаном или силиконом;</li>
+                        <li>в покрытии эту линию сохраняют как рабочий шов.</li>
+                    </ul>
+                    <p><strong>Важно:</strong> если сверху ляжет жёсткая система, она всё равно повторно треснет. Схема покрытия должна учитывать подвижность узла.</p>
+
+                    <h2>Подбор материала по типу дефекта</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Тип трещины</th>
+                                <th>Рекомендуемый метод</th>
+                                <th>Материал</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Волосная, стабильная</td>
+                                <td>Заливка или допустимо оставить</td>
+                                <td>Низковязкий эпокси</td>
+                            </tr>
+                            <tr>
+                                <td>Средняя, стабильная</td>
+                                <td>Расшивка и заполнение</td>
+                                <td>Эпоксидная паста</td>
+                            </tr>
+                            <tr>
+                                <td>Широкая, стабильная</td>
+                                <td>Расшивка или инъекция</td>
+                                <td>Эпокси или ремонтный раствор</td>
+                            </tr>
+                            <tr>
+                                <td>Любая ширина, активная</td>
+                                <td>Гибкая обработка как шва</td>
+                                <td>Полиуретановый герметик</td>
+                            </tr>
+                            <tr>
+                                <td>Конструктивная</td>
+                                <td>Инъекция + сшивка</td>
+                                <td>Структурный эпокси</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Интеграция с системой покрытия</h2>
+
+                    <h3>Сроки</h3>
+                    <ul>
+                        <li>ремонт трещин завершают до любого этапа нанесения покрытия;</li>
+                        <li>материалы ремонта должны полностью отвердеть, обычно 24-72 часа;</li>
+                        <li>все зоны ремонта шлифуют заподлицо;</li>
+                        <li>при необходимости repaired areas дополнительно грунтуют.</li>
+                    </ul>
+
+                    <h3>Видимость через финиш</h3>
+                    <p>Даже качественно отремонтированная трещина может остаться заметной под тонкой системой.</p>
+                    <ul>
+                        <li>ремонтный состав и старый бетон по-разному реагируют на температуру;</li>
+                        <li>возможна небольшая разница по оттенку;</li>
+                        <li>поверхностная текстура тоже может отличаться.</li>
+                    </ul>
+                    <p><strong>Что помогает:</strong> более толстые покрытия, broadcast-системы или честное принятие того, что бетон не всегда должен выглядеть «стерильно новым».</p>
+
+                    <h3>Риск повторного раскрытия</h3>
+                    <p>Стабильные трещины после правильного ремонта обычно не возвращаются. Но важно помнить:</p>
+                    <ul>
+                        <li>нужно устранять причину, а не только симптом;</li>
+                        <li>активная трещина снова проявится, если залить её жёстким материалом;</li>
+                        <li>при множественной трещиноватости стоит рассматривать crack-bridging праймеры и системное решение.</li>
+                    </ul>
+
+                    <div class="article-cta">
+                        <h3>Нужна оценка трещин?</h3>
+                        <p>Проверим состояние бетона, определим активность дефектов и предложим метод ремонта, который действительно совместим с будущим покрытием.</p>
+                        <a href="../contact.html" class="btn btn-dark">Запросить оценку</a>
+                    </div>
+                </div>
+
+                <aside class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h4>Связанные статьи</h4>
+                        <ul>
+                            <li><a href="substrate-moisture-testing.html">Контроль влажности основания</a></li>
+                            <li><a href="self-leveling-screeds.html">Самонивелирующиеся стяжки</a></li>
+                            <li><a href="epoxy-vs-polyurethane.html">Эпокси vs полиуретан</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-section">
+                        <h4>Короткая справка</h4>
+                        <ul class="quick-facts">
+                            <li><strong>Волосная:</strong> менее 0.5 мм</li>
+                            <li><strong>Средняя:</strong> 0.5-2 мм</li>
+                            <li><strong>Активная:</strong> движение более 0.1 мм</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Готовы начать проект?</h2>
+            <p>Поможем правильно подготовить основание и выбрать ремонт трещин до нанесения новой системы пола.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить расчёт</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
     </section>
@@ -307,7 +583,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../translations.js?v=20260520b" defer></script>
+    <script src="../translations.js?v=20260521a" defer></script>
 
     <script type="application/ld+json">
     {
