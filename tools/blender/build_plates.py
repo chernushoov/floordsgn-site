@@ -42,9 +42,10 @@ PLATES = {
     'mma':                 ([('topcoat', 1.0), ('body', 4.5),('primer', 0.5),  ('substrate', 40)], 0.30),
     'pu-cement':           ([('topcoat', 0.5), ('body', 6.5),('primer', 0.3),  ('substrate', 40)], 0.30),
     'microtopping':        ([('topcoat', 0.1), ('body', 2.4),('mesh-layer', 0.3), ('primer', 0.15), ('substrate', 40)], 0.30),
-    'terrazzo-cement':     ([('topcoat', 0.1), ('body', 15), ('primer', 0.2),  ('substrate', 60)], 0.17),
-    'terrazzo-multi':      ([('topcoat', 0.2), ('body', 15), ('primer', 0.8),  ('substrate', 60)], 0.17),
-    'terrazzo-epoxy':      ([('topcoat', 0.5), ('body', 15), ('primer', 0.15), ('substrate', 60)], 0.17),
+    # terrazzo: tile=1 (UV=plate) — use monolithic delit textures, NOT seamless-tiled (avoids cross-seams)
+    'terrazzo-cement':     ([('topcoat', 0.1), ('body', 15), ('primer', 0.2),  ('substrate', 60)], 0.30),
+    'terrazzo-multi':      ([('topcoat', 0.2), ('body', 15), ('primer', 0.8),  ('substrate', 60)], 0.30),
+    'terrazzo-epoxy':      ([('topcoat', 0.5), ('body', 15), ('primer', 0.15), ('substrate', 60)], 0.30),
     'rubber':              ([('topcoat', 0.5), ('body', 11), ('primer', 0.15), ('substrate', 40)], 0.10),
     'decorative-concrete': ([('topcoat', 0.1), ('body', 60), ('primer', 0.2),  ('substrate', 40)], 0.30),
     'comfortfloor':        ([('topcoat', 0.3), ('body', 2.4),('membrane', 5),  ('primer', 0.15), ('substrate', 40)], 0.30),
