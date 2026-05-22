@@ -312,6 +312,16 @@
         </div>
       </div>
     </div>
+    <div id="stBoqWrap" style="margin-top:32px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px">
+        <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);letter-spacing:.02em;margin:0">Ориентировочный расход материалов</h3>
+        <label style="font:500 14px/1 Montserrat,sans-serif;color:var(--steel);display:inline-flex;align-items:center;gap:8px">Площадь
+          <input type="number" id="stBoqArea" min="1" max="100000" step="1" value="120" style="width:96px;padding:8px 10px;border:1px solid #d8d2c6;border-radius:8px;font:600 14px Montserrat,sans-serif;color:var(--carbon)"> м²
+        </label>
+      </div>
+      <div class="stc-wrap"><table class="stc-table" id="stBoqTable"></table></div>
+      <p class="st-note">Расход ориентировочный (плотность × толщина) на ровное основание; точная величина и фасовка зависят от пористости основания и прайса поставщика. Бетонное основание считается отдельно.</p>
+    </div>
   </section>
 
   <!-- 2.5 COMPARE -->
@@ -441,13 +451,28 @@
           spec:[['Тип','Резина EPDM + 2K PU'],['Цена','₪380–650/м²'],['Отверждение','24ч / 3–5д'],['Нагрузка','спорт · детские · healthcare']], badges:['R12','ANTI-SLIP','SHOCK'], norms:'DIN 51130 R12', calc:'rubber' }
       };
       var ORDER = ['epoxy','pu-cement','mma','microtopping','terrazzo-cement','comfortfloor','rubber'];
+      // ориентировочный расход кг/м² по слоям (плотность × толщина); 0 = основание/рулонный материал, считается отдельно
+      var CONS = { epoxy:[0.3,6.0,0.4,0], 'pu-cement':[1.0,12.0,0.4,0], mma:[1.2,5.0,0.5,0], microtopping:[0.2,3.5,0,0.3,0], 'terrazzo-cement':[0.1,30.0,0.3,0], comfortfloor:[0.4,3.4,0,0.3,0], rubber:[0.5,10.0,0.3,0] };
 
       var chips=document.getElementById('stSysChips'), pie=document.getElementById('stPie'),
           nameEl=document.getElementById('stSysName'), thkEl=document.getElementById('stSysThk'),
           specEl=document.getElementById('stSysSpec'), badgesEl=document.getElementById('stSysBadges'),
           open3d=document.getElementById('stOpen3d'), sampleA=document.getElementById('stSample'),
-          sheet=document.getElementById('stSpecSheet');
+          sheet=document.getElementById('stSpecSheet'),
+          boqArea=document.getElementById('stBoqArea'), boqTable=document.getElementById('stBoqTable');
       var current='epoxy';
+      function curArea(){ var a=parseFloat(boqArea&&boqArea.value)||0; return a>0?a:120; }
+      function fmtKg(n){ return (Math.round(n*10)/10).toLocaleString('ru-RU'); }
+      function renderBoq(slug){
+        var s=SYS[slug], q=CONS[slug]; if(!s||!q||!boqTable) return;
+        var area=curArea(), totals=0;
+        var rows=s.layers.map(function(l,i){
+          var per=q[i]||0; var tot=per*area; if(per>0) totals+=tot;
+          return '<tr><td class="stc-name">'+l.t+'</td><td>'+l.s+'</td><td>'+(per>0?fmtKg(per)+' кг/м²':'—')+'</td><td>'+(per>0?fmtKg(tot)+' кг':'—')+'</td></tr>';
+        }).join('');
+        boqTable.innerHTML='<thead><tr><th>Слой</th><th>Толщина</th><th>Расход</th><th>На '+fmtKg(area)+' м²</th></tr></thead><tbody>'+rows+
+          '<tr><td class="stc-name"><b>Итого материалов</b></td><td></td><td><b>'+fmtKg(totals/area)+' кг/м²</b></td><td><b>'+fmtKg(totals)+' кг</b></td></tr></tbody>';
+      }
 
       function render(slug){
         var s=SYS[slug]; if(!s) return; current=slug;
@@ -459,11 +484,15 @@
         open3d.setAttribute('href','configurator.html?mat='+encodeURIComponent(slug));
         sampleA.setAttribute('href','sample-kit.html?material_slug='+encodeURIComponent(slug)+'&material_label='+encodeURIComponent(s.name));
         chips.querySelectorAll('.st-syschip').forEach(function(x){x.classList.toggle('on', x.getAttribute('data-slug')===slug);});
+        renderBoq(slug);
         // spec sheet
+        var _ssArea=curArea(), _ssQ=CONS[slug]||[], _ssTot=0;
+        var _ssBoq=s.layers.map(function(l,i){var per=_ssQ[i]||0; if(per<=0) return ''; var tot=per*_ssArea; _ssTot+=tot; return '<tr><td>'+l.t+'</td><td>'+(Math.round(per*10)/10)+' кг/м²</td><td>'+Math.round(tot)+' кг</td></tr>';}).filter(Boolean).join('');
         sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Спецификация системы пола<br>floordsgn.netlify.app · +972 55 966 1459<br>'+new Date().toLocaleDateString('ru-RU')+'</div></div>'+
           '<h1>'+s.name+'</h1><p class="ss-thk">Толщина '+s.thk+' · '+s.norms+'</p>'+
           '<div class="ss-sec">Состав «пирога» (сверху вниз)</div><table>'+s.layers.map(function(l){return '<tr><td>'+l.t+'</td><td>'+l.s+'</td></tr>';}).join('')+'</table>'+
           '<div class="ss-sec">Характеристики</div><table>'+s.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('')+'<tr><td>Класс / свойства</td><td>'+s.badges.join(' · ')+'</td></tr></table>'+
+          '<div class="ss-sec">Ориентировочный расход материалов на '+_ssArea+' м²</div><table>'+_ssBoq+'<tr><td><b>Итого</b></td><td><b>'+(Math.round(_ssTot/_ssArea*10)/10)+' кг/м²</b></td><td><b>'+Math.round(_ssTot)+' кг</b></td></tr></table>'+
           '<div class="ss-foot">Это ориентировочная спецификация для проектирования и тендера. Точный состав и цена — после выезда замерщика с тестом влажности основания (бесплатно, 48 ч). Floor.DSGN · напольные системы инженерного класса по всему Израилю · floors.dsgn@gmail.com · +972 55 966 1459</div>';
       }
       // chips
@@ -483,6 +512,13 @@
 
       // spec sheet print
       document.getElementById('stSpecBtn').addEventListener('click',function(){ window.print(); });
+
+      // BoQ area → recompute take-off + keep cost slider in sync
+      if(boqArea){ boqArea.addEventListener('input',function(){
+        renderBoq(current);
+        var cs=document.querySelector('[data-fx="cAreaInput"]'), v=parseFloat(boqArea.value);
+        if(cs && v>=20 && v<=10000){ cs.value=v; cs.dispatchEvent(new Event('input',{bubbles:true})); }
+      }); }
 
       // ---- guide / подбор ----
       var ans={place:'residential',traffic:'foot',wet:'dry',priority:'look'};
