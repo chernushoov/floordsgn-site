@@ -7,6 +7,11 @@ const translations = {
         // Navigation
         nav_home: "Home",
         nav_floors: "Floors",
+        nav_studio: "Studio",
+        nav_substrate: "Substrate Check",
+        nav_decision: "System Finder",
+        nav_visualizer: "Visualizer",
+        nav_compare: "Compare",
         nav_projects: "Projects",
         nav_about: "About Us",
         nav_blog: "Blog",
@@ -1844,6 +1849,11 @@ const translations = {
         // Navigation
         nav_home: "Главная",
         nav_floors: "Покрытия",
+        nav_studio: "Студия",
+        nav_substrate: "Проверка основания",
+        nav_decision: "Подбор системы",
+        nav_visualizer: "Визуализатор",
+        nav_compare: "Сравнение",
         nav_projects: "Проекты",
         nav_about: "О нас",
         nav_blog: "Блог",
