@@ -310,7 +310,7 @@
             <button class="fx-sample-modal__close" data-fx="sampleClose" aria-label="Закрыть">×</button>
             <h3 data-i18n="fe1_sl_modal_title">Образец Self-Leveling</h3>
             <p data-i18n="fe1_sl_modal_desc">Кусок 100×100 мм системы 4 мм с топкоутом + тех. описание + buildup + slip class. Бесплатно от 50 м², иначе 80 ₪ за доставку.</p>
-            <form action="https://formspree.io/f/TBD" method="POST">
+            <form name="sample-request" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="sample-request"><p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
                 <input type="hidden" name="_subject" value="FloorDSGN sample request — Self-Leveling">
                 <input type="hidden" name="system" value="self-leveling-epoxy">
                 <label data-i18n="fe1_form_name">Имя</label><input name="name" type="text" required>
@@ -332,6 +332,6 @@
 
     <script src="../../script.js"></script>
     <script src="../../translations.js?v=20260521a" defer></script>
-    <script src="../../enhance.js?v=20260521a" defer></script>
+    <script src="../../enhance.js?v=20260522a" defer></script>
 </body>
 </html>

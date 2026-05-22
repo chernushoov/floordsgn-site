@@ -242,7 +242,7 @@
                     </div>
                 </div>
                 <div class="landing-form-wrapper">
-                    <form class="landing-form" id="industrialForm" method="POST" name="industrial">
+                    <form class="landing-form" id="industrialForm" method="POST" name="industrial" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="industrial"><p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
                         <input type="hidden" name="source" value="industrial">
                         <div class="form-group">
                             <label for="name" data-i18n="industrial_label_name">Name *</label>
@@ -320,7 +320,6 @@
                     </form>
                     <script>
                     (function(){
-                        var WEBHOOK = '/api/contact';
                         var form = document.getElementById('industrialForm');
                         var msgBox = document.getElementById('industrialMsg');
                         form.addEventListener('submit', function(e) {
@@ -328,40 +327,25 @@
                             msgBox.style.display = 'block';
                             msgBox.style.color = '#666';
                             msgBox.textContent = 'Sending...';
-                            var data = {
-                                name: form.name.value,
-	                                company: form.company.value,
-	                                object_type: form['object-type'].value,
-	                                phone: form.phone.value,
-                                    email: form.email.value,
-                                    area: form.area.value,
-                                    city: form.city.value,
-                                    substrate: form.substrate.value,
-                                    downtime: form.downtime.value,
-	                                urgency: form.urgency.value,
-                                    message: form.message.value,
-                                    page: 'industrial',
-	                                source: 'industrial-landing',
-	                                ts: new Date().toISOString()
-	                            };
-                            fetch(WEBHOOK, {
+                            var body = new URLSearchParams();
+                            new FormData(form).forEach(function(v, k){ body.append(k, v); });
+                            body.append('page', 'industrial');
+                            body.append('source', 'industrial-landing');
+                            fetch('/', {
                                 method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(data)
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: body.toString()
                             })
-	                            .then(function(response) {
-                                    if (!response.ok) throw new Error('Lead relay failed');
-                                    return response.json();
-                                })
-                                .then(function() {
-	                                msgBox.style.color = '#2a7d2a';
-	                                msgBox.textContent = 'Thank you! We will contact you within 24 hours.';
-	                                form.reset();
-	                            })
-	                            .catch(function() {
-                                    msgBox.style.color = '#92400e';
-	                                msgBox.innerHTML = 'The form could not confirm delivery. Please send the request on WhatsApp so we do not miss it: <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20an%20industrial%20flooring%20project." target="_blank" rel="noopener">WhatsApp FloorDSGN</a>.';
-	                            });
+                            .then(function(response) {
+                                if (!response.ok) throw new Error('Lead relay failed');
+                                msgBox.style.color = '#2a7d2a';
+                                msgBox.textContent = 'Thank you! We will contact you within 24 hours.';
+                                form.reset();
+                            })
+                            .catch(function() {
+                                msgBox.style.color = '#92400e';
+                                msgBox.innerHTML = 'The form could not confirm delivery. Please send the request on WhatsApp so we do not miss it: <a href="https://wa.me/972559661459?text=Hi%20FloorDSGN%2C%20I%20want%20to%20discuss%20an%20industrial%20flooring%20project." target="_blank" rel="noopener">WhatsApp FloorDSGN</a>.';
+                            });
                         });
                     })();
                     </script>

@@ -262,7 +262,7 @@
                     </div>
                 </div>
                 <div class="landing-form-wrapper">
-                    <form class="landing-form" id="designerForm" method="POST" name="designer">
+                    <form class="landing-form" id="designerForm" method="POST" name="designer" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="designer"><p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field"></label></p>
                         <input type="hidden" name="source" value="designer">
                         <div class="form-group">
                             <label for="name" data-i18n="designers_label_name">Name *</label>
@@ -304,7 +304,6 @@
                     </form>
                     <script>
                     (function(){
-                        var WEBHOOK = '/api/contact';
                         var form = document.getElementById('designerForm');
                         var msgBox = document.getElementById('designerMsg');
                         form.addEventListener('submit', function(e) {
@@ -312,27 +311,17 @@
                             msgBox.style.display = 'block';
                             msgBox.style.color = '#666';
                             msgBox.textContent = 'Sending...';
-                            var data = {
-                                name: form.name.value,
-                                studio: form.studio.value,
-                                role: form.role.value,
-                                project_type: form['project-type'].value,
-                                contact: form.contact.value,
-                                page: 'designers',
-                                source: 'designer-landing',
-                                ts: new Date().toISOString()
-                            };
-                            fetch(WEBHOOK, {
+                            var body = new URLSearchParams();
+                            new FormData(form).forEach(function(v, k){ body.append(k, v); });
+                            body.append('page', 'designers');
+                            body.append('source', 'designer-landing');
+                            fetch('/', {
                                 method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(data)
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: body.toString()
                             })
                             .then(function(response) {
                                 if (!response.ok) throw new Error('Lead relay failed');
-                                return response.json();
-                            })
-                            .then(function(payload) {
-                                if (payload && payload.ok === false) throw new Error('Lead relay failed');
                                 form.reset();
                                 window.location.href = 'thank-you.html?source=designers';
                             })

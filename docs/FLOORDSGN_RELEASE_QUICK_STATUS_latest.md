@@ -1,51 +1,10 @@
 # FloorDSGN Release Quick Status
-Fri May 22 14:31:47 IDT 2026
+Fri May 22 15:36:00 IDT 2026
 
 ## Git status
- M .DS_Store
- M 404.html
- M _audit/controls-report.md
- M about.html
- M articles/2026-trends.html
- M articles/concrete-crack-repair.html
- M "articles/encyclopedia/01-\320\272\320\260\320\277\320\260\320\265\321\202-\321\201-\320\277\320\276\321\202\320\276\320\273\320\272\320\260-\321\207\320\270\320\275\320\270\321\202\320\265-\320\277\321\200\320\270\321\207\320\270\320\275\321\203-\320\260.html"
- M "articles/encyclopedia/02-\321\207\321\221\321\200\320\275\320\260\321\217-\320\277\320\273\320\265\321\201\320\265\320\275\321\214-\320\262-\320\262\320\260\320\275\320\275\320\276\320\271-\320\277\320\276\321\207\320\265\320\274\321\203-\320\276\320\275\320\260.html"
- M "articles/encyclopedia/03-\321\202\321\200\320\265\321\211\320\270\320\275\320\260-\320\262-\321\201\321\202\320\265\320\275\320\265-5-\320\277\321\200\320\270\320\267\320\275\320\260\320\272\320\276\320\262-\320\272\320\276\320\263\320\264\320\260.html"
- M "articles/encyclopedia/04-\321\200\320\266\320\260\320\262\320\260\321\217-\320\260\321\200\320\274\320\260\321\202\321\203\321\200\320\260-\320\275\320\260-\320\272\320\276\320\273\320\276\320\275\320\275\320\265-\320\277\320\276\321\210\320\260\320\263\320\276\320\262\320\276\320\265-\320\273\320\265\321\207\320\265\320\275\320\270\320\265.html"
- M "articles/encyclopedia/05-\321\201\321\213\321\200\320\276\321\201\321\202\321\214-\320\275\320\260-\320\261\320\260\320\273\320\272\320\276\320\275\320\265-\320\277\320\276\321\207\320\265\320\274\321\203-\321\215\321\202\320\276-\321\205\321\203\320\266\320\265.html"
- M "articles/encyclopedia/06-\320\262\321\213\321\201\320\276\320\273\321\213-\320\275\320\260-\321\201\321\202\320\265\320\275\320\265-\321\207\321\202\320\276-\321\215\321\202\320\276-\320\270.html"
- M "articles/encyclopedia/07-\320\276\321\202\321\201\320\273\320\276\320\265\320\275\320\270\320\265-\321\210\321\202\321\203\320\272\320\260\321\202\321\203\321\200\320\272\320\270-\320\275\320\260-\321\201\321\202\320\260\321\200\320\276\320\274-\320\261\320\260\320\273\320\272\320\276\320\275\320\265-\320\277\321\200\320\260\320\262\320\270\320\273\321\214\320\275\321\213\320\271.html"
- M "articles/encyclopedia/08-\320\262\320\276\321\201\321\201\321\202\320\260\320\275\320\276\320\262\320\273\320\265\320\275\320\270\320\265-\320\277\320\276\320\264\320\267\320\265\320\274\320\275\320\276\320\263\320\276-\320\277\320\260\321\200\320\272\320\270\320\275\320\263\320\260-\320\277\320\276\321\210\320\260\320\263\320\276\320\262\320\276\320\265-\321\200\321\203\320\272\320\276\320\262\320\276\320\264\321\201\321\202\320\262\320\276-\320\264\320\273\321\217.html"
- M "articles/encyclopedia/09-\321\201\321\202\320\260\320\275\320\264\320\260\321\200\321\202\321\213-\327\252\327\231-466-\320\270-en-1504.html"
- M "articles/encyclopedia/10-\320\274\320\276\320\266\320\275\320\276-\320\273\320\270-\320\267\320\260\320\273\320\270\320\262\320\260\321\202\321\214-\320\261\320\265\321\202\320\276\320\275-\320\275\320\260-\320\261\320\265\321\202\320\276\320\275.html"
- M "articles/encyclopedia/11-\320\272\320\260\321\200\320\261\320\276\320\275\320\270\320\267\320\260\321\206\320\270\321\217-\320\261\320\265\321\202\320\276\320\275\320\260-\321\202\320\265\321\201\321\202-\320\267\320\260-5-\320\274\320\270\320\275\321\203\321\202.html"
- M "articles/encyclopedia/12-80-%-\320\275\320\276\320\262\321\213\321\205-\320\272\320\262\320\260\321\200\321\202\320\270\321\200-\321\201-\320\264\320\265\321\204\320\265\320\272\321\202\320\260\320\274\320\270.html"
- M "articles/encyclopedia/13-\321\215\320\277\320\276\320\272\321\201\320\270-\320\270\320\273\320\270-pu-\320\270\320\275\321\212\320\265\320\272\321\206\320\270\321\217-7-\321\201\320\270\321\202\321\203\320\260\321\206\320\270\320\271.html"
- M "articles/encyclopedia/14-\321\205\320\273\320\276\321\200\320\270\320\264\321\213-\321\203-\320\274\320\276\321\200\321\217-\320\272\320\260\320\272-\320\267\320\260\321\211\320\270\321\202\320\270\321\202\321\214-\320\261\320\265\321\202\320\276\320\275.html"
- M articles/encyclopedia/epoxy-sl.html
- M articles/encyclopedia/index.html
- M articles/encyclopedia/microtopping.html
- M articles/encyclopedia/pu-cement.html
- M articles/encyclopedia/terrazzo.html
- M articles/epoxy-vs-polyurethane.html
- M articles/index.html
- M articles/industrial-cleaning.html
- M articles/microtopping-vs-epoxy.html
- M articles/mma-fast-cure.html
- M articles/self-leveling-screeds.html
- M articles/substrate-moisture-testing.html
- M articles/terrazzo-modern-interiors.html
- M articles/terrazzo-vs-microtopping.html
- M articles/when-to-recoat.html
- M blog.html
- M compare.html
- M contact.html
- M decision-tool.html
  M designers.html
- M docs/FLOORDSGN_MEDIA_QUEUE_DIGEST_latest.md
  M docs/FLOORDSGN_RELEASE_QUICK_STATUS_latest.md
- M en/index.html
- M floors.html
+ M enhance.js
  M floors/concrete.html
  M floors/concrete/cream.html
  M floors/concrete/full-aggregate.html
@@ -85,37 +44,7 @@ Fri May 22 14:31:47 IDT 2026
  M floors/terrazzo/mineral.html
  M floors/terrazzo/palladiana.html
  M floors/terrazzo/venetian.html
- M index.html
  M industrial.html
- M materials/concrete.html
- M materials/epoxy.html
- M materials/microtopping.html
- M materials/mma.html
- M materials/pu-cement.html
- M materials/restoration.html
- M materials/rubber.html
- M materials/terrazzo.html
- M netlify.toml
- M package.json
- M projects.html
- M quote.html
- M sample-kit.html
- M scripts/build-prod.js
- M specs/index.html
- M styles.css
- M substrate-check.html
- M thank-you.html
- M translations.js
- M verticals/architects.html
- M verticals/healthcare.html
- M verticals/hospitality.html
- M verticals/warehouse.html
- M visualizer.html
-?? .eslintrc.json
-?? docs/BLENDER_3D_BRIEF_2026-05-19.md
-?? docs/CODEX_BLOG_REORG_PROMPT_2026-05-21.md
-?? netlify/
-?? scripts/swap-canonical-domain.js
 
 ## Accessibility smoke
 
