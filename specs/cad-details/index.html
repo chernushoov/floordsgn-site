@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section Details (CAD) — Floor.DSGN for Architects</title>
+<meta name="description" content="Downloadable floor-system section details: layer build-up, nominal thicknesses, standards. SVG + PDF for specification. Epoxy, PU-cement, MMA, terrazzo, microcement, rubber.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --carbon:#151515; --steel:#72716D; --signal:#C86B3C; --concrete:#F3F0EA; --graphite:#2D2D2D; }
+  *{box-sizing:border-box}
+  body{ margin:0; font-family:'Montserrat',sans-serif; color:var(--carbon); background:#fff; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:54px 28px 100px; }
+  .top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:46px; }
+  .top a{ font:600 12px 'Montserrat',sans-serif; letter-spacing:.04em; color:var(--carbon); text-decoration:none; }
+  .top a:hover{ color:var(--signal); }
+  .eyebrow{ font:600 11px 'Montserrat',sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--signal); margin:0 0 14px; }
+  h1{ font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(36px,5vw,64px); line-height:1.04; margin:0 0 18px; }
+  .lede{ max-width:680px; color:var(--steel); font-size:15.5px; line-height:1.6; margin:0 0 14px; }
+  .note{ max-width:680px; color:var(--steel); font-size:12.5px; line-height:1.55; margin:0 0 44px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; }
+  .card{ border:1px solid #e7e2d8; border-radius:14px; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
+  .card img{ width:100%; display:block; border-bottom:1px solid #eee; background:var(--concrete); }
+  .card .body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px; }
+  .card h3{ font:600 16px 'Montserrat',sans-serif; margin:0; }
+  .card .meta{ color:var(--steel); font-size:12.5px; }
+  .card .dl{ margin-top:10px; display:flex; gap:10px; }
+  .card .dl a{ font:600 12px 'Montserrat',sans-serif; text-decoration:none; padding:7px 14px; border-radius:980px; border:1px solid var(--carbon); color:var(--carbon); }
+  .card .dl a.pdf{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
+  .card .dl a:hover{ border-color:var(--signal); color:var(--signal); }
+  .card .dl a.pdf:hover{ background:var(--signal); color:#fff; }
+  .tdsbar{ margin-top:48px; padding:22px 26px; background:var(--concrete); border-radius:14px; color:var(--steel); font-size:14px; }
+  .tdsbar a{ color:var(--signal); text-decoration:none; font-weight:600; }
+  @media(max-width:720px){ .grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="../../designers.html">&larr; For Designers &amp; Architects</a>
+    <a href="../../index.html">FLOOR.DSGN</a>
+  </div>
+  <p class="eyebrow">For Architects · Specification</p>
+  <h1>Section Details</h1>
+  <p class="lede">Layer build-up section drawings for every Floor.DSGN system — nominal thicknesses, substrate, and the standards each system answers to. Download as PDF for your spec set or SVG for editing.</p>
+  <p class="note">NTS — drawings are nominal; confirm substrate condition, system spec and warranty in the project proposal. Manufacturer technical data sheets (Sika) are in the <a href="../" style="color:var(--signal);text-decoration:none;font-weight:600">Spec Library &rarr;</a></p>
+  <div class="grid" id="grid"></div>
+  <div class="tdsbar">Need full manufacturer TDS, slip/fire/VOC data or a CAD edge/cove/joint detail not shown here? <a href="../../contact.html">Ask for a spec pack &rarr;</a></div>
+</div>
+<script>
+  var SYS=[
+    ["epoxy","Epoxy SL (self-levelling)","~44 mm"],
+    ["pu-cement","PU-Cement (heavy duty)","~47 mm"],
+    ["mma","MMA (fast-cure)","~46 mm"],
+    ["microtopping","Microtopping / microcement","~43 mm"],
+    ["terrazzo-cement","Terrazzo — cementitious","~75 mm"],
+    ["terrazzo-multi","Terrazzo — multi / Palladiana","~76 mm"],
+    ["terrazzo-epoxy","Terrazzo — epoxy (thin-set)","~76 mm"],
+    ["comfortfloor","ComfortFloor (elastic PU)","~48 mm"],
+    ["decorative-concrete","Decorative / polished concrete","~101 mm"],
+    ["rubber","Rubber — poured EPDM","~52 mm"]
+  ];
+  document.getElementById('grid').innerHTML = SYS.map(function(s){
+    return '<div class="card"><img src="'+s[0]+'-section.png" alt="'+s[1]+' section detail" loading="lazy">'+
+      '<div class="body"><h3>'+s[1]+'</h3><div class="meta">Total build-up '+s[2]+' · section detail</div>'+
+      '<div class="dl"><a class="pdf" href="'+s[0]+'-section.pdf" download>PDF</a>'+
+      '<a href="'+s[0]+'-section.svg" download>SVG</a></div></div></div>';
+  }).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" font-family="Montserrat,Arial,sans-serif">
+<rect width="1000" height="720" fill="#FFFFFF"/>
+<defs><pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="9" stroke="#72716D" stroke-width="1"/></pattern></defs>
+<text x="56" y="64" font-size="13" letter-spacing="3" fill="#C86B3C">FLOOR.DSGN — SECTION DETAIL</text>
+<text x="56" y="98" font-size="30" font-weight="600" fill="#151515">Microtopping / microcement</text>
+<line x1="56" y1="116" x2="944" y2="116" stroke="#151515" stroke-width="2"/>
+<text x="56" y="140" font-size="13" fill="#72716D">Total build-up: <tspan font-weight="600" fill="#151515">~42.95 mm</tspan> · NTS — nominal thicknesses, verify substrate &amp; system on site</text>
+<rect x="360" y="150.0" width="300" height="17.5" fill="#d9d4cb" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="167.5" width="300" height="18.5" fill="#cfc8ba" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="186.0" width="300" height="17.5" fill="#d8d23a" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="203.5" width="300" height="17.5" fill="#cdb2a0" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="220.9" width="300" height="309.1" fill="url(#hatch)" stroke="#151515" stroke-width="1.4"/>
+<polyline points="660,158.7 686,158.7 700,158.7" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="158.7" r="2" fill="#72716D"/>
+<text x="708" y="156.7" font-size="14" font-weight="500" fill="#151515">Sealer (2 coats)</text>
+<text x="708" y="173.7" font-size="12" fill="#72716D">0.1 mm</text>
+<polyline points="660,176.7 686,200.7 700,200.7" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="176.7" r="2" fill="#72716D"/>
+<text x="708" y="198.7" font-size="14" font-weight="500" fill="#151515">Microcement body</text>
+<text x="708" y="215.7" font-size="12" fill="#72716D">2.4 mm</text>
+<polyline points="660,194.7 686,242.7 700,242.7" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="194.7" r="2" fill="#72716D"/>
+<text x="708" y="240.7" font-size="14" font-weight="500" fill="#151515">Fibreglass mesh</text>
+<text x="708" y="257.7" font-size="12" fill="#72716D">0.3 mm</text>
+<polyline points="660,212.2 686,284.7 700,284.7" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="212.2" r="2" fill="#72716D"/>
+<text x="708" y="282.7" font-size="14" font-weight="500" fill="#151515">Primer</text>
+<text x="708" y="299.7" font-size="12" fill="#72716D">0.15 mm</text>
+<polyline points="660,375.5 686,375.5 700,375.5" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="375.5" r="2" fill="#72716D"/>
+<text x="708" y="373.5" font-size="14" font-weight="500" fill="#151515">Concrete substrate</text>
+<text x="708" y="390.5" font-size="12" fill="#72716D">40 mm</text>
+<line x1="314" y1="150" x2="314" y2="530.0" stroke="#C86B3C" stroke-width="1.4"/>
+<line x1="308" y1="150.0" x2="320" y2="150.0" stroke="#C86B3C" stroke-width="1.4"/>
+<line x1="308" y1="530.0" x2="320" y2="530.0" stroke="#C86B3C" stroke-width="1.4"/>
+<text x="302" y="340.0" font-size="13" font-weight="600" fill="#151515" text-anchor="end" transform="rotate(-90 302 340.0)">~42.95 mm</text>
+<text x="56" y="650" font-size="12" letter-spacing="2" fill="#72716D">STANDARDS / REFERENCES</text>
+<text x="56" y="672" font-size="13" fill="#151515">EN 13813   ·   EN 1504-2   ·   ASTM F2170   ·   substrate SR1-SR2</text>
+<text x="56" y="698" font-size="11" fill="#72716D">© Floor.DSGN · floordsgn.netlify.app · for specification use — confirm system &amp; warranty in project proposal.</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" font-family="Montserrat,Arial,sans-serif">
+<rect width="1000" height="720" fill="#FFFFFF"/>
+<defs><pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="9" stroke="#72716D" stroke-width="1"/></pattern></defs>
+<text x="56" y="64" font-size="13" letter-spacing="3" fill="#C86B3C">FLOOR.DSGN — SECTION DETAIL</text>
+<text x="56" y="98" font-size="30" font-weight="600" fill="#151515">Rubber — poured EPDM</text>
+<line x1="56" y1="116" x2="944" y2="116" stroke="#151515" stroke-width="2"/>
+<text x="56" y="140" font-size="13" fill="#72716D">Total build-up: <tspan font-weight="600" fill="#151515">~51.75 mm</tspan> · NTS — nominal thicknesses, verify substrate &amp; system on site</text>
+<rect x="360" y="150.0" width="300" height="18.3" fill="#cdb2a0" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="168.3" width="300" height="74.1" fill="#6f6f73" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="242.4" width="300" height="18.3" fill="#cdb2a0" stroke="#151515" stroke-width="1.4"/>
+<rect x="360" y="260.7" width="300" height="269.3" fill="url(#hatch)" stroke="#151515" stroke-width="1.4"/>
+<polyline points="660,159.2 686,159.2 700,159.2" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="159.2" r="2" fill="#72716D"/>
+<text x="708" y="157.2" font-size="14" font-weight="500" fill="#151515">PU seal + EPDM granule</text>
+<text x="708" y="174.2" font-size="12" fill="#72716D">0.6 mm</text>
+<polyline points="660,205.4 686,205.4 700,205.4" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="205.4" r="2" fill="#72716D"/>
+<text x="708" y="203.4" font-size="14" font-weight="500" fill="#151515">EPDM rubber body (1-4mm granule)</text>
+<text x="708" y="220.4" font-size="12" fill="#72716D">11 mm</text>
+<polyline points="660,251.6 686,251.6 700,251.6" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="251.6" r="2" fill="#72716D"/>
+<text x="708" y="249.6" font-size="14" font-weight="500" fill="#151515">Primer</text>
+<text x="708" y="266.6" font-size="12" fill="#72716D">0.15 mm</text>
+<polyline points="660,395.4 686,395.4 700,395.4" fill="none" stroke="#72716D" stroke-width="1"/>
+<circle cx="660" cy="395.4" r="2" fill="#72716D"/>
+<text x="708" y="393.4" font-size="14" font-weight="500" fill="#151515">Concrete substrate</text>
+<text x="708" y="410.4" font-size="12" fill="#72716D">40 mm</text>
+<line x1="314" y1="150" x2="314" y2="530.0" stroke="#C86B3C" stroke-width="1.4"/>
+<line x1="308" y1="150.0" x2="320" y2="150.0" stroke="#C86B3C" stroke-width="1.4"/>
+<line x1="308" y1="530.0" x2="320" y2="530.0" stroke="#C86B3C" stroke-width="1.4"/>
+<text x="302" y="340.0" font-size="13" font-weight="600" fill="#151515" text-anchor="end" transform="rotate(-90 302 340.0)">~51.75 mm</text>
+<text x="56" y="650" font-size="12" letter-spacing="2" fill="#72716D">STANDARDS / REFERENCES</text>
+<text x="56" y="672" font-size="13" fill="#151515">EN 14904 (sports)   ·   EN 1177 (fall height)   ·   ASTM F2170</text>
+<text x="56" y="698" font-size="11" fill="#72716D">© Floor.DSGN · floordsgn.netlify.app · for specification use — confirm system &amp; warranty in project proposal.</text>
+</svg>
