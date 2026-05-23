@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260521a">
     <link rel="stylesheet" href="chrome-fix.css?v=20260521a">
+    <style>
+      /* designers.html scoped: one Signal accent point (hero overline) + secondary CTA as a quiet text link */
+      .landing-hero .landing-label{ color:var(--signal); }
+      .hero-cta-secondary{ display:inline-block; margin-top:14px; font:500 13px 'Montserrat',sans-serif;
+        color:var(--carbon); text-decoration:none; border-bottom:1px solid rgba(21,21,21,.25); padding-bottom:2px; }
+      .hero-cta-secondary:hover{ border-color:var(--signal); color:var(--signal); }
+    </style>
 </head>
 <body>
 
@@ -60,7 +67,7 @@
                 <p class="landing-tagline" data-i18n="designers_hero_tagline">We handle floors so you can focus on design.</p>
                 <p class="landing-text" data-i18n="designers_hero_desc">Partner with a reliable flooring contractor for your projects. Terrazzo, microtopping, decorative concrete — samples, specifications, and predictable delivery. Less operational chaos, more creative control.</p>
                 <a href="#designer-form" class="btn btn-dark" data-i18n="designers_hero_cta">Work With Us</a>
-                <a href="quote.html?audience=design" class="btn btn-outline" style="margin-left:8px">Calculate cost →</a>
+                <br><a href="quote.html?audience=design" class="hero-cta-secondary" data-i18n="designers_hero_cta2">or estimate cost in 30s &rarr;</a>
             </div>
         </div>
         <div class="landing-hero-bg" style="background-image: url('images/terrazzo/scale_2400.jpeg');"></div>
@@ -83,6 +90,7 @@
                     <div class="offer-number">02</div>
                     <h3 data-i18n="designers_offer2_title">Technical Specs</h3>
                     <p data-i18n="designers_offer2_desc">Detailed specifications for your documentation. CAD details, section drawings, material data sheets.</p>
+                    <a href="specs/" class="material-link" data-i18n="designers_offer2_link">Open spec library &rarr;</a>
                 </div>
                 <div class="offer-card">
                     <div class="offer-number">03</div>
@@ -217,7 +225,7 @@
                     </div>
                 </div>
                 <div class="project-preview-card">
-                    <div class="project-preview-image" style="background-image: url('images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg');"></div>
+                    <div class="project-preview-image" style="background-image: url('images/microtopping/install-5.jpg');"></div>
                     <div class="project-preview-info">
                         <span data-i18n="designers_project3_type">Microtopping</span>
                         <h4 data-i18n="designers_project3_title">Design Studio</h4>
@@ -266,11 +274,11 @@
                         <input type="hidden" name="source" value="designer">
                         <div class="form-group">
                             <label for="name" data-i18n="designers_label_name">Name *</label>
-                            <input type="text" id="name" name="name" required data-i18n-placeholder="designers_ph_name" placeholder="Your name">
+                            <input type="text" id="name" name="name" required data-i18n="designers_ph_name" placeholder="Your name">
                         </div>
                         <div class="form-group">
                             <label for="studio" data-i18n="designers_label_studio">Studio / Company</label>
-                            <input type="text" id="studio" name="studio" data-i18n-placeholder="designers_ph_studio" placeholder="Studio name">
+                            <input type="text" id="studio" name="studio" data-i18n="designers_ph_studio" placeholder="Studio name">
                         </div>
                         <div class="form-group">
                             <label for="role" data-i18n="designers_label_role">Your Role</label>
@@ -297,7 +305,7 @@
                         </div>
                         <div class="form-group">
                             <label for="contact" data-i18n="designers_label_contact">Email or WhatsApp *</label>
-                            <input type="text" id="contact" name="contact" required data-i18n-placeholder="designers_ph_contact" placeholder="How should we reach you?">
+                            <input type="text" id="contact" name="contact" required data-i18n="designers_ph_contact" placeholder="How should we reach you?">
                         </div>
                         <button type="submit" class="btn btn-dark btn-full" data-i18n="designers_form_submit">Start Conversation</button>
                         <p class="form-msg" id="designerMsg" style="margin-top:12px;text-align:center;display:none;"></p>
@@ -342,7 +350,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
-                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html" data-i18n="floors_nav_epoxy">Epoxy</a></li><li><a href="materials/mma.html" data-i18n="floors_nav_mma">MMA</a></li><li><a href="materials/pu-cement.html" data-i18n="floors_nav_pu_cement">PU-Cement</a></li><li><a href="materials/microtopping.html" data-i18n="floors_nav_microtopping">Microtopping</a></li><li><a href="materials/terrazzo.html" data-i18n="floors_nav_terrazzo">Terrazzo</a></li><li><a href="materials/concrete.html" data-i18n="floors_nav_concrete">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html" data-i18n="floors_nav_epoxy">Epoxy</a></li><li><a href="materials/mma.html" data-i18n="floors_nav_mma">MMA</a></li><li><a href="materials/pu-cement.html" data-i18n="floors_nav_pu_cement">PU-Cement</a></li><li><a href="materials/microtopping.html" data-i18n="floors_nav_microtopping">Microtopping</a></li><li><a href="materials/terrazzo.html" data-i18n="floors_nav_terrazzo">Terrazzo</a></li><li><a href="materials/concrete.html" data-i18n="floors_nav_concrete">Concrete</a></li><li><a href="specs/" data-i18n="footer_spec_library">Spec Library</a></li></ul></div>
                 <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
                 <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
             </div>
@@ -356,5 +364,12 @@
 
     <script src="script.js"></script>
     <script src="translations.js?v=20260521a" defer></script>
+    <script>
+    /* sticky WhatsApp CTA reveal on scroll (was missing on this page -> CTA never showed) */
+    (function(){ var c=document.getElementById('stickyCta'); if(!c) return;
+      function s(){ if(window.scrollY>480) c.classList.add('visible'); else c.classList.remove('visible'); }
+      window.addEventListener('scroll', s, {passive:true}); s();
+    })();
+    </script>
 </body>
 </html>

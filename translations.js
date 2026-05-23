@@ -945,6 +945,9 @@ const translations = {
         designers_hero_tagline: "We handle floors so you can focus on design.",
         designers_hero_desc: "Partner with a reliable flooring contractor for your projects. Terrazzo, microtopping, decorative concrete — samples, specifications, and predictable delivery. Less operational chaos, more creative control.",
         designers_hero_cta: "Work With Us",
+        designers_hero_cta2: "or estimate cost in 30s →",
+        footer_spec_library: "Spec Library",
+        designers_offer2_link: "Open spec library →",
         designers_offer_overline: "Partnership",
         designers_offer_title: "What We Offer Designers",
         designers_offer1_title: "Material Samples",
@@ -1014,7 +1017,7 @@ const translations = {
         designers_opt_ptype_public: "Public Space",
         designers_opt_ptype_general: "General Partnership",
         designers_label_contact: "Email or WhatsApp *",
-        designers_ph_contact: "How should we reach you?",
+        designers_ph_contact: "Email or WhatsApp — e.g. you@studio.com",
         designers_form_submit: "Start Conversation",
 
         // Industrial Page
@@ -2705,6 +2708,9 @@ const translations = {
         designers_hero_tagline: "Мы берём полы на себя, чтобы вы сосредоточились на дизайне.",
         designers_hero_desc: "Надёжный подрядчик по полам для ваших проектов. Терраццо, микротоппинг, декоративный бетон — образцы, спецификации и предсказуемые сроки. Меньше хаоса, больше творческого контроля.",
         designers_hero_cta: "Сотрудничать с нами",
+        designers_hero_cta2: "или рассчитать стоимость за 30 сек →",
+        footer_spec_library: "Библиотека спеков",
+        designers_offer2_link: "Открыть библиотеку спеков →",
         designers_offer_overline: "Партнёрство",
         designers_offer_title: "Что мы предлагаем дизайнерам",
         designers_offer1_title: "Образцы материалов",
@@ -2774,7 +2780,7 @@ const translations = {
         designers_opt_ptype_public: "Общественное пространство",
         designers_opt_ptype_general: "Общее партнёрство",
         designers_label_contact: "Email или WhatsApp *",
-        designers_ph_contact: "Как с вами связаться?",
+        designers_ph_contact: "Email или WhatsApp — напр. you@studio.com",
         designers_form_submit: "Начать диалог",
 
         // Industrial Page
