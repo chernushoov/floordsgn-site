@@ -21,6 +21,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260521a">
     <link rel="stylesheet" href="enhance.css?v=6">
+    <style>
+    .sk-samples{margin:0 auto 6px;max-width:1120px;padding:0 24px;box-sizing:border-box}
+    .sk-samples__h{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,30px);font-weight:500;margin:0 0 4px;text-align:center}
+    .sk-samples__sub{text-align:center;opacity:.62;font-size:14px;line-height:1.5;margin:0 auto 22px;max-width:640px}
+    .sk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    @media(max-width:900px){.sk-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:560px){.sk-grid{grid-template-columns:repeat(2,1fr)}}
+    .sk-sample{display:flex;flex-direction:column;gap:0;padding:0;border:1px solid rgba(0,0,0,.1);background:#fff;border-radius:12px;overflow:hidden;cursor:pointer;text-align:left;transition:transform .18s,box-shadow .18s,border-color .18s;font-family:inherit}
+    .sk-sample img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#ececed}
+    .sk-sample span{font-size:12.5px;line-height:1.32;padding:9px 12px 12px;color:#1a1a1a}
+    .sk-sample:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.12);border-color:rgba(0,0,0,.28)}
+    .sk-sample.is-active{border-color:#1a1a1a;box-shadow:0 0 0 2px #1a1a1a}
+    </style>
 </head>
 <body>
 
@@ -54,6 +67,23 @@
             <p class="fx-quote-eyebrow" data-i18n="tsb_sk_eyebrow">Физический образец</p>
             <h1 class="fx-quote-h1" data-i18n="tsb_sk_h1">Sample-kit<br/><em>100×100 мм</em></h1>
             <p class="fx-quote-meta" data-i18n="tsb_sk_meta">Реальный кусочек выбранной системы — тот же материал, тот же финиш, тот же цвет. Доставим бесплатно по Израилю за 3–5 рабочих дней.</p>
+        </section>
+
+        <section class="sk-samples">
+            <h2 class="sk-samples__h" data-i18n="tsb_sk_gal_h">Доступные системы — реальные образцы</h2>
+            <p class="sk-samples__sub" data-i18n="tsb_sk_gal_sub">Выберите систему — пришлём её образец 100×100 мм. Ниже — 3D-рендеры наших реальных материалов.</p>
+            <div class="sk-grid" id="skGrid">
+                <button type="button" class="sk-sample" data-slug="terrazzo-cement"><img src="3d-assets/previews/hero3d_terrazzo-cement.webp" loading="lazy" decoding="async" alt="Терраццо · цементное"><span data-i18n="tsb_sk_mat_terrazzo-cement">Терраццо · цементное</span></button>
+                <button type="button" class="sk-sample" data-slug="terrazzo-multi"><img src="3d-assets/previews/hero3d_terrazzo-multi.webp" loading="lazy" decoding="async" alt="Терраццо эпокси · мульти"><span data-i18n="tsb_sk_mat_terrazzo-multi">Терраццо эпокси · мульти</span></button>
+                <button type="button" class="sk-sample" data-slug="terrazzo-epoxy"><img src="3d-assets/previews/hero3d_terrazzo-epoxy.webp" loading="lazy" decoding="async" alt="Терраццо эпокси · тёмное"><span data-i18n="tsb_sk_mat_terrazzo-epoxy">Терраццо эпокси · тёмное</span></button>
+                <button type="button" class="sk-sample" data-slug="microtopping"><img src="3d-assets/previews/hero3d_microtopping.webp" loading="lazy" decoding="async" alt="Микротопинг"><span data-i18n="tsb_sk_mat_microtopping">Микротопинг · Sikafloor-470</span></button>
+                <button type="button" class="sk-sample" data-slug="rubber"><img src="3d-assets/previews/hero3d_rubber.webp" loading="lazy" decoding="async" alt="Резина EPDM"><span data-i18n="tsb_sk_mat_rubber">Резина EPDM · 2K PU</span></button>
+                <button type="button" class="sk-sample" data-slug="comfortfloor"><img src="3d-assets/previews/hero3d_comfortfloor.webp" loading="lazy" decoding="async" alt="ComfortFloor"><span data-i18n="tsb_sk_mat_comfortfloor">ComfortFloor PS-65</span></button>
+                <button type="button" class="sk-sample" data-slug="decorative-concrete"><img src="3d-assets/previews/hero3d_decorative-concrete.webp" loading="lazy" decoding="async" alt="Меда декоративи · литой бетон"><span data-i18n="tsb_sk_mat_decorative-concrete">Меда декоративи · литой бетон</span></button>
+                <button type="button" class="sk-sample" data-slug="mma"><img src="3d-assets/previews/hero3d_mma.webp" loading="lazy" decoding="async" alt="MMA Pronto"><span data-i18n="tsb_sk_mat_mma">MMA · Sikafloor Pronto</span></button>
+                <button type="button" class="sk-sample" data-slug="pu-cement"><img src="3d-assets/previews/hero3d_pu-cement.webp" loading="lazy" decoding="async" alt="PU-cement"><span data-i18n="tsb_sk_mat_pu-cement">PU-cement · Sikafloor PurCem</span></button>
+                <button type="button" class="sk-sample" data-slug="epoxy"><img src="3d-assets/previews/hero3d_epoxy.webp" loading="lazy" decoding="async" alt="Эпокси SL"><span data-i18n="tsb_sk_mat_epoxy">Эпокси SL · Sikafloor-263 SL</span></button>
+            </div>
         </section>
 
         <section class="fx-quote-grid">
@@ -157,6 +187,36 @@
       } else {
         window.addEventListener('load', fill);
       }
+
+      // Sample gallery: click a tile -> prefill material fields + scroll to form.
+      function wireGallery() {
+        const grid = document.getElementById('skGrid');
+        if (!grid) return;
+        const matEl = document.getElementById('skMaterial');
+        const labelEl = document.getElementById('skMaterialLabel');
+        const card = document.querySelector('.fx-calc-card');
+        function select(btn) {
+          if (!btn) return;
+          grid.querySelectorAll('.sk-sample').forEach(b => b.classList.toggle('is-active', b === btn));
+          const slug = btn.dataset.slug;
+          const lbl = (btn.querySelector('span') || {}).textContent || slug;
+          if (matEl) matEl.value = slug;
+          if (labelEl) labelEl.value = lbl;
+        }
+        grid.addEventListener('click', e => {
+          const btn = e.target.closest('.sk-sample');
+          if (!btn) return;
+          select(btn);
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+        // reflect a preselected material (from configurator deep-link) in the grid
+        if (matEl && matEl.value) {
+          const pre = grid.querySelector('.sk-sample[data-slug="' + matEl.value + '"]');
+          if (pre) pre.classList.add('is-active');
+        }
+      }
+      if (document.readyState === 'complete') wireGallery();
+      else window.addEventListener('load', wireGallery);
     })();
     </script>
     <script src="translations.js?v=20260521a"></script>

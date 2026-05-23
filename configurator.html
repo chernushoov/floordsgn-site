@@ -63,8 +63,9 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
 .matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
 .matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
-.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
+.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
 .matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
+.matlist li .chip{width:30px;height:30px;object-fit:contain;background:var(--paper-2);border:1px solid var(--line)}
 .matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
 .matlist li:hover{color:var(--ink);padding-left:6px}
 .matlist li:hover .tag{opacity:1}
@@ -181,7 +182,8 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
   .matlist .grp-h::after{display:none}
   .matlist ul{flex-direction:row;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .matlist ul::-webkit-scrollbar{display:none}
-  .matlist li{flex:0 0 auto;border:1px solid var(--line);padding:8px 12px;grid-template-columns:auto auto;gap:8px}
+  .matlist li{flex:0 0 auto;border:1px solid var(--line);padding:8px 12px;grid-template-columns:auto auto auto;gap:8px}
+  .matlist li .chip{width:24px;height:24px}
   .matlist li::before{display:none}
   .matlist li.on{padding-left:12px;border-color:var(--ink);background:var(--ink);color:#fff}
   .matlist li.on .idx{color:#fff}
@@ -993,7 +995,11 @@ async function init() {
     const li = document.createElement('li');
     li.dataset.slug = m.slug;
     li.tabIndex = 0;
+    const chip = (m.previews && m.previews.plate)
+      ? `<img class="chip" src="${ASSET_ROOT}${m.previews.plate}" alt="" loading="lazy" decoding="async">`
+      : `<span class="chip"></span>`;
     li.innerHTML = `
+      ${chip}
       <span class="idx">${String(idx+1).padStart(2,'0')}</span>
       <span>${m.label_ru}</span>
       <span class="tag">${m.tag}</span>`;
