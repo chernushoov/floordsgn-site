@@ -210,8 +210,17 @@
   function defaultPts(){ var r=stage.getBoundingClientRect(); var w=r.width,h=r.height;
     return [ w*0.30,h*0.54,  w*0.70,h*0.54,  w*0.97,h*0.93,  w*0.03,h*0.93 ]; }
 
+  // depth/light: dark far edge (tex local top = far floor), faint sheen near -> reads 3D.
+  // gradient covers the whole tex once; the material tiles under it.
+  function paintTex(){
+    if(!state.texUrl) return;
+    tex.style.backgroundImage="linear-gradient(to bottom, rgba(15,18,22,.30) 0%, rgba(15,18,22,.06) 30%, rgba(0,0,0,0) 60%, rgba(255,255,255,.05) 100%), url('"+state.texUrl+"')";
+    tex.style.backgroundRepeat="no-repeat, repeat";
+    tex.style.backgroundSize="100% 100%, "+state.tile+"px "+state.tile+"px";
+    tex.style.backgroundBlendMode="multiply, normal";
+  }
   function setMat(id){ state.mat=id; var m=MAT.find(function(x){return x.id===id;}); if(!m)return;
-    tex.style.backgroundImage="url('"+m.tex+"')";
+    state.texUrl=m.tex; paintTex();
     document.getElementById('rvSpType').textContent=m.type;
     document.getElementById('rvSpThick').textContent=m.thick;
     document.getElementById('rvSpCure').textContent=m.cure;
@@ -220,7 +229,7 @@
     document.getElementById('rvCtaQuote').setAttribute('href','studio.html?mat='+encodeURIComponent(id)+'#cost');
     Array.prototype.forEach.call(document.querySelectorAll('#rvMats button'),function(b){b.classList.toggle('on',b.getAttribute('data-id')===id);});
   }
-  function applyStyle(){ tex.style.opacity=state.op; tex.style.mixBlendMode=state.blend; tex.style.backgroundSize=state.tile+'px '+state.tile+'px'; }
+  function applyStyle(){ tex.style.opacity=state.op; tex.style.mixBlendMode=state.blend; paintTex(); }
 
   // ---- material picker ----
   document.getElementById('rvMats').innerHTML=MAT.map(function(m){return '<button data-id="'+m.id+'"'+(m.id===state.mat?' class="on"':'')+'><span class="sw" style="background-image:url(\''+m.tex+'\')"></span>'+m.name+'</button>';}).join('');
