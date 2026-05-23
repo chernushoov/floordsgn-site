@@ -30,7 +30,8 @@
       "swatch": "#efe7d6",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
-        "dark": "previews/terrazzo-cement_lifestyle_01.webp"
+        "dark": "previews/terrazzo-cement_lifestyle_01.webp",
+        "plate": "previews/plate_terrazzo-cement.webp"
       },
       "procedural": {
         "color": "#efe7d6",
@@ -110,7 +111,8 @@
       "swatch": "#f0ece2",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
-        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp"
+        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
+        "plate": "previews/plate_terrazzo-multi.webp"
       },
       "procedural": {
         "color": "#dcd3c0",
@@ -197,7 +199,8 @@
       "swatch": "#3a3833",
       "previews": {
         "light": "previews/terrazzo-epoxy_hero_02.webp",
-        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp"
+        "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
+        "plate": "previews/plate_terrazzo-epoxy.webp"
       },
       "procedural": {
         "color": "#dad3c2",
@@ -247,7 +250,8 @@
       "swatch": "#cfc4b3",
       "previews": {
         "light": "previews/microtopping_hero_04.webp",
-        "dark": "previews/microtopping_lifestyle_05.webp"
+        "dark": "previews/microtopping_lifestyle_05.webp",
+        "plate": "previews/plate_microtopping.webp"
       },
       "procedural": {
         "color": "#cfc4b3",
@@ -297,7 +301,8 @@
       "swatch": "#2a2a2a",
       "previews": {
         "light": "previews/rubber_hero_10.webp",
-        "dark": "previews/rubber_lifestyle_11.webp"
+        "dark": "previews/rubber_lifestyle_11.webp",
+        "plate": "previews/plate_rubber.webp"
       },
       "procedural": {
         "color": "#2a2a2a",
@@ -375,7 +380,10 @@
         "substrate": "Бетон C25/30 · ≤ 4% RH",
         "membrane": "Recycled-PU acoustic pad · 5 мм"
       },
-      "glb_plate": "plates/comfortfloor.glb"
+      "glb_plate": "plates/comfortfloor.glb",
+      "previews": {
+        "plate": "previews/plate_comfortfloor.webp"
+      }
     },
     {
       "slug": "decorative-concrete",
@@ -386,7 +394,8 @@
       "swatch": "#7a7468",
       "previews": {
         "light": "previews/decorative-concrete_hero_06.webp",
-        "dark": "previews/decorative-concrete_lifestyle_07.webp"
+        "dark": "previews/decorative-concrete_lifestyle_07.webp",
+        "plate": "previews/plate_decorative-concrete.webp"
       },
       "procedural": {
         "color": "#7a7468",
@@ -462,7 +471,8 @@
       "swatch": "#3c3a35",
       "previews": {
         "light": "previews/mma_hero_12.webp",
-        "dark": "previews/mma_lifestyle_13.webp"
+        "dark": "previews/mma_lifestyle_13.webp",
+        "plate": "previews/plate_mma.webp"
       },
       "procedural": {
         "color": "#3c3a35",
@@ -512,7 +522,8 @@
       "swatch": "#9a9690",
       "previews": {
         "light": "previews/pu-cement_hero_14.webp",
-        "dark": "previews/pu-cement_lifestyle_15.webp"
+        "dark": "previews/pu-cement_lifestyle_15.webp",
+        "plate": "previews/plate_pu-cement.webp"
       },
       "procedural": {
         "color": "#9a9690",
@@ -561,7 +572,8 @@
       "swatch": "#2a2620",
       "previews": {
         "light": "previews/epoxy_hero_16.webp",
-        "dark": "previews/epoxy_lifestyle_17.webp"
+        "dark": "previews/epoxy_lifestyle_17.webp",
+        "plate": "previews/plate_epoxy.webp"
       },
       "procedural": {
         "color": "#2a2620",
