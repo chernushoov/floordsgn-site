@@ -41,9 +41,11 @@
   .rv-up:hover{ border-color:var(--signal); color:var(--signal); }
   .rv-up input{ display:none; }
   .rv-mats{ display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:6px; }
-  .rv-mats button{ font:500 12.5px 'Montserrat',sans-serif; padding:9px 10px; background:var(--concrete); border:1px solid transparent; color:var(--steel); cursor:pointer; border-radius:10px; text-align:left; line-height:1.2; transition:all .15s; }
+  .rv-mats button{ display:flex; align-items:center; gap:9px; font:500 12.5px 'Montserrat',sans-serif; padding:7px 9px; background:var(--concrete); border:1px solid transparent; color:var(--steel); cursor:pointer; border-radius:10px; text-align:left; line-height:1.18; transition:all .15s; }
+  .rv-mats button .sw{ width:28px; height:28px; flex:none; border-radius:7px; background-size:cover; background-position:center; box-shadow:inset 0 0 0 1px rgba(21,21,21,.1); }
   .rv-mats button:hover{ background:#ece6da; color:var(--carbon); }
   .rv-mats button.on{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
+  .rv-mats button.on .sw{ box-shadow:inset 0 0 0 1px rgba(255,255,255,.25); }
   .rv-row{ margin-top:18px; }
   .rv-row label{ display:flex; justify-content:space-between; font:500 12px 'Montserrat',sans-serif; color:var(--steel); margin-bottom:7px; }
   .rv-row input[type=range]{ width:100%; accent-color:var(--signal); }
@@ -70,6 +72,8 @@
     .rv-panel{ position:static; }
     .rv-stage{ aspect-ratio:4/3; }
     .rv-spec{ grid-template-columns:1fr 1fr; gap:16px; }
+    .rv-marker{ width:34px; height:34px; margin:-17px 0 0 -17px; }
+    .rv-marker::after{ font-size:12px; }
   }
 </style>
 </head>
@@ -219,7 +223,7 @@
   function applyStyle(){ tex.style.opacity=state.op; tex.style.mixBlendMode=state.blend; tex.style.backgroundSize=state.tile+'px '+state.tile+'px'; }
 
   // ---- material picker ----
-  document.getElementById('rvMats').innerHTML=MAT.map(function(m){return '<button data-id="'+m.id+'"'+(m.id===state.mat?' class="on"':'')+'>'+m.name+'</button>';}).join('');
+  document.getElementById('rvMats').innerHTML=MAT.map(function(m){return '<button data-id="'+m.id+'"'+(m.id===state.mat?' class="on"':'')+'><span class="sw" style="background-image:url(\''+m.tex+'\')"></span>'+m.name+'</button>';}).join('');
   document.getElementById('rvMats').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;setMat(b.getAttribute('data-id'));});
 
   // ---- upload ----
