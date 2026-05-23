@@ -31,7 +31,8 @@
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-cement_lifestyle_01.webp",
-        "plate": "previews/plate_terrazzo-cement.webp"
+        "plate": "previews/plate_terrazzo-cement.webp",
+        "hero3d": "previews/hero3d_terrazzo-cement.webp"
       },
       "procedural": {
         "color": "#efe7d6",
@@ -112,7 +113,8 @@
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
-        "plate": "previews/plate_terrazzo-multi.webp"
+        "plate": "previews/plate_terrazzo-multi.webp",
+        "hero3d": "previews/hero3d_terrazzo-multi.webp"
       },
       "procedural": {
         "color": "#dcd3c0",
@@ -200,7 +202,8 @@
       "previews": {
         "light": "previews/terrazzo-epoxy_hero_02.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
-        "plate": "previews/plate_terrazzo-epoxy.webp"
+        "plate": "previews/plate_terrazzo-epoxy.webp",
+        "hero3d": "previews/hero3d_terrazzo-epoxy.webp"
       },
       "procedural": {
         "color": "#dad3c2",
@@ -251,7 +254,8 @@
       "previews": {
         "light": "previews/microtopping_hero_04.webp",
         "dark": "previews/microtopping_lifestyle_05.webp",
-        "plate": "previews/plate_microtopping.webp"
+        "plate": "previews/plate_microtopping.webp",
+        "hero3d": "previews/hero3d_microtopping.webp"
       },
       "procedural": {
         "color": "#cfc4b3",
@@ -302,7 +306,8 @@
       "previews": {
         "light": "previews/rubber_hero_10.webp",
         "dark": "previews/rubber_lifestyle_11.webp",
-        "plate": "previews/plate_rubber.webp"
+        "plate": "previews/plate_rubber.webp",
+        "hero3d": "previews/hero3d_rubber.webp"
       },
       "procedural": {
         "color": "#2a2a2a",
@@ -382,7 +387,8 @@
       },
       "glb_plate": "plates/comfortfloor.glb",
       "previews": {
-        "plate": "previews/plate_comfortfloor.webp"
+        "plate": "previews/plate_comfortfloor.webp",
+        "hero3d": "previews/hero3d_comfortfloor.webp"
       }
     },
     {
@@ -395,7 +401,8 @@
       "previews": {
         "light": "previews/decorative-concrete_hero_06.webp",
         "dark": "previews/decorative-concrete_lifestyle_07.webp",
-        "plate": "previews/plate_decorative-concrete.webp"
+        "plate": "previews/plate_decorative-concrete.webp",
+        "hero3d": "previews/hero3d_decorative-concrete.webp"
       },
       "procedural": {
         "color": "#7a7468",
@@ -472,7 +479,8 @@
       "previews": {
         "light": "previews/mma_hero_12.webp",
         "dark": "previews/mma_lifestyle_13.webp",
-        "plate": "previews/plate_mma.webp"
+        "plate": "previews/plate_mma.webp",
+        "hero3d": "previews/hero3d_mma.webp"
       },
       "procedural": {
         "color": "#3c3a35",
@@ -523,7 +531,8 @@
       "previews": {
         "light": "previews/pu-cement_hero_14.webp",
         "dark": "previews/pu-cement_lifestyle_15.webp",
-        "plate": "previews/plate_pu-cement.webp"
+        "plate": "previews/plate_pu-cement.webp",
+        "hero3d": "previews/hero3d_pu-cement.webp"
       },
       "procedural": {
         "color": "#9a9690",
@@ -573,7 +582,8 @@
       "previews": {
         "light": "previews/epoxy_hero_16.webp",
         "dark": "previews/epoxy_lifestyle_17.webp",
-        "plate": "previews/plate_epoxy.webp"
+        "plate": "previews/plate_epoxy.webp",
+        "hero3d": "previews/hero3d_epoxy.webp"
       },
       "procedural": {
         "color": "#2a2620",
