@@ -947,6 +947,15 @@ async function init() {
   const res = await fetch(ASSET_ROOT + 'manifest.json');
   manifest = await res.json();
 
+  /* plates-v2 sandbox: when `?plates=v2` is set, load the iMac's headless layered
+     GLBs (real layer thicknesses + stair-step pirog edge) instead of the procedural
+     plate. Opt-in for owner review; the default procedural plate stays untouched.
+     Runtime material logic (glass topcoat, body texture) applies to v2 meshes the
+     same way, so VAR_topcoat renders clear — no opaque-overhang problem. */
+  if (new URLSearchParams(location.search).get('plates') === 'v2') {
+    for (const m of manifest.materials) { m.glb_plate = `plates-v2/${m.slug}.glb`; }
+  }
+
   /* textures-v2 sandbox: when `?textures=v2` is set, swap diffuse paths for the
      5 materials with broken/missing textures. Etalon textures/ stays intact. */
   if (new URLSearchParams(location.search).get('textures') === 'v2') {
