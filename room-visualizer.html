@@ -23,7 +23,8 @@
   .rv-grid{ display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; }
   .rv-stage{ position:relative; width:100%; aspect-ratio:16/10; background:var(--concrete); border-radius:16px; overflow:hidden; touch-action:none; user-select:none; }
   .rv-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
-  .rv-tex{ position:absolute; top:0; left:0; width:1000px; height:1000px; transform-origin:0 0; background-repeat:repeat; background-size:200px 200px; pointer-events:none; will-change:transform; display:none; }
+  .rv-tex{ position:absolute; top:0; left:0; width:1000px; height:1000px; transform-origin:0 0; background-repeat:repeat; background-size:280px 280px; pointer-events:none; will-change:transform; display:none; -webkit-mask-image:radial-gradient(ellipse at 50% 55%, #000 74%, rgba(0,0,0,0) 100%); mask-image:radial-gradient(ellipse at 50% 55%, #000 74%, rgba(0,0,0,0) 100%); }
+  .rv-hint{ position:absolute; top:14px; left:50%; transform:translateX(-50%); z-index:6; background:rgba(21,21,21,.82); color:#fff; font:600 12px/1.3 'Montserrat',sans-serif; padding:9px 15px; border-radius:980px; pointer-events:none; display:none; white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.25); }
   .rv-empty{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:24px; color:var(--steel); }
   .rv-empty svg{ width:46px; height:46px; opacity:.5; }
   .rv-empty b{ font:600 16px 'Montserrat',sans-serif; color:var(--carbon); }
@@ -117,6 +118,7 @@
       <div class="rv-marker" data-k="2" id="rvM1"></div>
       <div class="rv-marker" data-k="3" id="rvM2"></div>
       <div class="rv-marker" data-k="4" id="rvM3"></div>
+      <div class="rv-hint" id="rvHint">Перетащите 4 точки по углам вашего пола</div>
     </div>
 
     <aside class="rv-panel">
@@ -129,20 +131,21 @@
 
       <h3 style="margin-top:22px">Материал</h3>
       <div class="rv-mats" id="rvMats"></div>
+      <p style="font:400 11.5px/1.45 'Montserrat',sans-serif;color:var(--steel);margin:10px 2px 0">Терраццо и узорные системы лучше смотреть в <a href="configurator.html" style="color:var(--signal);text-decoration:none">3D-конфигураторе</a> — фактуру с реальными стыками плоское наложение не передаёт.</p>
 
       <div class="rv-row">
         <label>Плотность рисунка <span id="rvTileVal">средняя</span></label>
-        <input type="range" id="rvTile" min="80" max="420" value="200" step="10">
+        <input type="range" id="rvTile" min="80" max="420" value="280" step="10">
       </div>
       <div class="rv-row">
-        <label>Прозрачность (свет сцены) <span id="rvOpVal">90%</span></label>
-        <input type="range" id="rvOp" min="35" max="100" value="90" step="1">
+        <label>Прозрачность (свет сцены) <span id="rvOpVal">85%</span></label>
+        <input type="range" id="rvOp" min="35" max="100" value="85" step="1">
       </div>
       <div class="rv-row">
         <label>Смешивание</label>
         <div class="rv-seg" id="rvBlend">
-          <button data-b="normal" class="on">Плотно</button>
-          <button data-b="multiply">Реалистично</button>
+          <button data-b="normal">Плотно</button>
+          <button data-b="multiply" class="on">Реалистично</button>
           <button data-b="soft-light">Мягко</button>
         </div>
       </div>
@@ -168,9 +171,6 @@
 <script>
 (function(){
   var MAT = [
-    { id:'terrazzo-cement', name:'Терраццо · цемент', tex:'3d-assets/textures-v3/terrazzo-cement/diffuse.jpg', type:'минеральное', thick:'12–18 мм', cure:'10–14 дней', price:'₪1000–1800/м²' },
-    { id:'terrazzo-epoxy',  name:'Терраццо · эпокси', tex:'3d-assets/textures-v3/terrazzo-epoxy/diffuse.jpg',  type:'эпоксидное',  thick:'8–14 мм',  cure:'24ч / 72ч',  price:'₪900–1500/м²' },
-    { id:'terrazzo-multi',  name:'Терраццо · микс',   tex:'3d-assets/textures-v3/terrazzo-multi/diffuse.jpg',  type:'декоративное', thick:'8–14 мм', cure:'24ч / 72ч',  price:'₪900–1500/м²' },
     { id:'microtopping',    name:'Микротопинг',       tex:'3d-assets/textures-v2/microtopping/diffuse.jpg',   type:'микроцемент', thick:'2–3 мм',  cure:'5–7 дней',  price:'₪500–900/м²' },
     { id:'epoxy',           name:'Эпоксидная заливка',tex:'3d-assets/textures-v2/epoxy/diffuse.jpg',          type:'эпокси SR',   thick:'3–5 мм',  cure:'12ч / 7д',  price:'₪400–650/м²' },
     { id:'pu-cement',       name:'PU-cement',         tex:'3d-assets/textures-v2/pu-cement/diffuse.jpg',      type:'ПУ-цемент',   thick:'4–9 мм',  cure:'6ч / 5–7д', price:'₪380–650/м²' },
@@ -183,7 +183,7 @@
       tex=document.getElementById('rvTex'), empty=document.getElementById('rvEmpty'),
       quad=document.getElementById('rvQuad'), poly=quad.querySelector('polygon');
   var markers=[document.getElementById('rvM0'),document.getElementById('rvM1'),document.getElementById('rvM2'),document.getElementById('rvM3')];
-  var state={ mat:'terrazzo-cement', blend:'normal', op:0.9, tile:200, pts:null, loaded:false };
+  var state={ mat:'microtopping', blend:'multiply', op:0.85, tile:280, pts:null, loaded:false };
 
   // ---- perspective math: map source box corners -> 4 destination points ----
   function adj(m){ return [ m[4]*m[8]-m[5]*m[7], m[2]*m[7]-m[1]*m[8], m[1]*m[5]-m[2]*m[4],
@@ -231,6 +231,7 @@
       markers.forEach(function(mk){mk.style.display='block';});
       state.pts=defaultPts(); placeMarkers(); warp();
       document.getElementById('rvUpLabel').textContent='Заменить фото';
+      document.getElementById('rvHint').style.display='block';
     };
     photo.src=url;
   });
@@ -238,6 +239,7 @@
   // ---- draggable corners (window-level drag, robust if pointer leaves marker) ----
   markers.forEach(function(mk,idx){
     mk.addEventListener('pointerdown',function(e){ e.preventDefault();
+      var _h=document.getElementById('rvHint'); if(_h) _h.style.display='none';
       function move(ev){ var r=stage.getBoundingClientRect();
         var x=Math.max(0,Math.min(r.width, ev.clientX-r.left));
         var y=Math.max(0,Math.min(r.height, ev.clientY-r.top));
@@ -250,7 +252,7 @@
 
   // ---- controls ----
   var tileVal=document.getElementById('rvTileVal'), opVal=document.getElementById('rvOpVal');
-  document.getElementById('rvTile').addEventListener('input',function(e){ state.tile=+e.target.value; tileVal.textContent=state.tile<140?'крупная':state.tile>300?'мелкая':'средняя'; applyStyle(); });
+  document.getElementById('rvTile').addEventListener('input',function(e){ state.tile=+e.target.value; tileVal.textContent=state.tile>300?'крупная':state.tile<140?'мелкая':'средняя'; applyStyle(); });
   document.getElementById('rvOp').addEventListener('input',function(e){ state.op=(+e.target.value)/100; opVal.textContent=e.target.value+'%'; applyStyle(); });
   document.getElementById('rvBlend').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return; state.blend=b.getAttribute('data-b'); Array.prototype.forEach.call(this.children,function(x){x.classList.toggle('on',x===b);}); applyStyle();});
   document.getElementById('rvReset').addEventListener('click',function(){ if(!state.loaded)return; state.pts=defaultPts(); placeMarkers(); warp(); });
