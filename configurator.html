@@ -1105,7 +1105,13 @@ function applyPlateMeshRefs(root) {
    procedural fallback). Cached after first load. Returns a Promise that resolves
    once the plate is in scene and mesh refs are updated. Safe to call repeatedly. */
 async function ensureCorrectPlate(def) {
-  const targetKey = def.glb_plate ? def.slug : '__procedural__';
+  /* plates-v2 GLBs are an OPT-IN sandbox (`?plates=v2`). They use a cube-UV that
+     over-tiles the body composite into a flat grey mush, so by default we render
+     the procedural stacked-box plate — which maps the rich terrazzo/PBR composite
+     at the etalon scale (see 19383e9). This restores the v2+PBR look while keeping
+     the layered GLBs reachable for comparison. */
+  const usePlatesV2 = new URLSearchParams(location.search).get('plates') === 'v2';
+  const targetKey = (usePlatesV2 && def.glb_plate) ? def.slug : '__procedural__';
   if (targetKey === activePlateKey) return;
 
   // Detach current plate (don't dispose — cache it for reuse).
