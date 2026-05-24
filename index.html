@@ -91,8 +91,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260521a">
     <link rel="stylesheet" href="enhance.css?v=18">
-    <!-- Live 3D hero sample — real GLB model (baked PBR terrazzo) via model-viewer -->
+    <!-- Live 3D hero sample — real GLB models (baked PBR) via model-viewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+    <style>
+      .hero3d__swatches{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;justify-content:center}
+      .hero3d__sw{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;
+        border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;
+        font:500 12px/1 'Montserrat',sans-serif;cursor:pointer;transition:.18s ease;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+      .hero3d__sw:hover{background:rgba(255,255,255,.15)}
+      .hero3d__sw.on{background:#fff;color:#1d1d1f;border-color:#fff}
+      .hero3d__sw i{width:13px;height:13px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,.18);flex:0 0 auto}
+      .hero3d__matname{margin-top:10px;text-align:center;font:600 13px/1.3 'Montserrat',sans-serif;color:rgba(255,255,255,.92)}
+    </style>
     <!-- v5: Preload hero plate LCP image (terrazzo default top) — injected via JS to avoid parcel resolution mismatch -->
     <script>(function(){try{var l=document.createElement('link');l.rel='preload';l.as='image';var p=(location.pathname.indexOf('/en/')===0?'../':'')+'images/terrazzo/dark-mosaic-textured-background.jpg';l.href=p;l.setAttribute('fetchpriority','high');document.head.appendChild(l);}catch(e){}})();</script>
 </head>
@@ -214,9 +224,9 @@
         <div class="hero3d__preview">
           <div class="hero3d__frame">
             <span class="hero3d__chrome"><i></i><i></i><i></i></span>
-            <model-viewer
-              src="3d-assets/hero/terrazzo-hero.glb"
-              alt="Floor.DSGN — 3D-образец терраццо, покрутите мышью"
+            <model-viewer id="heroMV"
+              src="3d-assets/hero/terrazzo-multi.glb"
+              alt="Floor.DSGN — 3D-образец пола, покрутите мышью"
               camera-controls auto-rotate auto-rotate-delay="800" rotation-per-second="16deg"
               interaction-prompt="none" exposure="0.8"
               shadow-intensity="1.1" shadow-softness="1"
@@ -226,8 +236,34 @@
               style="width:100%;height:100%;display:block;background:transparent;--poster-color:transparent;"></model-viewer>
             <span class="hero3d__badge">Live · 3D</span>
           </div>
-          <p class="hero3d__caption">Покрутите образец · <a href="configurator.html" style="color:inherit;font-weight:600">открыть конфигуратор →</a></p>
+          <p class="hero3d__matname" id="heroMatLabel">Терраццо · мульти-цвет</p>
+          <div class="hero3d__swatches" id="heroSw" role="tablist" aria-label="Материал 3D-образца">
+            <button class="hero3d__sw" data-src="3d-assets/hero/terrazzo-cement.glb"      data-label="Терраццо · цемент"      type="button"><i style="background:#6f6f6f"></i>Терраццо · цемент</button>
+            <button class="hero3d__sw on" data-src="3d-assets/hero/terrazzo-multi.glb"     data-label="Терраццо · мульти-цвет" type="button"><i style="background:#e7e0d2"></i>Терраццо · мульти</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/terrazzo-epoxy.glb"        data-label="Терраццо · эпокси"      type="button"><i style="background:#efe9dd"></i>Терраццо · эпокси</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/microtopping.glb"          data-label="Микротопинг"            type="button"><i style="background:#b6b2ab"></i>Микротопинг</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/rubber.glb"                data-label="Резиновое покрытие"     type="button"><i style="background:#e3b427"></i>Резина</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/decorative-concrete.glb"   data-label="Бетон дизайнерский"     type="button"><i style="background:#c8c4bc"></i>Бетон декор.</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/mma.glb"                   data-label="MMA Pronto"             type="button"><i style="background:#a9adb1"></i>MMA</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/pu-cement.glb"             data-label="PU-cement"              type="button"><i style="background:#b4b0a7"></i>PU-cement</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/epoxy.glb"                 data-label="Эпоксидная заливка"     type="button"><i style="background:#9aa0a4"></i>Эпокси</button>
+            <button class="hero3d__sw" data-src="3d-assets/hero/comfortfloor.glb"          data-label="Sika ComfortFloor"     type="button"><i style="background:#d6d2c8"></i>ComfortFloor</button>
+          </div>
+          <p class="hero3d__caption" style="margin-top:12px">Покрутите образец · <a href="configurator.html" style="color:inherit;font-weight:600">открыть конфигуратор →</a></p>
         </div>
+        <script>
+        (function(){
+          var mv=document.getElementById('heroMV'), wrap=document.getElementById('heroSw'),
+              lbl=document.getElementById('heroMatLabel');
+          if(!mv||!wrap)return;
+          wrap.addEventListener('click',function(e){
+            var b=e.target.closest('.hero3d__sw'); if(!b)return;
+            mv.setAttribute('src', b.getAttribute('data-src'));
+            wrap.querySelectorAll('.hero3d__sw').forEach(function(x){x.classList.toggle('on',x===b);});
+            if(lbl) lbl.textContent=b.getAttribute('data-label');
+          });
+        })();
+        </script>
       </div>
     </section>
 
