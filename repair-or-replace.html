@@ -237,7 +237,7 @@
                         <div class="rr-row"><div class="rr-row__label">Метод</div><div class="rr-row__value" id="rrMethod"></div></div>
                         <div class="rr-row"><div class="rr-row__label">Простой</div><div class="rr-row__value" id="rrDowntime"></div></div>
                         <div class="rr-row"><div class="rr-row__label">Оценка стоимости</div><div class="rr-row__value" id="rrCost"></div></div>
-                        <div class="rr-row"><div class="rr-row__label">Что сделать дальше</div><div class="rr-row__value" id="rrNext"></div></div>
+                        <div class="rr-row"><div class="rr-row__label">Что сделать дальше</div><div class="rr-row__value" id="rrNextStep"></div></div>
                     </div>
                     <div class="rr-actions">
                         <a class="btn-primary" id="rrCta" href="https://wa.me/972559661459?text=Здравствуйте%2C%20пол%20требует%20диагностики">Заявка на выезд</a>
@@ -333,7 +333,7 @@
             document.getElementById('rrMethod').textContent = diag.method;
             document.getElementById('rrDowntime').textContent = diag.downtime;
             document.getElementById('rrCost').textContent = diag.cost;
-            document.getElementById('rrNext').textContent = diag.next;
+            document.getElementById('rrNextStep').textContent = diag.next;
             document.getElementById('rrCta').setAttribute('href', diag.ctaHref);
         }
 
