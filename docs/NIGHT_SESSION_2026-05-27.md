@@ -77,6 +77,13 @@
 ## Commit history (для review)
 
 ```
+b362d3c docs(night-session): add orphan-page audit results to report
+2a2afa0 fix(orphans): surface verticals/ + encyclopedia stub articles
+fd08dd1 test(faq): e2e FAQ interactions (4/4 pass) + report final touchup
+df9d9b2 i18n: EN+RU translations for homepage tools band (14 new keys)
+be0c550 feat(articles): related-tools CTA on all 13 articles
+b0cd68c feat(seo): Article JSON-LD on warm-floor + architect-checklist articles
+0959c19 docs(night-session): update report with all 11 new pages + tests + coverage
 4366916 test(calculators): TCO + BoQ e2e (11/11 pass)
 c20a86c feat(content): pre-tender checklist for architects (40 spec items)
 7080e26 feat(faq+schema): master FAQ page (35 Q&A + JSON-LD) + Service schemas
@@ -94,7 +101,8 @@ b74f279 feat(care+warranty+diagnostic): post-sale hub — pain-map P3-P4 coverag
 95484d2 feat(tools): unified Tools hub + sitemap/footer/mobile-menu consolidation
 ```
 
-(15 коммитов на ветке `launch/floordsgn-com-cf` поверх e5e0ac4 main-merge базы)
+(22 коммита на ветке `launch/floordsgn-com-cf` поверх e5e0ac4 main-merge базы.
+292 файла изменено, 7894 insertions / 1294 deletions.)
 
 ---
 
