@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уход за полом по системам — Floor.DSGN | без аннулирования гарантии</title>
+
+    <meta name="description" content="Как ухаживать за полом: эпокси, терраццо, микротопинг, PU-cement, MMA, бетон, каучук. Что можно и нельзя, какие средства, когда нужен recoat. Без аннулирования гарантии.">
+    <meta name="keywords" content="уход за эпоксидным полом, чистка терраццо, обслуживание микротопинга, recoat пол, гарантия пола, израиль">
+
+    <meta property="og:title" content="Уход за полом по системам — Floor.DSGN">
+    <meta property="og:description" content="Уход за каждой системой пола: разрешённые и запрещённые средства, частота, обновление. Поддерживает гарантию.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/care-guide.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/care-guide.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .care-hero { padding: 120px 0 60px; background: var(--concrete); }
+        .care-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+        .care-hero h1 { font-size: clamp(48px, 6vw, 84px); margin-bottom: 24px; max-width: 900px; }
+        .care-hero .lead { max-width: 720px; color: var(--steel); font-size: 18px; line-height: 1.55; }
+        .care-hero .meta-row { display: flex; gap: 24px; margin-top: 30px; flex-wrap: wrap; font-size: 13px; color: var(--steel); }
+        .care-hero .meta-row b { color: var(--carbon); font-weight: 600; }
+
+        .care-toc { padding: 30px 0; background: #fff; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 100; }
+        .care-toc__inner { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 4px; }
+        .care-toc a { padding: 8px 16px; border-radius: 980px; background: var(--concrete); font-size: 13px; font-weight: 500; color: var(--graphite); white-space: nowrap; transition: background .2s ease, color .2s ease; }
+        .care-toc a:hover { background: var(--carbon); color: #fff; }
+
+        .care-section { padding: 60px 0; }
+        .care-section:nth-of-type(even) { background: #fff; }
+        .care-section h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 12px; }
+        .care-section .system-meta { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); font-weight: 600; margin-bottom: 16px; }
+        .care-section .system-lead { color: var(--graphite); font-size: 17px; line-height: 1.55; max-width: 780px; margin-bottom: 36px; }
+
+        .care-grid { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; }
+        .care-card { padding: 28px; border-radius: 16px; }
+        .care-card--do { background: var(--concrete); }
+        .care-card--dont { background: #1a1a1a; color: var(--concrete); }
+        .care-card h3 { font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px; }
+        .care-card--do h3 { color: var(--carbon); }
+        .care-card--dont h3 { color: #d9d4c9; }
+        .care-card ul { list-style: none; padding: 0; margin: 0; }
+        .care-card li { font-size: 15px; line-height: 1.55; padding: 10px 0; border-top: 1px solid rgba(21,21,21,0.08); }
+        .care-card--dont li { border-top-color: rgba(217,212,201,0.12); color: #d9d4c9; }
+        .care-card li:first-child { border-top: none; }
+        .care-card li b { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 600; letter-spacing: 0.02em; }
+        .care-card--do li b { color: var(--carbon); }
+        .care-card--dont li b { color: #fff; }
+
+        .schedule-table { width: 100%; margin-top: 28px; border-collapse: collapse; }
+        .schedule-table th, .schedule-table td { padding: 12px 14px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--grey-border); }
+        .schedule-table th { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 600; background: var(--concrete); }
+        .schedule-table td:first-child { font-weight: 600; color: var(--carbon); }
+
+        .warranty-note { padding: 24px 28px; background: var(--carbon); color: var(--concrete); border-radius: 14px; margin-top: 36px; }
+        .warranty-note p { color: #d9d4c9; font-size: 15px; line-height: 1.6; margin: 0; }
+        .warranty-note a { color: var(--signal); font-weight: 600; }
+
+        .care-cta { padding: 90px 0 110px; background: var(--concrete); text-align: center; }
+        .care-cta h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 16px; }
+        .care-cta p { color: var(--steel); margin-bottom: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .care-cta .btn-primary { display: inline-block; padding: 14px 40px; border-radius: 980px; background: var(--carbon); color: #fff; font-weight: 600; }
+        .care-cta .btn-primary:hover { background: var(--graphite); }
+
+        @media (max-width: 760px) {
+            .care-grid { grid-template-columns: 1fr; }
+            .care-section { padding: 40px 0; }
+            .schedule-table { font-size: 13px; }
+            .schedule-table th, .schedule-table td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="floors.html">Floors</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+
+    <section class="care-hero">
+        <div class="container">
+            <p class="overline">Care &amp; maintenance</p>
+            <h1>Уход за полом — по системам, без аннулирования гарантии</h1>
+            <p class="lead">Каждая система пола обслуживается по-своему. Эпокси любит pH-нейтральные средства; терраццо нельзя кислотами; PU-cement выдерживает щёлочи, но не растворители. Ниже — практика по каждой системе и общий минимум, который держит пол в спецификации производителя и не отменяет гарантию.</p>
+            <div class="meta-row">
+                <span><b>Применимо к:</b> жилым, офисным, ритейл и промышленным объектам</span>
+                <span><b>Стандарты:</b> EN 13813 / DIN 51130 / спецификации Sika</span>
+                <span><b>Регион:</b> Израиль</span>
+            </div>
+        </div>
+    </section>
+
+    <nav class="care-toc">
+        <div class="container">
+            <div class="care-toc__inner">
+                <a href="#general">Общие правила</a>
+                <a href="#epoxy">Эпокси</a>
+                <a href="#terrazzo">Терраццо</a>
+                <a href="#microtopping">Микротопинг</a>
+                <a href="#pu-cement">PU-cement</a>
+                <a href="#mma">MMA</a>
+                <a href="#concrete">Бетон декор.</a>
+                <a href="#rubber">Каучук</a>
+                <a href="#warranty">Что аннулирует гарантию</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GENERAL -->
+    <section class="care-section" id="general">
+        <div class="container">
+            <p class="system-meta">Общие правила · применимо ко всем системам</p>
+            <h2>Минимум, который держит пол в спецификации</h2>
+            <p class="system-lead">Эти 6 правил работают на 9 из 9 систем. Если соблюдены — пол служит до планового recoat. Если нарушены — даже хорошая укладка деградирует за 6-12 месяцев.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Что делать</h3>
+                    <ul>
+                        <li><b>Грязезащита у входов.</b> Коврик 2 м (внутри + снаружи). Песок и грунт — главная причина истирания.</li>
+                        <li><b>Сухая уборка ежедневно.</b> Микрофибра или мягкая щётка. Песок убирается до того, как пройдут по полу.</li>
+                        <li><b>Влажная уборка pH-нейтральная.</b> Sika Cleaner или эквивалент. Без аммиака, без отбеливателя.</li>
+                        <li><b>Точечные пятна — сразу.</b> Масло, вино, чернила: промокнуть, обработать pH-нейтральным, не тереть.</li>
+                        <li><b>Войлок под мебель.</b> Стулья, столы, диваны — войлочные накладки 5 мм. Каждые 6 месяцев проверять.</li>
+                        <li><b>Колёса оборудования.</b> Только не-чёрная резина (полиуретановые ролики). Чёрные следы — это пластификатор.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Что НЕ делать</h3>
+                    <ul>
+                        <li><b>Не мыть кислотами.</b> Уксус, лимонная кислота, средства для камня — травят финиш на эпокси/терраццо/микротопинге.</li>
+                        <li><b>Не использовать растворители.</b> Ацетон, бензин, толуол — растворяют связующее. Не для уборки.</li>
+                        <li><b>Не тереть абразивами.</b> Стальная вата, металлические губки — оставляют микро-царапины, пол сереет.</li>
+                        <li><b>Не оставлять стоячую воду.</b> >2 часов на бетоне/микротопинге — впитывание, пятна. На PU-cement дольше можно, но не >12 ч.</li>
+                        <li><b>Не двигать тяжёлое волоком.</b> Холодильник, шкаф — на катки, не тащить. Финиш режется.</li>
+                        <li><b>Не использовать восковые мастики.</b> «Блеск» от воска даёт скользкость R9 и забивает поры; пол перестаёт дышать.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EPOXY -->
+    <section class="care-section" id="epoxy">
+        <div class="container">
+            <p class="system-meta">Эпокси · self-leveling, troweled HBS, anti-static, ESD, seal-coat</p>
+            <h2>Эпокси — pH-нейтрально, без растворителей</h2>
+            <p class="system-lead">Эпокси — закрытый финиш. Не впитывает воду, но реагирует на кислоты (травит блеск) и растворители (растворяет связующее). Срок службы 10–15 лет, recoat финишного слоя — раз в 7–10 лет в коммерческом трафике.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>Sika Cleaner / Karcher BC 20 (1–3%).</b> Стандарт для эпокси — pH 7–9.</li>
+                        <li><b>Тёплая вода + мягкая ткань.</b> Для ежедневной уборки достаточно.</li>
+                        <li><b>Поломоечная машина с белым/красным падом.</b> Для коммерции, чёрный пад только при сильном загрязнении.</li>
+                        <li><b>Профессиональная полировка пада.</b> Возвращает блеск без recoat (раз в 1–2 года в коммерции).</li>
+                        <li><b>Восстановление верхнего слоя (1 mil).</b> Раз в 7–10 лет — освежает поверхность без полного recoat.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Уксус, лимонная кислота, средства для плитки.</b> Травит блеск.</li>
+                        <li><b>Ацетон, разбавитель, бензин.</b> Растворяет верхний слой.</li>
+                        <li><b>Стальная вата, чёрный пад на гладком финише.</b> Микро-царапины.</li>
+                        <li><b>Резиновые подложки чёрной резины надолго.</b> Перенос пластификатора → жёлтые пятна.</li>
+                        <li><b>UV-стресс без UV-стойкого верхнего слоя.</b> Эпокси без UV-стойкого финиша желтеет на солнце за 1–2 года.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="schedule-table">
+                <thead><tr><th>Сценарий</th><th>Уборка</th><th>Recoat / Re-polish</th></tr></thead>
+                <tbody>
+                    <tr><td>Жилая квартира</td><td>Сухая 2–3×/нед, влажная 1×/нед pH-нейтрально</td><td>Восстановление верхнего слоя 1×/10 лет</td></tr>
+                    <tr><td>Офис</td><td>Сухая ежедневно, влажная 2×/нед</td><td>Полировка 1×/2 года, recoat 1×/8 лет</td></tr>
+                    <tr><td>Ритейл</td><td>Поломоечная ежедневно</td><td>Полировка 1×/год, recoat 1×/5–7 лет</td></tr>
+                    <tr><td>Склад / цех</td><td>Поломоечная ежедневно + стартовая еженедельная</td><td>Recoat 1×/5–7 лет (зависит от трафика и нагрузки)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- TERRAZZO -->
+    <section class="care-section" id="terrazzo">
+        <div class="container">
+            <p class="system-meta">Терраццо · epoxy / mineral / Palladiana / Venetian</p>
+            <h2>Терраццо — никаких кислот, sealer раз в 5–7 лет</h2>
+            <p class="system-lead">Терраццо — композит из минерального заполнителя в связующем (эпокси или цемент). Заполнитель — мрамор, кварц, стекло. <b>Главный враг — кислоты:</b> они травят мрамор и цементное связующее. Срок службы 30–50 лет при правильном уходе.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>pH-нейтральные чистящие.</b> Sika Cleaner, Lithofin MN Wischpflege, Faber Floor Cleaner.</li>
+                        <li><b>Тёплая вода + микрофибра.</b> Ежедневный стандарт.</li>
+                        <li><b>Penetrating sealer раз в 5–7 лет.</b> Lithofin, Faber, Aktina — закрывает поры, держит блеск.</li>
+                        <li><b>Re-polish для минерального терраццо (раз в 10–15 лет).</b> Алмазные диски + повторный sealer. Возвращает блеск как новый.</li>
+                        <li><b>Для жилого — тёплый пол совместим.</b> Терраццо проводит тепло, греется быстрее плитки.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Уксус, лимон, средства для камня с кислотой.</b> Травит мрамор. Видимые пятна через 5 минут контакта.</li>
+                        <li><b>Аммиак, отбеливатель.</b> Разъедает sealer, открывает поры.</li>
+                        <li><b>Воск.</b> Забивает поры, делает поверхность скользкой R9.</li>
+                        <li><b>Острые металлические предметы волоком.</b> Заполнитель твёрже связующего — острый край вырывает крошку.</li>
+                        <li><b>Не пропустить ре-силинг.</b> Без sealer — пол впитывает вино, кофе, масло на годы.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MICROTOPPING -->
+    <section class="care-section" id="microtopping">
+        <div class="container">
+            <p class="system-meta">Микротопинг · standard, wet-rooms, walls</p>
+            <h2>Микротопинг — закрытый sealer, аккуратно с водой</h2>
+            <p class="system-lead">Микротопинг — 2-3 мм цементного композита поверх основания, закрытый полиуретановым или эпокси-sealer'ом. Самый тонкий из «бесшовных» финишей — поэтому ему важен sealer, иначе вода в порах = пятна и грибок. Срок службы 10–20 лет при ре-силинге каждые 5 лет.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>pH-нейтральные чистящие, тёплая вода.</b></li>
+                        <li><b>Микрофибра, мягкая швабра.</b> Стандарт.</li>
+                        <li><b>Penetrating sealer раз в 5 лет.</b> Тот же, что для терраццо.</li>
+                        <li><b>Для wet-rooms (душевые, кухни) — двойной sealer.</b> При укладке + поддержка раз в 3 года.</li>
+                        <li><b>Точечный recoat царапин.</b> Заполнение микротопингом и локальное полирование возможно — другие финиши так не умеют.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Кислоты, аммиак, отбеливатель.</b> Травит и цемент, и sealer.</li>
+                        <li><b>Стоячая вода >2 часов.</b> Проникает через микро-поры sealer'а, появляются пятна.</li>
+                        <li><b>Жёсткие щётки, абразив.</b> Тонкий слой — легко стереть до основания.</li>
+                        <li><b>Перфоратор / удар тяжёлым.</b> Микротопинг — финиш, не структура. От удара 5–10 кг — скол.</li>
+                        <li><b>Тёплый пол при отвердении.</b> Если делается tёплый пол — включать только через 30 дней после укладки.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PU-CEMENT -->
+    <section class="care-section" id="pu-cement">
+        <div class="container">
+            <p class="system-meta">PU-cement · standard / heavy-duty / satin / cove-base</p>
+            <h2>PU-cement — выдерживает щёлочь, но боится растворителей</h2>
+            <p class="system-lead">PU-cement (Sikafloor PurCem) — гибрид полиуретана и цемента. Создан для пищёвки и фарм-индустрии: выдерживает CIP-мойку при 80°C, агрессивные щёлочи (NaOH 10%), молочную/уксусную/лимонную кислоту до 3%. <b>Но плохо переносит растворители</b> и долгий контакт с концентрированными кислотами.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>Горячая мойка под напором 60–80°C.</b> Стандарт CIP в пищевой промышленности.</li>
+                        <li><b>Щелочные моющие средства (NaOH ≤ 5%, KOH ≤ 5%).</b> Промышленные дезинфектанты.</li>
+                        <li><b>Кислотные моющие для пищёвки (молочная, уксусная, лимонная) до 3%.</b> Кратковременно.</li>
+                        <li><b>Поломоечная машина любого пада.</b> Чёрный пад допустим.</li>
+                        <li><b>Тяжёлая нагрузка — колёса, паллетная техника, грузовики.</b> 10–15 мм покрытие держит до 30 т/м² при правильной толщине.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Растворители (ацетон, MEK, толуол).</b> Размягчают полиуретановую матрицу.</li>
+                        <li><b>Концентрированные кислоты (HCl &gt; 10%, H₂SO₄ &gt; 5%) долго.</b> Травит цементную часть.</li>
+                        <li><b>Точечный удар острого металла &gt; 10 кг.</b> Сколы возможны, как у любого минерального.</li>
+                        <li><b>UV-стресс без UV-стабильного финиша.</b> Жёлтое окрашивание матрицы (без потери функции, но косметика).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warranty-note">
+                <p><b>HACCP / FSSC 22000.</b> PU-cement сертифицирован для пищевой промышленности. Удержание сертификации требует журнала уборки и подтверждённых моющих средств. <a href="contact.html">Запросите HACCP-пакет</a> с регламентом, журналом и MSDS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MMA -->
+    <section class="care-section" id="mma">
+        <div class="container">
+            <p class="system-meta">MMA · fast-cure-industrial / cold-storage / decorative</p>
+            <h2>MMA — холод и быстро, но без аммиака</h2>
+            <p class="system-lead">MMA (метилметакрилат) — единственная система, которая укладывается при -25°C и набирает прочность за 1 час. Используется в холодильных камерах, морозильниках, цехах с непрерывным производством, где простой невозможен. По уходу — почти как эпокси, но с поправками.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>Холодная вода (от -20°C) + pH-нейтральные средства.</b> Работает даже на морозе.</li>
+                        <li><b>Поломоечные машины.</b> Включая горячую воду до 60°C.</li>
+                        <li><b>Recoat быстрый.</b> 1–2 часа на сухой час суммарно — поэтому удобно для непрерывного производства.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Аммиак, концентрированные щёлочи &gt; 5%.</b> MMA менее щёлочестойкий, чем PU-cement.</li>
+                        <li><b>Длительный контакт с растворителями.</b> Толуол, MEK — обратите внимание при кратковременных проливах.</li>
+                        <li><b>UV-стресс наружу без UV-добавки.</b> Жёлтое окрашивание.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCRETE DECORATIVE -->
+    <section class="care-section" id="concrete">
+        <div class="container">
+            <p class="system-meta">Бетон декоративный · cream / salt-pepper / full-aggregate</p>
+            <h2>Полированный бетон — penetrating sealer и без кислот</h2>
+            <p class="system-lead">Полированный бетон — это шлифовка существующей плиты или нового слоя до выхода заполнителя. Финиш не покрытие, а уплотнённый бетон с lithium-silicate hardener'ом и penetrating sealer'ом. Срок службы — равен сроку службы плиты. Главное — поддерживать sealer.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>Сухая уборка ежедневно.</b> Микрофибра, мягкая щётка.</li>
+                        <li><b>Влажная pH-нейтральная.</b> Тёплая вода.</li>
+                        <li><b>Penetrating sealer раз в 3–5 лет.</b> Lithofin MN Stain-Stop, Faber Stop-Stain.</li>
+                        <li><b>Re-polish раз в 10–15 лет.</b> Поверхностная шлифовка → новый sealer. Возвращает класс «новый».</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Кислоты любые.</b> Бетон — основа кальциевая, кислота травит.</li>
+                        <li><b>Стоячая вода + цветной краситель.</b> Вино, кофе, кола — без sealer'а проникают за 1 минуту.</li>
+                        <li><b>Воск, акриловые мастики.</b> Делают пол скользким и забивают поры.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RUBBER -->
+    <section class="care-section" id="rubber">
+        <div class="container">
+            <p class="system-meta">Каучук · poured / sheet / tile / comfortfloor</p>
+            <h2>Каучук — pH-нейтрально, аккуратно с маслом</h2>
+            <p class="system-lead">Каучуковый пол — упругий, тихий, тёплый. Используется в фитнесе, школах, больницах, детских садах, эластичных производствах. Срок службы 15–25 лет. Поддержка — простая, но есть нюансы с маслами и растворителями.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Можно</h3>
+                    <ul>
+                        <li><b>pH-нейтральные средства, тёплая вода.</b></li>
+                        <li><b>Поломоечные машины с белым/красным падом.</b></li>
+                        <li><b>Восстановительный полиш раз в 2–3 года.</b> Sika Floor Polish или эквивалент. Освежает поверхность.</li>
+                        <li><b>Локальный ремонт.</b> Sheet/tile — заменить плитку, poured — точечно ремонтируется.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li><b>Минеральные масла, бензин, керосин.</b> Размягчают каучук, остаются пятна.</li>
+                        <li><b>Растворители.</b> Тот же риск.</li>
+                        <li><b>Концентрированные щёлочи (NaOH &gt; 5%).</b> Окрашивают.</li>
+                        <li><b>Острые металлические колёса (стол, шкаф).</b> Деформируют поверхность под точечной нагрузкой. Большая площадь — ок.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WARRANTY -->
+    <section class="care-section" id="warranty">
+        <div class="container">
+            <p class="system-meta">Гарантия · что её сохраняет, что аннулирует</p>
+            <h2>Что аннулирует гарантию</h2>
+            <p class="system-lead">Гарантия Floor.DSGN — на укладку и систему Sika. Она работает, если пол обслуживается по этой странице или по альтернативному регламенту, согласованному при сдаче. Ниже — конкретные кейсы, которые гарантию снимают.</p>
+
+            <div class="care-grid">
+                <div class="care-card care-card--do">
+                    <h3>Гарантия сохраняется</h3>
+                    <ul>
+                        <li><b>Уборка pH-нейтральным средством по регламенту.</b> Чеки/MSDS можно показать в случае спора.</li>
+                        <li><b>Penetrating sealer обновлён вовремя.</b> Для терраццо/микротопинга/бетона — раз в 5 лет.</li>
+                        <li><b>Тяжёлая мебель/оборудование на войлоке или катках.</b></li>
+                        <li><b>Грязезащита у входов работает.</b></li>
+                        <li><b>Прорыв труб/потоп → составлен акт + быстрая сушка.</b> Не вина пола.</li>
+                    </ul>
+                </div>
+                <div class="care-card care-card--dont">
+                    <h3>Гарантия снимается</h3>
+                    <ul>
+                        <li><b>Уборка кислотами / растворителями / аммиаком.</b> Любой повреждённый блеск/пятно от этого — не гарантийный случай.</li>
+                        <li><b>Восковая мастика поверх финиша.</b> Это другой материал, перекрывающий нашу систему.</li>
+                        <li><b>Несогласованный recoat сторонним подрядчиком.</b> Если кто-то другой нанёс верхний слой — гарантия только на нижние слои.</li>
+                        <li><b>Эксплуатация ДО полного отверждения системы.</b> Эпокси: 7 дней; PU-cement: 3 дня; MMA: 2 часа. Нарушение срока — поверхностные дефекты не гарантийные.</li>
+                        <li><b>Изменения основания (новые скважины, проколы, удары перфоратором без согласования).</b></li>
+                        <li><b>Хлоридная атака у моря без аудита.</b> Если объект на берегу и не делался аудит хлоридов — деградация связующего не покрывается. <a href="contact.html#audit">Запросите аудит хлоридов</a>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warranty-note">
+                <p>Регистрация гарантии и журнал ухода: <a href="warranty.html">warranty.html</a> — оформите гарантийный документ с фото-фиксацией укладки и шаблоном журнала уборки. Принимается архитекторами и FM-службами в Израиле.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-cta">
+        <div class="container">
+            <h2>Сомневаетесь, чем мыть?</h2>
+            <p>Напишите в WhatsApp с фото пола и средства — подскажем подходит / не подходит за 1 минуту. Если уже есть пятно или повреждение — отправьте фото, оценим, нужен ли visit.</p>
+            <a class="btn-primary" href="https://wa.me/972559661459?text=Здравствуйте%2C%20вопрос%20по%20уходу%20за%20полом">Спросить в WhatsApp</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>

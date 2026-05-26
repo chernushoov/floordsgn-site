@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт или замена пола — Floor.DSGN | диагностика за 1 минуту</title>
+
+    <meta name="description" content="Пол треснул, вздулся, потерял блеск, желтеет, отслаивается? За 5 вопросов — диагноз: recoat, локальный ремонт или полная замена. С оценкой стоимости и простоя.">
+    <meta name="keywords" content="ремонт пола, замена пола, recoat, отслоение эпокси, треснул бетон, израиль, диагностика">
+
+    <meta property="og:title" content="Ремонт или замена пола — Floor.DSGN">
+    <meta property="og:description" content="5 вопросов → диагноз. Recoat, локальный ремонт или полная замена с оценкой стоимости и простоя.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.com/repair-or-replace.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/repair-or-replace.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .rr-hero { padding: 110px 0 50px; background: var(--concrete); }
+        .rr-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+        .rr-hero h1 { font-size: clamp(44px, 6vw, 78px); margin-bottom: 18px; max-width: 880px; }
+        .rr-hero .lead { max-width: 720px; color: var(--steel); font-size: 17px; line-height: 1.55; }
+
+        .rr-wiz { padding: 30px 0 100px; background: var(--concrete); }
+        .rr-card { background: #fff; border-radius: 18px; max-width: 880px; margin: 0 auto; padding: 44px 48px 38px; border: 1px solid var(--grey-border); }
+
+        .rr-progress { display: flex; gap: 6px; margin-bottom: 30px; }
+        .rr-progress span { flex: 1; height: 4px; background: var(--grey-border); border-radius: 2px; transition: background .25s ease; }
+        .rr-progress span.done { background: var(--carbon); }
+        .rr-progress span.active { background: var(--signal); }
+
+        .rr-step { display: none; }
+        .rr-step.active { display: block; }
+        .rr-step__num { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--steel); line-height: 1; margin-bottom: 12px; }
+        .rr-step h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 10px; color: var(--carbon); }
+        .rr-step p.hint { color: var(--steel); font-size: 14.5px; line-height: 1.55; margin-bottom: 24px; }
+
+        .rr-options { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+        .rr-options.single { grid-template-columns: 1fr; }
+        .rr-opt { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; background: var(--concrete); border-radius: 12px; cursor: pointer; transition: background .15s ease, transform .15s ease; border: 1px solid transparent; }
+        .rr-opt:hover { background: #ece6da; transform: translateY(-1px); }
+        .rr-opt.selected { background: var(--carbon); color: #fff; border-color: var(--carbon); }
+        .rr-opt.selected .rr-opt__sub { color: #b0b0b0; }
+        .rr-opt__icon { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--signal); flex: none; line-height: 1; padding-top: 2px; }
+        .rr-opt.selected .rr-opt__icon { color: var(--signal); }
+        .rr-opt__body { flex: 1; }
+        .rr-opt__title { font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+        .rr-opt__sub { font-size: 13px; color: var(--steel); line-height: 1.45; }
+
+        .rr-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--grey-border); }
+        .rr-back { font-size: 14px; color: var(--steel); background: none; border: none; cursor: pointer; padding: 8px 0; }
+        .rr-back:hover { color: var(--carbon); }
+        .rr-back[disabled] { opacity: 0.3; cursor: default; }
+        .rr-next { padding: 12px 32px; border-radius: 980px; background: var(--carbon); color: #fff; border: none; font-weight: 600; font-size: 14px; cursor: pointer; transition: background .2s ease; }
+        .rr-next:hover { background: var(--graphite); }
+        .rr-next[disabled] { background: var(--grey-border); cursor: default; color: var(--steel); }
+
+        /* Result */
+        .rr-result { display: none; }
+        .rr-result.active { display: block; }
+        .rr-result__overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 14px; }
+        .rr-result h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px; }
+        .rr-result__verdict { padding: 24px 28px; background: var(--concrete); border-left: 4px solid var(--signal); border-radius: 10px; margin-bottom: 28px; }
+        .rr-result__verdict h3 { color: var(--carbon); margin-bottom: 6px; }
+        .rr-result__verdict p { color: var(--graphite); font-size: 15px; line-height: 1.55; margin: 0; }
+
+        .rr-rows { display: grid; gap: 16px; }
+        .rr-row { padding: 18px 22px; background: var(--concrete); border-radius: 12px; }
+        .rr-row__label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 4px; font-weight: 600; }
+        .rr-row__value { font-size: 16px; color: var(--carbon); line-height: 1.5; }
+
+        .rr-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+        .rr-actions a { padding: 14px 28px; border-radius: 980px; font-weight: 600; font-size: 14px; }
+        .rr-actions .btn-primary { background: var(--carbon); color: #fff; }
+        .rr-actions .btn-primary:hover { background: var(--graphite); }
+        .rr-actions .btn-secondary { background: transparent; color: var(--carbon); border: 1px solid var(--grey-border); }
+        .rr-actions .btn-secondary:hover { background: var(--concrete); }
+
+        .rr-restart { margin-top: 28px; background: none; border: none; color: var(--steel); font-size: 13px; cursor: pointer; padding: 6px 0; }
+        .rr-restart:hover { color: var(--carbon); text-decoration: underline; }
+
+        .rr-explain { padding: 80px 0 100px; background: #fff; }
+        .rr-explain h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 16px; }
+        .rr-explain__grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 32px; }
+        .rr-explain__card { padding: 24px; border: 1px solid var(--grey-border); border-radius: 14px; }
+        .rr-explain__card h4 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); margin-bottom: 12px; }
+        .rr-explain__card h3 { font-size: 20px; color: var(--carbon); margin-bottom: 10px; }
+        .rr-explain__card p { color: var(--graphite); font-size: 14.5px; line-height: 1.55; margin-bottom: 12px; }
+        .rr-explain__card .nums { display: flex; gap: 16px; font-size: 12px; color: var(--steel); }
+        .rr-explain__card .nums b { color: var(--carbon); }
+
+        @media (max-width: 700px) {
+            .rr-card { padding: 32px 24px; }
+            .rr-options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="floors.html">Floors</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+
+    <section class="rr-hero">
+        <div class="container">
+            <p class="overline">Repair or replace — диагностика</p>
+            <h1>Пол подвёл — чинить или менять?</h1>
+            <p class="lead">5 вопросов о вашем поле — на выходе диагноз с тремя путями: recoat (обновление верхнего слоя), локальный ремонт зоны, или полная замена. С оценкой стоимости, простоя и риском повторения.</p>
+        </div>
+    </section>
+
+    <section class="rr-wiz">
+        <div class="container">
+            <div class="rr-card">
+                <div class="rr-progress" id="rrProgress">
+                    <span class="active"></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <!-- Step 1: Material -->
+                <div class="rr-step active" data-step="1">
+                    <div class="rr-step__num">01</div>
+                    <h2>Какая система пола сейчас?</h2>
+                    <p class="hint">Если не уверены — выберите «не знаю», мы определим по фото на следующем шаге.</p>
+                    <div class="rr-options" data-q="material">
+                        <div class="rr-opt" data-v="epoxy"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Эпокси</div><div class="rr-opt__sub">Самовыравнивающийся, decorative или industrial</div></div></div>
+                        <div class="rr-opt" data-v="terrazzo"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Терраццо</div><div class="rr-opt__sub">Композит с мрамором, кварцем или стеклом</div></div></div>
+                        <div class="rr-opt" data-v="microtopping"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Микротопинг</div><div class="rr-opt__sub">2–3 мм цементного композита</div></div></div>
+                        <div class="rr-opt" data-v="pu-cement"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">PU-cement</div><div class="rr-opt__sub">Пищёвка, склады, тяжёлая нагрузка</div></div></div>
+                        <div class="rr-opt" data-v="mma"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">MMA</div><div class="rr-opt__sub">Холодильники, быстрая укладка</div></div></div>
+                        <div class="rr-opt" data-v="concrete"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Бетон полированный</div><div class="rr-opt__sub">Декоративный, salt-pepper, full-aggregate</div></div></div>
+                        <div class="rr-opt" data-v="rubber"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Каучук</div><div class="rr-opt__sub">Спорт, школы, больницы</div></div></div>
+                        <div class="rr-opt" data-v="unknown"><span class="rr-opt__icon">?</span><div class="rr-opt__body"><div class="rr-opt__title">Не знаю</div><div class="rr-opt__sub">Определим по фото</div></div></div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Problem -->
+                <div class="rr-step" data-step="2">
+                    <div class="rr-step__num">02</div>
+                    <h2>Что не так с полом?</h2>
+                    <p class="hint">Выберите главную проблему. Если несколько — самую критичную.</p>
+                    <div class="rr-options" data-q="problem">
+                        <div class="rr-opt" data-v="bubbles"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Вздутия / пузыри</div><div class="rr-opt__sub">Локальное отслоение от основания</div></div></div>
+                        <div class="rr-opt" data-v="delamination"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Отслоение слоя</div><div class="rr-opt__sub">Финиш отходит от подложки или нижний слой от основания</div></div></div>
+                        <div class="rr-opt" data-v="cracks"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Трещины</div><div class="rr-opt__sub">Видимые трещины — поверхностные или сквозные</div></div></div>
+                        <div class="rr-opt" data-v="yellowing"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Жёлтые пятна / выцветание</div><div class="rr-opt__sub">UV-окрашивание эпокси или химические пятна</div></div></div>
+                        <div class="rr-opt" data-v="dull"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Потерял блеск, помутнение</div><div class="rr-opt__sub">Косметика — sealer изношен</div></div></div>
+                        <div class="rr-opt" data-v="scratches"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Глубокие царапины / истирание</div><div class="rr-opt__sub">Видны полосы от мебели, истирание в проходах</div></div></div>
+                        <div class="rr-opt" data-v="stains"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Пятна, не отмываются</div><div class="rr-opt__sub">Вино, кофе, масло, химия — впитались</div></div></div>
+                        <div class="rr-opt" data-v="moisture"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Влага из-под пола</div><div class="rr-opt__sub">Капли влаги, грибок, специфический запах</div></div></div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Age -->
+                <div class="rr-step" data-step="3">
+                    <div class="rr-step__num">03</div>
+                    <h2>Сколько лет полу?</h2>
+                    <p class="hint">Возраст помогает оценить, ушёл ли срок гарантии и в какой фазе жизни пола проблема возникла.</p>
+                    <div class="rr-options" data-q="age">
+                        <div class="rr-opt" data-v="lt1"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Меньше 1 года</div><div class="rr-opt__sub">Гарантия должна работать</div></div></div>
+                        <div class="rr-opt" data-v="1-3"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">1–3 года</div><div class="rr-opt__sub">В гарантии для большинства систем</div></div></div>
+                        <div class="rr-opt" data-v="3-7"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">3–7 лет</div><div class="rr-opt__sub">Средний возраст — возможно плановое</div></div></div>
+                        <div class="rr-opt" data-v="7-15"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">7–15 лет</div><div class="rr-opt__sub">Время recoat или re-polish</div></div></div>
+                        <div class="rr-opt" data-v="15+"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Больше 15 лет</div><div class="rr-opt__sub">Возможно, время замены</div></div></div>
+                        <div class="rr-opt" data-v="unknown"><span class="rr-opt__icon">?</span><div class="rr-opt__body"><div class="rr-opt__title">Не знаю</div><div class="rr-opt__sub">Объект достался уже с полом</div></div></div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Coverage -->
+                <div class="rr-step" data-step="4">
+                    <div class="rr-step__num">04</div>
+                    <h2>Какая площадь повреждения?</h2>
+                    <p class="hint">Относительно всего пола в помещении.</p>
+                    <div class="rr-options" data-q="coverage">
+                        <div class="rr-opt" data-v="point"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Точечно</div><div class="rr-opt__sub">Меньше 10% площади</div></div></div>
+                        <div class="rr-opt" data-v="zonal"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Зональное</div><div class="rr-opt__sub">10–30% — одна зона или несколько пятен</div></div></div>
+                        <div class="rr-opt" data-v="widespread"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Распространённое</div><div class="rr-opt__sub">Больше 30% — везде понемногу</div></div></div>
+                        <div class="rr-opt" data-v="total"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Тотально</div><div class="rr-opt__sub">Весь пол требует внимания</div></div></div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Downtime -->
+                <div class="rr-step" data-step="5">
+                    <div class="rr-step__num">05</div>
+                    <h2>Сколько простоя вы можете себе позволить?</h2>
+                    <p class="hint">Это определит выбор материала и метода: MMA — часы, эпокси — дни, терраццо — недели.</p>
+                    <div class="rr-options" data-q="downtime">
+                        <div class="rr-opt" data-v="hours"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Несколько часов</div><div class="rr-opt__sub">Производство, холодильники, ритейл 24/7</div></div></div>
+                        <div class="rr-opt" data-v="weekend"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Выходные / 1–2 дня</div><div class="rr-opt__sub">Офисы, магазины с выходным днём</div></div></div>
+                        <div class="rr-opt" data-v="week"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">До недели</div><div class="rr-opt__sub">Жилые проекты, частичная эвакуация</div></div></div>
+                        <div class="rr-opt" data-v="open"><span class="rr-opt__icon">→</span><div class="rr-opt__body"><div class="rr-opt__title">Открытое окно (2+ недели)</div><div class="rr-opt__sub">Капитальный ремонт, реконструкция</div></div></div>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div class="rr-result" id="rrResult">
+                    <p class="rr-result__overline">Диагноз</p>
+                    <h2 id="rrVerdictTitle">Готово</h2>
+                    <div class="rr-result__verdict">
+                        <h3 id="rrVerdictHead"></h3>
+                        <p id="rrVerdictBody"></p>
+                    </div>
+                    <div class="rr-rows">
+                        <div class="rr-row"><div class="rr-row__label">Метод</div><div class="rr-row__value" id="rrMethod"></div></div>
+                        <div class="rr-row"><div class="rr-row__label">Простой</div><div class="rr-row__value" id="rrDowntime"></div></div>
+                        <div class="rr-row"><div class="rr-row__label">Оценка стоимости</div><div class="rr-row__value" id="rrCost"></div></div>
+                        <div class="rr-row"><div class="rr-row__label">Что сделать дальше</div><div class="rr-row__value" id="rrNext"></div></div>
+                    </div>
+                    <div class="rr-actions">
+                        <a class="btn-primary" id="rrCta" href="https://wa.me/972559661459?text=Здравствуйте%2C%20пол%20требует%20диагностики">Заявка на выезд</a>
+                        <a class="btn-secondary" href="contact.html">Связаться по email</a>
+                        <a class="btn-secondary" href="care-guide.html">Регламент ухода</a>
+                    </div>
+                    <button class="rr-restart" type="button" id="rrRestart">Начать заново</button>
+                </div>
+
+                <div class="rr-nav" id="rrNav">
+                    <button class="rr-back" id="rrBack" disabled>← Назад</button>
+                    <button class="rr-next" id="rrNext" disabled>Дальше →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rr-explain">
+        <div class="container">
+            <h2>Что значит каждая опция</h2>
+            <p style="color:var(--steel); max-width:720px; line-height:1.55;">Чтобы вы понимали, между чем выбираете — короткий обзор трёх путей и их экономики. Реальный путь определяется в диагностике выше или при выезде инженера.</p>
+            <div class="rr-explain__grid">
+                <div class="rr-explain__card">
+                    <h4>Recoat</h4>
+                    <h3>Обновление верхнего слоя</h3>
+                    <p>Шлифовка существующего финиша + новый top-coat 0.3–1 мм. Подходит, если основание и нижние слои здоровы, изношен только верхний слой (блеск, мелкие царапины).</p>
+                    <div class="nums"><span>Срок: <b>2–4 дня</b></span><span>Цена: <b>20–40% от новой укладки</b></span></div>
+                </div>
+                <div class="rr-explain__card">
+                    <h4>Локальный ремонт</h4>
+                    <h3>Точечное восстановление зоны</h3>
+                    <p>Демонтаж дефектной зоны до здорового основания, локальное переливание / переукладка. Используется при точечных проблемах: 1 вздутие, 1 трещина, повреждение от удара.</p>
+                    <div class="nums"><span>Срок: <b>1–5 дней</b></span><span>Цена: <b>50–150% от м² новой укладки в зоне</b></span></div>
+                </div>
+                <div class="rr-explain__card">
+                    <h4>Полная замена</h4>
+                    <h3>Снятие и новая укладка</h3>
+                    <p>Демонтаж всей системы, подготовка основания, новая укладка. Применяется при системных дефектах: распространённое отслоение, влажностные проблемы, изменение требований.</p>
+                    <div class="nums"><span>Срок: <b>1–4 недели</b></span><span>Цена: <b>100% новой укладки + демонтаж</b></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        var state = { material:null, problem:null, age:null, coverage:null, downtime:null };
+        var stepEls = document.querySelectorAll('.rr-step');
+        var progressEls = document.querySelectorAll('#rrProgress span');
+        var backBtn = document.getElementById('rrBack');
+        var nextBtn = document.getElementById('rrNext');
+        var navEl = document.getElementById('rrNav');
+        var resultEl = document.getElementById('rrResult');
+        var currentStep = 1;
+        var totalSteps = 5;
+
+        function renderStep() {
+            stepEls.forEach(function(el){
+                var s = parseInt(el.dataset.step, 10);
+                el.classList.toggle('active', s === currentStep);
+            });
+            progressEls.forEach(function(p, i){
+                p.classList.remove('active','done');
+                if (i+1 < currentStep) p.classList.add('done');
+                else if (i+1 === currentStep) p.classList.add('active');
+            });
+            backBtn.disabled = currentStep === 1;
+            var stepQ = ['material','problem','age','coverage','downtime'][currentStep-1];
+            nextBtn.disabled = !state[stepQ];
+            nextBtn.textContent = currentStep === totalSteps ? 'Получить диагноз →' : 'Дальше →';
+        }
+
+        function showResult() {
+            stepEls.forEach(function(el){ el.classList.remove('active'); });
+            navEl.style.display = 'none';
+            resultEl.classList.add('active');
+            var diag = diagnose(state);
+            document.getElementById('rrVerdictHead').textContent = diag.head;
+            document.getElementById('rrVerdictBody').textContent = diag.body;
+            document.getElementById('rrMethod').textContent = diag.method;
+            document.getElementById('rrDowntime').textContent = diag.downtime;
+            document.getElementById('rrCost').textContent = diag.cost;
+            document.getElementById('rrNext').textContent = diag.next;
+            document.getElementById('rrCta').setAttribute('href', diag.ctaHref);
+        }
+
+        function diagnose(s) {
+            // Verdict logic (heuristic — owner-tuned over time)
+            var p = s.problem, c = s.coverage, a = s.age, d = s.downtime, m = s.material;
+
+            // Moisture from below → almost always replace + substrate work first
+            if (p === 'moisture') {
+                return {
+                    head: 'Полная замена + обработка основания',
+                    body: 'Влага из-под пола разрушает любую систему. Сначала диагностика основания (RH/CM), затем обработка влагобарьером Sika Sikafloor EpoCem или эквивалент, потом новая укладка. Recoat и локальный ремонт здесь не помогут — проблема в основании, не в полу.',
+                    method: 'Substrate check (RH/CM) → влагобарьер → новая укладка',
+                    downtime: '2–4 недели включая просушку',
+                    cost: 'Демонтаж + новая укладка + влагобарьер. От 350 шек/м² (за работу и материал, бюджетная система) до 1200 шек/м² (терраццо + влагобарьер).',
+                    next: 'Заявка на substrate-check (выезд с гигрометром и Tramex). Без диагностики основания любая замена — повторение проблемы.',
+                    ctaHref: 'https://wa.me/972559661459?text=Влажность%20из-под%20пола%2C%20нужен%20substrate-check'
+                };
+            }
+
+            // Delamination, widespread → replace
+            if (p === 'delamination' && (c === 'widespread' || c === 'total')) {
+                return {
+                    head: 'Полная замена',
+                    body: 'Распространённое отслоение почти всегда указывает на дефект подготовки основания при первой укладке. Recoat поверх отслаивающейся системы лопнет так же. Локальный ремонт по всему полу = по факту полная замена в рассрочку. Лучше — снять, подготовить основание правильно, уложить заново.',
+                    method: 'Демонтаж старой системы → primer + новая укладка по спецификации',
+                    downtime: '1–3 недели в зависимости от системы',
+                    cost: 'Полная замена + демонтаж. Для офиса 100 м²: от 35 000 шек до 120 000 шек в зависимости от системы (эпокси → терраццо).',
+                    next: 'Выезд на объект, забор образца на анализ Sika, расчёт по м² и downtime-окну. Если был гарантийный срок — отдельно по гарантии.',
+                    ctaHref: 'https://wa.me/972559661459?text=Распространённое%20отслоение%2C%20нужен%20выезд'
+                };
+            }
+
+            // Delamination, point/zonal → local repair
+            if (p === 'delamination' && (c === 'point' || c === 'zonal')) {
+                return {
+                    head: 'Локальный ремонт',
+                    body: 'Точечное отслоение — это локальная проблема (или дефект подложки в зоне, или удар, или химический инцидент). Снимаем дефектный участок, проверяем основание, перекладываем зону с привязкой по цвету и фактуре. На остальной пол не влияет.',
+                    method: 'Демонтаж зоны → проверка основания → переукладка',
+                    downtime: '1–3 дня для одной зоны',
+                    cost: 'Локально: 150–400 шек/м² × площадь зоны, плюс выезд и подготовка.',
+                    next: 'Если объекту менее 5 лет — проверим гарантию. Иначе — выезд, замер, расчёт.',
+                    ctaHref: 'https://wa.me/972559661459?text=Точечное%20отслоение%2C%20нужен%20ремонт'
+                };
+            }
+
+            // Bubbles → similar to delamination but smaller scope usually
+            if (p === 'bubbles') {
+                if (c === 'point' || c === 'zonal') {
+                    return {
+                        head: 'Локальный ремонт',
+                        body: 'Пузыри = локальное отслоение, обычно от вкраплённой влаги или плохой адгезии в зоне. Срезаем, шлифуем, восстанавливаем по системе.',
+                        method: 'Срезать пузырь → подложку под адгезию → локальный recoat',
+                        downtime: '1–2 дня',
+                        cost: 'Точечно: 200–500 шек/пузырь до ~0.5 м². Зональный — по м².',
+                        next: 'Фото пузырей + замер площади → расчёт.',
+                        ctaHref: 'https://wa.me/972559661459?text=Пузыри%20на%20полу'
+                    };
+                }
+                return {
+                    head: 'Полная замена',
+                    body: 'Распространённые пузыри = системная проблема (обычно влажность основания при укладке). Перекладывать.',
+                    method: 'Демонтаж → substrate-check → влагобарьер → новая укладка',
+                    downtime: '2–3 недели',
+                    cost: 'Полная замена с подготовкой.',
+                    next: 'Substrate check обязателен до новой укладки.',
+                    ctaHref: 'https://wa.me/972559661459?text=Распространённые%20пузыри'
+                };
+            }
+
+            // Cracks
+            if (p === 'cracks') {
+                if (m === 'concrete' || m === 'microtopping') {
+                    return {
+                        head: c === 'point' ? 'Локальный ремонт' : 'Перекладка с подложкой',
+                        body: 'Трещины на цементных финишах (бетон/микротопинг) обычно следуют за трещиной основания. Сначала диагностика — динамическая или статическая трещина. Динамическая требует декаплинг-мембраны, иначе вернётся.',
+                        method: 'Crack-injection (Sika SikaDur) + локальный recoat или, при динамических трещинах, декаплинг-мембрана + новый финиш',
+                        downtime: c === 'point' ? '1–2 дня' : '3–7 дней',
+                        cost: 'Injection: 80–200 шек/п.м.; локальный recoat: 100–300 шек/м².',
+                        next: 'Фото трещин + замер длины → план.',
+                        ctaHref: 'https://wa.me/972559661459?text=Трещины%20на%20полу'
+                    };
+                }
+                return {
+                    head: c === 'point' ? 'Локальный ремонт' : 'Recoat с эластичным слоем',
+                    body: 'Трещины на эпокси/полиуретановых финишах часто волосяные — устраняются эластичным праймером + новым top-coat. Если трещины сквозные — это уже движение основания, нужен подход как с бетоном.',
+                    method: 'Эластичный праймер → шлифовка → новый верхний слой',
+                    downtime: '2–3 дня',
+                    cost: '120–250 шек/м² за recoat зоны.',
+                    next: 'Фото крупным планом, оценим динамика/статика.',
+                    ctaHref: 'https://wa.me/972559661459?text=Трещины%20на%20полу'
+                };
+            }
+
+            // Yellowing
+            if (p === 'yellowing') {
+                return {
+                    head: 'Recoat (UV-стабильный финиш)',
+                    body: 'Жёлтое окрашивание эпокси на солнце — норма для не-UV-стабильных систем. Лечится не покраской, а заменой верхнего слоя на UV-стабильный PU-финиш поверх существующего эпокси. Само окрашивание — косметика, функция не пострадала.',
+                    method: 'Шлифовка → PU UV-стабильный top-coat',
+                    downtime: '2–3 дня',
+                    cost: '100–200 шек/м² за UV-стабильный recoat.',
+                    next: 'Замер площади под солнцем → план.',
+                    ctaHref: 'https://wa.me/972559661459?text=Пожелтел%20пол%20на%20солнце'
+                };
+            }
+
+            // Dull / lost gloss
+            if (p === 'dull') {
+                return {
+                    head: 'Re-polish / re-seal',
+                    body: 'Потеря блеска — это износ верхнего слоя или sealer. Плановое обновление, не дефект. Полировка + новый sealer возвращают класс «новый» без полной перекладки.',
+                    method: m === 'terrazzo' || m === 'concrete' ? 'Алмазная полировка → penetrating sealer' : 'Шлифовка + новый top-coat',
+                    downtime: '2–3 дня',
+                    cost: '60–180 шек/м² (полировка + sealer)',
+                    next: 'Замер площади → план в рабочий день недели.',
+                    ctaHref: 'https://wa.me/972559661459?text=Пол%20потерял%20блеск'
+                };
+            }
+
+            // Scratches
+            if (p === 'scratches') {
+                if (c === 'point' || c === 'zonal') {
+                    return {
+                        head: 'Полировка / локальный recoat',
+                        body: 'Глубокие царапины в зонах прохода — обычное явление в коммерции. Для эпокси/PU — шлифовка зоны и recoat. Для терраццо/бетона — алмазная полировка восстанавливает поверхность без следов.',
+                        method: m === 'terrazzo' || m === 'concrete' ? 'Алмазная полировка зоны' : 'Шлифовка + локальный recoat',
+                        downtime: '1–2 дня',
+                        cost: '80–250 шек/м² по зоне.',
+                        next: 'Фото зон + замер.',
+                        ctaHref: 'https://wa.me/972559661459?text=Глубокие%20царапины%20на%20полу'
+                    };
+                }
+                return {
+                    head: 'Полный recoat',
+                    body: 'Распространённые истирания = sealer/top-coat изношен по всей площади. Plановое обновление, как ТО для машины. Recoat дешевле полной замены в 3–5 раз.',
+                    method: 'Шлифовка всей площади → новый top-coat',
+                    downtime: '3–7 дней в зависимости от площади',
+                    cost: '120–250 шек/м² за полный recoat (vs 350–1200 шек/м² за полную замену).',
+                    next: 'Замер площади → выбор top-coat (стандарт / UV / anti-slip).',
+                    ctaHref: 'https://wa.me/972559661459?text=Recoat%20пола'
+                };
+            }
+
+            // Stains
+            if (p === 'stains') {
+                return {
+                    head: c === 'point' ? 'Точечная полировка / recoat пятна' : 'Полный recoat',
+                    body: 'Несмываемые пятна = sealer изношен и краситель проник в пористую часть финиша. Лечится шлифовкой или локальным recoat. Не дефект пола, а косметика.',
+                    method: m === 'terrazzo' || m === 'concrete' ? 'Локальная алмазная полировка → sealer' : 'Шлифовка + локальный recoat',
+                    downtime: c === 'point' ? '1 день' : '3–5 дней',
+                    cost: '80–250 шек/м² по зоне или площади.',
+                    next: 'Фото пятен + что пролилось (для подбора метода).',
+                    ctaHref: 'https://wa.me/972559661459?text=Пятна%20не%20отмываются'
+                };
+            }
+
+            // Fallback
+            return {
+                head: 'Нужен выезд для точного диагноза',
+                body: 'Комбинация ваших ответов уникальна — точный диагноз можно поставить только при осмотре с фото-фиксацией и забором образца. Это типично для смешанных проблем: например, и отслоение, и пятна, и не помнят возраст. Выезд занимает 30–45 минут, забор образца — ещё 10 минут.',
+                method: 'Визуальная диагностика + замер + забор образца на анализ Sika',
+                downtime: 'Зависит от диагноза',
+                cost: 'Выезд: бесплатно по Тель-Авив-Гуш-Дан и центральному округу.',
+                next: 'WhatsApp с фото проблемы → согласуем дату выезда в течение 24 часов.',
+                ctaHref: 'https://wa.me/972559661459?text=Нужна%20диагностика%20пола%20на%20месте'
+            };
+        }
+
+        document.querySelectorAll('.rr-options').forEach(function(group){
+            group.addEventListener('click', function(e){
+                var opt = e.target.closest('.rr-opt');
+                if (!opt) return;
+                group.querySelectorAll('.rr-opt').forEach(function(o){ o.classList.remove('selected'); });
+                opt.classList.add('selected');
+                var q = group.dataset.q;
+                state[q] = opt.dataset.v;
+                renderStep();
+            });
+        });
+
+        backBtn.addEventListener('click', function(){
+            if (currentStep > 1) { currentStep -= 1; renderStep(); }
+        });
+        nextBtn.addEventListener('click', function(){
+            if (currentStep < totalSteps) { currentStep += 1; renderStep(); }
+            else { showResult(); }
+        });
+        document.getElementById('rrRestart').addEventListener('click', function(){
+            currentStep = 1;
+            Object.keys(state).forEach(function(k){ state[k] = null; });
+            document.querySelectorAll('.rr-opt.selected').forEach(function(o){ o.classList.remove('selected'); });
+            resultEl.classList.remove('active');
+            navEl.style.display = '';
+            renderStep();
+        });
+
+        renderStep();
+    })();
+    </script>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>
