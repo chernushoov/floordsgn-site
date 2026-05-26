@@ -3,7 +3,7 @@
 **Start:** 00:18 IDT · **Last update:** 01:45 IDT
 **Branch:** `launch/floordsgn-com-cf` (НЕ ДЕПЛОЕНО на прод — ждёт твой review)
 **Режим:** полностью автономный, аддитивно, бренд Industrial Proof заперт
-**Финальный QA:** build clean / a11y 20/20 OK / lint 0 errors / wizard 5/5 / calculators 11/11 / 0 broken internal links
+**Финальный QA:** build clean / a11y 20/20 OK / lint 0 errors / wizard 5/5 / calculators 11/11 / FAQ 4/4 / 0 broken internal links
 
 ---
 
@@ -47,9 +47,15 @@
 - `repair-or-replace.html`: Service schema (free-visit offer)
 - `index.html`: уже был LocalBusiness schema — не трогал
 
-**E2E тесты:**
+**E2E тесты (20 всего, все pass):**
 - `scripts/test-wizard.js`: 5 сценариев wizard'a → 5/5 pass. Поймал реальный bug (id collision `rrNext` между Next-кнопкой и result row — без теста ушёл бы в прод).
 - `scripts/test-calculators.js`: 11 проверок TCO + BoQ → 11/11 pass. Покрывает scaling, system selection, substrate adjustments, SKU presence.
+- `scripts/test-faq.js`: 4 проверки FAQ (32 Q&A items, click-to-expand, JSON-LD) → 4/4 pass.
+
+**Bulk content polish:**
+- 13 articles получили «Связанные инструменты» CTA-strip (System Selector + Care Guide + Repair-or-Replace + FAQ).
+- 2 новых articles получили Article JSON-LD schema (11 существующих уже имели).
+- translations.js: добавлены 14 i18n ключей для homepage tools-band (EN+RU).
 
 ---
 
