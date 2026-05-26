@@ -2,7 +2,7 @@
 
 Дата: 2026-05-19
 Адресат: Blender-художник, делавший плиты по `BLENDER_3D_BRIEF_2026-05-19.md`
-Статус первой итерации: **ПРИНЯТО**, активировано на проде (https://floordsgn.netlify.app/configurator.html)
+Статус первой итерации: **ПРИНЯТО**, активировано на проде (https://floordsgn.com/configurator.html)
 
 ## Что отлично
 

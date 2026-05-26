@@ -1,0 +1,255 @@
+{
+  "terrazzo-cement": {
+    "file": "terrazzo-cement.glb",
+    "sizeKB": 29.6,
+    "nodes": [
+      "body",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer",
+      "primer",
+      "quartz-broadcast",
+      "substrate",
+      "substrate-prep",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_terrazzo-cement",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer-fibreglass",
+      "primer-cementitious",
+      "quartz-broadcast",
+      "substrate",
+      "substrate-prep",
+      "VAR_topcoat"
+    ]
+  },
+  "terrazzo-multi": {
+    "file": "terrazzo-multi.glb",
+    "sizeKB": 17.2,
+    "nodes": [
+      "body",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer",
+      "primer",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_terrazzo-multi",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer-fibreglass",
+      "primer-epoxy-sika",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "terrazzo-epoxy": {
+    "file": "terrazzo-epoxy.glb",
+    "sizeKB": 17.2,
+    "nodes": [
+      "body",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer",
+      "primer",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_terrazzo-epoxy",
+      "decorative-strips",
+      "gel-fill",
+      "mesh-layer-fibreglass",
+      "primer-epoxy-sika",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "microtopping": {
+    "file": "microtopping.glb",
+    "sizeKB": 13.7,
+    "nodes": [
+      "body-coat-1",
+      "body-coat-2",
+      "mesh-layer",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "body-coat-1_microtopping",
+      "VAR_body_microtopping",
+      "mesh-layer-fibreglass",
+      "primer-epoxy-topcement",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "rubber": {
+    "file": "rubber.glb",
+    "sizeKB": 10.4,
+    "nodes": [
+      "body",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_rubber",
+      "primer-pu-topcement",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "parquet": {
+    "file": "parquet.glb",
+    "sizeKB": 10.4,
+    "nodes": [
+      "body",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_parquet",
+      "primer-acrylic-wood",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "mma": {
+    "file": "mma.glb",
+    "sizeKB": 12.0,
+    "nodes": [
+      "body",
+      "primer",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_mma",
+      "primer-mma-sika",
+      "quartz-broadcast",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "pu-cement": {
+    "file": "pu-cement.glb",
+    "sizeKB": 8.9,
+    "nodes": [
+      "body",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_pu-cement",
+      "primer-pu-sika",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "epoxy": {
+    "file": "epoxy.glb",
+    "sizeKB": 10.4,
+    "nodes": [
+      "body",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_epoxy",
+      "primer-epoxy-sika",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "comfortfloor": {
+    "file": "comfortfloor.glb",
+    "sizeKB": 12.0,
+    "nodes": [
+      "body",
+      "membrane",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_comfortfloor",
+      "membrane",
+      "primer-epoxy-sika",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  },
+  "decorative-concrete": {
+    "file": "decorative-concrete.glb",
+    "sizeKB": 12.1,
+    "nodes": [
+      "body",
+      "mesh-layer",
+      "primer",
+      "substrate-prep",
+      "substrate",
+      "topcoat-1",
+      "topcoat-2",
+      "plateRoot"
+    ],
+    "materials": [
+      "VAR_body_decorative-concrete",
+      "mesh-layer-fibreglass",
+      "primer-cement-slurry",
+      "substrate-prep",
+      "substrate",
+      "VAR_topcoat"
+    ]
+  }
+}

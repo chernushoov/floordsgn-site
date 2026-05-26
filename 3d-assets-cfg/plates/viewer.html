@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FloorDSGN — plate viewer</title>
+<style>
+  html,body{margin:0;background:#0d1117;color:#c9d1d9;font:13px/1.4 ui-monospace,Menlo,monospace;height:100%;overflow:hidden}
+  #app{position:absolute;inset:0}
+  #ui{position:absolute;top:12px;left:12px;background:#161b22;border:1px solid #30363d;padding:12px;border-radius:6px;max-width:280px;z-index:10}
+  #ui h1{margin:0 0 8px;font-size:14px;color:#f0f6fc}
+  #ui select,#ui button{background:#0d1117;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;padding:6px 10px;font:inherit;width:100%;margin-bottom:6px}
+  #ui button:hover{background:#21262d;cursor:pointer}
+  #info{font-size:11px;color:#8b949e;margin-top:8px;white-space:pre-wrap}
+  .row{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #21262d}
+  .row:last-child{border-bottom:none}
+  .row span:first-child{color:#8b949e}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="ui">
+  <h1>plate viewer</h1>
+  <select id="plate"></select>
+  <button id="explode">toggle explode</button>
+  <button id="top">top-down view</button>
+  <button id="reset">reset view</button>
+  <div id="info"></div>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const PLATES = [
+  'terrazzo-cement','terrazzo-multi','terrazzo-epoxy',
+  'microtopping','rubber','parquet','mma','pu-cement','epoxy',
+  'comfortfloor','decorative-concrete'
+];
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#161b22');
+const camera = new THREE.PerspectiveCamera(35, innerWidth/innerHeight, 0.01, 100);
+camera.position.set(0.4, 0.2, 0.4);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(devicePixelRatio);
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.getElementById('app').appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, -0.04, 0);
+controls.update();
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x222222, 0.8));
+const key = new THREE.DirectionalLight(0xffffff, 1.2);
+key.position.set(0.5, 1, 0.5);
+scene.add(key);
+
+const loader = new GLTFLoader();
+let currentRoot = null;
+let restPositions = new Map();
+let exploded = false;
+
+async function loadPlate(slug) {
+  if (currentRoot) {
+    scene.remove(currentRoot);
+    currentRoot.traverse(o => {
+      if (o.geometry) o.geometry.dispose();
+      if (o.material) o.material.dispose();
+    });
+  }
+  const gltf = await loader.loadAsync(`${slug}.glb`);
+  currentRoot = gltf.scene;
+  scene.add(currentRoot);
+
+  restPositions = new Map();
+  const info = [];
+  currentRoot.traverse(o => {
+    if (o.isMesh) {
+      restPositions.set(o.uuid, o.position.clone());
+      const box = new THREE.Box3().setFromObject(o);
+      const size = new THREE.Vector3();
+      box.getSize(size);
+      info.push({ name: o.name, mm: (size.y * 1000).toFixed(2), w: (size.x * 1000).toFixed(1), mat: o.material.name });
+    }
+  });
+
+  document.getElementById('info').innerHTML = info.map(i =>
+    `<div class="row"><span>${i.name}</span><span>${i.mm} mm</span></div>`
+  ).join('') + `<div class="row"><span style="color:#58a6ff">total</span><span>${info.reduce((s,i)=>s+parseFloat(i.mm),0).toFixed(2)} mm</span></div>`;
+
+  exploded = false;
+}
+
+function toggleExplode() {
+  if (!currentRoot) return;
+  exploded = !exploded;
+  const k = exploded ? 0.05 : 0;
+  currentRoot.traverse(o => {
+    if (o.isMesh) {
+      const rest = restPositions.get(o.uuid);
+      if (!rest) return;
+      // Each layer moves vertically away from neighbours by index
+      const order = ['topcoat','body','mesh-layer','membrane','primer','substrate'];
+      const i = order.indexOf(o.name);
+      o.position.y = rest.y + (order.length - i - 1) * k * 0.6 - (k * 1.5);
+    }
+  });
+}
+
+const sel = document.getElementById('plate');
+PLATES.forEach(p => {
+  const o = document.createElement('option');
+  o.value = o.textContent = p;
+  sel.appendChild(o);
+});
+sel.onchange = () => loadPlate(sel.value);
+document.getElementById('explode').onclick = toggleExplode;
+document.getElementById('top').onclick = () => {
+  camera.position.set(0, 0.5, 0.001);
+  controls.target.set(0,-0.04,0);
+  controls.update();
+};
+document.getElementById('reset').onclick = () => {
+  camera.position.set(0.4, 0.2, 0.4);
+  controls.target.set(0,-0.04,0);
+  controls.update();
+};
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+loadPlate(PLATES[0]);
+</script>
+</body>
+</html>

@@ -12,7 +12,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 
 const ASSET_DIRS = [
-  'images', 'fonts', 'css', 'js', '3d-assets', 'articles',
+  'images', 'fonts', 'css', 'js', '3d-assets', '3d-assets-cfg', 'articles',
   'encyclopedia', 'en', 'floors', 'verticals', 'content',
   'materials', 'specs', 'plate3d', 'public', 'assets'
 ];

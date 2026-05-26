@@ -169,7 +169,7 @@ img {
 }
 
 .header__nav a {
-    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    font-family: 'Montserrat', -apple-system, 'Helvetica Neue', sans-serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.01em;
@@ -423,7 +423,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .hero-split__title {
-    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, 'Helvetica Neue', sans-serif;
     font-size: clamp(36px, 4.5vw, 60px);
     font-weight: 600;
     line-height: 1.06;
@@ -565,7 +565,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 
 /* Backwards-compat: oldskool .trust-number если где-то остался */
 .trust-number {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(42px, 6vw, 64px);
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -634,7 +634,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .section-title {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 600;
     line-height: 1.1;
@@ -697,7 +697,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .service-content h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -722,7 +722,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .selector-content h2 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 600;
     color: #fff;
@@ -1555,7 +1555,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     border-radius: 980px;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--black);
 }
 
@@ -2023,7 +2023,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 
 .comparison-table .rating.high {
     background: rgba(52, 199, 89, 0.15);
-    color: #34c759;
+    color: var(--carbon);
 }
 
 .comparison-table .rating.medium {
@@ -2342,7 +2342,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     height: 56px;
     background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
     color: #fff;
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 700;
     border-radius: 50%;
@@ -2353,7 +2353,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .next-step h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -2371,7 +2371,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     display: inline-block;
     font-size: 11px;
     font-weight: 600;
-    color: #0071e3;
+    color: var(--signal);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     background: rgba(0,113,227,0.08);
@@ -2477,7 +2477,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .project-item-overlay h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 22px;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -2692,7 +2692,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .team-avatar span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28px;
     font-weight: 600;
     color: #fff;
@@ -2700,7 +2700,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .team-card h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 6px;
@@ -2710,7 +2710,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 .team-role {
     font-size: 13px;
     font-weight: 500;
-    color: #0071e3;
+    color: var(--signal);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 16px;
@@ -2758,7 +2758,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 .timeline-year {
     width: 80px;
     flex-shrink: 0;
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: var(--black);
@@ -3746,7 +3746,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #0071e3;
+    color: var(--signal);
     text-decoration: none;
     font-size: 17px;
     font-weight: 400;
@@ -3755,7 +3755,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .back-link:hover {
-    color: #0077ed;
+    color: var(--signal);
     gap: 12px;
 }
 
@@ -3784,7 +3784,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .article-hero h1 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(40px, 6vw, 64px);
     font-weight: 700;
     line-height: 1.05;
@@ -3809,7 +3809,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     display: inline-block;
     width: 40px;
     height: 2px;
-    background: linear-gradient(90deg, #0071e3, #5856d6);
+    background: linear-gradient(90deg, var(--signal), var(--signal));
     border-radius: 2px;
 }
 
@@ -3862,7 +3862,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .article-body h2 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -3879,12 +3879,12 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     top: 8px;
     bottom: 8px;
     width: 4px;
-    background: linear-gradient(180deg, #0071e3, #5856d6);
+    background: linear-gradient(180deg, var(--signal), var(--signal));
     border-radius: 4px;
 }
 
 .article-body h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 21px;
     font-weight: 600;
     letter-spacing: -0.01em;
@@ -3933,7 +3933,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     top: 8px;
     width: 20px;
     height: 20px;
-    background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+    background: linear-gradient(135deg, var(--carbon) 0%, var(--carbon) 100%);
     border-radius: 50%;
     opacity: 0.9;
 }
@@ -4019,11 +4019,11 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #0071e3, #5856d6, #bf5af2);
+    background: linear-gradient(90deg, var(--signal), var(--signal), var(--signal));
 }
 
 .article-cta h3 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28px;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -4041,7 +4041,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .article-cta .btn {
-    background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+    background: linear-gradient(135deg, var(--signal) 0%, var(--signal) 100%);
     color: #fff;
     padding: 16px 40px;
     border-radius: 100px;
@@ -4080,7 +4080,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .sidebar-section h4 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -4115,7 +4115,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .sidebar-section ul li a:hover {
-    color: #0071e3;
+    color: var(--signal);
     padding-left: 8px;
 }
 
@@ -4805,7 +4805,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     content: '✓';
     position: absolute;
     left: 0;
-    color: #34c759;
+    color: var(--carbon);
     font-weight: bold;
 }
 
@@ -5234,7 +5234,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     content: '✓';
     position: absolute;
     left: 0;
-    color: #34c759;
+    color: var(--carbon);
     font-weight: bold;
 }
 
@@ -6110,7 +6110,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 
 .rating.high {
     background: rgba(52, 199, 89, 0.15);
-    color: #34c759;
+    color: var(--carbon);
 }
 
 .rating.medium {
@@ -6409,7 +6409,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .bento-overlay h4 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 22px;
     font-weight: 600;
     color: #fff;
@@ -6562,7 +6562,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .expertise-card h5 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #1d1d1f;
@@ -6742,7 +6742,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 }
 
 .counter-value {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(48px, 8vw, 72px);
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -6836,7 +6836,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(135deg, #0071e3, #5856d6, #bf5af2);
+    background: linear-gradient(135deg, var(--signal), var(--signal), var(--signal));
     border-radius: 26px;
     z-index: -1;
 }
@@ -6884,7 +6884,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
     letter-spacing: 0.05em;
     text-transform: uppercase;
     background: linear-gradient(135deg, rgba(0,113,227,0.1) 0%, rgba(88,86,214,0.1) 100%);
-    color: #0071e3;
+    color: var(--signal);
     border-radius: 100px;
     border: 1px solid rgba(0,113,227,0.2);
 }
@@ -7849,7 +7849,7 @@ html[lang="en"] .encyclopedia-cta { display: none !important; }
 
 .form-benefit svg {
     flex-shrink: 0;
-    color: #34c759;
+    color: var(--carbon);
 }
 
 .landing-form-wrapper {

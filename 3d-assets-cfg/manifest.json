@@ -1,0 +1,392 @@
+{
+  "version": 1,
+  "generated": "2026-05-11",
+  "geometry": {
+    "glb": "plate.glb",
+    "primitives": {
+      "topcoat": 0,
+      "primer": 1,
+      "substrate": 2
+    },
+    "dimensions_mm": [300, 300, 30],
+    "chamfer_mm": 2
+  },
+  "static_materials": {
+    "primer": { "color": "#7f6648", "roughness": 0.9 },
+    "substrate": { "color": "#736e68", "roughness": 0.95 }
+  },
+  "business": {
+    "phone": "+972559661459",
+    "phone_display": "+972 55 966 1459",
+    "email": "floors.dsgn@gmail.com",
+    "whatsapp": "https://wa.me/972559661459",
+    "address_ru": "Тель-Авив, Израиль",
+    "address_en": "Tel Aviv, Israel",
+    "rating": 4.9,
+    "review_count": 127,
+    "sika_certified": true,
+    "sika_distributor": "Gilar Ltd"
+  },
+  "copy": {
+    "applicator_claim_ru": "Сертифицированный installer Sika · Швейцария",
+    "applicator_claim_en": "Certified Sika applicator",
+    "warranty_claim_ru": "до 15 лет на систему",
+    "warranty_claim_en": "up to 15 years per system",
+    "warranty_disclaimer_ru": "Sika system warranty доступна только при установке сертифицированным applicator-ом. Объём 7–15 лет в зависимости от системы."
+  },
+  "materials": [
+    {
+      "slug": "terrazzo-cement",
+      "group": "decorative",
+      "label_ru": "Терраццо · цементное",
+      "label_en": "Cement terrazzo",
+      "tag": "TZ·C",
+      "previews": { "light": "previews/terrazzo-cement_light.png", "dark": "previews/terrazzo-cement_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/terrazzo_cement_baked/Diffuse.jpg",
+        "roughness": "textures/terrazzo_cement_baked/Rough.jpg",
+        "normal":    "textures/terrazzo_cement_baked/nor_gl.jpg",
+        "ao":        "textures/terrazzo_cement_baked/AO.jpg"
+      },
+      "tint": null,
+      "roughness_override": null,
+      "tile": 2,
+      "controls": ["color","aggregates","stripes","finish","gloss"],
+      "buildup": {
+        "topcoat": "PU-топ · Sikafloor-305 W · 2 слоя",
+        "body":    "Цементно-мраморная масса · 15–20 мм",
+        "primer":  "Цементный контакт · Sikafloor-156",
+        "substrate":"Бетон C25/30 · ≥ 25 МПа"
+      },
+      "pricing": { "ils_per_m2": [450, 720], "basis": "installed, ≥80 m²" },
+      "warranty_years": [10, 15],
+      "cure": { "walk_hours": 24, "full_days": 7 },
+      "thickness_mm": [15, 25],
+      "slip_r": "R10",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["residential", "commercial"]
+    },
+    {
+      "slug": "terrazzo-epoxy",
+      "group": "decorative",
+      "label_ru": "Терраццо · эпоксидное",
+      "label_en": "Epoxy terrazzo",
+      "tag": "TZ·E",
+      "previews": { "light": "previews/terrazzo-epoxy_light.png", "dark": "previews/terrazzo-epoxy_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/terrazzo_epoxy_baked/Diffuse.jpg",
+        "roughness": "textures/terrazzo_epoxy_baked/Rough.jpg",
+        "normal":    "textures/terrazzo_epoxy_baked/nor_gl.jpg",
+        "ao":        "textures/terrazzo_epoxy_baked/AO.jpg"
+      },
+      "tint": null,
+      "roughness_override": 0.25,
+      "tile": 2,
+      "controls": ["color","aggregates","flecks","stripes","finish","gloss"],
+      "buildup": {
+        "topcoat": "PU-топ · Sikafloor-305 W · 2 × 0.1 мм",
+        "body":    "Sikafloor Terrazzo EM-10 + chips · 9–15 мм",
+        "primer":  "Sikafloor-156 + кварц · 0.8 мм",
+        "substrate":"Бетон C25/30 · ≥ 25 МПа"
+      },
+      "pricing": { "ils_per_m2": [500, 800], "basis": "installed, ≥80 m²" },
+      "warranty_years": [10, 15],
+      "cure": { "walk_hours": 24, "full_days": 7 },
+      "thickness_mm": [9, 15],
+      "slip_r": "R10",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["commercial", "residential"]
+    },
+    {
+      "slug": "microtopping",
+      "group": "decorative",
+      "label_ru": "Микротопинг",
+      "label_en": "Microtopping",
+      "tag": "MT",
+      "previews": { "light": "previews/microtopping_light.png", "dark": "previews/microtopping_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/microtopping_baked/Diffuse.jpg",
+        "roughness": "textures/microtopping_baked/Rough.jpg",
+        "normal":    "textures/microtopping_baked/nor_gl.jpg",
+        "ao":        "textures/microtopping_baked/AO.jpg"
+      },
+      "tint": null,
+      "roughness_override": 0.65,
+      "tile": 2,
+      "controls": ["color","stripes","finish","gloss"],
+      "buildup": {
+        "topcoat": "Sikafloor ProSeal-22 · 2 слоя",
+        "body":    "Sikafloor-470 Level · 2–3 мм · 2 прохода",
+        "primer":  "Эпоксидный праймер · 0.3 мм",
+        "substrate":"Бетон C20/25 · ≥ 20 МПа"
+      },
+      "pricing": { "ils_per_m2": [280, 420], "basis": "installed, ≥80 m²" },
+      "warranty_years": [7, 10],
+      "cure": { "walk_hours": 12, "full_days": 5 },
+      "thickness_mm": [2, 3],
+      "slip_r": "R10",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["residential", "commercial"]
+    },
+    {
+      "slug": "decorative-concrete",
+      "group": "decorative",
+      "label_ru": "Бетон дизайнерский · Меда декоративи",
+      "label_en": "Decorative concrete",
+      "tag": "DC",
+      "previews": { "light": "previews/decorative-concrete_light.png", "dark": "previews/decorative-concrete_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/decorative_concrete_baked/Diffuse.jpg",
+        "roughness": "textures/decorative_concrete_baked/Rough.jpg",
+        "normal":    "textures/decorative_concrete_baked/nor_gl.jpg",
+        "ao":        "textures/decorative_concrete_baked/AO.jpg"
+      },
+      "tint": null,
+      "tile": 2,
+      "controls": ["color","stripes","finish","gloss"],
+      "buildup": {
+        "topcoat": "ProSeal-22 · 2 слоя",
+        "body":    "Self-leveling cement · 8–12 мм",
+        "primer":  "Цементный контакт",
+        "substrate":"Бетон C25/30"
+      },
+      "pricing": { "ils_per_m2": [220, 380], "basis": "installed, ≥80 m²" },
+      "warranty_years": [7, 10],
+      "cure": { "walk_hours": 24, "full_days": 14 },
+      "thickness_mm": [3, 12],
+      "slip_r": "R10-R11",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["residential", "commercial"]
+    },
+    {
+      "slug": "parquet",
+      "group": "decorative",
+      "label_ru": "Паркет",
+      "label_en": "Parquet",
+      "tag": "PQ",
+      "previews": { "light": "previews/parquet_light.png", "dark": "previews/parquet_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/herringbone_parquet/Diffuse.jpg",
+        "roughness": "textures/herringbone_parquet/Rough.jpg",
+        "normal":    "textures/herringbone_parquet/nor_gl.jpg",
+        "ao":        "textures/herringbone_parquet/AO.jpg"
+      },
+      "tint": "#b8966a",
+      "tint_amount": 0.20,
+      "roughness_override": 0.30,
+      "tile": 1.5,
+      "controls": ["color","finish","gloss"],
+      "buildup": {
+        "topcoat": "UV-лак · 3 слоя",
+        "body":    "Дуб · 14 мм · ёлка",
+        "primer":  "Клей PU",
+        "substrate":"Стяжка цементная"
+      },
+      "pricing": { "ils_per_m2": [380, 680], "basis": "installed, ≥80 m²" },
+      "warranty_years": [10, 15],
+      "cure": { "walk_hours": 24, "full_days": 7 },
+      "thickness_mm": [14, 15],
+      "slip_r": "R9",
+      "fire_bfl": "Cfl-s1",
+      "use_cases": ["residential"]
+    },
+    {
+      "slug": "mma",
+      "group": "industrial",
+      "label_ru": "MMA · метилметакрилат",
+      "label_en": "MMA",
+      "tag": "MMA",
+      "previews": { "light": "previews/mma_light.png", "dark": "previews/mma_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/concrete_floor_01/Diffuse.jpg",
+        "roughness": "textures/concrete_floor_01/Rough.jpg",
+        "normal":    "textures/concrete_floor_01/nor_gl.jpg",
+        "ao":        "textures/concrete_floor_01/AO.jpg"
+      },
+      "tint": "#f2e6d9",
+      "tint_amount": 0.3,
+      "roughness_override": 0.18,
+      "tile": 4,
+      "controls": ["color","flecks","finish","gloss","marking"],
+      "buildup": {
+        "topcoat": "Sikafloor-53 TC Pronto · 0.3 мм",
+        "body":    "Sikafloor-100 SL Pronto · 3–4 мм",
+        "primer":  "Sikafloor-51 P Pronto · 0.5 мм",
+        "substrate":"Бетон C25/30"
+      },
+      "pricing": { "ils_per_m2": [380, 560], "basis": "installed, ≥100 m² · lead-time 4–6 нед." },
+      "warranty_years": [5, 10],
+      "cure": { "walk_hours": 1, "full_days": 1 },
+      "thickness_mm": [3, 6],
+      "slip_r": "R11-R12",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["industrial", "commercial"]
+    },
+    {
+      "slug": "pu-cement",
+      "group": "industrial",
+      "label_ru": "ПУ-цемент · purcem",
+      "label_en": "PU-cement",
+      "tag": "PUC",
+      "previews": { "light": "previews/pu-cement_light.png", "dark": "previews/pu-cement_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/concrete_floor_02/Diffuse.jpg",
+        "roughness": "textures/concrete_floor_02/Rough.jpg",
+        "normal":    "textures/concrete_floor_02/nor_gl.jpg",
+        "ao":        "textures/concrete_floor_02/AO.jpg"
+      },
+      "tint": "#8c9485",
+      "tint_amount": 0.5,
+      "roughness_override": 0.5,
+      "tile": 4,
+      "controls": ["color","finish","marking"],
+      "buildup": {
+        "topcoat": "Sikafloor-21 N PurCem · 6 мм",
+        "body":    "—",
+        "primer":  "Эпоксидный праймер",
+        "substrate":"Бетон C30/37"
+      },
+      "pricing": { "ils_per_m2": [380, 550], "basis": "installed, ≥80 m² · food-grade certified" },
+      "warranty_years": [10, 10],
+      "cure": { "walk_hours": 6, "full_days": 7 },
+      "thickness_mm": [4, 9],
+      "slip_r": "R11-R13",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["industrial"]
+    },
+    {
+      "slug": "epoxy",
+      "group": "industrial",
+      "label_ru": "Эпоксидная заливка",
+      "label_en": "Epoxy",
+      "tag": "EP",
+      "previews": { "light": "previews/epoxy_light.png", "dark": "previews/epoxy_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/brushed_concrete/Diffuse.jpg",
+        "roughness": "textures/brushed_concrete/Rough.jpg",
+        "normal":    "textures/brushed_concrete/nor_gl.jpg",
+        "ao":        "textures/brushed_concrete/AO.jpg"
+      },
+      "tint": "#5a737f",
+      "tint_amount": 0.6,
+      "roughness_override": 0.12,
+      "tile": 5,
+      "controls": ["color","flecks","stripes","finish","gloss","marking"],
+      "buildup": {
+        "topcoat": "Sikafloor-264 · 0.5 мм",
+        "body":    "Sikafloor-263 SL · 2–3 мм",
+        "primer":  "Sikafloor-161 · 0.3 мм",
+        "substrate":"Бетон C25/30"
+      },
+      "pricing": { "ils_per_m2": [180, 260], "basis": "installed, ≥100 m²" },
+      "warranty_years": [5, 10],
+      "cure": { "walk_hours": 12, "full_days": 7 },
+      "thickness_mm": [2, 3],
+      "slip_r": "R9-R10",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["industrial", "commercial"]
+    },
+    {
+      "slug": "rubber",
+      "group": "decorative",
+      "label_ru": "Резиновое покрытие",
+      "label_en": "Rubber",
+      "tag": "RB",
+      "previews": { "light": "previews/rubber_light.png", "dark": "previews/rubber_dark.png" },
+      "pbr": {
+        "diffuse":   "textures/rubber_baked/Diffuse.jpg",
+        "roughness": "textures/rubber_baked/Rough.jpg",
+        "normal":    "textures/rubber_baked/nor_gl.jpg",
+        "ao":        "textures/rubber_baked/AO.jpg"
+      },
+      "tint": null,
+      "roughness_override": 0.92,
+      "tile": 2,
+      "controls": ["color","finish","marking"],
+      "buildup": {
+        "topcoat": "PU-топ · опционально",
+        "body":    "EPDM-крошка + связующее · 8 мм",
+        "primer":  "PU-праймер · 0.3 мм",
+        "substrate":"Бетон C20/25"
+      },
+      "pricing": { "ils_per_m2": [250, 400], "basis": "installed, ≥80 m²" },
+      "warranty_years": [5, 10],
+      "cure": { "walk_hours": 12, "full_days": 3 },
+      "thickness_mm": [6, 12],
+      "slip_r": "R10-R11",
+      "fire_bfl": "Bfl-s1",
+      "use_cases": ["commercial", "industrial"]
+    }
+  ],
+  "control_options": {
+    "color": {
+      "label_ru": "Цвет (RAL)",
+      "options": [
+        {"id":"ral-7032","name":"Кварцевый","hex":"#b8b1a0"},
+        {"id":"ral-7035","name":"Светло-серый","hex":"#cbd0cc"},
+        {"id":"ral-7037","name":"Пыльно-серый","hex":"#7d7f7d"},
+        {"id":"ral-7016","name":"Антрацит","hex":"#293133"},
+        {"id":"ral-1015","name":"Светлая сл. кость","hex":"#e6d2b5"},
+        {"id":"ral-8003","name":"Глиняный","hex":"#7e4b26"},
+        {"id":"ral-6021","name":"Бледно-зелёный","hex":"#88a294"},
+        {"id":"ral-5024","name":"Пастельно-синий","hex":"#5e8aa0"},
+        {"id":"ral-3013","name":"Бордо","hex":"#943f37"}
+      ]
+    },
+    "aggregates": {
+      "label_ru": "Агрегаты",
+      "options": [
+        {"id":"marble-white","name":"Белый мрамор"},
+        {"id":"marble-black","name":"Чёрный мрамор"},
+        {"id":"glass-color","name":"Цветное стекло"},
+        {"id":"pearl","name":"Перламутр"},
+        {"id":"mirror","name":"Зеркало"}
+      ]
+    },
+    "flecks": {
+      "label_ru": "Флеки",
+      "options": [
+        {"id":"none","name":"Нет"},
+        {"id":"neutral-s","name":"Нейтральные · мелкие"},
+        {"id":"neutral-m","name":"Нейтральные · средние"},
+        {"id":"blue-m","name":"Синие · средние"},
+        {"id":"red-l","name":"Красные · крупные"},
+        {"id":"metallic","name":"Металлики"}
+      ]
+    },
+    "stripes": {
+      "label_ru": "Декор. полосы (саргелим)",
+      "options": [
+        {"id":"none","name":"Без полос"},
+        {"id":"brass","name":"Латунь"},
+        {"id":"steel","name":"Сталь"},
+        {"id":"black","name":"Чёрные"}
+      ]
+    },
+    "finish": {
+      "label_ru": "Финиш",
+      "options": [
+        {"id":"matte","name":"Матовый"},
+        {"id":"satin","name":"Полумат"},
+        {"id":"polished","name":"Полированный"}
+      ]
+    },
+    "gloss": {
+      "label_ru": "Глянец",
+      "options": [
+        {"id":"low","name":"Низкий"},
+        {"id":"mid","name":"Средний"},
+        {"id":"high","name":"Высокий"}
+      ]
+    },
+    "marking": {
+      "label_ru": "Разметка",
+      "options": [
+        {"id":"none","name":"Нет"},
+        {"id":"yellow","name":"Жёлтая"},
+        {"id":"white","name":"Белая"},
+        {"id":"red","name":"Красная"}
+      ]
+    }
+  }
+}

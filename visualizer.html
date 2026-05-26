@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Floor.DSGN — Визуализатор материалов · образец и в комнате</title>
 <meta name="description" content="9 материалов Floor.DSGN — образец рядом с реальной комнатой. Compare slider: тяните, чтобы сравнить два материала или одну системы в двух средах.">
-<link rel="canonical" href="https://floor.dsgn/visualizer.html"/>
+<link rel="canonical" href="https://floordsgn.com/visualizer.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260521a">
-<link rel="stylesheet" href="chrome-fix.css?v=20260521a">
+<link rel="stylesheet" href="styles.css?v=20260523a">
+<link rel="stylesheet" href="chrome-fix.css?v=20260523a">
 <link rel="stylesheet" href="enhance.css?v=6">
 <style>
   :root {
@@ -69,6 +69,16 @@
     .vz-spec { grid-template-columns: 1fr 1fr; gap: 18px; padding: 22px; }
   }
 </style>
+
+    <meta property="og:url" content="https://floordsgn.com/visualizer.html">
+
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <meta property="og:title" content="Floor.DSGN — Визуализатор материалов · образец и в комнате">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:description" content="9 материалов Floor.DSGN — образец рядом с реальной комнатой. Compare slider: тяните, чтобы сравнить два материала или одну системы в двух средах.">
 </head>
 <body data-fx-page="Визуализатор">
 
@@ -94,7 +104,7 @@
             <span></span><span></span><span></span>
         </button>
     </header>
-<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+<div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
 <main class="vz-shell">
   <p class="vz-eyebrow">01 — visualizer · compare</p>
@@ -260,6 +270,20 @@ document.querySelectorAll('.lang-btn').forEach(function (btn) {
 </script>
 
 <script src="script.js"></script>
-<script src="translations.js?v=20260521a" defer></script>
+<script src="translations.js?v=20260523a" defer></script>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+            <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html" data-i18n="floors_nav_epoxy">Epoxy</a></li><li><a href="materials/mma.html" data-i18n="floors_nav_mma">MMA</a></li><li><a href="materials/pu-cement.html" data-i18n="floors_nav_pu_cement">PU-Cement</a></li><li><a href="materials/microtopping.html" data-i18n="floors_nav_microtopping">Microtopping</a></li><li><a href="materials/terrazzo.html" data-i18n="floors_nav_terrazzo">Terrazzo</a></li><li><a href="materials/concrete.html" data-i18n="floors_nav_concrete">Concrete</a></li></ul></div>
+            <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+            <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+            <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+    </div>
+</footer>
+
 </body>
 </html>
