@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://floordsgn.netlify.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://floordsgn.netlify.app/about.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/contact.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/quote.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/projects.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/floors.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/studio.html</loc><priority>0.9</priority></url>
-  <url><loc>https://floordsgn.netlify.app/substrate-check.html</loc><priority>0.7</priority></url>
-  <url><loc>https://floordsgn.netlify.app/blog.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/industrial.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/designers.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/epoxy.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/microtopping.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/terrazzo.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/concrete.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/mma.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/pu-cement.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/rubber.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/materials/restoration.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/substrate-moisture-testing.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/epoxy-vs-polyurethane.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/terrazzo-vs-microtopping.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/industrial-cleaning.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/self-leveling-screeds.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/concrete-crack-repair.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/when-to-recoat.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/mma-fast-cure.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/2026-trends.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/terrazzo-modern-interiors.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/microtopping-vs-epoxy.html</loc></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/</loc><priority>0.8</priority></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/epoxy-sl.html</loc><priority>0.7</priority></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/microtopping.html</loc><priority>0.7</priority></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/terrazzo.html</loc><priority>0.7</priority></url>
-  <url><loc>https://floordsgn.netlify.app/articles/encyclopedia/pu-cement.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://floordsgn.com/about.html</loc></url>
+  <url><loc>https://floordsgn.com/contact.html</loc></url>
+  <url><loc>https://floordsgn.com/quote.html</loc></url>
+  <url><loc>https://floordsgn.com/projects.html</loc></url>
+  <url><loc>https://floordsgn.com/floors.html</loc></url>
+  <url><loc>https://floordsgn.com/blog.html</loc></url>
+  <url><loc>https://floordsgn.com/industrial.html</loc></url>
+  <url><loc>https://floordsgn.com/designers.html</loc></url>
+
+  <!-- Tools hub + tools -->
+  <url><loc>https://floordsgn.com/tools.html</loc><priority>0.9</priority></url>
+  <url><loc>https://floordsgn.com/studio.html</loc><priority>0.9</priority></url>
+  <url><loc>https://floordsgn.com/decision-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.com/substrate-check.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/compare.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/configurator.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/visualizer.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/room-visualizer.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/sample-kit.html</loc><priority>0.6</priority></url>
+  <url><loc>https://floordsgn.com/care-guide.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/warranty.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/repair-or-replace.html</loc><priority>0.8</priority></url>
+
+  <!-- Material category pages -->
+  <url><loc>https://floordsgn.com/materials/epoxy.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/microtopping.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/terrazzo.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/concrete.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/mma.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/pu-cement.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/rubber.html</loc></url>
+  <url><loc>https://floordsgn.com/materials/restoration.html</loc></url>
+
+  <!-- Articles -->
+  <url><loc>https://floordsgn.com/articles/substrate-moisture-testing.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/epoxy-vs-polyurethane.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/terrazzo-vs-microtopping.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/industrial-cleaning.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/self-leveling-screeds.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/concrete-crack-repair.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/when-to-recoat.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/mma-fast-cure.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/2026-trends.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/terrazzo-modern-interiors.html</loc></url>
+  <url><loc>https://floordsgn.com/articles/microtopping-vs-epoxy.html</loc></url>
+
+  <!-- Encyclopedia -->
+  <url><loc>https://floordsgn.com/articles/encyclopedia/</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.com/articles/encyclopedia/epoxy-sl.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/articles/encyclopedia/microtopping.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/articles/encyclopedia/terrazzo.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/articles/encyclopedia/pu-cement.html</loc><priority>0.7</priority></url>
 </urlset>

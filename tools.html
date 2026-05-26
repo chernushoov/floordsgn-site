@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструменты — Floor.DSGN | подбор пола, спека, 3D, образцы</title>
+
+    <meta name="description" content="Все инструменты Floor.DSGN в одном месте: подбор системы за 6 вопросов, 3D-конфигуратор, проверка основания, визуализация в вашей комнате, спецификация для тендера, физический образец.">
+    <meta name="keywords" content="подбор пола, конфигуратор пола, проверка основания, визуализатор пола, спецификация пола, израиль">
+
+    <meta property="og:title" content="Инструменты Floor.DSGN — подбор, спека, 3D, образец">
+    <meta property="og:description" content="Studio, конфигуратор, проверка основания, визуализатор, сравнение, спецификация — всё в одном хабе.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.com/tools.html">
+    <meta property="og:image" content="/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/tools.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .tools-hero { padding: 120px 0 60px; background: var(--concrete); }
+        .tools-hero h1 { font-size: clamp(48px, 6vw, 88px); margin-bottom: 24px; }
+        .tools-hero .lead { max-width: 720px; color: var(--steel); font-size: 18px; line-height: 1.55; }
+        .tools-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+
+        .tools-grid { padding: 60px 0 80px; background: var(--concrete); }
+        .tools-grid__inner { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .tool-card { background: #fff; border: 1px solid var(--grey-border); border-radius: 18px; padding: 28px 28px 24px; display: flex; flex-direction: column; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+        .tool-card:hover { transform: translateY(-2px); border-color: var(--carbon); box-shadow: 0 12px 36px rgba(21,21,21,0.08); }
+        .tool-card__step { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--steel); margin-bottom: 16px; line-height: 1; }
+        .tool-card h3 { font-size: 22px; margin-bottom: 8px; color: var(--carbon); }
+        .tool-card__role { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); margin-bottom: 14px; }
+        .tool-card p { color: var(--graphite); font-size: 15px; line-height: 1.55; margin-bottom: 18px; flex: 1; }
+        .tool-card__cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 980px; background: var(--carbon); color: #fff; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; align-self: flex-start; transition: background .2s ease; }
+        .tool-card__cta:hover { background: var(--graphite); }
+        .tool-card__cta--featured { background: var(--signal); }
+        .tool-card__cta--featured:hover { background: #b15e34; }
+        .tool-card__meta { font-size: 12px; color: var(--steel); margin-top: 12px; }
+
+        .flow-strip { padding: 60px 0; background: var(--carbon); color: var(--concrete); }
+        .flow-strip h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 36px; color: var(--concrete); }
+        .flow-strip__steps { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .flow-step { padding: 24px; border: 1px solid #2D2D2D; border-radius: 14px; background: #1a1a1a; }
+        .flow-step__num { font-family: 'Cormorant Garamond', serif; font-size: 38px; color: var(--steel); line-height: 1; margin-bottom: 12px; }
+        .flow-step h4 { color: #fff; margin-bottom: 6px; font-size: 16px; }
+        .flow-step p { color: #b0b0b0; font-size: 14px; line-height: 1.5; }
+
+        .tools-cta { padding: 80px 0 100px; background: var(--concrete); text-align: center; }
+        .tools-cta h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 18px; }
+        .tools-cta p { color: var(--steel); margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+        .tools-cta .btn-primary { display: inline-block; padding: 14px 40px; border-radius: 980px; background: var(--carbon); color: #fff; font-weight: 600; letter-spacing: 0.02em; }
+        .tools-cta .btn-primary:hover { background: var(--graphite); }
+
+        @media (max-width: 768px) {
+            .tools-hero { padding: 90px 0 40px; }
+            .tools-grid { padding: 40px 0 60px; }
+            .tool-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html">Home</a></li><li><a href="floors.html">Floors</a></li><li><a href="tools.html">Tools</a></li><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+
+    <section class="tools-hero">
+        <div class="container">
+            <p class="overline">Все инструменты в одном месте</p>
+            <h1>Подбор пола — не на словах, а в цифрах</h1>
+            <p class="lead">9 инструментов: от вопроса «какой материал мне нужен?» до спецификации в тендер и физического образца на руки. Каждый отвечает на одну конкретную задачу — выбирайте по этапу, на котором вы сейчас.</p>
+        </div>
+    </section>
+
+    <section class="tools-grid">
+        <div class="container">
+            <div class="tools-grid__inner">
+
+                <a href="decision-tool.html" class="tool-card" data-tool="decision-tool">
+                    <div class="tool-card__step">01</div>
+                    <div class="tool-card__role">Подбор · 1 минута</div>
+                    <h3>System Selector</h3>
+                    <p>6 вопросов о вашем объекте — на выходе работающая система Sika с обоснованием. Самый быстрый путь от «не знаю, что нужно» к конкретному ответу.</p>
+                    <span class="tool-card__cta tool-card__cta--featured">Подобрать систему</span>
+                    <div class="tool-card__meta">~60 сек · без email</div>
+                </a>
+
+                <a href="studio.html" class="tool-card" data-tool="studio">
+                    <div class="tool-card__step">02</div>
+                    <div class="tool-card__role">Профи · спека и нормы</div>
+                    <h3>FloorDSGN Studio</h3>
+                    <p>Полный профи-инструмент: подбор системы, израильские нормы (ת״י 466, EN 1504, EN 13813), послойный пирог, R-класс, расчёт стоимости, экспорт спецификации.</p>
+                    <span class="tool-card__cta">Открыть Studio</span>
+                    <div class="tool-card__meta">для дизайнеров и архитекторов</div>
+                </a>
+
+                <a href="configurator.html" class="tool-card" data-tool="configurator">
+                    <div class="tool-card__step">03</div>
+                    <div class="tool-card__role">3D · материал и цвет</div>
+                    <h3>3D-конфигуратор</h3>
+                    <p>Соберите свой пол: материал, цвет, размер, толщина. Реальные текстуры, 3D-вращение, спецификация и цена. Подходит, когда вы уже знаете систему и подбираете финиш.</p>
+                    <span class="tool-card__cta">Открыть конфигуратор</span>
+                    <div class="tool-card__meta">9 материалов · вращение и зум</div>
+                </a>
+
+                <a href="substrate-check.html" class="tool-card" data-tool="substrate-check">
+                    <div class="tool-card__step">04</div>
+                    <div class="tool-card__role">Проверка основания</div>
+                    <h3>Substrate Check</h3>
+                    <p>Готово ли основание под укладку? Влажность, трещины, ровность, карбонизация. Отказ №1 на укладке — это влажное основание; этот тест предотвращает срыв проекта.</p>
+                    <span class="tool-card__cta">Проверить основание</span>
+                    <div class="tool-card__meta">RH/CM · adhesion · крошение</div>
+                </a>
+
+                <a href="compare.html" class="tool-card" data-tool="compare">
+                    <div class="tool-card__step">05</div>
+                    <div class="tool-card__role">Сравнение систем</div>
+                    <h3>Compare</h3>
+                    <p>Выберите 2–3 системы — таблица side-by-side по 12 параметрам: толщина, нагрузка, downtime, химостойкость, цена, класс скольжения. Помогает финализировать выбор между близкими вариантами.</p>
+                    <span class="tool-card__cta">Сравнить системы</span>
+                    <div class="tool-card__meta">эпокси · PU-cement · MMA · терраццо</div>
+                </a>
+
+                <a href="visualizer.html" class="tool-card" data-tool="visualizer">
+                    <div class="tool-card__step">06</div>
+                    <div class="tool-card__role">Визуализация образца</div>
+                    <h3>Material Visualizer</h3>
+                    <p>9 материалов — образец в руке и в реальной комнате. Compare slider: тяните, чтобы сравнить два материала или одну систему в двух средах.</p>
+                    <span class="tool-card__cta">Посмотреть в среде</span>
+                    <div class="tool-card__meta">side-by-side образец/комната</div>
+                </a>
+
+                <a href="room-visualizer.html" class="tool-card" data-tool="room-visualizer">
+                    <div class="tool-card__step">07</div>
+                    <div class="tool-card__role">Ваша комната</div>
+                    <h3>Room Visualizer</h3>
+                    <p>Загрузите фото своей комнаты, отметьте пол — и увидьте, как в нём будет выглядеть наш материал. Перспектива, реальные текстуры. Превью, не фотореал.</p>
+                    <span class="tool-card__cta">Загрузить фото</span>
+                    <div class="tool-card__meta">фото + 4 угла → превью</div>
+                </a>
+
+                <a href="quote.html" class="tool-card" data-tool="quote">
+                    <div class="tool-card__step">08</div>
+                    <div class="tool-card__role">Расчёт стоимости</div>
+                    <h3>Quote Calculator</h3>
+                    <p>Введите площадь и систему — получите расчёт в шекелях по материалам и работе. Honest, не «от X шек/м²» — реальный TCO с подготовкой основания и перекрытием через 10 лет.</p>
+                    <span class="tool-card__cta">Посчитать</span>
+                    <div class="tool-card__meta">материал + работа + подготовка</div>
+                </a>
+
+                <a href="sample-kit.html" class="tool-card" data-tool="sample-kit">
+                    <div class="tool-card__step">09</div>
+                    <div class="tool-card__role">Физический образец</div>
+                    <h3>Sample Kit · 100×100 мм</h3>
+                    <p>Закажите физический образец пола 100×100 мм по вашей конфигурации. Бесплатная доставка по Израилю, 3–5 рабочих дней. Финальный шаг перед заказом.</p>
+                    <span class="tool-card__cta">Заказать образец</span>
+                    <div class="tool-card__meta">3–5 дней · бесплатно по IL</div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="flow-strip">
+        <div class="container">
+            <h2>Как ими пользоваться по этапам</h2>
+            <div class="flow-strip__steps">
+                <div class="flow-step">
+                    <div class="flow-step__num">01</div>
+                    <h4>Не знаете, что нужно</h4>
+                    <p>System Selector → 6 вопросов и работающая рекомендация.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">02</div>
+                    <h4>Дизайнер / архитектор</h4>
+                    <p>Studio → нормы IL, R-класс, спека в тендер.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">03</div>
+                    <h4>Знаете систему, выбираете финиш</h4>
+                    <p>3D-конфигуратор → цвет, размер, толщина, цена.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">04</div>
+                    <h4>Уже есть объект</h4>
+                    <p>Substrate Check + Quote → готовность + бюджет.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">05</div>
+                    <h4>Финальное решение</h4>
+                    <p>Sample Kit → физический образец на руки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-cta">
+        <div class="container">
+            <h2>Не уверены, что вам подходит?</h2>
+            <p>Напишите в WhatsApp, опишите задачу — за 1 минуту скажем, с какого инструмента начать и какая система пола закроет ваш кейс.</p>
+            <a class="btn-primary" href="https://wa.me/972559661459?text=Здравствуйте%2C%20помогите%20подобрать%20пол">Написать в WhatsApp</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4>Tools</h4><ul><li><a href="tools.html">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>

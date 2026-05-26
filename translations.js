@@ -7,6 +7,7 @@ const translations = {
         // Navigation
         nav_home: "Home",
         nav_floors: "Floors",
+        nav_tools: "Tools",
         nav_projects: "Projects",
         nav_about: "About Us",
         nav_blog: "Blog",
@@ -96,7 +97,7 @@ const translations = {
 
         // Hero3D — 3D configurator preview block (the dominant landing visual)
         home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
-        home_hero3d_h1: "Design your floor<br><em>in 3D — and we'll lay it.</em>",
+        home_hero3d_h1: "Design your floor<br><em>in 3D.</em>",
         home_hero3d_lede: "WebGL configurator with real PBR textures. 10 systems — terrazzo, epoxy, microtopping, polished concrete, PU-cement, MMA, rubber, ComfortFloor. Change material, thickness, color, aggregate — get an order formula and a precise quote.",
         home_hero3d_btn_primary: "Open 3D configurator",
         home_hero3d_btn_ghost: "All systems",
@@ -209,6 +210,8 @@ const translations = {
         footer_tagline: "Premium floor design and installation across Israel. Engineering-grade systems for industry, commercial, and architectural projects.",
         footer_systems: "Floor Systems",
         footer_sys_pucement: "PU-Cement",
+        footer_tools: "Tools",
+        footer_tools_all: "All tools",
         footer_company: "Company",
         footer_contact: "Contact",
         footer_location: "Israel, Tel Aviv",
@@ -1847,6 +1850,7 @@ const translations = {
         // Navigation
         nav_home: "Главная",
         nav_floors: "Покрытия",
+        nav_tools: "Инструменты",
         nav_projects: "Проекты",
         nav_about: "О нас",
         nav_blog: "Блог",
@@ -1945,7 +1949,7 @@ const translations = {
 
         // Hero3D — главный визуальный блок лендинга
         home_hero3d_eyebrow: "Floor.DSGN · 3D Configurator · v2",
-        home_hero3d_h1: "Соберите свой пол<br><em>в 3D — а потом мы его уложим.</em>",
+        home_hero3d_h1: "Соберите свой пол<br><em>в 3D.</em>",
         home_hero3d_lede: "WebGL-конструктор с реальными PBR-текстурами. 10 систем — терраццо, эпокси, микротопинг, бетон, PU-cement, MMA, резина, ComfortFloor. Меняйте материал, толщину, цвет, заполнитель — получите формулу заказа и точную смету.",
         home_hero3d_btn_primary: "Открыть 3D-конфигуратор",
         home_hero3d_btn_ghost: "Все системы",
@@ -2058,6 +2062,8 @@ const translations = {
         footer_tagline: "Профессиональные напольные покрытия по всему Израилю. Инженерные системы для промышленности, коммерции и архитектурных проектов.",
         footer_systems: "Покрытия",
         footer_sys_pucement: "ПУ-цемент",
+        footer_tools: "Инструменты",
+        footer_tools_all: "Все инструменты",
         footer_company: "Компания",
         footer_contact: "Контакты",
         footer_location: "Израиль, Тель-Авив",
