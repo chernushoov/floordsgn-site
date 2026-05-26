@@ -59,6 +59,21 @@
 
 ---
 
+## Final orphan-page audit (всё что нужно — связано)
+
+Сделал scan «страницы которые существуют, но никем не ссылаются». До работы было 13 потерянных страниц. После — 6, и все 6 — intentional:
+
+- `3d-assets-cfg/plates/viewer.html` — dev tool
+- `admin/index.html` — netlify admin CMS
+- `articles/index.html` — meta-refresh redirect на /blog.html
+- `en/index.html` — English language stub
+- `materials/restoration.html` — параллельная копия `floors/restoration.html` (твоя архитектура)
+- `thank-you.html` — form-submission redirect
+
+Фиксы 7 страниц:
+- `industrial.html`: добавлен «По отраслям» band → ссылки на `verticals/warehouse/healthcare/hospitality/architects` (были completely orphaned).
+- `articles/encyclopedia/index.html`: добавлены «Статья →» links для terrazzo/microtopping/pu-cement encyclopedia (epoxy-sl уже была).
+
 ## Commit history (для review)
 
 ```
