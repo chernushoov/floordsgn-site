@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCO — стоимость владения полом за 10 лет — Floor.DSGN</title>
+
+    <meta name="description" content="Реальная стоимость пола за 10 лет владения: установка + уход + recoat + recoat-после-15-лет. Сравнение 9 систем по полному циклу для офиса, ритейла, склада или жилья.">
+    <meta name="keywords" content="TCO пола, стоимость владения, 10 лет recoat, бюджет на пол, израиль">
+
+    <meta property="og:title" content="TCO калькулятор — стоимость пола за 10 лет">
+    <meta property="og:description" content="Полная стоимость владения: установка, уход, recoat. По 9 системам и 4 use-case.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.com/tco.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/tco.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .tco-hero { padding: 110px 0 50px; background: var(--concrete); }
+        .tco-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+        .tco-hero h1 { font-size: clamp(44px, 6vw, 78px); margin-bottom: 18px; max-width: 880px; }
+        .tco-hero .lead { max-width: 720px; color: var(--steel); font-size: 17px; line-height: 1.55; }
+
+        .tco-shell { padding: 30px 0 100px; background: var(--concrete); }
+        .tco-grid { display: grid; grid-template-columns: 360px 1fr; gap: 28px; align-items: start; }
+        .tco-panel { background: #fff; border: 1px solid var(--grey-border); border-radius: 16px; padding: 28px; position: sticky; top: 24px; }
+        .tco-panel h3 { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel); margin-bottom: 18px; font-weight: 600; }
+        .tco-field { margin-bottom: 22px; }
+        .tco-field label { display: block; font-size: 13px; color: var(--graphite); margin-bottom: 8px; font-weight: 500; }
+        .tco-field select, .tco-field input { width: 100%; padding: 11px 14px; border: 1px solid var(--grey-border); border-radius: 10px; background: var(--concrete); font-family: inherit; font-size: 14px; color: var(--carbon); cursor: pointer; }
+        .tco-field select:focus, .tco-field input:focus { outline: none; border-color: var(--carbon); }
+
+        .tco-result { background: #fff; border: 1px solid var(--grey-border); border-radius: 16px; padding: 36px 40px; }
+        .tco-result h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 6px; }
+        .tco-result__sub { color: var(--steel); font-size: 14px; margin-bottom: 32px; }
+
+        .tco-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 36px; }
+        .tco-sum { padding: 18px 20px; background: var(--concrete); border-radius: 12px; }
+        .tco-sum__label { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel); margin-bottom: 6px; font-weight: 600; }
+        .tco-sum__value { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--carbon); line-height: 1.05; }
+        .tco-sum--featured { background: var(--carbon); color: #fff; }
+        .tco-sum--featured .tco-sum__label { color: #b0b0b0; }
+        .tco-sum--featured .tco-sum__value { color: #fff; }
+
+        .tco-chart { margin-bottom: 36px; }
+        .tco-chart h3 { font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel); margin-bottom: 18px; font-weight: 600; }
+        .tco-chart__svg { width: 100%; height: 280px; background: var(--concrete); border-radius: 12px; padding: 20px; }
+
+        .tco-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .tco-table th, .tco-table td { text-align: left; padding: 10px 12px; font-size: 13.5px; border-bottom: 1px solid var(--grey-border); }
+        .tco-table th { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 600; background: var(--concrete); }
+        .tco-table td:last-child, .tco-table th:last-child { text-align: right; font-weight: 600; }
+        .tco-table tr.total { background: var(--carbon); color: #fff; }
+        .tco-table tr.total td { font-weight: 700; }
+
+        .tco-compare { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--grey-border); }
+        .tco-compare h3 { font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel); margin-bottom: 18px; font-weight: 600; }
+        .tco-compare__rows { display: grid; gap: 8px; }
+        .tco-compare__row { display: grid; grid-template-columns: 130px 1fr 110px; align-items: center; gap: 12px; font-size: 13px; }
+        .tco-compare__name { color: var(--graphite); font-weight: 500; }
+        .tco-compare__bar { height: 22px; background: var(--concrete); border-radius: 5px; position: relative; overflow: hidden; }
+        .tco-compare__bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--carbon); border-radius: 5px; transition: width .35s ease; }
+        .tco-compare__bar-fill.self { background: var(--signal); }
+        .tco-compare__cost { text-align: right; font-weight: 600; color: var(--carbon); }
+
+        .tco-cta { padding: 80px 0 110px; background: #fff; text-align: center; }
+        .tco-cta h2 { font-size: clamp(30px, 3vw, 42px); margin-bottom: 14px; }
+        .tco-cta p { color: var(--steel); max-width: 600px; margin: 0 auto 26px; line-height: 1.6; }
+        .tco-cta .btn { display: inline-block; padding: 13px 36px; border-radius: 980px; background: var(--carbon); color: #fff; font-weight: 600; font-size: 14px; }
+        .tco-cta .btn:hover { background: var(--graphite); }
+
+        .tco-note { margin-top: 20px; font-size: 12.5px; color: var(--steel); line-height: 1.5; }
+
+        @media (max-width: 960px) {
+            .tco-grid { grid-template-columns: 1fr; }
+            .tco-panel { position: static; }
+            .tco-summary { grid-template-columns: 1fr 1fr; }
+            .tco-result { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="floors.html">Floors</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+
+    <section class="tco-hero">
+        <div class="container">
+            <p class="overline">TCO · стоимость владения</p>
+            <h1>Сколько пол стоит за 10 лет — а не за день укладки</h1>
+            <p class="lead">Установка — только 60–80% стоимости пола за 10 лет. Остальное — уход, плановый recoat, потеря времени при простое. Этот калькулятор показывает реальный TCO по выбранной системе на 10 лет, для вашего use-case, и сравнивает с альтернативами.</p>
+        </div>
+    </section>
+
+    <section class="tco-shell">
+        <div class="container">
+            <div class="tco-grid">
+
+                <aside class="tco-panel">
+                    <h3>Параметры</h3>
+
+                    <div class="tco-field">
+                        <label for="tco-system">Система пола</label>
+                        <select id="tco-system">
+                            <option value="epoxy-sl">Эпокси SL (decorative)</option>
+                            <option value="epoxy-industrial">Эпокси industrial (HBS)</option>
+                            <option value="pu-cement">PU-cement</option>
+                            <option value="microtopping">Микротопинг</option>
+                            <option value="terrazzo-mineral">Терраццо mineral</option>
+                            <option value="terrazzo-epoxy">Терраццо epoxy</option>
+                            <option value="mma">MMA</option>
+                            <option value="concrete-polished">Бетон полированный</option>
+                            <option value="rubber-poured">Каучук poured</option>
+                        </select>
+                    </div>
+
+                    <div class="tco-field">
+                        <label for="tco-area">Площадь (м²)</label>
+                        <input type="number" id="tco-area" min="10" max="50000" value="200" step="10">
+                    </div>
+
+                    <div class="tco-field">
+                        <label for="tco-usecase">Use case</label>
+                        <select id="tco-usecase">
+                            <option value="residential">Жилое</option>
+                            <option value="office">Офис</option>
+                            <option value="retail" selected>Ритейл / шоурум</option>
+                            <option value="industrial">Промышленность / склад</option>
+                            <option value="food">Пищевая / фарма (CIP)</option>
+                            <option value="healthcare">Здравоохранение</option>
+                        </select>
+                    </div>
+
+                    <div class="tco-field">
+                        <label for="tco-horizon">Горизонт (лет)</label>
+                        <select id="tco-horizon">
+                            <option value="5">5 лет</option>
+                            <option value="10" selected>10 лет</option>
+                            <option value="15">15 лет</option>
+                            <option value="20">20 лет</option>
+                        </select>
+                    </div>
+
+                    <p class="tco-note">Оценка по типичным проектам Floor.DSGN в IL. Реальная стоимость зависит от состояния основания, доступа, темпа работ и сезонной нагрузки. Запросите детальный расчёт по контактам ниже.</p>
+                </aside>
+
+                <div class="tco-result" id="tcoResult">
+                    <h2 id="tcoTitle">Загружаем оценку…</h2>
+                    <p class="tco-result__sub" id="tcoSub"></p>
+
+                    <div class="tco-summary">
+                        <div class="tco-sum"><div class="tco-sum__label">Установка</div><div class="tco-sum__value" id="tcoInstall">—</div></div>
+                        <div class="tco-sum"><div class="tco-sum__label">Уход за период</div><div class="tco-sum__value" id="tcoCare">—</div></div>
+                        <div class="tco-sum"><div class="tco-sum__label">Recoat / re-seal</div><div class="tco-sum__value" id="tcoRecoat">—</div></div>
+                        <div class="tco-sum tco-sum--featured"><div class="tco-sum__label">TCO за период</div><div class="tco-sum__value" id="tcoTotal">—</div></div>
+                    </div>
+
+                    <div class="tco-chart">
+                        <h3>Поток затрат по годам</h3>
+                        <svg class="tco-chart__svg" id="tcoChart" viewBox="0 0 800 280" preserveAspectRatio="none"></svg>
+                    </div>
+
+                    <table class="tco-table">
+                        <thead><tr><th>Статья</th><th>Подробности</th><th>Сумма</th></tr></thead>
+                        <tbody id="tcoTbody"></tbody>
+                    </table>
+
+                    <div class="tco-compare">
+                        <h3>Сравнение с альтернативами</h3>
+                        <div class="tco-compare__rows" id="tcoCompare"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="tco-cta">
+        <div class="container">
+            <h2>Нужен расчёт по конкретному объекту?</h2>
+            <p>Этот калькулятор показывает диапазоны по типичным проектам. Для тендера или конкретного объекта мы выезжаем, замеряем, готовим расчёт с разбивкой на материал/работу/подготовку и графиком работ. Бесплатно по Тель-Авив-Гуш-Дан.</p>
+            <a class="btn" href="https://wa.me/972559661459?text=Нужен%20TCO%20расчёт%20по%20объекту">Запросить расчёт</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        // Pricing in NIS (Israeli shekel), per m². Owner-tunable.
+        var SYSTEMS = {
+            'epoxy-sl':           { name: 'Эпокси SL',        install: 320, recoatPct: 0.35, recoatYr: 8,  reSealYr: null },
+            'epoxy-industrial':   { name: 'Эпокси industrial', install: 380, recoatPct: 0.45, recoatYr: 7,  reSealYr: null },
+            'pu-cement':          { name: 'PU-cement',         install: 550, recoatPct: 0.30, recoatYr: 12, reSealYr: null },
+            'microtopping':       { name: 'Микротопинг',       install: 400, recoatPct: 0.20, recoatYr: 5,  reSealYr: 5 },
+            'terrazzo-mineral':   { name: 'Терраццо mineral',  install: 850, recoatPct: 0.15, recoatYr: 12, reSealYr: 6 },
+            'terrazzo-epoxy':     { name: 'Терраццо epoxy',    install: 580, recoatPct: 0.25, recoatYr: 9,  reSealYr: null },
+            'mma':                { name: 'MMA',               install: 450, recoatPct: 0.50, recoatYr: 6,  reSealYr: null },
+            'concrete-polished':  { name: 'Бетон полированный', install: 280, recoatPct: 0.10, recoatYr: 12, reSealYr: 4 },
+            'rubber-poured':      { name: 'Каучук poured',     install: 320, recoatPct: 0.18, recoatYr: 10, reSealYr: null }
+        };
+
+        // Annual care cost in NIS per m², by use-case
+        var CARE = {
+            residential:  18,
+            office:       28,
+            retail:       45,
+            industrial:   75,
+            food:         95,
+            healthcare:   60
+        };
+
+        // Alternatives for comparison (rough IL market). Same structure as SYSTEMS,
+        // values are realistic ballpark for owner to tune.
+        var ALT = {
+            'ceramic-tile':       { name: 'Керамогранит',     install: 380, recoatPct: 0,    recoatYr: 99, reSealYr: null, careAdd: 5 },
+            'porcelain':          { name: 'Порцелан премиум', install: 600, recoatPct: 0,    recoatYr: 99, reSealYr: null, careAdd: 8 },
+            'hardwood':           { name: 'Паркет',           install: 700, recoatPct: 0.5,  recoatYr: 10, reSealYr: null, careAdd: 20 },
+            'lvt':                { name: 'LVT / винил',      install: 220, recoatPct: 0,    recoatYr: 12, reSealYr: null, careAdd: 3 },
+            'sheet-vinyl':        { name: 'Линолеум',         install: 130, recoatPct: 0,    recoatYr: 8,  reSealYr: null, careAdd: 5 }
+        };
+
+        function fmt(n) {
+            n = Math.round(n);
+            return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS', maximumFractionDigits: 0 }).format(n);
+        }
+
+        function compute(systemKey, area, useCase, years, isAlt) {
+            var s = (isAlt ? ALT : SYSTEMS)[systemKey];
+            if (!s) return null;
+            var install = s.install * area;
+            var careAnnual = (CARE[useCase] || 30) + (s.careAdd || 0);
+            var careTotal = careAnnual * area * years;
+
+            var recoatCount = 0;
+            var recoatTotal = 0;
+            if (s.recoatYr && s.recoatPct > 0) {
+                recoatCount = Math.floor(years / s.recoatYr);
+                recoatTotal = recoatCount * s.install * s.recoatPct * area;
+            }
+            var reSealCount = 0;
+            var reSealTotal = 0;
+            if (s.reSealYr) {
+                reSealCount = Math.floor(years / s.reSealYr);
+                reSealTotal = reSealCount * s.install * 0.08 * area;  // re-seal is ~8% of install
+            }
+
+            // Yearly timeline
+            var timeline = [];
+            for (var y = 1; y <= years; y++) {
+                var yc = careAnnual * area;
+                if (y === 1) yc += install;
+                if (s.recoatYr && s.recoatPct > 0 && y % s.recoatYr === 0) yc += s.install * s.recoatPct * area;
+                if (s.reSealYr && y % s.reSealYr === 0) yc += s.install * 0.08 * area;
+                timeline.push(yc);
+            }
+
+            var total = install + careTotal + recoatTotal + reSealTotal;
+            return { install: install, care: careTotal, recoat: recoatTotal + reSealTotal, total: total, timeline: timeline, recoatCount: recoatCount, reSealCount: reSealCount, sys: s, careAnnual: careAnnual };
+        }
+
+        function renderChart(timeline) {
+            var svg = document.getElementById('tcoChart');
+            var max = Math.max.apply(null, timeline);
+            var W = 800, H = 280, padL = 60, padR = 20, padT = 20, padB = 30;
+            var iw = W - padL - padR;
+            var ih = H - padT - padB;
+            var barW = iw / timeline.length;
+            var parts = [];
+            // axis
+            parts.push('<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="#d2d2d7" stroke-width="1"/>');
+            // ticks
+            var step = max / 4;
+            for (var i = 0; i <= 4; i++) {
+                var v = step * i;
+                var y = H - padB - (v / max) * ih;
+                parts.push('<line x1="'+padL+'" y1="'+y+'" x2="'+(W-padR)+'" y2="'+y+'" stroke="#e7e2d8" stroke-width="0.5"/>');
+                parts.push('<text x="'+(padL-8)+'" y="'+(y+4)+'" font-family="Montserrat" font-size="10" fill="#72716D" text-anchor="end">'+fmt(v).replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ' ')+'</text>');
+            }
+            // bars
+            for (var b = 0; b < timeline.length; b++) {
+                var bh = (timeline[b] / max) * ih;
+                var x = padL + b * barW + 2;
+                var y = H - padB - bh;
+                var color = (b+1) === 1 ? '#151515' : (timeline[b] > timeline[0] * 0.3 ? '#C86B3C' : '#72716D');
+                parts.push('<rect x="'+x+'" y="'+y+'" width="'+(barW-4)+'" height="'+bh+'" fill="'+color+'" rx="2"/>');
+                parts.push('<text x="'+(x + (barW-4)/2)+'" y="'+(H-padB+15)+'" font-family="Montserrat" font-size="10" fill="#72716D" text-anchor="middle">Y'+(b+1)+'</text>');
+            }
+            svg.innerHTML = parts.join('');
+        }
+
+        function renderTable(r, years) {
+            var rows = [];
+            rows.push('<tr><td>Установка</td><td>Год 1 · разовая</td><td>'+fmt(r.install)+'</td></tr>');
+            rows.push('<tr><td>Уход и обслуживание</td><td>'+fmt(r.careAnnual)+' /м²/год × '+years+' лет</td><td>'+fmt(r.care)+'</td></tr>');
+            if (r.recoatCount > 0) {
+                rows.push('<tr><td>Recoat верхнего слоя</td><td>'+r.recoatCount+' × раз, каждые '+r.sys.recoatYr+' лет</td><td>'+fmt((r.sys.install * r.sys.recoatPct * (r.recoat / (r.sys.install * r.sys.recoatPct))) || r.recoat)+'</td></tr>');
+            }
+            if (r.reSealCount > 0) {
+                rows.push('<tr><td>Re-seal</td><td>'+r.reSealCount+' × раз, каждые '+r.sys.reSealYr+' лет</td><td>—</td></tr>');
+            }
+            rows.push('<tr class="total"><td>TCO · '+years+' лет</td><td>Установка + уход + recoat</td><td>'+fmt(r.total)+'</td></tr>');
+            document.getElementById('tcoTbody').innerHTML = rows.join('');
+        }
+
+        function renderCompare(selfKey, area, useCase, years) {
+            var rows = [];
+            var all = [];
+            var self = compute(selfKey, area, useCase, years, false);
+            all.push({ key: selfKey, name: 'Ваш выбор: ' + self.sys.name, total: self.total, self: true });
+            Object.keys(ALT).forEach(function(k){
+                var r = compute(k, area, useCase, years, true);
+                if (r) all.push({ key: k, name: r.sys.name, total: r.total, self: false });
+            });
+            var max = Math.max.apply(null, all.map(function(x){ return x.total; }));
+            all.sort(function(a,b){ return a.total - b.total; });
+            all.forEach(function(a){
+                var pct = (a.total / max) * 100;
+                rows.push('<div class="tco-compare__row">' +
+                    '<div class="tco-compare__name">'+a.name+'</div>' +
+                    '<div class="tco-compare__bar"><div class="tco-compare__bar-fill '+(a.self?'self':'')+'" style="width:'+pct+'%"></div></div>' +
+                    '<div class="tco-compare__cost">'+fmt(a.total)+'</div>' +
+                '</div>');
+            });
+            document.getElementById('tcoCompare').innerHTML = rows.join('');
+        }
+
+        function recompute() {
+            var systemKey = document.getElementById('tco-system').value;
+            var area = parseFloat(document.getElementById('tco-area').value) || 100;
+            var useCase = document.getElementById('tco-usecase').value;
+            var years = parseInt(document.getElementById('tco-horizon').value, 10);
+
+            var r = compute(systemKey, area, useCase, years, false);
+            if (!r) return;
+
+            document.getElementById('tcoTitle').textContent = r.sys.name + ' — ' + area + ' м² за ' + years + ' лет';
+            document.getElementById('tcoSub').textContent = 'Use case: ' + document.getElementById('tco-usecase').selectedOptions[0].text + ' · уход ' + fmt(r.careAnnual) + '/м²/год';
+
+            document.getElementById('tcoInstall').textContent = fmt(r.install);
+            document.getElementById('tcoCare').textContent = fmt(r.care);
+            document.getElementById('tcoRecoat').textContent = fmt(r.recoat);
+            document.getElementById('tcoTotal').textContent = fmt(r.total);
+
+            renderChart(r.timeline);
+            renderTable(r, years);
+            renderCompare(systemKey, area, useCase, years);
+        }
+
+        document.getElementById('tco-system').addEventListener('change', recompute);
+        document.getElementById('tco-area').addEventListener('input', recompute);
+        document.getElementById('tco-usecase').addEventListener('change', recompute);
+        document.getElementById('tco-horizon').addEventListener('change', recompute);
+
+        recompute();
+    })();
+    </script>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>

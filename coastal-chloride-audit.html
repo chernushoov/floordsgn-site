@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудит хлоридов в прибрежных полах — Floor.DSGN | EN 1504 Israel</title>
+
+    <meta name="description" content="Тель-Авив, Хайфа, Ашдод, Эйлат — морские хлориды разъедают бетон под полом. Аудит EN 1504 + RC class + конкретный план защиты системы. Один из 3 ингибиторов arrests хлоридную миграцию.">
+    <meta name="keywords" content="хлориды бетон, прибрежный пол израиль, EN 1504, коррозия арматуры, аудит пола">
+
+    <meta property="og:title" content="Coastal chloride audit — Floor.DSGN">
+    <meta property="og:description" content="EN 1504 аудит хлоридной деградации прибрежных бетонов. Конкретный план защиты пола.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/coastal-chloride-audit.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/coastal-chloride-audit.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .c-hero { padding: 110px 0 60px; background: var(--concrete); }
+        .c-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+        .c-hero h1 { font-size: clamp(46px, 6vw, 84px); margin-bottom: 22px; max-width: 920px; }
+        .c-hero .lead { max-width: 760px; color: var(--steel); font-size: 18px; line-height: 1.55; }
+
+        .c-fact { padding: 70px 0; background: #fff; }
+        .c-fact h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 14px; }
+        .c-fact p { color: var(--graphite); max-width: 780px; line-height: 1.65; font-size: 16px; margin-bottom: 14px; }
+        .c-fact ul { color: var(--graphite); max-width: 780px; padding-left: 22px; line-height: 1.6; }
+        .c-fact ul li { margin-bottom: 10px; }
+        .c-fact ul li b { color: var(--carbon); font-weight: 600; }
+
+        .c-zones { padding: 80px 0; background: var(--concrete); }
+        .c-zones h2 { font-size: clamp(28px, 3vw, 40px); margin-bottom: 12px; }
+        .c-zones .sub { color: var(--steel); max-width: 720px; line-height: 1.55; margin-bottom: 36px; }
+        .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .zone-card { background: #fff; padding: 24px; border-radius: 14px; border: 1px solid var(--grey-border); }
+        .zone-card h3 { font-size: 18px; color: var(--carbon); margin-bottom: 6px; }
+        .zone-card .km { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 14px; font-weight: 600; }
+        .zone-card .level { display: inline-block; padding: 4px 10px; border-radius: 980px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+        .zone-card .level--high { background: var(--carbon); color: #fff; }
+        .zone-card .level--med { background: var(--graphite); color: #fff; }
+        .zone-card .level--low { background: var(--concrete); color: var(--graphite); border: 1px solid var(--grey-border); }
+        .zone-card p { color: var(--graphite); font-size: 14px; line-height: 1.55; }
+
+        .c-audit { padding: 90px 0; background: var(--carbon); color: var(--concrete); }
+        .c-audit h2 { color: var(--concrete); font-size: clamp(30px, 3vw, 44px); margin-bottom: 16px; }
+        .c-audit .lead { color: #d9d4c9; max-width: 720px; line-height: 1.6; margin-bottom: 36px; font-size: 17px; }
+        .audit-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .audit-card { background: #1a1a1a; padding: 26px; border-radius: 14px; border: 1px solid #2D2D2D; }
+        .audit-card__num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--signal); line-height: 1; margin-bottom: 14px; }
+        .audit-card h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+        .audit-card p { color: #b0b0b0; font-size: 14px; line-height: 1.55; margin: 0; }
+
+        .c-systems { padding: 80px 0; background: #fff; }
+        .c-systems h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 12px; }
+        .c-systems .lead { color: var(--steel); max-width: 760px; line-height: 1.55; margin-bottom: 32px; }
+        .sys-table { width: 100%; border-collapse: collapse; }
+        .sys-table th, .sys-table td { text-align: left; padding: 14px 12px; font-size: 14.5px; border-bottom: 1px solid var(--grey-border); }
+        .sys-table th { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 600; background: var(--concrete); }
+        .sys-table td:first-child { font-weight: 600; color: var(--carbon); }
+
+        .c-cta { padding: 90px 0 110px; background: var(--concrete); text-align: center; }
+        .c-cta h2 { font-size: clamp(32px, 4vw, 50px); margin-bottom: 16px; }
+        .c-cta p { color: var(--steel); max-width: 600px; margin: 0 auto 28px; line-height: 1.6; }
+        .c-cta .btn { display: inline-block; padding: 14px 38px; border-radius: 980px; background: var(--carbon); color: #fff; font-weight: 600; font-size: 14px; }
+        .c-cta .btn:hover { background: var(--graphite); }
+        .c-cta .btn-secondary { background: transparent; color: var(--carbon); border: 1px solid var(--grey-border); margin-left: 10px; }
+        .c-cta .btn-secondary:hover { background: #fff; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="floors.html">Floors</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+
+    <section class="c-hero">
+        <div class="container">
+            <p class="overline">Coastal chloride · EN 1504</p>
+            <h1>Морские хлориды разъедают пол изнутри — до того, как вы это увидите</h1>
+            <p class="lead">Если объект в пределах 10 км от Средиземного или 5 км от Красного моря — хлориды уже в бетоне. Это значит, что любая укладка пола без аудита EN 1504 и плана защиты — это укладка на работающую коррозию, которая разрушит и финиш, и арматуру. Этот аудит — единственный в Израиле, который читает реальную хлоридную нагрузку и переводит её в спецификацию пола.</p>
+        </div>
+    </section>
+
+    <section class="c-fact">
+        <div class="container">
+            <h2>Что делает хлорид с бетоном и полом</h2>
+            <p>Хлориды (NaCl, MgCl₂) переносятся в бетон через дождевую влагу, прибрежный туман и брызги. Они не разрушают пол напрямую — они проникают через бетонную плиту до арматуры и инициируют электрохимическую коррозию железа. Корродирующая сталь увеличивается в объёме до 6 раз → внутреннее давление → трещины в бетоне снизу-вверх → отслоение любого финиша от подложки.</p>
+            <ul>
+                <li><b>Пороговое значение:</b> 0.4% по массе цемента (EN 206-1). После — коррозия начинается.</li>
+                <li><b>Скорость накопления в IL прибрежных объектах:</b> до 0.1% в год без защиты — то есть за 4 года объект достигает порога.</li>
+                <li><b>Что увидите наверху:</b> ничего, пока не появятся трещины снизу или отслоение финиша через 5–10 лет.</li>
+                <li><b>Что стоит ремонт постфактум:</b> 3–8× стоимость новой укладки (демонтаж + ремонт бетона + новая система).</li>
+                <li><b>Что стоит аудит + защита превентивно:</b> 5–15% к стоимости укладки.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="c-zones">
+        <div class="container">
+            <h2>Уровень риска по локации</h2>
+            <p class="sub">Зоны Израиля по нагрузке хлоридов на основание пола — оценка по агрегированным данным Sika и национальным замерам EN 1504. Точная оценка требует пробы на конкретном объекте.</p>
+
+            <div class="zone-grid">
+                <div class="zone-card">
+                    <span class="level level--high">высокий</span>
+                    <h3>Хайфа порт + центр</h3>
+                    <div class="km">&lt; 1 км от моря, NW-SW окна</div>
+                    <p>Постоянный солевой туман + промышленные выбросы. Аудит обязателен. Защита: ингибитор + влагобарьер + UV-стабильная PU.</p>
+                </div>
+                <div class="zone-card">
+                    <span class="level level--high">высокий</span>
+                    <h3>Ашдод порт</h3>
+                    <div class="km">&lt; 1 км, грузовая активность</div>
+                    <p>Соль + хлорид магния от груза + промышленный воздух. Высочайший риск для полов в складах и обработке грузов.</p>
+                </div>
+                <div class="zone-card">
+                    <span class="level level--high">высокий</span>
+                    <h3>Эйлат набережная</h3>
+                    <div class="km">&lt; 0.5 км от Красного моря</div>
+                    <p>Высокая температура + соль = ускоренная диффузия. Дополнительно — циклы расширения от UV-стресса. Без защиты — деградация 2–3 года.</p>
+                </div>
+                <div class="zone-card">
+                    <span class="level level--med">средний</span>
+                    <h3>Тель-Авив прибрежная полоса</h3>
+                    <div class="km">1–3 км от моря</div>
+                    <p>Туман есть, но менее интенсивный. Аудит рекомендован для коммерческих объектов и подземных уровней. Защита: ингибитор миграции.</p>
+                </div>
+                <div class="zone-card">
+                    <span class="level level--med">средний</span>
+                    <h3>Нетания, Герцлия, Ашкелон</h3>
+                    <div class="km">1–5 км от моря</div>
+                    <p>Прибрежный класс выдержки. Жилые и коммерческие объекты вне прямой видимости моря — пробы по требованию проекта.</p>
+                </div>
+                <div class="zone-card">
+                    <span class="level level--low">низкий</span>
+                    <h3>Внутренние районы IL</h3>
+                    <div class="km">&gt; 10 км от моря</div>
+                    <p>Хлоридная нагрузка от природного фона. Аудит не требуется в типовых проектах. При сомнении — экспресс-проба на месте.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="c-audit">
+        <div class="container">
+            <h2>Что входит в аудит EN 1504</h2>
+            <p class="lead">Полный аудит занимает 1 рабочий день на объекте + 5–7 рабочих дней лаборатории. На выходе — официальный отчёт на имя заказчика и архитектора, который принимается в тендере, ת״י и контролирующими органами.</p>
+
+            <div class="audit-grid">
+                <div class="audit-card">
+                    <div class="audit-card__num">01</div>
+                    <h3>Пробоотбор</h3>
+                    <p>Керн ⌀ 50 мм × 3 точки на 100 м² объекта. Глубина — до арматуры или 50 мм. Sika RapidMix protocol.</p>
+                </div>
+                <div class="audit-card">
+                    <div class="audit-card__num">02</div>
+                    <h3>Лабораторный анализ</h3>
+                    <p>Содержание хлоридов по слоям (титрование AgNO₃, EN 14629). Профиль карбонизации (фенолфталеин). Оценка влажности (DIN 18560).</p>
+                </div>
+                <div class="audit-card">
+                    <div class="audit-card__num">03</div>
+                    <h3>Отчёт + класс</h3>
+                    <p>RC class (Resistance to Corrosion) по EN 1504. Карта рисков объекта. Привязка к ת״י 466.</p>
+                </div>
+                <div class="audit-card">
+                    <div class="audit-card__num">04</div>
+                    <h3>План защиты пола</h3>
+                    <p>Конкретный пирог: ингибитор миграции, влагобарьер, primer, базовая система, финиш. По м² и по бюджету.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="c-systems">
+        <div class="container">
+            <h2>Какие системы устойчивы к хлоридам</h2>
+            <p class="lead">Не все системы пола одинаково реагируют на хлоридную атаку. Ниже — короткий справочник, как выбирать материал для прибрежного объекта.</p>
+
+            <table class="sys-table">
+                <thead>
+                    <tr>
+                        <th>Система</th>
+                        <th>Устойчивость к хлоридам</th>
+                        <th>Что нужно добавить для прибрежной зоны</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Эпокси SL</td><td>Средняя</td><td>Ингибитор миграции (Sika FerroGard 903) + UV-стабильный PU финиш</td></tr>
+                    <tr><td>Эпокси HBS industrial</td><td>Средняя-высокая</td><td>Влагобарьер EpoCem + ингибитор + базовый эпокси-слой 4 мм</td></tr>
+                    <tr><td>PU-cement</td><td>Высокая</td><td>Базовая система уже устойчивая. Достаточно ингибитора миграции в подложке.</td></tr>
+                    <tr><td>Микротопинг</td><td>Низкая</td><td>Не рекомендуется на прибрежных объектах без влагобарьера и двойного sealer'а. Альтернатива — эпокси с подменой финиша.</td></tr>
+                    <tr><td>Терраццо mineral</td><td>Высокая (минерально)</td><td>Penetrating sealer + ингибитор основания. Хорошо подходит для прибрежной архитектуры.</td></tr>
+                    <tr><td>Терраццо epoxy</td><td>Высокая</td><td>Закрытый эпокси-финиш + ингибитор для подложки.</td></tr>
+                    <tr><td>MMA</td><td>Высокая</td><td>Естественно устойчивый. Используется в холодильных и портовых объектах. Минимальные требования к основанию.</td></tr>
+                    <tr><td>Бетон полированный</td><td>Низкая-средняя</td><td>Не рекомендуется без хладиридного барьера. Для нежёстких требований — penetrating + ингибитор.</td></tr>
+                    <tr><td>Каучук</td><td>Высокая</td><td>Подложка устойчива. Подходит для прибрежных спортзалов, школ, больниц.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="c-cta">
+        <div class="container">
+            <h2>Объект в прибрежной зоне? Закажите аудит</h2>
+            <p>Аудит стоит 3 500–7 500 שח в зависимости от площади (до 500 м² / до 2000 м² / больше). Если у нас по итогам аудита — заказ на укладку, стоимость аудита возвращается в счёт укладки. Без обязательств.</p>
+            <a class="btn" href="https://wa.me/972559661459?text=Хочу%20аудит%20хлоридов%20на%20прибрежном%20объекте">Заказать аудит</a>
+            <a class="btn btn-secondary" href="substrate-check.html">Проверка основания</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoQ — расход материалов по м² — Floor.DSGN | для подрядчиков</title>
+
+    <meta name="description" content="Расход материалов на м²: praimer, базовый слой, финиш, песок, мощность лака — по всем системам Floor.DSGN. С привязкой к площади и заказу. Bill of Quantities для подрядчиков и сметчиков.">
+    <meta name="keywords" content="BoQ пол, расход эпокси кг м², расход pu cement, спецификация Sika, сметчик пол">
+
+    <meta property="og:title" content="BoQ калькулятор — расход материалов">
+    <meta property="og:description" content="Bill of Quantities по системам и площади. Привязка к Sika SKU + кг/м².">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://floordsgn.com/boq.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+
+    <link rel="canonical" href="https://floordsgn.com/boq.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260527a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260527a">
+    <style>
+        .b-hero { padding: 110px 0 50px; background: var(--concrete); }
+        .b-hero .overline { color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 18px; }
+        .b-hero h1 { font-size: clamp(44px, 6vw, 78px); margin-bottom: 18px; max-width: 880px; }
+        .b-hero .lead { max-width: 720px; color: var(--steel); font-size: 17px; line-height: 1.55; }
+
+        .b-shell { padding: 30px 0 90px; background: var(--concrete); }
+        .b-grid { display: grid; grid-template-columns: 360px 1fr; gap: 28px; align-items: start; }
+        .b-panel { background: #fff; border: 1px solid var(--grey-border); border-radius: 16px; padding: 28px; position: sticky; top: 24px; }
+        .b-panel h3 { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel); margin-bottom: 18px; font-weight: 600; }
+        .b-field { margin-bottom: 22px; }
+        .b-field label { display: block; font-size: 13px; color: var(--graphite); margin-bottom: 8px; font-weight: 500; }
+        .b-field select, .b-field input { width: 100%; padding: 11px 14px; border: 1px solid var(--grey-border); border-radius: 10px; background: var(--concrete); font-family: inherit; font-size: 14px; color: var(--carbon); }
+        .b-field select:focus, .b-field input:focus { outline: none; border-color: var(--carbon); }
+        .b-field .hint { font-size: 11px; color: var(--steel); margin-top: 4px; line-height: 1.4; }
+
+        .b-export { display: flex; gap: 10px; margin-top: 8px; }
+        .b-export button { flex: 1; padding: 10px; border-radius: 980px; background: var(--carbon); color: #fff; border: none; font-size: 12px; font-weight: 600; cursor: pointer; letter-spacing: 0.04em; }
+        .b-export button:hover { background: var(--graphite); }
+
+        .b-result { background: #fff; border: 1px solid var(--grey-border); border-radius: 16px; padding: 36px 40px; }
+        .b-result h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 6px; }
+        .b-result__sub { color: var(--steel); font-size: 14px; margin-bottom: 28px; }
+
+        .b-totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 30px; }
+        .b-total { padding: 18px 20px; background: var(--concrete); border-radius: 12px; }
+        .b-total__label { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel); margin-bottom: 6px; font-weight: 600; }
+        .b-total__value { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--carbon); line-height: 1.05; }
+
+        .b-table { width: 100%; border-collapse: collapse; }
+        .b-table th, .b-table td { text-align: left; padding: 12px 12px; font-size: 13.5px; border-bottom: 1px solid var(--grey-border); }
+        .b-table th { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 600; background: var(--concrete); }
+        .b-table td:first-child { font-weight: 600; color: var(--carbon); }
+        .b-table .num { font-family: 'Cormorant Garamond', serif; font-size: 17px; }
+        .b-table .group-header td { background: #f8f5ee; color: var(--carbon); font-weight: 700; padding-top: 16px; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
+
+        .b-note { margin-top: 24px; padding: 18px 22px; background: #1a1a1a; color: #d9d4c9; border-radius: 12px; font-size: 13px; line-height: 1.6; }
+        .b-note b { color: #fff; }
+
+        .b-cta { padding: 80px 0 110px; background: #fff; text-align: center; }
+        .b-cta h2 { font-size: clamp(28px, 3vw, 40px); margin-bottom: 14px; }
+        .b-cta p { color: var(--steel); max-width: 600px; margin: 0 auto 24px; line-height: 1.6; }
+        .b-cta .btn { display: inline-block; padding: 13px 36px; border-radius: 980px; background: var(--carbon); color: #fff; font-weight: 600; font-size: 14px; }
+        .b-cta .btn:hover { background: var(--graphite); }
+
+        @media (max-width: 960px) {
+            .b-grid { grid-template-columns: 1fr; }
+            .b-panel { position: static; }
+            .b-totals { grid-template-columns: 1fr; }
+            .b-result { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="index.html" class="header__logo">
+            <img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="about.html" data-i18n="nav_about">About</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="floors.html">Floors</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+
+    <section class="b-hero">
+        <div class="container">
+            <p class="overline">BoQ · bill of quantities</p>
+            <h1>Расход материалов по м² — точно, для подрядчиков и сметчиков</h1>
+            <p class="lead">Сколько кг primer, base, top-coat и заполнителя на м² для каждой системы Floor.DSGN. С привязкой к конкретным Sika SKU, плотности и расходу. Для тендеров, закупок и контроля качества — без догадок.</p>
+        </div>
+    </section>
+
+    <section class="b-shell">
+        <div class="container">
+            <div class="b-grid">
+
+                <aside class="b-panel">
+                    <h3>Параметры</h3>
+
+                    <div class="b-field">
+                        <label for="boq-system">Система</label>
+                        <select id="boq-system">
+                            <option value="epoxy-sl-3mm">Эпокси SL 3 мм</option>
+                            <option value="epoxy-hbs-5mm">Эпокси HBS 5 мм</option>
+                            <option value="pu-cement-6mm">PU-cement 6 мм (PurCem 24)</option>
+                            <option value="pu-cement-9mm">PU-cement 9 мм (heavy duty)</option>
+                            <option value="microtopping-3mm">Микротопинг 3 мм</option>
+                            <option value="terrazzo-epoxy-8mm">Терраццо epoxy 8 мм</option>
+                            <option value="mma-fast-4mm">MMA fast cure 4 мм</option>
+                            <option value="concrete-polished">Бетон полированный (без слоев, только sealer)</option>
+                        </select>
+                    </div>
+
+                    <div class="b-field">
+                        <label for="boq-area">Площадь (м²)</label>
+                        <input type="number" id="boq-area" min="10" max="50000" value="500" step="10">
+                        <p class="hint">Учитывает запас 5% на отходы и потери в стыках.</p>
+                    </div>
+
+                    <div class="b-field">
+                        <label for="boq-substrate">Состояние основания</label>
+                        <select id="boq-substrate">
+                            <option value="new">Новый бетон (без подготовки)</option>
+                            <option value="prepared" selected>Подготовлено (дробеструй)</option>
+                            <option value="patched">С локальными ремонтами</option>
+                            <option value="moisture">Высокая влажность (+EpoCem)</option>
+                        </select>
+                    </div>
+
+                    <div class="b-export">
+                        <button id="b-print">Печать / PDF</button>
+                        <button id="b-csv">CSV</button>
+                    </div>
+                </aside>
+
+                <div class="b-result">
+                    <h2 id="boqTitle">—</h2>
+                    <p class="b-result__sub" id="boqSub"></p>
+
+                    <div class="b-totals">
+                        <div class="b-total"><div class="b-total__label">Материал · всего</div><div class="b-total__value" id="boqMatTotal">—</div></div>
+                        <div class="b-total"><div class="b-total__label">Стоимость материала</div><div class="b-total__value" id="boqCostMat">—</div></div>
+                        <div class="b-total"><div class="b-total__label">+ работа (оценка)</div><div class="b-total__value" id="boqCostFull">—</div></div>
+                    </div>
+
+                    <table class="b-table">
+                        <thead><tr><th>SKU / позиция</th><th>Расход /м²</th><th>Всего на объект</th><th>Цена /ед.</th><th>Сумма</th></tr></thead>
+                        <tbody id="boqBody"></tbody>
+                    </table>
+
+                    <div class="b-note">
+                        <p><b>Оценочные расходы — не паспорт продукта.</b> Финальные значения зависят от состояния основания, температуры, влажности и метода нанесения. Для тендера запросите spec-PDF с привязкой к нормам Израиля (ת״י 466, EN 13813) — это включено в коммерческое предложение.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="b-cta">
+        <div class="container">
+            <h2>Нужна спека для тендера?</h2>
+            <p>Этот калькулятор показывает расходы по типичным проектам. Для тендера/закупки мы готовим официальный spec-PDF с привязкой к Sika TDS, нормам IL и графиком работ — на имя заказчика и архитектора.</p>
+            <a class="btn" href="https://wa.me/972559661459?text=Нужен%20spec-PDF%20с%20BoQ">Запросить spec-PDF</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+                <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="materials/epoxy.html">Epoxy</a></li><li><a href="materials/mma.html">MMA</a></li><li><a href="materials/pu-cement.html">PU-Cement</a></li><li><a href="materials/microtopping.html">Microtopping</a></li><li><a href="materials/terrazzo.html">Terrazzo</a></li><li><a href="materials/concrete.html">Concrete</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_tools">Tools</h4><ul><li><a href="tools.html" data-i18n="footer_tools_all">All tools</a></li><li><a href="decision-tool.html">System Selector</a></li><li><a href="studio.html">Studio</a></li><li><a href="configurator.html">3D Configurator</a></li><li><a href="substrate-check.html">Substrate Check</a></li><li><a href="sample-kit.html">Sample Kit</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li>Israel, Tel Aviv</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        // BoQ data: per-m² consumption × price/kg. Sika SKUs realistic, prices typical IL B2B.
+        var SYSTEMS = {
+            'epoxy-sl-3mm': {
+                name: 'Эпокси SL 3 мм',
+                items: [
+                    { group: 'prep',  sku: 'Sikafloor 161 (primer)',         per: 0.30, unit: 'kg', price: 38, desc: 'эпокси праймер 2K' },
+                    { group: 'prep',  sku: 'Sika 510 (кварц 0.4-0.7 mm)',   per: 0.40, unit: 'kg', price: 5,  desc: 'присыпка по primer для адгезии' },
+                    { group: 'body',  sku: 'Sikafloor 264 (base 3 mm)',     per: 4.50, unit: 'kg', price: 36, desc: 'самовыравнивающийся base' },
+                    { group: 'finish', sku: 'Sikafloor 305 W (top-coat PU)', per: 0.20, unit: 'kg', price: 80, desc: 'UV-стойкий полиуретановый верхний слой' }
+                ],
+                labour: 90
+            },
+            'epoxy-hbs-5mm': {
+                name: 'Эпокси HBS 5 мм',
+                items: [
+                    { group: 'prep',  sku: 'Sikafloor 161 (primer)',          per: 0.40, unit: 'kg', price: 38, desc: 'эпокси праймер' },
+                    { group: 'body',  sku: 'Sikafloor 263 SL (HBS 4mm)',      per: 8.50, unit: 'kg', price: 32, desc: 'высоконагружаемая база' },
+                    { group: 'finish', sku: 'Sikafloor 264 (top 0.5 mm)',      per: 0.75, unit: 'kg', price: 36, desc: 'sealing top-coat' },
+                    { group: 'finish', sku: 'Sika 510 + Sikafloor 305 W',     per: 0.30, unit: 'kg', price: 60, desc: 'нескользящая фактура + PU защита' }
+                ],
+                labour: 110
+            },
+            'pu-cement-6mm': {
+                name: 'PU-cement 6 мм (PurCem 24)',
+                items: [
+                    { group: 'prep',  sku: 'Sikafloor 161 / EpoCem',           per: 0.30, unit: 'kg', price: 38, desc: 'эпокси/гибридный праймер' },
+                    { group: 'body',  sku: 'Sikafloor 24 PurCem (6 mm)',       per: 13.50, unit: 'kg', price: 28, desc: 'полиуретан-цемент' },
+                    { group: 'finish', sku: 'Sikafloor 31 PurCem topcoat',     per: 0.40, unit: 'kg', price: 55, desc: 'pigmented topcoat' }
+                ],
+                labour: 130
+            },
+            'pu-cement-9mm': {
+                name: 'PU-cement 9 мм heavy duty',
+                items: [
+                    { group: 'prep',  sku: 'Sikafloor EpoCem (vapor)',         per: 1.80, unit: 'kg', price: 22, desc: 'влагобарьер' },
+                    { group: 'body',  sku: 'Sikafloor 21 PurCem HD (9 mm)',    per: 20.00, unit: 'kg', price: 30, desc: 'тяжелонагруж. система' },
+                    { group: 'finish', sku: 'Sikafloor 31 PurCem topcoat',     per: 0.50, unit: 'kg', price: 55, desc: 'pigmented top' }
+                ],
+                labour: 160
+            },
+            'microtopping-3mm': {
+                name: 'Микротопинг 3 мм',
+                items: [
+                    { group: 'prep',   sku: 'Sika MonoTop primer',          per: 0.25, unit: 'kg', price: 26, desc: 'грунт + scratch coat' },
+                    { group: 'body',   sku: 'Sika Microcement / Декокемент', per: 5.50, unit: 'kg', price: 22, desc: 'цементный композит 2 слоя' },
+                    { group: 'body',   sku: 'Армирующая фиброткань',         per: 1.00, unit: 'м²', price: 12, desc: 'между слоями' },
+                    { group: 'finish', sku: 'Sikagard Color PU sealer',      per: 0.30, unit: 'kg', price: 75, desc: 'двойной PU-sealer' }
+                ],
+                labour: 140
+            },
+            'terrazzo-epoxy-8mm': {
+                name: 'Терраццо epoxy 8 мм',
+                items: [
+                    { group: 'prep',   sku: 'Sikafloor 161 (primer)',         per: 0.30, unit: 'kg', price: 38, desc: 'эпокси праймер' },
+                    { group: 'body',   sku: 'Sikafloor 264 (epoxy matrix)',   per: 5.00, unit: 'kg', price: 36, desc: 'epoxy binder' },
+                    { group: 'body',   sku: 'Мраморный заполнитель 4-7 mm',   per: 12.00, unit: 'kg', price: 6,  desc: 'мрамор / кварц / стекло' },
+                    { group: 'finish', sku: 'Шлифовка + полировка',           per: 1.00, unit: 'м²', price: 65, desc: 'алмазная обработка' },
+                    { group: 'finish', sku: 'Sikagard penetrating sealer',     per: 0.20, unit: 'kg', price: 90, desc: 'защитный sealer' }
+                ],
+                labour: 220
+            },
+            'mma-fast-4mm': {
+                name: 'MMA fast cure 4 мм',
+                items: [
+                    { group: 'prep',   sku: 'Sikafloor 110 MMA primer',       per: 0.35, unit: 'kg', price: 48, desc: 'MMA праймер' },
+                    { group: 'body',   sku: 'Sikafloor 332 MMA',              per: 6.50, unit: 'kg', price: 52, desc: 'MMA base' },
+                    { group: 'finish', sku: 'Sikafloor 357 MMA topcoat',       per: 0.60, unit: 'kg', price: 65, desc: 'sealer + UV' }
+                ],
+                labour: 130
+            },
+            'concrete-polished': {
+                name: 'Бетон полированный',
+                items: [
+                    { group: 'prep',   sku: 'Шлифовка 30/80/120/220',          per: 1.00, unit: 'м²', price: 45, desc: '4 прохода алмазной' },
+                    { group: 'finish', sku: 'Sika Densifier (Li-silicate)',   per: 0.35, unit: 'kg', price: 32, desc: 'упрочнитель' },
+                    { group: 'finish', sku: 'Sika Concrete Sealer',            per: 0.15, unit: 'kg', price: 65, desc: 'penetrating sealer' },
+                    { group: 'finish', sku: 'Финишная полировка 400/800/1500', per: 1.00, unit: 'м²', price: 35, desc: '3 прохода' }
+                ],
+                labour: 100
+            }
+        };
+
+        // Substrate adjustments
+        var SUBSTRATE_ADJ = {
+            new:       { primerMult: 1.20, addEpoCem: false, labourAdd: 25 },
+            prepared:  { primerMult: 1.00, addEpoCem: false, labourAdd: 0 },
+            patched:   { primerMult: 1.15, addEpoCem: false, labourAdd: 15 },
+            moisture:  { primerMult: 1.00, addEpoCem: true,  labourAdd: 30 }
+        };
+
+        function fmt(n) { return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS', maximumFractionDigits: 0 }).format(Math.round(n)); }
+        function fmtKg(n) { return n.toFixed(n < 10 ? 1 : 0) + ' kg'; }
+
+        function compute(systemKey, area, substrate) {
+            var s = SYSTEMS[systemKey];
+            if (!s) return null;
+            var adj = SUBSTRATE_ADJ[substrate] || SUBSTRATE_ADJ.prepared;
+            var waste = 1.05; // 5% over-spec
+            var items = JSON.parse(JSON.stringify(s.items)); // clone
+
+            // adjust primer if prep
+            items.forEach(function(it){
+                if (it.group === 'prep' && it.sku.toLowerCase().includes('primer')) {
+                    it.per = it.per * adj.primerMult;
+                }
+            });
+
+            // add EpoCem if moisture
+            if (adj.addEpoCem) {
+                items.unshift({ group: 'prep', sku: 'Sikafloor EpoCem (vapor barrier)', per: 2.00, unit: 'kg', price: 24, desc: 'влагобарьер 2-3 мм' });
+            }
+
+            var totalKg = 0, totalCost = 0;
+            items.forEach(function(it){
+                var perAdj = it.per * waste;
+                var totalUnit = perAdj * area;
+                var cost = totalUnit * it.price;
+                it._perAdj = perAdj;
+                it._totalUnit = totalUnit;
+                it._cost = cost;
+                totalCost += cost;
+                if (it.unit === 'kg') totalKg += totalUnit;
+            });
+            var labour = (s.labour + adj.labourAdd) * area;
+            return { sys: s, items: items, totalKg: totalKg, totalCost: totalCost, labour: labour };
+        }
+
+        function render() {
+            var systemKey = document.getElementById('boq-system').value;
+            var area = parseFloat(document.getElementById('boq-area').value) || 100;
+            var substrate = document.getElementById('boq-substrate').value;
+            var r = compute(systemKey, area, substrate);
+            if (!r) return;
+
+            document.getElementById('boqTitle').textContent = r.sys.name + ' — ' + area + ' м²';
+            document.getElementById('boqSub').textContent = 'Подложка: ' + document.getElementById('boq-substrate').selectedOptions[0].text + ' · запас 5% на отходы';
+            document.getElementById('boqMatTotal').textContent = r.totalKg > 0 ? fmtKg(r.totalKg) : '—';
+            document.getElementById('boqCostMat').textContent = fmt(r.totalCost);
+            document.getElementById('boqCostFull').textContent = fmt(r.totalCost + r.labour);
+
+            var grouped = { prep: [], body: [], finish: [] };
+            r.items.forEach(function(it){ (grouped[it.group] || (grouped[it.group] = [])).push(it); });
+            var rows = [];
+            ['prep','body','finish'].forEach(function(g){
+                var label = g === 'prep' ? 'Подготовка / праймер' : g === 'body' ? 'Базовая система' : 'Финиш / sealer';
+                if (!grouped[g] || !grouped[g].length) return;
+                rows.push('<tr class="group-header"><td colspan="5">'+label+'</td></tr>');
+                grouped[g].forEach(function(it){
+                    var perDisplay = it._perAdj.toFixed(2) + ' ' + it.unit + '/м²';
+                    var totalDisplay = (it.unit === 'kg' ? fmtKg(it._totalUnit) : Math.round(it._totalUnit) + ' ' + it.unit);
+                    rows.push('<tr>' +
+                        '<td>'+it.sku+'<div style="font-size:11px; color: var(--steel); font-weight:400; margin-top:2px;">'+(it.desc||'')+'</div></td>' +
+                        '<td><span class="num">'+perDisplay+'</span></td>' +
+                        '<td><span class="num">'+totalDisplay+'</span></td>' +
+                        '<td>'+fmt(it.price)+' /'+it.unit+'</td>' +
+                        '<td>'+fmt(it._cost)+'</td>' +
+                    '</tr>');
+                });
+            });
+            rows.push('<tr><td><b>Работа</b><div style="font-size:11px; color: var(--steel); font-weight:400; margin-top:2px;">укладка + подготовка + клининг</div></td><td>—</td><td>—</td><td>—</td><td><b>'+fmt(r.labour)+'</b></td></tr>');
+            rows.push('<tr style="background:var(--carbon); color:#fff;"><td style="color:#fff;"><b>ИТОГО</b></td><td>—</td><td>—</td><td>—</td><td><b>'+fmt(r.totalCost + r.labour)+'</b></td></tr>');
+            document.getElementById('boqBody').innerHTML = rows.join('');
+        }
+
+        function downloadCsv() {
+            var systemKey = document.getElementById('boq-system').value;
+            var area = parseFloat(document.getElementById('boq-area').value) || 100;
+            var substrate = document.getElementById('boq-substrate').value;
+            var r = compute(systemKey, area, substrate);
+            var lines = ['SKU,Group,Per m²,Unit,Total,Unit price (ILS),Subtotal (ILS)'];
+            r.items.forEach(function(it){
+                lines.push([it.sku, it.group, it._perAdj.toFixed(3), it.unit, it._totalUnit.toFixed(1), it.price, it._cost.toFixed(0)].join(','));
+            });
+            lines.push(['Labour', 'work', '-', 'job', '-', '-', r.labour.toFixed(0)].join(','));
+            lines.push(['TOTAL', '-', '-', '-', '-', '-', (r.totalCost + r.labour).toFixed(0)].join(','));
+            var blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'floordsgn-boq-' + systemKey + '-' + area + 'm2.csv';
+            a.click();
+        }
+
+        document.getElementById('boq-system').addEventListener('change', render);
+        document.getElementById('boq-area').addEventListener('input', render);
+        document.getElementById('boq-substrate').addEventListener('change', render);
+        document.getElementById('b-print').addEventListener('click', function(){ window.print(); });
+        document.getElementById('b-csv').addEventListener('click', downloadCsv);
+
+        render();
+    })();
+    </script>
+
+    <script src="translations.js?v=20260527a"></script>
+    <script src="enhance.js?v=20260527a" defer></script>
+</body>
+</html>

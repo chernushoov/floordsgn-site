@@ -23,6 +23,9 @@
   <url><loc>https://floordsgn.com/care-guide.html</loc><priority>0.7</priority></url>
   <url><loc>https://floordsgn.com/warranty.html</loc><priority>0.7</priority></url>
   <url><loc>https://floordsgn.com/repair-or-replace.html</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.com/tco.html</loc><priority>0.8</priority></url>
+  <url><loc>https://floordsgn.com/boq.html</loc><priority>0.7</priority></url>
+  <url><loc>https://floordsgn.com/coastal-chloride-audit.html</loc><priority>0.7</priority></url>
 
   <!-- Material category pages -->
   <url><loc>https://floordsgn.com/materials/epoxy.html</loc></url>
