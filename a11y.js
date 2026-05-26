@@ -16,6 +16,18 @@ const DEFAULT_PAGES = [
   'floors/epoxy.html',
   'floors/terrazzo.html',
   'contact.html',
+  'tools.html',
+  'care-guide.html',
+  'warranty.html',
+  'repair-or-replace.html',
+  'tco.html',
+  'boq.html',
+  'coastal-chloride-audit.html',
+  'about.html',
+  'studio.html',
+  'designers.html',
+  'materials/epoxy.html',
+  'materials/terrazzo.html',
 ];
 const PAGES = (process.env.A11Y_PAGES || DEFAULT_PAGES.join(','))
   .split(',')
