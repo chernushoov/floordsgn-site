@@ -1,0 +1,84 @@
+[
+  {
+    "code": "altro-stronghold-30",
+    "name": "Altro Stronghold 30",
+    "category": "safety vinyl, slip-resistant",
+    "thickness_mm": 3.0,
+    "slip_class": "R12 (DIN 51130) + PTV ≥ 36 wet",
+    "positioning": "Altro's reference SKU for commercial kitchens, food prep, butchery. Slip-resistance guaranteed for the life of the floor (Altro's lifetime PTV warranty argument).",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-aquarius",
+    "name": "Altro Aquarius",
+    "category": "barefoot safety vinyl",
+    "slip_class": "DIN 51097 Class B (barefoot wet)",
+    "positioning": "Showers, changing rooms, swimming pool surrounds — barefoot wet zones requiring PTV-rated traction.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-xpresslay",
+    "name": "Altro XpressLay",
+    "category": "adhesive-free safety vinyl",
+    "positioning": "Loose-lay safety vinyl — no adhesive required, designed for fast retrofit installation and easy uplift for future work. Tenant fit-outs, retail, education sectors.",
+    "source": "Altro guides — adhesive-free product line referenced on altro.com/uk"
+  },
+  {
+    "code": "altro-wood-safety",
+    "name": "Altro Wood Safety",
+    "category": "wood-look safety vinyl",
+    "positioning": "Wood-aesthetic safety vinyl. Hospitality, retail, healthcare common areas.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-classic-25",
+    "name": "Altro Classic 25",
+    "category": "general-purpose safety vinyl",
+    "thickness_mm": 2.5,
+    "positioning": "General-purpose safety vinyl. Lower thickness than Stronghold 30; lighter-duty commercial use.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-marine-20",
+    "name": "Altro Marine 20",
+    "category": "marine deck safety vinyl",
+    "thickness_mm": 2.0,
+    "positioning": "Marine application: boat decks, ship interiors. IMO-compliant fire spec.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-suprema-ii",
+    "name": "Altro Suprema II",
+    "category": "premium decorative safety vinyl",
+    "positioning": "Designer-aesthetic version with PTV safety still maintained. For hospitality / retail / healthcare where aesthetic dominates but safety class is mandatory.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "altro-transflor-artis",
+    "name": "Altro Transflor Artis™",
+    "category": "transportation flooring",
+    "positioning": "For buses / trains / public transit. Decorative variant of the Transflor range.",
+    "source": "https://www.altro.com/uk/products/altro-transflor-artis"
+  },
+  {
+    "code": "altro-transflor-metris",
+    "name": "Altro Transflor Metris™",
+    "category": "transportation flooring",
+    "positioning": "Transit flooring — performance variant.",
+    "source": "https://www.altro.com/uk/products/altro-transflor-metris"
+  },
+  {
+    "code": "altro-transflor-sonis",
+    "name": "Altro Transflor Sonis™",
+    "category": "transportation flooring",
+    "positioning": "Transit flooring — acoustic variant.",
+    "source": "https://www.altro.com/uk/products/altro-transflor-sonis"
+  },
+  {
+    "code": "altro-whiterock",
+    "name": "Altro Whiterock",
+    "category": "hygienic wall cladding",
+    "positioning": "Companion product to Altro's safety vinyl floors. Hygienic, easy-clean wall cladding for kitchens / healthcare / labs. Floor + wall full system from one supplier.",
+    "source": "industry knowledge"
+  }
+]

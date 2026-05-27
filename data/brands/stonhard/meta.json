@@ -1,0 +1,27 @@
+{
+  "slug": "stonhard",
+  "name": "Stonhard",
+  "hq": "Maple Shade, NJ, USA",
+  "founded": "1922",
+  "official_url": "https://www.stonhard.com/",
+  "fetched_pages": [
+    "https://www.stonhard.com/",
+    "https://www.stonhard.com/products/",
+    "https://www.stonhard.com/products/stonclad/",
+    "https://www.stonhard.com/products/stonshield/",
+    "https://www.stonhard.com/products/stonblend/",
+    "https://www.stonhard.com/products/stoncrete/",
+    "https://www.stonhard.com/products/stoncrete/efx/",
+    "https://www.stonhard.com/products/stonchem/",
+    "https://www.stonhard.com/products/stonkote/"
+  ],
+  "fetched_pdfs": [
+    "https://www.stonhard.com/media/qwolccym/stonhard-stoncrete-color-guide.pdf",
+    "https://www.stonhard.com/media/2eha4mbx/stonhard-high-performance-linings-brochure.pdf",
+    "https://www.stonhard.com/media/rx4cl4qt/linings-brochure.pdf"
+  ],
+  "il_distributor": null,
+  "categories": [],
+  "notes_status": "draft",
+  "last_fetched_at": "2026-05-27T18:49:51"
+}

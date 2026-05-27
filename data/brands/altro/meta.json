@@ -1,0 +1,16 @@
+{
+  "slug": "altro",
+  "name": "Altro",
+  "hq": "Letchworth Garden City, UK",
+  "founded": "1919",
+  "official_url": "https://www.altro.com/",
+  "fetched_pages": [
+    "https://www.altro.com/",
+    "https://www.altro.com/uk"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": ["safety vinyl", "decorative vinyl", "wall cladding"],
+  "notes_status": "synthesised — homepage is country picker; UK site partially JS-driven; product detail pages were found but main catalog not fully crawled",
+  "last_fetched_at": "2026-05-27"
+}

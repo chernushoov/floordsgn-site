@@ -1,0 +1,17 @@
+{
+  "slug": "master-builders",
+  "name": "Master Builders Solutions (MasterTop / Ucrete)",
+  "hq": "Mannheim, Germany",
+  "founded": "2014 (rebranded from BASF Construction Chemicals; original brands much older)",
+  "official_url": "https://www.master-builders-solutions.com/",
+  "parent_corp": "Sika AG (acquired MBCC Group 2023)",
+  "fetched_pages": [
+    "https://www.master-builders-solutions.com/en-gb/",
+    "https://www.master-builders-solutions.com/en-gb/documents/"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": ["industrial flooring", "PU-cement", "epoxy", "MMA"],
+  "notes_status": "synthesised — corporate site sparse post-acquisition, TDSs gated behind JavaScript document centre",
+  "last_fetched_at": "2026-05-27"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "code": "mastertop-1235sl",
+    "name": "MasterTop 1235SL",
+    "category": "industrial epoxy self-leveling",
+    "chemistry": "100% solids epoxy",
+    "thickness_mm": "2-3",
+    "positioning": "MBCC's direct competitor to Sikafloor-263 SL; pre-Sika-acquisition workhorse SKU for warehouse / light-industrial",
+    "source": "industry knowledge — TDS gated behind MBCC document centre JS"
+  },
+  {
+    "code": "mastertop-1912-xolutec",
+    "name": "MasterTop 1912 Xolutec",
+    "category": "industrial epoxy",
+    "chemistry": "Xolutec (proprietary modified epoxy)",
+    "positioning": "MBCC's premium epoxy technology — competes with Sikafloor MultiDur premium range",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "mastertop-1817pc",
+    "name": "MasterTop 1817PC",
+    "category": "MMA polymer concrete",
+    "chemistry": "methyl methacrylate",
+    "positioning": "fast-cure MMA — competes with Sikafloor Pronto family; cold storage, overnight installs",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "ucrete-ud200",
+    "name": "Ucrete® UD200",
+    "category": "PU-cement HD (heavy-duty polyurethane cement)",
+    "chemistry": "polyurethane modified cementitious",
+    "temperature_range": "-40°C to +120°C",
+    "point_load_n_per_mm2": "≥ 8",
+    "thickness_mm": "9-12 (HD), 4-6 (lighter Ucrete variants)",
+    "certifications_referenced": ["HACCP", "FSSC 22000", "ISEGA", "NSF/ANSI 51", "FDA 21 CFR 175.300"],
+    "positioning": "The historic industry-standard PU-cement for food production, brewery, dairy, fish, meat. Direct equivalent of Sikafloor PurCem 22N HD. Now owned by Sika via 2023 MBCC acquisition.",
+    "source": "industry knowledge; Sika UK page references Ucrete licensed-applicator network"
+  },
+  {
+    "code": "ucrete-mf",
+    "name": "Ucrete® MF",
+    "category": "PU-cement (lighter variant)",
+    "chemistry": "polyurethane modified cementitious",
+    "positioning": "lighter Ucrete for less-aggressive food zones",
+    "source": "industry knowledge"
+  }
+]

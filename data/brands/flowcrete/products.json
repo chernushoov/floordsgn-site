@@ -1,0 +1,86 @@
+[
+  {
+    "code": "flowfresh-hf",
+    "name": "Flowfresh HF",
+    "category": "PU-cement HD with antimicrobial",
+    "chemistry": "polyurethane modified cementitious matrix loaded with Polygiene® silver-ion antimicrobial",
+    "thickness_mm": "9",
+    "slip_class_options": ["R11", "R12"],
+    "temperature_tolerance": "thermal cycling -40°C to +120°C",
+    "certifications_referenced": ["HACCP", "FSSC 22000", "ISEGA", "NSF/ANSI 51", "FDA 21 CFR 175.300"],
+    "positioning": "Flowcrete's signature SKU. Polygiene® silver-ion is the key differentiator versus Sika PurCem and Ucrete UD200 — same PU-cement chemistry, plus published antimicrobial efficacy. Food production, meat/dairy/fish, brewery.",
+    "source": "industry knowledge; Flowcrete Flowfresh published TDS / case studies"
+  },
+  {
+    "code": "flowfresh-mf",
+    "name": "Flowfresh MF",
+    "category": "PU-cement medium-duty with antimicrobial",
+    "thickness_mm": "6",
+    "positioning": "Lighter-duty Flowfresh for less-aggressive food zones. Still carries Polygiene.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "flowfresh-rt",
+    "name": "Flowfresh RT",
+    "category": "PU-cement thin-section with antimicrobial",
+    "thickness_mm": "4",
+    "positioning": "Thin-section Flowfresh, smooth finish, for back-of-house / mid-aggressive zones.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "flowshield-sl",
+    "name": "Flowshield SL",
+    "category": "industrial epoxy self-leveling",
+    "chemistry": "100% solids epoxy",
+    "thickness_mm": "2-3",
+    "positioning": "Flowcrete's epoxy SL competitor to Sikafloor-263 SL / MasterTop 1235SL / Mapefloor I 302 SL.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "peran-sl",
+    "name": "Peran SL",
+    "category": "industrial epoxy self-leveling",
+    "thickness_mm": "2-3",
+    "positioning": "Flowcrete's value-tier epoxy SL.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "flowcoat-sf41",
+    "name": "Flowcoat SF41",
+    "category": "epoxy floor coating",
+    "thickness_mm": "0.3-0.5",
+    "positioning": "Flowcrete's thin-film epoxy coating, used in defence + nuclear case study referenced on Flowcrete UK site.",
+    "source": "Flowcrete UK case studies"
+  },
+  {
+    "code": "isocrete-1500",
+    "name": "Isocrete 1500 Plus",
+    "category": "modified cementitious screed",
+    "type": "polymer-modified self-leveling screed",
+    "positioning": "Flowcrete's screed line — used as subfloor leveler under Flowfresh / Flowshield finishes. Sold in 1 tonne packaging.",
+    "source": "Flowcrete 2025 news on 1 tonne packaging launch"
+  },
+  {
+    "code": "flowscreed-industrial-top",
+    "name": "Flowscreed Industrial Top",
+    "category": "industrial flowing screed",
+    "positioning": "self-leveling industrial topping screed, paired with Isocrete subbase.",
+    "source": "Flowcrete UK product news"
+  },
+  {
+    "code": "seamless-terrazzo",
+    "name": "Mondéco / Seamless Terrazzo (Flowcrete Mondéco range)",
+    "category": "seamless epoxy terrazzo",
+    "thickness_mm": "10-12",
+    "positioning": "Flowcrete's decorative epoxy terrazzo. Competitor of Sikafloor EM-10 / Stonhard StoneTreads / Mapei Mapestone.",
+    "source": "Flowcrete UK product range — Seamless Terrazzo"
+  },
+  {
+    "code": "deckshield-id",
+    "name": "Deckshield ID",
+    "category": "car park deck waterproofing",
+    "chemistry": "PU-based intermediate-deck waterproofing system",
+    "positioning": "Flowcrete's car park deck waterproofing range; well-established UK car park spec. Defines Flowcrete's strength in car park sector.",
+    "source": "Flowcrete UK product range — Car Park Deck Waterproofing"
+  }
+]

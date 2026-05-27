@@ -1,0 +1,100 @@
+[
+  {
+    "code": "polysafe-apex-55",
+    "name": "Polysafe Apex 55",
+    "category": "safety vinyl — premium",
+    "thickness_mm": 3.0,
+    "slip_class": "R10-R12 PTV-rated wet",
+    "positioning": "Polyflor's flagship safety vinyl. PUR surface treatment for cleanability. Heavy-duty commercial / institutional kitchens.",
+    "source": "https://www.polyflor.com/products/polysafe-apex-55"
+  },
+  {
+    "code": "polysafe-hydro",
+    "name": "Polysafe Hydro",
+    "category": "wet-room safety vinyl",
+    "slip_class": "DIN 51097 Class B (barefoot wet)",
+    "positioning": "Showers, changing rooms, pool surrounds — Polyflor's competitor to Altro Aquarius.",
+    "source": "https://www.polyflor.com/products/polysafe-hydro"
+  },
+  {
+    "code": "polysafe-hydro-evolve",
+    "name": "Polysafe Hydro Evolve",
+    "category": "wet-room safety vinyl (next generation)",
+    "positioning": "Updated formulation of Polysafe Hydro.",
+    "source": "https://www.polyflor.com/products/polysafe-hydro-evolve"
+  },
+  {
+    "code": "polysafe-quattro",
+    "name": "Polysafe Quattro PUR",
+    "category": "safety vinyl with PUR finish",
+    "positioning": "Polysafe range — wet-shod safety + PUR cleanability.",
+    "source": "https://www.polyflor.com/products/polysafe-quattro-pur"
+  },
+  {
+    "code": "polysafe-verona",
+    "name": "Polysafe Verona PUR",
+    "category": "safety vinyl — premium decorative",
+    "positioning": "Decorative safety vinyl with PUR surface. Original and Pure Colours variants.",
+    "source": "https://www.polyflor.com/products/polysafe-verona-pur-original"
+  },
+  {
+    "code": "polysafe-wood-fx",
+    "name": "Polysafe Wood fx PUR",
+    "category": "wood-look safety vinyl",
+    "positioning": "Polyflor's wood-aesthetic safety vinyl, direct competitor of Altro Wood Safety.",
+    "source": "https://www.polyflor.com/products/polysafe-wood-fx-pur"
+  },
+  {
+    "code": "polysafe-stone-fx",
+    "name": "Polysafe Stone fx PUR",
+    "category": "stone-look safety vinyl",
+    "source": "https://www.polyflor.com/products/polysafe-stone-fx-pur"
+  },
+  {
+    "code": "polysafe-ultima",
+    "name": "Polysafe Ultima",
+    "category": "safety vinyl — premium",
+    "source": "https://www.polyflor.com/products/polysafe-ultima"
+  },
+  {
+    "code": "polysafe-quicklay",
+    "name": "Polysafe QuickLay PUR",
+    "category": "adhesive-free safety vinyl",
+    "positioning": "Loose-lay safety vinyl for retrofit. Competitor of Altro XpressLay.",
+    "source": "https://www.polyflor.com/products/polysafe-quicklay-pur"
+  },
+  {
+    "code": "polysafe-standard",
+    "name": "Polysafe Standard PUR",
+    "category": "safety vinyl — general purpose",
+    "positioning": "Entry-tier Polysafe.",
+    "source": "https://www.polyflor.com/products/polysafe-standard-pur"
+  },
+  {
+    "code": "expona-flow",
+    "name": "Expona Flow PUR",
+    "category": "homogeneous vinyl",
+    "positioning": "Polyflor's homogeneous vinyl line. PUR-treated single-layer vinyl for cleanability + design.",
+    "source": "https://www.polyflor.com/products/expona-flow-pur"
+  },
+  {
+    "code": "forest-fx",
+    "name": "Forest fx PUR",
+    "category": "wood-effect commercial vinyl",
+    "source": "https://www.polyflor.com/products/forest-fx-pur"
+  },
+  {
+    "code": "acoustix-forest-fx",
+    "name": "Acoustix Forest fx PUR",
+    "category": "acoustic wood-effect commercial vinyl",
+    "positioning": "Forest fx with integrated acoustic backing.",
+    "source": "https://www.polyflor.com/products/acoustix-forest-fx-pur"
+  },
+  {
+    "code": "voyager-transport",
+    "name": "Voyager Transport Flooring",
+    "category": "transportation flooring",
+    "positioning": "Bus / train / public transit flooring. Polyflor's transit line, equivalent to Altro Transflor.",
+    "source": "https://www.polyflor.com/commercial/products/voyager-transport-flooring"
+  }
+]

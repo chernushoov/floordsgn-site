@@ -1,0 +1,14 @@
+{
+  "slug": "mapei-mapefloor",
+  "name": "Mapei Mapefloor",
+  "hq": "Milan, Italy",
+  "founded": "1937",
+  "official_url": "https://www.mapei.com/",
+  "fetched_pages": [],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": ["industrial flooring", "epoxy", "polyurethane", "MMA", "decorative concrete"],
+  "notes_status": "synthesised — mapei.com blocked 403 on all regional subsites and product paths (aggressive WAF / bot detection)",
+  "last_fetched_at": "2026-05-27",
+  "fetch_blocker": "WAF 403 across www.mapei.com/* — retry with browser session if needed"
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "flowcrete",
+  "name": "Flowcrete (Tremco CPG)",
+  "hq": "Sandbach, Cheshire, UK",
+  "founded": "1982",
+  "parent_corp": "Tremco CPG (Construction Products Group) — Stark Holdings",
+  "official_url": "https://www.flowcrete.co.uk/",
+  "fetched_pages": [
+    "https://www.flowcrete.co.uk/",
+    "https://www.flowcrete.co.uk/en-gb/products-systems/product-ranges/"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": ["resin flooring", "PU-cement", "epoxy SL", "decorative terrazzo", "car park deck waterproofing"],
+  "notes_status": "synthesised — flowcrete.co.uk navigation moved (404 on /product-ranges/); product info from public industry references",
+  "last_fetched_at": "2026-05-27"
+}

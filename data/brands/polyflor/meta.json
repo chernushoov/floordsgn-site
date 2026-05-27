@@ -1,0 +1,17 @@
+{
+  "slug": "polyflor",
+  "name": "Polyflor",
+  "hq": "Manchester, UK",
+  "founded": "1915",
+  "official_url": "https://www.polyflor.com/",
+  "fetched_pages": [
+    "https://www.polyflor.com",
+    "https://www.polyflor.com/commercial",
+    "https://www.polyflor.com/commercial/products/safety"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": ["safety vinyl", "homogeneous vinyl", "heterogeneous vinyl", "LVT", "wall cladding"],
+  "notes_status": "scraped + synthesised — 13+ Polysafe SKUs catalogued from safety category page; per-SKU TDS not yet pulled",
+  "last_fetched_at": "2026-05-27"
+}

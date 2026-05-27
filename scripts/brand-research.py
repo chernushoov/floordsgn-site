@@ -425,8 +425,15 @@ BRANDS = {
         "hq": "Maple Shade, NJ, USA",
         "founded": "1922",
         "urls": [
-            "https://www.stonhard.com/products",
             "https://www.stonhard.com/",
+            "https://www.stonhard.com/products/",
+            "https://www.stonhard.com/products/stonclad/",
+            "https://www.stonhard.com/products/stonshield/",
+            "https://www.stonhard.com/products/stonblend/",
+            "https://www.stonhard.com/products/stoncrete/",
+            "https://www.stonhard.com/products/stoncrete/efx/",
+            "https://www.stonhard.com/products/stonchem/",
+            "https://www.stonhard.com/products/stonkote/",
         ],
     },
     "altro": {

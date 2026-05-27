@@ -1,0 +1,50 @@
+[
+  {
+    "code": "keim-soldalit",
+    "name": "KEIM Soldalit®",
+    "category": "mineral silicate paint",
+    "use": "exterior façade — works on mineral and organic substrates",
+    "positioning": "KEIM's flagship multi-substrate mineral silicate paint. Highly vapour-permeable; chemically bonds to substrate. Used in restoration + new façade work.",
+    "source": "industry knowledge — KEIM Soldalit published TDS"
+  },
+  {
+    "code": "keim-granital",
+    "name": "KEIM Granital®",
+    "category": "mineral silicate paint",
+    "use": "exterior façade — mineral substrates",
+    "positioning": "KEIM's pure mineral silicate paint for masonry, render, concrete. The historic flagship — 140+ years of installed reference.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "keim-innostar",
+    "name": "KEIM Innostar®",
+    "category": "interior mineral coating",
+    "use": "indoor walls + ceilings",
+    "positioning": "Interior mineral silicate paint. Non-allergenic, breathable, low-VOC, AgBB-certified.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "keim-concretal",
+    "name": "KEIM Concretal®",
+    "category": "concrete-look silicate coating",
+    "use": "decorative concrete-effect coating on render / drywall / concrete",
+    "positioning": "Decorative concrete-look finish in mineral chemistry. Architectural applications, museum-grade durability.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "keim-design-lasur",
+    "name": "KEIM Design-Lasur",
+    "category": "decorative mineral glaze",
+    "use": "interior decorative glazes (lasures) on walls",
+    "positioning": "Translucent decorative mineral glazes for designer wall finishes.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "keim-restoration",
+    "name": "KEIM Restauro line",
+    "category": "restoration silicate paint",
+    "use": "historic building restoration — mineral preservation",
+    "positioning": "KEIM's heritage-restoration line. Used on listed buildings, museums, monuments where chemical-bonding mineral paint is required (rather than acrylic which traps moisture).",
+    "source": "industry knowledge"
+  }
+]

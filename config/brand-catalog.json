@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "purpose": "Aggregated brand catalog for configurator tier schema, brand-profile pages, and comparison articles. Built 2026-05-27 from data/brands/<slug>/ research.",
+    "schema_version": "1.0",
+    "tier_definitions": {
+      "solo": "Default brand spec — what we recommend as primary product. Always shown.",
+      "featured": "Brands with confirmed IL distribution + technical depth. Shown as alternative on every relevant page.",
+      "alternative": "Brands cited as competitive alternatives — shown in comparison context.",
+      "reference": "Brands cited for completeness or historical context — not actively promoted.",
+      "diy-alternative": "Consumer-DIY brands shown only on residential / hobby-scale pages."
+    },
+    "data_sources": "Public manufacturer websites + published TDS PDFs (research-only, not republished). Per-brand source URLs in data/brands/<slug>/sources.md."
+  },
+  "brands": [
+    {
+      "slug": "sika-flooring",
+      "name": "Sika Flooring",
+      "tier": "solo",
+      "hq": "Switzerland (Baar)",
+      "founded": 1910,
+      "il_distribution": "confirmed via Gilar Building Products Ltd. (gilar.co.il)",
+      "primary_segments": ["industrial epoxy SL", "PU-cement HD (PurCem/Ucrete)", "MMA cold-cure (Pronto)", "ESD pharma", "decorative (ComfortFloor/DecoDur)", "concrete repair (Sikadur)", "dry-shake hardener (Hardtop)"],
+      "differentiator": "Default reference brand for all industrial floor systems. Most complete portfolio (post-MBCC absorption 2023 also owns Ucrete/MasterTop technical lines). Strongest IL distribution.",
+      "data_dir": "data/brands/sika-flooring/"
+    },
+    {
+      "slug": "topciment",
+      "name": "Topciment",
+      "tier": "featured",
+      "hq": "Spain (Valencia)",
+      "founded": null,
+      "il_distribution": "unknown — owner to confirm",
+      "primary_segments": ["microcement (Sttandard/Evoluttion/Efectto)", "epoxy microcement (Industtrial)", "decorative metallics (PureMettal/Elitte/ClassicMettal)"],
+      "differentiator": "Technical microcement specialist with three-tier portfolio (2K Sttandard / 1K Evoluttion / ready-to-use Efectto). Full TDS transparency. Most legible decorative microcement brand for engineering specifications. 19 public TDSs available.",
+      "data_dir": "data/brands/topciment/"
+    },
+    {
+      "slug": "mapei-mapefloor",
+      "name": "Mapei Mapefloor",
+      "tier": "featured",
+      "hq": "Italy (Milan)",
+      "founded": 1937,
+      "il_distribution": "unconfirmed but active IL presence — importer name needed",
+      "primary_segments": ["industrial epoxy (Mapefloor I 302 SL)", "PU-cement (CPU/HD)", "PU (PU 410)", "epoxy mortar (I 320)", "repair (Planitop family)", "injection (Epojet/Eporip)"],
+      "differentiator": "Italian-design credibility + Bioblock® silver-ion antimicrobial (the brand-unique differentiator vs Sika in healthcare/food spec).",
+      "data_dir": "data/brands/mapei-mapefloor/"
+    },
+    {
+      "slug": "ideal-work",
+      "name": "Ideal Work",
+      "tier": "featured",
+      "hq": "Italy (Sarmede)",
+      "founded": 2000,
+      "il_distribution": "owner-mentioned Italprotec mapping unconfirmed",
+      "primary_segments": ["microcement (Microtopping®)", "Venetian terrazzo (Lixio®/Lixio®+)", "pebbled outdoor (Sassoitalia®)", "stencil overlay (Stenciltop)", "wall finishes (Ideal Wall)"],
+      "differentiator": "Italian design-led decorative microcement, hospitality/residential consultative selling. The aesthetic-pedigree brand in decorative microcement segment.",
+      "data_dir": "data/brands/ideal-work/"
+    },
+    {
+      "slug": "flowcrete",
+      "name": "Flowcrete (Tremco CPG)",
+      "tier": "featured",
+      "hq": "UK (Cheshire)",
+      "founded": 1982,
+      "il_distribution": "unknown — MENA via flowcrete.ae channel possible",
+      "primary_segments": ["PU-cement (Flowfresh + Polygiene)", "epoxy SL (Flowshield/Peran)", "screed (Isocrete/Flowscreed)", "seamless terrazzo (Mondéco)", "car park deck waterproofing (Deckshield)"],
+      "differentiator": "Polygiene® silver-ion antimicrobial integrated into PU-cement matrix — the key argument when food/pharma specs require antimicrobial. Also UK car park deck waterproofing depth.",
+      "data_dir": "data/brands/flowcrete/"
+    },
+    {
+      "slug": "master-builders",
+      "name": "Master Builders Solutions (MasterTop / Ucrete)",
+      "tier": "reference",
+      "hq": "Germany (Mannheim)",
+      "founded": 2014,
+      "parent_corp": "Sika AG (post-2023 acquisition)",
+      "il_distribution": "presumably via Gilar (same channel as Sika)",
+      "primary_segments": ["industrial epoxy (MasterTop 1235SL)", "Xolutec (premium epoxy)", "MMA polymer concrete (1817PC)", "Ucrete UD200 PU-cement HD"],
+      "differentiator": "Historic industry-reference brand for Ucrete PU-cement. Now structurally a Sika sub-brand; brand recognition still high in legacy specifications.",
+      "data_dir": "data/brands/master-builders/"
+    },
+    {
+      "slug": "stonhard",
+      "name": "Stonhard",
+      "tier": "alternative",
+      "hq": "USA (New Jersey)",
+      "founded": 1922,
+      "parent_corp": "RPM International Inc.",
+      "il_distribution": "unknown — Stonhard's single-source model usually direct international",
+      "primary_segments": ["high-strength (Stonclad)", "textured (Stonshield)", "decorative seamless (Stonblend)", "decorative mortar (Stoncrete/EFX)", "chemical-resistant (Stonchem)", "thin-film (Stonkote)"],
+      "differentiator": "Single-source warranty: same company manufactures + installs + warranties. Unique in industry. Premium pricing justified by warranty consolidation for high-stakes specs.",
+      "data_dir": "data/brands/stonhard/"
+    },
+    {
+      "slug": "altro",
+      "name": "Altro",
+      "tier": "featured",
+      "hq": "UK (Letchworth)",
+      "founded": 1919,
+      "il_distribution": "unknown — likely indirect via specialist FF&E channels",
+      "primary_segments": ["safety vinyl (Stronghold 30 / Classic 25)", "barefoot safety (Aquarius)", "adhesive-free (XpressLay)", "decorative safety (Suprema II / Wood Safety)", "marine (Marine 20)", "transit (Transflor)", "wall cladding (Whiterock)"],
+      "differentiator": "Lifetime PTV warranty — slip-resistance guaranteed for life of product (silicon carbide / aluminum oxide through full thickness). Reference brand for healthcare + commercial kitchens.",
+      "data_dir": "data/brands/altro/"
+    },
+    {
+      "slug": "polyflor",
+      "name": "Polyflor",
+      "tier": "alternative",
+      "hq": "UK (Manchester)",
+      "founded": 1915,
+      "parent_corp": "James Halstead plc",
+      "il_distribution": "unknown — UK export volumes to IL exist",
+      "primary_segments": ["safety vinyl (Polysafe Apex 55 + 12 other Polysafe SKUs)", "wet-area safety (Polysafe Hydro)", "decorative (Expona Flow PUR / Forest fx)", "acoustic (Acoustix)", "LVT (Camaro / Affinity)", "transit (Voyager)"],
+      "differentiator": "Price-competitive Altro alternative. Broader decorative range. Same R10–R12 PTV ratings without Altro's lifetime-warranty premium.",
+      "data_dir": "data/brands/polyflor/"
+    },
+    {
+      "slug": "smartcret",
+      "name": "Smartcret",
+      "tier": "diy-alternative",
+      "hq": "Spain (Valencia)",
+      "founded": null,
+      "il_distribution": "direct-ship only (Shopify Spain-only)",
+      "primary_segments": ["DIY microcement kits (sized per application area)", "DIY tools", "sealers + pool paint"],
+      "differentiator": "Public per-m² pricing reference: €47-48/m² materials-only DIY for wall kits → ~₪185-195/m² IL @ 2026 ILS/EUR. The price-floor citation for any microcement pricing article.",
+      "data_dir": "data/brands/smartcret/"
+    },
+    {
+      "slug": "keim",
+      "name": "KEIM Mineral Coatings",
+      "tier": "reference",
+      "hq": "Germany (Diedorf)",
+      "founded": 1878,
+      "il_distribution": "owner-named partner — specific stockist to be filled",
+      "primary_segments": ["mineral silicate paint (Soldalit / Granital)", "interior mineral (Innostar / Concretal / Design-Lasur)", "restoration (Restauro line)"],
+      "differentiator": "Originator of mineral silicate paint (140+ years). Chemically-bonded coatings vs physical adhesion. Primarily WALL/FACADE specialist — flooring relevance limited to restoration crossover and decorative interior schemes.",
+      "data_dir": "data/brands/keim/",
+      "note": "NOT primarily a flooring brand — included due to owner partner status. Position on FloorDSGN as wall/facade companion for crossover projects, not floor competitor."
+    },
+    {
+      "slug": "beal-mortex",
+      "name": "Mortex (BEAL)",
+      "tier": "blocked",
+      "hq": "Belgium (Beloeil)",
+      "founded": 1962,
+      "il_distribution": "unknown",
+      "primary_segments_industry_knowledge": ["microcement (Mortex 1mm waterproof system)", "decorative wall + floor finishes"],
+      "differentiator": "Belgian originator of décor mortar-based wet-area finish (béton ciré). 1mm waterproof from 1 layer. Reference brand for premium wet bathroom / shower microcement.",
+      "data_dir": "data/brands/ — NOT yet created",
+      "fetch_status": "beal.be port 443 connection refused on 2026-05-27. Retry needed.",
+      "note": "Industry-significant brand but unreachable from this Mac on 2026-05-27. Retry when IP/server reachable."
+    },
+    {
+      "slug": "pavistamp",
+      "name": "Pavistamp",
+      "tier": "blocked",
+      "hq": "Spain",
+      "founded": 1990,
+      "il_distribution": "unknown",
+      "primary_segments_industry_knowledge": ["PAVICEM microcement", "stamped concrete (estampado)"],
+      "differentiator": "Spanish microcement + stamped concrete specialist since 1990.",
+      "data_dir": "data/brands/ — NOT yet created",
+      "fetch_status": "pavistamp.com unresponsive on 2026-05-27. Retry needed.",
+      "note": "Retry when reachable."
+    }
+  ],
+  "segment_index": {
+    "decorative-microcement": ["topciment", "ideal-work", "smartcret", "beal-mortex", "pavistamp"],
+    "industrial-epoxy-SL": ["sika-flooring", "mapei-mapefloor", "master-builders", "flowcrete", "stonhard"],
+    "pu-cement-HD": ["sika-flooring (PurCem)", "master-builders (Ucrete)", "flowcrete (Flowfresh+Polygiene)", "mapei-mapefloor (CPU/HD)"],
+    "safety-vinyl": ["altro", "polyflor"],
+    "decorative-terrazzo": ["sika-flooring (EM-10)", "flowcrete (Mondéco)", "stonhard (Stoncrete)", "ideal-work (Lixio)"],
+    "ESD-pharma": ["sika-flooring (235 ESD / 262 AS)", "stonhard (Stonchem electrostatic)"],
+    "MMA-cold-cure": ["sika-flooring (Pronto)", "master-builders (MasterTop 1817PC)"],
+    "chemical-resistant-lab": ["sika-flooring (-381 Novolac)", "stonhard (Stonchem)", "mapei-mapefloor (specialty epoxies)"],
+    "wall-cladding": ["altro (Whiterock)", "polyflor (Wall Cladding)"],
+    "mineral-wall-coatings": ["keim"]
+  },
+  "il_distribution_status": {
+    "confirmed": ["sika-flooring (Gilar)"],
+    "owner_named_partner": ["keim (specific stockist TBD)"],
+    "active_IL_presence_importer_unknown": ["mapei-mapefloor"],
+    "unconfirmed_action_needed": ["topciment", "ideal-work", "flowcrete", "stonhard", "altro", "polyflor", "master-builders"],
+    "diy_direct_ship_only": ["smartcret"],
+    "blocked_fetch": ["beal-mortex", "pavistamp"]
+  }
+}

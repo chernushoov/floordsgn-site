@@ -1,0 +1,56 @@
+[
+  {
+    "code": "stonclad",
+    "name": "Stonclad",
+    "category": "high-strength industrial resin",
+    "chemistry": "epoxy and urethane",
+    "positioning": "Stonhard's heavy-duty flagship line. Abrasion, impact, and chemical resistant for aggressive spaces. Direct competitor of Sikafloor PurCem HD-class products and MasterTop trowel mortars.",
+    "known_skus_industry": ["Stonclad UT (urethane troweled, food/industrial)", "Stonclad HT (heat resistant)", "Stonclad GS (general service)"],
+    "source": "https://www.stonhard.com/products/stonclad/"
+  },
+  {
+    "code": "stonshield",
+    "name": "Stonshield",
+    "category": "textured epoxy / urethane",
+    "positioning": "Safe, easy-to-clean, durable systems with design flexibility. Slip-resistant broadcast finishes. Used in food prep, kitchens, locker rooms.",
+    "source": "https://www.stonhard.com/products/stonshield/"
+  },
+  {
+    "code": "stonblend",
+    "name": "Stonblend",
+    "category": "decorative seamless",
+    "positioning": "Smooth, stain-resistant decorative seamless flooring. For showroom / retail / commercial spaces requiring aesthetic finish.",
+    "source": "https://www.stonhard.com/products/stonblend/"
+  },
+  {
+    "code": "stoncrete",
+    "name": "Stoncrete",
+    "category": "decorative epoxy mortar / micro-terrazzo",
+    "positioning": "Epoxy-based micro terrazzo-like floor with aggregate options (quartz, recycled glass). Decorative high-traffic system. Competes with Sikafloor EM-10 and Flowcrete Mondéco.",
+    "source": "https://www.stonhard.com/products/stoncrete/"
+  },
+  {
+    "code": "stoncrete-efx",
+    "name": "Stoncrete EFX",
+    "category": "decorative epoxy mortar (premium variant)",
+    "positioning": "Premium decorative aggregate variant of Stoncrete. C-2 Amber / Mirror / NJ Quartz finish options visible in TDS list.",
+    "source": "https://www.stonhard.com/products/stoncrete/efx/",
+    "tds_referenced": ["Stoncrete EFX Product Data", "Stoncrete EFX C-2 Amber SDS", "Stoncrete EFX C-2 Mirror SDS", "Stoncrete EFX C-2 NJ Quartz SDS", "Stoncrete EFX Amine SDS"]
+  },
+  {
+    "code": "stonchem",
+    "name": "Stonchem",
+    "category": "chemical-resistant lining",
+    "positioning": "High-performing resin chemistries for ultra-corrosive environments. The single brand that competes with Sikafloor Novolac epoxy + vinyl-ester. For acid bunds, plating zones, battery rooms.",
+    "known_skus": ["Stonchem 801", "Stonchem 802", "Stonchem 821", "Stonchem 830"],
+    "source": "https://www.stonhard.com/products/stonchem/",
+    "tds_referenced": ["Stonchem 830 Product Data", "Stonchem 801 Product Data", "Stonchem 802 Product Data", "Stonchem 821 Product Data"]
+  },
+  {
+    "code": "stonkote",
+    "name": "Stonkote",
+    "category": "resinous floor coatings",
+    "positioning": "Stonhard's thin-film coatings line. Resinous floor coatings for commercial and industrial protection — competes with Sikafloor-264 topcoat / MultiDur thin-film range.",
+    "source": "https://www.stonhard.com/products/stonkote/"
+  }
+]

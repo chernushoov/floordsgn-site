@@ -1,0 +1,81 @@
+[
+  {
+    "code": "mapefloor-i-302-sl",
+    "name": "Mapefloor I 302 SL",
+    "category": "industrial epoxy self-leveling",
+    "chemistry": "100% solids epoxy",
+    "thickness_mm": "2-3",
+    "positioning": "Mapei's direct competitor to Sikafloor-263 SL and MasterTop 1235SL. Workhorse warehouse / light-industrial SL.",
+    "source": "industry knowledge, Mapei product catalog references"
+  },
+  {
+    "code": "mapefloor-pu-410",
+    "name": "Mapefloor PU 410",
+    "category": "polyurethane flooring",
+    "chemistry": "PU",
+    "positioning": "flexible PU flooring; competes with Sikafloor Monoflex / ComfortFloor PU",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "mapefloor-cpu-hd",
+    "name": "Mapefloor CPU/HD",
+    "category": "polyurethane cement heavy duty",
+    "chemistry": "polyurethane modified cementitious",
+    "thickness_mm": "9-12",
+    "temperature_range": "broadly equivalent to Ucrete/PurCem range",
+    "positioning": "Mapei's PU-cement HD for food / pharma. Direct competitor of Ucrete UD200 and Sikafloor PurCem 22N HD.",
+    "source": "industry knowledge, Mapei flooring catalog references"
+  },
+  {
+    "code": "mapefloor-i-320",
+    "name": "Mapefloor I 320",
+    "category": "trowel-applied epoxy mortar",
+    "chemistry": "epoxy mortar with quartz aggregate",
+    "thickness_mm": "6-12",
+    "positioning": "heavy industrial trowel-applied epoxy mortar; vehicle workshops, dock levellers, forklift bays. Competes with Sikafloor-31 EpoCem mortar, Stonhard Stonclad HT.",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "planitop-400",
+    "name": "Planitop 400",
+    "category": "polymer-modified cementitious repair mortar",
+    "en_1504_class": "R3",
+    "use": "general concrete repair, surface re-profiling, spall repair",
+    "positioning": "Mapei sister product (Planitop family). EN 1504-3 R3 structural repair mortar. Companion to a Mapefloor system on damaged substrates.",
+    "source": "industry knowledge, Mapei Planitop catalog"
+  },
+  {
+    "code": "planitop-hdm",
+    "name": "Planitop HDM",
+    "category": "polymer-modified cementitious repair mortar (high-strength)",
+    "en_1504_class": "R4",
+    "positioning": "high-strength structural repair mortar for heavy load substrates",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "epojet-lv",
+    "name": "Mapei Epojet LV",
+    "category": "low-viscosity crack injection epoxy",
+    "chemistry": "epoxy",
+    "viscosity": "low (penetrates hairline cracks)",
+    "positioning": "Mapei's crack injection epoxy. Direct competitor of Sikadur-52 LP Injection.",
+    "source": "industry knowledge, Mapei Epojet TDS references"
+  },
+  {
+    "code": "eporip",
+    "name": "Mapei Eporip",
+    "category": "crack injection / structural bonding epoxy",
+    "use": "non-shrink fluid epoxy for sealing cracks before applying overlays",
+    "positioning": "frequently specified for sealing cracks in dry concrete before microcement overlays",
+    "source": "industry knowledge"
+  },
+  {
+    "code": "mapefloor-bioblock",
+    "name": "Mapefloor Bioblock® silver-ion antimicrobial additive",
+    "category": "additive / treatment",
+    "chemistry": "silver-ion (Ag+) integrated into the resin matrix",
+    "use": "antimicrobial reduction of MRSA colonisation in hospital corridors / wash zones / food production",
+    "positioning": "Mapei's unique technology — Bioblock is the silver-ion antimicrobial Mapei licenses. Competitors include Polygiene® (used by Flowcrete Flowfresh). Often paired with Sikafloor MultiDur ES-26 SL or other systems in healthcare specs.",
+    "source": "Mapei published Bioblock literature"
+  }
+]
