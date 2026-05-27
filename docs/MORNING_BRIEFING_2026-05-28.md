@@ -8,6 +8,8 @@
 
 **v4 addendum:** Added third use-case page `articles/use-case-hospital-floor-spec.html` — 8-zone hospital floor specification covering ward, OR, lab, pharmacy, kitchen + JCI accreditation framework + ESD compliance for operating theatres. Brings use-case total to 3 (brewery + commercial kitchen + hospital).
 
+**v5 addendum:** Added `articles/how-to-evaluate-a-floor-installer.html` — 8-question procurement guide for vetting IL flooring installers. Covers manufacturer certification, project references, substrate inspection protocol, warranty documentation, insurance coverage, schedule discipline, PU sealer cure handling, payment structure. Pairs with brand profiles + comparisons to complete the buyer-journey content. Brings total to 39 pages.
+
 ---
 
 ## Headline numbers
