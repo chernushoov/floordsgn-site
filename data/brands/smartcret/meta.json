@@ -1,0 +1,23 @@
+{
+  "slug": "smartcret",
+  "name": "Smartcret",
+  "hq": "Valencia, Spain",
+  "founded": null,
+  "official_url": "https://smartcret.com/",
+  "fetched_pages": [
+    "https://smartcret.com/",
+    "https://smartcret.com/collections/kits-microcemento",
+    "https://smartcret.com/pages/microcemento-listo-al-uso",
+    "https://smartcret.com/products/kit-de-microcemento-para-paredes-de-bano-con-juntas-de-16m2",
+    "https://smartcret.com/products/kit-microcemento-mesas-6m2",
+    "https://smartcret.com/products/kit-microcemento-para-paredes-de-cocina-con-juntas-de-8m2",
+    "https://smartcret.com/products/smart-tools-kit-de-herramientas-para-aplicar-microcemento",
+    "https://smartcret.com/products/smart-varnish-repair-barniz-para-hormigon-de-base-agua",
+    "https://smartcret.com/products/smartcover-pool-pintura-piscinas-cemento-hormigon"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": [],
+  "notes_status": "draft",
+  "last_fetched_at": "2026-05-27T18:34:23"
+}

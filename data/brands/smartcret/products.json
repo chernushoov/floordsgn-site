@@ -1,0 +1,65 @@
+[
+  {
+    "code": "kit-bath-walls-16m2",
+    "name": "Kit de microcemento para paredes de baño con juntas 16 m²",
+    "category": "DIY microcement kit — bathroom walls",
+    "coverage_m2": 16,
+    "type": "ready-to-use kit (over existing tile, with joints)",
+    "price_eur": 758.92,
+    "price_per_m2_eur": 47.43,
+    "source_page": "https://smartcret.com/products/kit-de-microcemento-para-paredes-de-bano-con-juntas-de-16m2"
+  },
+  {
+    "code": "kit-bath-walls-8m2",
+    "name": "Kit de microcemento para paredes de baño con juntas 8 m²",
+    "category": "DIY microcement kit — bathroom walls",
+    "coverage_m2": 8,
+    "type": "ready-to-use kit (over existing tile, with joints)",
+    "source_page": "https://smartcret.com/products/kit-de-microcemento-para-paredes-de-bano-con-juntas-de-8m2",
+    "note": "fetch returned 404 in initial crawl, exists on collections page"
+  },
+  {
+    "code": "kit-kitchen-walls-8m2",
+    "name": "Kit microcemento para paredes de cocina con juntas 8 m²",
+    "category": "DIY microcement kit — kitchen walls",
+    "coverage_m2": 8,
+    "type": "ready-to-use kit (over existing tile, with joints)",
+    "price_eur": 385.76,
+    "price_per_m2_eur": 48.22,
+    "source_page": "https://smartcret.com/products/kit-microcemento-para-paredes-de-cocina-con-juntas-de-8m2"
+  },
+  {
+    "code": "kit-tables-6m2",
+    "name": "Kit de microcemento para mesas de 6 m²",
+    "category": "DIY microcement kit — table surfaces",
+    "coverage_m2": 6,
+    "price_eur": 125.49,
+    "price_per_m2_eur": 20.92,
+    "source_page": "https://smartcret.com/products/kit-microcemento-mesas-6m2",
+    "note": "Lower per-m² price reflects simpler-substrate / no-edge-detailing application vs walls"
+  },
+  {
+    "code": "smart-tools",
+    "name": "Smart Tools — application kit",
+    "category": "consumable / tool kit",
+    "type": "trowels, smoothing pads, mixing tools for DIY microcement",
+    "price_eur": 97.33,
+    "source_page": "https://smartcret.com/products/smart-tools-kit-de-herramientas-para-aplicar-microcemento"
+  },
+  {
+    "code": "smart-varnish-repair",
+    "name": "Smart Varnish Repair",
+    "category": "sealer / topcoat",
+    "type": "water-based varnish for concrete",
+    "price_eur": 38.55,
+    "source_page": "https://smartcret.com/products/smart-varnish-repair-barniz-para-hormigon-de-base-agua"
+  },
+  {
+    "code": "smartcover-pool",
+    "name": "Smartcover Pool",
+    "category": "specialty paint",
+    "type": "paint for cement / concrete swimming pools",
+    "price_eur": 33.10,
+    "source_page": "https://smartcret.com/products/smartcover-pool-pintura-piscinas-cemento-hormigon"
+  }
+]

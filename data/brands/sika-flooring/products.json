@@ -1,0 +1,111 @@
+[
+  {
+    "code": "sika-comfortfloor",
+    "name": "Sika ComfortFloor®",
+    "category": "decorative flexible flooring",
+    "chemistry": "polyurethane",
+    "positioning": "seamless flooring where design + functionality + durability combine; designer-led / hospitality / showroom",
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sika-comfortfloor.html",
+    "tds_status": "available via Sika site search by product SKU"
+  },
+  {
+    "code": "sikafloor-decodur",
+    "name": "Sikafloor® DecoDur",
+    "category": "decorative resin flooring",
+    "chemistry": "epoxy + PU topcoat",
+    "positioning": "decorative coatings; smooth or lightly broadcasted surface; matte or gloss sealer options; light-industrial and household chemical resistance",
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-decodur.html",
+    "known_skus_from_other_sika_sources": ["Sikafloor DecoDur EB-Flake (vinyl chip)", "Sikafloor DecoDur Metallic FX"]
+  },
+  {
+    "code": "sikafloor-dry-shake-terrazzo",
+    "name": "Sikafloor® Dry Shake Terrazzo",
+    "category": "dry-shake aggregate terrazzo",
+    "chemistry": "cement + aggregate broadcast",
+    "positioning": "terrazzo finish + concrete floor finishing aid",
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-dry-shake-terrazzo.html"
+  },
+  {
+    "code": "sikafloor-esd",
+    "name": "Sikafloor® ESD",
+    "category": "anti-static / conductive flooring",
+    "chemistry": "epoxy with conductive fillers (carbon-black for dissipative, copper grid for conductive)",
+    "positioning": "IEC 61340-5-1 compliant; ATEX zones, electronics, pharma, explosive-atmosphere areas",
+    "known_skus_from_other_sika_sources": [
+      {"sku": "Sikafloor-235 ESD", "type": "dissipative", "resistance_ohm": "10⁶–10⁹"},
+      {"sku": "Sikafloor-262 AS", "type": "conductive", "resistance_ohm": "≤ 10⁶"}
+    ],
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-esd.html"
+  },
+  {
+    "code": "sikafloor-hardtop",
+    "name": "Sikafloor® Hardtop",
+    "category": "dry-shake floor hardener",
+    "chemistry": "cementitious powder + aggregate broadcast onto fresh concrete",
+    "application": "broadcasted onto fresh concrete before powerfloat; creates a monolithic hard-wearing concrete surface",
+    "positioning": "warehouses, industrial slabs, foot + light-wheeled traffic; lifetime-cheapest industrial floor",
+    "known_skus_from_other_sika_sources": ["Sikafloor-3 QuartzTop"],
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-hardtop.html"
+  },
+  {
+    "code": "sikafloor-monoflex",
+    "name": "Sikafloor® Monoflex",
+    "category": "PU flooring (single-component flexible)",
+    "chemistry": "polyurethane",
+    "positioning": "flexible, durable PU flooring",
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-monoflex.html"
+  },
+  {
+    "code": "sikafloor-multidur",
+    "name": "Sikafloor® Multidur",
+    "category": "industrial epoxy resin flooring",
+    "chemistry": "epoxy",
+    "positioning": "100+ years experience, UK manufacturer of industrial/commercial epoxy resin flooring; arduous environments, seamless, low-maintenance",
+    "known_skus_from_other_sika_sources": [
+      {"sku": "Sikafloor MultiDur EB-24", "type": "heavy SL"},
+      {"sku": "Sikafloor MultiDur EW-24", "type": "chloride-resistant"},
+      {"sku": "Sikafloor MultiDur ES-26", "type": "healthcare SL"}
+    ],
+    "source_page": "https://gbr.sika.com/en/construction/flooring/brands/sikafloor-multidur.html"
+  },
+  {
+    "code": "sikafloor-purcem",
+    "name": "Sika® Ucrete® / Sikafloor® PurCem®",
+    "category": "polyurethane cement HD",
+    "chemistry": "PU-cement (polyurethane modified cementitious)",
+    "positioning": "the food / pharma / heavy-industrial flagship; -40°C to +120°C; HACCP / FSSC 22000 / ISEGA / NSF / FDA / Badatz Kosher certified",
+    "known_skus_from_other_sika_sources": [
+      {"sku": "Sikafloor PurCem 21N", "thickness_mm": 6, "use": "wet kitchen R11"},
+      {"sku": "Sikafloor PurCem 22N HD", "thickness_mm": "9-12", "use": "food production R12, cold storage"},
+      {"sku": "Ucrete UD200", "use": "BASF-equivalent (Sika acquired BASF's construction chemicals 2023)"}
+    ],
+    "source_page_referenced": "https://gbr.sika.com/en/construction/flooring/application-support/sika-ucrete-licensed-applicators-.html",
+    "note": "Sika UK page treats Ucrete as a flagship; licensed-applicator program exists"
+  },
+  {
+    "code": "sikafloor-pronto",
+    "name": "Sikafloor® Pronto",
+    "category": "MMA fast-cure",
+    "chemistry": "methyl methacrylate",
+    "positioning": "cold-cure (-25°C to +5°C); overnight install for hospitals, supermarkets, cold rooms",
+    "known_skus_from_other_sika_sources": [
+      {"sku": "Sikafloor-13 Pronto", "type": "primer"},
+      {"sku": "Sikafloor-24 PurCem Pronto SL", "thickness_mm": 4, "use": "self-leveling main coat"},
+      {"sku": "Sikafloor-53 TC Pronto", "type": "pigmented topcoat"},
+      {"sku": "Sikafloor-61 BC Pronto", "type": "broadcasted layer"}
+    ],
+    "source_referenced": "Sika Pronto family is referenced in Sika literature; product detail pages need direct SKU URL"
+  },
+  {
+    "code": "sikadur-repair-injection",
+    "name": "Sikadur® (repair / injection epoxies)",
+    "category": "concrete repair + crack injection",
+    "chemistry": "epoxy",
+    "known_skus": [
+      {"sku": "Sikadur-31", "use": "semi-rigid joint filler / paste adhesive"},
+      {"sku": "Sikadur-52 LP / Injection", "use": "low-viscosity crack injection epoxy, ~310 mPa·s, structural cracks 0.2 mm+"},
+      {"sku": "SikaFix HH LV", "use": "hydrophobic PU injection for moving cracks / leaks"},
+      {"sku": "Sikafloor EpoCem", "use": "epoxy DPM + moisture/chloride barrier primer"}
+    ]
+  }
+]

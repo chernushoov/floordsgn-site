@@ -1,0 +1,24 @@
+{
+  "slug": "ideal-work",
+  "name": "Ideal Work",
+  "hq": "Sarmede, Italy",
+  "founded": "2000",
+  "official_url": "https://www.idealwork.com/",
+  "fetched_pages": [
+    "https://www.idealwork.com/",
+    "https://www.idealwork.com/microtopping/",
+    "https://www.idealwork.com/microcement/",
+    "https://www.idealwork.com/lixio/",
+    "https://www.idealwork.com/lixio-plus/",
+    "https://www.idealwork.com/sassoitalia-floor/",
+    "https://www.idealwork.com/stenciltop-floor/",
+    "https://www.idealwork.com/ideal-wall/",
+    "https://www.idealwork.com/typoligies/floors/",
+    "https://www.idealwork.com/faq-microcement/"
+  ],
+  "fetched_pdfs": [],
+  "il_distributor": null,
+  "categories": [],
+  "notes_status": "draft",
+  "last_fetched_at": "2026-05-27T18:31:21"
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "code": "microtopping",
+    "name": "Microtopping®",
+    "category": "decorative microcement",
+    "type": "cement-polymer coating",
+    "thickness_mm": "2-4",
+    "layers": "Base Coat (2) + Finish Coat OR Base Coat (2) + HP",
+    "drying_hours_per_coat": "3-4 (at 20°C, 60% RH)",
+    "sealer_wait_hours": "12-18",
+    "walk_on_hours": 48,
+    "full_hardness_days": 7,
+    "colours": 29,
+    "indoor_outdoor": "both",
+    "expansion_joints": false,
+    "source_page": "https://www.idealwork.com/microtopping/",
+    "tds_status": "not publicly downloadable — gated by sales contact"
+  },
+  {
+    "code": "microcement",
+    "name": "Microcement",
+    "category": "decorative microcement",
+    "type": "cement-polymer",
+    "thickness_mm": "2-3",
+    "indoor_outdoor": "both",
+    "source_page": "https://www.idealwork.com/microcement/",
+    "note": "Ideal Work positions this as a separate product from Microtopping®, though specs overlap. May target different finish aesthetics or distribution channels."
+  },
+  {
+    "code": "lixio",
+    "name": "Lixio®",
+    "category": "Venetian terrazzo",
+    "type": "cementitious overlay with aggregate",
+    "source_page": "https://www.idealwork.com/lixio/",
+    "note": "Modern Venetian terrazzo system."
+  },
+  {
+    "code": "lixio-plus",
+    "name": "Lixio®+",
+    "category": "Venetian terrazzo",
+    "type": "cementitious overlay with larger aggregate",
+    "aggregate_mm": "5-12",
+    "source_page": "https://www.idealwork.com/lixio-plus/",
+    "note": "Newer variant of Lixio with larger aggregates (5-12 mm) and updated application technique; slightly increased floor thickness."
+  },
+  {
+    "code": "sassoitalia-floor",
+    "name": "Sassoitalia® Floor",
+    "category": "pebbled aggregate floor",
+    "use_case": "hard landscaping, outdoor pavements",
+    "source_page": "https://www.idealwork.com/sassoitalia-floor/"
+  },
+  {
+    "code": "stenciltop-floor",
+    "name": "Stenciltop Floor",
+    "category": "decorative overlay",
+    "use_case": "renovating and beautifying existing slabs",
+    "source_page": "https://www.idealwork.com/stenciltop-floor/"
+  },
+  {
+    "code": "ideal-wall",
+    "name": "Ideal Wall",
+    "category": "wall finish",
+    "use_case": "high-end decorative vertical finishes",
+    "source_page": "https://www.idealwork.com/ideal-wall/"
+  }
+]
