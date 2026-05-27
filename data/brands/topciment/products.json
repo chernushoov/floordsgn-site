@@ -1,0 +1,362 @@
+[
+  {
+    "label": "Download here the data sheet",
+    "tds_url": "https://www.topciment.com/sheets/STTANDARD_SISTEMA_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-pdf.pdf",
+    "family": [
+      "download-here-the-data-sheet"
+    ],
+    "fields": {
+      "thickness_raw": "Thickness between 1 and 3 mm",
+      "thickness_value": "3",
+      "application_areas": [
+        "commercial",
+        "exterior",
+        "floor",
+        "industrial",
+        "wall"
+      ],
+      "components": "two-component",
+      "layers_raw": "2 \nlayers",
+      "certifications": [
+        "CE",
+        "EN 13813",
+        "EN 13892"
+      ]
+    },
+    "text_first_lines": "TWO-COMPONENT MICROCEMENT\nTwo-component microcement for continuous, thin-layer coatings on floors and walls for\ndecorative finishes."
+  },
+  {
+    "label": "Download here the Acricem technical data sheet",
+    "tds_url": "https://www.topciment.com/sheets/Acricem_en.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-acricem-technical-data-sheet-pdf.pdf",
+    "family": [
+      "Acricem"
+    ],
+    "fields": {
+      "components": "two-component"
+    },
+    "text_first_lines": "ACRICEM\nAcrylic resin (B component)\nAcrylic resin, applicable:"
+  },
+  {
+    "label": "Download here the data sheet of Evoluttion Microbase",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Evoluttion_MicrobaseMN_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-evoluttion-microbase-pdf.pdf",
+    "family": [
+      "Evoluttion"
+    ],
+    "fields": {
+      "thickness_raw": "thickness of the combined layers of 3 mm",
+      "thickness_value": "3",
+      "pot_life_raw": "Pot life is of 1 h",
+      "components": "one-component",
+      "layers_raw": "2 coats",
+      "package_raw": "18 kg bucket",
+      "certifications": [
+        "EN 13892"
+      ],
+      "compressive_strength_raw": "Compressive strength (EN 13892-2): ≥ 42 N/mm"
+    },
+    "text_first_lines": "EVOLUTTION MICROBASE\nMicrocement for surface preparation\nEvoluttion Microbase is a One-component microcement in powder form. Designed\nfor surface preparation before applying finishing microcements Evoluttion Microdeck"
+  },
+  {
+    "label": "Download here the data sheet of\n                                Evoluttion Microfino",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Evoluttion_MicrofinoMN_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-evoluttion-microfino-pdf.pdf",
+    "family": [
+      "Evoluttion"
+    ],
+    "fields": {
+      "thickness_raw": "thickness of \n1 to 3 mm",
+      "thickness_value": "3",
+      "pot_life_raw": "Pot life is of 1 h",
+      "components": "one-component",
+      "layers_raw": "2 coats",
+      "package_raw": "15 kg bucket",
+      "certifications": [
+        "EN 13892"
+      ],
+      "compressive_strength_raw": "Compressive strength (EN 13892-2): ≥ 42 N/mm"
+    },
+    "text_first_lines": "EVOLUTTION MICROBASE\nMicrocement for surface preparation\nEvoluttion Microbase is a One-component microcement in powder form. Designed\nfor surface preparation before applying finishing microcements Evoluttion Microdeck"
+  },
+  {
+    "label": "Download here the data sheet of Evoluttion Microdeck",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Evoluttion_MicrodeckMN_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-evoluttion-microdeck-pdf.pdf",
+    "family": [
+      "Evoluttion"
+    ],
+    "fields": {
+      "thickness_raw": "thickness of the combined layers of 3 mm",
+      "thickness_value": "3",
+      "pot_life_raw": "Pot life is of 1 h",
+      "components": "one-component",
+      "layers_raw": "2 layers",
+      "package_raw": "18 kg bucket",
+      "certifications": [
+        "EN 13892"
+      ],
+      "compressive_strength_raw": "Compressive strength (EN 13892-2): ≥ 40 N/mm"
+    },
+    "text_first_lines": "EVOLUTTION MICRODECK\nMicrocement for surface preparation\nEvoluttion Microdeck is a one-component microcement in powder for decorative coatings.\nIt has been formulated as a thin, seamless overlay to be installed onto floors and walls."
+  },
+  {
+    "label": "Download here the data sheet of Evoluttion Microdeck M",
+    "tds_url": "https://www.topciment.com/sheets/file.php?file=Evoluttion_Microdeck_M_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-evoluttion-microdeck-m-pdf.pdf",
+    "family": [
+      "Evoluttion"
+    ],
+    "fields": {
+      "thickness_raw": "thickness: Between 1 and 3 mm",
+      "thickness_value": "3",
+      "drying_raw": "drying time of 24 hours",
+      "pot_life_raw": "pot-life of the product is 1 h",
+      "application_areas": [
+        "commercial",
+        "floor",
+        "industrial",
+        "residential",
+        "wall"
+      ],
+      "components": "one-component",
+      "layers_raw": "two layers",
+      "certifications": [
+        "CE",
+        "EN 13813",
+        "EN 13892"
+      ]
+    },
+    "text_first_lines": "MICRODECK M\nProduct description\nMonocomponent microcement for continuous low-thickness coatings on floors and"
+  },
+  {
+    "label": "Download the Efectto Quartz Small Grain technical data sheet here",
+    "tds_url": "https://www.topciment.com/sheets/Effecto_Quartz_Small_Grain_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-efectto-quartz-small-grain-technical-data-sheet-here-pdf.pdf",
+    "family": [
+      "Efectto"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "layers_raw": "1 layer",
+      "package_raw": "17 kg package",
+      "certifications": [
+        "CE"
+      ]
+    },
+    "text_first_lines": "Efectto Quartz Small Grain\nReady-to-Use Microcement\nEfectto Quartz Small Grain is a decorative, durable and ready-to-use\ncontinuous coating, specially designed as a finishing layer for interior walls."
+  },
+  {
+    "label": "Download the Efectto Quartz Medium Grain data sheet here",
+    "tds_url": "https://www.topciment.com/sheets/Effecto_Quartz_Medium_Grain_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-efectto-quartz-medium-grain-data-sheet-here-pdf.pdf",
+    "family": [
+      "Efectto"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "layers_raw": "1 layer",
+      "package_raw": "17 kg package",
+      "certifications": [
+        "CE"
+      ]
+    },
+    "text_first_lines": "Efectto Quartz Medium Grain\nReady-to-Use Microcement\nEfectto Quartz MEDIUM GRAIN is a decorative, durable and ready-to-use\ncontinuous coating, specially designed as a finishing layer for indoor floors."
+  },
+  {
+    "label": "Download the Efectto Quartz Big Grain data sheet here.",
+    "tds_url": "https://www.topciment.com/sheets/Effecto_Quartz_Big_Grain_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-efectto-quartz-big-grain-data-sheet-here-pdf.pdf",
+    "family": [
+      "Efectto"
+    ],
+    "fields": {
+      "application_areas": [
+        "floor",
+        "wall"
+      ],
+      "components": "ready-to-use",
+      "layers_raw": "two layers",
+      "package_raw": "17 kg package"
+    },
+    "text_first_lines": "Efectto Quartz Big Grain\nReady-to-Use Microcement\nEfectto Quartz BIG GRAIN is a decorative, durable and ready-to-use continuous\ncoating, specially designed as a preparatory layer for interior walls and floors."
+  },
+  {
+    "label": "Download here the Industtrial XL technical data sheet.",
+    "tds_url": "https://www.topciment.com/sheets/INDUSTTRIAL_XL_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-industtrial-xl-technical-data-sheet-pdf.pdf",
+    "family": [
+      "Industtrial"
+    ],
+    "fields": {
+      "drying_raw": "drying between layers can range from 8-12 hours",
+      "mixing_raw": "mixing ratio is 100 parts of A to 11.6",
+      "components": "two-component",
+      "layers_raw": "1 coat",
+      "certifications": [
+        "CE",
+        "EN 1504",
+        "VOC"
+      ]
+    },
+    "text_first_lines": "Properties\nTechnical Data\nINDUSTTRIAL XL"
+  },
+  {
+    "label": "Download here the Industtrial Base technical data sheet",
+    "tds_url": "https://www.topciment.com/sheets/INDUSTTRIAL_BASE_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-industtrial-base-technical-data-sheet-pdf.pdf",
+    "family": [
+      "Industtrial"
+    ],
+    "fields": {
+      "drying_raw": "drying between layers can range from 8-12 hours",
+      "application_areas": [
+        "industrial"
+      ],
+      "components": "two-component",
+      "layers_raw": "1 coat",
+      "certifications": [
+        "VOC"
+      ]
+    },
+    "text_first_lines": "Uses\nProperties\nTechnical Data"
+  },
+  {
+    "label": "Download here the Industtrial Medio data sheet",
+    "tds_url": "https://www.topciment.com/sheets/INDUSTTRIAL_MEDIO_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-industtrial-medio-data-sheet-pdf.pdf",
+    "family": [
+      "Industtrial"
+    ],
+    "fields": {
+      "drying_raw": "drying between layers can range from 8-12 hours",
+      "mixing_raw": "mixing ratio is 100 parts of A to 11.6",
+      "components": "two-component",
+      "layers_raw": "1 coat",
+      "certifications": [
+        "CE",
+        "EN 1504"
+      ]
+    },
+    "text_first_lines": "Uses\nProperties\nTechnical Data"
+  },
+  {
+    "label": "Download here the Industtrial Liso technical data sheet",
+    "tds_url": "https://www.topciment.com/sheets/INDUSTTRIAL_LISO_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-industtrial-liso-technical-data-sheet-pdf.pdf",
+    "family": [
+      "Industtrial"
+    ],
+    "fields": {
+      "drying_raw": "drying between layers can range from 8-12 hours",
+      "pot_life_raw": "pot life of the mixture \n(component A + component B) is 60 minutes",
+      "mixing_raw": "mixing ratio is 100 parts of A to 11.6",
+      "components": "two-component",
+      "layers_raw": "1 coat"
+    },
+    "text_first_lines": "Uses\nProperties\nTechnical Data"
+  },
+  {
+    "label": "Download here the data sheet of\n                            Pure Mettal",
+    "tds_url": "https://www.topciment.com/en/data-sheets/PureMettal_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-pure-mettal-pdf.pdf",
+    "family": [
+      "Mettal",
+      "Pure"
+    ],
+    "fields": {
+      "consumption_raw": "consumption: 305 g/m2",
+      "consumption_value": "305",
+      "components": "two-component",
+      "layers_raw": "2 coats"
+    },
+    "text_first_lines": "PURE METTAL\nMetallic covering\nPure Mettal is a highly decorative two-component metallic covering. Pure Mettal is\nsuitable for use indoors and outdoors and can be applied to any surface. Pure Mettal"
+  },
+  {
+    "label": "Download here the data sheet of\n                                Elitte Glaze",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Elitte_Glaze_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-elitte-glaze-pdf.pdf",
+    "family": [
+      "Elitte"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "layers_raw": "two coats"
+    },
+    "text_first_lines": "ARCOCEM\nGLITTER\nElitte Glitter is a range of pigments in aqueous dispersion for applying glazes with\nmetallic reflections in different finishes:"
+  },
+  {
+    "label": "Download here the data sheet of\n                                Elitte Glaze",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Elitte_Glitter_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-elitte-glaze-pdf.pdf",
+    "family": [
+      "Elitte"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "layers_raw": "two coats"
+    },
+    "text_first_lines": "ARCOCEM\nGLITTER\nElitte Glitter is a range of pigments in aqueous dispersion for applying glazes with\nmetallic reflections in different finishes:"
+  },
+  {
+    "label": "Download here the data sheet of\n                            Classic Mettal",
+    "tds_url": "https://www.topciment.com/en/data-sheets/Classic_Mettal_EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-here-the-data-sheet-of-classic-mettal-pdf.pdf",
+    "family": [
+      "Mettal"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "layers_raw": "two coats",
+      "package_raw": "1 Kg cont"
+    },
+    "text_first_lines": "Properties\nConsumption\nApplication"
+  },
+  {
+    "label": "Download the technical data sheet for Primapox® 100 Fluid here",
+    "tds_url": "https://www.topciment.com/sheets/file.php?file=Primapox_100_Fluid_en.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-technical-data-sheet-for-primapox-100-fluid-here-pdf.pdf",
+    "family": [
+      "download-the-technical-data-sheet-for-primapox-100-fluid-here"
+    ],
+    "fields": {
+      "pot_life_raw": "Pot-life (23ºC): 20 ± 5 minutes",
+      "mixing_raw": "Mixing Ratio: 62(A) : 38(B)\n•  Mix Density: 1.08",
+      "components": "two-component",
+      "layers_raw": "two coats",
+      "hardness_raw": "Shore D Hardness at 7"
+    },
+    "text_first_lines": "PRIMAPOX® 100 FLUID\n100% Solids Two-Component Epoxy Primer\nPRIMAPOX® 100 FLUID from Topciment® is a 100% solids epoxy primer\nwith very low viscosity designed for use on porous, mineral, concrete, etc.,"
+  },
+  {
+    "label": "Download the Primacem® Fix data sheet here",
+    "tds_url": "https://www.topciment.com/sheets/Primacem-EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-primacem-fix-data-sheet-here-pdf.pdf",
+    "family": [
+      "Primacem"
+    ],
+    "fields": {
+      "application_areas": [
+        "exterior"
+      ]
+    },
+    "text_first_lines": "Propiedades\nRendimiento\nDatos técnicos"
+  },
+  {
+    "label": "Download the Primacem® Plus technical data sheet here",
+    "tds_url": "https://www.topciment.com/sheets/file.php?file=PrimacemPLUS-EN.pdf",
+    "tds_local": "data/brands/topciment/tds/download-the-primacem-plus-technical-data-sheet-here-pdf.pdf",
+    "family": [
+      "Primacem"
+    ],
+    "fields": {
+      "components": "ready-to-use",
+      "package_raw": "5 L cont",
+      "certifications": [
+        "VOC"
+      ]
+    },
+    "text_first_lines": "PRIMACEM® PLUS\nPrimer for non-absorbent surfaces\nUses"
+  }
+]

@@ -59,3 +59,9 @@ competitor-monitor/
 
 # Raw source photos from Samsung drive (web-optimized copies live in assets/portfolio/)
 assets/real-portfolio/
+
+# --- Brand research archive (third-party content, kept on disk for our research only, never republished) ---
+# We commit only our derived analysis (meta.json, products.json, notes.md, sources.md, pages.json, pdfs.json).
+# Raw HTML caches and downloaded TDS PDFs stay local — they are third-party copyrighted material.
+data/brands/*/_raw_*.html
+data/brands/*/tds/
