@@ -1,0 +1,1669 @@
+{
+  "timestamp": "2026-05-27T10:43:53.566Z",
+  "elapsedSec": "129.7",
+  "results": [
+    {
+      "material": "terrazzo-cement",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9659,
+      "similarityVsBase": 0.9659,
+      "meanColor": {
+        "r": 195,
+        "g": 188,
+        "b": 171,
+        "samples": 4456
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-color-ral-7032.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9925,
+      "similarityVsBase": 0.9613,
+      "meanColor": {
+        "r": 192,
+        "g": 183,
+        "b": 167,
+        "samples": 4456
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-color-ral-3013.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "aggregates",
+      "optionId": "marble-white",
+      "optionName": "Белый мрамор",
+      "optionHex": null,
+      "similarityVsPrev": 0.9591,
+      "similarityVsBase": 0.9591,
+      "meanColor": {
+        "r": 192,
+        "g": 183,
+        "b": 167,
+        "samples": 4459
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-aggregates-marble-white.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "aggregates",
+      "optionId": "mirror",
+      "optionName": "Зеркало",
+      "optionHex": null,
+      "similarityVsPrev": 0.9306,
+      "similarityVsBase": 0.9179,
+      "meanColor": {
+        "r": 169,
+        "g": 167,
+        "b": 167,
+        "samples": 4464
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-aggregates-mirror.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "stripes",
+      "optionId": "none",
+      "optionName": "Без полос",
+      "optionHex": null,
+      "similarityVsPrev": 0.9134,
+      "similarityVsBase": 0.9134,
+      "meanColor": {
+        "r": 175,
+        "g": 173,
+        "b": 173,
+        "samples": 4462
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-stripes-none.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "stripes",
+      "optionId": "black",
+      "optionName": "Чёрные",
+      "optionHex": null,
+      "similarityVsPrev": 0.926,
+      "similarityVsBase": 0.9166,
+      "meanColor": {
+        "r": 179,
+        "g": 177,
+        "b": 177,
+        "samples": 4451
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-stripes-black.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9134,
+      "similarityVsBase": 0.9134,
+      "meanColor": {
+        "r": 181,
+        "g": 179,
+        "b": 179,
+        "samples": 4439
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-finish-matte.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9249,
+      "similarityVsBase": 0.9097,
+      "meanColor": {
+        "r": 175,
+        "g": 173,
+        "b": 172,
+        "samples": 4439
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-finish-polished.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9133,
+      "similarityVsBase": 0.9133,
+      "meanColor": {
+        "r": 170,
+        "g": 168,
+        "b": 168,
+        "samples": 4433
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-gloss-low.png"
+    },
+    {
+      "material": "terrazzo-cement",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9259,
+      "similarityVsBase": 0.9148,
+      "meanColor": {
+        "r": 165,
+        "g": 163,
+        "b": 162,
+        "samples": 4436
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-cement-gloss-high.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9923,
+      "similarityVsBase": 0.9923,
+      "meanColor": {
+        "r": 197,
+        "g": 191,
+        "b": 175,
+        "samples": 4502
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-color-ral-7032.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9977,
+      "similarityVsBase": 0.9932,
+      "meanColor": {
+        "r": 199,
+        "g": 191,
+        "b": 177,
+        "samples": 4502
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-color-ral-3013.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "aggregates",
+      "optionId": "marble-white",
+      "optionName": "Белый мрамор",
+      "optionHex": null,
+      "similarityVsPrev": 0.9937,
+      "similarityVsBase": 0.9937,
+      "meanColor": {
+        "r": 198,
+        "g": 190,
+        "b": 175,
+        "samples": 4519
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-aggregates-marble-white.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "aggregates",
+      "optionId": "mirror",
+      "optionName": "Зеркало",
+      "optionHex": null,
+      "similarityVsPrev": 0.9126,
+      "similarityVsBase": 0.9115,
+      "meanColor": {
+        "r": 165,
+        "g": 163,
+        "b": 162,
+        "samples": 4520
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-aggregates-mirror.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "flecks",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.9019,
+      "similarityVsBase": 0.9019,
+      "meanColor": {
+        "r": 162,
+        "g": 160,
+        "b": 159,
+        "samples": 4520
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-flecks-none.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "flecks",
+      "optionId": "metallic",
+      "optionName": "Металлики",
+      "optionHex": null,
+      "similarityVsPrev": 0.915,
+      "similarityVsBase": 0.9034,
+      "meanColor": {
+        "r": 169,
+        "g": 167,
+        "b": 166,
+        "samples": 4515
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-flecks-metallic.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "stripes",
+      "optionId": "none",
+      "optionName": "Без полос",
+      "optionHex": null,
+      "similarityVsPrev": 0.9044,
+      "similarityVsBase": 0.9044,
+      "meanColor": {
+        "r": 175,
+        "g": 173,
+        "b": 172,
+        "samples": 4505
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-stripes-none.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "stripes",
+      "optionId": "black",
+      "optionName": "Чёрные",
+      "optionHex": null,
+      "similarityVsPrev": 0.9154,
+      "similarityVsBase": 0.9171,
+      "meanColor": {
+        "r": 187,
+        "g": 186,
+        "b": 185,
+        "samples": 4502
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-stripes-black.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9238,
+      "similarityVsBase": 0.9238,
+      "meanColor": {
+        "r": 189,
+        "g": 188,
+        "b": 187,
+        "samples": 4496
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-finish-matte.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9281,
+      "similarityVsBase": 0.9268,
+      "meanColor": {
+        "r": 184,
+        "g": 182,
+        "b": 181,
+        "samples": 4503
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-finish-polished.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9419,
+      "similarityVsBase": 0.9419,
+      "meanColor": {
+        "r": 178,
+        "g": 177,
+        "b": 176,
+        "samples": 4509
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-gloss-low.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9254,
+      "similarityVsBase": 0.9212,
+      "meanColor": {
+        "r": 172,
+        "g": 170,
+        "b": 169,
+        "samples": 4526
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-gloss-high.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "view:solid",
+      "optionId": "solid",
+      "optionName": "solid",
+      "similarityVsBase": 0.9114,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-view-solid.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "view:layers",
+      "optionId": "layers",
+      "optionName": "layers",
+      "similarityVsBase": 0.8796,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-view-layers.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "view:top",
+      "optionId": "top",
+      "optionName": "top",
+      "similarityVsBase": 0.9081,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-view-top.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "view:reset",
+      "optionId": "reset",
+      "optionName": "reset",
+      "similarityVsBase": 0.9168,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-view-reset.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9906,
+      "similarityVsBase": 0.9906,
+      "meanColor": {
+        "r": 214,
+        "g": 212,
+        "b": 209,
+        "samples": 4412
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-color-ral-7032.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9991,
+      "similarityVsBase": 0.9913,
+      "meanColor": {
+        "r": 215,
+        "g": 212,
+        "b": 210,
+        "samples": 4412
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-color-ral-3013.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "stripes",
+      "optionId": "none",
+      "optionName": "Без полос",
+      "optionHex": null,
+      "similarityVsPrev": 0.9948,
+      "similarityVsBase": 0.9948,
+      "meanColor": {
+        "r": 218,
+        "g": 215,
+        "b": 213,
+        "samples": 4422
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-stripes-none.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "stripes",
+      "optionId": "black",
+      "optionName": "Чёрные",
+      "optionHex": null,
+      "similarityVsPrev": 0.9827,
+      "similarityVsBase": 0.9835,
+      "meanColor": {
+        "r": 218,
+        "g": 215,
+        "b": 213,
+        "samples": 4424
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-stripes-black.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9736,
+      "similarityVsBase": 0.9736,
+      "meanColor": {
+        "r": 218,
+        "g": 216,
+        "b": 214,
+        "samples": 4425
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-finish-matte.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9747,
+      "similarityVsBase": 0.9686,
+      "meanColor": {
+        "r": 216,
+        "g": 214,
+        "b": 211,
+        "samples": 4422
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-finish-polished.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9677,
+      "similarityVsBase": 0.9677,
+      "meanColor": {
+        "r": 216,
+        "g": 213,
+        "b": 211,
+        "samples": 4411
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-gloss-low.png"
+    },
+    {
+      "material": "microtopping",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9784,
+      "similarityVsBase": 0.9656,
+      "meanColor": {
+        "r": 215,
+        "g": 211,
+        "b": 209,
+        "samples": 4406
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/microtopping-gloss-high.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9962,
+      "similarityVsBase": 0.9962,
+      "meanColor": {
+        "r": 214,
+        "g": 211,
+        "b": 206,
+        "samples": 4406
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-color-ral-7032.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9961,
+      "similarityVsBase": 0.9989,
+      "meanColor": {
+        "r": 217,
+        "g": 213,
+        "b": 208,
+        "samples": 4406
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-color-ral-3013.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "stripes",
+      "optionId": "none",
+      "optionName": "Без полос",
+      "optionHex": null,
+      "similarityVsPrev": 0.9963,
+      "similarityVsBase": 0.9963,
+      "meanColor": {
+        "r": 218,
+        "g": 214,
+        "b": 210,
+        "samples": 4424
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-stripes-none.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "stripes",
+      "optionId": "black",
+      "optionName": "Чёрные",
+      "optionHex": null,
+      "similarityVsPrev": 0.9896,
+      "similarityVsBase": 0.9894,
+      "meanColor": {
+        "r": 217,
+        "g": 213,
+        "b": 209,
+        "samples": 4425
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-stripes-black.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9805,
+      "similarityVsBase": 0.9805,
+      "meanColor": {
+        "r": 215,
+        "g": 211,
+        "b": 206,
+        "samples": 4425
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-finish-matte.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9776,
+      "similarityVsBase": 0.9675,
+      "meanColor": {
+        "r": 211,
+        "g": 206,
+        "b": 201,
+        "samples": 4387
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-finish-polished.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9654,
+      "similarityVsBase": 0.9654,
+      "meanColor": {
+        "r": 209,
+        "g": 204,
+        "b": 199,
+        "samples": 4412
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-gloss-low.png"
+    },
+    {
+      "material": "decorative-concrete",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9767,
+      "similarityVsBase": 0.9648,
+      "meanColor": {
+        "r": 209,
+        "g": 204,
+        "b": 199,
+        "samples": 4406
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/decorative-concrete-gloss-high.png"
+    },
+    {
+      "material": "parquet",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9986,
+      "similarityVsBase": 0.9986,
+      "meanColor": {
+        "r": 193,
+        "g": 172,
+        "b": 150,
+        "samples": 4378
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-color-ral-7032.png"
+    },
+    {
+      "material": "parquet",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9982,
+      "similarityVsBase": 0.9993,
+      "meanColor": {
+        "r": 192,
+        "g": 170,
+        "b": 149,
+        "samples": 4378
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-color-ral-3013.png"
+    },
+    {
+      "material": "parquet",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9936,
+      "similarityVsBase": 0.9936,
+      "meanColor": {
+        "r": 190,
+        "g": 167,
+        "b": 146,
+        "samples": 4394
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-finish-matte.png"
+    },
+    {
+      "material": "parquet",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9757,
+      "similarityVsBase": 0.9719,
+      "meanColor": {
+        "r": 183,
+        "g": 159,
+        "b": 137,
+        "samples": 4397
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-finish-polished.png"
+    },
+    {
+      "material": "parquet",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.961,
+      "similarityVsBase": 0.961,
+      "meanColor": {
+        "r": 183,
+        "g": 160,
+        "b": 140,
+        "samples": 4397
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-gloss-low.png"
+    },
+    {
+      "material": "parquet",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9739,
+      "similarityVsBase": 0.9524,
+      "meanColor": {
+        "r": 185,
+        "g": 161,
+        "b": 140,
+        "samples": 4392
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/parquet-gloss-high.png"
+    },
+    {
+      "material": "mma",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9979,
+      "similarityVsBase": 0.9979,
+      "meanColor": {
+        "r": 178,
+        "g": 169,
+        "b": 156,
+        "samples": 4473
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-color-ral-7032.png"
+    },
+    {
+      "material": "mma",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9987,
+      "similarityVsBase": 0.9971,
+      "meanColor": {
+        "r": 178,
+        "g": 168,
+        "b": 156,
+        "samples": 4473
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-color-ral-3013.png"
+    },
+    {
+      "material": "mma",
+      "control": "flecks",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.9904,
+      "similarityVsBase": 0.9904,
+      "meanColor": {
+        "r": 175,
+        "g": 165,
+        "b": 153,
+        "samples": 4476
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-flecks-none.png"
+    },
+    {
+      "material": "mma",
+      "control": "flecks",
+      "optionId": "metallic",
+      "optionName": "Металлики",
+      "optionHex": null,
+      "similarityVsPrev": 0.9769,
+      "similarityVsBase": 0.9706,
+      "meanColor": {
+        "r": 173,
+        "g": 164,
+        "b": 153,
+        "samples": 4478
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-flecks-metallic.png"
+    },
+    {
+      "material": "mma",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9532,
+      "similarityVsBase": 0.9532,
+      "meanColor": {
+        "r": 172,
+        "g": 162,
+        "b": 152,
+        "samples": 4478
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-finish-matte.png"
+    },
+    {
+      "material": "mma",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9667,
+      "similarityVsBase": 0.9433,
+      "meanColor": {
+        "r": 170,
+        "g": 161,
+        "b": 150,
+        "samples": 4477
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-finish-polished.png"
+    },
+    {
+      "material": "mma",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9498,
+      "similarityVsBase": 0.9498,
+      "meanColor": {
+        "r": 172,
+        "g": 162,
+        "b": 151,
+        "samples": 4467
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-gloss-low.png"
+    },
+    {
+      "material": "mma",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9734,
+      "similarityVsBase": 0.955,
+      "meanColor": {
+        "r": 173,
+        "g": 162,
+        "b": 150,
+        "samples": 4456
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-gloss-high.png"
+    },
+    {
+      "material": "mma",
+      "control": "marking",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.9613,
+      "similarityVsBase": 0.9613,
+      "meanColor": {
+        "r": 174,
+        "g": 163,
+        "b": 150,
+        "samples": 4449
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-marking-none.png"
+    },
+    {
+      "material": "mma",
+      "control": "marking",
+      "optionId": "red",
+      "optionName": "Красная",
+      "optionHex": null,
+      "similarityVsPrev": 0.974,
+      "similarityVsBase": 0.9674,
+      "meanColor": {
+        "r": 174,
+        "g": 161,
+        "b": 148,
+        "samples": 4450
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/mma-marking-red.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9925,
+      "similarityVsBase": 0.9925,
+      "meanColor": {
+        "r": 168,
+        "g": 160,
+        "b": 148,
+        "samples": 4379
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-color-ral-7032.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9989,
+      "similarityVsBase": 0.9935,
+      "meanColor": {
+        "r": 168,
+        "g": 159,
+        "b": 148,
+        "samples": 4379
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-color-ral-3013.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9872,
+      "similarityVsBase": 0.9872,
+      "meanColor": {
+        "r": 172,
+        "g": 162,
+        "b": 151,
+        "samples": 4395
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-finish-matte.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.981,
+      "similarityVsBase": 0.9751,
+      "meanColor": {
+        "r": 174,
+        "g": 164,
+        "b": 152,
+        "samples": 4397
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-finish-polished.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "marking",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.9586,
+      "similarityVsBase": 0.9586,
+      "meanColor": {
+        "r": 178,
+        "g": 168,
+        "b": 156,
+        "samples": 4397
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-marking-none.png"
+    },
+    {
+      "material": "pu-cement",
+      "control": "marking",
+      "optionId": "red",
+      "optionName": "Красная",
+      "optionHex": null,
+      "similarityVsPrev": 0.9725,
+      "similarityVsBase": 0.9499,
+      "meanColor": {
+        "r": 180,
+        "g": 168,
+        "b": 157,
+        "samples": 4393
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/pu-cement-marking-red.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.978,
+      "similarityVsBase": 0.978,
+      "meanColor": {
+        "r": 163,
+        "g": 156,
+        "b": 148,
+        "samples": 4484
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-color-ral-7032.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9963,
+      "similarityVsBase": 0.9816,
+      "meanColor": {
+        "r": 162,
+        "g": 154,
+        "b": 146,
+        "samples": 4484
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-color-ral-3013.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "flecks",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.9743,
+      "similarityVsBase": 0.9743,
+      "meanColor": {
+        "r": 165,
+        "g": 156,
+        "b": 149,
+        "samples": 4496
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-flecks-none.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "flecks",
+      "optionId": "metallic",
+      "optionName": "Металлики",
+      "optionHex": null,
+      "similarityVsPrev": 0.9708,
+      "similarityVsBase": 0.9463,
+      "meanColor": {
+        "r": 170,
+        "g": 161,
+        "b": 153,
+        "samples": 4497
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-flecks-metallic.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "stripes",
+      "optionId": "none",
+      "optionName": "Без полос",
+      "optionHex": null,
+      "similarityVsPrev": 0.9286,
+      "similarityVsBase": 0.9286,
+      "meanColor": {
+        "r": 170,
+        "g": 161,
+        "b": 152,
+        "samples": 4496
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-stripes-none.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "stripes",
+      "optionId": "black",
+      "optionName": "Чёрные",
+      "optionHex": null,
+      "similarityVsPrev": 0.9734,
+      "similarityVsBase": 0.9237,
+      "meanColor": {
+        "r": 164,
+        "g": 155,
+        "b": 146,
+        "samples": 4492
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-stripes-black.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9215,
+      "similarityVsBase": 0.9215,
+      "meanColor": {
+        "r": 162,
+        "g": 153,
+        "b": 145,
+        "samples": 4483
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-finish-matte.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9646,
+      "similarityVsBase": 0.9349,
+      "meanColor": {
+        "r": 155,
+        "g": 146,
+        "b": 137,
+        "samples": 4478
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-finish-polished.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "gloss",
+      "optionId": "low",
+      "optionName": "Низкий",
+      "optionHex": null,
+      "similarityVsPrev": 0.938,
+      "similarityVsBase": 0.938,
+      "meanColor": {
+        "r": 160,
+        "g": 152,
+        "b": 145,
+        "samples": 4478
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-gloss-low.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "gloss",
+      "optionId": "high",
+      "optionName": "Высокий",
+      "optionHex": null,
+      "similarityVsPrev": 0.9708,
+      "similarityVsBase": 0.951,
+      "meanColor": {
+        "r": 164,
+        "g": 156,
+        "b": 148,
+        "samples": 4478
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-gloss-high.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "marking",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.963,
+      "similarityVsBase": 0.963,
+      "meanColor": {
+        "r": 170,
+        "g": 161,
+        "b": 154,
+        "samples": 4484
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-marking-none.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "marking",
+      "optionId": "red",
+      "optionName": "Красная",
+      "optionHex": null,
+      "similarityVsPrev": 0.969,
+      "similarityVsBase": 0.9377,
+      "meanColor": {
+        "r": 173,
+        "g": 163,
+        "b": 155,
+        "samples": 4496
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/epoxy-marking-red.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "view:solid",
+      "optionId": "solid",
+      "optionName": "solid",
+      "similarityVsBase": 0.9214,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/epoxy-view-solid.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "view:layers",
+      "optionId": "layers",
+      "optionName": "layers",
+      "similarityVsBase": 0.8742,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/epoxy-view-layers.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "view:top",
+      "optionId": "top",
+      "optionName": "top",
+      "similarityVsBase": 0.9304,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/epoxy-view-top.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "view:reset",
+      "optionId": "reset",
+      "optionName": "reset",
+      "similarityVsBase": 0.9405,
+      "visibleChange": "yes",
+      "screenshot": "_screens/configurator-audit/epoxy-view-reset.png"
+    },
+    {
+      "material": "rubber",
+      "control": "color",
+      "optionId": "ral-7032",
+      "optionName": "Кварцевый",
+      "optionHex": "#b8b1a0",
+      "similarityVsPrev": 0.9913,
+      "similarityVsBase": 0.9913,
+      "meanColor": {
+        "r": 175,
+        "g": 171,
+        "b": 167,
+        "samples": 4388
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-color-ral-7032.png"
+    },
+    {
+      "material": "rubber",
+      "control": "color",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "optionHex": "#943f37",
+      "similarityVsPrev": 0.9953,
+      "similarityVsBase": 0.9867,
+      "meanColor": {
+        "r": 173,
+        "g": 168,
+        "b": 164,
+        "samples": 4388
+      },
+      "visibleChange": "no",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-color-ral-3013.png"
+    },
+    {
+      "material": "rubber",
+      "control": "finish",
+      "optionId": "matte",
+      "optionName": "Матовый",
+      "optionHex": null,
+      "similarityVsPrev": 0.9791,
+      "similarityVsBase": 0.9791,
+      "meanColor": {
+        "r": 169,
+        "g": 163,
+        "b": 160,
+        "samples": 4394
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-finish-matte.png"
+    },
+    {
+      "material": "rubber",
+      "control": "finish",
+      "optionId": "polished",
+      "optionName": "Полированный",
+      "optionHex": null,
+      "similarityVsPrev": 0.9722,
+      "similarityVsBase": 0.9594,
+      "meanColor": {
+        "r": 164,
+        "g": 158,
+        "b": 154,
+        "samples": 4397
+      },
+      "visibleChange": "subtle",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-finish-polished.png"
+    },
+    {
+      "material": "rubber",
+      "control": "marking",
+      "optionId": "none",
+      "optionName": "Нет",
+      "optionHex": null,
+      "similarityVsPrev": 0.948,
+      "similarityVsBase": 0.948,
+      "meanColor": {
+        "r": 164,
+        "g": 158,
+        "b": 154,
+        "samples": 4391
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-marking-none.png"
+    },
+    {
+      "material": "rubber",
+      "control": "marking",
+      "optionId": "red",
+      "optionName": "Красная",
+      "optionHex": null,
+      "similarityVsPrev": 0.9651,
+      "similarityVsBase": 0.9436,
+      "meanColor": {
+        "r": 166,
+        "g": 158,
+        "b": 154,
+        "samples": 4383
+      },
+      "visibleChange": "yes",
+      "specChanged": false,
+      "screenshot": "_screens/configurator-audit/rubber-marking-red.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "color-burgundy-check",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "similarityVsBase": 0.9711,
+      "meanColor": {
+        "r": 168,
+        "g": 159,
+        "b": 151,
+        "samples": 4484
+      },
+      "expectedHex": "#943f37",
+      "visibleChange": "subtle",
+      "screenshot": "_screens/configurator-audit/epoxy-color-burgundy.png"
+    },
+    {
+      "material": "epoxy",
+      "control": "color-anthracite-check",
+      "optionId": "ral-7016",
+      "optionName": "Антрацит",
+      "similarityVsBase": 0.9781,
+      "meanColor": {
+        "r": 163,
+        "g": 156,
+        "b": 148,
+        "samples": 4495
+      },
+      "expectedHex": "#293133",
+      "visibleChange": "subtle",
+      "screenshot": "_screens/configurator-audit/epoxy-color-anthracite.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "color-burgundy-check",
+      "optionId": "ral-3013",
+      "optionName": "Бордо",
+      "similarityVsBase": 0.99,
+      "meanColor": {
+        "r": 194,
+        "g": 186,
+        "b": 172,
+        "samples": 4515
+      },
+      "expectedHex": "#943f37",
+      "visibleChange": "subtle",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-color-burgundy.png"
+    },
+    {
+      "material": "terrazzo-epoxy",
+      "control": "color-anthracite-check",
+      "optionId": "ral-7016",
+      "optionName": "Антрацит",
+      "similarityVsBase": 0.997,
+      "meanColor": {
+        "r": 196,
+        "g": 191,
+        "b": 176,
+        "samples": 4516
+      },
+      "expectedHex": "#293133",
+      "visibleChange": "subtle",
+      "screenshot": "_screens/configurator-audit/terrazzo-epoxy-color-anthracite.png"
+    }
+  ],
+  "errors": [
+    {
+      "type": "console.error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "screenshots": [
+    "_screens/configurator-audit/terrazzo-cement-00-base.png",
+    "_screens/configurator-audit/terrazzo-cement-color-ral-7032.png",
+    "_screens/configurator-audit/terrazzo-cement-color-ral-3013.png",
+    "_screens/configurator-audit/terrazzo-cement-aggregates-marble-white.png",
+    "_screens/configurator-audit/terrazzo-cement-aggregates-mirror.png",
+    "_screens/configurator-audit/terrazzo-cement-stripes-none.png",
+    "_screens/configurator-audit/terrazzo-cement-stripes-black.png",
+    "_screens/configurator-audit/terrazzo-cement-finish-matte.png",
+    "_screens/configurator-audit/terrazzo-cement-finish-polished.png",
+    "_screens/configurator-audit/terrazzo-cement-gloss-low.png",
+    "_screens/configurator-audit/terrazzo-cement-gloss-high.png",
+    "_screens/configurator-audit/terrazzo-epoxy-00-base.png",
+    "_screens/configurator-audit/terrazzo-epoxy-color-ral-7032.png",
+    "_screens/configurator-audit/terrazzo-epoxy-color-ral-3013.png",
+    "_screens/configurator-audit/terrazzo-epoxy-aggregates-marble-white.png",
+    "_screens/configurator-audit/terrazzo-epoxy-aggregates-mirror.png",
+    "_screens/configurator-audit/terrazzo-epoxy-flecks-none.png",
+    "_screens/configurator-audit/terrazzo-epoxy-flecks-metallic.png",
+    "_screens/configurator-audit/terrazzo-epoxy-stripes-none.png",
+    "_screens/configurator-audit/terrazzo-epoxy-stripes-black.png",
+    "_screens/configurator-audit/terrazzo-epoxy-finish-matte.png",
+    "_screens/configurator-audit/terrazzo-epoxy-finish-polished.png",
+    "_screens/configurator-audit/terrazzo-epoxy-gloss-low.png",
+    "_screens/configurator-audit/terrazzo-epoxy-gloss-high.png",
+    "_screens/configurator-audit/terrazzo-epoxy-view-solid.png",
+    "_screens/configurator-audit/terrazzo-epoxy-view-layers.png",
+    "_screens/configurator-audit/terrazzo-epoxy-view-top.png",
+    "_screens/configurator-audit/terrazzo-epoxy-view-reset.png",
+    "_screens/configurator-audit/microtopping-00-base.png",
+    "_screens/configurator-audit/microtopping-color-ral-7032.png",
+    "_screens/configurator-audit/microtopping-color-ral-3013.png",
+    "_screens/configurator-audit/microtopping-stripes-none.png",
+    "_screens/configurator-audit/microtopping-stripes-black.png",
+    "_screens/configurator-audit/microtopping-finish-matte.png",
+    "_screens/configurator-audit/microtopping-finish-polished.png",
+    "_screens/configurator-audit/microtopping-gloss-low.png",
+    "_screens/configurator-audit/microtopping-gloss-high.png",
+    "_screens/configurator-audit/decorative-concrete-00-base.png",
+    "_screens/configurator-audit/decorative-concrete-color-ral-7032.png",
+    "_screens/configurator-audit/decorative-concrete-color-ral-3013.png",
+    "_screens/configurator-audit/decorative-concrete-stripes-none.png",
+    "_screens/configurator-audit/decorative-concrete-stripes-black.png",
+    "_screens/configurator-audit/decorative-concrete-finish-matte.png",
+    "_screens/configurator-audit/decorative-concrete-finish-polished.png",
+    "_screens/configurator-audit/decorative-concrete-gloss-low.png",
+    "_screens/configurator-audit/decorative-concrete-gloss-high.png",
+    "_screens/configurator-audit/parquet-00-base.png",
+    "_screens/configurator-audit/parquet-color-ral-7032.png",
+    "_screens/configurator-audit/parquet-color-ral-3013.png",
+    "_screens/configurator-audit/parquet-finish-matte.png",
+    "_screens/configurator-audit/parquet-finish-polished.png",
+    "_screens/configurator-audit/parquet-gloss-low.png",
+    "_screens/configurator-audit/parquet-gloss-high.png",
+    "_screens/configurator-audit/mma-00-base.png",
+    "_screens/configurator-audit/mma-color-ral-7032.png",
+    "_screens/configurator-audit/mma-color-ral-3013.png",
+    "_screens/configurator-audit/mma-flecks-none.png",
+    "_screens/configurator-audit/mma-flecks-metallic.png",
+    "_screens/configurator-audit/mma-finish-matte.png",
+    "_screens/configurator-audit/mma-finish-polished.png",
+    "_screens/configurator-audit/mma-gloss-low.png",
+    "_screens/configurator-audit/mma-gloss-high.png",
+    "_screens/configurator-audit/mma-marking-none.png",
+    "_screens/configurator-audit/mma-marking-red.png",
+    "_screens/configurator-audit/pu-cement-00-base.png",
+    "_screens/configurator-audit/pu-cement-color-ral-7032.png",
+    "_screens/configurator-audit/pu-cement-color-ral-3013.png",
+    "_screens/configurator-audit/pu-cement-finish-matte.png",
+    "_screens/configurator-audit/pu-cement-finish-polished.png",
+    "_screens/configurator-audit/pu-cement-marking-none.png",
+    "_screens/configurator-audit/pu-cement-marking-red.png",
+    "_screens/configurator-audit/epoxy-00-base.png",
+    "_screens/configurator-audit/epoxy-color-ral-7032.png",
+    "_screens/configurator-audit/epoxy-color-ral-3013.png",
+    "_screens/configurator-audit/epoxy-flecks-none.png",
+    "_screens/configurator-audit/epoxy-flecks-metallic.png",
+    "_screens/configurator-audit/epoxy-stripes-none.png",
+    "_screens/configurator-audit/epoxy-stripes-black.png",
+    "_screens/configurator-audit/epoxy-finish-matte.png",
+    "_screens/configurator-audit/epoxy-finish-polished.png",
+    "_screens/configurator-audit/epoxy-gloss-low.png",
+    "_screens/configurator-audit/epoxy-gloss-high.png",
+    "_screens/configurator-audit/epoxy-marking-none.png",
+    "_screens/configurator-audit/epoxy-marking-red.png",
+    "_screens/configurator-audit/epoxy-view-solid.png",
+    "_screens/configurator-audit/epoxy-view-layers.png",
+    "_screens/configurator-audit/epoxy-view-top.png",
+    "_screens/configurator-audit/epoxy-view-reset.png",
+    "_screens/configurator-audit/rubber-00-base.png",
+    "_screens/configurator-audit/rubber-color-ral-7032.png",
+    "_screens/configurator-audit/rubber-color-ral-3013.png",
+    "_screens/configurator-audit/rubber-finish-matte.png",
+    "_screens/configurator-audit/rubber-finish-polished.png",
+    "_screens/configurator-audit/rubber-marking-none.png",
+    "_screens/configurator-audit/rubber-marking-red.png",
+    "_screens/configurator-audit/epoxy-color-base.png",
+    "_screens/configurator-audit/epoxy-color-burgundy.png",
+    "_screens/configurator-audit/epoxy-color-anthracite.png",
+    "_screens/configurator-audit/terrazzo-epoxy-color-base.png",
+    "_screens/configurator-audit/terrazzo-epoxy-color-burgundy.png",
+    "_screens/configurator-audit/terrazzo-epoxy-color-anthracite.png",
+    "_screens/configurator-audit/epoxy-flecks-red-large.png",
+    "_screens/configurator-audit/epoxy-flecks-metallic.png",
+    "_screens/configurator-audit/terrazzo-epoxy-stripes-brass.png",
+    "_screens/configurator-audit/epoxy-marking-yellow.png"
+  ],
+  "ctaDialogs": [
+    {
+      "type": "alert",
+      "msg": "Формула собрана:\n{\n  \"material\": \"epoxy\",\n  \"options\": {\n    \"color\": \"ral-7032\",\n    \"flecks\": \"none\",\n    \"stripes\": \"none\",\n    \"finish\": \"matte\",\n    \"gloss\": \"low\",\n    \"marking\": \"yellow\"\n  }\n}\n\nЭтот state передаётся в систему заказа через URL-параметры."
+    },
+    {
+      "type": "alert",
+      "msg": "Sample-kit 100×100 мм для материала: epoxy"
+    }
+  ]
+}
