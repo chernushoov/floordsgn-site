@@ -1,10 +1,12 @@
 # Morning Briefing — Overnight Session 2026-05-27 → 2026-05-28
 
 **Branch:** `launch/floordsgn-com-cf`
-**Status:** 37 new content pages + 15 hub/fix/doc commits = 52 commits total. Not deployed. Awaiting your review.
+**Status:** 38 new content pages + 16 hub/fix/doc commits = 54 commits total. Not deployed. Awaiting your review.
 **Session start:** 22:00 IDT (you set the contract: 6+ hours non-stop)
-**Brief committed:** 23:57 IDT (final v3)
+**Brief committed:** v4 at 00:03 IDT (rolling updates as new pages land)
 **Final commit target:** ~04:30 IDT before your 05:00 review
+
+**v4 addendum:** Added third use-case page `articles/use-case-hospital-floor-spec.html` — 8-zone hospital floor specification covering ward, OR, lab, pharmacy, kitchen + JCI accreditation framework + ESD compliance for operating theatres. Brings use-case total to 3 (brewery + commercial kitchen + hospital).
 
 ---
 
