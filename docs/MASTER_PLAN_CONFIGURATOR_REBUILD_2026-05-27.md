@@ -34,6 +34,94 @@
 - Q1 (Morris) — resolved.
 - Реально остаются блокеры: **Q4** (UI placement brand-selector — 1 из 4 паттернов выбрать) и **Q6** (GLB regen — Blender на owner-machine vs procedural via three.js). 2 блокера вместо 7.
 
+### 0.4 Brand-sale political strategy — конфигуратор как outreach tool
+
+Владелец 2026-05-27 уточнил sales-модель: «мы продаем посредством упаковки. показываем клиенту [= бренду-производителю]: смотри мы уже заморочились, мы тебя знаем, мы у тебя уже покупаем и работаем твоим материалом, поэтому смотри как мы тебя красиво упаковали. хочешь тут быть только ты без конкурентов — отлично, давайте договариваться. политика такова».
+
+**Это фундаментально меняет purpose конфигуратора.**
+
+Раньше был принят паттерн «end-customer configurator»: архитектор выбирает систему пола → получает spec-PDF. Эта target persona остаётся вторичной. **Primary persona теперь — brand-marketing-manager** (Sika Israel, Topciment Spain, Pavistamp partnership team, Marris Italia, BASF Construction). Цель — продемонстрировать им: «мы вас знаем, мы уже работаем с вами, вот насколько beautifully мы вас представляем — хотите эксклюзив в категории, договариваемся».
+
+#### Что меняется в дизайне (impact на каждый Wave)
+
+**A. Brand-card как marketing surface, не справка**
+- Логотип бренда визуально доминирует в pirog sidebar (не маленький, а как hero-element карточки)
+- Per-brand mini-credibility-story (1-2 строки): «Sika applicator since X», «Topciment Israel partner», «Marris Acquademica certified installer».
+- TDS-ссылки идут на собственный сайт бренда (outbound trust signal + бренд видит — мы их **продвигаем**, не подменяем).
+- Brand-logo рендерится при выборе бренда как watermark поверх plate (subtle, brand-aware).
+
+**B. Tier-aware schema**
+
+```json
+"brands": [
+  { "id": "sika",      "tier": "solo",        ... },  // exclusive в категории — других не показываем
+  { "id": "topciment", "tier": "featured",    ... },  // приоритетный показ default
+  { "id": "mortex",    "tier": "alternative", ... },  // доступен через "другие варианты"
+  { "id": "marris",    "tier": "reference",   ... }   // показывается для полноты, не featured
+]
+```
+
+- `solo` — бренд купил эксклюзив, в категории других нет. UI скрывает все остальные.
+- `featured` — главный показ, виден по умолчанию.
+- `alternative` — доступен через раскрывающийся «другие в категории».
+- `reference` — public-TDS-based, не активный партнёр.
+
+Это даёт **физический рычаг для переговоров**: «хочешь tier=solo в категории epoxy? Цена $X/мес или встроенные SKU + IL прайс + co-marketing».
+
+**C. Placeholder card «Эта категория ждёт партнёра»**
+
+В категориях где нет partner-bound брендов (например, parquet или sports rubber) — placeholder:
+
+> **«Эта категория может быть представлена только вашим брендом.**
+> Sample-kit, color picker, brand-branded spec-PDF — всё под ваш SKU и логотип. Договоримся?»
+> [Связаться с FloorDSGN]
+
+Снимает риск что бренд видит конкурента рядом и решает «у вас все равно есть Sika, я мимо».
+
+**D. Brand-side preview URL**
+
+- `configurator.html?brand_view=topciment` — показывает конфигуратор как-будто Topciment уже solo в категории microtopping. Все остальные бренды в этой категории скрыты. Это то, что показываешь на встрече с Topciment.
+- `configurator.html?brand_view=marris&category=epoxy` — Marris solo в epoxy, без Mapei/BASF/Stonhard рядом.
+- `configurator.html?brand_view=sika` — текущее состояние, Sika дефолт + видимые другие.
+
+Технически — read URL param → filter `brands[]` через `tier=solo` логику в runtime, остальные опции скрываются. 1-2 часа работы в Wave B.
+
+**E. Brand-branded spec-PDF**
+
+Sample-kit и Order CTAs генерируют PDF с **логотипом бренда** в header / footer (не FloorDSGN). FloorDSGN — мелкий co-installer mark. Это сильный сигнал: «когда вы партнёрите с нами, документация выходит под вашим именем». Реализация — server-side render через Netlify Functions или client-side jsPDF + brand logo asset из manifest.
+
+**F. Целевой viewer документации**
+
+Brand-marketing-manager думает не как архитектор. Он думает:
+- Сколько SKU мы показываем (= сколько trafficа их продукта получаем)
+- Как видна marka (логотип, цветовая раскладка, story)
+- Что говорится про конкурентов (нейтрально / favorably / hidden)
+- Можно ли «купить» эксклюзив
+
+Каждое из этих 4-х должно быть отвечено в самом конфигураторе либо в pitch-mode (`?brand_view=`).
+
+#### Impact на блокеры
+
+- Q4 (UI placement brand-selector) теперь — **обязательно «right-rail first row»** (option 2), потому что:
+  - Brand-marketing-manager смотрит первым делом на right-rail (где он узнаёт свой бренд)
+  - Tab strip под plate был бы слишком «срезом материала», бренд не доминирует
+  - Dropdown скрывает бренд → плохой sales-signal для партнёра
+- Q6 (GLB regen) — может остаться 3-mesh GLB временно, если 4-layer pirog рендерится только в Layers view как абстрактное «отзеркаливание» текстуры. Brand-marketing-manager не разбирается в meshes — он смотрит на сам plate. Решение откладывается до Wave B.
+
+#### Impact на effort estimate
+
+- Wave A 8-12h → **9-13h** (+1h на tier=solo фильтрацию в URL param)
+- Wave B 20-28h → **24-32h** (+4h на brand-logo authoring, brand-PDF generator, placeholder cards, brand watermark on plate)
+- Wave C 15-25h → **15-25h** (без изменений)
+- **Новый total: 48-70 часов** (было 45-65).
+
+#### Impact на success metric
+
+Раньше: «больше клиентских заявок через конфигуратор».
+Теперь: **«сколько брендов согласилось на партнёрство после demo, на каких tier'ах, какой LTV revenue».**
+
+Это owner-tracked метрика, не сайтовая. Конфигуратор инструмент.
+
 ---
 
 ## 1. Executive summary
