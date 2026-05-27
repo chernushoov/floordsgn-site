@@ -1,7 +1,7 @@
 # Morning Briefing — Overnight Session 2026-05-27 → 2026-05-28
 
 **Branch:** `launch/floordsgn-com-cf`
-**Status:** 26 new pages + path-fix + index-restructure commits. Not deployed. Awaiting your review.
+**Status:** 27 new pages + path-fix + index-restructure commits. Not deployed. Awaiting your review.
 **Session start:** 22:00 IDT
 **Session midpoint:** 23:18 IDT (still writing more)
 
