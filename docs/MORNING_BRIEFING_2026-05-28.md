@@ -1,15 +1,17 @@
 # Morning Briefing — Overnight Session 2026-05-27 → 2026-05-28
 
 **Branch:** `launch/floordsgn-com-cf`
-**Status:** 22 new pages + 1 path-fix commit. Not deployed. Awaiting your review.
+**Status:** 26 new pages + path-fix + index-restructure commits. Not deployed. Awaiting your review.
 **Session start:** 22:00 IDT
-**Session live:** when you arrive at 05:00 (this brief writing window)
+**Session midpoint:** 23:18 IDT (still writing more)
+
+> **Note:** This brief was committed at 23:05 with 22-page total; updated at 23:18 with new totals after writing Keim / Marmorino / Tadelakt / Ideal Work brand profiles and restructuring brands/index.html.
 
 ---
 
 ## What I built — at a glance
 
-**22 new content pages**, all bilingual EN+RU, all brand-compliant Industrial Proof palette, all with JSON-LD schema, all committed to `launch/floordsgn-com-cf` in 23 clean commits.
+**26 new content pages** (was 22 at 23:05), all bilingual EN+RU, all brand-compliant Industrial Proof palette, all with JSON-LD schema, all committed to `launch/floordsgn-com-cf` in 30+ clean commits.
 
 ### Encyclopedia (3 new)
 - `articles/encyclopedia/microcement-binder-chemistry.html` — 4 binder families, TDS reading guide, ~2200 words
@@ -22,17 +24,30 @@
 - `articles/comparisons/sika-vs-mapei-vs-mastertop.html` — post-MBCC industrial Big-3 landscape
 - `articles/comparisons/index.html` — hub navigation
 
-### Brands (8 + hub)
+### Brands (12 + hub) — categorised in hub by Industrial / Decorative / Safety / Heritage
+**Industrial — PU-Cement and Resin:**
 - `articles/brands/ucrete.html` — gold-standard PU-cement, 200°C peak thermal
 - `articles/brands/flowcrete-flowfresh.html` — Polygiene Ag+ antimicrobial
-- `articles/brands/mortex.html` — Belgian mass-waterproof cement-lime hybrid
-- `articles/brands/pavistamp.html` — Spanish stamp + PAVICEM cross-category
-- `articles/brands/topciment.html` — Spanish microcement reference, 6 SKU families
 - `articles/brands/mapei-mapefloor.html` — Italian resin + Bioblock antimicrobial
 - `articles/brands/stonhard.html` — US single-source warranty model
+
+**Decorative — Microcement and Stamped:**
+- `articles/brands/topciment.html` — Spanish microcement reference, 6 SKU families
+- `articles/brands/mortex.html` — Belgian mass-waterproof cement-lime hybrid
+- `articles/brands/pavistamp.html` — Spanish stamp + PAVICEM cross-category
+- `articles/brands/ideal-work.html` — Italian Microtopping® + Lixio®
+
+**Safety Vinyl:**
 - `articles/brands/altro.html` — UK lifetime PTV safety vinyl
 - `articles/brands/polyflor.html` — UK Polysafe range
-- `articles/brands/index.html` — hub navigation
+
+**Heritage and Wall Finishes (NEW section, added 23:18):**
+- `articles/brands/marmorino.html` — Venetian lime + marble plaster
+- `articles/brands/tadelakt.html` — Moroccan saponified lime, hammam-authentic
+- `articles/brands/keim.html` — 140-year German silicate mineral paint (owner-named partner)
+
+**Hub:**
+- `articles/brands/index.html` — restructured with 4 categories + Coming Soon
 
 ### Substrate cluster (2 new, joining existing 4)
 - `articles/substrate-repair-before-coating.html` — 6 categories of repair pre-coating (EN 1504)
