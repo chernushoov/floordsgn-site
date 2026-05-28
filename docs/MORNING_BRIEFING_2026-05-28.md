@@ -110,6 +110,15 @@ The 14-page reference set is internally cross-linked into a closed loop — each
 
 **Productive block expanded summary (since 21:00 IDT, ~1h):** 16 substantial reference pages shipped. The owner-side reference set is now complete from brief through year-3 maintenance: compliance verification → role FAQ → system selection → warranty types → BOQ template → care by system → pull-off test → ICRI CSP → MMA encyclopedia → expansion joints → PU vs epoxy kitchen → epoxy vs cement terrazzo → DIN 51130 slip class → procurement timeline → handover inspection → IL standards. Each page has paste-able tender clauses where applicable; each is bilingual EN+RU.
 
+**v12 addendum (22:05 IDT 2026-05-28, fifth reference burst):** Two more pages shipped:
+
+- `articles/floor-finishes-for-underfloor-heating.html` — 5-system UFH compatibility (microtopping / polished concrete / epoxy SL / PU-cement / terrazzo) with verdict pills + thermal data grids + commissioning protocol + joint detail + common UFH-floor failures
+- `articles/10-most-expensive-floor-mistakes-il.html` — 10 case-study cards with anonymised IL project context + failure mode + cost + "document that would have prevented" — cumulative pattern: ₪2.6M total mistake cost vs ₪20k prevention discipline, 100×/80×/20× ratios
+
+**Total now: 67 pages on `launch/floordsgn-com-cf` across 94 commits.** Still no deploys. Etalon files untouched.
+
+**18 pages shipped in productive block since 21:00 IDT (~1h05m).** Average ~3.6 minutes per substantial bilingual reference page with snap verification. Each page brand-consistent + cross-linked + factually grounded in EN/DIN/ASTM/ICRI/IL standards + Sikafloor/Mapei/MC-Bauchemie/Ardex TDS data. The 10-mistakes page is the content-marketing capstone of the reference set — uses loss-aversion framing to validate every documentation requirement spec'd in the other pages.
+
 ---
 
 ## Headline numbers
