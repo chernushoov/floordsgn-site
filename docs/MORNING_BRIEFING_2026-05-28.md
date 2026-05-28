@@ -183,6 +183,14 @@ The 14-page reference set is internally cross-linked into a closed loop — each
 
 Every page is bilingual EN+RU, brand-consistent (Industrial Proof palette), brand-meta intro + named-source citations, cross-linked to 3-7 other pages in the reference set. Every spec page has paste-able tender clauses. Every comparison page has lifecycle cost calculation.
 
+**v16 addendum (23:05 IDT 2026-05-28, ninth burst):** Three more pages shipped extending use-case coverage:
+
+- `articles/floor-systems-high-humidity-environments.html` — 6 humid environments (brewery / pool / food production / laundry / greenhouse / sauna) + 5 shared challenges + substrate moisture protocol + IL channel
+- `articles/sport-hall-floor-compliance.html` — EN 14904 + ת״י 5566 4 properties (P1/P2/P3 shock + ball-bounce + friction + vertical deformation) + IL Ministry of Education procurement framework
+- `articles/floor-systems-retail-flagship.html` — 6 retail categories (luxury fashion / premium mainstream / tech / F&B / furniture / shopping centre) + brand customisation framework + fit-out cycle compatibility
+
+**Total now: 83 pages on `launch/floordsgn-com-cf` across 113 commits.** Still no deploys. Etalon files untouched. **34 pages shipped in productive block since 21:00 IDT (~2h05m).** Average ~3.7 minutes per substantial bilingual reference page including snap verification.
+
 ---
 
 ## Headline numbers
