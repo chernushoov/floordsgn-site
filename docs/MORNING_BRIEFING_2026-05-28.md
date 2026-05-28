@@ -54,6 +54,16 @@
 
 **Brings total to 51 new pages on `launch/floordsgn-com-cf` across 73 commits.** No deploys attempted. No etalon files modified.
 
+**v8 addendum (21:24 IDT 2026-05-28, content reference burst):** Five additional reference pages shipped after blocker logging, each densely cross-linking the others into a closed reference loop:
+
+- `articles/floor-system-selection-by-use-case.html` — 9 use-case decision tree (industrial heavy / logistics warehouse / commercial kitchen / dining / residential / hospital / school / sport hall / playground) with specify + anti-pattern per case
+- `articles/floor-warranty-types-explained.html` — 3-warranty mapping (manufacturer / applicator / owner) with 12 worked failure scenarios + trigger language for tender
+- `articles/floor-tender-boq-template.html` — 11-line BOQ template with worked example (800 m² heavy-duty epoxy quartz, ₪204–405/m²) + summary table + system substitutions
+- `articles/floor-care-by-system-type.html` — 6 system families (microtopping / polished concrete / terrazzo / epoxy SL + quartz / PU-cement / vinyl-Marmoleum) with daily/weekly/monthly/annual care + chemistry to avoid
+- `articles/adhesion-pull-off-test-guide.html` — EN 1542 + ASTM D7234 methodology with threshold by system class + failure modes A/B/C + grid selection + paste-able tender clause
+
+These 5 + earlier role-FAQ + compliance-checklist (7 total this cycle) form a tightly cross-linked "owner's procurement reference" set — every page links to 3–5 others in the loop. Each is bilingual EN+RU with FAQ-style structured data where applicable. **Total now: 56 pages on `launch/floordsgn-com-cf` across 79 commits.** No deploys. No etalon-file modifications.
+
 ---
 
 ## Headline numbers
