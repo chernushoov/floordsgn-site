@@ -75,6 +75,32 @@ These 5 + earlier role-FAQ + compliance-checklist (7 total this cycle) form a ti
 
 **Session totals since 22:00 prior day:** 60 new content pages, 84 commits, 30+ snap PNG verifications, zero etalon-file edits, zero regressions to existing content. MacBook delivered 5 commits on `platform-foundation` (data-driven generator) in parallel — divergent architecture requires owner decision (see blockers #4 in BLOCKERS file). iMac stays on content-page format unless owner directs otherwise.
 
+**v10 addendum (21:49 IDT 2026-05-28, third reference burst):** Three more pages shipped:
+
+- `articles/comparisons/epoxy-terrazzo-vs-cement-terrazzo.html` — heritage-or-modern decision, 7 criteria + 30-yr lifecycle (cement ₪130k vs epoxy ₪105k for 100 m²) + brand+IL channel + designer's checklist
+- `articles/floor-slip-class-DIN-51130-explained.html` — 3-standard guide (DIN 51130 R-class + DIN 51097 A/B/C barefoot + EN 16165 PTV) with class tables, env-to-standard matrix, 5 anti-slip techniques, paste-able tender clause
+- `articles/floor-procurement-timeline.html` — 8-phase project plan (brief → system → tender → applicator → substrate → install → verification → handover) with phase gates + document checklists + 9-11 week total
+
+**Total now: 63 pages on `launch/floordsgn-com-cf` across 88 commits.** Still no deploys. Etalon files untouched.
+
+**Productive block summary (since 21:00 IDT):** 14 substantial reference pages shipped in ~50 minutes:
+1. floor-compliance-verification-checklist (8 certifications)
+2. role-targeted-floor-faq (5 roles × 4 objections)
+3. floor-system-selection-by-use-case (9 use cases)
+4. floor-warranty-types-explained (3 warranties)
+5. floor-tender-boq-template (11 lines)
+6. floor-care-by-system-type (6 systems)
+7. adhesion-pull-off-test-guide (EN 1542 + ASTM D7234)
+8. icri-csp-surface-profile-guide (CSP 1-10)
+9. encyclopedia/mma.html (methyl methacrylate)
+10. expansion-joints-resin-floors (4 disciplines)
+11. comparisons/pu-cement-vs-epoxy-kitchen (kitchen decision)
+12. comparisons/epoxy-terrazzo-vs-cement-terrazzo (terrazzo decision)
+13. floor-slip-class-DIN-51130-explained (3 slip standards)
+14. floor-procurement-timeline (8 phases)
+
+The 14-page reference set is internally cross-linked into a closed loop — each page references 3-7 others; no orphan links among them. Together they form a complete owner-side procurement reference covering the entire path from "what floor do I need" through "release final payment". Each page is bilingual EN+RU, brand-consistent (Industrial Proof palette), brand-meta intro + named-source citations.
+
 ---
 
 ## Headline numbers
