@@ -34,6 +34,26 @@
 
 **Q5 brands NOT covered as brand profiles yet** (no confirmed IL channel from MacBook research): Mapei industrial line (Mapefloor I 300 SL, Ultratop Loft — IL tile-grout resellers exist but not for industrial/decorative resin), Kerakoll, StoCretec. These remain in "Coming Soon" or covered piecewise via comparisons.
 
+**v7 addendum (21:10 IDT 2026-05-28, second MacBook handoff cycle):** MacBook delivered massive `NIGHT_HANDOFF.md` covering 5 commits on `platform-foundation` (parallel architecture):
+- 20/20 systems P0-filled with verified Sika TDS data
+- avatars.json with 10 personas (5 primary + 5 secondary)
+- 6 candidate supplier research (brand-masked publicly, internal-only)
+- Sika TDS corrections from agent verification (5 hero systems had inaccurate values that needed downgrade pending → still corrected)
+- supplier-candidate-N.html pattern (brand names masked until permissions documented)
+
+**Critical findings logged to `docs/BLOCKERS_FOR_OWNER_2026-05-28.md`:**
+1. **BASF/Master Builders is now Sika** — MBCC acquisition May 2023, MasterTop/MasterEmaco rebranding INTO Sika. Decision needed: keep as historical placeholder, replace with Remmers/Flowcrete, or drop.
+2. **Sika TDS corrections** — 5 hero systems had inaccurate values (MMA cure 1 day → 1 hour, Epoxy Terrazzo cure 10 → 4 days, A2fl claim removed, etc.). My iMac brand pages are at narrative level, no remediation needed.
+3. **Sika brand permission** — formally documented? If not, may need candidate-placeholder mode.
+4. **Two-branch architecture divergence** — `launch/floordsgn-com-cf` (content pages, my work) vs `platform-foundation` (MacBook generator). Recommend (A) merge platform data layer into launch branch.
+5. **Git remote missing on MacBook** — 5 commits unpushable until owner adds canonical repo as remote.
+
+**Pages added this cycle:**
+- `articles/floor-compliance-verification-checklist.html` — 8-cert audit (EN 13501-1 fire, EN 16165 PTV, HACCP, ISO 22196, IEC 61340-5-1, EMICODE, C2C, ת״י 1923/5566)
+- `articles/role-targeted-floor-faq.html` — 5-role FAQ mined from `avatars.json` (designer/architect/restaurant/warehouse/private — 4 hard objections each + cross-role rolling answers)
+
+**Brings total to 51 new pages on `launch/floordsgn-com-cf` across 73 commits.** No deploys attempted. No etalon files modified.
+
 ---
 
 ## Headline numbers
