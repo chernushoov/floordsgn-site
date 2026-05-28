@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor System Selection by Use Case: Decision Tree (Industrial / Hospitality / Residential / Sport) | Floor.DSGN</title>
+    <meta name="description" content="Decision tree for selecting a floor system class by use case. Industrial, hospitality, residential, public, sport, and lab use cases mapped to the correct resin or cementitious system family with the load, slip, hygiene, and downtime constraints that decide the spec.">
+    <meta name="keywords" content="floor system selection, what floor for warehouse, what floor for kitchen, what floor for hospital, what floor for sport hall, floor decision tree, resin system selection, PU-cement vs epoxy decision">
+    <meta property="og:title" content="Floor System Selection by Use Case">
+    <meta property="og:description" content="Use-case decision tree: industrial / hospitality / residential / sport / lab — matched to system family.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/articles/floor-system-selection-by-use-case.html">
+    <meta property="og:image" content="https://floordsgn.com/images/concrete-decorative/beton.jpg">
+    <link rel="canonical" href="https://floordsgn.com/articles/floor-system-selection-by-use-case.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260523a">
+    <style>
+        .uc-card { background:var(--concrete, #f3f0ea); padding:24px 28px; margin:24px 0; border-left:3px solid var(--steel, #72716D); border-radius:2px; }
+        .uc-card.signal { border-left-color:var(--signal, #C86B3C); }
+        .uc-card .uc-tag { display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel, #72716D); margin-bottom:6px; font-weight:600; }
+        .uc-card h2 { margin:4px 0 10px; font-size:22px; font-family:'Cormorant Garamond', serif; color:var(--carbon, #151515); }
+        .uc-card .uc-constraint-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin:16px 0; }
+        .uc-card .uc-constraint { background:#fff; padding:10px 14px; border:1px solid var(--grey-border, #e5e3df); border-radius:2px; }
+        .uc-card .uc-constraint .uc-c-label { font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel, #72716D); display:block; margin-bottom:4px; }
+        .uc-card .uc-constraint .uc-c-value { font-size:13px; color:var(--carbon, #151515); font-weight:500; }
+        .uc-pick { background:#fff; padding:14px 18px; margin:14px 0; border:1px solid var(--grey-border, #e5e3df); border-radius:2px; }
+        .uc-pick .uc-pick-label { font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--signal, #C86B3C); font-weight:600; margin-bottom:6px; }
+        .uc-pick .uc-pick-name { font-size:16px; font-weight:600; color:var(--carbon, #151515); }
+        .uc-pick .uc-pick-why { font-size:14px; color:var(--graphite, #2D2D2D); margin-top:6px; line-height:1.5; }
+        .uc-anti { background:#fafaf7; padding:12px 16px; margin:10px 0; border-left:2px solid #ccc; font-size:13px; color:var(--graphite, #2D2D2D); }
+        .uc-anti strong { color:var(--carbon, #151515); }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Floor System Selection by Use Case","datePublished":"2026-05-28","publisher":{"@type":"Organization","name":"Floor.DSGN"}}</script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+
+    <article class="article-page" data-lang-block="en">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Back to Blog</a>
+                <span class="article-category">Decision Reference</span>
+                <h1>Floor System Selection by Use Case</h1>
+                <p class="article-meta">May 2026 · 10 min read</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Floor system selection by use case decision tree" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Every wrong floor in Israel was a system mismatched to its use case. Epoxy SL in a wet warehouse. Microtopping in a commercial kitchen. PU-cement in a designer apartment with no thermal load. The brand layer matters, but only after the system class is correct. This page walks the nine most common Israeli floor use cases, names the right system family for each, and lists the anti-pattern systems that look cheaper on paper but fail in service. Use it as a decision reference before reading any brand page.</p>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 1 of 9 — Industrial</span>
+                        <h2>Heavy Manufacturing / Production Plant</h2>
+                        <p>Process plant, food production, beverage bottling, chemical manufacturing. Reach-truck + forklift + steel-wheel trolley + thermal-cycle + occasional spill. Hardest single use case in the matrix.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">5–10 t wheel</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">-40°C to +120°C cycles</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">acids, alkalis, hot wash</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R11–R13 (DIN 51130)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Lifespan target</span><span class="uc-c-value">15–25 years</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Downtime tolerance</span><span class="uc-c-value">weekend or 3-night</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify</span>
+                            <div class="uc-pick-name">PU-Cement Heavy 9–12 mm (Ucrete UD200, Sikafloor PurCem HM-22, Mapefloor CPU/HD)</div>
+                            <p class="uc-pick-why">Polyurethane-modified concrete handles every load + thermal + chemical scenario industrial throws at it. The 9–12 mm depth tier delivers reach-truck wheel-load capacity beyond 7 t and survives ±150°C thermal shock from cold-store-to-hot-water-wash cycles. The integral anti-slip texture meets R12 unmodified, R13 with broadcast. See <a href="brands/ucrete.html">Ucrete brand profile</a> and <a href="comparisons/purcem-vs-ucrete-vs-flowfresh.html">PU-cement Big-3 comparison</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Epoxy SL 2–3 mm. Pinhole failure under steel wheel within 12 months. Will not survive thermal shock; will crack at first hot wash-down. Suppliers will quote it because it's 40% cheaper — reject without negotiating.</div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Polished concrete. Wrong slip class; wrong chemical resistance; wrong wear-layer.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 2 of 9 — Industrial</span>
+                        <h2>Logistics Warehouse / Distribution Centre</h2>
+                        <p>Dry storage, racking, reach-truck and forklift traffic, ambient temperature, occasional spill from damaged packaging.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">3–5 t wheel</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">+15°C to +35°C ambient</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">low — incidental</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R9–R10</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Lifespan target</span><span class="uc-c-value">10–15 years</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Downtime tolerance</span><span class="uc-c-value">weekend</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify</span>
+                            <div class="uc-pick-name">Heavy-Duty Quartz Broadcast Epoxy 4–6 mm (Sikafloor MultiDur, Mapefloor I 350 SL)</div>
+                            <p class="uc-pick-why">Quartz-broadcast epoxy is the IL warehouse standard. The broadcast layer locks aggregate into the resin matrix delivering wheel-load up to 5 t and superior abrasion resistance vs straight SL. R11+ slip class without modification. The polished topcoat allows efficient cleaning + line-marking for traffic zones. See <a href="encyclopedia/epoxy.html">epoxy system encyclopedia</a> and <a href="comparisons/epoxy-sl-vs-pu-cement-vs-mma.html">resin family comparison</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Polished concrete. Wrong cohesion under reach-truck cornering; dusting under abrasion; reseal every 18 months.</div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> PU-cement 6–9 mm. Over-spec for this load class. 60% premium over quartz-broadcast for no measurable benefit at ambient temperature.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 3 of 9 — Hospitality</span>
+                        <h2>Commercial Kitchen / Food Production</h2>
+                        <p>Restaurant kitchen, hotel kitchen, ghost-kitchen, central commissary. Hot wash-down, oil, food acids, high humidity, fast-traffic by staff.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">1–2 t wheel (trolley)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">+20°C to +90°C wash</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">acids, oils, alkali cleaner</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R11–R12 (DIN 51130)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Hygiene</span><span class="uc-c-value">HACCP + ISO 22196</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Downtime tolerance</span><span class="uc-c-value">3 nights or 1 night</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (standard build)</span>
+                            <div class="uc-pick-name">PU-Cement Kitchen 6–9 mm (Sikafloor PurCem HM-20, Ucrete RG/MD)</div>
+                            <p class="uc-pick-why">PU-cement is the only resin chemistry that survives the 90°C hot-water wash-down without micro-cracking. Integral R11–R12 anti-slip, HACCP food-safe, 5-year manufacturer warranty. 3-night installation cycle. See <a href="encyclopedia/pu-cement.html">PU-cement encyclopedia</a> and <a href="comparisons/pu-cement-vs-epoxy-kitchen.html">PU-cement vs epoxy for kitchens</a>.</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (fast-shutdown alternative)</span>
+                            <div class="uc-pick-name">MMA Fast Kitchen 2–4 mm (Sikafloor Pronto modular, Flowcrete Flowfast)</div>
+                            <p class="uc-pick-why">When downtime cost exceeds the 30% MMA premium over PU-cement, MMA's 1-night install + 2-hour cure delivers same-day re-open. Strong odour during install requires forced ventilation. See <a href="encyclopedia/mma.html">MMA encyclopedia</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Epoxy SL 2–3 mm. Will not survive 90°C wash-down. Will not meet R11 without broadcast. Will not deliver HACCP certification without modification.</div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Tile. Joints harbour bacteria; failed grout is the Ministry of Health inspection failure. Resin floor is the modern standard.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 4 of 9 — Hospitality</span>
+                        <h2>Restaurant Dining Room / Café / Bar</h2>
+                        <p>Front-of-house dining, café floor, cocktail bar, hotel lobby. Foot traffic + occasional wine/coffee spill + visual is part of the design.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">pedestrian + light wheel</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">ambient</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">low — incidental food/drink</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R9–R10 (or barefoot A)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Aesthetic</span><span class="uc-c-value">decorative finish required</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Downtime tolerance</span><span class="uc-c-value">5–10 days</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify</span>
+                            <div class="uc-pick-name">Microtopping 2–3 mm OR Epoxy Terrazzo 6–9 mm (Sikafloor-264 / Mapei Ultratop / Pandomo K2)</div>
+                            <p class="uc-pick-why">Decorative micro-systems deliver the visual without industrial spec premium. Microtopping ships in 70+ standard tints + custom RAL. Epoxy terrazzo accepts custom aggregate spec for premium signature look. Both clear R9 slip easily. See <a href="encyclopedia/microcement.html">microcement encyclopedia</a> · <a href="encyclopedia/epoxy-terrazzo.html">epoxy terrazzo</a> · <a href="brands/index.html">decorative brand catalog</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Industrial epoxy with R11 broadcast. Wrong aesthetic; wrong customer experience; over-specified for load class.</div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Carpet tile. Stains within 6 months in any wet-spill environment.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 5 of 9 — Residential</span>
+                        <h2>Premium Residential (Apartment / Villa)</h2>
+                        <p>Living areas, dining, kitchen (residential, not commercial), bedrooms with optional decorative floor. Foot traffic + kids + pets + occasional wine/water spill.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">pedestrian only</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">ambient (with UFH possible)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">household cleaners</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R9 + barefoot A</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">VOC compliance</span><span class="uc-c-value">EMICODE EC1+ required</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Aesthetic</span><span class="uc-c-value">defining design choice</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify</span>
+                            <div class="uc-pick-name">Microtopping 2–3 mm OR Polished Concrete (Topciment Microbase, Pandomo K2, Husqvarna polish)</div>
+                            <p class="uc-pick-why">Micro-systems and polished concrete are the residential premium standard. EMICODE EC1+ (very low VOC) ensures food-safe + child-safe + pet-safe surface once cured. Underfloor heating compatible. See <a href="encyclopedia/microcement.html">microcement encyclopedia</a> and <a href="encyclopedia/polished-concrete.html">polished concrete encyclopedia</a>.</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (signature option)</span>
+                            <div class="uc-pick-name">Cement Terrazzo / Palladiana (heritage decorative)</div>
+                            <p class="uc-pick-why">For signature visual where budget allows the heritage-craft premium. Cement terrazzo and palladiana add 40–80% to project cost over microtopping. See <a href="encyclopedia/cement-terrazzo.html">cement terrazzo</a> and <a href="encyclopedia/palladiana.html">palladiana</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Industrial epoxy SL. Wrong aesthetic; not EMICODE EC1+ certified; not designed for residential thermal-cycle (UFH).</div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Solvent-based decorative coating. VOC profile incompatible with residential occupancy during cure.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 6 of 9 — Healthcare</span>
+                        <h2>Hospital / Clinic / Medical Facility</h2>
+                        <p>Patient wards, corridors, operating theatres, laboratories, pharmacies. Hygiene + infection control + ESD + slip + chemical resistance all matter.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">trolley + light wheel</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Thermal range</span><span class="uc-c-value">controlled ambient</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Chemical exposure</span><span class="uc-c-value">disinfectants, bodily fluids</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R9–R10 (wet)</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Hygiene</span><span class="uc-c-value">ISO 22196 antimicrobial</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">ESD (theatres)</span><span class="uc-c-value">IEC 61340-5-1</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (corridor / ward)</span>
+                            <div class="uc-pick-name">Hygiene Epoxy SL with antimicrobial additive (Sikafloor-264 + Polygiene, Mapei Cleanic)</div>
+                            <p class="uc-pick-why">Smooth surface + integral cove base eliminates bacterial harbourage. ISO 22196 + EN 14041 for medical use. Use <a href="brands/sika-flooring.html">Sika</a> or <a href="brands/mapei-mapefloor.html">Mapei</a> hospital-grade SL.</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (operating theatre)</span>
+                            <div class="uc-pick-name">ESD-Dissipative Epoxy (Sikafloor-381 AS, Mapefloor Antistatic)</div>
+                            <p class="uc-pick-why">IEC 61340-5-1 compliance for spark-sensitive surgical environments. Conductive ground network required at slab pour stage. See <a href="floor-compliance-verification-checklist.html">compliance verification</a> §5 (ESD).</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (pharmacy / lab)</span>
+                            <div class="uc-pick-name">Chemical-Resistant Epoxy SL or MMA</div>
+                            <p class="uc-pick-why">Lab chemicals (HCl, NaOH, isopropanol) demand chemical-resistance map per spillage zone. Use product TDS chemical resistance table to verify per-substance acceptance.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Vinyl tile. Joint failure under hospital wash-down within 36 months.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 7 of 9 — Public + Education</span>
+                        <h2>School / University / Public Building</h2>
+                        <p>Classrooms, corridors, public foyer, government office. Heavy foot traffic + occasional wet from cleaning + long lifecycle expectation.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Load class</span><span class="uc-c-value">pedestrian + cleaning equipment</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">R9–R10 + ת״י 1923</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Fire reaction</span><span class="uc-c-value">EN 13501-1 Bfl-s1 escape routes</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Wear-layer life</span><span class="uc-c-value">15–20 years</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">VOC compliance</span><span class="uc-c-value">EMICODE EC1+</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Public-sector tender</span><span class="uc-c-value">multi-source spec required</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify</span>
+                            <div class="uc-pick-name">Linoleum (Marmoleum) OR Commercial Vinyl OR Polished Concrete</div>
+                            <p class="uc-pick-why">Linoleum (Forbo Marmoleum) and commercial vinyl tile (Tarkett iQ Surface, Polyflor) are the IL school-board standard for classroom floors. Polished concrete is the alternative for entrance halls and corridors where heritage-look is the design goal. See <a href="brands/forbo.html">Forbo</a> · <a href="brands/tarkett.html">Tarkett</a> · <a href="encyclopedia/polished-concrete.html">polished concrete</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Industrial epoxy. Over-specified; high VOC during cure incompatible with occupied building re-open.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 8 of 9 — Sport</span>
+                        <h2>Indoor Sport Hall / Multi-Purpose Hall</h2>
+                        <p>School gym, community sport hall, indoor basketball / volleyball / handball court. Falls + shock absorption + ball-bounce response.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Shock absorption</span><span class="uc-c-value">EN 14904 P1 / P2 / P3</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Slip target</span><span class="uc-c-value">EN 14904 friction 80–110</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Ball-bounce</span><span class="uc-c-value">≥ 90% reference</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">IL standard</span><span class="uc-c-value">ת״י 5566 mandatory</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Wear-layer life</span><span class="uc-c-value">10–15 years</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Lifecycle re-coat</span><span class="uc-c-value">every 5–8 years</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (multi-purpose hall)</span>
+                            <div class="uc-pick-name">PUR Sport System (Conica CONIPUR, Polytan Rekortan PUR, Sika Sikafloor Sport)</div>
+                            <p class="uc-pick-why">Polyurethane sport system with elastomer underlay delivers EN 14904 P2 area-elastic response. Game-line painting integrated. Sika certified applicators install both PUR and acrylic sport. See <a href="brands/conica.html">Conica</a> and <a href="brands/polytan.html">Polytan</a>.</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (premium / elite hall)</span>
+                            <div class="uc-pick-name">Solid Wood Sport Floor (Junckers, Bona)</div>
+                            <p class="uc-pick-why">Solid maple sport floor for premium basketball / volleyball halls. Higher-cost option for elite-level sport. PUR sport remains the IL public-sector default.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Hard concrete or epoxy. Catastrophic falls injury risk; EN 14904 non-compliant; ת״י 5566 fails.</div>
+                    </div>
+
+                    <div class="uc-card signal">
+                        <span class="uc-tag">Use case 9 of 9 — Outdoor + Playground</span>
+                        <h2>Playground / Outdoor Sport / Athletic Track</h2>
+                        <p>Children's playground, urban park sport, athletic running track, outdoor multi-use court.</p>
+                        <div class="uc-constraint-grid">
+                            <div class="uc-constraint"><span class="uc-c-label">Fall height</span><span class="uc-c-value">EN 1177 HIC ≤1000</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">UV resistance</span><span class="uc-c-value">EN 12224 + aliphatic finish</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Wet-slip</span><span class="uc-c-value">EN 16165 PTV ≥ 36</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">IAAF (athletic)</span><span class="uc-c-value">PolyPlay-grade only</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">Wear-layer life</span><span class="uc-c-value">8–12 years</span></div>
+                            <div class="uc-constraint"><span class="uc-c-label">IL public-sector</span><span class="uc-c-value">municipality tender</span></div>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (playground)</span>
+                            <div class="uc-pick-name">Poured Rubber Safety Surface (BSW Regupol, Conica CONIPLAY)</div>
+                            <p class="uc-pick-why">EPDM-bound rubber safety surface delivers EN 1177 fall-height compliance to 3.0 m. UV-stable aliphatic finish required for Israeli sun. See <a href="brands/bsw-berleburger.html">BSW</a> and <a href="brands/conica.html">Conica</a>.</p>
+                        </div>
+                        <div class="uc-pick">
+                            <span class="uc-pick-label">Specify (athletic track)</span>
+                            <div class="uc-pick-name">Polyurethane Athletic Track (Polytan PolyPlay, Conica CONIPUR)</div>
+                            <p class="uc-pick-why">IAAF-certified PUR athletic track for competition and high-school athletic facilities. See <a href="brands/polytan.html">Polytan</a>.</p>
+                        </div>
+                        <div class="uc-anti"><strong>Anti-pattern:</strong> Plain concrete or asphalt. EN 1177 non-compliant; fall injury risk; municipality tender disqualification.</div>
+                    </div>
+
+                    <h2>Cross-use-case patterns</h2>
+                    <p>Five patterns recur across the matrix and decide tender direction more than the brand choice.</p>
+                    <ul>
+                        <li><strong>Match thickness tier to load class, not budget.</strong> Specifying 3 mm epoxy SL into a 5 t wheel-load environment to save ₪30/m² costs ₪200/m² in re-pour within 18 months. Load class is the gate; thickness is the consequence.</li>
+                        <li><strong>Hot wash-down kills epoxy.</strong> Any environment with &gt;60°C wash-down or steam-cleaning is PU-cement territory, not epoxy. The chemistry difference is hard. Suppliers will quote epoxy because it's familiar — verify wash temperature first.</li>
+                        <li><strong>Anti-slip is not an afterthought.</strong> R-class is engineered at the broadcast or texture-roller stage. Adding anti-slip after install (etching, additive) compromises wear-life and warranty. Specify R-class in the tender, not after the fact.</li>
+                        <li><strong>Downtime cost beats material cost above 100 m² active operations.</strong> MMA premium over PU-cement is ~30%. One 12-hour downtime delta at restaurant rates pays the entire system upgrade. Compute downtime cost before negotiating material price.</li>
+                        <li><strong>Public-sector tender requires multi-source spec.</strong> Naming a single brand in a municipality tender is grounds for procurement reset. Spec the system class + the standards + the certification level; allow brand substitution at equivalent spec.</li>
+                    </ul>
+
+                    <h2>Final read</h2>
+                    <p>Nine use cases, three to five constraints each, one or two named system families per case. The matrix is decision-grade — every combination has a documented winner and named anti-patterns. After the system class is locked, the brand layer is a smaller decision: see <a href="brands/index.html">brand catalog</a> for the IL channel layer, and <a href="role-targeted-floor-faq.html">role-targeted FAQ</a> for the buyer-side perspective on each case. Related: <a href="floor-compliance-verification-checklist.html">compliance verification</a> · <a href="floor-warranty-types-explained.html">warranty types</a> · <a href="comparisons/epoxy-sl-vs-pu-cement-vs-mma.html">resin family comparison</a>.</p>
+
+                    <h2>Sources</h2>
+                    <ul>
+                        <li>Sikafloor system specifications + product TDS (Sikafloor PurCem, MultiDur, Pronto, Sikafloor Sport).</li>
+                        <li>Mapei Mapefloor system specifications.</li>
+                        <li>Ucrete UD200 product literature + Master Builders Solutions case studies.</li>
+                        <li>EN 14904 (sport halls), EN 1177 (playgrounds), ת״י 5566 (Israeli sport floors), ת״י 1923 (slip).</li>
+                        <li>IL field experience compiled from 1,000+ m² installations across all 9 use cases.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-cta">
+            <div class="container">
+                <h2>Need a Use-Case-Matched Spec for Your Project?</h2>
+                <p>Tell us your use case + load class + downtime tolerance. We send back the matched system, the IL channel, and the verification checklist for your tender file.</p>
+                <div class="cta-buttons">
+                    <a href="../contact.html" class="btn btn-primary">Get Matched Spec</a>
+                    <a href="../floors.html" class="btn btn-secondary">Browse Systems</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article class="article-page" data-lang-block="ru" style="display:none;">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Вернуться в Блог</a>
+                <span class="article-category">Decision Reference</span>
+                <h1>Выбор системы пола по use case</h1>
+                <p class="article-meta">Май 2026 · 10 мин чтения</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Гид выбор системы пола по use case" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Каждый неправильный пол в Израиле — это система, mismatched к своему use case. Эпокси SL в мокром складе. Микротопинг на кухне ресторана. PU-cement в дизайнерской квартире без термонагрузки. Бренд-слой важен, но только после правильно выбранного system class. Эта страница проходит девять самых частых израильских use cases пола, называет правильное system family для каждого, и перечисляет anti-pattern системы которые выглядят дешевле на бумаге но падают в эксплуатации. Используй как decision reference до чтения любой бренд-страницы.</p>
+
+                    <p><em>Полная EN-версия выше с разбивкой по 9 use cases с constraint-grid + specify-pick + anti-pattern для каждого. Краткое резюме по-русски:</em></p>
+
+                    <ol>
+                        <li><strong>Тяжёлое производство.</strong> Specify: PU-Cement Heavy 9–12 мм (Ucrete UD200, Sikafloor PurCem HM-22). Anti-pattern: эпокси SL.</li>
+                        <li><strong>Логистический склад.</strong> Specify: Heavy-Duty Quartz Broadcast Epoxy 4–6 мм. Anti-pattern: polished concrete + PU-cement (overspec).</li>
+                        <li><strong>Коммерческая кухня.</strong> Specify: PU-Cement Kitchen 6–9 мм (standard) или MMA Fast 2–4 мм (fast-shutdown). Anti-pattern: эпокси SL, плитка.</li>
+                        <li><strong>Зал ресторана / кафе / бар.</strong> Specify: Microtopping 2–3 мм или Epoxy Terrazzo 6–9 мм. Anti-pattern: индустриальный эпокси, ковровая плитка.</li>
+                        <li><strong>Премиум residential.</strong> Specify: Microtopping или Polished Concrete (signature: Cement Terrazzo / Palladiana). Anti-pattern: индустриальный эпокси, solvent-based decorative coating.</li>
+                        <li><strong>Больница / клиника.</strong> Specify: Hygiene Epoxy SL (палаты), ESD-Dissipative Epoxy (опер-театры), Chemical-Resistant Epoxy/MMA (лаб/аптека). Anti-pattern: vinyl tile.</li>
+                        <li><strong>Школа / университет / public building.</strong> Specify: Linoleum (Marmoleum), Commercial Vinyl или Polished Concrete. Anti-pattern: индустриальный эпокси.</li>
+                        <li><strong>Спортивный зал.</strong> Specify: PUR Sport System (Conica CONIPUR, Polytan Rekortan) или Solid Wood. Anti-pattern: твёрдый бетон или эпокси.</li>
+                        <li><strong>Playground / outdoor sport / athletic.</strong> Specify: Poured Rubber Safety Surface (BSW Regupol) или PU Athletic Track (Polytan PolyPlay). Anti-pattern: plain concrete или асфальт.</li>
+                    </ol>
+
+                    <h2>Cross-use-case паттерны</h2>
+                    <ul>
+                        <li><strong>Толщина по load class, не по бюджету.</strong> 3 мм эпокси в 5-тонный wheel-load = ₪200/м² re-pour за 18 месяцев.</li>
+                        <li><strong>Hot wash-down убивает эпокси.</strong> &gt;60°C wash-down = PU-cement territory.</li>
+                        <li><strong>Anti-slip — не afterthought.</strong> R-class инженерится на broadcast стадии, не после установки.</li>
+                        <li><strong>Стоимость downtime &gt; стоимость материала на 100+ м² operations.</strong> MMA premium = 30% над PU-cement; одна 12h downtime delta это окупит.</li>
+                        <li><strong>Public-sector tender требует multi-source spec.</strong> Один бренд в municipality tender = procurement reset.</li>
+                    </ul>
+
+                    <h2>Финальная мысль</h2>
+                    <p>Девять use cases, три-пять constraints каждый, одно-два named system family. Матрица decision-grade. После того как system class зафиксирован — бренд-слой меньшее решение: см. <a href="brands/index.html">каталог брендов</a> для IL channel слоя, <a href="role-targeted-floor-faq.html">role-targeted FAQ</a> для buyer-side по каждому case. Связано: <a href="floor-compliance-verification-checklist.html">compliance verification</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="comparisons/epoxy-sl-vs-pu-cement-vs-mma.html">сравнение resin-семейств</a>.</p>
+
+                    <h2>Источники</h2>
+                    <ul>
+                        <li>Sikafloor system specifications + product TDS.</li>
+                        <li>Mapei Mapefloor system specifications.</li>
+                        <li>Ucrete UD200 product literature + Master Builders Solutions case studies.</li>
+                        <li>EN 14904 (sport halls), EN 1177 (playgrounds), ת״י 5566 (Israeli sport floors), ת״י 1923 (slip).</li>
+                        <li>IL field experience compiled from 1,000+ м² installations across all 9 use cases.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-cta">
+            <div class="container">
+                <h2>Нужна Use-Case-Matched спека для вашего проекта?</h2>
+                <p>Скажи свой use case + load class + downtime tolerance. В ответ — matched система, IL channel, и verification checklist для tender-файла.</p>
+                <div class="cta-buttons">
+                    <a href="../contact.html" class="btn btn-primary">Получить matched-спеку</a>
+                    <a href="../floors.html" class="btn btn-secondary">Смотреть системы</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Floor.DSGN</p>
+        </div>
+    </footer>
+
+    <script src="../script.js?v=20260523a"></script>
+</body>
+</html>
