@@ -132,6 +132,17 @@ The 14-page reference set is internally cross-linked into a closed loop — each
 
 **Productive block totals since 21:00 IDT (~1h20m):** 22 substantial reference pages shipped. Library transformed from project-fragment artifacts to a complete, internally-cross-linked, role-targeted procurement reference. Owner-side reading paths exist for every role at every project phase.
 
+**v14 addendum (22:35 IDT 2026-05-28, seventh reference burst + 75-page milestone):** Four more pages shipped extending into terminology + specialist environments:
+
+- `articles/floor-terminology-glossary.html` — A-Z definitions for 60+ floor terms (standards / methods / systems / IL) with cross-links to deep-dive pages
+- `articles/antimicrobial-hygiene-floor-systems.html` — 4 elements (chemistry / cove base / joints / ISO 22196 verification) + system selection + IL channel + tender clause
+- `articles/esd-static-dissipative-floor-systems.html` — IEC 61340-5-1 + 4-layer buildup + copper grounding + verification protocol + use-case selection
+- `articles/floor-accessibility-il-1004-explained.html` — 6 ת״י 1004 requirements (slip / level / tactile / contrast / glare / ramp) + inspection regime + tender clause
+
+**Total now: 75 pages on `launch/floordsgn-com-cf` across 104 commits.** Still no deploys. Etalon files untouched.
+
+**26 pages shipped in productive block since 21:00 IDT (~1h35m).** The library now covers: owner-side decision (role FAQ + selection + procurement timeline + 10 mistakes), tender + documentation (BOQ + warranty + handover + how-to-evaluate), standards (compliance + slip + IL + pull-off + glossary), substrate + install (CSP + moisture + joints + UFH), use-case-specific (kitchen + cold-store + brewery + hospital + case study), comparisons (resin family + brand-family + decorative + terrazzo + tile), encyclopedia (PU-cement + epoxy + MMA + microtopping + polished concrete + terrazzo), brands (Sika / Mapei / MC-Bauchemie / Ardex / Conica / Polytan / BSW / Tarkett / Forbo / Topciment / Mortex / Ideal Work / etc.), and specialist environments (antimicrobial healthcare/food + ESD electronics/cleanroom + accessibility public buildings).
+
 ---
 
 ## Headline numbers
