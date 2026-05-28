@@ -10,6 +10,30 @@
 
 **v5 addendum:** Added `articles/how-to-evaluate-a-floor-installer.html` — 8-question procurement guide for vetting IL flooring installers. Covers manufacturer certification, project references, substrate inspection protocol, warranty documentation, insurance coverage, schedule discipline, PU sealer cure handling, payment structure. Pairs with brand profiles + comparisons to complete the buyer-journey content. Brings total to 39 pages.
 
+**v6 addendum (paired session with MacBook, 20:45 IDT 2026-05-28):** Owner returned and authorised paired work with second MacBook Claude session. MacBook ran background web-research agents on Q5 (IL distributors) and delivered partial answers via `docs/Q5_IL_DISTRIBUTORS_FROM_MACBOOK.md` + `_PART2.md`. iMac session integrated MacBook's findings as **new brand profile pages with confirmed IL channel details**:
+
+**Q5-integrated brand pages (6 new):**
+- `articles/brands/conica.html` — Swiss CONIPUR sport, EN 14904 + IAAF
+- `articles/brands/polytan.html` — German Rekortan PUR + PolyPlay IAAF World Championships athletics
+- `articles/brands/bsw-berleburger.html` — German Regupol playground tiles + poured (IL public-sector reflex)
+- `articles/brands/mc-bauchemie.html` — German MC-DUR industrial, **IL via A.Z Marketing (Ramle, +972-8-9150190)** [Q5 confirmed]
+- `articles/brands/ardex-pandomo.html` — German designer cementitious, **IL via Harel v'Idan (Holon, 058-403-5595)** [Q5 confirmed]
+- `articles/brands/tarkett.html` — French commercial vinyl, **IL via B-Tech (03-9328431, also distributes Sika)** [Q5 confirmed]
+- `articles/brands/forbo.html` — Marmoleum + Sarlon, Dubai-routed (Forbo Flooring FZCO +971 56 289 6369) [Q5 partial]
+
+**Q5-integrated additional pages (3 new):**
+- `articles/how-to-read-a-floor-tds.html` — 10-section TDS decoder with red flags per section
+- `articles/comparisons/concrete-densifier-lithium-vs-sodium-vs-potassium.html` — densifier chemistry comparison for polished concrete
+- (existing pages updated to reference new IL channels)
+
+**Brands/index restructured** with new categories: Industrial (5 incl. MC-Bauchemie), Decorative (6 incl. Pandomo), Vinyl (4 incl. Tarkett + Forbo), Sports + Playground (3 — Conica/Polytan/BSW), Heritage and Wall (3), Sustainable (1 — Senso), Coming Soon (1 — Cemplaster/Smartrenders pending Q3 owner-input).
+
+**Brings total to 47 new pages on `launch/floordsgn-com-cf` across 68 commits.**
+
+**Master Builders Solutions FACT CORRECTION (per MacBook):** MBS was acquired by Sika via MBCC integration in May 2023. iMac's `sika-vs-mapei-vs-mastertop.html` comparison ALREADY notes this in body text. No retroactive fix needed. Brand profile pages reference MBS as "Sika sub-brand post-2023" consistently.
+
+**Q5 brands NOT covered as brand profiles yet** (no confirmed IL channel from MacBook research): Mapei industrial line (Mapefloor I 300 SL, Ultratop Loft — IL tile-grout resellers exist but not for industrial/decorative resin), Kerakoll, StoCretec. These remain in "Coming Soon" or covered piecewise via comparisons.
+
 ---
 
 ## Headline numbers
