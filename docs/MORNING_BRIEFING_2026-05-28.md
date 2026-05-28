@@ -119,6 +119,19 @@ The 14-page reference set is internally cross-linked into a closed loop — each
 
 **18 pages shipped in productive block since 21:00 IDT (~1h05m).** Average ~3.6 minutes per substantial bilingual reference page with snap verification. Each page brand-consistent + cross-linked + factually grounded in EN/DIN/ASTM/ICRI/IL standards + Sikafloor/Mapei/MC-Bauchemie/Ardex TDS data. The 10-mistakes page is the content-marketing capstone of the reference set — uses loss-aversion framing to validate every documentation requirement spec'd in the other pages.
 
+**v13 addendum (22:19 IDT 2026-05-28, sixth reference burst + knowledge index milestone):** Four more pages shipped + knowledge index that ties the library together:
+
+- `articles/comparisons/microtopping-vs-polished-concrete.html` — decorative-residential decision (7 criteria + 25-yr lifecycle ~₪106k each + design-intent verdict)
+- `articles/floor-systems-for-cold-stores-freezers.html` — 4 temperature zones (chilled / frozen / deep-frozen / blast chiller) with PU-cement specs per zone + retrofit MMA + IL channel
+- `articles/comparisons/resin-floor-vs-tile.html` — modern replacement decision (9 criteria + 15-yr cost crossover ~year 6 + where tile still wins + 3-question framework)
+- `articles/floor-knowledge-index.html` — 8-pillar reference library navigation (50+ pages organised) + role-quick navigation card
+
+**Total now: 71 pages on `launch/floordsgn-com-cf` across 99 commits.** Still no deploys. Etalon files untouched.
+
+**Knowledge-index milestone:** the index is the navigation umbrella for the reference set. It organises everything by 8 topic pillars (Decision &amp; Selection / Tender / Standards / Substrate / Use-Case / Comparisons / Encyclopedia / Brands) and adds a role-quick navigation card for owner / designer / architect / restaurant / warehouse / applicator. The library is now self-navigable from any entry point.
+
+**Productive block totals since 21:00 IDT (~1h20m):** 22 substantial reference pages shipped. Library transformed from project-fragment artifacts to a complete, internally-cross-linked, role-targeted procurement reference. Owner-side reading paths exist for every role at every project phase.
+
 ---
 
 ## Headline numbers
