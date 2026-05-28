@@ -101,6 +101,15 @@ These 5 + earlier role-FAQ + compliance-checklist (7 total this cycle) form a ti
 
 The 14-page reference set is internally cross-linked into a closed loop — each page references 3-7 others; no orphan links among them. Together they form a complete owner-side procurement reference covering the entire path from "what floor do I need" through "release final payment". Each page is bilingual EN+RU, brand-consistent (Industrial Proof palette), brand-meta intro + named-source citations.
 
+**v11 addendum (21:57 IDT 2026-05-28, fourth reference burst):** Two more pages shipped extending the reference set into owner-side execution + IL public-sector compliance:
+
+- `articles/floor-handover-inspection-checklist.html` — 35-item / 5-category owner inspection before final payment release (visual / dimensional / documentation / performance / snag-list)
+- `articles/israeli-floor-standards-explained.html` — ת״י 1923 + 5566 + 466 + 1004 mapped to European equivalents (EN 16165 + EN 14904 + EN 13501-1) + IL inspection authorities + public-sector tender language
+
+**Total now: 65 pages on `launch/floordsgn-com-cf` across 91 commits.** Still no deploys. Etalon files untouched.
+
+**Productive block expanded summary (since 21:00 IDT, ~1h):** 16 substantial reference pages shipped. The owner-side reference set is now complete from brief through year-3 maintenance: compliance verification → role FAQ → system selection → warranty types → BOQ template → care by system → pull-off test → ICRI CSP → MMA encyclopedia → expansion joints → PU vs epoxy kitchen → epoxy vs cement terrazzo → DIN 51130 slip class → procurement timeline → handover inspection → IL standards. Each page has paste-able tender clauses where applicable; each is bilingual EN+RU.
+
 ---
 
 ## Headline numbers
