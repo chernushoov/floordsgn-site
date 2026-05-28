@@ -143,6 +143,46 @@ The 14-page reference set is internally cross-linked into a closed loop — each
 
 **26 pages shipped in productive block since 21:00 IDT (~1h35m).** The library now covers: owner-side decision (role FAQ + selection + procurement timeline + 10 mistakes), tender + documentation (BOQ + warranty + handover + how-to-evaluate), standards (compliance + slip + IL + pull-off + glossary), substrate + install (CSP + moisture + joints + UFH), use-case-specific (kitchen + cold-store + brewery + hospital + case study), comparisons (resin family + brand-family + decorative + terrazzo + tile), encyclopedia (PU-cement + epoxy + MMA + microtopping + polished concrete + terrazzo), brands (Sika / Mapei / MC-Bauchemie / Ardex / Conica / Polytan / BSW / Tarkett / Forbo / Topciment / Mortex / Ideal Work / etc.), and specialist environments (antimicrobial healthcare/food + ESD electronics/cleanroom + accessibility public buildings).
 
+**v15 addendum (22:53 IDT 2026-05-28, eighth burst — 80-PAGE MILESTONE):** Five more pages shipped completing the IL flooring procurement reference set:
+
+- `articles/sustainable-flooring-cradle-to-cradle.html` — 3 sustainability frameworks (C2C + EPD + embodied carbon kg CO2e/m² by system) + ת״י 5281 + IL channel
+- `articles/floor-restoration-vs-replace-decision.html` — 7-step assessment framework (visual / performance / coverage / substrate / cost / downtime / decision) + cost/yr by system + downtime comparison
+- `articles/floor-systems-coastal-salt-air-environment.html` — IL Mediterranean 4-zone coastal map (beach / coastal residential / coastal commercial / inland) + 4 attacks (chloride / UV / salt-spray / hot-humid) + EN 14629 chloride audit + aliphatic PU clauses
+- `articles/floor-systems-dance-fitness-studios.html` — 6 fitness disciplines (ballet / CrossFit / yoga / martial arts / spinning / multi-purpose) with system spec + sprung subfloor + IL channel
+- `articles/floor-frequently-asked-questions.html` — top-30 Q&A organised in 10 categories (cost / downtime / substrate / warranty / aesthetic / care / specialised / sustainability / brand / when-things-go-wrong) + cross-links to deep-dive pages
+
+**TOTAL: 80 pages on `launch/floordsgn-com-cf` across 109 commits.** Still no deploys. Etalon files untouched.
+
+## 80-PAGE LIBRARY MILESTONE — Session Totals
+
+**31 substantial reference pages shipped in this active productive block since 21:00 IDT (~1h55m).** Average ~3.7 minutes per substantial bilingual reference page with snap verification.
+
+**The complete IL flooring procurement reference library now covers:**
+
+**Decision &amp; Selection (5 pages):** role FAQ, selection by use case, procurement timeline, evaluate installer, 10 most expensive mistakes
+
+**Tender &amp; Documentation (4 pages):** BOQ template, warranty types, handover inspection, brand catalog routing
+
+**Standards &amp; Compliance (6 pages):** compliance verification checklist, slip class DIN 51130, IL national standards (ת״י 1923/5566/466/1004), pull-off test, ICRI CSP, terminology glossary
+
+**Substrate &amp; Install (4 pages):** ICRI CSP guide, substrate moisture remediation, expansion joints in resin floors, UFH compatibility
+
+**Use-Case Specific (8 pages):** PU-cement vs epoxy kitchen, cold stores/freezers/blast chillers, brewery floor spec, commercial kitchen spec, hospital floor spec, Tel Aviv boutique hotel case study, coastal/salt-air environment, dance/fitness studios
+
+**Specialist Environments (3 pages):** antimicrobial healthcare/food, ESD electronics/cleanroom, accessibility ת״י 1004
+
+**Comparisons (~10 pages):** Resin family, brand families, decorative, terrazzo (epoxy vs cement), tile, microtopping vs polished concrete
+
+**Encyclopedia (8+ pages):** PU-cement, epoxy SL, MMA, microtopping (+ binder chemistry, known issues, decision tree, wet rooms), polished concrete, terrazzo, poured PU rubber sport
+
+**Sustainability + Lifecycle (3 pages):** sustainable flooring (C2C + EPD + embodied carbon), restoration vs replace, floor care by system type
+
+**Brand Catalog (~25 brand profiles):** Sika, Mapei, MC-Bauchemie, Ardex/Pandomo, Ucrete, Conica, Polytan, BSW Regupol, Tarkett, Forbo, Topciment, Mortex, Ideal Work, Keim, Altro, Polyflor, Senso, Flowcrete, etc.
+
+**Navigation (3 pages):** Knowledge index (8-pillar navigation), terminology glossary (60+ A-Z), top-30 FAQ
+
+Every page is bilingual EN+RU, brand-consistent (Industrial Proof palette), brand-meta intro + named-source citations, cross-linked to 3-7 other pages in the reference set. Every spec page has paste-able tender clauses. Every comparison page has lifecycle cost calculation.
+
 ---
 
 ## Headline numbers
