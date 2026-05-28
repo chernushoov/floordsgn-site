@@ -64,6 +64,17 @@
 
 These 5 + earlier role-FAQ + compliance-checklist (7 total this cycle) form a tightly cross-linked "owner's procurement reference" set — every page links to 3–5 others in the loop. Each is bilingual EN+RU with FAQ-style structured data where applicable. **Total now: 56 pages on `launch/floordsgn-com-cf` across 79 commits.** No deploys. No etalon-file modifications.
 
+**v9 addendum (21:39 IDT 2026-05-28, second reference burst):** Four more pages shipped extending the closed-loop reference set:
+
+- `articles/icri-csp-surface-profile-guide.html` — CSP 1-10 scale + method-to-CSP mapping (acid etch / grinding / shot blast / scarification / scabbling / hydro-demolition) + per-system CSP target + site verification protocol + paste-able tender clause
+- `articles/encyclopedia/mma.html` — methyl methacrylate fast-cure floor: chemistry, exothermic cure curve, 4-layer system buildup table, IL channel (Sika Pronto, Flowfast), MMA vs PU-cement decision filter
+- `articles/expansion-joints-resin-floors.html` — 4-discipline framework (substrate joint replication / sealant chemistry per system family / joint geometry 2:1 + backer rod / perimeter joints non-negotiable) + joint plan documentation + paste-able tender clause
+- `articles/comparisons/pu-cement-vs-epoxy-kitchen.html` — 7-criteria comparison table + 15-year total cost (PU ₪56k vs epoxy ₪142k for 80 m² kitchen) + 3-line verdict + IL channel per system
+
+**Total now: 60 pages on `launch/floordsgn-com-cf` across 84 commits.** Still no deploys. Etalon files untouched. The reference set is now self-contained: each new page links to 4–7 others; orphan-link audit clean.
+
+**Session totals since 22:00 prior day:** 60 new content pages, 84 commits, 30+ snap PNG verifications, zero etalon-file edits, zero regressions to existing content. MacBook delivered 5 commits on `platform-foundation` (data-driven generator) in parallel — divergent architecture requires owner decision (see blockers #4 in BLOCKERS file). iMac stays on content-page format unless owner directs otherwise.
+
 ---
 
 ## Headline numbers
