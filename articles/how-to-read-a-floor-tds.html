@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Read a Floor TDS: Manufacturer Spec Sheet Decoder | Floor.DSGN</title>
+    <meta name="description" content="Every floor specification decision should reference the manufacturer's TDS. This guide decodes the ten sections of a typical TDS — composition, mixing ratios, cure times, mechanical properties, chemical resistance, slip resistance, ESD, fire reaction, environmental data, and warranty conditions.">
+    <meta name="keywords" content="how to read floor TDS, technical data sheet decoder, Sikafloor TDS, manufacturer spec sheet, flooring TDS Israel, FeRFA Type interpretation, EN 13813 reading">
+    <meta property="og:title" content="How to Read a Floor TDS — Manufacturer Spec Sheet Decoder">
+    <meta property="og:description" content="Every floor decision starts with the TDS. Ten sections decoded — composition, cure, mechanical, chemical, slip, warranty.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/articles/how-to-read-a-floor-tds.html">
+    <meta property="og:image" content="https://floordsgn.com/images/concrete-decorative/beton.jpg">
+    <link rel="canonical" href="https://floordsgn.com/articles/how-to-read-a-floor-tds.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260523a">
+    <style>
+        .section-card { background:var(--concrete, #f3f0ea); padding:20px 24px; margin:20px 0; border-left:3px solid var(--steel, #72716D); border-radius:2px; }
+        .section-card.signal { border-left-color:var(--signal, #C86B3C); }
+        .section-card h3 { margin:0 0 8px; font-size:18px; }
+        .section-card .section-num { display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel, #72716D); margin-bottom:6px; font-weight:600; }
+        .section-card .what-to-look-for { background:#fff; padding:12px 16px; margin-top:10px; border:1px solid var(--grey-border, #e5e3df); border-radius:2px; }
+        .section-card .red-flag { color:var(--signal, #C86B3C); font-weight:600; font-size:13.5px; }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Read a Floor TDS","datePublished":"2026-05-28","publisher":{"@type":"Organization","name":"Floor.DSGN"}}</script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+
+    <article class="article-page" data-lang-block="en">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Back to Blog</a>
+                <span class="article-category">Reference Guide</span>
+                <h1>How to Read a Floor TDS</h1>
+                <p class="article-meta">May 2026 · 9 min read</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Floor TDS manufacturer specification sheet" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Every floor specification decision should reference the manufacturer's Technical Data Sheet (TDS). The TDS is the legal foundation of the warranty, the installer's instruction manual, and the auditor's reference. Read it once, properly, and you avoid most of the failures the encyclopedia documents. Skip it and you trust marketing language. This guide walks the ten sections you find in every flooring TDS — Sika, Mapei, Topciment, Altro, Master Builders all follow the same structure — and what to look for in each.</p>
+
+                    <div class="section-card signal">
+                        <span class="section-num">Section 1</span>
+                        <h3>Product description and intended use</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Does the product match your actual use case? "Heavy-duty industrial floor" should describe the same envelope you have — forklift / wash-down / chemical exposure. If the TDS describes "interior decorative" and you need exterior wet, this is the wrong product. <span class="red-flag">Red flag:</span> vague intended-use language like "various commercial applications" without specifying the parameter envelope.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 2</span>
+                        <h3>Composition and chemistry</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Binder family — cement, polymer, hydraulic-binder + resin, PU, epoxy. See <a href="./encyclopedia/microcement-binder-chemistry.html">microcement binder chemistry primer</a> for the family decoder. The TDS should explicitly name the binder system, not just call itself "decorative concrete" or "resin floor." Composition tells you the failure modes you should expect. <span class="red-flag">Red flag:</span> proprietary composition with no chemistry description.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 3</span>
+                        <h3>Mixing ratios and pot life</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Two-component or three-component? Ratio by weight or by volume? Pot life at standard ambient and at IL summer (35°C). At 35°C pot life is typically 30-50% shorter than at 20°C — IL applicators need to plan for this. <span class="red-flag">Red flag:</span> "no specific ratio required" language or pot life listed only at 20°C.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 4</span>
+                        <h3>Cure times</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Walking traffic, vehicle traffic, full chemical resistance, full mechanical resistance. The four numbers tell you the project schedule. PU sealer in microcement wet rooms requires the full 7-day cure before water exposure — see <a href="./encyclopedia/microcement-wet-rooms.html">wet-rooms spec</a>. <span class="red-flag">Red flag:</span> cure times that vary by ambient conditions without an IL summer (35°C / 50% RH) value listed.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 5</span>
+                        <h3>Mechanical properties</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Compressive strength (N/mm²), tensile strength, flexural strength, abrasion resistance (Taber CS-17 1kg / 1000 cycles, in mg loss). For sport floors, EN 14904 P/A/C class. For resin floors, FeRFA Type 1-8. For tile, R-class slip. <a href="./resources/standards-glossary.html">Standards glossary</a> defines each. <span class="red-flag">Red flag:</span> only marketing phrases like "high abrasion resistance" without Taber numbers.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 6</span>
+                        <h3>Chemical resistance table</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> A proper chemical resistance table lists specific chemicals (acetic acid 10%, sodium hydroxide 10%, sulfuric acid 30%, etc.) with exposure duration and result (resistant / discolouration only / damage / not resistant). Map your actual chemical exposure to the table. <span class="red-flag">Red flag:</span> generic "good chemical resistance" claim without a specific chemical list.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 7</span>
+                        <h3>Slip resistance</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> PTV (wet, EN 16165) and/or DCOF (ANSI A326.3) and/or R-class (DIN 51130). The numbers must meet your tender language. For wet pathways: PTV ≥ 36. For commercial kitchens: R12 minimum. For pool barefoot: PTV ≥ 36 barefoot. <span class="red-flag">Red flag:</span> "slip-resistant" with no measured value.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 8</span>
+                        <h3>Fire reaction and ESD</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> EN 13501-1 class (typical floor coverings: Cfl-s1 to Bfl-s1 for public buildings, A1fl for non-combustible required). ESD floor resistance per IEC 61340-5-1 if specified for operating theatres / electronics rooms. <span class="red-flag">Red flag:</span> missing fire class entirely.
+                        </div>
+                    </div>
+
+                    <div class="section-card signal">
+                        <span class="section-num">Section 9</span>
+                        <h3>Substrate requirements and surface preparation</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Substrate moisture limit (ASTM F2170 typically ≤ 75% RH for epoxy SL, up to 85% for PU-cement). ICRI CSP profile required. Pull-off adhesion minimum (ASTM D7234 typically ≥ 1.5 N/mm²). See <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a> and <a href="./substrate-moisture-testing.html">moisture testing</a>. This section is the warranty's foundation — if substrate prep does not meet TDS, warranty is void. <span class="red-flag">Red flag:</span> "consult manufacturer" with no specific values.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Section 10</span>
+                        <h3>Warranty conditions</h3>
+                        <div class="what-to-look-for">
+                            <strong>What to verify:</strong> Warranty duration, what is covered, what voids it. Always voids: missed substrate prep, missed cure window, non-approved applicator, missing documentation, off-label use. Read this section twice — it dictates how the floor will be defended (or not) when something fails years later. <span class="red-flag">Red flag:</span> warranty language so broad that almost any failure produces a denial.
+                        </div>
+                    </div>
+
+                    <h2>The TDS questions that separate amateurs from professionals</h2>
+                    <p>If you only have time to verify three things on a TDS, verify these:</p>
+                    <ol>
+                        <li><strong>What is the binder family (composition section)?</strong> Drives the failure modes you should anticipate.</li>
+                        <li><strong>What is the substrate moisture limit (substrate section)?</strong> Drives whether the floor will adhere — most failures originate here.</li>
+                        <li><strong>What does the warranty cover and what voids it (warranty section)?</strong> Drives what happens when something fails years later.</li>
+                    </ol>
+
+                    <h2>Cross-checking the TDS against the install</h2>
+                    <p>The TDS is only useful if the install follows it. At project handover, demand documentation that the applicator complied with the TDS at each stage:</p>
+                    <ul>
+                        <li>Substrate moisture verification (photo of ASTM F2170 probe + reading)</li>
+                        <li>Surface profile verification (photo with ICRI CSP replica chip)</li>
+                        <li>Mixing ratios met (batch numbers + mix log)</li>
+                        <li>Ambient conditions during cure (temperature + RH log)</li>
+                        <li>Cure window respected (sealer cure period documented before water exposure)</li>
+                    </ul>
+                    <p>This documentation file is the warranty's evidence base. Without it, any future claim is unenforceable regardless of how clearly the TDS sets the warranty conditions.</p>
+
+                    <h2>When the TDS contradicts the salesperson</h2>
+                    <p>A common pattern in IL flooring procurement: the salesperson makes a claim that does not appear in the TDS. ("This product also works for X." "You can speed-cure with a heater." "The 75% RH limit is conservative.") When this happens, the TDS wins. The salesperson is not legally bound; the TDS is the document the warranty refers to. If the salesperson disagrees, ask for the claim in writing, signed by the manufacturer's technical office, not by the salesperson.</p>
+
+                    <h2>Final read</h2>
+                    <p>The TDS is the single most important document in a floor specification — more important than the brand profile, the comparison article, or the installer's pitch. Read it once before deciding, read it again before signing, and demand documentation against it after install. Floor.DSGN's brand profile pages summarise the key TDS data for each brand, but they do not replace reading the TDS itself. For tender-grade specifications, the TDS must be in the project file.</p>
+
+                    <p>Related: <a href="./encyclopedia/microcement-binder-chemistry.html">Binder chemistry decoder</a> · <a href="./resources/standards-glossary.html">Standards glossary</a> · <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a> · <a href="./substrate-moisture-testing.html">Moisture testing</a> · <a href="./how-to-evaluate-a-floor-installer.html">Installer evaluation guide</a>.</p>
+
+                    <h2>Sources</h2>
+                    <ul>
+                        <li>EN 13813 — Screed material and floor screeds: properties and requirements.</li>
+                        <li>FeRFA Type 1-8 classification standards.</li>
+                        <li>ICRI 310.2R-2013 — substrate preparation reference.</li>
+                        <li>ASTM F2170 — in-situ RH testing for concrete.</li>
+                        <li>ASTM D7234 — pull-off adhesion testing.</li>
+                        <li>EN 16165 — slip resistance pendulum testing.</li>
+                        <li>EN 13501-1 — fire reaction classification.</li>
+                        <li>IEC 61340-5-1 — ESD protection in electronic systems.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="en">
+        <div class="container">
+            <h2>Need an Independent TDS Review on Your Tender?</h2>
+            <p>Send us the TDS for the product you are considering. We return an audit against the ten sections above, with the red flags marked.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Get TDS Audit</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Reference Guide</span>
+                <h1>Как читать TDS пола</h1>
+                <p class="article-meta">Май 2026 · 9 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Floor TDS manufacturer specification" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">Каждое floor specification decision должно reference manufacturer's Technical Data Sheet (TDS). TDS — legal foundation warranty, installer's instruction manual и auditor's reference. Read once properly — avoid большинство failures, которые документирует энциклопедия. Skip и trust marketing language. Этот guide проходит десять секций, которые ты находишь в каждом flooring TDS — Sika, Mapei, Topciment, Altro, Master Builders все следуют одной структуре.</p>
+
+                    <div class="section-card signal">
+                        <span class="section-num">Секция 1</span>
+                        <h3>Product description и intended use</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Match'ит ли продукт твой реальный use case? «Heavy-duty industrial floor» должно describing тот же envelope — forklift / wash-down / chemical exposure. <span class="red-flag">Red flag:</span> vague intended-use language без specifying parameter envelope.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 2</span>
+                        <h3>Composition и chemistry</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Binder family — cement, polymer, hydraulic-binder + resin, PU, эпокси. См. <a href="./encyclopedia/microcement-binder-chemistry.html">микроцемент binder chemistry primer</a>. <span class="red-flag">Red flag:</span> proprietary composition без chemistry-описания.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 3</span>
+                        <h3>Mixing ratios и pot life</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Two- или three-component? Ratio by weight или volume? Pot life at standard ambient и at IL summer (35°C). При 35°C pot life типично 30-50% короче чем при 20°C.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 4</span>
+                        <h3>Cure times</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Walking traffic, vehicle traffic, full chemical resistance, full mechanical resistance. PU sealer в микроцементных мокрых зонах требует full 7-day cure до water exposure — см. <a href="./encyclopedia/microcement-wet-rooms.html">wet-rooms spec</a>.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 5</span>
+                        <h3>Mechanical properties</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Compressive strength, tensile strength, flexural strength, abrasion resistance (Taber CS-17 1kg / 1000 cycles). Для sport floors — EN 14904 P/A/C class. Для resin floors — FeRFA Type 1-8. <span class="red-flag">Red flag:</span> только marketing phrases без Taber-чисел.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 6</span>
+                        <h3>Chemical resistance таблица</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Proper таблица lists specific chemicals с exposure duration и result. Map свою actual chemical exposure к таблице. <span class="red-flag">Red flag:</span> generic «good chemical resistance» claim без specific chemical list.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 7</span>
+                        <h3>Slip resistance</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> PTV (wet, EN 16165) и/или DCOF (ANSI A326.3) и/или R-class (DIN 51130). Numbers должны meet твой tender language. Для wet pathways: PTV ≥ 36. Для коммерческих кухонь: R12 minimum.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 8</span>
+                        <h3>Fire reaction и ESD</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> EN 13501-1 class (типично Cfl-s1 до Bfl-s1 для public buildings, A1fl для non-combustible). ESD floor resistance per IEC 61340-5-1 если specified для OR / electronics. <span class="red-flag">Red flag:</span> missing fire class entirely.
+                        </div>
+                    </div>
+
+                    <div class="section-card signal">
+                        <span class="section-num">Секция 9</span>
+                        <h3>Substrate requirements и surface preparation</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Substrate moisture limit (ASTM F2170 типично ≤ 75% RH для эпокси SL, до 85% для PU-cement). ICRI CSP profile required. Pull-off adhesion minimum (ASTM D7234 типично ≥ 1.5 Н/мм²). См. <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a>. Эта секция — foundation warranty. Если substrate prep не meet TDS — warranty void.
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <span class="section-num">Секция 10</span>
+                        <h3>Warranty conditions</h3>
+                        <div class="what-to-look-for">
+                            <strong>Что verify:</strong> Warranty duration, что covered, что voids. Всегда voids: missed substrate prep, missed cure window, non-approved applicator, missing documentation, off-label use. Read эту секцию дважды.
+                        </div>
+                    </div>
+
+                    <h2>TDS-вопросы, отделяющие amateurs от professionals</h2>
+                    <p>Если у тебя есть время verify только три вещи на TDS, verify эти:</p>
+                    <ol>
+                        <li><strong>Какая binder family (composition секция)?</strong> Драйвит failure modes.</li>
+                        <li><strong>Substrate moisture limit (substrate секция)?</strong> Драйвит whether floor will adhere — большинство failures originate здесь.</li>
+                        <li><strong>Что warranty cover и что voids it (warranty секция)?</strong> Драйвит что happens когда что-то fails через годы.</li>
+                    </ol>
+
+                    <h2>Cross-checking TDS против install</h2>
+                    <p>TDS только useful если install follows it. На project handover demand documentation, что applicator complied с TDS на каждой стадии:</p>
+                    <ul>
+                        <li>Substrate moisture verification (фото ASTM F2170 probe + reading)</li>
+                        <li>Surface profile verification (фото с ICRI CSP replica chip)</li>
+                        <li>Mixing ratios met (batch numbers + mix log)</li>
+                        <li>Ambient conditions during cure (temperature + RH log)</li>
+                        <li>Cure window respected (sealer cure period documented before water exposure)</li>
+                    </ul>
+
+                    <h2>Когда TDS contradicts salesperson</h2>
+                    <p>Частый паттерн в IL flooring procurement: salesperson makes claim, который не appears в TDS. («Этот продукт также works для X.» «Можешь speed-cure heater'ом.» «75% RH limit conservative.») Когда это happens — TDS wins. Salesperson не legally bound; TDS — документ, к которому warranty refers. Если salesperson disagrees — ask claim в письменном виде signed manufacturer's technical office.</p>
+
+                    <h2>Финальный вывод</h2>
+                    <p>TDS — single most важный документ в floor specification — важнее brand profile, comparison article или installer's pitch. Read once before deciding, read again before signing, demand documentation against it after install. Brand profile pages Floor.DSGN summarise key TDS data для каждого бренда, но не replace reading TDS самой. Для tender-grade спецификаций TDS должна быть в project file.</p>
+
+                    <p>Связано: <a href="./encyclopedia/microcement-binder-chemistry.html">Binder chemistry decoder</a> · <a href="./resources/standards-glossary.html">Standards glossary</a> · <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a> · <a href="./substrate-moisture-testing.html">Moisture testing</a> · <a href="./how-to-evaluate-a-floor-installer.html">Installer evaluation guide</a>.</p>
+
+                    <h2>Источники</h2>
+                    <ul>
+                        <li>EN 13813 — Screed material and floor screeds.</li>
+                        <li>FeRFA Type 1-8 classification standards.</li>
+                        <li>ICRI 310.2R-2013 — substrate preparation reference.</li>
+                        <li>ASTM F2170 — in-situ RH testing.</li>
+                        <li>ASTM D7234 — pull-off adhesion testing.</li>
+                        <li>EN 16165 — slip resistance pendulum testing.</li>
+                        <li>EN 13501-1 — fire reaction classification.</li>
+                        <li>IEC 61340-5-1 — ESD protection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>Нужен independent TDS review твоего тендера?</h2>
+            <p>Пришли TDS продукта. Возвращаем audit по 10 секциям выше с red flags marked.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить TDS audit</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
