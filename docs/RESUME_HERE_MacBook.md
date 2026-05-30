@@ -8,18 +8,23 @@ Overwritten after each commit. If a Claude session dies mid-task, the next sessi
 - **Role:** PR-author. **Never push to `main`.**
 
 ## Last update
-- **UTC:** 2026-05-30T06:50
-- **Branch:** `ops/coordination-checkpoint` (clean working tree besides this checkpoint)
-- **Recent commits visible on origin/main:**
-  - `faebb6e feat(home): material switcher on the live 3D hero — all 10 systems` (iMac)
-  - `a15aaba feat(home): live 3D hero — real GLB terrazzo` (iMac)
-  - `80046c6 fix(configurator): default to procedural plate` (iMac, equivalent of my old PR #23)
+- **UTC:** 2026-05-30T07:45
+- **Branch:** `ops/coordination-checkpoint`
+- **Recent commits on origin/main:** `faebb6e`/`a15aaba`/`80046c6` (iMac live-3D-hero + configurator fix).
 
-## Open PRs (MacBook-authored)
+## Open PRs (MacBook-authored, this session)
 | PR | Branch | Status | Gate |
 |----|--------|--------|------|
-| #25 | `feat/hebrew-rtl-tier1` | open, awaiting merge | **needs native Hebrew review** before merge per `LANGUAGE_STRATEGY_2026-05-12.md` |
-| #26 | `fix/sitemap-and-claims` | open, awaiting merge | safe to merge; may conflict with iMac's new `verticals/architects.html` (which has a NEW `50+ TDS` stat block) — rebase will need to keep MacBook's `vt_arch_hero_lede` honesty fix |
+| #25 | `feat/hebrew-rtl-tier1` | open | **needs native Hebrew review** |
+| #26 | `fix/sitemap-and-claims` | open | safe; rebase needed (iMac re-edited architects.html) |
+| #27 | `ops/coordination-checkpoint` | open | safe — coord docs + WhatsApp wiring |
+| #28 | `feat/contact-fn-telegram-direct` | open | safe — Telegram-direct cascade |
+
+## iMac state
+- Branch: `launch/floordsgn-com-cf` (84 EN+RU reference pages, 113+ overnight commits).
+- HE foundation: `he.css` + `docs/HEBREW_TERMINOLOGY_GLOSSARY.md` + `articles/he/floor-knowledge-index.html` — all on `launch`, **not** on main.
+- Active Claude PID 1436. Translating Tier-1 owner-side pages.
+- Agreed split: MacBook = Tier-2 (encyclopedia / brands / comparisons / use-cases under `articles/he/`). See `docs/macbook-handoff/HANDOFF_TO_IMAC_2026-05-30T0735Z.md`.
 
 ## Owner mandate (priority order, 2026-05-30)
 1. **Drive to first paying lead.** Revenue path: lead-form → email/Telegram → owner reply → quote → sale.
