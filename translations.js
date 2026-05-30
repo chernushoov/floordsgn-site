@@ -3683,6 +3683,12 @@ Object.assign(translations.ru, {"fco_hero_eyebrow":"Семейство · Бет
 function setLanguage(lang) {
     localStorage.setItem('floordsgn_lang', lang);
     document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+    // body class hook for per-language CSS (lang-en / lang-ru / lang-he).
+    if (document.body) {
+        document.body.classList.remove('lang-en', 'lang-ru', 'lang-he');
+        document.body.classList.add('lang-' + lang);
+    }
 
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -3716,13 +3722,19 @@ function setLanguage(lang) {
 }
 
 function initLanguage() {
-    // First-time: detect browser locale. Returning: use saved preference.
-    // RU is primary positioning audience (IL native readers).
-    // HE dict not yet populated — falls back to RU until translations.he exists.
-    let lang = localStorage.getItem('floordsgn_lang');
+    // Priority: ?lang= query → saved preference → browser locale → RU.
+    // HE dict is populated for Tier-1 keys (home page); missing keys fall
+    // back to the HTML default (English) — acceptable bilingual fallback.
+    let lang;
+    try {
+        const qp = new URLSearchParams(window.location.search).get('lang');
+        if (qp && /^(en|ru|he)$/.test(qp)) lang = qp;
+    } catch (_) {}
+    if (!lang) lang = localStorage.getItem('floordsgn_lang');
     if (!lang) {
         const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
-        if (nav.startsWith('en')) lang = 'en';
+        if (nav.startsWith('he') || nav.startsWith('iw')) lang = 'he';
+        else if (nav.startsWith('en')) lang = 'en';
         else lang = 'ru';
     }
     setLanguage(lang);

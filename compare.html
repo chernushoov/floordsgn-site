@@ -3,10 +3,11 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Сравнение материалов — Floor.DSGN | 2-3 системы side-by-side</title>
 <meta name="description" content="Выберите 2-3 системы → сравнительная таблица по 12 параметрам: толщина, нагрузка, downtime, химостойкость, цена, slip class.">
-<link rel="canonical" href="https://floordsgn.netlify.app/compare">
+<link rel="canonical" href="https://floordsgn.com/compare">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260521a"><link rel="stylesheet" href="chrome-fix.css?v=20260521a"><link rel="stylesheet" href="enhance.css?v=6">
+<link rel="stylesheet" href="styles.css?v=20260521a">
+    <link rel="stylesheet" href="rtl.css"><link rel="stylesheet" href="chrome-fix.css?v=20260521a"><link rel="stylesheet" href="enhance.css?v=6">
 <style>
 .fx-compare-shell { max-width: 1280px; margin: 0 auto; padding: 100px 36px; }
 .fx-compare-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 88px); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin: 0 0 20px; color: #1d1d1f; }
@@ -44,7 +45,7 @@
         </nav>
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button><button class="lang-btn" data-lang="he" onclick="setLanguage('he')">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -210,5 +211,6 @@ const FX_ROWS = [
 })();
 </script>
 
-<script src="script.js"></script><script src="translations.js?v=20260521a" defer></script><script src="enhance.js?v=20260522a" defer></script>
+<script src="script.js"></script><script src="translations.js?v=20260521a" defer></script>
+    <script src="js/he-translations.js?v=20260530a"></script><script src="enhance.js?v=20260522a" defer></script>
 </body></html>

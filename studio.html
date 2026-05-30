@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FloorDSGN Studio — подбор пола, нормы Израиля, пирог в 3D, расчёт стоимости</title>
     <meta name="description" content="Профи-инструмент для дизайнеров и архитекторов: подбор системы пола под задачу, нормы Израиля (ת״י 466, EN 1504, EN 13813), послойный «пирог», расчёт стоимости и спецификация.">
-    <link rel="canonical" href="https://floordsgn.netlify.app/studio.html">
+    <link rel="canonical" href="https://floordsgn.com/studio.html">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260521a">
+    <link rel="stylesheet" href="rtl.css">
     <link rel="stylesheet" href="enhance.css?v=6">
     <style>
       /* ---- FloorDSGN Studio (page-local; shared CSS / etalon untouched) ---- */
@@ -120,7 +121,7 @@
         </nav>
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button><button class="lang-btn" data-lang="he" onclick="setLanguage('he')">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -417,6 +418,7 @@
 
     <script src="script.js?v=6"></script>
     <script src="translations.js?v=20260521a"></script>
+    <script src="js/he-translations.js?v=20260530a"></script>
     <script src="enhance.js?v=20260522a" defer></script>
 
     <!-- Studio: tabs + guide funnel + pie builder + spec sheet -->
@@ -489,7 +491,7 @@
         // spec sheet
         var _ssArea=curArea(), _ssQ=CONS[slug]||[], _ssTot=0;
         var _ssBoq=s.layers.map(function(l,i){var per=_ssQ[i]||0; if(per<=0) return ''; var tot=per*_ssArea; _ssTot+=tot; return '<tr><td>'+l.t+'</td><td>'+(Math.round(per*10)/10)+' кг/м²</td><td>'+Math.round(tot)+' кг</td></tr>';}).filter(Boolean).join('');
-        sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Спецификация системы пола<br>floordsgn.netlify.app · +972 55 966 1459<br>'+new Date().toLocaleDateString('ru-RU')+'</div></div>'+
+        sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Спецификация системы пола<br>floordsgn.com · +972 55 966 1459<br>'+new Date().toLocaleDateString('ru-RU')+'</div></div>'+
           '<h1>'+s.name+'</h1><p class="ss-thk">Толщина '+s.thk+' · '+s.norms+'</p>'+
           '<div class="ss-sec">Состав «пирога» (сверху вниз)</div><table>'+s.layers.map(function(l){return '<tr><td>'+l.t+'</td><td>'+l.s+'</td></tr>';}).join('')+'</table>'+
           '<div class="ss-sec">Характеристики</div><table>'+s.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('')+'<tr><td>Класс / свойства</td><td>'+s.badges.join(' · ')+'</td></tr></table>'+
