@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חמש מפרטות שגויות יקרות: מה אסור לעשות | Floor.DSGN</title>
+    <meta name="description" content="חמש שגיאות המפרט הנפוצות ביותר של מערכות רצפה בפרויקטים בישראל, וכשלי הביקורת, התביעות או הציפויים החוזרים שהן גורמות. למה אפוקסי נכשל בייצור מזון, למה מיקרו-טופינג נכשל במחסנים, למה MMA נכשל בדירות — ומה לציין במקום.">
+    <meta name="keywords" content="שגיאות מפרט רצפה, כשל אפוקסי בייצור מזון, מיקרו-טופינג מלגזה, בטון מלוטש פארמה, MMA במגורים, גומי מעבדה כימית, אנטי-פטרנים ברצפות, שגיאות מפרט נפוצות">
+    <meta property="og:title" content="חמש שגיאות מפרט רצפה יקרות — ומה לציין במקום">
+    <meta property="og:description" content="השגיאות שעולות לקבלן את העבודה הבאה ולבעל הנכס את האחריות.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/articles/he/floor-anti-patterns.html">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+    <link rel="canonical" href="https://floordsgn.com/articles/he/floor-anti-patterns.html">
+    <link rel="alternate" hreflang="en" href="https://floordsgn.com/articles/floor-anti-patterns.html">
+    <link rel="alternate" hreflang="ru" href="https://floordsgn.com/articles/floor-anti-patterns.html">
+    <link rel="alternate" hreflang="he" href="https://floordsgn.com/articles/he/floor-anti-patterns.html">
+    <link rel="alternate" hreflang="x-default" href="https://floordsgn.com/articles/floor-anti-patterns.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../../chrome-fix.css?v=20260523a">
+    <link rel="stylesheet" href="../../he.css?v=20260529a">
+    <style>
+        .err-num { display:inline-block; min-width:42px; height:42px; line-height:42px; text-align:center; background:#C86B3C; color:#fff; border-radius:8px; font-weight:700; margin-right:14px; font-size:18px; }
+        .err-h { display:flex; align-items:flex-start; gap:6px; margin-top:40px !important; }
+        .verdict-box { background:#151515; color:#fff; padding:18px 22px; margin:18px 0; font-size:14.5px; line-height:1.6; }
+        .verdict-box strong { color:#C86B3C; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../../floors.html">רצפות</a>
+            <a href="../../projects.html">פרויקטים</a>
+            <a href="../../blog.html">בלוג</a>
+        </nav>
+        <a href="../../index.html" class="header__logo">
+            <img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../../about.html">אודות</a>
+            <a href="../../contact.html">צור קשר</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn" data-lang="en" onclick="window.location.href='../floor-anti-patterns.html'">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="window.location.href='../floor-anti-patterns.html'">RU</button>
+            <button class="lang-btn active" data-lang="he">HE</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="פתיחת תפריט" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html">בית</a></li><li><a href="../../floors.html">רצפות</a></li><li><a href="../../tools.html">כלים</a></li><li><a href="../../projects.html">פרויקטים</a></li><li><a href="../../about.html">אודותינו</a></li><li><a href="../../blog.html">בלוג</a></li><li><a href="../../contact.html">צרו קשר</a></li></ul></div>
+
+    <article class="article-page">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../../blog.html" class="back-link">חזרה לבלוג</a>
+                <span class="article-category">מדריך החלטה</span>
+                <h1>חמש מפרטות שגויות יקרות: מה אסור לעשות</h1>
+                <p class="article-meta">מאי <span dir="ltr">2026</span> · <span dir="ltr">9</span> דקות קריאה</p>
+                <div class="article-hero-wrapper">
+                    <img src="../../images/epoxy-industrial/needle-roller.jpg" alt="כשל ברצפה תעשייתית עם מפרט שגוי" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">חמש שגיאות מסבירות כמעט כל כשל רצפה בר-מניעה בפרויקטים בישראל. כל אחת מהן שורדת מפני שהאדריכל או היזם מתייחס למפרט כאל תרגיל קטלוגי — לבחור את המוצר הזול ביותר ש"מתאים" למקרה השימוש במונחים שיווקיים. הכימיה, הפיזיקה ותקן הביקורת — כל אחד מהם חולק על כך. לפניכם הצד האפל של מפרט הרצפה: חמש שגיאות שכותב מפרט מנוסה לעולם אינו עושה.</p>
+
+                    <h2 class="err-h"><span class="err-num">1</span><span>למה לא אפוקסי בייצור מזון</span></h2>
+                    <p>אפוקסי <span dir="ltr">bisphenol-A</span> סטנדרטי עובר הידרוליזה תחת מים חמים בתוספת חומצה לקטית בתוספת תת-כלורי נתרן — קוקטייל ה-<span dir="ltr">CIP</span> שמופעל מדי יום בכל מחלבה, מבשלת בירה, בית מטבחיים וקו עיבוד מזון. תוך <span dir="ltr">18–30</span> חודשים פני השטח מתגירים, הפיזור מתרופף, שכבת האיטום העליונה מתרככת. חיידקים מתיישבים בשכבה הרכה. ביקורת ה-<span dir="ltr">HACCP</span> או ה-<span dir="ltr">FSSC 22000</span> הבאה נכשלת. הקבלן שציין את הרצפה כבר לא ברשימה של בעל הנכס.</p>
+                    <p>אפילו אפוקסי <span dir="ltr">Novolac</span> (<span dir="ltr">Sikafloor-381</span>) מתקבל רק באזורי חומצה קרים — לא במטבחים חמים ולא במחלבות עם <span dir="ltr">CIP</span>. הוא עמיד כימית יותר מ-<span dir="ltr">bisphenol-A</span>, אך הוא עדיין פוליאפוקסיד; צפיפות הקישור-הצולב שמנצחת את <span dir="ltr">bisphenol-A</span> בממסים מפסידה לפוליאוריתן-מלט בחומצה לקטית חמה בפער של פי <span dir="ltr">4</span> לערך באורך החיים.</p>
+                    <p>פוליאוריתן-מלט אינרטי כימית כלפי חומצה לקטית, אצטית, ציטרית ותת-כלורי עד <span dir="ltr">80 °C</span>. הוא תואם את הבטון במקדם ההתפשטות התרמית (<span dir="ltr">CTE</span>) בתוך <span dir="ltr">15%</span>, ולכן אינו נגזר תחת זעזוע תרמי. הוא נושא אישורי <span dir="ltr">HACCP</span>, <span dir="ltr">ISEGA</span>, <span dir="ltr">NSF/ANSI 51</span>, <span dir="ltr">FDA 21 CFR 175.300</span> וכשרות בד"ץ ישראלית על אותו דף נתונים טכני. אין הצדקה כלכלית לאפוקסי באזור ייצור מזון עם שטיפה — חיסכון ההתקנה של <span dir="ltr">200–300 ₪</span> למ"ר נמחק על-ידי ציפוי חוזר יחיד בשנה השלישית.</p>
+                    <p>המקום היחיד שבו אפוקסי שייך במזון: אזורי אריזה יבשים ללא שטיפה חמה וללא חשיפה לחומצה. אפילו שם, פיזור <span dir="ltr">R10</span> הוא חובה לביקורת התאמת <span dir="ltr">FCM</span>.</p>
+                    <div class="verdict-box"><strong>ציינו במקום:</strong> <span dir="ltr">Sikafloor PurCem 22N HD 9–12 mm</span> עם פיזור מלא של סיליקון-קרביד <span dir="ltr">0.7–1.2 mm</span> (<span dir="ltr">R12</span>), עם קוב חם בגובה <span dir="ltr">100 mm</span> אל הקירות ואל בסיסי הציוד. <span dir="ltr">ISEGA / NSF / FDA</span> וכשרות בד"ץ על דף הנתונים הטכני. <span dir="ltr">BASF Ucrete UD200 HD</span> ו-<span dir="ltr">Flowcrete Flowfresh HF</span> הם מקבילים ישירים.</div>
+
+                    <h2 class="err-h"><span class="err-num">2</span><span>למה לא מיקרו-טופינג בתעשייה כבדה</span></h2>
+                    <p>מיקרו-טופינג הוא <span dir="ltr">2–3 mm</span> של ציפוי-על צמנטי מותאם-פולימרים. זהו גימור דקורטיבי, לא רצפה מבנית. דירוג חוזק הכפיפה הוא <span dir="ltr">1–2 MPa</span>. גלגל מלגזה מעמיס נקודתית <span dir="ltr">4–6 kN</span> על משטח מגע של <span dir="ltr">30 cm²</span> — זהו <span dir="ltr">15–20 MPa</span> באזור המגע. מיקרו-טופינג נסדק במעבר הראשון. נפילת משטח יוצרת שקע. אפילו עם שכבת האיטום האגרסיבית ביותר מסוג <span dir="ltr">PU 2K</span> הוא נשחק תוך חודשים של תנועת מלגזות.</p>
+                    <p>תבנית השגיאה עקבית: יזם רואה מיקרו-טופינג בתמונת אינסטגרם של אולם תצוגה בסגנון לופט, מציין אותו למחסן לוגיסטי "כי זה נראה תעשייתי", והרצפה נסדקת ביום שבו עגלת המשטחים הראשונה מתגלגלת. התיקון הוא פירוק מלא עד לתשתית בתוספת ציפוי-על מבני — עלות התקנה פי <span dir="ltr">3</span> מהמפרט המקורי.</p>
+                    <p>התחומים הנכונים של מיקרו-טופינג הם מגורים, קמעונאות, אולם תצוגה, רצפות אולם אוכל במסעדות, לוביים של בתי מלון, גלריות אמנות — בכל מקום עם תנועה רגלית בלבד וציוד על גלגלים שאינו כבד מעגלת שירות. הוא לעולם אינו מתאים למחסנים, ייצור, רציפי העמסה, או כל מקום עם ציוד על גלגלים הכבד ממיטת בית חולים.</p>
+                    <div class="verdict-box"><strong>ציינו במקום:</strong> למחסני מלגזות השתמשו במקשה יבש-פזור (<span dir="ltr">Sikafloor-3 QuartzTop</span>) המוטמע בבטון טרי בתוספת החלקה מכאנית בתוספת ליטוש יהלום <span dir="ltr">L1</span> בתוספת מקשה ליתיום (<span dir="ltr">Sikafloor ProSeal W</span>). הרצפה התעשייתית הזולה ביותר לאורך מחזור החיים. לעומסי מדף נקודתיים &gt; <span dir="ltr">5</span> טון, הסלימו ל-<span dir="ltr">PurCem 22N HD 9–12 mm</span>.</div>
+
+                    <h2 class="err-h"><span class="err-num">3</span><span>למה לא בטון מלוטש בפארמה ללא איטום</span></h2>
+                    <p>בטון מלוטש חשוף נראה מצוין בתמונות אולם תצוגה. בחדר נקי פרמצבטי ברשימת <span dir="ltr">GMP</span> הוא נכשל בכל בדיקה נדרשת.</p>
+                    <ul>
+                        <li><strong>בסיסיות.</strong> בטון מלוטש מוקשה הוא <span dir="ltr">pH 9–10</span> (לוח טרי הוא <span dir="ltr">pH 12–13</span>). הוא מגיב עם חומרי ניקוי המאומתים לחדר נקי; אי-אפשר לשחזר יומני ניקוי כנגד תשתית בסיסית.</li>
+                        <li><strong>ספיגת לחות.</strong> בטון לא-אטום סופג נוזל. אי-אפשר לנגב שפכים — הם נספגים ונודדים. אימות ניקוי בחדר נקי מחייב זיהום בר-הסרה.</li>
+                        <li><strong>אבק.</strong> בטון פולט <span dir="ltr">CaCO₃</span> תחת תנועה רגלית. חדרים נקיים <span dir="ltr">ISO 14644 Class 7</span> אינם סובלים פליטת חלקיקים ברצפה.</li>
+                        <li><strong>קשיות פני השטח.</strong> ללא מקשה ליתיום, פני השטח המלוטשים נכשלים במבחן <span dir="ltr">Mohs 7</span> הנדרש לעמידות חדר נקי.</li>
+                    </ul>
+                    <p>השגיאה קורית כשאדריכל מעביר מודל מנטלי של בטון-מלוטש-כגימור ממשרד ברמת גן אל מפעל פארמה ביבנה. הוויזואל זהה; הדרישה הטכנית אינה.</p>
+                    <p>או לאטום את הבטון המלוטש כראוי — מקשה ליתיום (<span dir="ltr">Sikafloor ProSeal W</span>) בתוספת שכבת איטום עליונה אנטי-סטטית (<span dir="ltr">Sikafloor-235 ESD</span>) — או לציין מערכת רזין מההתחלה. בטון מלוטש חשוף בפארמה ללא מקשה ואיטום הוא בלתי-אפשרי בביקורת <span dir="ltr">GMP</span>.</p>
+                    <div class="verdict-box"><strong>ציינו במקום:</strong> <span dir="ltr">Sikafloor-235 ESD</span> (מפזר אלקטרוסטטי מבוסס פחם-שחור, התנגדות פני שטח <span dir="ltr">10⁶–10⁹ Ω</span> לפי <span dir="ltr">IEC 61340-5-1</span>), <span dir="ltr">SL</span> בעובי <span dir="ltr">2 mm</span> על פריימר <span dir="ltr">Sikafloor-156</span>, רצועת הארקה מנחושת בכל <span dir="ltr">40 m²</span> המחוברת להארקת המבנה, עם קוב בגובה <span dir="ltr">75 mm</span>. או בחשיפה לניקוי רטוב: <span dir="ltr">PurCem 21N</span> עם וריאנט <span dir="ltr">ESD</span>.</div>
+
+                    <h2 class="err-h"><span class="err-num">4</span><span>למה לא MMA במגורים</span></h2>
+                    <p><span dir="ltr">MMA</span> (מתיל מתאקרילט) מבריק בחדרי קירור, במחלקות בית חולים (עם בידוד), בסופרמרקטים (סגירת לילה). הוא גם אחד הרזינים הנדיפים ביותר בשימוש מסחרי. ריח ההתקשות עז — "מכון ציפורניים כפול <span dir="ltr">10</span>" — ונמשך <span dir="ltr">24–48</span> שעות לאחר שהרצפה ניתנת לדריכה.</p>
+                    <p>ציוד המגן האישי הנדרש למתקינים הוא מסכת חצי-פנים עם מסנני אדים. האוורור הוא שאיבה כפויה עם בידוד. בדירה במגדל בתל אביב עם שכנים סגורים, מיזוג אוויר משותף וללא שאיבה תעשייתית, ריח התקשות ה-<span dir="ltr">MMA</span> יחדור ליחידות הסמוכות תוך שעות. תלונות יגיעו בתוך היום הראשון. מנהל הבניין יתקשר לקבלן באמצע ההתקשות.</p>
+                    <p>זה אינו תאורטי. תבנית התקרית הנפוצה ביותר של "<span dir="ltr">MMA</span> במגורים בישראל": קבלן מציין <span dir="ltr">MMA Pronto</span> לשיפוץ מטבח "כי זה מתקשה מהר"; הריח מעורר תלונות לוועד הבית; הקבלן חוזר לדירה ומגלה שמנהל הבניין כיבה את מיזוג האוויר של הבניין; השיקום כולל מפוחים תעשייתיים הפועלים <span dir="ltr">72</span> שעות על חשבון בעל הנכס.</p>
+                    <p>לעבודת רצפה במגורים יש את החלון הפתוח — אפשר לפנות את הדירה ל-<span dir="ltr">1–2</span> שבועות. מיקרו-בטון, בטון מלוטש או פרקט הם המוצרים הנכונים. יתרון מהירות ההתקשות של ה-<span dir="ltr">MMA</span> מיועד למתחמים שאינם יכולים להפסיק לפעול.</p>
+                    <div class="verdict-box"><strong>ציינו במקום:</strong> לדירות, מיקרו-בטון בעובי <span dir="ltr">3 mm</span> אטום ב-<span dir="ltr">PU 2K</span> בגימור סאטן (<span dir="ltr">Sikafloor 304W</span>) או בטון מלוטש <span dir="ltr">L2–L3</span> בתוספת מקשה ליתיום. לבתים פרטיים עם חניות שבהם מהירות ההתקשות של ה-<span dir="ltr">MMA</span> מפתה, התקינו עם מערך שאיבה כפויה והתחייבות לפינוי של <span dir="ltr">72</span> שעות — כתובה בחוזה.</div>
+
+                    <h2 class="err-h"><span class="err-num">5</span><span>למה לא גומי במעבדה כימית</span></h2>
+                    <p>גומי <span dir="ltr">EPDM</span> ו-<span dir="ltr">SBR</span> נקשר באמצעות פוליאוריתן. פוליאוריתן מומס על-ידי קטונים (אצטון, <span dir="ltr">MEK</span>), ארומטים (טולואן, קסילן) וחומצות מינרליות מרוכזות. מעבדת כימיה עם שפכי ממסים על שולחן העבודה תראה את מטריצת הגומי מתרככת, מתנפחת ומאבדת את לכידות הגרגרים תוך חודשים. הכשל הנראה לעין הוא נשירת גרגרים — פירורי גומי שחורים או אפורים בבסיס רגלי השולחן.</p>
+                    <p>תבנית השגיאה מונעת-נוחות. מנהל המעבדה רוצה רצפה ארגונומית לטכנאים שעומדים <span dir="ltr">8</span> שעות; הגומי מרגיש נכון; הכימיה של השפכים היומיים נחשבת לעניין משני. התוצאה היא רצפה שנותנת <span dir="ltr">6</span> חודשי נוחות ואז נכשלת בהדרגה לאורך כל יתרת תקופת האחריות.</p>
+                    <p>התחומים הנכונים של הגומי הם בליעת זעזועים יבשה (ספורט, מגרש משחקים, כושר, חדרי ילדים, אזורים משותפים בבתי חולים) ונוחות אקוסטית (משרדים בתכנון פתוח, לוביים). הוא לעולם אינו הרצפה הנכונה למעבדת שולחן רטוב.</p>
+                    <p>הרצפה הנכונה למעבדה כימית היא אפוקסי <span dir="ltr">Novolac</span> (<span dir="ltr">Sikafloor-381</span>) — מתוכננת לעמידות בממסים, הטבעת הקישור-הצולב הבאה מעל <span dir="ltr">bisphenol-A</span> — או ויניל-אסטר (<span dir="ltr">Sikagard Wallcoat N-VE</span>) לשפכים החזקים ביותר (<span dir="ltr">H₂SO₄</span> מרוכזת, צריבת <span dir="ltr">HNO₃</span>). שניהם נוקשים, נוחים לעמידה עם מזרני אנטי-עייפות הממוקמים ליד שולחן העבודה, ואינרטיים כימית למשטר השפכים.</p>
+                    <div class="verdict-box"><strong>ציינו במקום:</strong> אפוקסי <span dir="ltr">Sikafloor-381 Novolac</span> בעובי <span dir="ltr">2–3 mm SL</span> על פריימר <span dir="ltr">Sikafloor-156</span> עם שכבת איטום עליונה <span dir="ltr">Sikafloor-264</span> למעבדות ממסים אורגניים כלליות. ויניל-אסטר (<span dir="ltr">Sikagard Wallcoat N-VE</span>) לאזורי חומצה חזקה (צריבה, סוללות, ציפוי אלקטרוליטי). לנוחות הטכנאי — מזרני אנטי-עייפות ליד שולחן העבודה, לא כימיית הרצפה.</div>
+
+                    <h2>החוט המשותף</h2>
+                    <p>לכל אחת מחמש השגיאות יש אותו שורש: ייעוד המבנה טופל כקטגוריה, והמפרט נבחר לפי ברירת המחדל השיווקית של הקטגוריה. מזון = אפוקסי. תעשייה = מיקרו-טופינג. פארמה = בטון מלוטש. מגורים בהתקשות מהירה = <span dir="ltr">MMA</span>. נוחות מעבדה = גומי. אף אחת מברירות המחדל האלה אינה שורדת מגע עם הכימיה, הפיזיקה ותקני הביקורת שמפעילים את המבנה בפועל.</p>
+                    <p>התיקון הוא מעבר <span dir="ltr">11</span> הקריטריונים. תשתית, מקרה שימוש, עומסים, השבתה, אסתטיקה, מחלקת החלקה, כימיה, טמפרטורה, <span dir="ltr">UV</span>, עלות, אישורים — לכל קריטריון יש תשובה בינארית או כמותית, וכל אחד מהם פוסל מוצרים. עד קריטריון <span dir="ltr">11</span> המוצרים השגויים נעלמו. השניים שנותרים על כנם נקבעים לפי עלות ואסתטיקה. אף אחת מחמש השגיאות שלמעלה אינה שורדת את המעבר הזה.</p>
+
+                    <p>קראו בהמשך: <a href="../floor-decision-guide.html"><span dir="ltr">11</span> הקריטריונים בסדר עדיפויות</a> · <a href="../floor-use-cases.html"><span dir="ltr">15</span> מקרי שימוש ישראליים עם מערכות מומלצות</a> · <a href="../floor-decision-tree.html">עץ החלטה ב-<span dir="ltr">5</span> שאלות</a>.</p>
+
+                    <h2>מקורות</h2>
+                    <ul>
+                        <li>דפי נתונים טכניים של <span dir="ltr">Sika</span> (משפחת מוצרי <span dir="ltr">Sikafloor</span>) — טבלאות עמידות כימית.</li>
+                        <li><span dir="ltr">BASF MasterTop / Ucrete TDS</span> — ביצועי טמפרטורה ומחזורי <span dir="ltr">CIP</span>.</li>
+                        <li><span dir="ltr">Mapei Mapefloor TDS</span> — תיעוד אנטי-מיקרוביאלי <span dir="ltr">Bioblock</span>.</li>
+                        <li><span dir="ltr">IEC 61340-5-1</span> — תופעות אלקטרוסטטיות / הגנה על התקנים אלקטרוניים.</li>
+                        <li><span dir="ltr">HACCP / FSSC 22000 / FDA 21 CFR 175.300</span> — דרישות אישור בטיחות מזון.</li>
+                        <li><span dir="ltr">ISO 14644</span> — חדרים נקיים וסביבות מבוקרות נלוות.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>הימנעו מחמש השגיאות</h2>
+            <p>עברו את <span dir="ltr">11</span> הקריטריונים עם מומחה לפני שאתם מתחייבים. עלות ייעוץ של <span dir="ltr">30</span> דקות נמוכה מ-<span dir="ltr">1%</span> מעלות אחת מחמש השגיאות שלמעלה.</p>
+            <div class="cta-buttons">
+                <a href="../../contact.html" class="btn btn-outline-white">קבלת הצעת מחיר</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">התקשרו עכשיו</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="footer-logo"><p>מערכות רצפה ברמה הנדסית בכל רחבי ישראל.</p></div>
+                <div class="footer-column"><h4>מערכות רצפה</h4><ul><li><a href="../../materials/epoxy.html">אפוקסי</a></li><li><a href="../../materials/mma.html">MMA</a></li><li><a href="../../materials/pu-cement.html">פוליאוריתן-מלט</a></li><li><a href="../../materials/microtopping.html">מיקרו-טופינג</a></li><li><a href="../../materials/terrazzo.html">טרצו</a></li><li><a href="../../materials/concrete.html">בטון</a></li></ul></div>
+                <div class="footer-column"><h4>כלים</h4><ul><li><a href="../../tools.html">כל הכלים</a></li><li><a href="../../decision-tool.html">בורר מערכות</a></li><li><a href="../../studio.html">סטודיו</a></li><li><a href="../../configurator.html">קונפיגורטור תלת-ממד</a></li><li><a href="../../substrate-check.html">בדיקת תשתית</a></li><li><a href="../../sample-kit.html">ערכת דוגמאות</a></li></ul></div>
+                <div class="footer-column"><h4>החברה</h4><ul><li><a href="../../projects.html">פרויקטים</a></li><li><a href="../../about.html">אודותינו</a></li><li><a href="../../blog.html">בלוג</a></li><li><a href="../../contact.html">צור קשר</a></li></ul></div>
+                <div class="footer-column"><h4>צור קשר</h4><ul><li><a href="mailto:floors.dsgn@gmail.com"><span dir="ltr">floors.dsgn@gmail.com</span></a></li><li><a href="tel:+972559661459"><span dir="ltr">+972 55 966 1459</span></a></li><li>ישראל, תל אביב</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; <span dir="ltr">2026</span> Floor.DSGN. כל הזכויות שמורות.</p></div>
+        </div>
+    </footer>
+
+    <script src="../../script.js?v=20260523a"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "חמש מפרטות שגויות יקרות: מה אסור לעשות",
+      "inLanguage": "he",
+      "image": "https://floordsgn.com/images/epoxy-industrial/needle-roller.jpg",
+      "datePublished": "2026-05-27",
+      "author": {
+        "@type": "Organization",
+        "name": "Floor.DSGN"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Floor.DSGN",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://floordsgn.com/images/logo/Black1_tr.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://floordsgn.com/articles/he/floor-anti-patterns.html"
+      }
+    }
+    </script>
+</body>
+</html>
