@@ -164,3 +164,38 @@ MacBook produced `data/avatars.json` with 10 personas (5 primary + 5 secondary):
 - Secondary: supplier, contractor, engineer, developer, safety officer
 
 Each has demographics, painPoints, decisionCriteria, journey, trustTriggers, objections, KPIs. **High-value input for landing-page copy, role-targeted CTAs, and FAQ pages.** I can mine this on launch branch to write avatar-targeted articles.
+
+---
+
+## 2026-05-29 06:30 IDT — Hebrew translation directive
+
+**Owner directive received 2026-05-29 ~06:00 IDT (via /loop):** Connect with MacBook, translate site to Hebrew, full RTL mirroring, technical Hebrew for designer/architect audience.
+
+**Foundation built by iMac (committed to launch/floordsgn-com-cf):**
+1. `he.css` — RTL stylesheet (Frank Ruhl Libre + Heebo Hebrew web fonts, RTL flex/text/grid overrides, mirrored signal-orange card borders, bidi handling for embedded Latin standards)
+2. `docs/HEBREW_TERMINOLOGY_GLOSSARY.md` — ~150 entries technical-grade Hebrew for designer/architect register
+3. `articles/he/floor-knowledge-index.html` — pilot translation with full RTL + hreflang + LTR-isolated brand spans, snap-verified
+4. `docs/macbook-handoff/HEBREW_TRANSLATION_HANDOFF_FROM_IMAC_2026-05-29.md` — handoff plan splitting work between iMac (Tier-1 reference) + MacBook (Tier-2 specialist + encyclopedia + brands)
+
+**Owner decisions pending (don't get blocked — apply best-guess, flag inline):**
+
+1. **Terminology refinement** — several glossary entries marked ⚠️ for owner confirmation:
+   - מיקרו-טופינג vs ציפוי מיקרו for "microtopping"
+   - "shot blast" — keep as borrowed English term or translate "התזת חרסיות"
+   - Several borrowed-vs-native term choices documented in glossary
+
+2. **Hebrew typography convention** — use nikud (vowel marks) on technical terms? Currently default = no nikud (matches IL technical writing). Confirm preference for designer/architect audience.
+
+3. **Hebrew domain strategy** — `.co.il` deferred per [floordsgn_domain_plan_2026-05-23](floordsgn_domain_plan_2026-05-23 memory). When Hebrew content is ready to ship: does .co.il take primary precedence or is Hebrew added to floordsgn.com under `/he/` sub-path? Affects hreflang + sitemap structure.
+
+4. **Scope of Hebrew translation** — full 84-page reference library? Or Tier-1 owner-facing pages first (10-15 pages)? Owner directive sounded comprehensive; iMac is starting with Tier-1 + handing Tier-2 to MacBook. If owner wants different priority, redirect at next check-in.
+
+5. **Hebrew SEO + Google Search Console** — separate Hebrew sitemap.xml + GSC property for he-IL geo-targeting? Affects discoverability in IL Hebrew search.
+
+6. **Hebrew CTAs** — current EN/RU CTAs offer "matched spec within 48 hours". Hebrew version should match same response time + tone register? Owner may want Hebrew-specific CTA copy (more formal, more direct, different value proposition for IL designer/architect audience).
+
+7. **MacBook brand-mask consequence** — MacBook's `platform-foundation` branch masks brand names as "Supplier Candidate N" pending brand permission documentation. iMac Hebrew translations use real brand names (Sika, Mapei, MC-Bauchemie). If two-branch reconciliation goes MacBook-direction, Hebrew translations may need re-masking. Owner decision on brand permission status precedes Hebrew translation scaling.
+
+**iMac translation pace (per `feedback_token_pacing.md`):** ~5-7 minutes per Hebrew page, not the 3-4 minute sprint pace. ~6-8 Tier-1 pages per hour sustainable. Will deliver Tier-1 list (10 pages) by morning if uninterrupted.
+
+**Visual proof:** `_screens/floor-knowledge-index-desktop-2026-05-30T06-25-36.png` shows clean RTL rendering with all bidi cases handled (Hebrew flow, LTR brand spans, mirrored card borders, RTL navigation, footer alignment).
