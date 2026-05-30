@@ -9,17 +9,18 @@
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://floordsgn.netlify.app/articles/encyclopedia/">
+    <meta property="og:url" content="https://floordsgn.com/articles/encyclopedia/">
     <meta property="og:title" content="Floor.DSGN Encyclopedia — библиотека напольных систем">
     <meta property="og:description" content="8 систем напольных покрытий: характеристики, видео укладки, реальные цены, логические связи между материалами.">
-    <meta property="og:image" content="https://floordsgn.netlify.app/images/og-preview.jpg">
+    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
 
-    <link rel="canonical" href="https://floordsgn.netlify.app/articles/encyclopedia/">
+    <link rel="canonical" href="https://floordsgn.com/articles/encyclopedia/">
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css?v=20260521a">
+    <link rel="stylesheet" href="../../rtl.css">
     <link rel="stylesheet" href="../../enhance.css?v=6">
     <link rel="stylesheet" href="../../chrome-fix.css?v=20260521a">
 
@@ -629,7 +630,7 @@
         </nav>
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button><button class="lang-btn" data-lang="he" onclick="setLanguage('he')">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -1127,7 +1128,7 @@
             const meta = [...tile.querySelectorAll('.enc-tile__meta > *')].map(el => el.textContent.trim());
             const pairs = [];
             for (let i = 0; i < meta.length; i += 2) pairs.push(`${meta[i]}: ${meta[i+1] || ''}`);
-            const formula = `${name} (${slug})\n${type}\n${pairs.join('\n')}\nfloordsgn.netlify.app/articles/encyclopedia/`;
+            const formula = `${name} (${slug})\n${type}\n${pairs.join('\n')}\nfloordsgn.com/articles/encyclopedia/`;
             try {
               await navigator.clipboard.writeText(formula);
               showToast('Формула скопирована');
@@ -1158,6 +1159,7 @@
       }
     </script>
     <script src="../../translations.js?v=20260521a"></script>
+    <script src="../../js/he-translations.js?v=20260530a"></script>
     <script src="../../enhance.js?v=20260522a" defer></script>
 </body>
 </html>

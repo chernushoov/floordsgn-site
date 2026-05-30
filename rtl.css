@@ -1,0 +1,137 @@
+/* Floor.DSGN — RTL + Hebrew typography overrides.
+ *
+ * Loaded after styles.css / enhance.css so these selectors win.
+ * Activates only when <html dir="rtl"> (HE).
+ *
+ * Hebrew typeface: Heebo (Google Fonts) — B2B-grade serif-less Hebrew, good
+ * pairing with the site's Latin stack.
+ *
+ * Status: Tier 1 — RTL essentials for home (header nav, hero, picker tiles,
+ * gallery, process, footer). Per-section deep audit pending native review.
+ */
+
+/* Google Fonts: Heebo — load only when HE is active (no perf cost for RU/EN).
+ * Note: stylesheets in <link> evaluate unconditionally, so we import the
+ * @font-face via @import inside this RTL stylesheet which is itself loaded
+ * unconditionally. To avoid loading Heebo for non-HE users, see
+ * `rtl.html-injection.note.md` (deferred). For now: small inline @import.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap');
+
+/* Apply Heebo only for HE-language body. Latin stays on the site's font. */
+html[dir="rtl"] body,
+body.lang-he {
+    font-family: 'Heebo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Latin brand tokens inside an HE page should stay LTR.
+ * Use class .ltr (manual) or rely on `<bdi>`. Provide both. */
+html[dir="rtl"] .ltr,
+html[dir="rtl"] bdi,
+html[dir="rtl"] code,
+html[dir="rtl"] kbd {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+/* Header navigation — mirror the spacing. The layout uses flex by default, so
+ * row direction flips automatically with dir=rtl. Adjust the lang-switcher
+ * order so HE / RU / EN reads naturally right-to-left. */
+html[dir="rtl"] .header__nav,
+html[dir="rtl"] .header__lang {
+    /* flex children auto-reverse under dir=rtl; nothing to do unless explicit
+     * row-reverse is set in the source CSS. */
+}
+
+html[dir="rtl"] .lang-btn {
+    /* keep button text LTR-readable when it's a 2-letter Latin code. */
+    direction: ltr;
+}
+
+/* Hero3D block — replace LTR-only paddings. */
+html[dir="rtl"] .hero3d__copy,
+html[dir="rtl"] .fx-picker__h1,
+html[dir="rtl"] .fx-picker__lede,
+html[dir="rtl"] .hero3d__lede {
+    text-align: right;
+}
+
+/* Forward-arrow CTAs ("→" in LTR copy) — flipped to "←" in the HE strings
+ * already. Just ensure the arrow glyph is not visually mirrored by the
+ * bidi engine when sitting at the end of an RTL line. */
+html[dir="rtl"] .home_hero3d_decision,
+html[dir="rtl"] .home_hero3d_btn_primary,
+html[dir="rtl"] .home_hero3d_btn_ghost {
+    /* arrow direction is encoded in the translated string itself. */
+}
+
+/* Picker tile labels — keep ₪/mm tokens readable. */
+html[dir="rtl"] .fx-tile__meta,
+html[dir="rtl"] .fx-tile__name {
+    text-align: right;
+}
+
+/* Process steps + gallery + footer — text alignment + list bullets. */
+html[dir="rtl"] .process .step,
+html[dir="rtl"] .home_gallery .item,
+html[dir="rtl"] .footer-grid,
+html[dir="rtl"] .footer-column ul,
+html[dir="rtl"] .footer-bottom {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-column ul {
+    padding-inline-start: 0;
+    list-style-position: inside;
+}
+
+/* Sticky-CTA WhatsApp pill stays on the right (free side in RTL). Most
+ * implementations already use `right: 0` / `left: auto`, so we mirror. */
+html[dir="rtl"] .sticky-cta {
+    right: auto;
+    left: 1rem;
+}
+
+/* Form inputs — placeholder text alignment. */
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Currency token ₪ — in HE we render after the number, with a thin space.
+ * No CSS needed (handled in translation strings), but ensure no `text-transform`
+ * is applied to numerical/currency tokens. */
+html[dir="rtl"] .price,
+html[dir="rtl"] .fx-tile__meta {
+    text-transform: none;
+}
+
+/* Block-quote and testimonial decorative quotes — flip side. */
+html[dir="rtl"] blockquote {
+    border-left: none;
+    border-right: 3px solid currentColor;
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+/* === Beta notice when HE is active ===
+ * Injected via JS-friendly classname; styled here. */
+.he-beta-notice {
+    display: none;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 200, 0, 0.12);
+    border-bottom: 1px solid rgba(255, 200, 0, 0.4);
+    color: #b56a00;
+    text-align: center;
+    font-size: 0.88rem;
+    direction: rtl;
+    font-family: 'Heebo', system-ui, sans-serif;
+}
+body.lang-he .he-beta-notice {
+    display: block;
+}
