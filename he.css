@@ -1,0 +1,292 @@
+/* ==================== HEBREW / RTL STYLESHEET ==================== */
+/* Loaded ONLY on Hebrew pages (lang="he", dir="rtl" on <html>).
+   Overrides + supplements styles.css + chrome-fix.css.
+   Brand: Industrial Proof palette preserved. No layout regression to EN/RU pages. */
+
+/* ---- Hebrew web font: Heebo (Cormorant-Garamond analog + Montserrat analog in Hebrew) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Heebo:wght@300;400;500;600;700&display=swap');
+
+html[lang="he"] body,
+html[lang="he"] {
+    font-family: 'Heebo', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Display headings — Frank Ruhl Libre (premium Hebrew serif analogous to Cormorant Garamond) */
+html[lang="he"] h1,
+html[lang="he"] h2,
+html[lang="he"] h3,
+html[lang="he"] .article-page h1,
+html[lang="he"] .article-page h2,
+html[lang="he"] .article-card h2,
+html[lang="he"] [class*="card"] h2 {
+    font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+/* ---- Header: flip nav directional layout ---- */
+html[lang="he"] .header {
+    direction: rtl;
+}
+
+html[lang="he"] .header__nav--left {
+    /* In RTL, what was visually "left" stays on the right side of the logo
+       (mirrored). The two nav blocks swap positions naturally with direction:rtl. */
+}
+
+html[lang="he"] .header__nav--right {
+    /* mirrored to the left side in RTL */
+}
+
+/* Language switcher pinned to logical right edge (visually left in RTL) */
+html[lang="he"] .header__lang {
+    /* keep on visual left = logical right after flip */
+}
+
+/* ---- Mobile menu: open from the right side ---- */
+html[lang="he"] .mobile-menu {
+    direction: rtl;
+}
+
+html[lang="he"] .mobile-menu ul {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+/* ---- Article body: paragraph + list direction ---- */
+html[lang="he"] .article-body,
+html[lang="he"] .article-content {
+    text-align: right;
+}
+
+html[lang="he"] .article-body p,
+html[lang="he"] .article-body ul,
+html[lang="he"] .article-body ol,
+html[lang="he"] .article-body li {
+    text-align: right;
+    direction: rtl;
+}
+
+html[lang="he"] .article-body ul,
+html[lang="he"] .article-body ol {
+    padding-right: 22px;
+    padding-left: 0;
+}
+
+/* Numbered lists: numerals render LTR-by-default; force visual flow RTL */
+html[lang="he"] .article-body ol {
+    list-style-position: outside;
+}
+
+/* ---- Back-link arrow: flip the arrow direction ---- */
+html[lang="he"] .back-link::before {
+    content: "→ ";
+}
+
+html[lang="he"] .back-link {
+    /* In LTR back-link reads "← Back". In RTL it reads "→ חזרה" — arrow points to source */
+}
+
+/* ---- Card components from new reference set ---- */
+
+/* signal-left-border cards (e.g., compliance-checklist cert-card,
+   role-targeted-faq role-card, system-selection uc-card, etc.) */
+html[lang="he"] [class*="-card"][style*="border-left"],
+html[lang="he"] .cert-card,
+html[lang="he"] .role-card,
+html[lang="he"] .uc-card,
+html[lang="he"] .joint-card,
+html[lang="he"] .step-card,
+html[lang="he"] .req-card,
+html[lang="he"] .env-card,
+html[lang="he"] .perf-card,
+html[lang="he"] .ret-card,
+html[lang="he"] .out-card,
+html[lang="he"] .zone-card,
+html[lang="he"] .sust-card,
+html[lang="he"] .hygiene-card,
+html[lang="he"] .esd-card,
+html[lang="he"] .std-card,
+html[lang="he"] .test-card,
+html[lang="he"] .w-card,
+html[lang="he"] .idx-card,
+html[lang="he"] .h-card,
+html[lang="he"] .sys-card,
+html[lang="he"] .mistake-card {
+    border-left: none !important;
+    border-right: 3px solid var(--signal, #C86B3C);
+}
+
+/* ---- Verify-box, qa-block, fact-row, similar nested boxes ---- */
+html[lang="he"] .verify-box,
+html[lang="he"] .qa-block,
+html[lang="he"] .scenario-row,
+html[lang="he"] .trigger-box,
+html[lang="he"] .boq-spec,
+html[lang="he"] .boq-verify,
+html[lang="he"] .zone-spec,
+html[lang="he"] .env-section,
+html[lang="he"] .out-section,
+html[lang="he"] .step-section,
+html[lang="he"] .h-content,
+html[lang="he"] .faq-item {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ---- Tables: header alignment + cell alignment ---- */
+html[lang="he"] table th,
+html[lang="he"] table td,
+html[lang="he"] .compare-table th,
+html[lang="he"] .compare-table td,
+html[lang="he"] .csp-table th,
+html[lang="he"] .csp-table td,
+html[lang="he"] .threshold-table th,
+html[lang="he"] .threshold-table td,
+html[lang="he"] .compliance-table th,
+html[lang="he"] .compliance-table td,
+html[lang="he"] .h-table th,
+html[lang="he"] .h-table td,
+html[lang="he"] .s-table th,
+html[lang="he"] .s-table td,
+html[lang="he"] .e-table th,
+html[lang="he"] .e-table td,
+html[lang="he"] .j-table th,
+html[lang="he"] .j-table td,
+html[lang="he"] .enc-table th,
+html[lang="he"] .enc-table td,
+html[lang="he"] .boq-summary-table th,
+html[lang="he"] .boq-summary-table td,
+html[lang="he"] .slip-table th,
+html[lang="he"] .slip-table td,
+html[lang="he"] .decision-table th,
+html[lang="he"] .decision-table td {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Numeric cells (MPa, °C, ₪) flow LTR within RTL cell — wrap in <span dir="ltr"> in HTML if needed */
+html[lang="he"] table .num,
+html[lang="he"] table .ltr {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: isolate;
+}
+
+/* ---- Grid containers: flip with direction-aware properties ---- */
+html[lang="he"] .brand-meta,
+html[lang="he"] .enc-meta,
+html[lang="he"] .uc-constraint-grid,
+html[lang="he"] .care-schedule,
+html[lang="he"] .sys-grid,
+html[lang="he"] .failure-grid,
+html[lang="he"] .use-pair {
+    direction: rtl;
+}
+
+/* ---- Step-card numbered badge: flip position from top-left to top-right ---- */
+html[lang="he"] .step-card .step-num,
+html[lang="he"] .phase-card .phase-num,
+html[lang="he"] .mistake-card .mistake-rank {
+    right: -15px !important;
+    left: auto !important;
+}
+
+html[lang="he"] .step-card .step-tag,
+html[lang="he"] .step-card h2,
+html[lang="he"] .phase-card .phase-tag,
+html[lang="he"] .phase-card h2,
+html[lang="he"] .phase-card .phase-duration,
+html[lang="he"] .mistake-card .mistake-tag,
+html[lang="he"] .mistake-card h2,
+html[lang="he"] .mistake-card .mistake-cost {
+    margin-left: 0 !important;
+    margin-right: 30px !important;
+}
+
+/* ---- Letter-navigation (glossary A-Z): handle LTR letters within RTL context ---- */
+html[lang="he"] .letter-nav {
+    direction: ltr;
+    text-align: center;
+}
+
+html[lang="he"] .letter-section h2 {
+    direction: ltr;
+    text-align: left;
+}
+
+/* ---- Knowledge-index pillar grid ---- */
+html[lang="he"] .idx-grid {
+    direction: rtl;
+}
+
+html[lang="he"] .role-quick {
+    direction: rtl;
+}
+
+html[lang="he"] .role-quick ul {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+/* ---- Numerical content embedded in RTL paragraph (DIN 51130, ASTM F2170, ₪200/m²) ----
+   These remain LTR; wrap in HTML as <span dir="ltr"> ... </span> or use Unicode marks */
+html[lang="he"] .ltr-inline {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+/* ---- Hero image: full-width still works in RTL ---- */
+html[lang="he"] .article-hero-wrapper,
+html[lang="he"] .article-hero-image {
+    /* center-aligned image stays center-aligned in RTL */
+}
+
+/* ---- Article meta: small caption, right-aligned in RTL ---- */
+html[lang="he"] .article-meta,
+html[lang="he"] .article-category {
+    text-align: right;
+}
+
+/* ---- CTA section ---- */
+html[lang="he"] .article-cta,
+html[lang="he"] .article-cta h2,
+html[lang="he"] .article-cta p {
+    text-align: center;
+}
+
+html[lang="he"] .cta-buttons {
+    direction: rtl;
+}
+
+/* ---- Footer ---- */
+html[lang="he"] .footer {
+    direction: rtl;
+    text-align: center;
+}
+
+/* ---- Lang switcher: highlight active language correctly ---- */
+html[lang="he"] .lang-btn[data-lang="he"] {
+    /* Active state — preserved from styles.css active class */
+}
+
+/* ---- Mixed-direction technical terms ---- */
+/* When citing English standards mid-Hebrew paragraph (e.g., "EN 13501-1"),
+   wrap the standard name in <span dir="ltr">EN 13501-1</span> for correct rendering.
+   This rule ensures unicode-bidi isolate works as expected. */
+html[lang="he"] [dir="ltr"] {
+    unicode-bidi: isolate;
+    text-align: left;
+    display: inline-block;
+}
+
+/* ---- Print-friendly RTL ---- */
+@media print {
+    html[lang="he"] {
+        direction: rtl;
+        text-align: right;
+    }
+}
+
+/* ==================== END HEBREW / RTL ==================== */
