@@ -6,7 +6,7 @@
     <title>Blog | Floor.DSGN - Flooring Insights & Technical Guides</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Floor Engineering Blog Floor.DSGN: технические разборы без воды — эпокси vs PU-cement, расход Sikafloor, причины отслоений. От практика.">
+    <meta name="description" content="Floor Engineering Blog by Floor.DSGN: practical technical breakdowns on epoxy vs PU-cement, Sikafloor consumption, debonding causes, and specification logic.">
     <meta name="keywords" content="flooring blog, epoxy flooring guide, terrazzo installation tips, industrial floor maintenance">
 
     <!-- Open Graph -->
@@ -30,6 +30,8 @@
     <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -44,6 +46,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -234,21 +237,21 @@
                         </article>
 
                         <article class="blog-card" data-cat="maintenance">
-                            <div class="blog-image"><img src="images/microtopping/install-3.jpg" alt="Тёплый пол и микротопинг" loading="lazy"><span class="blog-category-tag">Maintenance</span></div>
+                            <div class="blog-image"><img src="images/microtopping/install-3.jpg" alt="Underfloor heating and microtopping" loading="lazy"><span class="blog-category-tag">Maintenance</span></div>
                             <div class="blog-content">
-                                <p class="blog-meta">Май 2026 | 7 мин</p>
-                                <h3>Тёплый пол под наш пол — совместимость и график</h3>
-                                <p>Какие из наших систем совместимы с водяным и электрическим тёплым полом. Максимальные температуры, график первого нагрева, риски трещин.</p>
+                                <p class="blog-meta">May 2026 | 7 min</p>
+                                <h3>Underfloor Heating Beneath Our Floors: Compatibility and Start-Up Schedule</h3>
+                                <p>Which of our systems work with hydronic and electric underfloor heating, the maximum temperatures, the first heat-up schedule, and the crack risks to watch.</p>
                                 <a href="articles/warm-floor-compatibility.html" class="read-more">Read Article</a>
                             </div>
                         </article>
 
                         <article class="blog-card" data-cat="maintenance">
-                            <div class="blog-image"><img src="images/terrazzo/scale_2400.jpeg" alt="Архитектор работает со спецификацией" loading="lazy"><span class="blog-category-tag">For Architects</span></div>
+                            <div class="blog-image"><img src="images/terrazzo/scale_2400.jpeg" alt="Architect working with a floor specification" loading="lazy"><span class="blog-category-tag">For Architects</span></div>
                             <div class="blog-content">
-                                <p class="blog-meta">Май 2026 | 9 мин</p>
-                                <h3>Pre-tender checklist на пол — 40 пунктов для архитектора</h3>
-                                <p>Что должно быть в тендере, чтобы подрядчик не «дешевил» там, где не видно. Основание, нагрузки, химия, IL-специфика, приёмка, гарантия.</p>
+                                <p class="blog-meta">May 2026 | 9 min</p>
+                                <h3>Pre-Tender Floor Checklist: 40 Points for Architects</h3>
+                                <p>What needs to be in the tender so the contractor cannot cut the invisible corners: substrate, loads, chemistry, IL specifics, acceptance criteria, and warranty terms.</p>
                                 <a href="articles/architect-pretender-checklist.html" class="read-more">Read Article</a>
                             </div>
                         </article>
@@ -341,7 +344,7 @@
             <p data-i18n="blog_newsletter_desc">Monthly technical insights. No marketing noise.</p>
             <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="newsletter">
-                <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+                <p hidden><label>Do not fill this in: <input name="bot-field"></label></p>
                 <input type="email" name="email" data-i18n="blog_newsletter_placeholder" placeholder="Your email address" aria-label="Email address" required>
                 <button type="submit" data-i18n="blog_newsletter_btn">Subscribe</button>
             </form>

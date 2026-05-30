@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industrial & Commercial Flooring | Floor.DSGN Israel</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Промышленные полы для фабрик, складов, логистики, кухонь Израиля. Эпокси, PU-cement, MMA — подбор по нагрузке, влаге, downtime, химостойкости.">
+    <meta name="description" content="Industrial flooring for factories, warehouses, logistics, and commercial kitchens in Israel. Epoxy, PU-cement, and MMA specified by load, moisture, downtime, and chemical exposure.">
     <meta name="keywords" content="industrial flooring Israel, warehouse flooring, factory floor, epoxy flooring, PU cement, commercial flooring">
 
     <!-- Open Graph -->
@@ -30,6 +30,8 @@
     <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -44,6 +46,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -214,29 +217,29 @@
     <section class="landing-section bg-grey" style="padding: 60px 0;">
         <div class="container">
             <div style="margin-bottom: 32px;">
-                <p style="color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 14px;">По отраслям</p>
-                <h2 class="section-title" style="font-size: clamp(28px, 3vw, 38px);">Глубже по вертикали</h2>
+                <p style="color: var(--signal); letter-spacing: 0.16em; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 14px;">By industry</p>
+                <h2 class="section-title" style="font-size: clamp(28px, 3vw, 38px);">Go deeper by vertical</h2>
             </div>
             <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                 <a href="verticals/warehouse.html" style="padding: 24px; background: #fff; border-radius: 14px; border: 1px solid var(--grey-border); display: block;">
-                    <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">Склад / логистика</p>
+                    <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">Warehouse / logistics</p>
                     <h3 style="font-size: 18px; margin-bottom: 6px;">Warehouse</h3>
-                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">Forklift нагрузки, downtime, dust-control, R10 на проездах.</p>
+                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">Forklift loads, downtime planning, dust control, and R10 on traffic lanes.</p>
                 </a>
                 <a href="verticals/healthcare.html" style="padding: 24px; background: #fff; border-radius: 14px; border: 1px solid var(--grey-border); display: block;">
                     <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">Healthcare</p>
-                    <h3 style="font-size: 18px; margin-bottom: 6px;">Больницы и фарма</h3>
-                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">GMP, ESD, дезинфектант-стойкость, операционные.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 6px;">Hospitals and pharma</h3>
+                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">GMP, ESD, disinfectant resistance, and operating rooms.</p>
                 </a>
                 <a href="verticals/hospitality.html" style="padding: 24px; background: #fff; border-radius: 14px; border: 1px solid var(--grey-border); display: block;">
                     <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">HoReCa</p>
-                    <h3 style="font-size: 18px; margin-bottom: 6px;">Гостиницы и рестораны</h3>
-                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">R11 на кухнях, тёплый пол в холлах, эстетика для гостей.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 6px;">Hotels and restaurants</h3>
+                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">R11 in kitchens, warm underfoot finishes in public areas, and guest-facing aesthetics.</p>
                 </a>
                 <a href="verticals/architects.html" style="padding: 24px; background: #fff; border-radius: 14px; border: 1px solid var(--grey-border); display: block;">
-                    <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">Архитекторы</p>
-                    <h3 style="font-size: 18px; margin-bottom: 6px;">Спека и CAD-детали</h3>
-                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">Образцы, CAD-детали, шаблоны спецификаций, тендер-пакеты.</p>
+                    <p style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; font-weight: 600;">Architects</p>
+                    <h3 style="font-size: 18px; margin-bottom: 6px;">Specs and CAD details</h3>
+                    <p style="font-size: 14px; color: var(--graphite); line-height: 1.5;">Samples, CAD details, specification templates, and tender packages.</p>
                 </a>
             </div>
         </div>

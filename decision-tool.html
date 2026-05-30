@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru"><head>
+<html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>System Selector — Floor.DSGN | 6 Questions, One Working Recommendation</title>
 <meta name="description" content="Answer 6 quick questions about your site and get a working Sika system recommendation with rationale in under a minute.">
@@ -27,6 +27,8 @@
 <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -41,6 +43,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -52,77 +55,77 @@
   <p class="fx-decision__progress" data-fx="dtProgress">Question 1 of 6</p>
 
   <div data-step="place">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_place">Где будет пол?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_place">Where will the floor be used?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="industrial"><div class="fx-decision__option-name" data-i18n="tdt_place_industrial_name">Производство · склад</div><div class="fx-decision__option-desc" data-i18n="tdt_place_industrial_desc">Цех, фабрика, логистика, гараж, паркинг</div></button>
-      <button class="fx-decision__option" data-answer="food"><div class="fx-decision__option-name" data-i18n="tdt_place_food_name">Пищевое · фарма</div><div class="fx-decision__option-desc" data-i18n="tdt_place_food_desc">Молочка, мясо, рыба, пивоварня, лаборатория</div></button>
-      <button class="fx-decision__option" data-answer="commercial"><div class="fx-decision__option-name" data-i18n="tdt_place_commercial_name">Коммерческое</div><div class="fx-decision__option-desc" data-i18n="tdt_place_commercial_desc">Шоурум, ресторан, гостиница, ритейл, офис</div></button>
-      <button class="fx-decision__option" data-answer="designer"><div class="fx-decision__option-name" data-i18n="tdt_place_designer_name">Дизайнерское</div><div class="fx-decision__option-desc" data-i18n="tdt_place_designer_desc">Бутик, галерея, премиум-интерьер</div></button>
-      <button class="fx-decision__option" data-answer="residential"><div class="fx-decision__option-name" data-i18n="tdt_place_residential_name">Жильё</div><div class="fx-decision__option-desc" data-i18n="tdt_place_residential_desc">Квартира, вилла, частная резиденция</div></button>
-      <button class="fx-decision__option" data-answer="healthcare"><div class="fx-decision__option-name" data-i18n="tdt_place_healthcare_name">Healthcare · образование</div><div class="fx-decision__option-desc" data-i18n="tdt_place_healthcare_desc">Больница, клиника, школа, фитнес</div></button>
+      <button class="fx-decision__option" data-answer="industrial"><div class="fx-decision__option-name" data-i18n="tdt_place_industrial_name">Production · warehouse</div><div class="fx-decision__option-desc" data-i18n="tdt_place_industrial_desc">Factory, logistics, garage, parking</div></button>
+      <button class="fx-decision__option" data-answer="food"><div class="fx-decision__option-name" data-i18n="tdt_place_food_name">Food · pharma</div><div class="fx-decision__option-desc" data-i18n="tdt_place_food_desc">Dairy, meat, fish, brewery, laboratory</div></button>
+      <button class="fx-decision__option" data-answer="commercial"><div class="fx-decision__option-name" data-i18n="tdt_place_commercial_name">Commercial</div><div class="fx-decision__option-desc" data-i18n="tdt_place_commercial_desc">Showroom, restaurant, hospitality, retail, office</div></button>
+      <button class="fx-decision__option" data-answer="designer"><div class="fx-decision__option-name" data-i18n="tdt_place_designer_name">Design-led</div><div class="fx-decision__option-desc" data-i18n="tdt_place_designer_desc">Boutique, gallery, premium interior</div></button>
+      <button class="fx-decision__option" data-answer="residential"><div class="fx-decision__option-name" data-i18n="tdt_place_residential_name">Residential</div><div class="fx-decision__option-desc" data-i18n="tdt_place_residential_desc">Apartment, villa, private residence</div></button>
+      <button class="fx-decision__option" data-answer="healthcare"><div class="fx-decision__option-name" data-i18n="tdt_place_healthcare_name">Healthcare · education</div><div class="fx-decision__option-desc" data-i18n="tdt_place_healthcare_desc">Hospital, clinic, school, fitness</div></button>
     </div>
   </div>
 
   <div data-step="traffic" style="display:none">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_traffic">Какая нагрузка?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_traffic">What load should it handle?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="foot"><div class="fx-decision__option-name" data-i18n="tdt_traffic_foot_name">Только пешая</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_foot_desc">Люди, ручные тележки</div></button>
-      <button class="fx-decision__option" data-answer="wheels"><div class="fx-decision__option-name" data-i18n="tdt_traffic_wheels_name">Колёсная лёгкая</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_wheels_desc">Мебель, легковые машины</div></button>
-      <button class="fx-decision__option" data-answer="forklift"><div class="fx-decision__option-name" data-i18n="tdt_traffic_forklift_name">Forklift / ричтрак</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_forklift_desc">Погрузчик до 5 тонн</div></button>
-      <button class="fx-decision__option" data-answer="heavy"><div class="fx-decision__option-name" data-i18n="tdt_traffic_heavy_name">Тяжёлая &gt; 5 тонн</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_heavy_desc">Heavy forklift, грузовики</div></button>
+      <button class="fx-decision__option" data-answer="foot"><div class="fx-decision__option-name" data-i18n="tdt_traffic_foot_name">Foot traffic only</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_foot_desc">People, manual carts</div></button>
+      <button class="fx-decision__option" data-answer="wheels"><div class="fx-decision__option-name" data-i18n="tdt_traffic_wheels_name">Light wheeled traffic</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_wheels_desc">Furniture, passenger cars</div></button>
+      <button class="fx-decision__option" data-answer="forklift"><div class="fx-decision__option-name" data-i18n="tdt_traffic_forklift_name">Forklift / reach truck</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_forklift_desc">Forklift up to 5 tons</div></button>
+      <button class="fx-decision__option" data-answer="heavy"><div class="fx-decision__option-name" data-i18n="tdt_traffic_heavy_name">Heavy-duty &gt; 5 tons</div><div class="fx-decision__option-desc" data-i18n="tdt_traffic_heavy_desc">Heavy forklifts, trucks</div></button>
     </div>
   </div>
 
   <div data-step="chemicals" style="display:none">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_chemicals">Контакт с химией?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_chemicals">Chemical exposure?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="none"><div class="fx-decision__option-name" data-i18n="tdt_chem_none_name">Нет / минимально</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_none_desc">Бытовое использование</div></button>
-      <button class="fx-decision__option" data-answer="mild"><div class="fx-decision__option-name" data-i18n="tdt_chem_mild_name">Лёгкая</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_mild_desc">Машинное масло, бытовые средства</div></button>
-      <button class="fx-decision__option" data-answer="aggressive"><div class="fx-decision__option-name" data-i18n="tdt_chem_aggressive_name">Агрессивная</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_aggressive_desc">Кислоты, щёлочи, растворители, CIP</div></button>
-      <button class="fx-decision__option" data-answer="thermal"><div class="fx-decision__option-name" data-i18n="tdt_chem_thermal_name">Термошок</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_thermal_desc">Горячая→холодная вода, пар</div></button>
+      <button class="fx-decision__option" data-answer="none"><div class="fx-decision__option-name" data-i18n="tdt_chem_none_name">None / minimal</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_none_desc">Typical residential exposure</div></button>
+      <button class="fx-decision__option" data-answer="mild"><div class="fx-decision__option-name" data-i18n="tdt_chem_mild_name">Light</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_mild_desc">Machine oil, household products</div></button>
+      <button class="fx-decision__option" data-answer="aggressive"><div class="fx-decision__option-name" data-i18n="tdt_chem_aggressive_name">Aggressive</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_aggressive_desc">Acids, alkalis, solvents, CIP</div></button>
+      <button class="fx-decision__option" data-answer="thermal"><div class="fx-decision__option-name" data-i18n="tdt_chem_thermal_name">Thermal shock</div><div class="fx-decision__option-desc" data-i18n="tdt_chem_thermal_desc">Hot-to-cold water, steam</div></button>
     </div>
   </div>
 
   <div data-step="aesthetic" style="display:none">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_aesthetic">Эстетика важна?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_aesthetic">How important is aesthetics?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="function"><div class="fx-decision__option-name" data-i18n="tdt_aes_function_name">Только функция</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_function_desc">Главное чтобы работал</div></button>
-      <button class="fx-decision__option" data-answer="clean"><div class="fx-decision__option-name" data-i18n="tdt_aes_clean_name">Чистый минимализм</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_clean_desc">Аккуратный современный финиш</div></button>
-      <button class="fx-decision__option" data-answer="decorative"><div class="fx-decision__option-name" data-i18n="tdt_aes_decorative_name">Декоративный</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_decorative_desc">Цвет, текстура важны</div></button>
-      <button class="fx-decision__option" data-answer="signature"><div class="fx-decision__option-name" data-i18n="tdt_aes_signature_name">Architectural signature</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_signature_desc">Пол как часть концепции</div></button>
+      <button class="fx-decision__option" data-answer="function"><div class="fx-decision__option-name" data-i18n="tdt_aes_function_name">Function first</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_function_desc">It just has to perform</div></button>
+      <button class="fx-decision__option" data-answer="clean"><div class="fx-decision__option-name" data-i18n="tdt_aes_clean_name">Clean minimalism</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_clean_desc">A neat contemporary finish</div></button>
+      <button class="fx-decision__option" data-answer="decorative"><div class="fx-decision__option-name" data-i18n="tdt_aes_decorative_name">Decorative</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_decorative_desc">Color and texture matter</div></button>
+      <button class="fx-decision__option" data-answer="signature"><div class="fx-decision__option-name" data-i18n="tdt_aes_signature_name">Architectural signature</div><div class="fx-decision__option-desc" data-i18n="tdt_aes_signature_desc">The floor is part of the concept</div></button>
     </div>
   </div>
 
   <div data-step="downtime" style="display:none">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_downtime">Сколько можно простоя?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_downtime">How much downtime is possible?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="weeks"><div class="fx-decision__option-name" data-i18n="tdt_down_weeks_name">2+ недели</div><div class="fx-decision__option-desc" data-i18n="tdt_down_weeks_desc">Новостройка, капремонт</div></button>
-      <button class="fx-decision__option" data-answer="week"><div class="fx-decision__option-name" data-i18n="tdt_down_week_name">5–7 дней</div><div class="fx-decision__option-desc" data-i18n="tdt_down_week_desc">Стандартный график</div></button>
-      <button class="fx-decision__option" data-answer="days"><div class="fx-decision__option-name" data-i18n="tdt_down_days_name">2–3 дня</div><div class="fx-decision__option-desc" data-i18n="tdt_down_days_desc">Сжатый график</div></button>
-      <button class="fx-decision__option" data-answer="overnight"><div class="fx-decision__option-name" data-i18n="tdt_down_overnight_name">Только overnight</div><div class="fx-decision__option-desc" data-i18n="tdt_down_overnight_desc">22:00 → 09:00</div></button>
+      <button class="fx-decision__option" data-answer="weeks"><div class="fx-decision__option-name" data-i18n="tdt_down_weeks_name">2+ weeks</div><div class="fx-decision__option-desc" data-i18n="tdt_down_weeks_desc">New build, major renovation</div></button>
+      <button class="fx-decision__option" data-answer="week"><div class="fx-decision__option-name" data-i18n="tdt_down_week_name">5–7 days</div><div class="fx-decision__option-desc" data-i18n="tdt_down_week_desc">Standard programme</div></button>
+      <button class="fx-decision__option" data-answer="days"><div class="fx-decision__option-name" data-i18n="tdt_down_days_name">2–3 days</div><div class="fx-decision__option-desc" data-i18n="tdt_down_days_desc">Compressed programme</div></button>
+      <button class="fx-decision__option" data-answer="overnight"><div class="fx-decision__option-name" data-i18n="tdt_down_overnight_name">Overnight only</div><div class="fx-decision__option-desc" data-i18n="tdt_down_overnight_desc">22:00 → 09:00</div></button>
     </div>
   </div>
 
   <div data-step="budget" style="display:none">
-    <h2 class="fx-decision__q" data-i18n="tdt_q_budget">Бюджет на материал?</h2>
+    <h2 class="fx-decision__q" data-i18n="tdt_q_budget">Material budget?</h2>
     <div class="fx-decision__options">
-      <button class="fx-decision__option" data-answer="economy"><div class="fx-decision__option-name" data-i18n="tdt_budget_economy_name">Economy<br/>до ₪200/м²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_economy_desc">Базовые системы</div></button>
-      <button class="fx-decision__option" data-answer="mid"><div class="fx-decision__option-name" data-i18n="tdt_budget_mid_name">Mid<br/>200–500 ₪/м²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_mid_desc">Industrial-grade Sika</div></button>
-      <button class="fx-decision__option" data-answer="premium"><div class="fx-decision__option-name" data-i18n="tdt_budget_premium_name">Premium<br/>500–1200 ₪/м²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_premium_desc">Designer / food / ESD</div></button>
-      <button class="fx-decision__option" data-answer="any"><div class="fx-decision__option-name" data-i18n="tdt_budget_any_name">Любой<br/>под задачу</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_any_desc">Главное чтобы решало</div></button>
+      <button class="fx-decision__option" data-answer="economy"><div class="fx-decision__option-name" data-i18n="tdt_budget_economy_name">Economy<br/>up to ₪200/m²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_economy_desc">Base systems</div></button>
+      <button class="fx-decision__option" data-answer="mid"><div class="fx-decision__option-name" data-i18n="tdt_budget_mid_name">Mid<br/>200–500 ₪/m²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_mid_desc">Industrial-grade Sika</div></button>
+      <button class="fx-decision__option" data-answer="premium"><div class="fx-decision__option-name" data-i18n="tdt_budget_premium_name">Premium<br/>500–1200 ₪/m²</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_premium_desc">Designer / food / ESD</div></button>
+      <button class="fx-decision__option" data-answer="any"><div class="fx-decision__option-name" data-i18n="tdt_budget_any_name">Any<br/>that fits the brief</div><div class="fx-decision__option-desc" data-i18n="tdt_budget_any_desc">Performance matters most</div></button>
     </div>
   </div>
 
   <div data-step="result" style="display:none">
-    <p class="fx-decision__progress" data-i18n="tdt_result_done">Готово</p>
-    <h2 class="fx-decision__q" data-i18n="tdt_result_title">Подобранные<br/>системы</h2>
-    <p style="font-family: Montserrat, sans-serif; font-size: 16px; color: #424245; line-height: 1.6; margin: 0 0 32px;" data-i18n="tdt_result_intro">На основе ваших ответов рекомендуем рассмотреть:</p>
+    <p class="fx-decision__progress" data-i18n="tdt_result_done">Done</p>
+    <h2 class="fx-decision__q" data-i18n="tdt_result_title">Recommended<br/>systems</h2>
+    <p style="font-family: Montserrat, sans-serif; font-size: 16px; color: #424245; line-height: 1.6; margin: 0 0 32px;" data-i18n="tdt_result_intro">Based on your answers, we recommend reviewing:</p>
     <ul data-fx="dtRec" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1.4; color: #1d1d1f; list-style: none; padding: 0; margin: 0 0 40px;"></ul>
-    <p style="font-family: Montserrat, sans-serif; font-size: 14px; color: #6e6e73; margin: 0 0 32px;" data-i18n="tdt_result_note">Это рабочий ориентир. Финальная рекомендация — после выезда инженера с pull-off test и RH probe (бесплатно, 48 часов).</p>
+    <p style="font-family: Montserrat, sans-serif; font-size: 14px; color: #6e6e73; margin: 0 0 32px;" data-i18n="tdt_result_note">This is a working benchmark. Final recommendation comes after an engineer visit with a pull-off test and RH probe, free within 48 hours.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-      <a href="contact.html" class="btn btn-dark" data-i18n="tdt_result_cta_visit">Запросить выезд</a>
-      <a href="floors.html" class="btn btn-outline" data-i18n="tdt_result_cta_systems">Все системы</a>
-      <a href="quote.html" class="btn btn-outline" data-i18n="tdt_result_cta_calc">Калькулятор</a>
+      <a href="contact.html" class="btn btn-dark" data-i18n="tdt_result_cta_visit">Request site visit</a>
+      <a href="floors.html" class="btn btn-outline" data-i18n="tdt_result_cta_systems">All systems</a>
+      <a href="quote.html" class="btn btn-outline" data-i18n="tdt_result_cta_calc">Calculator</a>
     </div>
   </div>
 </main>
@@ -140,7 +143,7 @@
         </div>
     </footer>
 
-<a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span><span data-i18n="cta_wa_write">Написать в WhatsApp</span></a>
+<a href="#" class="fx-wa" data-fx="waLink" data-wa-number="+972559661459"><span class="fx-wa__icon">W</span><span data-i18n="cta_wa_write">Write on WhatsApp</span></a>
 
 <script src="script.js"></script><script src="translations.js?v=20260523a" defer></script><script src="enhance.js?v=20260522a" defer></script>
 <script>

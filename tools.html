@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструменты — Floor.DSGN | подбор пола, спека, 3D, образцы</title>
+    <title>Tools — Floor.DSGN | selector, spec, 3D, samples</title>
 
-    <meta name="description" content="Все инструменты Floor.DSGN в одном месте: подбор системы за 6 вопросов, 3D-конфигуратор, проверка основания, визуализация в вашей комнате, спецификация для тендера, физический образец.">
-    <meta name="keywords" content="подбор пола, конфигуратор пола, проверка основания, визуализатор пола, спецификация пола, израиль">
+    <meta name="description" content="All Floor.DSGN tools in one place: 6-question system selector, 3D configurator, substrate check, room visualization, tender specification, and physical samples.">
+    <meta name="keywords" content="floor selector, floor configurator, substrate check, floor visualizer, floor specification, Israel">
 
-    <meta property="og:title" content="Инструменты Floor.DSGN — подбор, спека, 3D, образец">
-    <meta property="og:description" content="Studio, конфигуратор, проверка основания, визуализатор, сравнение, спецификация — всё в одном хабе.">
+    <meta property="og:title" content="Floor.DSGN Tools — selector, spec, 3D, sample">
+    <meta property="og:description" content="Studio, configurator, substrate check, visualizer, comparison, specification, and samples in one hub.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://floordsgn.com/tools.html">
     <meta property="og:image" content="/images/og-preview.jpg">
@@ -67,6 +67,8 @@
     <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -81,6 +83,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -90,9 +93,9 @@
 
     <section class="tools-hero">
         <div class="container">
-            <p class="overline">Все инструменты в одном месте</p>
-            <h1>Подбор пола — не на словах, а в цифрах</h1>
-            <p class="lead">9 инструментов: от вопроса «какой материал мне нужен?» до спецификации в тендер и физического образца на руки. Каждый отвечает на одну конкретную задачу — выбирайте по этапу, на котором вы сейчас.</p>
+            <p class="overline">All tools in one place</p>
+            <h1>Choose your floor by numbers, not promises</h1>
+            <p class="lead">9 tools: from “what system do I actually need?” to a tender-ready spec and a physical sample in hand. Each solves one concrete task, so pick the one that matches the stage you are in.</p>
         </div>
     </section>
 
@@ -102,83 +105,83 @@
 
                 <a href="decision-tool.html" class="tool-card" data-tool="decision-tool">
                     <div class="tool-card__step">01</div>
-                    <div class="tool-card__role">Подбор · 1 минута</div>
+                    <div class="tool-card__role">Selection · 1 minute</div>
                     <h3>System Selector</h3>
-                    <p>6 вопросов о вашем объекте — на выходе работающая система Sika с обоснованием. Самый быстрый путь от «не знаю, что нужно» к конкретному ответу.</p>
-                    <span class="tool-card__cta tool-card__cta--featured">Подобрать систему</span>
-                    <div class="tool-card__meta">~60 сек · без email</div>
+                    <p>6 questions about your project and you get a working Sika system with a rationale. The fastest path from “I do not know what I need” to a concrete answer.</p>
+                    <span class="tool-card__cta tool-card__cta--featured">Choose a system</span>
+                    <div class="tool-card__meta">~60 sec · no email</div>
                 </a>
 
                 <a href="studio.html" class="tool-card" data-tool="studio">
                     <div class="tool-card__step">02</div>
-                    <div class="tool-card__role">Профи · спека и нормы</div>
+                    <div class="tool-card__role">Pro · spec and standards</div>
                     <h3>FloorDSGN Studio</h3>
-                    <p>Полный профи-инструмент: подбор системы, израильские нормы (ת״י 466, EN 1504, EN 13813), послойный пирог, R-класс, расчёт стоимости, экспорт спецификации.</p>
-                    <span class="tool-card__cta">Открыть Studio</span>
-                    <div class="tool-card__meta">для дизайнеров и архитекторов</div>
+                    <p>The full professional tool: system selection, Israeli standards (ת״י 466, EN 1504, EN 13813), build-up layers, R-class, cost estimate, and spec export.</p>
+                    <span class="tool-card__cta">Open Studio</span>
+                    <div class="tool-card__meta">for designers and architects</div>
                 </a>
 
                 <a href="configurator.html" class="tool-card" data-tool="configurator">
                     <div class="tool-card__step">03</div>
-                    <div class="tool-card__role">3D · материал и цвет</div>
-                    <h3>3D-конфигуратор</h3>
-                    <p>Соберите свой пол: материал, цвет, размер, толщина. Реальные текстуры, 3D-вращение, спецификация и цена. Подходит, когда вы уже знаете систему и подбираете финиш.</p>
-                    <span class="tool-card__cta">Открыть конфигуратор</span>
-                    <div class="tool-card__meta">9 материалов · вращение и зум</div>
+                    <div class="tool-card__role">3D · material and color</div>
+                    <h3>3D Configurator</h3>
+                    <p>Build your floor: material, color, size, and thickness. Real textures, 3D rotation, specification, and price. Best when you already know the system and are choosing the finish.</p>
+                    <span class="tool-card__cta">Open configurator</span>
+                    <div class="tool-card__meta">9 materials · orbit and zoom</div>
                 </a>
 
                 <a href="substrate-check.html" class="tool-card" data-tool="substrate-check">
                     <div class="tool-card__step">04</div>
-                    <div class="tool-card__role">Проверка основания</div>
+                    <div class="tool-card__role">Substrate check</div>
                     <h3>Substrate Check</h3>
-                    <p>Готово ли основание под укладку? Влажность, трещины, ровность, карбонизация. Отказ №1 на укладке — это влажное основание; этот тест предотвращает срыв проекта.</p>
-                    <span class="tool-card__cta">Проверить основание</span>
-                    <div class="tool-card__meta">RH/CM · adhesion · крошение</div>
+                    <p>Is the substrate ready for installation? Moisture, cracks, flatness, carbonation. Wet substrate is the number-one reason floors fail, and this check helps prevent that mistake.</p>
+                    <span class="tool-card__cta">Check substrate</span>
+                    <div class="tool-card__meta">RH/CM · adhesion · friability</div>
                 </a>
 
                 <a href="compare.html" class="tool-card" data-tool="compare">
                     <div class="tool-card__step">05</div>
-                    <div class="tool-card__role">Сравнение систем</div>
+                    <div class="tool-card__role">System comparison</div>
                     <h3>Compare</h3>
-                    <p>Выберите 2–3 системы — таблица side-by-side по 12 параметрам: толщина, нагрузка, downtime, химостойкость, цена, класс скольжения. Помогает финализировать выбор между близкими вариантами.</p>
-                    <span class="tool-card__cta">Сравнить системы</span>
-                    <div class="tool-card__meta">эпокси · PU-cement · MMA · терраццо</div>
+                    <p>Choose 2-3 systems and get a side-by-side table across 12 parameters: thickness, load, downtime, chemical resistance, price, and slip class. It helps finalize the choice between close options.</p>
+                    <span class="tool-card__cta">Compare systems</span>
+                    <div class="tool-card__meta">epoxy · PU-cement · MMA · terrazzo</div>
                 </a>
 
                 <a href="visualizer.html" class="tool-card" data-tool="visualizer">
                     <div class="tool-card__step">06</div>
-                    <div class="tool-card__role">Визуализация образца</div>
+                    <div class="tool-card__role">Material visualizer</div>
                     <h3>Material Visualizer</h3>
-                    <p>9 материалов — образец в руке и в реальной комнате. Compare slider: тяните, чтобы сравнить два материала или одну систему в двух средах.</p>
-                    <span class="tool-card__cta">Посмотреть в среде</span>
-                    <div class="tool-card__meta">side-by-side образец/комната</div>
+                    <p>9 materials shown both as a close-up sample and inside a real room. Use the compare slider to evaluate two materials or the same system in two different environments.</p>
+                    <span class="tool-card__cta">View in context</span>
+                    <div class="tool-card__meta">side-by-side sample / room</div>
                 </a>
 
                 <a href="room-visualizer.html" class="tool-card" data-tool="room-visualizer">
                     <div class="tool-card__step">07</div>
-                    <div class="tool-card__role">Ваша комната</div>
+                    <div class="tool-card__role">Your room</div>
                     <h3>Room Visualizer</h3>
-                    <p>Загрузите фото своей комнаты, отметьте пол — и увидьте, как в нём будет выглядеть наш материал. Перспектива, реальные текстуры. Превью, не фотореал.</p>
-                    <span class="tool-card__cta">Загрузить фото</span>
-                    <div class="tool-card__meta">фото + 4 угла → превью</div>
+                    <p>Upload a photo of your own room, mark the floor, and preview how our material will look inside it. Perspective-correct and texture-based. Preview quality, not photoreal.</p>
+                    <span class="tool-card__cta">Upload photo</span>
+                    <div class="tool-card__meta">photo + 4 corners → preview</div>
                 </a>
 
                 <a href="quote.html" class="tool-card" data-tool="quote">
                     <div class="tool-card__step">08</div>
-                    <div class="tool-card__role">Расчёт стоимости</div>
+                    <div class="tool-card__role">Cost estimate</div>
                     <h3>Quote Calculator</h3>
-                    <p>Введите площадь и систему — получите расчёт в шекелях по материалам и работе. Honest, не «от X шек/м²» — реальный TCO с подготовкой основания и перекрытием через 10 лет.</p>
-                    <span class="tool-card__cta">Посчитать</span>
-                    <div class="tool-card__meta">материал + работа + подготовка</div>
+                    <p>Enter the area and the system to get a shekel-based estimate for material and labor. Honest, not vague “from X per m²” pricing, but a working benchmark including substrate prep and future recoats.</p>
+                    <span class="tool-card__cta">Estimate cost</span>
+                    <div class="tool-card__meta">material + labor + prep</div>
                 </a>
 
                 <a href="sample-kit.html" class="tool-card" data-tool="sample-kit">
                     <div class="tool-card__step">09</div>
-                    <div class="tool-card__role">Физический образец</div>
-                    <h3>Sample Kit · 100×100 мм</h3>
-                    <p>Закажите физический образец пола 100×100 мм по вашей конфигурации. Бесплатная доставка по Израилю, 3–5 рабочих дней. Финальный шаг перед заказом.</p>
-                    <span class="tool-card__cta">Заказать образец</span>
-                    <div class="tool-card__meta">3–5 дней · бесплатно по IL</div>
+                    <div class="tool-card__role">Physical sample</div>
+                    <h3>Sample Kit · 100×100 mm</h3>
+                    <p>Order a physical 100×100 mm floor sample built to your configuration. Free delivery across Israel in 3-5 business days. The final step before placing an order.</p>
+                    <span class="tool-card__cta">Order sample</span>
+                    <div class="tool-card__meta">3-5 days · free across IL</div>
                 </a>
 
             </div>
@@ -187,80 +190,80 @@
 
     <section class="tools-grid" style="padding-top: 0;">
         <div class="container">
-            <h2 style="font-size: clamp(28px, 3vw, 38px); margin-bottom: 8px; color: var(--carbon);">Уже есть пол — диагностика и обслуживание</h2>
-            <p style="color: var(--steel); max-width: 720px; line-height: 1.55; margin-bottom: 30px; font-size: 16px;">Не «выбираю пол», а «уже есть и что-то не так» или «как ухаживать, чтобы не сломать». Эти инструменты — для текущих владельцев и FM-команд.</p>
+            <h2 style="font-size: clamp(28px, 3vw, 38px); margin-bottom: 8px; color: var(--carbon);">Already have a floor? Diagnose it and keep it alive.</h2>
+            <p style="color: var(--steel); max-width: 720px; line-height: 1.55; margin-bottom: 30px; font-size: 16px;">These are not “which floor should I choose?” tools. They are for owners and FM teams who already have a floor and need to diagnose issues, care for it correctly, or justify long-term cost.</p>
             <div class="tools-grid__inner">
 
                 <a href="repair-or-replace.html" class="tool-card" data-tool="repair-or-replace">
                     <div class="tool-card__step">10</div>
-                    <div class="tool-card__role">Диагностика · 5 вопросов</div>
-                    <h3>Ремонт или замена</h3>
-                    <p>Пол треснул, вздулся, отслаивается, потерял блеск? За 5 вопросов — диагноз с тремя путями: recoat, локальный ремонт или замена. С оценкой стоимости и простоя.</p>
-                    <span class="tool-card__cta">Поставить диагноз</span>
-                    <div class="tool-card__meta">~90 сек · без email</div>
+                    <div class="tool-card__role">Diagnosis · 5 questions</div>
+                    <h3>Repair or Replace</h3>
+                    <p>Cracked, blistered, delaminating, or just worn out? In 5 questions you get a diagnosis with three paths: recoat, local repair, or replacement, plus a downtime and cost readout.</p>
+                    <span class="tool-card__cta">Diagnose floor</span>
+                    <div class="tool-card__meta">~90 sec · no email</div>
                 </a>
 
                 <a href="care-guide.html" class="tool-card" data-tool="care-guide">
                     <div class="tool-card__step">11</div>
-                    <div class="tool-card__role">Уход по системам</div>
+                    <div class="tool-card__role">Care by system</div>
                     <h3>Care Guide</h3>
-                    <p>Чем мыть, как часто, что нельзя — по каждой из 9 систем. С таблицей расписания уборки и подсказкой по pH-нейтральным средствам, которые сохраняют гарантию.</p>
-                    <span class="tool-card__cta">Открыть гайд</span>
-                    <div class="tool-card__meta">для каждой системы пола</div>
+                    <p>What to clean with, how often, and what to avoid for each of the 9 systems. Includes a cleaning schedule and guidance on pH-neutral products that preserve the warranty.</p>
+                    <span class="tool-card__cta">Open guide</span>
+                    <div class="tool-card__meta">for every floor system</div>
                 </a>
 
                 <a href="tco.html" class="tool-card" data-tool="tco">
                     <div class="tool-card__step">12</div>
-                    <div class="tool-card__role">TCO · 10 лет</div>
-                    <h3>TCO калькулятор</h3>
-                    <p>Полная стоимость владения за 10–20 лет: установка + уход + recoat. Сравнение 9 систем и альтернатив (плитка, паркет, LVT). Решает B2B-выборы между «дешёвая укладка» vs «дешёвый цикл жизни».</p>
-                    <span class="tool-card__cta">Посчитать TCO</span>
-                    <div class="tool-card__meta">9 систем + 5 альтернатив</div>
+                    <div class="tool-card__role">TCO · 10 years</div>
+                    <h3>TCO Calculator</h3>
+                    <p>Total cost of ownership across 10-20 years: install + care + recoat. Compares 9 systems and common alternatives like tile, parquet, and LVT. Useful for B2B decisions where cheap install and cheap life-cycle are not the same thing.</p>
+                    <span class="tool-card__cta">Calculate TCO</span>
+                    <div class="tool-card__meta">9 systems + 5 alternatives</div>
                 </a>
 
                 <a href="boq.html" class="tool-card" data-tool="boq">
                     <div class="tool-card__step">13</div>
-                    <div class="tool-card__role">BoQ · для подрядчиков</div>
-                    <h3>BoQ калькулятор</h3>
-                    <p>Расход материалов по м² с привязкой к конкретным Sika SKU: primer, base, top-coat, заполнитель. По 8 системам с учётом подложки. CSV / PDF экспорт для тендера.</p>
-                    <span class="tool-card__cta">Открыть BoQ</span>
-                    <div class="tool-card__meta">кг/м² + цена + CSV</div>
+                    <div class="tool-card__role">BoQ · for contractors</div>
+                    <h3>BoQ Calculator</h3>
+                    <p>Material take-off per m² tied to specific Sika SKU: primer, base, topcoat, and aggregates. Covers 8 systems with substrate condition taken into account. CSV / PDF export for tender work.</p>
+                    <span class="tool-card__cta">Open BoQ</span>
+                    <div class="tool-card__meta">kg/m² + price + CSV</div>
                 </a>
 
                 <a href="coastal-chloride-audit.html" class="tool-card" data-tool="coastal-chloride">
                     <div class="tool-card__step">14</div>
-                    <div class="tool-card__role">IL прибрежная зона</div>
+                    <div class="tool-card__role">IL coastal zone</div>
                     <h3>Coastal chloride audit</h3>
-                    <p>Тель-Авив, Хайфа, Ашдод, Эйлат — морские хлориды разъедают бетон. Аудит EN 1504 + RC class + конкретный план защиты пола. Уникально для IL.</p>
-                    <span class="tool-card__cta">О хлоридах и зонах</span>
-                    <div class="tool-card__meta">EN 1504 · керн ⌀50 mm × 3 точки</div>
+                    <p>Tel Aviv, Haifa, Ashdod, and Eilat: marine chlorides eat concrete from the inside. This audit ties EN 1504, RC class, and a floor protection plan into one coastal-risk workflow specific to Israel.</p>
+                    <span class="tool-card__cta">See chloride risk</span>
+                    <div class="tool-card__meta">EN 1504 · ⌀50 mm core × 3 points</div>
                 </a>
 
                 <a href="faq.html" class="tool-card" data-tool="faq">
                     <div class="tool-card__step">15</div>
-                    <div class="tool-card__role">FAQ · быстрые ответы</div>
-                    <h3>Частые вопросы</h3>
-                    <p>35 вопросов на которые мы отвечаем в WhatsApp каждый день: цены, сроки, материалы, гарантия, уход, тёплый пол, прибрежные хлориды. С JSON-LD для Google FAQ rich snippet.</p>
-                    <span class="tool-card__cta">Открыть FAQ</span>
-                    <div class="tool-card__meta">8 разделов · 35 Q&amp;A</div>
+                    <div class="tool-card__role">FAQ · fast answers</div>
+                    <h3>Frequently Asked Questions</h3>
+                    <p>35 questions we answer in WhatsApp all the time: price, lead time, systems, warranty, care, underfloor heating, and coastal chlorides. Includes JSON-LD for Google FAQ rich snippets.</p>
+                    <span class="tool-card__cta">Open FAQ</span>
+                    <div class="tool-card__meta">8 sections · 35 Q&amp;A</div>
                 </a>
 
                 <a href="haccp-package.html" class="tool-card" data-tool="haccp">
                     <div class="tool-card__step">16</div>
                     <div class="tool-card__role">HACCP / FSSC 22000</div>
                     <h3>HACCP package</h3>
-                    <p>Полный пакет для пищевой и фарма индустрии: PU-cement Sika 24 PurCem + декларация соответствия + MSDS + SOP + R-class + slip test + журнал уборки. Сразу в аудит-папку.</p>
-                    <span class="tool-card__cta">Для пищёвки и фармы</span>
-                    <div class="tool-card__meta">8 документов · 10–15 лет гарантии</div>
+                    <p>A full package for food and pharma: Sika 24 PurCem PU-cement plus declaration of conformity, MSDS, SOP, R-class, slip test, and cleaning log. Built to drop directly into the audit folder.</p>
+                    <span class="tool-card__cta">For food and pharma</span>
+                    <div class="tool-card__meta">8 documents · 10-15 year warranty</div>
                 </a>
 
                 <a href="warranty.html" class="tool-card" data-tool="warranty">
                     <div class="tool-card__step">17</div>
-                    <div class="tool-card__role">Гарантия · условия и оформление</div>
-                    <h3>Гарантия Floor.DSGN</h3>
-                    <p>Сроки гарантии по каждой системе (5–15 лет), что покрывается, что аннулирует, как зарегистрировать гарантию с фото-фиксацией и шаблоном журнала ухода.</p>
-                    <span class="tool-card__cta">Условия гарантии</span>
-                    <div class="tool-card__meta">PDF на имя архитектора и FM</div>
+                    <div class="tool-card__role">Warranty · terms and registration</div>
+                    <h3>Floor.DSGN Warranty</h3>
+                    <p>Warranty terms by system family (5-15 years), what is covered, what voids it, and how to register the warranty with photo documentation and a maintenance log template.</p>
+                    <span class="tool-card__cta">Warranty terms</span>
+                    <div class="tool-card__meta">PDF addressed to architect and FM</div>
                 </a>
 
             </div>
@@ -269,32 +272,32 @@
 
     <section class="flow-strip">
         <div class="container">
-            <h2>Как ими пользоваться по этапам</h2>
+            <h2>How to use them by stage</h2>
             <div class="flow-strip__steps">
                 <div class="flow-step">
                     <div class="flow-step__num">01</div>
-                    <h4>Не знаете, что нужно</h4>
-                    <p>System Selector → 6 вопросов и работающая рекомендация.</p>
+                    <h4>You do not know what you need yet</h4>
+                    <p>System Selector → 6 questions and a working recommendation.</p>
                 </div>
                 <div class="flow-step">
                     <div class="flow-step__num">02</div>
-                    <h4>Дизайнер / архитектор</h4>
-                    <p>Studio → нормы IL, R-класс, спека в тендер.</p>
+                    <h4>Designer / architect</h4>
+                    <p>Studio → IL standards, R-class, and tender-ready spec.</p>
                 </div>
                 <div class="flow-step">
                     <div class="flow-step__num">03</div>
-                    <h4>Знаете систему, выбираете финиш</h4>
-                    <p>3D-конфигуратор → цвет, размер, толщина, цена.</p>
+                    <h4>You know the system and are choosing a finish</h4>
+                    <p>3D Configurator → color, size, thickness, and price.</p>
                 </div>
                 <div class="flow-step">
                     <div class="flow-step__num">04</div>
-                    <h4>Уже есть объект</h4>
-                    <p>Substrate Check + Quote → готовность + бюджет.</p>
+                    <h4>You already have a live project</h4>
+                    <p>Substrate Check + Quote → readiness and budget.</p>
                 </div>
                 <div class="flow-step">
                     <div class="flow-step__num">05</div>
-                    <h4>Финальное решение</h4>
-                    <p>Sample Kit → физический образец на руки.</p>
+                    <h4>Final decision</h4>
+                    <p>Sample Kit → a physical sample in your hand.</p>
                 </div>
             </div>
         </div>
@@ -302,9 +305,9 @@
 
     <section class="tools-cta">
         <div class="container">
-            <h2>Не уверены, что вам подходит?</h2>
-            <p>Напишите в WhatsApp, опишите задачу — за 1 минуту скажем, с какого инструмента начать и какая система пола закроет ваш кейс.</p>
-            <a class="btn-primary" href="https://wa.me/972559661459?text=Здравствуйте%2C%20помогите%20подобрать%20пол">Написать в WhatsApp</a>
+            <h2>Not sure which one fits your case?</h2>
+            <p>Message us on WhatsApp, describe the task, and within a minute we will tell you which tool to start with and which floor system is most likely to solve it.</p>
+            <a class="btn-primary" href="https://wa.me/972559661459?text=Hello%2C%20please%20help%20me%20choose%20a%20floor">Write on WhatsApp</a>
         </div>
     </section>
 

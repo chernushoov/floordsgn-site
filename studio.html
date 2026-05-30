@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloorDSGN Studio — подбор пола, нормы Израиля, пирог в 3D, расчёт стоимости</title>
-    <meta name="description" content="Профи-инструмент для дизайнеров и архитекторов: подбор системы пола под задачу, нормы Израиля (ת״י 466, EN 1504, EN 13813), послойный «пирог», расчёт стоимости и спецификация.">
+    <title>FloorDSGN Studio — floor system selector, Israel standards, 3D build-up, cost benchmark</title>
+    <meta name="description" content="A pro tool for designers and architects: match the right floor system, understand Israel standards (ת״י 466, EN 1504, EN 13813), review the layer build-up, benchmark cost, and download a ready spec sheet.">
     <link rel="canonical" href="https://floordsgn.com/studio.html">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
       .st-prob:hover{border-color:var(--signal);transform:translateY(-2px)}
       .st-prob b{font:600 14.5px/1.3 Montserrat,sans-serif;color:var(--carbon);display:block;margin:0 0 4px}
       .st-prob span{font:400 13px/1.45 Montserrat,sans-serif;color:var(--steel)}
-      /* Guide / подбор */
+      /* Guide / selector */
       .st-guide{background:var(--carbon);border-radius:18px;padding:30px 28px;color:#fff}
       .st-guide .st-qrow{margin:0 0 18px}
       .st-guide .st-qlbl{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b7b3aa;margin:0 0 10px}
@@ -105,11 +105,11 @@
 
     <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
 
-    <meta property="og:title" content="FloorDSGN Studio — подбор пола, нормы Израиля, пирог в 3D, расчёт стоимости">
+    <meta property="og:title" content="FloorDSGN Studio — floor system selector, Israel standards, 3D build-up, cost benchmark">
 
     <meta property="og:type" content="website">
 
-    <meta property="og:description" content="Профи-инструмент для дизайнеров и архитекторов: подбор системы пола под задачу, нормы Израиля (ת״י 466, EN 1504, EN 13813), послойный «пирог», расчёт стоимости и спецификация.">
+    <meta property="og:description" content="A pro tool for designers and architects: match the right floor system, understand Israel standards (ת״י 466, EN 1504, EN 13813), review the layer build-up, benchmark cost, and download a ready spec sheet.">
 </head>
 <body>
 
@@ -117,6 +117,8 @@
     <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -131,6 +133,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -142,172 +145,172 @@
 
   <!-- HERO -->
   <section class="st-hero">
-    <p class="st-eyebrow">Бесплатный инструмент · для дизайнеров и архитекторов</p>
-    <h1 class="st-h1">Студия пола <em>FloorDSGN</em></h1>
-    <p class="st-lede">Подберите систему под вашу задачу за 30 секунд, разберитесь в нормах Израиля, соберите послойный «пирог», прикиньте стоимость и скачайте готовую спецификацию. Дальше — образец или точная смета.</p>
-    <nav class="st-tabs" aria-label="Разделы студии">
-      <a class="st-tab on" href="#guide" data-st-tab="guide">Подбор</a>
-      <a class="st-tab" href="#diag" data-st-tab="diag">Чинить/менять</a>
-      <a class="st-tab" href="#norms" data-st-tab="norms">Нормы Израиля</a>
-      <a class="st-tab" href="#build" data-st-tab="build">Пирог</a>
-      <a class="st-tab" href="#compare" data-st-tab="compare">Сравнение</a>
-      <a class="st-tab" href="#cost" data-st-tab="cost">Стоимость</a>
+    <p class="st-eyebrow">Free tool · for designers and architects</p>
+    <h1 class="st-h1">FloorDSGN <em>Studio</em></h1>
+    <p class="st-lede">Match a system to your brief in 30 seconds, understand the relevant Israel standards, assemble the layer build-up, estimate the cost, and download a ready spec sheet. Next step: sample kit or exact quote.</p>
+    <nav class="st-tabs" aria-label="Studio sections">
+      <a class="st-tab on" href="#guide" data-st-tab="guide">Selector</a>
+      <a class="st-tab" href="#diag" data-st-tab="diag">Repair / replace</a>
+      <a class="st-tab" href="#norms" data-st-tab="norms">Israel standards</a>
+      <a class="st-tab" href="#build" data-st-tab="build">Build-up</a>
+      <a class="st-tab" href="#compare" data-st-tab="compare">Compare</a>
+      <a class="st-tab" href="#cost" data-st-tab="cost">Cost</a>
     </nav>
   </section>
 
-  <!-- 0. GUIDE / ПОДБОР (the funnel) -->
+  <!-- 0. GUIDE / SELECTOR (the funnel) -->
   <section class="st-sec" id="guide">
-    <p class="st-kicker">Подбор за 30 секунд</p>
-    <h2 class="st-h2">Какой пол нужен под вашу задачу</h2>
-    <p class="st-sub">Ответьте на 4 вопроса — подберём систему с обоснованием, покажем её «пирог», нормы и цену. Без регистрации.</p>
+    <p class="st-kicker">30-second selector</p>
+    <h2 class="st-h2">Which floor system fits your brief</h2>
+    <p class="st-sub">Answer 4 questions and we will recommend a system with rationale, show its build-up, relevant standards, and cost. No sign-up required.</p>
 
     <div class="st-guide">
       <div class="st-qrow">
-        <p class="st-qlbl">Объект</p>
+        <p class="st-qlbl">Project type</p>
         <div class="st-opts" data-q="place">
-          <button class="st-opt on" data-v="residential">Жильё</button>
-          <button class="st-opt" data-v="commercial">Коммерция · офис · ритейл</button>
-          <button class="st-opt" data-v="industrial">Производство · склад</button>
-          <button class="st-opt" data-v="food">Пищевое · фарма</button>
-          <button class="st-opt" data-v="healthcare">Healthcare · спорт</button>
-          <button class="st-opt" data-v="designer">Дизайнерское</button>
+          <button class="st-opt on" data-v="residential">Residential</button>
+          <button class="st-opt" data-v="commercial">Commercial · office · retail</button>
+          <button class="st-opt" data-v="industrial">Production · warehouse</button>
+          <button class="st-opt" data-v="food">Food · pharma</button>
+          <button class="st-opt" data-v="healthcare">Healthcare · sport</button>
+          <button class="st-opt" data-v="designer">Design-led</button>
         </div>
       </div>
       <div class="st-qrow">
-        <p class="st-qlbl">Нагрузка / трафик</p>
+        <p class="st-qlbl">Load / traffic</p>
         <div class="st-opts" data-q="traffic">
-          <button class="st-opt on" data-v="foot">Пешая</button>
-          <button class="st-opt" data-v="wheels">Колёсная лёгкая</button>
-          <button class="st-opt" data-v="forklift">Forklift до 5 т</button>
-          <button class="st-opt" data-v="heavy">Тяжёлая &gt; 5 т</button>
+          <button class="st-opt on" data-v="foot">Foot traffic</button>
+          <button class="st-opt" data-v="wheels">Light wheeled traffic</button>
+          <button class="st-opt" data-v="forklift">Forklift up to 5 t</button>
+          <button class="st-opt" data-v="heavy">Heavy-duty &gt; 5 t</button>
         </div>
       </div>
       <div class="st-qrow">
-        <p class="st-qlbl">Влага</p>
+        <p class="st-qlbl">Moisture</p>
         <div class="st-opts" data-q="wet">
-          <button class="st-opt on" data-v="dry">Сухое</button>
-          <button class="st-opt" data-v="damp">Влажное · моется</button>
-          <button class="st-opt" data-v="wet">Постоянно мокрое</button>
+          <button class="st-opt on" data-v="dry">Dry</button>
+          <button class="st-opt" data-v="damp">Damp · washable</button>
+          <button class="st-opt" data-v="wet">Constantly wet</button>
         </div>
       </div>
       <div class="st-qrow">
-        <p class="st-qlbl">Приоритет</p>
+        <p class="st-qlbl">Priority</p>
         <div class="st-opts" data-q="priority">
-          <button class="st-opt on" data-v="look">Внешний вид</button>
-          <button class="st-opt" data-v="budget">Бюджет</button>
-          <button class="st-opt" data-v="durable">Срок службы</button>
-          <button class="st-opt" data-v="speed">Скорость монтажа</button>
+          <button class="st-opt on" data-v="look">Aesthetics</button>
+          <button class="st-opt" data-v="budget">Budget</button>
+          <button class="st-opt" data-v="durable">Service life</button>
+          <button class="st-opt" data-v="speed">Installation speed</button>
         </div>
       </div>
-      <button class="st-go" id="stRecommend">Подобрать систему →</button>
+      <button class="st-go" id="stRecommend">Recommend a system →</button>
     </div>
 
     <div class="st-result hide" id="stResult">
-      <h3>Рекомендация</h3>
+      <h3>Recommendation</h3>
       <p class="rn" id="stResName">—</p>
       <p class="rw" id="stResWhy">—</p>
       <p class="ralt" id="stResAlt"></p>
       <div class="st-actions">
-        <a class="btn btn-dark" id="stResPie" href="#build" data-st-tab="build">Показать пирог →</a>
-        <a class="btn" id="stResCost" href="#cost" data-st-tab="cost">Цена для моей площади</a>
-        <a class="btn" href="contact.html">Вызвать замерщика</a>
+        <a class="btn btn-dark" id="stResPie" href="#build" data-st-tab="build">Show build-up →</a>
+        <a class="btn" id="stResCost" href="#cost" data-st-tab="cost">Price for my area</a>
+        <a class="btn" href="contact.html">Book site visit</a>
       </div>
     </div>
   </section>
 
-  <!-- 0.5 DIAGNOSE: чинить или менять -->
+  <!-- 0.5 DIAGNOSE: repair or replace -->
   <section class="st-sec" id="diag">
-    <p class="st-kicker">Уже есть пол</p>
-    <h2 class="st-h2">Чинить или менять — диагностика</h2>
-    <p class="st-sub">3 вопроса о состоянии существующего пола → диагноз и что делать: перекрытие, ремонт или замена. Можно сразу прислать фото в WhatsApp.</p>
+    <p class="st-kicker">Existing floor</p>
+    <h2 class="st-h2">Repair or replace — quick diagnosis</h2>
+    <p class="st-sub">Answer 3 questions about the existing floor and we will suggest the next move: overlay, repair, or replacement. You can also send photos directly on WhatsApp.</p>
     <div class="st-guide">
-      <div class="st-qrow"><p class="st-qlbl">Что сейчас за пол</p><div class="st-opts" data-dq="floor">
-        <button class="st-opt on" data-v="concrete">Бетон / стяжка</button>
-        <button class="st-opt" data-v="epoxy">Старый эпокси / смола</button>
-        <button class="st-opt" data-v="tile">Плитка</button>
-        <button class="st-opt" data-v="paint">Краска / тонкое</button>
-        <button class="st-opt" data-v="self">Наливной</button>
-        <button class="st-opt" data-v="unknown">Не знаю</button>
+      <div class="st-qrow"><p class="st-qlbl">Current floor type</p><div class="st-opts" data-dq="floor">
+        <button class="st-opt on" data-v="concrete">Concrete / screed</button>
+        <button class="st-opt" data-v="epoxy">Old epoxy / resin</button>
+        <button class="st-opt" data-v="tile">Tile</button>
+        <button class="st-opt" data-v="paint">Paint / thin coat</button>
+        <button class="st-opt" data-v="self">Self-leveling</button>
+        <button class="st-opt" data-v="unknown">Not sure</button>
       </div></div>
-      <div class="st-qrow"><p class="st-qlbl">Главная проблема</p><div class="st-opts" data-dq="problem">
-        <button class="st-opt on" data-v="cracks">Трещины</button>
-        <button class="st-opt" data-v="delam">Отслоение / пузыри</button>
-        <button class="st-opt" data-v="wear">Износ / пыль</button>
-        <button class="st-opt" data-v="moisture">Влага / сырость</button>
-        <button class="st-opt" data-v="stains">Пятна / химия</button>
-        <button class="st-opt" data-v="uneven">Неровность</button>
-        <button class="st-opt" data-v="look">Устарел / вид</button>
+      <div class="st-qrow"><p class="st-qlbl">Main issue</p><div class="st-opts" data-dq="problem">
+        <button class="st-opt on" data-v="cracks">Cracks</button>
+        <button class="st-opt" data-v="delam">Delamination / bubbles</button>
+        <button class="st-opt" data-v="wear">Wear / dusting</button>
+        <button class="st-opt" data-v="moisture">Moisture / damp</button>
+        <button class="st-opt" data-v="stains">Stains / chemicals</button>
+        <button class="st-opt" data-v="uneven">Unevenness</button>
+        <button class="st-opt" data-v="look">Outdated / look</button>
       </div></div>
-      <div class="st-qrow"><p class="st-qlbl">Масштаб</p><div class="st-opts" data-dq="scale">
-        <button class="st-opt on" data-v="local">Локально</button>
-        <button class="st-opt" data-v="spots">Местами</button>
-        <button class="st-opt" data-v="all">По всей площади</button>
+      <div class="st-qrow"><p class="st-qlbl">Extent</p><div class="st-opts" data-dq="scale">
+        <button class="st-opt on" data-v="local">Localized</button>
+        <button class="st-opt" data-v="spots">In patches</button>
+        <button class="st-opt" data-v="all">Whole area</button>
       </div></div>
-      <button class="st-go" id="stDiagGo">Поставить диагноз →</button>
+      <button class="st-go" id="stDiagGo">Run diagnosis →</button>
     </div>
     <div class="st-result hide" id="stDiagResult">
-      <h3>Диагноз</h3>
+      <h3>Diagnosis</h3>
       <p class="rn" id="stDiagTitle">—</p>
-      <p class="rw"><b>Рекомендация:</b> <span id="stDiagAction">—</span></p>
+      <p class="rw"><b>Recommendation:</b> <span id="stDiagAction">—</span></p>
       <p class="rw" id="stDiagWhy">—</p>
       <div class="st-actions">
-        <a class="btn btn-dark" id="stDiagWa" href="#" target="_blank" rel="noopener">Прислать 3 фото в WhatsApp</a>
-        <a class="btn" href="contact.html">Вызвать замерщика</a>
-        <a class="btn" href="substrate-check.html">Проверить готовность основания</a>
+        <a class="btn btn-dark" id="stDiagWa" href="#" target="_blank" rel="noopener">Send 3 photos on WhatsApp</a>
+        <a class="btn" href="contact.html">Book site visit</a>
+        <a class="btn" href="substrate-check.html">Check substrate readiness</a>
       </div>
-      <p class="st-note">Точный диагноз — после выезда с тестом влажности основания. Бесплатно, 48 ч.</p>
+      <p class="st-note">The final diagnosis comes after an on-site visit with a substrate moisture test. Free within 48 hours.</p>
     </div>
   </section>
 
   <!-- 1. NORMS -->
   <section class="st-sec" id="norms">
-    <p class="st-kicker">Раздел 1</p>
-    <h2 class="st-h2">Нормы и стандарты Израиля</h2>
-    <p class="st-sub">Что регулирует пол в Израиле — кратко и по делу. Эти стандарты определяют, какой бетон под основание, как ремонтировать, какая стяжка и какой класс противоскольжения нужен под задачу.</p>
+    <p class="st-kicker">Section 1</p>
+    <h2 class="st-h2">Israel standards and compliance</h2>
+    <p class="st-sub">What governs flooring in Israel, in plain language. These standards define the required substrate concrete, repair approach, screed class, and slip resistance for the job.</p>
     <div class="st-grid">
-      <div class="st-card"><span class="st-code">ת״י 466</span><h3>Кодекс бетона</h3><p>Израильский норматив на проектирование и исполнение бетонных конструкций: класс бетона основания (напр. C25/30), прочность на сжатие, защитный слой арматуры.</p><span class="st-gov">Регулирует: основание «пирога»</span></div>
-      <div class="st-card"><span class="st-code">EN 1504</span><h3>Защита и ремонт бетона</h3><p>Европейская система (10 частей). Ключевые: 1504-2 — защита поверхности, 1504-3 — ремонт, 1504-9 — общие принципы. По ней работают ремонтные и защитные слои.</p><span class="st-gov">Регулирует: ремонт, защита, праймер</span></div>
-      <div class="st-card"><span class="st-code">EN 13813</span><h3>Стяжки и материалы</h3><p>Классификация тела системы: CT (цементная), CA (ангидрит), SR (смола/эпокси), MA (магнезиальная) + классы по прочности на сжатие (C), изгиб (F), износ (AR).</p><span class="st-gov">Регулирует: тело системы / стяжку</span></div>
-      <div class="st-card"><span class="st-code">DIN 51130 · R9–R13</span><h3>Противоскольжение</h3><p>Испытание на наклонной плоскости. R9 — минимум, R13 — максимальный антислип. Для пищевых, мокрых и промышленных полов R-класс нормируется. Босиком (бассейны) — DIN 51097 A/B/C.</p><span class="st-gov">Регулирует: финиш, безопасность</span></div>
-      <div class="st-card"><span class="st-code">Влажность · CM / RH</span><h3>Сухость основания</h3><p>Перед смолой/покрытием бетон должен высохнуть: обычно ≤ 4% CM или ≤ 75–85% RH (зонд in-situ, ASTM F2170). Превышение — отслоение и пузыри. Причина брака №1.</p><span class="st-gov">Регулирует: готовность к укладке</span></div>
-      <div class="st-card"><span class="st-code">HACCP · пищевое</span><h3>Пищевые и фарма-полы</h3><p>Беспыльные, моющиеся, химстойкие, с галтелями (cove base) и нужным R-классом. Обычно PU-cement или MMA. Совместимо с пищевым производством.</p><span class="st-gov">Регулирует: гигиену, чистимость</span></div>
+      <div class="st-card"><span class="st-code">ת״י 466</span><h3>Concrete code</h3><p>The Israeli code for concrete design and execution: substrate concrete class (for example C25/30), compressive strength, and reinforcement cover.</p><span class="st-gov">Governs: base substrate</span></div>
+      <div class="st-card"><span class="st-code">EN 1504</span><h3>Concrete protection and repair</h3><p>A 10-part European framework. Key parts here: 1504-2 for surface protection, 1504-3 for repair, and 1504-9 for general principles. Repair and protection layers follow this logic.</p><span class="st-gov">Governs: repair, protection, primer</span></div>
+      <div class="st-card"><span class="st-code">EN 13813</span><h3>Screeds and screed materials</h3><p>Classification for the system body: CT (cement), CA (anhydrite), SR (resin/epoxy), MA (magnesite), plus compressive (C), flexural (F), and wear (AR) classes.</p><span class="st-gov">Governs: system body / screed</span></div>
+      <div class="st-card"><span class="st-code">DIN 51130 · R9–R13</span><h3>Slip resistance</h3><p>Ramp test classification. R9 is the minimum, R13 the highest anti-slip grade. Food, wet, and industrial floors often require a defined R-class. Barefoot areas use DIN 51097 A/B/C.</p><span class="st-gov">Governs: finish, safety</span></div>
+      <div class="st-card"><span class="st-code">Moisture · CM / RH</span><h3>Substrate dryness</h3><p>Before resin or coatings are applied, concrete must be dry: typically ≤ 4% CM or ≤ 75–85% RH (in-situ probe, ASTM F2170). Exceeding this leads to debonding and blistering. It is the No. 1 failure cause.</p><span class="st-gov">Governs: installation readiness</span></div>
+      <div class="st-card"><span class="st-code">HACCP · food</span><h3>Food and pharma floors</h3><p>Dust-free, washable, chemical-resistant systems with cove bases and the required R-class. Usually PU-cement or MMA. Suitable for food production environments.</p><span class="st-gov">Governs: hygiene, cleanability</span></div>
     </div>
-    <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);margin:34px 0 6px;letter-spacing:.02em">Что нужно под ваш объект</h3>
-    <p class="st-sub" style="margin:8px 0 14px">Практическая шпаргалка: какой класс скольжения, влажность основания и система — под типовую задачу.</p>
+    <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);margin:34px 0 6px;letter-spacing:.02em">What your project typically needs</h3>
+    <p class="st-sub" style="margin:8px 0 14px">A practical cheat sheet: typical slip class, substrate moisture, and system fit by use case.</p>
     <div class="stc-wrap"><table class="stc-table">
-      <thead><tr><th>Объект / зона</th><th>Класс скольжения</th><th>Влажность основания</th><th>Подходящие системы</th><th>Норма</th></tr></thead>
+      <thead><tr><th>Project / area</th><th>Slip class</th><th>Substrate moisture</th><th>Suitable systems</th><th>Standard</th></tr></thead>
       <tbody>
-        <tr><td class="stc-name">Пищевое · кухня</td><td>R11–R12</td><td>≤4% CM</td><td>PU-cement · MMA</td><td>EN 13813 · HACCP · DIN 51130</td></tr>
-        <tr><td class="stc-name">Мокрые зоны (босиком)</td><td>R10 + DIN 51097 B/C</td><td>≤4% CM</td><td>PU-cement · эпокси-антислип</td><td>DIN 51097</td></tr>
-        <tr><td class="stc-name">Склад · forklift</td><td>R10–R11</td><td>≤4% RH</td><td>Эпокси · PU-cement</td><td>EN 13813 (SR)</td></tr>
-        <tr><td class="stc-name">Ритейл · шоурум (сухо)</td><td>R9–R10</td><td>≤75% RH</td><td>Микротопинг · терраццо · эпокси</td><td>EN 13813</td></tr>
-        <tr><td class="stc-name">Healthcare · спорт</td><td>R9–R10</td><td>≤4% RH</td><td>ComfortFloor · резина</td><td>EN 13813 · акустика</td></tr>
-        <tr><td class="stc-name">Паркинг · рампы</td><td>R12–R13 (рампы)</td><td>≤4% RH</td><td>Эпокси · PU</td><td>DIN 51130 · EN 1504</td></tr>
-        <tr><td class="stc-name">Жильё</td><td>R9–R10</td><td>≤75% RH</td><td>Микротопинг · терраццо</td><td>EN 13813</td></tr>
+        <tr><td class="stc-name">Food production · kitchen</td><td>R11–R12</td><td>≤4% CM</td><td>PU-cement · MMA</td><td>EN 13813 · HACCP · DIN 51130</td></tr>
+        <tr><td class="stc-name">Barefoot wet zones</td><td>R10 + DIN 51097 B/C</td><td>≤4% CM</td><td>PU-cement · anti-slip epoxy</td><td>DIN 51097</td></tr>
+        <tr><td class="stc-name">Warehouse · forklift</td><td>R10–R11</td><td>≤4% RH</td><td>Epoxy · PU-cement</td><td>EN 13813 (SR)</td></tr>
+        <tr><td class="stc-name">Retail · showroom (dry)</td><td>R9–R10</td><td>≤75% RH</td><td>Microtopping · terrazzo · epoxy</td><td>EN 13813</td></tr>
+        <tr><td class="stc-name">Healthcare · sport</td><td>R9–R10</td><td>≤4% RH</td><td>ComfortFloor · rubber</td><td>EN 13813 · acoustics</td></tr>
+        <tr><td class="stc-name">Parking · ramps</td><td>R12–R13 (ramps)</td><td>≤4% RH</td><td>Epoxy · PU</td><td>DIN 51130 · EN 1504</td></tr>
+        <tr><td class="stc-name">Residential</td><td>R9–R10</td><td>≤75% RH</td><td>Microtopping · terrazzo</td><td>EN 13813</td></tr>
       </tbody>
     </table></div>
-    <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);margin:34px 0 4px;letter-spacing:.02em">Частые проблемы оснований</h3>
-    <p class="st-sub" style="margin:8px 0 0">Разборы из энциклопедии — что идёт не так и как лечится.</p>
+    <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);margin:34px 0 4px;letter-spacing:.02em">Frequent substrate issues</h3>
+    <p class="st-sub" style="margin:8px 0 0">Encyclopedia deep dives on what goes wrong and how it is usually resolved.</p>
     <div class="st-problems">
-      <a class="st-prob" href="articles/encyclopedia/"><b>Стандарты ת״י 466 / EN 1504</b><span>Полный разбор норм</span></a>
-      <a class="st-prob" href="articles/encyclopedia/"><b>Сырость и высокая RH</b><span>Почему отслаивается покрытие</span></a>
-      <a class="st-prob" href="articles/encyclopedia/"><b>Трещины в основании</b><span>5 признаков — когда опасно</span></a>
-      <a class="st-prob" href="articles/encyclopedia/"><b>Карбонизация бетона</b><span>Тест за 5 минут</span></a>
-      <a class="st-prob" href="articles/encyclopedia/"><b>Хлориды у моря</b><span>Защита арматуры</span></a>
-      <a class="st-prob" href="articles/encyclopedia/"><b>Высолы (efflorescence)</b><span>Что это и как убрать</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>ת״י 466 / EN 1504 standards</b><span>Full standards breakdown</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>Moisture and high RH</b><span>Why coatings debond</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>Cracks in the substrate</b><span>5 signs the issue is serious</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>Concrete carbonation</b><span>A 5-minute test</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>Chlorides near the sea</b><span>How to protect reinforcement</span></a>
+      <a class="st-prob" href="articles/encyclopedia/"><b>Efflorescence</b><span>What it is and how to remove it</span></a>
     </div>
   </section>
 
   <!-- 2. BUILD THE PIE -->
   <section class="st-sec" id="build">
-    <p class="st-kicker">Раздел 2</p>
-    <h2 class="st-h2">Собери свой «пирог» пола</h2>
-    <p class="st-sub">Выберите систему — увидите послойный состав (основание → праймер → тело → топкоат) с реальными толщинами, спекой и нормами, которые она закрывает. Скачайте спецификацию или откройте в 3D.</p>
-    <div class="st-syschips" id="stSysChips" aria-label="Системы пола"></div>
+    <p class="st-kicker">Section 2</p>
+    <h2 class="st-h2">Build your floor system</h2>
+    <p class="st-sub">Choose a system to see the layer stack (substrate → primer → body → topcoat) with typical thicknesses, spec lines, and applicable standards. Download the spec sheet or open it in 3D.</p>
+    <div class="st-syschips" id="stSysChips" aria-label="Floor systems"></div>
     <div class="st-build">
       <div>
         <div class="st-pie" id="stPie"></div>
-        <p class="st-note">Толщины — типовые; точный «пирог» подбирается после замера и теста влажности основания.</p>
+        <p class="st-note">Thicknesses shown are typical. The exact build-up is confirmed after the site survey and substrate moisture test.</p>
       </div>
       <div class="st-pieinfo">
         <h3 id="stSysName">—</h3>
@@ -315,38 +318,38 @@
         <div id="stSysSpec"></div>
         <div class="st-badges" id="stSysBadges"></div>
         <div class="st-actions">
-          <button class="btn btn-dark" id="stSpecBtn" type="button">Скачать спецификацию (PDF)</button>
-          <a class="btn" id="stOpen3d" href="configurator.html">Открыть в 3D →</a>
-          <a class="btn" id="stRoom" href="room-visualizer.html">Посмотреть в комнате →</a>
-          <a class="btn" id="stSample" href="sample-kit.html">Заказать образец</a>
+          <button class="btn btn-dark" id="stSpecBtn" type="button">Download spec sheet (PDF)</button>
+          <a class="btn" id="stOpen3d" href="configurator.html">Open in 3D →</a>
+          <a class="btn" id="stRoom" href="room-visualizer.html">Preview in room →</a>
+          <a class="btn" id="stSample" href="sample-kit.html">Order sample</a>
         </div>
       </div>
     </div>
     <div id="stBoqWrap" style="margin-top:32px">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px">
-        <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);letter-spacing:.02em;margin:0">Ориентировочный расход материалов</h3>
-        <label style="font:500 14px/1 Montserrat,sans-serif;color:var(--steel);display:inline-flex;align-items:center;gap:8px">Площадь
-          <input type="number" id="stBoqArea" min="1" max="100000" step="1" value="120" style="width:96px;padding:8px 10px;border:1px solid #d8d2c6;border-radius:8px;font:600 14px Montserrat,sans-serif;color:var(--carbon)"> м²
+        <h3 style="font:600 16px/1 Montserrat,sans-serif;color:var(--carbon);letter-spacing:.02em;margin:0">Indicative material take-off</h3>
+        <label style="font:500 14px/1 Montserrat,sans-serif;color:var(--steel);display:inline-flex;align-items:center;gap:8px">Area
+          <input type="number" id="stBoqArea" min="1" max="100000" step="1" value="120" style="width:96px;padding:8px 10px;border:1px solid #d8d2c6;border-radius:8px;font:600 14px Montserrat,sans-serif;color:var(--carbon)"> m²
         </label>
       </div>
       <div class="stc-wrap"><table class="stc-table" id="stBoqTable"></table></div>
-      <p class="st-note">Расход ориентировочный (плотность × толщина) на ровное основание; точная величина и фасовка зависят от пористости основания и прайса поставщика. Бетонное основание считается отдельно.</p>
+      <p class="st-note">Indicative take-off is based on density × thickness over a level substrate. Exact quantities and packaging depend on substrate porosity and supplier pack sizes. Concrete substrate quantities are calculated separately.</p>
     </div>
   </section>
 
   <!-- 2.5 COMPARE -->
   <section class="st-sec" id="compare">
-    <p class="st-kicker">Сравнение</p>
-    <h2 class="st-h2">Сравнение систем</h2>
-    <p class="st-sub">Все системы в одной таблице — толщина, цена, класс скольжения, отверждение, пищевой допуск (HACCP) и нормы. Выберите подходящую — подставим в пирог и расчёт.</p>
+    <p class="st-kicker">Compare</p>
+    <h2 class="st-h2">System comparison</h2>
+    <p class="st-sub">All systems in one table: thickness, price, slip class, cure, HACCP suitability, and standards. Pick one and we will drop it into the build-up and cost calculator.</p>
     <div id="stCompare"></div>
   </section>
 
   <!-- 3. COST -->
   <section class="st-sec" id="cost" style="border-bottom:none">
-    <p class="st-kicker">Раздел 3</p>
-    <h2 class="st-h2">Рассчитай стоимость</h2>
-    <p class="st-sub">Ориентир за 30 секунд: тип покрытия × назначение × площадь. Не точная смета — рабочий бенчмарк. Точная цена — после выезда замерщика с тестом основания, бесплатно за 48 часов.</p>
+    <p class="st-kicker">Section 3</p>
+    <h2 class="st-h2">Estimate the cost</h2>
+    <p class="st-sub">A 30-second benchmark: floor type × use case × area. Not a formal quote, but a working benchmark. The exact price comes after a site visit with substrate testing, free within 48 hours.</p>
     <div class="fx-calc-card">
       <div class="fx-calc-row">
         <span class="fx-calc-lbl" data-i18n="q_lbl_type">Floor type</span>
@@ -387,7 +390,7 @@
         <input type="hidden" name="config_url" data-fx="leadConfigUrl" value="">
         <input type="hidden" name="material" data-fx="leadMaterial" value="">
         <input type="hidden" name="estimate" data-fx="leadEstimate" value="">
-        <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+        <p hidden><label>Do not fill this in: <input name="bot-field"></label></p>
         <p class="fx-calc-lead__lede" data-i18n="q_lead_lede">Leave your contacts — we'll send an exact quote within 48 hours after a short survey.</p>
         <div class="fx-calc-lead__row">
           <input type="text" name="name" required placeholder="Name" data-i18n="q_ph_name" autocomplete="name" aria-label="Name">
@@ -439,30 +442,30 @@
 
       // ---- system data (mirrors 3d-assets/manifest.json) ----
       var SYS = {
-        epoxy:{ name:'Эпоксидная заливка', thk:'3–5 мм', why:'Прочное беспыльное покрытие для склада/паркинга, держит forklift до 5 т, легко моется.',
-          layers:[{t:'Топкоат · Sikafloor-264 (PU)',s:'0.2 мм',c:'#2a2620'},{t:'Тело · Sikafloor-263 SL',s:'3–5 мм',c:'#3a342b'},{t:'Праймер · Sikafloor-156',s:'0.15 мм',c:'#8a7f63'},{t:'Основание · бетон C25/30 · ≤4% RH',s:'≥25 МПа',c:'#9a9a98'}],
-          spec:[['Тип','Эпокси self-leveling SR'],['Цена','₪400–650/м²'],['Отверждение','12ч пеш / 7д forklift'],['Нагрузка','склад · паркинг · forklift до 5т']], badges:['R9–R12','>70 МПа','GLOSS'], norms:'EN 13813 (SR) · EN 1504-2', calc:'epoxy' },
-        'pu-cement':{ name:'PU-cement', thk:'4–9 мм', why:'Король мокрых и пищевых цехов: HACCP, термошок −40…+120°C, химия, тяжёлая нагрузка.',
-          layers:[{t:'Топкоат · Sikafloor-21N PurCem',s:'0.5 мм',c:'#7d7a74'},{t:'Тело · Sikafloor-21N PurCem',s:'4–9 мм',c:'#9a9690'},{t:'Праймер по бетону',s:'—',c:'#b3a98f'},{t:'Основание · бетон C25/30 · ≤95% RH',s:'≥25 МПа',c:'#9a9a98'}],
-          spec:[['Тип','Polyurethane-cement'],['Цена','₪380–650/м²'],['Отверждение','6ч / 5–7д'],['Нагрузка','тяжпром · пищевое HACCP · мокрое']], badges:['R10–R13','HACCP','−40…+120°C'], norms:'EN 13813 · HACCP', calc:'pucement' },
-        mma:{ name:'MMA Pronto', thk:'3–6 мм', why:'Когда нельзя останавливать работу: монтаж и разметка за 2 часа, держит мороз и cold-storage.',
-          layers:[{t:'Топкоат · Sikafloor-71 TC Pronto',s:'1 мм',c:'#34322d'},{t:'Тело · Sikafloor-61 BC Pronto',s:'3–6 мм',c:'#3c3a35'},{t:'Праймер · Sikafloor-41 P Pronto',s:'0.5 мм',c:'#7a766b'},{t:'Основание · бетон / металл',s:'—',c:'#9a9a98'}],
-          spec:[['Тип','MMA fast-cure'],['Цена','₪780–1100/м²'],['Отверждение','1.5–3ч'],['Нагрузка','cold-storage · пищевое · ночной ремонт']], badges:['R10–R12','RAPID 2ч','−30°C OK'], norms:'EN 13813 (SR) · RAPID', calc:'mma' },
-        microtopping:{ name:'Микротопинг', thk:'2–3 мм', why:'Бесшовный современный вид по существующему основанию, тонкий слой, для жилья и шоурумов.',
-          layers:[{t:'Топкоат · ProSeal-22 (2 слоя)',s:'—',c:'#b9ad99'},{t:'Тело · Sikafloor-470 Level',s:'2×1.2 мм',c:'#cfc4b3'},{t:'Сетка (стены/wet)',s:'60 г/м²',c:'#d8cdb8'},{t:'Праймер-бондер',s:'0.15 мм',c:'#b3a98f'},{t:'Основание · ≤75% RH',s:'—',c:'#9a9a98'}],
-          spec:[['Тип','Полимер-цементный микротопинг'],['Цена','₪500–900/м²'],['Отверждение','5–7д'],['Нагрузка','жильё · ритейл · коммерч.']], badges:['R9–R10','ECO','>30 МПа'], norms:'EN 13813 (CT)', calc:'micro' },
-        'terrazzo-cement':{ name:'Терраццо · цементное', thk:'12–18 мм', why:'Премиум-эстетика на 30+ лет: мраморная крошка, бесшовно, статусно для дизайн-объектов.',
-          layers:[{t:'Sealer · воск / lithium silicate',s:'0.1 мм',c:'#cfc6b0'},{t:'Тело · CS-31 + крошка 4–12 мм',s:'12–18 мм',c:'#efe7d6'},{t:'Праймер · Sika Primer-3N',s:'—',c:'#c8b08a'},{t:'Основание · C25/30 · ≥60 дней',s:'≥25 МПа',c:'#9a9a98'}],
-          spec:[['Тип','Минеральное терраццо CS-31'],['Цена','₪1000–1800/м²'],['Отверждение','10–14д'],['Срок службы','30+ лет']], badges:['R10','ECO','>35 МПа'], norms:'ת״י 466 (основание)', calc:'terrazzo' },
-        comfortfloor:{ name:'Sika ComfortFloor', thk:'7–8 мм', why:'Тихий и мягкий пол для healthcare/офиса: акустика ΔLw 21–23 dB, anti-fatigue, тёплый под ногой.',
-          layers:[{t:'Топкоат · PU',s:'0.3 мм',c:'#a99c86'},{t:'Тело · ComfortFloor PS-65 (эласт. PU)',s:'2.4 мм',c:'#c5b9a4'},{t:'Мембрана · recycled-PU pad',s:'5 мм',c:'#7d756a'},{t:'Праймер · Sikafloor-161',s:'0.15 мм',c:'#b3a98f'},{t:'Основание · ≤4% RH',s:'—',c:'#9a9a98'}],
-          spec:[['Тип','Эластичный PU PS-65'],['Цена','₪590–780/м²'],['Отверждение','4–5д'],['Нагрузка','healthcare · retail · офис']], badges:['ACOUSTIC 21–23dB','ANTI-FATIGUE','R9–R10'], norms:'EN 13813 · акустика', calc:'comfortfloor' },
-        rubber:{ name:'Резиновое покрытие', thk:'7–15 мм', why:'Ударопоглощение и безопасность: спортзалы, детские, зоны падения; антислип R12.',
-          layers:[{t:'Топкоат · EPDM-крошка + UV-PU',s:'—',c:'#3a3a3a'},{t:'Тело · поливная резина EPDM 1–4 мм',s:'7–15 мм',c:'#2a2a2a'},{t:'Праймер · Sikafloor-161',s:'0.15 мм',c:'#6a6a68'},{t:'Основание · бетон / асфальт',s:'—',c:'#9a9a98'}],
-          spec:[['Тип','Резина EPDM + 2K PU'],['Цена','₪380–650/м²'],['Отверждение','24ч / 3–5д'],['Нагрузка','спорт · детские · healthcare']], badges:['R12','ANTI-SLIP','SHOCK'], norms:'DIN 51130 R12', calc:'rubber' }
+        epoxy:{ name:'Epoxy self-leveling', thk:'3–5 mm', why:'A durable, dust-free surface for warehouses and parking decks, suitable for forklifts up to 5 t and easy to wash down.',
+          layers:[{t:'Topcoat · Sikafloor-264 (PU)',s:'0.2 mm',c:'#2a2620'},{t:'Body · Sikafloor-263 SL',s:'3–5 mm',c:'#3a342b'},{t:'Primer · Sikafloor-156',s:'0.15 mm',c:'#8a7f63'},{t:'Substrate · C25/30 concrete · ≤4% RH',s:'≥25 MPa',c:'#9a9a98'}],
+          spec:[['Type','Epoxy self-leveling SR'],['Price','₪400–650/m²'],['Cure','12h foot traffic / 7d forklift'],['Load','warehouse · parking · forklift up to 5 t']], badges:['R9–R12','>70 MPa','GLOSS'], norms:'EN 13813 (SR) · EN 1504-2', calc:'epoxy' },
+        'pu-cement':{ name:'PU-cement', thk:'4–9 mm', why:'The go-to system for wet and food-grade areas: HACCP, thermal shock −40…+120°C, chemical resistance, and heavy-duty service.',
+          layers:[{t:'Topcoat · Sikafloor-21N PurCem',s:'0.5 mm',c:'#7d7a74'},{t:'Body · Sikafloor-21N PurCem',s:'4–9 mm',c:'#9a9690'},{t:'Concrete primer',s:'—',c:'#b3a98f'},{t:'Substrate · C25/30 concrete · ≤95% RH',s:'≥25 MPa',c:'#9a9a98'}],
+          spec:[['Type','Polyurethane-cement'],['Price','₪380–650/m²'],['Cure','6h / 5–7d'],['Load','heavy industry · food-grade HACCP · wet areas']], badges:['R10–R13','HACCP','−40…+120°C'], norms:'EN 13813 · HACCP', calc:'pucement' },
+        mma:{ name:'MMA Pronto', thk:'3–6 mm', why:'Built for zero-downtime jobs: installation and line marking in about 2 hours, with performance in frost and cold storage.',
+          layers:[{t:'Topcoat · Sikafloor-71 TC Pronto',s:'1 mm',c:'#34322d'},{t:'Body · Sikafloor-61 BC Pronto',s:'3–6 mm',c:'#3c3a35'},{t:'Primer · Sikafloor-41 P Pronto',s:'0.5 mm',c:'#7a766b'},{t:'Substrate · concrete / metal',s:'—',c:'#9a9a98'}],
+          spec:[['Type','MMA fast-cure'],['Price','₪780–1100/m²'],['Cure','1.5–3h'],['Load','cold storage · food · overnight repairs']], badges:['R10–R12','RAPID 2h','−30°C OK'], norms:'EN 13813 (SR) · RAPID', calc:'mma' },
+        microtopping:{ name:'Microtopping', thk:'2–3 mm', why:'A seamless contemporary finish over an existing substrate, with a thin build ideal for residential and showroom spaces.',
+          layers:[{t:'Topcoat · ProSeal-22 (2 coats)',s:'—',c:'#b9ad99'},{t:'Body · Sikafloor-470 Level',s:'2×1.2 mm',c:'#cfc4b3'},{t:'Mesh (walls / wet zones)',s:'60 g/m²',c:'#d8cdb8'},{t:'Bonding primer',s:'0.15 mm',c:'#b3a98f'},{t:'Substrate · ≤75% RH',s:'—',c:'#9a9a98'}],
+          spec:[['Type','Polymer-cement microtopping'],['Price','₪500–900/m²'],['Cure','5–7d'],['Load','residential · retail · commercial']], badges:['R9–R10','ECO','>30 MPa'], norms:'EN 13813 (CT)', calc:'micro' },
+        'terrazzo-cement':{ name:'Terrazzo · cementitious', thk:'12–18 mm', why:'A premium 30+ year aesthetic with marble aggregate, seamless expression, and strong presence for design-led spaces.',
+          layers:[{t:'Sealer · wax / lithium silicate',s:'0.1 mm',c:'#cfc6b0'},{t:'Body · CS-31 + aggregate 4–12 mm',s:'12–18 mm',c:'#efe7d6'},{t:'Primer · Sika Primer-3N',s:'—',c:'#c8b08a'},{t:'Substrate · C25/30 · ≥60 days',s:'≥25 MPa',c:'#9a9a98'}],
+          spec:[['Type','Mineral terrazzo CS-31'],['Price','₪1000–1800/m²'],['Cure','10–14d'],['Service life','30+ years']], badges:['R10','ECO','>35 MPa'], norms:'ת״י 466 (substrate)', calc:'terrazzo' },
+        comfortfloor:{ name:'Sika ComfortFloor', thk:'7–8 mm', why:'A quiet, resilient floor for healthcare and office spaces with ΔLw 21–23 dB acoustics, anti-fatigue comfort, and a warm underfoot feel.',
+          layers:[{t:'Topcoat · PU',s:'0.3 mm',c:'#a99c86'},{t:'Body · ComfortFloor PS-65 (elastic PU)',s:'2.4 mm',c:'#c5b9a4'},{t:'Membrane · recycled PU pad',s:'5 mm',c:'#7d756a'},{t:'Primer · Sikafloor-161',s:'0.15 mm',c:'#b3a98f'},{t:'Substrate · ≤4% RH',s:'—',c:'#9a9a98'}],
+          spec:[['Type','Elastic PU PS-65'],['Price','₪590–780/m²'],['Cure','4–5d'],['Load','healthcare · retail · office']], badges:['ACOUSTIC 21–23dB','ANTI-FATIGUE','R9–R10'], norms:'EN 13813 · acoustics', calc:'comfortfloor' },
+        rubber:{ name:'Rubber surfacing', thk:'7–15 mm', why:'Shock absorption and safety for gyms, kids areas, and impact zones, with anti-slip R12 performance.',
+          layers:[{t:'Topcoat · EPDM aggregate + UV-PU',s:'—',c:'#3a3a3a'},{t:'Body · poured EPDM rubber 1–4 mm',s:'7–15 mm',c:'#2a2a2a'},{t:'Primer · Sikafloor-161',s:'0.15 mm',c:'#6a6a68'},{t:'Substrate · concrete / asphalt',s:'—',c:'#9a9a98'}],
+          spec:[['Type','EPDM rubber + 2K PU'],['Price','₪380–650/m²'],['Cure','24h / 3–5d'],['Load','sport · kids · healthcare']], badges:['R12','ANTI-SLIP','SHOCK'], norms:'DIN 51130 R12', calc:'rubber' }
       };
       var ORDER = ['epoxy','pu-cement','mma','microtopping','terrazzo-cement','comfortfloor','rubber'];
-      // ориентировочный расход кг/м² по слоям (плотность × толщина); 0 = основание/рулонный материал, считается отдельно
+      // Indicative kg/m² by layer (density × thickness); 0 = substrate / sheet material, calculated separately.
       var CONS = { epoxy:[0.3,6.0,0.4,0], 'pu-cement':[1.0,12.0,0.4,0], mma:[1.2,5.0,0.5,0], microtopping:[0.2,3.5,0,0.3,0], 'terrazzo-cement':[0.1,30.0,0.3,0], comfortfloor:[0.4,3.4,0,0.3,0], rubber:[0.5,10.0,0.3,0] };
 
       var chips=document.getElementById('stSysChips'), pie=document.getElementById('stPie'),
@@ -473,23 +476,23 @@
           boqArea=document.getElementById('stBoqArea'), boqTable=document.getElementById('stBoqTable');
       var current='epoxy';
       function curArea(){ var a=parseFloat(boqArea&&boqArea.value)||0; return a>0?a:120; }
-      function fmtKg(n){ return (Math.round(n*10)/10).toLocaleString('ru-RU'); }
+      function fmtKg(n){ return (Math.round(n*10)/10).toLocaleString('en-US'); }
       function renderBoq(slug){
         var s=SYS[slug], q=CONS[slug]; if(!s||!q||!boqTable) return;
         var area=curArea(), totals=0;
         var rows=s.layers.map(function(l,i){
           var per=q[i]||0; var tot=per*area; if(per>0) totals+=tot;
-          return '<tr><td class="stc-name">'+l.t+'</td><td>'+l.s+'</td><td>'+(per>0?fmtKg(per)+' кг/м²':'—')+'</td><td>'+(per>0?fmtKg(tot)+' кг':'—')+'</td></tr>';
+          return '<tr><td class="stc-name">'+l.t+'</td><td>'+l.s+'</td><td>'+(per>0?fmtKg(per)+' kg/m²':'—')+'</td><td>'+(per>0?fmtKg(tot)+' kg':'—')+'</td></tr>';
         }).join('');
-        boqTable.innerHTML='<thead><tr><th>Слой</th><th>Толщина</th><th>Расход</th><th>На '+fmtKg(area)+' м²</th></tr></thead><tbody>'+rows+
-          '<tr><td class="stc-name"><b>Итого материалов</b></td><td></td><td><b>'+fmtKg(totals/area)+' кг/м²</b></td><td><b>'+fmtKg(totals)+' кг</b></td></tr></tbody>';
+        boqTable.innerHTML='<thead><tr><th>Layer</th><th>Thickness</th><th>Consumption</th><th>For '+fmtKg(area)+' m²</th></tr></thead><tbody>'+rows+
+          '<tr><td class="stc-name"><b>Total materials</b></td><td></td><td><b>'+fmtKg(totals/area)+' kg/m²</b></td><td><b>'+fmtKg(totals)+' kg</b></td></tr></tbody>';
       }
 
       function render(slug){
         var s=SYS[slug]; if(!s) return; current=slug;
         pie.innerHTML=s.layers.map(function(l){return '<div class="st-layer" style="background:'+l.c+'"><span class="lt">'+l.t+'</span><small>'+l.s+'</small></div>';}).join('');
         nameEl.textContent=s.name;
-        thkEl.textContent='Общая толщина: '+s.thk+' · нормы: '+s.norms;
+        thkEl.textContent='Total thickness: '+s.thk+' · standards: '+s.norms;
         specEl.innerHTML=s.spec.map(function(r){return '<div class="st-specrow"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';}).join('');
         badgesEl.innerHTML=s.badges.map(function(b){return '<span class="st-badge">'+b+'</span>';}).join('');
         open3d.setAttribute('href','configurator.html?mat='+encodeURIComponent(slug));
@@ -499,13 +502,13 @@
         renderBoq(slug);
         // spec sheet
         var _ssArea=curArea(), _ssQ=CONS[slug]||[], _ssTot=0;
-        var _ssBoq=s.layers.map(function(l,i){var per=_ssQ[i]||0; if(per<=0) return ''; var tot=per*_ssArea; _ssTot+=tot; return '<tr><td>'+l.t+'</td><td>'+(Math.round(per*10)/10)+' кг/м²</td><td>'+Math.round(tot)+' кг</td></tr>';}).filter(Boolean).join('');
-        sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Спецификация системы пола<br>floordsgn.com · +972 55 966 1459<br>'+new Date().toLocaleDateString('ru-RU')+'</div></div>'+
-          '<h1>'+s.name+'</h1><p class="ss-thk">Толщина '+s.thk+' · '+s.norms+'</p>'+
-          '<div class="ss-sec">Состав «пирога» (сверху вниз)</div><table>'+s.layers.map(function(l){return '<tr><td>'+l.t+'</td><td>'+l.s+'</td></tr>';}).join('')+'</table>'+
-          '<div class="ss-sec">Характеристики</div><table>'+s.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('')+'<tr><td>Класс / свойства</td><td>'+s.badges.join(' · ')+'</td></tr></table>'+
-          '<div class="ss-sec">Ориентировочный расход материалов на '+_ssArea+' м²</div><table>'+_ssBoq+'<tr><td><b>Итого</b></td><td><b>'+(Math.round(_ssTot/_ssArea*10)/10)+' кг/м²</b></td><td><b>'+Math.round(_ssTot)+' кг</b></td></tr></table>'+
-          '<div class="ss-foot">Это ориентировочная спецификация для проектирования и тендера. Точный состав и цена — после выезда замерщика с тестом влажности основания (бесплатно, 48 ч). Floor.DSGN · напольные системы инженерного класса по всему Израилю · floors.dsgn@gmail.com · +972 55 966 1459</div>';
+        var _ssBoq=s.layers.map(function(l,i){var per=_ssQ[i]||0; if(per<=0) return ''; var tot=per*_ssArea; _ssTot+=tot; return '<tr><td>'+l.t+'</td><td>'+(Math.round(per*10)/10)+' kg/m²</td><td>'+Math.round(tot)+' kg</td></tr>';}).filter(Boolean).join('');
+        sheet.innerHTML='<div class="ss-head"><div class="ss-brand">FLOOR.DSGN</div><div class="ss-meta">Floor system spec sheet<br>floordsgn.com · +972 55 966 1459<br>'+new Date().toLocaleDateString('en-GB')+'</div></div>'+
+          '<h1>'+s.name+'</h1><p class="ss-thk">Thickness '+s.thk+' · '+s.norms+'</p>'+
+          '<div class="ss-sec">Layer build-up (top to bottom)</div><table>'+s.layers.map(function(l){return '<tr><td>'+l.t+'</td><td>'+l.s+'</td></tr>';}).join('')+'</table>'+
+          '<div class="ss-sec">Key characteristics</div><table>'+s.spec.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('')+'<tr><td>Class / properties</td><td>'+s.badges.join(' · ')+'</td></tr></table>'+
+          '<div class="ss-sec">Indicative material take-off for '+_ssArea+' m²</div><table>'+_ssBoq+'<tr><td><b>Total</b></td><td><b>'+(Math.round(_ssTot/_ssArea*10)/10)+' kg/m²</b></td><td><b>'+Math.round(_ssTot)+' kg</b></td></tr></table>'+
+          '<div class="ss-foot">This is an indicative specification for design development and tendering. The exact build-up and price are confirmed after a site visit with substrate moisture testing, free within 48 hours. Floor.DSGN · engineering-grade flooring systems across Israel · floors.dsgn@gmail.com · +972 55 966 1459</div>';
       }
       // chips
       chips.innerHTML=ORDER.map(function(slug,i){return '<button type="button" class="st-syschip'+(i===0?' on':'')+'" data-slug="'+slug+'">'+SYS[slug].name+'</button>';}).join('');
@@ -532,7 +535,7 @@
         if(cs && v>=20 && v<=10000){ cs.value=v; cs.dispatchEvent(new Event('input',{bubbles:true})); }
       }); }
 
-      // ---- guide / подбор ----
+      // ---- guide selector ----
       var ans={place:'residential',traffic:'foot',wet:'dry',priority:'look'};
       document.querySelectorAll('.st-opts').forEach(function(row){
         row.addEventListener('click',function(e){var b=e.target.closest('.st-opt');if(!b)return;
@@ -545,7 +548,7 @@
         wet:{dry:{epoxy:1,microtopping:1,'terrazzo-cement':1},damp:{'pu-cement':1,epoxy:1,mma:1},wet:{'pu-cement':3,mma:2,rubber:1}},
         priority:{budget:{epoxy:1,microtopping:1,rubber:1,'pu-cement':1},look:{'terrazzo-cement':2,microtopping:2},durable:{'pu-cement':1,epoxy:1,'terrazzo-cement':1},speed:{mma:3}}
       };
-      var LBL={residential:'жилья',commercial:'коммерции',industrial:'производства',food:'пищевого производства',healthcare:'healthcare',designer:'дизайн-объекта',foot:'пешей нагрузки',wheels:'лёгкой колёсной нагрузки',forklift:'forklift',heavy:'тяжёлой нагрузки',dry:'сухих условий',damp:'влажных условий',wet:'постоянно мокрых условий',budget:'бюджета',look:'внешнего вида',durable:'срока службы',speed:'скорости монтажа'};
+      var LBL={residential:'residential use',commercial:'commercial / office / retail use',industrial:'production / warehouse use',food:'food / pharma use',healthcare:'healthcare / sports use',designer:'design-led spaces',foot:'foot traffic',wheels:'light wheeled traffic',forklift:'forklift traffic',heavy:'heavy-duty traffic',dry:'dry conditions',damp:'damp washable conditions',wet:'constantly wet conditions',budget:'budget',look:'aesthetics',durable:'service life',speed:'installation speed'};
       document.getElementById('stRecommend').addEventListener('click',function(){
         var totals={};
         ['place','traffic','wet','priority'].forEach(function(q){var m=SCORE[q][ans[q]]||{};for(var k in m){totals[k]=(totals[k]||0)+m[k];}});
@@ -553,8 +556,8 @@
         if(!ranked.length) ranked=['epoxy'];
         var top=ranked[0], alt=ranked[1];
         document.getElementById('stResName').textContent=SYS[top].name;
-        document.getElementById('stResWhy').textContent='Под '+LBL[ans.place]+', '+LBL[ans.traffic]+' и '+LBL[ans.wet]+' (приоритет — '+LBL[ans.priority]+'): '+SYS[top].why;
-        document.getElementById('stResAlt').textContent=alt?('Альтернатива: '+SYS[alt].name+'.'):'';
+        document.getElementById('stResWhy').textContent='For '+LBL[ans.place]+', '+LBL[ans.traffic]+', and '+LBL[ans.wet]+' (priority: '+LBL[ans.priority]+'): '+SYS[top].why;
+        document.getElementById('stResAlt').textContent=alt?('Alternative: '+SYS[alt].name+'.'):'';
         document.getElementById('stResult').classList.remove('hide');
         document.getElementById('stResPie').onclick=function(){selectSystem(top,'build');};
         document.getElementById('stResCost').onclick=function(){selectSystem(top,'cost');};
@@ -566,16 +569,16 @@
       var cmp=document.getElementById('stCompare');
       function pickSpec(spec,label){var f=spec.find(function(r){return r[0]===label;});return f?f[1]:'—';}
       function rClass(badges){var f=badges.find(function(b){return /R\d/.test(b);});return f||'—';}
-      function hasHACCP(badges){return badges.some(function(b){return /HACCP/i.test(b);})?'да':'—';}
+      function hasHACCP(badges){return badges.some(function(b){return /HACCP/i.test(b);})?'yes':'—';}
       function buildCompare(){
         var rows=ORDER.map(function(slug){var s=SYS[slug];
-          return '<tr><td class="stc-name">'+s.name+'</td><td>'+s.thk+'</td><td>'+pickSpec(s.spec,'Цена')+'</td><td>'+rClass(s.badges)+'</td><td>'+pickSpec(s.spec,'Отверждение')+'</td><td>'+hasHACCP(s.badges)+'</td><td>'+s.norms+'</td><td><button class="stc-pick" data-slug="'+slug+'">Выбрать →</button></td></tr>';
+          return '<tr><td class="stc-name">'+s.name+'</td><td>'+s.thk+'</td><td>'+pickSpec(s.spec,'Price')+'</td><td>'+rClass(s.badges)+'</td><td>'+pickSpec(s.spec,'Cure')+'</td><td>'+hasHACCP(s.badges)+'</td><td>'+s.norms+'</td><td><button class="stc-pick" data-slug="'+slug+'">Select →</button></td></tr>';
         }).join('');
-        cmp.innerHTML='<div class="stc-wrap"><table class="stc-table"><thead><tr><th>Система</th><th>Толщина</th><th>Цена ₪/м²</th><th>R-класс</th><th>Отверждение</th><th>HACCP</th><th>Нормы</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+        cmp.innerHTML='<div class="stc-wrap"><table class="stc-table"><thead><tr><th>System</th><th>Thickness</th><th>Price ₪/m²</th><th>R-class</th><th>Cure</th><th>HACCP</th><th>Standards</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>';
       }
       if(cmp){ buildCompare(); cmp.addEventListener('click',function(e){var b=e.target.closest('.stc-pick');if(!b)return;selectSystem(b.getAttribute('data-slug'),'build');}); }
 
-      // ---- diagnosis: чинить или менять ----
+      // ---- diagnosis: repair or replace ----
       var dans={floor:'concrete',problem:'cracks',scale:'local'};
       document.querySelectorAll('.st-opts[data-dq]').forEach(function(row){
         row.addEventListener('click',function(e){var b=e.target.closest('.st-opt');if(!b)return;
@@ -583,23 +586,23 @@
           dans[row.getAttribute('data-dq')]=b.getAttribute('data-v');});
       });
       var DIAG={
-        cracks:{action:'Ремонт трещин + перекрытие',title:'Трещины основания',why:'Различаем усадочные и активные трещины. Локально — ремонт по EN 1504 и перекрытие; по всей площади — возможна crack-isolation мембрана и новая система. Точно — после осмотра.'},
-        delam:{action:'Снять покрытие + новая система по сухому',title:'Отслоение / пузыри',why:'Чаще причина — влага в основании или плохая адгезия старого слоя. Перекрывать поверх нельзя: нужен тест влажности (RH/CM), снятие отслоившегося покрытия и укладка по сухому.'},
-        wear:{action:'Перекрытие (recoat / overlay)',title:'Износ верхнего слоя',why:'Если основа цела — самый дешёвый сценарий: обеспыливание, шлифовка и перекрытие без полного демонтажа.'},
-        moisture:{action:'Диагностика влаги + гидрозащита',title:'Влага / сырость основания',why:'Влага — причина отказа №1: любое покрытие отслоится, пока не решён источник. Нужен тест RH и паробарьер/гидроизоляция перед новым полом.'},
-        stains:{action:'Перекрытие химстойкой системой',title:'Химповреждение финиша',why:'Повреждён финиш — перекрытие химстойкой системой (PU-cement/эпокси). Если химия проела тело — локальный ремонт и перекрытие.'},
-        uneven:{action:'Выравнивание + новый финиш',title:'Неровность основания',why:'Самовыравнивающаяся стяжка под перепад и новый финиш (микротопинг/эпокси/терраццо).'},
-        look:{action:'Overlay без демонтажа',title:'Устарел / косметика',why:'Если основа в порядке — overlay поверх (микротопинг или терраццо) обновляет вид без демонтажа, быстрее и дешевле замены.'}
+        cracks:{action:'Crack repair + overlay',title:'Substrate cracks',why:'We distinguish shrinkage cracks from active cracks. Local issues usually mean repair to EN 1504 plus an overlay; full-area issues may require a crack-isolation membrane and a new system. Final call comes after inspection.'},
+        delam:{action:'Remove coating + install a new dry-build system',title:'Delamination / blistering',why:'The usual cause is substrate moisture or poor adhesion of the old layer. You should not overlay on top: the floor needs RH/CM testing, removal of loose coating, and installation over a dry substrate.'},
+        wear:{action:'Recoat / overlay',title:'Top-layer wear',why:'If the base is sound, this is usually the lowest-cost scenario: dust removal, grinding, and a new overlay without full demolition.'},
+        moisture:{action:'Moisture diagnosis + protective barrier',title:'Moisture / damp substrate',why:'Moisture is the No. 1 failure cause. Any coating will debond until the source is resolved. The floor needs RH testing plus a vapor barrier or waterproofing before the new system goes down.'},
+        stains:{action:'Overlay with a chemical-resistant system',title:'Chemical damage to finish',why:'If the damage is limited to the finish, a chemical-resistant overlay such as PU-cement or epoxy can work. If chemicals have eaten into the body, local repair plus overlay is more likely.'},
+        uneven:{action:'Leveling + new finish',title:'Uneven substrate',why:'A self-leveling screed can correct the fall or variance before a new finish such as microtopping, epoxy, or terrazzo.'},
+        look:{action:'Overlay without demolition',title:'Outdated / cosmetic issue',why:'If the base is in good condition, an overlay such as microtopping or terrazzo can refresh the look without demolition, faster and at lower cost than replacement.'}
       };
       var dGo=document.getElementById('stDiagGo');
       if(dGo){ dGo.addEventListener('click',function(){
         var r=DIAG[dans.problem]||DIAG.cracks; var action=r.action;
-        if(dans.floor==='unknown'||dans.problem==='moisture'||dans.problem==='delam') action='Нужна диагностика на месте · '+action;
-        else if(dans.scale==='all'&&(dans.problem==='cracks'||dans.problem==='stains')) action='Оценка по всей площади · возможна замена';
+        if(dans.floor==='unknown'||dans.problem==='moisture'||dans.problem==='delam') action='On-site diagnosis required · '+action;
+        else if(dans.scale==='all'&&(dans.problem==='cracks'||dans.problem==='stains')) action='Whole-area assessment required · replacement may be needed';
         document.getElementById('stDiagTitle').textContent=r.title;
         document.getElementById('stDiagAction').textContent=action;
         document.getElementById('stDiagWhy').textContent=r.why;
-        document.getElementById('stDiagWa').setAttribute('href','https://wa.me/972559661459?text='+encodeURIComponent('Здравствуйте! Нужна диагностика пола. Проблема: '+r.title+'. Прилагаю фото.'));
+        document.getElementById('stDiagWa').setAttribute('href','https://wa.me/972559661459?text='+encodeURIComponent('Hello! I need a floor diagnosis. Issue: '+r.title+'. I am attaching photos.'));
         var res=document.getElementById('stDiagResult'); res.classList.remove('hide'); res.scrollIntoView({behavior:'smooth'});
       }); }
 

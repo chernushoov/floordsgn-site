@@ -6,7 +6,7 @@
     <title>Contact Us | Floor.DSGN - Get Free Quote</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Свяжитесь с Floor.DSGN — бесплатная консультация, детальное предложение за 48 ч. Обслуживание: Тель-Авив, Иерусалим, Хайфа, Беэр-Шева.">
+    <meta name="description" content="Contact Floor.DSGN for a free consultation and a detailed quote within 48 hours. Service across Tel Aviv, Jerusalem, Haifa, Be'er Sheva, and beyond.">
     <meta name="keywords" content="flooring quote Israel, epoxy flooring contact, terrazzo installation quote, industrial flooring consultation">
 
     <!-- Open Graph -->
@@ -30,6 +30,8 @@
     <header class="header">
         <nav class="header__nav header__nav--left">
             <a href="floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+            <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
             <a href="projects.html" data-i18n="nav_projects">Projects</a>
             <a href="blog.html" data-i18n="nav_blog">Blog</a>
         </nav>
@@ -44,6 +46,7 @@
         <div class="header__lang">
             <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
             <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -68,7 +71,7 @@
                     <h2 data-i18n="contact_form_title">Send Us a Message</h2>
                     <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="contact">
-                        <p hidden><label>Не заполнять: <input name="bot-field"></label></p>
+                        <p hidden><label>Do not fill this in: <input name="bot-field"></label></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name" data-i18n="contact_label_name">Name *</label>
@@ -310,15 +313,15 @@
         if (msgEl && !msgEl.value) {
           var lines = [];
           if (intent === 'sample') {
-            lines.push('Хочу заказать физический образец материала.');
+            lines.push('I would like to order a physical material sample.');
           } else if (sys || area || estIls) {
-            lines.push('Запрос из калькулятора:');
-            if (sys)    lines.push('• Система: ' + sys);
-            if (use)    lines.push('• Назначение: ' + use);
-            if (area)   lines.push('• Площадь: ' + area + ' м²');
-            if (estIls) lines.push('• Ориентир: ₪ ' + estIls + (estUsd ? ' (~$ ' + estUsd + ')' : ''));
+            lines.push('Request from calculator:');
+            if (sys)    lines.push('• System: ' + sys);
+            if (use)    lines.push('• Use case: ' + use);
+            if (area)   lines.push('• Area: ' + area + ' m²');
+            if (estIls) lines.push('• Benchmark: ₪ ' + estIls + (estUsd ? ' (~$ ' + estUsd + ')' : ''));
             lines.push('');
-            lines.push('Прошу подтвердить смету и сроки.');
+            lines.push('Please confirm the quote and lead time.');
           }
           if (lines.length) msgEl.value = lines.join('\n');
         }

@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Floor.DSGN — Ваша комната, наш пол · превью в интерьере</title>
-<meta name="description" content="Загрузите фото своей комнаты, отметьте пол — и увидьте, как в нём будет выглядеть пол Floor.DSGN. Эпокси, терраццо, микротопинг, PU-cement и другие системы.">
+<title>Floor.DSGN — your room, our floor · in-room preview</title>
+<meta name="description" content="Upload your room photo, mark the floor area, and preview how Floor.DSGN systems such as epoxy, terrazzo, microtopping, and PU-cement will look in your space.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,17 +82,19 @@
 
     <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
 
-    <meta property="og:title" content="Floor.DSGN — Ваша комната, наш пол · превью в интерьере">
+    <meta property="og:title" content="Floor.DSGN — your room, our floor · in-room preview">
 
     <meta property="og:type" content="website">
 
-    <meta property="og:description" content="Загрузите фото своей комнаты, отметьте пол — и увидьте, как в нём будет выглядеть пол Floor.DSGN. Эпокси, терраццо, микротопинг, PU-cement и другие системы.">
+    <meta property="og:description" content="Upload your room photo, mark the floor area, and preview how Floor.DSGN systems such as epoxy, terrazzo, microtopping, and PU-cement will look in your space.">
 </head>
 <body data-fx-page="RoomVisualizer">
 
 <header class="header">
     <nav class="header__nav header__nav--left">
         <a href="floors.html" data-i18n="nav_floors">Floors</a>
+        <a href="articles/floor-knowledge-index.html" data-i18n="nav_library">Library</a>
+        <a href="visualizer.html" data-i18n="nav_visualizer">Visualizer</a>
         <a href="projects.html" data-i18n="nav_projects">Projects</a>
         <a href="blog.html" data-i18n="nav_blog">Blog</a>
     </nav>
@@ -105,8 +107,9 @@
         <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
     <div class="header__lang">
-        <button class="lang-btn active" data-lang="ru" onclick="setLanguage('ru')">RU</button>
-        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        <button class="lang-btn" data-lang="he" onclick="window.location.href='articles/he/floor-knowledge-index.html'">HE</button>
     </div>
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -115,9 +118,9 @@
 <div class="mobile-menu" id="mobileMenu"><ul><li><a href="index.html" data-i18n="nav_home">Home</a></li><li><a href="floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="about.html" data-i18n="nav_about">About Us</a></li><li><a href="blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
 <main class="rv-shell">
-  <p class="rv-eyebrow">visualizer · ваше фото</p>
-  <h1 class="rv-h1">Ваша комната, <em>наш</em> пол</h1>
-  <p class="rv-lede">Загрузите фото помещения, перетащите 4 угла по контуру пола — и посмотрите, как в нём ляжет любая система Floor.DSGN. Превью прямо в браузере, ничего не загружается на сервер.</p>
+  <p class="rv-eyebrow">visualizer · your photo</p>
+  <h1 class="rv-h1">Your room, <em>our</em> floor</h1>
+  <p class="rv-lede">Upload a photo of the space, drag 4 corner points around the floor outline, and preview how any Floor.DSGN system will sit in the room. The preview runs in your browser; nothing is uploaded to the server.</p>
 
   <div class="rv-grid">
     <div class="rv-stage" id="rvStage">
@@ -126,72 +129,72 @@
       <svg class="rv-quad" id="rvQuad" preserveAspectRatio="none"><polygon points=""/></svg>
       <div class="rv-empty" id="rvEmpty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 16l5-5 4 4 3-3 6 6"/><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-        <b>Загрузите фото комнаты</b>
-        <span>Лучше всего — общий план с хорошо видимым полом. JPG или PNG.</span>
+        <b>Upload a room photo</b>
+        <span>Best results come from a wide shot with the floor clearly visible. JPG or PNG works best.</span>
       </div>
       <div class="rv-marker" data-k="1" id="rvM0"></div>
       <div class="rv-marker" data-k="2" id="rvM1"></div>
       <div class="rv-marker" data-k="3" id="rvM2"></div>
       <div class="rv-marker" data-k="4" id="rvM3"></div>
-      <div class="rv-hint" id="rvHint">Перетащите 4 точки по углам вашего пола</div>
+      <div class="rv-hint" id="rvHint">Drag the 4 points to the corners of your floor</div>
     </div>
 
     <aside class="rv-panel">
-      <h3>Фото</h3>
+      <h3>Photo</h3>
       <label class="rv-up">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>
-        <span id="rvUpLabel">Загрузить фото</span>
+        <span id="rvUpLabel">Upload photo</span>
         <input type="file" id="rvFile" accept="image/*">
       </label>
 
-      <h3 style="margin-top:22px">Материал</h3>
+      <h3 style="margin-top:22px">Material</h3>
       <div class="rv-mats" id="rvMats"></div>
-      <p style="font:400 11.5px/1.45 'Montserrat',sans-serif;color:var(--steel);margin:10px 2px 0">Терраццо и узорные системы лучше смотреть в <a href="configurator.html" style="color:var(--signal);text-decoration:none">3D-конфигураторе</a> — фактуру с реальными стыками плоское наложение не передаёт.</p>
+      <p style="font:400 11.5px/1.45 'Montserrat',sans-serif;color:var(--steel);margin:10px 2px 0">Terrazzo and heavily patterned systems are better reviewed in the <a href="configurator.html" style="color:var(--signal);text-decoration:none">3D configurator</a> because a flat overlay cannot fully represent joints and texture depth.</p>
 
       <div class="rv-row">
-        <label>Плотность рисунка <span id="rvTileVal">средняя</span></label>
+        <label>Pattern scale <span id="rvTileVal">medium</span></label>
         <input type="range" id="rvTile" min="80" max="420" value="280" step="10">
       </div>
       <div class="rv-row">
-        <label>Прозрачность (свет сцены) <span id="rvOpVal">85%</span></label>
+        <label>Opacity (scene light) <span id="rvOpVal">85%</span></label>
         <input type="range" id="rvOp" min="35" max="100" value="85" step="1">
       </div>
       <div class="rv-row">
-        <label>Смешивание</label>
+        <label>Blend mode</label>
         <div class="rv-seg" id="rvBlend">
-          <button data-b="normal">Плотно</button>
-          <button data-b="multiply" class="on">Реалистично</button>
-          <button data-b="soft-light">Мягко</button>
+          <button data-b="normal">Dense</button>
+          <button data-b="multiply" class="on">Realistic</button>
+          <button data-b="soft-light">Soft</button>
         </div>
       </div>
-      <button class="rv-reset" id="rvReset">Сбросить углы пола</button>
+      <button class="rv-reset" id="rvReset">Reset floor corners</button>
     </aside>
   </div>
 
   <dl class="rv-spec" id="rvSpecStrip">
-    <div><dt>Система</dt><dd id="rvSpType">—</dd></div>
-    <div><dt>Толщина</dt><dd id="rvSpThick">—</dd></div>
-    <div><dt>Срок укладки</dt><dd id="rvSpCure">—</dd></div>
-    <div><dt>Цена ориентир</dt><dd id="rvSpPrice">—</dd></div>
+    <div><dt>System</dt><dd id="rvSpType">—</dd></div>
+    <div><dt>Thickness</dt><dd id="rvSpThick">—</dd></div>
+    <div><dt>Installation window</dt><dd id="rvSpCure">—</dd></div>
+    <div><dt>Indicative price</dt><dd id="rvSpPrice">—</dd></div>
   </dl>
 
   <div class="rv-cta">
-    <a href="studio.html#cost" class="btn btn-dark" id="rvCtaQuote">Рассчитать этот пол →</a>
-    <a href="configurator.html" class="btn btn-ghost" id="rvCta3d">Открыть в 3D</a>
-    <a href="visualizer.html" class="btn btn-ghost">Сравнить материалы</a>
+    <a href="studio.html#cost" class="btn btn-dark" id="rvCtaQuote">Estimate this floor →</a>
+    <a href="configurator.html" class="btn btn-ghost" id="rvCta3d">Open in 3D</a>
+    <a href="visualizer.html" class="btn btn-ghost">Compare materials</a>
   </div>
-  <p class="rv-note">Превью ориентировочное: это наложение реальной текстуры на ваше фото, без расчёта света, теней и отражений конкретной сцены. Финальный вид зависит от освещения, подготовки основания и партии материала. Точную раскладку и образец покажем на замере.</p>
+  <p class="rv-note">This preview is indicative: it overlays the real material texture onto your photo without physically simulating the exact light, shadows, or reflections of your scene. The final result depends on lighting, substrate preparation, and the specific material batch. We confirm the exact layout and sample during the site visit.</p>
 </main>
 
 <script>
 (function(){
   var MAT = [
-    { id:'microtopping',    name:'Микротопинг',       tex:'3d-assets/textures-v2/microtopping/diffuse.jpg',   type:'микроцемент', thick:'2–3 мм',  cure:'5–7 дней',  price:'₪500–900/м²' },
-    { id:'epoxy',           name:'Эпоксидная заливка',tex:'3d-assets/textures-v2/epoxy/diffuse.jpg',          type:'эпокси SR',   thick:'3–5 мм',  cure:'12ч / 7д',  price:'₪400–650/м²' },
-    { id:'pu-cement',       name:'PU-cement',         tex:'3d-assets/textures-v2/pu-cement/diffuse.jpg',      type:'ПУ-цемент',   thick:'4–9 мм',  cure:'6ч / 5–7д', price:'₪380–650/м²' },
-    { id:'mma',             name:'MMA Pronto',        tex:'3d-assets/textures-v2/mma/diffuse.jpg',            type:'метакрилат',  thick:'3–6 мм',  cure:'1.5–3ч',    price:'₪780–1100/м²' },
-    { id:'comfortfloor',    name:'ComfortFloor',      tex:'3d-assets/textures-v2/comfortfloor/diffuse.jpg',   type:'эласт. ПУ',   thick:'2.4 мм',  cure:'4–5 дней',  price:'₪590–780/м²' },
-    { id:'rubber',          name:'Резина EPDM',       tex:'3d-assets/textures-v3/rubber/diffuse.jpg',         type:'каучук EPDM', thick:'7–15 мм', cure:'24ч / 3–5д',price:'₪380–650/м²' }
+    { id:'microtopping',    name:'Microtopping',       tex:'3d-assets/textures-v2/microtopping/diffuse.jpg',   type:'microcement',      thick:'2–3 mm',  cure:'5–7 days',  price:'₪500–900/m²' },
+    { id:'epoxy',           name:'Epoxy self-leveling',tex:'3d-assets/textures-v2/epoxy/diffuse.jpg',          type:'epoxy SR',         thick:'3–5 mm',  cure:'12h / 7d',  price:'₪400–650/m²' },
+    { id:'pu-cement',       name:'PU-cement',          tex:'3d-assets/textures-v2/pu-cement/diffuse.jpg',      type:'PU-cement',        thick:'4–9 mm',  cure:'6h / 5–7d', price:'₪380–650/m²' },
+    { id:'mma',             name:'MMA Pronto',         tex:'3d-assets/textures-v2/mma/diffuse.jpg',            type:'methacrylate',     thick:'3–6 mm',  cure:'1.5–3h',    price:'₪780–1100/m²' },
+    { id:'comfortfloor',    name:'ComfortFloor',       tex:'3d-assets/textures-v2/comfortfloor/diffuse.jpg',   type:'elastic PU',       thick:'2.4 mm',  cure:'4–5 days',  price:'₪590–780/m²' },
+    { id:'rubber',          name:'EPDM rubber',        tex:'3d-assets/textures-v3/rubber/diffuse.jpg',         type:'EPDM rubber',      thick:'7–15 mm', cure:'24h / 3–5d',price:'₪380–650/m²' }
   ];
   var SRC = 1000; // texture-layer source box size (px)
   var stage=document.getElementById('rvStage'), photo=document.getElementById('rvPhoto'),
@@ -245,7 +248,7 @@
       state.loaded=true; empty.style.display='none'; tex.style.display='block'; quad.style.display='block';
       markers.forEach(function(mk){mk.style.display='block';});
       state.pts=defaultPts(); placeMarkers(); warp();
-      document.getElementById('rvUpLabel').textContent='Заменить фото';
+      document.getElementById('rvUpLabel').textContent='Replace photo';
       document.getElementById('rvHint').style.display='block';
     };
     photo.src=url;
@@ -267,7 +270,7 @@
 
   // ---- controls ----
   var tileVal=document.getElementById('rvTileVal'), opVal=document.getElementById('rvOpVal');
-  document.getElementById('rvTile').addEventListener('input',function(e){ state.tile=+e.target.value; tileVal.textContent=state.tile>300?'крупная':state.tile<140?'мелкая':'средняя'; applyStyle(); });
+  document.getElementById('rvTile').addEventListener('input',function(e){ state.tile=+e.target.value; tileVal.textContent=state.tile>300?'large':state.tile<140?'small':'medium'; applyStyle(); });
   document.getElementById('rvOp').addEventListener('input',function(e){ state.op=(+e.target.value)/100; opVal.textContent=e.target.value+'%'; applyStyle(); });
   document.getElementById('rvBlend').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return; state.blend=b.getAttribute('data-b'); Array.prototype.forEach.call(this.children,function(x){x.classList.toggle('on',x===b);}); applyStyle();});
   document.getElementById('rvReset').addEventListener('click',function(){ if(!state.loaded)return; state.pts=defaultPts(); placeMarkers(); warp(); });
