@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך פרופיל פני שטח ICRI CSP — הכנת תשתית CSP 1–10 לרצפות רזין | Floor.DSGN</title>
+    <meta name="description" content="מדריך פרופיל פני שטח של בטון לפי ICRI (CSP 1-10) להכנת תשתית לרצפות רזין. סולם הפרופיל ב-10 דרגות, מיפוי שיטה ל-CSP (השחזה, שוט-בלאסט, סקריפיקציה, סקאבלינג, הריסה הידראולית), פרופיל יעד לפי מחלקת מערכת, ואיך לאמת CSP באתר.">
+    <meta name="keywords" content="מדריך ICRI CSP, CSP 1 עד 10, פרופיל פני שטח בטון, הכנת תשתית רצפת רזין, שוט-בלאסט CSP, סקריפיקציה CSP, הריסה הידראולית, ICRI 310.2R">
+    <meta property="og:title" content="מדריך פרופיל פני שטח ICRI CSP">
+    <meta property="og:description" content="מדריך הכנת תשתית CSP 1-10 — שיטות, יעדים לפי מחלקת מערכת, אימות באתר.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/articles/he/icri-csp-surface-profile-guide.html">
+    <meta property="og:image" content="https://floordsgn.com/images/concrete-decorative/beton.jpg">
+    <link rel="canonical" href="https://floordsgn.com/articles/he/icri-csp-surface-profile-guide.html">
+    <link rel="alternate" hreflang="en" href="https://floordsgn.com/articles/icri-csp-surface-profile-guide.html">
+    <link rel="alternate" hreflang="ru" href="https://floordsgn.com/articles/icri-csp-surface-profile-guide.html">
+    <link rel="alternate" hreflang="he" href="https://floordsgn.com/articles/he/icri-csp-surface-profile-guide.html">
+    <link rel="alternate" hreflang="x-default" href="https://floordsgn.com/articles/icri-csp-surface-profile-guide.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../../chrome-fix.css?v=20260523a">
+    <link rel="stylesheet" href="../../he.css?v=20260529a">
+    <style>
+        .csp-table { width:100%; margin:18px 0; border-collapse:collapse; font-size:14px; }
+        .csp-table th { background:var(--carbon, #151515); color:#fff; padding:10px 12px; text-align:right; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; }
+        .csp-table td { padding:10px 12px; border-bottom:1px solid var(--grey-border, #e5e3df); color:var(--graphite, #2D2D2D); background:#fff; vertical-align:top; }
+        .csp-table td.csp-num { font-weight:600; color:var(--signal, #C86B3C); width:50px; text-align:center; font-size:16px; }
+        .csp-table tr:last-child td { border-bottom:none; }
+        .method-card { background:var(--concrete, #f3f0ea); padding:18px 22px; margin:14px 0; border-right:3px solid var(--steel, #72716D); border-radius:2px; }
+        .method-card h3 { margin:0 0 6px; font-size:15px; color:var(--carbon, #151515); }
+        .method-card .method-range { font-size:13px; color:var(--signal, #C86B3C); font-weight:600; margin:4px 0; }
+        .method-card p { font-size:13px; color:var(--graphite, #2D2D2D); line-height:1.55; margin:6px 0 0; }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"מדריך פרופיל פני שטח ICRI CSP","inLanguage":"he","datePublished":"2026-05-28","publisher":{"@type":"Organization","name":"Floor.DSGN"}}</script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../../floors.html">רצפות</a>
+            <a href="../../projects.html">פרויקטים</a>
+            <a href="../../blog.html">בלוג</a>
+        </nav>
+        <a href="../../index.html" class="header__logo">
+            <img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../../about.html">אודות</a>
+            <a href="../../contact.html">צור קשר</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn" data-lang="en" onclick="window.location.href='../icri-csp-surface-profile-guide.html'">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="window.location.href='../icri-csp-surface-profile-guide.html'">RU</button>
+            <button class="lang-btn active" data-lang="he">HE</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="פתיחת תפריט" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html">בית</a></li><li><a href="../../floors.html">רצפות</a></li><li><a href="../../tools.html">כלים</a></li><li><a href="../../projects.html">פרויקטים</a></li><li><a href="../../about.html">אודותינו</a></li><li><a href="../../blog.html">בלוג</a></li><li><a href="../../contact.html">צרו קשר</a></li></ul></div>
+
+    <article class="article-page">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../../blog.html" class="back-link">חזרה לבלוג</a>
+                <span class="article-category">עיון תשתית</span>
+                <h1>מדריך פרופיל פני שטח <span dir="ltr">ICRI CSP</span></h1>
+                <p class="article-meta">מאי <span dir="ltr">2026</span> · <span dir="ltr">7</span> דקות קריאה</p>
+                <div class="article-hero-wrapper">
+                    <img src="../../images/concrete-decorative/beton.jpg" alt="מדריך פרופיל פני שטח ICRI CSP" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">כל רצפת רזין שנתפסה בהיפרדות נובעת מאחד משלושה כשלי תשתית: מצב לחות שגוי, פרופיל פני שטח שגוי, או חוזק תשתית שגוי. <span dir="ltr">CSP</span> — <span dir="ltr">Concrete Surface Profile</span> — הוא השני מתוך השלושה. תקן <span dir="ltr">ICRI 310.2R-2013</span> מגדיר עשר דרגות פרופיל (<span dir="ltr">CSP 1</span> עד <span dir="ltr">CSP 10</span>) וממפה כל אחת למחלקת מערכת הרזין שהיא צריכה לקבל. פרופיל נמוך מהיעד = סיכון להידבקות + היפרדות מוקדמת. פרופיל גבוה מהיעד = פתחי סיכה (<span dir="ltr">pinholing</span>) + צריכה עודפת. עמוד זה הוא העיון המעשי ל-<span dir="ltr">CSP</span>: עשר דרגות הפרופיל, השיטות שמשיגות כל אחת, פרופיל היעד לכל מערכת, ואיך לאמת <span dir="ltr">CSP</span> באתר לפני שהפריימר פוגע בתשתית.</p>
+
+                    <h2>סולם <span dir="ltr">CSP 1–10</span></h2>
+                    <p><span dir="ltr">ICRI 310.2R-2013</span> תקנן את הסולם שכל יצרני הרזין המובילים (<span dir="ltr">Sika</span>, <span dir="ltr">Mapei</span>, <span dir="ltr">MC-Bauchemie</span>, <span dir="ltr">Master Builders</span>) מתייחסים אליו בדרישות הכנת השטח ב-<span dir="ltr">TDS</span> שלהם. <span dir="ltr">CSP 1</span> הוא כמעט-חלק (אצ׳ינג בחומצה, ללא חשיפת אגרגט). <span dir="ltr">CSP 10</span> הוא הריסה הידראולית כבדה (אמפליטודה מעל <span dir="ltr">6 mm</span>, אגרגט חשוף). הסולם הוא מספר יחיד הסוגר שאלה חוזית — <span dir="ltr">CSP</span> נמוך מהמפרט הוא פגם מדיד.</p>
+                    <table class="csp-table">
+                        <thead>
+                            <tr><th>CSP</th><th>תיאור</th><th>התאמת מערכת ציפוי</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="csp-num">1</td><td>אצ׳ינג בחומצה, כמעט-חלק</td><td>שכבות איטום עליונות, סרטים דקים <span dir="ltr">&lt; 3 mil</span> (חודרים, מונעי אבק)</td></tr>
+                            <tr><td class="csp-num">2</td><td>אצ׳ינג קל / השחזה קלה</td><td>סרטים דקים, שכבות איטום (<span dir="ltr">3–6 mil</span>)</td></tr>
+                            <tr><td class="csp-num">3</td><td>שוט-בלאסט קל / השחזה</td><td>ציפויים בעובי גבוה (<span dir="ltr">4–10 mil</span>) — בסיס פריימר אפוקסי טיפוסי</td></tr>
+                            <tr><td class="csp-num">4</td><td>סקריפיקציה קלה / השחזה</td><td>שכבת מעבר פולימרית דקה <span dir="ltr">10–40 mil</span></td></tr>
+                            <tr><td class="csp-num">5</td><td>שוט-בלאסט בינוני</td><td>שכבות מעבר בפיזור עצמי, פריימרים למערכות עבות</td></tr>
+                            <tr><td class="csp-num">6</td><td>סקריפיקציה בינונית / שוט-בלאסט בינוני</td><td>שכבות מעבר פולימריות <span dir="ltr">40–100 mil</span> (<span dir="ltr">≈ 1–2.5 mm</span>)</td></tr>
+                            <tr><td class="csp-num">7</td><td>שוט שוחק כבד / סקריפיקציה כבדה / מעכב שטח</td><td>שכבות פולימר / תיקון <span dir="ltr">&gt; ¼″ (6 mm)</span> — שירות כבד + פוליאוריתן-מלט</td></tr>
+                            <tr><td class="csp-num">8</td><td>סקאבלינג / שוט שוחק כבד / סילון מים בלחץ גבוה</td><td>טיט תיקון, שכבות מעבר כבדות</td></tr>
+                            <tr><td class="csp-num">9</td><td>סקאבלינג כבד / הריסה הידראולית</td><td>תיקון מבני, שכבות מעבר מודבקות</td></tr>
+                            <tr><td class="csp-num">10</td><td>הריסה הידראולית / מכאני כבד (אמפליטודה <span dir="ltr">&gt; 6 mm</span>)</td><td>הסרה אגרסיבית (נוסף בעדכון <span dir="ltr">2013</span>)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>שיטה ← <span dir="ltr">CSP</span> מושג</h2>
+                    <p>השיטה קובעת את ה-<span dir="ltr">CSP</span> — לא להפך. מתקין שטוען <span dir="ltr">CSP 5</span> מאצ׳ינג בחומצה לא מספק <span dir="ltr">CSP 5</span>. לכל שיטה יש טווח פרופיל מתועד, והבחירה צריכה להתחיל מה-<span dir="ltr">CSP</span> היעד, ואז לחזור אחורה לשיטה.</p>
+
+                    <div class="method-card">
+                        <h3>אצ׳ינג בחומצה</h3>
+                        <div class="method-range"><span dir="ltr">CSP 1–3</span></div>
+                        <p>שטיפה בחומצה הידרוכלורית או זרחתית מדוללת. זול ונפוץ היסטורית, אבל כיום נחשב מיושן ברצפות בדרגת מכרז. סיכון: שאריות כלוריד, פרופיל לא אחיד, עלות סילוק סביבתית. השתמשו רק לשכבות איטום בסרט דק במגורים, כאשר אין מערכת ברמת אחריות שתבוא אחריה.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>השחזה ביהלום</h3>
+                        <div class="method-range"><span dir="ltr">CSP 1–3</span></div>
+                        <p>ראש פלנטרי סיבובי עם סגמנטים יהלומיים. מייצר את הפרופיל החלק ביותר, אידיאלי למערכות דקורטיביות דקות והכנת בטון מלוטש. פריימרי אפוקסי של <span dir="ltr">Floor.DSGN</span> מכוונים בדרך כלל ל-<span dir="ltr">CSP 2–3</span>, שהשחזה ביהלום מספקת באופן עקבי. איסוף אבק חיוני במבנים מאוכלסים.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>שוט-בלאסט</h3>
+                        <div class="method-range"><span dir="ltr">CSP 2–7</span> (קל עד כבד)</div>
+                        <p>גרגירי פלדה הנורים אל התשתית במהירות מבוקרת; הגרגירים שחזרו נשאבים ומועברים לשימוש חוזר. סוס העבודה של הרצפה התעשייתית בישראל. פרופיל מתכוונן לפי גודל גרגיר + מהירות + מהירות מכונה. תהליך נקי ויבש, מתאים למבנים מאוכלסים עם בידוד מתאים. שוט-בלאסט כבד (<span dir="ltr">CSP 6–7</span>) לפוליאוריתן-מלט ולאפוקסי-קוורץ כבד.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>סקריפיקציה</h3>
+                        <div class="method-range"><span dir="ltr">CSP 4–7</span></div>
+                        <p>ראש כרסום סיבובי עם גלגלי חיתוך מצופי קרביד. פרופיל אגרסיבי המתאים לשכבות פולימריות בינוניות-כבדות. משמש לעיתים קרובות להסרת ציפויים קיימים תוך יצירת פרופיל חדש במעבר אחד. אבק + רעש פגיעה — דורש תיאום במבנים מאוכלסים.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>פטיש מחטים / סקאבלר קל</h3>
+                        <div class="method-range"><span dir="ltr">CSP 4–6</span></div>
+                        <p>צרור מחטים פנאומטיות פוגע בתשתית. בקנה מידה של כלי יד; משמש לקצוות, עמודים, פרטי היקף שמכונה לא יכולה להגיע אליהם. אגרסיבי אבל איטי — מעשי רק לשטחים קטנים. רעש חזק + רעידה.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>סקאבלינג (מכאני)</h3>
+                        <div class="method-range"><span dir="ltr">CSP 7–9</span></div>
+                        <p>פגיעה מכאנית כבדה עם מספר ראשי כלי המופעלים על-ידי בוכנות. הסרה אגרסיבית + יצירת פרופיל במעבר אחד. משמש לאזורי ניקוי הידראולי, תיקון עמוק, דרישות הידבקות ברמה מבנית. רועש + מאובק + איטי — שיטת מוצא אחרון.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>הריסה הידראולית (<span dir="ltr">HPWJ</span>)</h3>
+                        <div class="method-range"><span dir="ltr">CSP 8–10</span></div>
+                        <p>סילון מים בלחץ גבוה ב-<span dir="ltr">700–2,000 bar</span>. מסיר בטון לא יציב, יוצר פרופיל אגרסיבי, חושף ברזל זיון במקום הנדרש לתיקון מבני. סטנדרט לתיקון לוחות גשרים וחניונים; בשימוש נדיר לפרויקטי רצפה בלבד. נדרש קבלן מתמחה.</p>
+                    </div>
+
+                    <h2>פרופיל <span dir="ltr">CSP</span> יעד לכל מערכת</h2>
+                    <p>לכל מחלקת מערכת רזין יש טווח פרופיל <span dir="ltr">CSP</span> יעד מתועד. פגעו בו. ירידה מתחתיו מסכנת בהיפרדות; חציה מעליו מבזבזת פריימר ויוצרת פתחי סיכה.</p>
+                    <table class="csp-table">
+                        <thead>
+                            <tr><th>מערכת</th><th>יעד <span dir="ltr">CSP</span></th><th>שיטה טיפוסית</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>מיקרו-טופינג דקורטיבי <span dir="ltr">2–3 mm</span></td><td class="csp-num"><span dir="ltr">2–3</span></td><td>השחזה ביהלום</td></tr>
+                            <tr><td>אפוקסי <span dir="ltr">SL</span> (פיזור עצמי) <span dir="ltr">2–3 mm</span> (תעשייתי קל)</td><td class="csp-num"><span dir="ltr">3–4</span></td><td>שוט-בלאסט קל</td></tr>
+                            <tr><td>אפוקסי-קוורץ לשירות כבד <span dir="ltr">4–6 mm</span></td><td class="csp-num"><span dir="ltr">4–5</span></td><td>שוט-בלאסט בינוני</td></tr>
+                            <tr><td>פוליאוריתן-מלט <span dir="ltr">6–9 mm</span> (מטבח)</td><td class="csp-num"><span dir="ltr">5–7</span></td><td>שוט-בלאסט כבד או סקריפיקציה</td></tr>
+                            <tr><td>פוליאוריתן-מלט <span dir="ltr">9–12 mm</span> (תעשייתי כבד)</td><td class="csp-num"><span dir="ltr">6–7</span></td><td>סקריפיקציה כבדה או סקאבלינג</td></tr>
+                            <tr><td><span dir="ltr">MMA</span> מהיר-התקשות <span dir="ltr">2–4 mm</span></td><td class="csp-num"><span dir="ltr">3–5</span></td><td>שוט-בלאסט (חייב לסיים בתוך חלון ה-<span dir="ltr">MMA</span>)</td></tr>
+                            <tr><td>בטון מלוטש (דנסיפייר + ליטוש)</td><td class="csp-num"><span dir="ltr">N/A</span></td><td>השחזה התחלתית אגרסיבית, ואז שוחק עדין מתקדם</td></tr>
+                            <tr><td>שכבת מעבר טיט תיקון (<span dir="ltr">EN 1504-3</span>)</td><td class="csp-num"><span dir="ltr">7–9</span></td><td>סקאבלינג או הריסה הידראולית</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>איך לאמת <span dir="ltr">CSP</span> באתר</h2>
+                    <p>אימות <span dir="ltr">CSP</span> משתמש בצ׳יפי גומי השוואה פיזיים — לא בהערכה ויזואלית. <span dir="ltr">ICRI</span> מפרסם את סט הצ׳יפים; צ׳יפי <span dir="ltr">CSP</span> של <span dir="ltr">DeFelsko</span> הם הסטנדרט הישראלי.</p>
+                    <ol>
+                        <li><strong>קבלו את התשתית לאחר השלמת ההכנה.</strong> צעדו על השטח לפני שמורחים פריימר — ברגע שהפריימר נוגע, אי אפשר לחזור אחורה.</li>
+                        <li><strong>הניחו את צ׳יפ ה-<span dir="ltr">ICRI</span> מול התשתית במיקומי רשת נקובים.</strong> מינימום <span dir="ltr">3</span> מיקומים לכל <span dir="ltr">1,000 m²</span>, יותר באזורים קריטיים.</li>
+                        <li><strong>השוו במבט + מגע אצבע.</strong> פרופיל התשתית צריך להתאים למרקם פרופיל הצ׳יפ בכל מיקום.</li>
+                        <li><strong>צלמו את הצ׳יפ מוחזק מול התשתית.</strong> הצילום הוא הראיה לביקורת שלכם — בלעדיו, טענת ה-<span dir="ltr">CSP</span> בלתי-ניתנת לאימות.</li>
+                        <li><strong>אם התשתית נמוכה מ-<span dir="ltr">CSP</span> היעד — הכינו מחדש את האזור הזה.</strong> אל תקבלו "קרוב מספיק" — <span dir="ltr">CSP</span> נמוך מהיעד הוא הסיבה השכיחה ביותר לכשל היפרדות תחת אחריות.</li>
+                        <li><strong>אם התשתית גבוהה מ-<span dir="ltr">CSP</span> היעד — תעדו זאת.</strong> <span dir="ltr">CSP</span> גבוה פחות מסוכן מנמוך אבל מבזבז פריימר; בחלק מהמערכות (מיקרו-טופינג) פרופיל גבוה מהיעד גורם לפתחי סיכה נראים דרך שכבת הגמר.</li>
+                    </ol>
+
+                    <h2>טעויות <span dir="ltr">CSP</span> שכיחות</h2>
+                    <ul>
+                        <li><strong>"עשינו שוט-בלאסט, הפרופיל בסדר" בעל-פה.</strong> ללא צ׳יפ <span dir="ltr">ICRI</span> + צילום, הטענה אינה ניתנת לאכיפה. דחו ובקשו אימות בצ׳יפ.</li>
+                        <li><strong>אצ׳ינג בחומצה שנטען כ-<span dir="ltr">CSP 5</span>.</strong> אצ׳ינג בחומצה לא יכול לייצר <span dir="ltr">CSP 5</span>. או שהשיטה השתנתה (שוט-בלאסט קרה) או שטענת ה-<span dir="ltr">CSP</span> שגויה.</li>
+                        <li><strong>שוט-בלאסט כבד למיקרו-טופינג דקורטיבי דק.</strong> פרופיל גבוה מהיעד יוצר פתחי סיכה דרך שכבת הגמר — פגם נראה תוך <span dir="ltr">30</span> יום.</li>
+                        <li><strong>השחזה קלה לפוליאוריתן-מלט לשירות כבד.</strong> פרופיל נמוך מהיעד נכשל בבדיקת היפרדות + נפרד תוך <span dir="ltr">12</span> חודשים תחת מחזוריות תרמית.</li>
+                        <li><strong>אותו <span dir="ltr">CSP</span> בכל אזור הפרויקט עם שינויי סוג תשתית.</strong> לוח ישן + לוח חדש + טלאי תיקון — כולם דורשים אימות <span dir="ltr">CSP</span> פרטני.</li>
+                    </ul>
+
+                    <h2><span dir="ltr">CSP</span> בכתב הכמויות — שפת מכרז</h2>
+                    <p>להדבקה ישירה לסעיף <span dir="ltr">1</span> בכתב הכמויות (הכנת תשתית מכאנית).</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:18px 22px; margin:14px 0; border-right:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:14px; line-height:1.6;">
+                        "התשתית תוכן לפי <span dir="ltr">ICRI 310.2R-2013 CSP</span> <strong><span dir="ltr">[3 / 5 / 7]</span></strong> <span dir="ltr">± 1</span> בכל אזור הפרויקט. השיטה תיבחר על-ידי המתקין מתוך רשימה מקובלת: שוט-בלאסט, סקריפיקציה, השחזה ביהלום. האימות יבוצע על-ידי צ׳יפ גומי השוואה של <span dir="ltr">ICRI CSP</span> במינימום <span dir="ltr">3</span> מיקומים לכל <span dir="ltr">1,000 m²</span>, עם תיעוד צילומי לכל מיקום המצורף לתעודת הסיום. אזורי תשתית מתחת ל-<span dir="ltr">CSP</span> היעד יוכנו מחדש על חשבון המתקין. אצ׳ינג בחומצה <strong>לא יתקבל</strong> כשיטת הכנה ראשית לכל מערכת מעל <span dir="ltr">CSP 3</span>."
+                    </div>
+
+                    <h2>קריאה סופית</h2>
+                    <p><span dir="ltr">CSP</span> הוא אחד משלושת שערי התשתית (יחד עם לחות וחוזק תשתית) המכריעים אם רצפת רזין תחזיק חמש שנים או חמש-עשרה. סולם <span dir="ltr">1–10</span> מתועד, השיטות שמשיגות כל דרגה מתועדות, היעדים לכל מערכת מתועדים. תפקיד המתקין הוא לפגוע ביעד; תפקיד נציג הבעלים הוא לאמת עם צ׳יפי <span dir="ltr">ICRI</span> לפני שהפריימר יורד. ציינו את ה-<span dir="ltr">CSP</span> במכרז, לא אחרי ההתקנה. קשור: <a href="substrate-moisture-remediation.html">טיפול בלחות תשתית</a> · <a href="adhesion-pull-off-test-guide.html">מדריך בדיקת היפרדות</a> · <a href="floor-tender-boq-template.html">תבנית כתב כמויות למכרז</a> · <a href="floor-warranty-types-explained.html">סוגי אחריות</a>.</p>
+
+                    <h2>מקורות</h2>
+                    <ul>
+                        <li><span dir="ltr">ICRI Technical Guideline No. 310.2R-2013</span> — בחירה ופירוט הכנת שטח לבטון.</li>
+                        <li><span dir="ltr">DeFelsko CSP rubber comparator chip set</span> + צילומי התייחסות.</li>
+                        <li><span dir="ltr">Sika Sikafloor</span> — הנחיות הכנת תשתית.</li>
+                        <li><span dir="ltr">Mapei Mapefloor</span> — הנחיות הכנת תשתית.</li>
+                        <li><span dir="ltr">MC-Bauchemie MC-DUR</span> — מפרטי הכנת תשתית.</li>
+                        <li><span dir="ltr">Master Builders Solutions Ucrete + Mastertop</span> — מדריכי הכנה.</li>
+                        <li><span dir="ltr">Floor.DSGN</span> — תיעוד שטח של קבלנים בישראל, מעל <span dir="ltr">50</span> פרויקטי רצפה.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-cta">
+            <div class="container">
+                <h2>צריכים פרוטוקול אימות <span dir="ltr">CSP</span> לפרויקט?</h2>
+                <p>אנחנו יכולים לשלוח את קישור הזמנת צ׳יפי <span dir="ltr">ICRI</span> ורשימת אימות <span dir="ltr">CSP</span> בעמוד אחד המותאמת למערכת שלכם. ציינו <span dir="ltr">CSP</span> בשלב המכרז, אמתו לפני הפריימר באתר.</p>
+                <div class="cta-buttons">
+                    <a href="../../contact.html" class="btn btn-primary">בקשת פרוטוקול <span dir="ltr">CSP</span></a>
+                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">ראו תבנית כתב כמויות</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span dir="ltr">2026</span> Floor.DSGN</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js?v=20260523a"></script>
+</body>
+</html>
