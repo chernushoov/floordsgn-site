@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכות רצפה <span dir="ltr">ESD</span> ומפזרות סטטי: מפרט <span dir="ltr">IEC 61340-5-1</span> | Floor.DSGN</title>
+    <meta name="description" content="מפרט רצפה ESD ומפזרת סטטי לייצור אלקטרוניקה, חדרי ניתוח, טיפול בדלקים ואטמוספרות נפיצות: תקן IEC 61340-5-1, רשת הארקה מוליכה, טווחי התנגדות לפי שימוש, פרוטוקול אימות ושפת מכרז לסביבות בקרת סטטי.">
+    <meta name="keywords" content="רצפת ESD IEC 61340-5-1, רצפה מפזרת סטטי, רצפה מוליכה אלקטרוניקה, רצפת חדר ניתוח ESD, רצפת חדר נקי ESD ישראל, אפוקסי אנטי-סטטי">
+    <meta property="og:title" content="מערכות רצפה ESD ומפזרות סטטי">
+    <meta property="og:description" content="מפרט IEC 61340-5-1 — רשת הארקה מוליכה + טווחי התנגדות + אימות.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/he/articles/esd-static-dissipative-floor-systems.html">
+    <meta property="og:image" content="https://floordsgn.com/images/concrete-decorative/beton.jpg">
+    <link rel="canonical" href="https://floordsgn.com/he/articles/esd-static-dissipative-floor-systems.html">
+    <link rel="alternate" hreflang="en" href="https://floordsgn.com/articles/esd-static-dissipative-floor-systems.html">
+    <link rel="alternate" hreflang="ru" href="https://floordsgn.com/articles/esd-static-dissipative-floor-systems.html">
+    <link rel="alternate" hreflang="he" href="https://floordsgn.com/he/articles/esd-static-dissipative-floor-systems.html">
+    <link rel="alternate" hreflang="x-default" href="https://floordsgn.com/articles/esd-static-dissipative-floor-systems.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../../chrome-fix.css?v=20260523a">
+    <link rel="stylesheet" href="../../he.css?v=20260529a">
+    <style>
+        .esd-card { background:var(--concrete, #f3f0ea); padding:24px 28px; margin:24px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; }
+        .esd-card .esd-tag { display:inline-block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel, #72716D); margin-bottom:6px; font-weight:600; }
+        .esd-card h2 { margin:4px 0 10px; font-size:22px; font-family:'Cormorant Garamond', serif; color:var(--carbon, #151515); }
+        .e-table { width:100%; border-collapse:collapse; margin:18px 0; font-size:13px; }
+        .e-table th { background:var(--carbon, #151515); color:#fff; padding:10px 12px; text-align:right; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; }
+        .e-table td { padding:10px 12px; border-bottom:1px solid var(--grey-border, #e5e3df); color:var(--graphite, #2D2D2D); background:#fff; vertical-align:top; }
+        .e-table tr:last-child td { border-bottom:none; }
+        .e-table .signal-cell { color:var(--signal, #C86B3C); font-weight:700; }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"מערכות רצפה ESD ומפזרות סטטי","inLanguage":"he","datePublished":"2026-05-28","publisher":{"@type":"Organization","name":"Floor.DSGN"}}</script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../../floors.html">רצפות</a>
+            <a href="../../projects.html">פרויקטים</a>
+            <a href="../../blog.html">בלוג</a>
+        </nav>
+        <a href="../../index.html" class="header__logo">
+            <img src="../../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../../about.html">אודות</a>
+            <a href="../../contact.html">צור קשר</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn" data-lang="en" onclick="window.location.href='/articles/esd-static-dissipative-floor-systems.html'">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="window.location.href='/articles/esd-static-dissipative-floor-systems.html'">RU</button>
+            <button class="lang-btn active" data-lang="he">HE</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="פתיחת תפריט" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html">בית</a></li><li><a href="../../floors.html">רצפות</a></li><li><a href="../../tools.html">כלים</a></li><li><a href="../../projects.html">פרויקטים</a></li><li><a href="../../about.html">אודותינו</a></li><li><a href="../../blog.html">בלוג</a></li><li><a href="../../contact.html">צרו קשר</a></li></ul></div>
+
+    <article class="article-page">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../../blog.html" class="back-link">חזרה לבלוג</a>
+                <span class="article-category">מפרט <span dir="ltr">ESD</span></span>
+                <h1>מערכות רצפה <span dir="ltr">ESD</span> ומפזרות סטטי</h1>
+                <p class="article-meta">מאי <span dir="ltr">2026</span> · <span dir="ltr">7</span> דקות קריאה</p>
+                <div class="article-hero-wrapper">
+                    <img src="../../images/concrete-decorative/beton.jpg" alt="מערכות רצפה ESD ומפזרות סטטי" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">פריקה אלקטרוסטטית עלולה להרוס רכיבי אלקטרוניקה רגישים, להצית אטמוספרות נפיצות ולשבש ציוד רפואי קריטי. מערכות רצפה <span dir="ltr">ESD</span> שולטות בהתנגדות החשמלית של הרצפה כדי לפזר מטען סטטי דרך נתיב הארקה מבני לפני שתתרחש פריקה. ייצור אלקטרוניקה, חדרי ניתוח, אזורי טיפול בדלקים, חדרים נקיים פרמצבטיים ואחסון תחמושת — כולם דורשים רצפה בקרת <span dir="ltr">ESD</span> לפי <span dir="ltr">IEC 61340-5-1</span>. עמוד זה עובר על דרישות החשמל, מבנה המערכת (פריימר מוליך + שכבת גוף <span dir="ltr">ESD</span> + רצועות נחושת מוארקות), פרוטוקול האימות ושפת המכרז לסביבות בקרת סטטי.</p>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">רכיב <span dir="ltr">1</span> מתוך <span dir="ltr">4</span> — תקן</span>
+                        <h2>תקן <span dir="ltr">IEC 61340-5-1</span></h2>
+                        <p>התקן הבינלאומי לבקרת <span dir="ltr">ESD</span> של התקני אלקטרוניקה בסביבות ייצור וטיפול. מגדיר שלוש מחלקות התנגדות — מוליכה, מפזרת, מבודדת — עם ספי התנגדות חשמלית ומתודולוגיית אימות.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>מחלקה</th><th>טווח התנגדות</th><th>מקרה שימוש</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="signal-cell">מוליכה</td><td><span dir="ltr">1 × 10⁴ to &lt; 1 × 10⁶ Ω</span></td><td>קצב פריקה הגבוה ביותר — אטמוספרות נפיצות, טיפול בתחמושת, ייצור חומרי הנעה</td></tr>
+                                <tr><td class="signal-cell">מפזרת</td><td><span dir="ltr">1 × 10⁶ to &lt; 1 × 10⁹ Ω</span></td><td>פריקה מבוקרת — ייצור אלקטרוניקה, ייצור מוליכים למחצה, חדרי ניתוח רפואיים, חדרי שרתים</td></tr>
+                                <tr><td>מבודדת</td><td><span dir="ltr">≥ 1 × 10⁹ Ω</span></td><td>רצפה סטנדרטית — אינה בקרת <span dir="ltr">ESD</span></td></tr>
+                            </tbody>
+                        </table>
+                        <p>עבור ייצור אלקטרוניקה ישראלי + מוליכים למחצה + אלקטרוניקה צבאית + חדר ניתוח + פרמצבטיקה לפי <span dir="ltr">EU GMP</span>: מפזרת היא יעד הסטנדרט. מוליכה שמורה לאזורי תחמושת + חומרי הנעה + אטמוספרות נפיצות של כימיקלים בכמויות גדולות.</p>
+                    </div>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">רכיב <span dir="ltr">2</span> מתוך <span dir="ltr">4</span> — מבנה</span>
+                        <h2>מבנה המערכת</h2>
+                        <p>רצפת <span dir="ltr">ESD</span> היא מערכת תלת-שכבתית עם רשת הארקה מוטמעת. המבנה דומה לאפוקסי <span dir="ltr">SL</span> (פיזור עצמי) סטנדרטי, אך עם תוסף סיבי-פחמן או חלקיקי-גרפיט מוליכים בשכבת הגוף + רשת רצועות נחושת מוארקת על התשתית.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>שכבה</th><th>פונקציה</th><th>חומר</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>תשתית</td><td>יסוד</td><td>תשתית בטון מוכנה ל-<span dir="ltr">CSP 3-4</span></td></tr>
+                                <tr><td>רשת רצועות נחושת</td><td>נתיב הארקה מבני</td><td>רצועות רדיד נחושת עם דבק על הגב ברשת <span dir="ltr">4 × 4 m</span>, מחוברות להארקה של המבנה</td></tr>
+                                <tr><td>פריימר מוליך</td><td>הידבקות + מוליכות רוחבית</td><td>פריימר אפוקסי מוליך (<span dir="ltr">Sikafloor-220 W Conductive</span>)</td></tr>
+                                <tr><td>שכבת גוף <span dir="ltr">ESD</span></td><td>פיזור סטטי</td><td>אפוקסי <span dir="ltr">SL</span> מוליך (<span dir="ltr">Sikafloor-381 AS</span>, <span dir="ltr">Mapefloor Antistatic</span>) בעובי <span dir="ltr">2-3 mm</span> עם תוסף פחמן/גרפיט</td></tr>
+                                <tr><td>שכבת איטום עליונה (אופציונלית)</td><td>עמידות בלאי + כימיקלים</td><td>שכבת איטום עליונה אליפטית מוליכה מ-<span dir="ltr">PU</span></td></tr>
+                            </tbody>
+                        </table>
+                        <p>עלות התקנה כוללת: <span dir="ltr">₪580-900 למ"ר</span> (לעומת <span dir="ltr">₪320-450</span> לאפוקסי <span dir="ltr">SL</span> ללא <span dir="ltr">ESD</span>). הפרמיה משקפת את עבודת רשת הארקת הנחושת + חומרי רזין מוליך מיוחדים.</p>
+                    </div>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">רכיב <span dir="ltr">3</span> מתוך <span dir="ltr">4</span> — הארקה</span>
+                        <h2>חיבור להארקת המבנה</h2>
+                        <p>הרצפה המוליכה אפקטיבית רק כמו החיבור שלה למערכת הארקת האדמה של המבנה. אסטרטגיית ההארקה:</p>
+                        <ul>
+                            <li><strong>רשת רדיד נחושת:</strong> רצועות רדיד נחושת עם דבק על הגב (בדרך כלל ברוחב <span dir="ltr">25-50 mm</span>) בתבנית רשת <span dir="ltr">4 × 4 m</span> על פני התשתית לפני יישום הפריימר.</li>
+                            <li><strong>נקודות הארקה:</strong> כל הצטלבות ברשת מתחברת למסוף הארקה מותקן-קיר. מסוף הקיר מתחבר להארקת המבנה דרך מוליך נחושת <span dir="ltr">16 mm²</span>.</li>
+                            <li><strong>התנגדות אדמה:</strong> התנגדות נתיב האדמה מפני הרצפה לבאס ההארקה של המבנה חייבת למדוד <span dir="ltr">≤ 1 × 10⁹ Ω</span> (יעד מפזר) או <span dir="ltr">≤ 1 × 10⁶ Ω</span> (יעד מוליך).</li>
+                            <li><strong>חיבור פוטנציאלים שווה:</strong> הארקת הרצפה תיקשר לפלדה המבנית של המבנה + שלדת הציוד + נקודות צמיד <span dir="ltr">ESD</span>. מישור התייחסות פוטנציאלי שווה יחיד.</li>
+                            <li><strong>אימות:</strong> מדידת <span dir="ltr">ANSI/ESD STM7.1</span> בנקודות רשת מוגדרות. בדיקת התנגדות דו-אלקטרודית מפני הרצפה אל מסוף ההארקה.</li>
+                        </ul>
+                    </div>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">רכיב <span dir="ltr">4</span> מתוך <span dir="ltr">4</span> — אימות</span>
+                        <h2>פרוטוקול אימות</h2>
+                        <p>ביצועי <span dir="ltr">ESD</span> מאומתים בהתקנה + מדי שנה לאחר מכן. אופני הכשל הם עדינים (סחיפת התנגדות עם הזמן) ולכן אימות תקופתי הוא חיוני, לא אופציונלי.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>נקודת אימות</th><th>שיטה</th><th>קריטריון מעבר</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>התקנה ראשונית — התנגדות פני שטח</td><td>בדיקת <span dir="ltr">ANSI/ESD STM7.1</span> דו-אלקטרודית</td><td>בטווח מפזר <span dir="ltr">10⁶–10⁹ Ω</span></td></tr>
+                                <tr><td>התקנה ראשונית — התנגדות לאדמה</td><td>בדיקת <span dir="ltr">ANSI/ESD STM7.1</span> חד-אלקטרודית לאדמה</td><td>בטווח היעד</td></tr>
+                                <tr><td>התקנה ראשונית — בדיקת הליכה (יצירת מטען)</td><td>מדידת מתח <span dir="ltr">ANSI/ESD STM97.2</span></td><td><span dir="ltr">≤ 100 V</span> מטען שיא באזור מפזר</td></tr>
+                                <tr><td>בדיקה חוזרת שנתית — אותה סוללה</td><td>אותה מתודולוגיה</td><td>בטווח המקורי; דעיכה מותרת עד <span dir="ltr">±0.5 log</span></td></tr>
+                                <tr><td>לאחר שינוי משמעותי בכימיית הניקוי</td><td>אותה מתודולוגיה</td><td>אימות שכימיית הניקוי לא הצטברה לשכבה מבודדת</td></tr>
+                            </tbody>
+                        </table>
+                        <p>קריטי: כימיית הניקוי חשובה. חלק ממנקי הרצפה הסטנדרטיים מצטברים לשכבה מבודדת דקה שמורידה את מוליכות פני השטח עם הזמן. רצפת <span dir="ltr">ESD</span> חייבת להיות מנוקה רק עם מנקה מאושר יצרן. ראו <a href="floor-care-by-system-type.html">אחזקת רצפה לפי סוג מערכת</a>.</p>
+                    </div>
+
+                    <h2>בחירה לפי מקרה שימוש</h2>
+                    <table class="e-table">
+                        <thead>
+                            <tr><th>סביבה</th><th>מחלקת <span dir="ltr">ESD</span></th><th>יעד התנגדות</th><th>דוגמת מערכת</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>הרכבה לייצור אלקטרוניקה</td><td class="signal-cell">מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span></td><td><span dir="ltr">Sikafloor-381 AS Conductive</span></td></tr>
+                            <tr><td>חדר נקי למוליכים למחצה</td><td class="signal-cell">מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span> + הסמכת חדר נקי <span dir="ltr">EU GMP</span></td><td><span dir="ltr">Sikafloor 235 W ESD</span> + תוסף <span dir="ltr">EU GMP</span></td></tr>
+                            <tr><td>חדר ניתוח</td><td class="signal-cell">מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span> + אנטי-מיקרוביאלי</td><td><span dir="ltr">Sikafloor-381 AS</span> + <span dir="ltr">Polygiene</span></td></tr>
+                            <tr><td>חדר שרתים / מרכז נתונים</td><td>מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span></td><td>אפוקסי <span dir="ltr">ESD</span> סטנדרטי</td></tr>
+                            <tr><td>ייצור פרמצבטי</td><td>מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span> + <span dir="ltr">EU GMP</span></td><td>אפוקסי <span dir="ltr">ESD</span> ברמת חדר נקי</td></tr>
+                            <tr><td>טיפול בתחמושת</td><td class="signal-cell">מוליכה</td><td><span dir="ltr">10⁴–10⁶ Ω</span></td><td><span dir="ltr">Sikafloor-262 AS Conductive</span></td></tr>
+                            <tr><td>טיפול בדלקים / פטרוכימיה</td><td class="signal-cell">מוליכה</td><td><span dir="ltr">10⁴–10⁶ Ω</span> + עמיד כימית</td><td>פוליאוריתן-מלט מוליך מיוחד</td></tr>
+                            <tr><td>אלקטרוניקה ביטחונית</td><td>מפזרת</td><td><span dir="ltr">10⁶–10⁹ Ω</span> + מפרטי משרד הביטחון</td><td><span dir="ltr">Sikafloor-381 AS</span></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>יצרנים וערוץ הפצה בישראל לרצפת <span dir="ltr">ESD</span></h2>
+                    <ul>
+                        <li><strong><span dir="ltr">Sikafloor-262 AS Conductive</span>:</strong> אפוקסי <span dir="ltr">SL</span> מוליך לאזורי אטמוספרה נפיצה. בישראל דרך גילר.</li>
+                        <li><strong><span dir="ltr">Sikafloor-381 AS Conductive</span>:</strong> אפוקסי <span dir="ltr">SL</span> מפזר לאלקטרוניקה + חדרי ניתוח. בישראל דרך גילר.</li>
+                        <li><strong><span dir="ltr">Sikafloor 235 W ESD</span>:</strong> אפוקסי מפזר ברמת חדר נקי. תואם <span dir="ltr">EU GMP</span>.</li>
+                        <li><strong><span dir="ltr">Mapei Mapefloor Antistatic</span>:</strong> אפוקסי מפזר של <span dir="ltr">Mapei</span>. בישראל דרך <span dir="ltr">Mapei</span>.</li>
+                        <li><strong><span dir="ltr">Flowcrete Flowstat</span>:</strong> רצפת <span dir="ltr">ESD</span> של מותג אחות של <span dir="ltr">Mapei</span>.</li>
+                        <li><strong><span dir="ltr">MC-Bauchemie MC-DUR ESD</span>:</strong> אפוקסי <span dir="ltr">ESD</span> תעשייתי. בישראל דרך <span dir="ltr">A.Z Marketing</span> רמלה (<span dir="ltr">+972-8-9150190</span>).</li>
+                    </ul>
+
+                    <h2>שפת מכרז למפרט <span dir="ltr">ESD</span></h2>
+                    <p>הדבקה ישירה לכתב כמויות עבור פרויקטי אלקטרוניקה, <span dir="ltr">ESD</span> רפואי או סביבה מבוקרת.</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:18px 22px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:14px; line-height:1.6;">
+                        "מערכת רצפה מדורגת <span dir="ltr">IEC 61340-5-1</span> <strong>[מפזרת <span dir="ltr">10⁶-10⁹ Ω</span> / מוליכה <span dir="ltr">10⁴-10⁶ Ω</span>]</strong> לפי תוכנית אזורים. מבנה: רשת הארקת רדיד נחושת עם דבק על הגב (רשת <span dir="ltr">4 m × 4 m</span>) על התשתית לפני הפריימר, מחוברת לבאס הארקת המבנה דרך מוליך נחושת <span dir="ltr">16 mm²</span> במיקומי מסוף הארקה מוגדרים. פריימר אפוקסי מוליך + שכבת גוף <span dir="ltr">ESD</span> בעובי <span dir="ltr">2-3 mm</span>. אימות התנגדות פני שטח <span dir="ltr">ANSI/ESD STM7.1</span> ב-<span dir="ltr">3</span> מיקומים מינימום לכל <span dir="ltr">200 m²</span> + אימות מטען בבדיקת הליכה <span dir="ltr">ANSI/ESD STM97.2</span> (<span dir="ltr">&lt;100 V</span> שיא). אימות ראשוני + בדיקה חוזרת שנתית כלולים בחוזה אחזקה. כימיית הניקוי תהיה רק כזו המאושרת על-ידי היצרן ותואמת <span dir="ltr">ESD</span>; הצטברות שכבה מבודדת מבטלת את האחריות."
+                    </div>
+
+                    <h2>טעויות נפוצות ברצפת <span dir="ltr">ESD</span></h2>
+                    <ul>
+                        <li><strong>"רצפת <span dir="ltr">ESD</span>" ללא אימות <span dir="ltr">IEC 61340-5-1</span>.</strong> טענה שיווקית ללא גיבוי מדיד. דחו הצעות ללא דוחות בדיקת <span dir="ltr">ANSI/ESD STM7.1</span>.</li>
+                        <li><strong>רשת הארקת נחושת נדלגת או חלקית.</strong> רזין מוליך ללא רשת הארקה הוא חסר משמעות חשמלית — מטען מצטבר ללא נתיב פריקה.</li>
+                        <li><strong>שכבת איטום עליונה מיושמת על שכבת גוף <span dir="ltr">ESD</span> ללא אימות שהמוליכות נשמרת.</strong> חלק משכבות האיטום העליונות הסטנדרטיות מ-<span dir="ltr">PU</span> הן מבודדות; ביצועי ה-<span dir="ltr">ESD</span> נופלים לכישלון.</li>
+                        <li><strong>כימיית ניקוי סטנדרטית על רצפת <span dir="ltr">ESD</span>.</strong> מנקי רצפה סטנדרטיים מצטברים לשכבה מבודדת שמורידה ביצועים תוך <span dir="ltr">6-12</span> חודשים. נדרשת כימיית ניקוי מאושרת יצרן.</li>
+                        <li><strong>אימות <span dir="ltr">ESD</span> נדלג בהתקנה.</strong> ללא מדידת בסיס בהתקנה, אין נתוני השוואה לבדיקה החוזרת השנתית. סחיפת התנגדות לא ניתנת לכימות.</li>
+                        <li><strong>ניתוק מסוף הארקה לאחר התקנת ריהוט.</strong> מסופי ההארקה חייבים להישאר נגישים + מאומתים-מחוברים לאחר התקנת הריהוט. פיקוח רכש סטנדרטי.</li>
+                    </ul>
+
+                    <h2>שיקולי עלות</h2>
+                    <p>מפרט ברמת <span dir="ltr">ESD</span> מוסיף כ-<span dir="ltr">50-100%</span> לעלות מערכת מקבילה ללא <span dir="ltr">ESD</span>:</p>
+                    <ul>
+                        <li>רשת הארקת נחושת + התקנה: <span dir="ltr">₪80-150 למ"ר</span>.</li>
+                        <li>חומרי רזין מוליך (לעומת אפוקסי <span dir="ltr">SL</span> סטנדרטי): <span dir="ltr">+30-50%</span> עלות חומר.</li>
+                        <li>עבודת מתקין מיוחד: <span dir="ltr">+20-40%</span> עבודה.</li>
+                        <li>בדיקת אימות ראשונית: <span dir="ltr">₪5,000-12,000</span> לפרויקט.</li>
+                        <li>בדיקה חוזרת שנתית + ביקורת תאימות כימיית ניקוי: <span dir="ltr">₪3,000-6,000</span> בשנה.</li>
+                    </ul>
+                    <p>לחדר נקי של מוליכים למחצה בגודל <span dir="ltr">800 מ"ר</span>: רמת <span dir="ltr">ESD</span> מוסיפה בערך <span dir="ltr">₪200,000-350,000</span> מעל אפוקסי <span dir="ltr">SL</span> בסיסי. זה זניח בהשוואה לעלות של כשל יבול בודד הקשור ל-<span dir="ltr">ESD</span> בייצור מוליכים למחצה מתקדם.</p>
+
+                    <h2>קריאה סופית</h2>
+                    <p>רצפת <span dir="ltr">ESD</span> היא מערכת חשמלית, לא בחירת ציפוי. הרזין המוליך הוא רכיב אחד ממערכת בת ארבעה רכיבים הכוללת הכנת תשתית, רשת הארקת נחושת, רזין מוליך, ואימות שוטף + תאימות כימיית ניקוי. הסרת כל רכיב פוגעת בשלם — וכשל <span dir="ltr">ESD</span> בלתי נראה עד שצניחת היבול, השבתת חדר השרתים או האירוע הניתוחי חושפים אותו. ציינו את כל הארבעה בשפת המכרז, אמתו בהתקנה + מדי שנה, דרשו כימיית ניקוי מאושרת יצרן. קשור: <a href="floor-compliance-verification-checklist.html">רשימת אימות עמידה בתקנים</a> §<span dir="ltr">5</span> (<span dir="ltr">ESD</span>) · <a href="antimicrobial-hygiene-floor-systems.html">מערכות רצפה אנטי-מיקרוביאליות להיגיינה</a> · <a href="floor-system-selection-by-use-case.html">בחירה לפי מקרה שימוש</a> · <a href="floor-care-by-system-type.html">אחזקה לפי סוג מערכת</a>.</p>
+
+                    <h2>מקורות</h2>
+                    <ul>
+                        <li><span dir="ltr">IEC 61340-5-1:2016</span> — Protection of electronic devices from electrostatic phenomena — General requirements.</li>
+                        <li><span dir="ltr">ANSI/ESD STM7.1</span> — Resistance measurement of floor materials.</li>
+                        <li><span dir="ltr">ANSI/ESD STM97.2</span> — Walking test for floor materials.</li>
+                        <li><span dir="ltr">Sikafloor-262 AS / 381 AS / 235 W ESD</span> technical literature.</li>
+                        <li><span dir="ltr">Mapei Mapefloor Antistatic</span> product data sheets.</li>
+                        <li><span dir="ltr">Flowcrete Flowstat</span> product data sheets.</li>
+                        <li><span dir="ltr">MC-Bauchemie MC-DUR ESD</span> technical data.</li>
+                        <li><span dir="ltr">EU GMP + ESD Association</span> standards.</li>
+                        <li><span dir="ltr">Floor.DSGN</span> IL contractor field documentation — <span dir="ltr">12+</span> ESD-controlled installations.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-cta">
+            <div class="container">
+                <h2>צריכים מפרט <span dir="ltr">ESD</span> לחדר הנקי או למתקן האלקטרוניקה שלכם?</h2>
+                <p>ספרו לנו את סוג המתקן + סיווג האזור + מספר המטרים הרבועים. אנחנו שולחים בחזרה את מפרט ה-<span dir="ltr">ESD</span> המלא עם מחלקת <span dir="ltr">IEC 61340-5-1</span> + תוכנית הארקה + פרוטוקול אימות — תוך <span dir="ltr">48</span> שעות.</p>
+                <div class="cta-buttons">
+                    <a href="../../contact.html" class="btn btn-primary">בקשת מפרט <span dir="ltr">ESD</span></a>
+                    <a href="floor-compliance-verification-checklist.html" class="btn btn-secondary">ראו רשימת עמידה בתקנים</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span dir="ltr">2026</span> Floor.DSGN</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js?v=20260523a"></script>
+  <script src="/lang-switch.js" defer></script>
+</body>
+</html>

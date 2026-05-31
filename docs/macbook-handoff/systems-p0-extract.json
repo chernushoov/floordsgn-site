@@ -1,0 +1,1782 @@
+{
+  "version": 1,
+  "generated": "2026-05-27",
+  "systems": [
+    {
+      "id": "epoxy-thin-coating",
+      "slug": "epoxy-thin-coating-0-5-1mm",
+      "name": "Epoxy Thin Coating 0.5–1 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Тонкое покрытие — наиболее чувствительно к качеству основания и условиям воздуха."
+      },
+      "potLife": {
+        "minutesAt20C": 30,
+        "recoatMinHours": 12,
+        "recoatMaxHours": 24,
+        "lightTrafficHours": 12,
+        "fullCureDays": 7,
+        "note": "Pot life быстрее при толщине, чем у SL — двухкомпонентная роликовая укладка."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C20/25",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Фрезеровка или шлифовка алмазными чашками. Обеспыливание пылесосом.",
+        "note": "Тонкий слой не маскирует дефекты — основание должно быть ровным."
+      },
+      "slipClass": {
+        "din51130": "R9",
+        "din51097": "A",
+        "optional": [
+          "R10 с противоскользящей присадкой"
+        ],
+        "note": "Стандартный гладкий финиш — для пешеходного трафика без воды."
+      },
+      "warranty": {
+        "termYears": 2,
+        "conditions": "Сертифицированный аппликатор + лёгкий/пешеходный трафик + сухая зона.",
+        "exclusions": "Погрузчики, мокрые зоны, кислоты, прямой УФ.",
+        "note": "Бюджетная система — гарантия минимальная."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания копируются проходом до отделочного слоя.",
+        "costAddIlsPerLm": 25,
+        "note": "Без копирования швов покрытие лопнет."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по системе с Sikafloor-264"
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9 стандарт, до R10 с присадкой"
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Низкая. Подходит для дустконтроля, не для химической нагрузки."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для пищевых производств."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "2 года."
+        }
+      }
+    },
+    {
+      "id": "epoxy-self-leveling-2-3",
+      "slug": "epoxy-self-leveling-2-3mm",
+      "name": "Epoxy Self-Leveling 2–3 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "SL — самовыравнивающийся, требует сухого ровного основания."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "Гребёнчатое распределение + шиповый валик для удаления воздуха."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка или фрезеровка. Заделка трещин эпокси-смолой.",
+        "note": "Стандарт для индустриальных полов ≥100 м²."
+      },
+      "slipClass": {
+        "din51130": "R9",
+        "din51097": "A",
+        "optional": [
+          "R10 с противоскользящей присадкой",
+          "R11 с лёгким броадкастом"
+        ],
+        "note": "Гладкий финиш — не для мокрых зон без модификации."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + основание по спецификации.",
+        "exclusions": "Термоудар выше +40°C, кислоты концентрированнее 20%, тяжёлая ударная нагрузка.",
+        "note": "Стандарт de facto для индустриальных полов."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания обязательно копируются. Sikaflex Pro-3 в нарезной шов.",
+        "costAddIlsPerLm": 30,
+        "note": "Усадочные швы появляются на ≥6×6 м."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1"
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9 стандарт, R10-R11 опционально"
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Средняя стойкость к дилютным кислотам, щелочам, нефтепродуктам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Подходит для пищевых складов хранения, не для прямого контакта."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет."
+        }
+      }
+    },
+    {
+      "id": "heavy-duty-epoxy-4-6",
+      "slug": "heavy-duty-epoxy-4-6mm",
+      "name": "Heavy Duty Epoxy 4–6 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Толстослойная SL-система. Требует длительной выдержки при низких температурах."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 24,
+        "recoatMaxHours": 72,
+        "lightTrafficHours": 36,
+        "fullCureDays": 10,
+        "note": "Pot life и расход выше, чем у SL 2-3 мм. Толстый слой выделяет тепло."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка глубокая. Грунт + кварцевая присыпка для увеличения адгезии.",
+        "note": "Усадка контролируется выбором толщины."
+      },
+      "slipClass": {
+        "din51130": "R10",
+        "din51097": "A",
+        "optional": [
+          "R11-R12 с броадкастом или анти-слип топкоат"
+        ],
+        "note": "Стандарт R10 для индустриальных зон с тяжёлой пешей нагрузкой и погрузчиками."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + основание + контроль температуры в процессе.",
+        "exclusions": "Термоудар, ударная нагрузка свыше 30 кг с высоты ≥1 м, кислоты.",
+        "note": "5 лет на адгезию и механические свойства."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания копируются с расширением до 8×12 мм. Sikaflex PRO-3.",
+        "costAddIlsPerLm": 35,
+        "note": "Швы — критично для толстослойных систем."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1"
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R10 стандарт, до R12 опционально"
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Высокая стойкость к дилютным кислотам, щелочам, нефтепродуктам, гидравлическим маслам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Подходит для пищевых складов, не для прямого контакта с пищей."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет."
+        }
+      }
+    },
+    {
+      "id": "quartz-broadcast-epoxy",
+      "slug": "quartz-broadcast-epoxy-3-5mm",
+      "name": "Quartz Broadcast Epoxy 3–5 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "TDS Sikafloor-263 SL (int'l Aug 2022): эпокси требует сухого бетона <4% pbw влажности по CM-методу. Запас по точке росы +3°C."
+      },
+      "potLife": {
+        "minutesAt20C": 30,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "TDS Sikafloor-263 SL: pot life ~30 min @ 20°C (60 min @ 10°C, 15 min @ 30°C). Recoat 24h min @ 20°C / 16h @ 30°C. Full cure ~7 дней."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйная обработка или фрезеровка до открытия пор. Заделка трещин эпокси-смолой с кварцем.",
+        "note": "Влажность >4% CM требует паробарьера (Sikafloor EpoCem или эквивалент)."
+      },
+      "slipClass": {
+        "din51130": "R11 / V4 (кварц 0.3-0.8) или R12 / V6 (кварц 0.6-1.2)",
+        "din51097": "A",
+        "optional": [
+          "R12 / V6 при крупной фракции кварца 0.6-1.2 мм"
+        ],
+        "note": "Верифицировано System TDS Sikafloor MultiDur EB-24 (aus.sika.com Apr 2023 v04.03): R11 V4 со средним кварцем, R12 V6 с крупным. R13 для этой системы НЕ публикуется — для R13 нужен PurCem HB-22."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + основание по спецификации + правильная подготовка.",
+        "exclusions": "УФ-обесцвечивание (поверхностно), удар тяжёлыми предметами, концентрированные кислоты.",
+        "note": "5 лет на адгезию + механические свойства."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания обязательно копируются. Усадочные швы (sawn) герметизируются Sikaflex.",
+        "costAddIlsPerLm": 30,
+        "note": "Без копирования швов покрытие лопнет по линии шва за 1–2 года."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sikafloor MultiDur EB-24 system TDS (aus.sika.com, Apr 2023 v04.03)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1 — подтверждено system TDS MultiDur EB-24 (aus.sika.com Apr 2023)."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sikafloor MultiDur EB-24 system TDS (aus.sika.com, Apr 2023 v04.03)",
+          "lastVerified": "2026-05-27",
+          "note": "R11 V4 (средний кварц) или R12 V6 (крупный кварц) — подтверждено system TDS EB-24."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Стойкость к нефтепродуктам, дилютным кислотам, щелочам — подтверждено product TDS Sikafloor-263 SL."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": "Sikafloor MultiDur EB-24 system TDS (aus.sika.com, Apr 2023 v04.03)",
+          "lastVerified": "2026-05-28",
+          "note": "System TDS EB-24 указывает \"Food and Beverage facilities - light to medium duty\" БЕЗ HACCP/USDA/Isega сертификации. Для пищевых производств с прямым контактом требуется PurCem HB-22."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": null
+        }
+      }
+    },
+    {
+      "id": "antistatic-epoxy",
+      "slug": "antistatic-epoxy-esd",
+      "name": "Antistatic ESD Epoxy 2–3 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 75,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Антистатическая система требует медной сетки заземления и проводящего слоя."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 36,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "Pot life стандартный для эпокси SL с проводящими добавками."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка + проводящий грунт 220 W + медная сетка заземления.",
+        "note": "Заземление обязательно (электрик на проект)."
+      },
+      "slipClass": {
+        "din51130": "R9-R10",
+        "din51097": "A",
+        "optional": [
+          "R11 с присадкой"
+        ],
+        "note": "Стандарт для электронных производств — гладкий, чистый."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + правильное заземление + регулярное тестирование сопротивления.",
+        "exclusions": "Концентрированные кислоты, удар, нарушение заземления.",
+        "note": "Гарантия включает антистатические свойства."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Швы основания копируются. Проводящие соединения через медные ленты.",
+        "costAddIlsPerLm": 50,
+        "note": "Электрическая непрерывность критична для антистатики."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9-R10."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Средняя стойкость. Для электронных производств."
+        },
+        "foodSafety": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не предназначено для пищевых производств."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет на покрытие + ESD-свойства."
+        }
+      }
+    },
+    {
+      "id": "parking-epoxy-pu",
+      "slug": "parking-epoxy-pu-deck",
+      "name": "Parking Epoxy / PU Deck System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 8,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "PU-топкоат для УФ-стойкости в открытых паркингах и террасах."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 36,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "PU слой 0.3-0.5 мм поверх эпокси-базы."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка + эпокси-грунт + SL-слой + PU топкоат.",
+        "note": "Многослойная система — каждый слой контролируется отдельно."
+      },
+      "slipClass": {
+        "din51130": "R11",
+        "din51097": "B",
+        "optional": [
+          "R12 с броадкастом для активных пандусов"
+        ],
+        "note": "Для пандусов и открытых паркингов — повышенный анти-слип."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + регулярная очистка от нефтепродуктов.",
+        "exclusions": "Кислоты, длительный контакт с топливом, удар.",
+        "note": "5 лет на адгезию + УФ-стойкость PU."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы + температурные швы каждые 6×6 м (наружные зоны).",
+        "costAddIlsPerLm": 35,
+        "note": "Открытые паркинги имеют большие температурные перепады."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R11 / B стандарт, до R12 опционально."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Высокая стойкость к нефтепродуктам, маслам, дилютным кислотам, антифризу."
+        },
+        "foodSafety": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для пищевых производств."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет."
+        }
+      }
+    },
+    {
+      "id": "pu-cement-kitchen-6-9",
+      "slug": "pu-cement-kitchen-6-9mm",
+      "name": "PU-Cement Kitchen System 6–9 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": null,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "PurCem требует \"visibly dry, no ponding\" основание и pull-off ≥1.5 МПа. Числового лимита по влажности (% CM) в TDS Sikafloor-22 PurCem нет — продукт moisture-tolerant. Доп. требования по влажности устанавливает аппликатор по месту."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 24,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 12,
+        "fullCureDays": 7,
+        "note": "TDS Sikafloor-22 PurCem (int'l, Nov 2023): pot life ~25 min @ 20°C. Foot traffic ~12 ч @ 20°C; full cure ~7 дней. US 22NA TDS: pot life 15-20 min."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": null,
+        "prepMethod": "Дробеструйная обработка (shot-blast) до открытия пор бетона. Удалить цементное молочко. Pull-off ≥1.5 МПа.",
+        "note": "PurCem — единственная Sika-система для влажных оснований. Числового лимита по влажности нет; критерий — отсутствие воды на поверхности (no ponding) + pull-off ≥1.5 МПа."
+      },
+      "slipClass": {
+        "din51130": "R13 / V6 (система HB-22 broadcast)",
+        "din51097": "B (босиком, влажно)",
+        "optional": [
+          "R12 при выборе средней фракции броадкаста",
+          "R11 для гладкой HM-22 системы"
+        ],
+        "note": "Верифицировано System TDS Sikafloor PurCem HB-22 (aus.sika.com Apr 2023 v04.01): R13 / V6 по DIN 51130. Достигается через квартц 0.7-1.2 мм + Sikafloor-31 PurCem seal coat."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + базовый бетон по спецификации + правильная подготовка + maintenance plan.",
+        "exclusions": "Удар тяжёлым оборудованием, кислоты концентрированнее 30%, тепловой удар выше +120°C.",
+        "note": "5-летняя гарантия предоставляется при выполнении всех условий аппликации."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания копируются. Свежие швы 6×10 мм пропилом + эластичный герметик PU (Sikaflex Pro-3).",
+        "costAddIlsPerLm": 35,
+        "note": "Обязательно для пищевых производств — иначе зоны застоя жира и бактерий."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sikafloor PurCem HB-22 system TDS (aus.sika.com, Apr 2023 v04.01)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1 — подтверждено system TDS HB-22 (aus.sika.com Apr 2023)."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sikafloor PurCem HB-22 system TDS (aus.sika.com, Apr 2023 v04.01)",
+          "lastVerified": "2026-05-27",
+          "note": "R13 / V6 по DIN 51130 — подтверждено system TDS HB-22 (broadcast quartz 0.7-1.2mm + Sikafloor-31 seal)."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Стойкость к молочной/уксусной кислоте, NaOH, кулинарным маслам, дезсредствам — подтверждено product TDS Sikafloor-22 PurCem."
+        },
+        "foodSafety": {
+          "status": "verified",
+          "source": "Sikafloor PurCem HB-22 system TDS (aus.sika.com, Apr 2023 v04.01)",
+          "lastVerified": "2026-05-27",
+          "note": "HACCP food-grade approved — подтверждено system TDS HB-22."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Низкое VOC по AgBB (product TDS)."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "При выполнении условий выше."
+        }
+      }
+    },
+    {
+      "id": "pu-cement-heavy-9-12",
+      "slug": "pu-cement-heavy-9-12mm",
+      "name": "PU-Cement Heavy Duty 9–12 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 8,
+        "tempMaxC": 30,
+        "humidityMaxPct": 85,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 6,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "PurCem heavy — для пищевых производств с прямой термической нагрузкой и тяжёлым оборудованием."
+      },
+      "potLife": {
+        "minutesAt20C": 15,
+        "recoatMinHours": 12,
+        "recoatMaxHours": 24,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "Pot life короче из-за реакционной массы PurCem."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 6,
+        "prepMethod": "Дробеструйка с открытием крупных пор + грунт.",
+        "note": "Толщина 9-12 мм требует усиленной адгезии."
+      },
+      "slipClass": {
+        "din51130": "R12",
+        "din51097": "B",
+        "optional": [
+          "R13 с увеличенным броадкастом"
+        ],
+        "note": "Тяжёлые кухни и мойки."
+      },
+      "warranty": {
+        "termYears": 7,
+        "conditions": "Сертифицированный аппликатор + базовый бетон + maintenance plan.",
+        "exclusions": "Удар тяжёлым оборудованием более 200 кг с высоты ≥2 м, кислоты концентрированнее 30%, тепловой удар выше +130°C.",
+        "note": "7-летняя гарантия — на heavy PurCem."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы обязательно. Пропил 8×12 мм + PU-герметик пищевого класса.",
+        "costAddIlsPerLm": 45,
+        "note": "Для пищевых производств — критично для HACCP."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1"
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R12 / B, до R13 опционально."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Очень высокая стойкость к молочной/уксусной кислоте, NaOH, кулинарным маслам, дезсредствам, лимонной кислоте."
+        },
+        "foodSafety": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "HACCP-совместимо, прямой контакт с пищей."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Низкое VOC, A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "7 лет."
+        }
+      }
+    },
+    {
+      "id": "mma-fast-kitchen-2-4",
+      "slug": "mma-fast-kitchen-2-4mm",
+      "name": "MMA Fast Cure Kitchen System 2–4 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": -10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 85,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 25,
+        "note": "TDS Sikafloor-17 RS Pronto (US): down to 14°F (-10°C). TDS Sikafloor-16 Pronto: -5°C to +30°C. MMA — единственная Sika-система для морозильных складов с min -10°C (НЕ -25°C, как ранее ошибочно). Запах сильный (требует вентиляции)."
+      },
+      "potLife": {
+        "minutesAt20C": 15,
+        "recoatMinHours": 0.75,
+        "recoatMaxHours": 12,
+        "lightTrafficHours": 1,
+        "fullCureDays": 0.04,
+        "note": "TDS Sikafloor-16 Pronto: pot life ~15 min @ 20°C (8 min @ 30°C, 25 min @ -5°C). Recoat ~40-45 min @ 20°C. Foot traffic ~40 min @ 20°C, full cure ~1 час @ 20°C. Это ГЛАВНОЕ преимущество MMA — кухня открывается через 1-2 часа после укладки."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка или интенсивная шлифовка. Заделка трещин MMA-смолой.",
+        "note": "MMA требует сухого основания (на уровне эпокси). Прежнее заявление \"до 6% CM\" — НЕ подтверждено TDS."
+      },
+      "slipClass": {
+        "din51130": "R11 (system-level с броадкастом)",
+        "din51097": "B",
+        "optional": [
+          "R12 / R13 с крупной фракцией кварца"
+        ],
+        "note": "TDS Sikafloor-16 Pronto: \"Conforms to DIN 51130\" БЕЗ конкретного R-числа на product PDS. R11 — заявление system-level (Sikafloor Pronto модульная система с броадкастом)."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор с MMA-опытом + правильная вентиляция в процессе.",
+        "exclusions": "Кислоты концентрированнее 30%, удар тяжёлыми предметами, использование вне допустимых температур аппликации.",
+        "note": "5 лет на адгезию + механические свойства."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Деформационные швы основания копируются. Свежие швы пропилом + MMA-герметик.",
+        "costAddIlsPerLm": 40,
+        "note": "Для пищевых производств — обязательно."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "pending",
+          "source": "agent 2026-05-28 cross-check",
+          "lastVerified": "2026-05-28",
+          "note": "Опубликованного Sika Pronto kitchen system TDS с Bfl-s1 для EU НЕ найдено. Pronto RB-58 (DNK) — Cfl-s1 (не Bfl), но это car-park не kitchen. US RB-1853 CQ (kitchen) использует ASTM E84, не EN 13501-1. Требуется per-project Sika system specification."
+        },
+        "slipClass": {
+          "status": "pending",
+          "source": "agent 2026-05-28 cross-check",
+          "lastVerified": "2026-05-28",
+          "note": "Опубликованного Pronto kitchen system TDS с R11/R12 не найдено. RB-58 показывает R11 V4 но это car-park. RB-1853 CQ (kitchen US) не публикует R-class. Решение: либо per-project спека, либо заменить эту систему на PurCem HB-22 (имеет R13 + Bfl-s1 + HACCP)."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Высокая стойкость к молочной/уксусной кислоте, кулинарным маслам, дезсредствам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": "agent 2026-05-28 cross-check",
+          "lastVerified": "2026-05-28",
+          "note": "US Pronto RB-1823 CQ: \"NSF Registered for incidental food contact (R2)\". RB-1853 CQ: \"Certified usage for the food industry and commercial kitchens\". EU TDS с HACCP claim для Pronto kitchen system не найдено публично."
+        },
+        "voc": {
+          "status": "pending",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-28",
+          "note": "Сильный запах в процессе. Требует вентиляции и закрытия помещения для персонала. После полимеризации — низкое VOC."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет."
+        }
+      }
+    },
+    {
+      "id": "mma-night-repair",
+      "slug": "mma-night-repair-fast",
+      "name": "MMA Fast Night Repair System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": -25,
+        "tempMaxC": 30,
+        "humidityMaxPct": 85,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 6,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 25,
+        "note": "MMA — для морозильных камер и ночных ремонтов. Требует вентиляции (сильный запах)."
+      },
+      "potLife": {
+        "minutesAt20C": 8,
+        "recoatMinHours": 1,
+        "recoatMaxHours": 12,
+        "lightTrafficHours": 2,
+        "fullCureDays": 1,
+        "note": "Открытие склада через 2 часа после укладки — главное преимущество MMA."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 6,
+        "prepMethod": "Дробеструйка или фрезеровка. Заделка трещин MMA-смолой.",
+        "note": "MMA прощает влагу до 6%."
+      },
+      "slipClass": {
+        "din51130": "R10",
+        "din51097": "A",
+        "optional": [
+          "R11-R12 с броадкастом"
+        ],
+        "note": "Стандарт R10 для ночных ремонтов индустриальных зон."
+      },
+      "warranty": {
+        "termYears": 3,
+        "conditions": "Сертифицированный MMA-аппликатор + правильная вентиляция в процессе.",
+        "exclusions": "Применение вне температурного диапазона, кислоты, удар тяжёлыми предметами.",
+        "note": "Гарантия меньше из-за специфики MMA-аппликации."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Существующие швы основания копируются. Свежие швы пропилом + MMA-герметик.",
+        "costAddIlsPerLm": 40,
+        "note": "Швы критичны для холодных складов с термоциклированием."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 / Cfl-s1."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R10 стандарт, до R12 опционально."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Высокая стойкость к маслам, дилютным кислотам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Подходит для пищевых складов хранения после полной полимеризации."
+        },
+        "voc": {
+          "status": "pending",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Сильный запах в процессе. Требует вентиляции. После полимеризации — без VOC."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "3 года."
+        }
+      }
+    },
+    {
+      "id": "anti-slip-wet-area",
+      "slug": "anti-slip-wet-area-system",
+      "name": "Anti-Slip Wet Area System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Антискользящая система для мокрых зон. Двойной броадкаст + закрывающий лак."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 36,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "Двойная посыпка кварцем фракции 0.7-1.2 мм."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка + грунт + усиленный кварцевый слой.",
+        "note": "Влажность ≤4% — иначе требуется паробарьер."
+      },
+      "slipClass": {
+        "din51130": "R12",
+        "din51097": "C (босиком, вода)",
+        "optional": [
+          "R13 с крупной фракцией кварца"
+        ],
+        "note": "Цель системы — R12/C для душевых, бассейнов, мокрых производств."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + правильная подготовка + регулярная очистка.",
+        "exclusions": "Падение тяжёлых предметов, концентрированные кислоты.",
+        "note": "5 лет на адгезию и анти-слип свойства."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Швы основания копируются + дополнительная защита от воды (silicone-PU герметик).",
+        "costAddIlsPerLm": 40,
+        "note": "В мокрых зонах швы — точка входа воды в основание."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R12 / C по DIN 51130/51097 — для душевых и мокрых производств."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Стойкость к воде, дилютным щелочам, нейтральным средствам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Подходит для мокрых пищевых производств при выборе пищевого топкоата."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет."
+        }
+      }
+    },
+    {
+      "id": "microtopping-floor",
+      "slug": "microtopping-floor-2-3mm",
+      "name": "Microtopping Floor 2–3 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 28,
+        "humidityMaxPct": 75,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 25,
+        "note": "Sika DecoFloor system — декоративная композиция эпокси + цветной топкоат. Чувствительна к скорости высыхания. Числовые значения берутся из component TDS (Sikafloor-169 / -264)."
+      },
+      "potLife": {
+        "minutesAt20C": 30,
+        "recoatMinHours": 12,
+        "recoatMaxHours": 24,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "Pot life ~25-30 min для базы Sikafloor-169 @ 20°C. System TDS DecoFloor не даёт числа — берётся из component PDS. Уточнение при выборе финиша."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1,
+        "minCompressiveClass": "C20/25",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Шлифовка существующей стяжки + грунтование адгезионным праймером. Допустимо нанесение на существующую плитку при условии сцепления.",
+        "note": "Жилой / декоративный сегмент — менее строгие требования к прочности основания."
+      },
+      "slipClass": {
+        "din51130": "R9–R10 (зависит от финиша)",
+        "din51097": "A (босиком, сухо)",
+        "optional": [
+          "Анти-слип присадка в финишный лак увеличивает до R11"
+        ],
+        "note": "Стандартный финиш — гладкий, скользкий во влажных зонах."
+      },
+      "warranty": {
+        "termYears": 2,
+        "conditions": "Сертифицированный аппликатор + жилое/коммерческое применение, не для пищевых производств.",
+        "exclusions": "Кухни, мокрые зоны без анти-слип финиша, прямой УФ, морозные циклы.",
+        "note": "Декоративная система — гарантия меньше, чем у индустриальных."
+      },
+      "jointTreatment": {
+        "required": false,
+        "methodRu": "В жилых интерьерах швы основания обычно отсутствуют. На больших площадях ≥80 м² проектируются температурные швы.",
+        "costAddIlsPerLm": 25,
+        "note": "Опционально для коммерческих залов."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "pending",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-28",
+          "note": "Sika DecoFloor system TDS не указывает класс по EN 13501-1. Bfl-s1 — заявление system-level в зависимости от Sikafloor-264 топкоата + защитного лака. Требуется system TDS подтверждение."
+        },
+        "slipClass": {
+          "status": "pending",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-28",
+          "note": "R9-R10 предположительно для гладкого декоративного финиша, но system TDS не даёт класс. Требуется уточнение через component PDS Sikafloor-264 / -169."
+        },
+        "chemicalResistance": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Декоративное покрытие — не для химических нагрузок."
+        },
+        "foodSafety": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "НЕ для пищевых производств. Микротопинг прямо НЕ рекомендуется для коммерческих кухонь (гигиена + скольжение)."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB — подтверждено component TDS."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "2 года."
+        }
+      }
+    },
+    {
+      "id": "microtopping-walls",
+      "slug": "microtopping-walls-bathroom",
+      "name": "Microtopping Walls / Bathroom 1–2 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 28,
+        "humidityMaxPct": 75,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 25,
+        "note": "Декоративная стеновая система. Чувствительна к скорости высыхания и тяге воздуха."
+      },
+      "potLife": {
+        "minutesAt20C": 30,
+        "recoatMinHours": 4,
+        "recoatMaxHours": 24,
+        "lightTrafficHours": null,
+        "fullCureDays": 5,
+        "note": "Тонкие слои 0.5-1.5 мм. 3-4 прохода с шлифовкой между ними."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 0.8,
+        "minCompressiveClass": "N/A (вертикаль)",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Грунт по гипсокартону или штукатурке. Сетка-серпянка в стыках.",
+        "note": "Прощает большинство ровных оснований."
+      },
+      "slipClass": {
+        "din51130": "N/A — вертикальная поверхность",
+        "din51097": "N/A",
+        "optional": [],
+        "note": "Не пол — система для стен."
+      },
+      "warranty": {
+        "termYears": 2,
+        "conditions": "Сертифицированный аппликатор + жилое/коммерческое применение, не для мокрых зон без специальной защиты.",
+        "exclusions": "Прямой контакт с водой без защитного лака, удары.",
+        "note": "2-летняя гарантия — декоративная стеновая система."
+      },
+      "jointTreatment": {
+        "required": false,
+        "methodRu": "Для смены оснований (бетон/гипсокартон) — сетка-серпянка с грунтом.",
+        "costAddIlsPerLm": 18,
+        "note": "Архитектурные швы по запросу."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Зависит от защитного лака. Базовая система — Bfl-s1."
+        },
+        "slipClass": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не применимо — вертикальная поверхность."
+        },
+        "chemicalResistance": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Декоративная — не для химической нагрузки."
+        },
+        "foodSafety": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для прямого контакта с пищей."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "2 года."
+        }
+      }
+    },
+    {
+      "id": "epoxy-terrazzo",
+      "slug": "epoxy-terrazzo-8-12mm",
+      "name": "Epoxy Terrazzo 8–12 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "TDS Sikafloor Terrazzo EM-10 (May 2024): ambient/substrate +10°C — +30°C, humidity ≤80% r.h."
+      },
+      "potLife": {
+        "minutesAt20C": 25,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 36,
+        "lightTrafficHours": 48,
+        "fullCureDays": 4,
+        "note": "TDS Sikafloor Terrazzo EM-10: full cure ~4 дня @ 20°C (6 дней @ 10°C). Шлифовка финишная — отдельная операция через несколько дней."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Дробеструйка + грунт + двухкомпонентный праймер.",
+        "note": "Высокая декоративная нагрузка — основание должно быть ровным. Толщина системы 9-11 мм nominal."
+      },
+      "slipClass": {
+        "din51130": "R11",
+        "din51097": "A",
+        "optional": [
+          "Анти-слип фрезеровка верхнего слоя"
+        ],
+        "note": "TDS Sikafloor Terrazzo EM-10: R11 / V4 по DIN 51130. Полированная terrazzo — скользко во влажных зонах."
+      },
+      "warranty": {
+        "termYears": 7,
+        "conditions": "Сертифицированный аппликатор + регулярная полировка раз в 3–5 лет.",
+        "exclusions": "Удар тяжёлыми предметами (>50 кг с высоты >1 м), концентрированные кислоты.",
+        "note": "Premium-сегмент — увеличенная гарантия."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Декоративные металлические разделители (медь / латунь / алюминий) каждые 4–6 м².",
+        "costAddIlsPerLm": 80,
+        "note": "Архитектурные швы — часть дизайна, не только функция."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 по EN 13501-1 — подтверждено TDS Sikafloor Terrazzo EM-10. A2fl-вариант не подтверждён на этом TDS."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R11 / V4 по DIN 51130 — подтверждено TDS."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Стойкость к щелочам и нейтральным средствам, ограниченная к кислотам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "HACCP-применимость требует подтверждения через специальный финиш-лак."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": null
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "7 лет."
+        }
+      }
+    },
+    {
+      "id": "cement-terrazzo",
+      "slug": "cement-terrazzo-12-20mm",
+      "name": "Cement Terrazzo 12–20 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 28,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 5,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 28,
+        "note": "Цементное связующее — допускает большую влажность основания, чем эпокси."
+      },
+      "potLife": {
+        "minutesAt20C": 40,
+        "recoatMinHours": 24,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 48,
+        "fullCureDays": 14,
+        "note": "Цементное затвердевание медленнее эпокси. Шлифовка через 5-7 дней."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 5,
+        "prepMethod": "Дробеструйка + цементный грунт-промывка.",
+        "note": "Толщина 15-25 мм требует прочного основания."
+      },
+      "slipClass": {
+        "din51130": "R10 (полированный) / R11 (матовый)",
+        "din51097": "A",
+        "optional": [
+          "Анти-слип фрезеровка"
+        ],
+        "note": "Полированный terrazzo — скользко во влажных зонах."
+      },
+      "warranty": {
+        "termYears": 10,
+        "conditions": "Сертифицированный аппликатор + регулярная полировка раз в 5-7 лет.",
+        "exclusions": "Удар тяжёлыми предметами, концентрированные кислоты (цемент чувствителен).",
+        "note": "Premium — 10 лет гарантии для классической цементной terrazzo."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Декоративные металлические разделители (медь / латунь / алюминий) каждые 5-8 м².",
+        "costAddIlsPerLm": 90,
+        "note": "Архитектурные швы — часть дизайна."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A1fl — негорючий цементный связующий."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R10-R11 в зависимости от финиша."
+        },
+        "chemicalResistance": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Цементное связующее уязвимо к кислотам. Стойкость к щелочам и нейтральным."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Подходит для не-кислотных пищевых производств. Требует уточнения по конкретному применению."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB. Цементная система — низкое VOC."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "10 лет."
+        }
+      }
+    },
+    {
+      "id": "palladiana-terrazzo",
+      "slug": "palladiana-terrazzo-20-40mm",
+      "name": "Palladiana Terrazzo 20–40 мм",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 28,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 5,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 28,
+        "note": "Архитектурное решение с крупными камнями (плиты 5-30 см). Производство трудоёмкое."
+      },
+      "potLife": {
+        "minutesAt20C": 40,
+        "recoatMinHours": 24,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 72,
+        "fullCureDays": 21,
+        "note": "Толщина 25-40 мм требует длительной выдержки + шлифовки."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 5,
+        "prepMethod": "Дробеструйка + цементный грунт. Возможна укладка на бетонную стяжку 50+ мм.",
+        "note": "Большая толщина даёт инерцию системе."
+      },
+      "slipClass": {
+        "din51130": "R10 (полированный) / R11 (матовый)",
+        "din51097": "A",
+        "optional": [
+          "Фрезеровка для влажных зон"
+        ],
+        "note": "Полированный — скользко."
+      },
+      "warranty": {
+        "termYears": 15,
+        "conditions": "Сертифицированный аппликатор + специалист по палладиане + полировка раз в 5-7 лет.",
+        "exclusions": "Кислоты, точечный удар тяжёлыми предметами.",
+        "note": "Premium-premium — 15 лет."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Архитектурные швы между больших площадями (≥10×10 м) — медь/латунь.",
+        "costAddIlsPerLm": 120,
+        "note": "Большие плиты требуют швов реже, чем мелкая terrazzo."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A1fl — цементный + каменный."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R10-R11."
+        },
+        "chemicalResistance": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Зависит от типа каменных плит. Базовый цемент — уязвим к кислотам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для пищевых производств с кислотной нагрузкой."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "15 лет на состав, 10 лет на отдельные плиты."
+        }
+      }
+    },
+    {
+      "id": "polished-concrete",
+      "slug": "polished-concrete-system",
+      "name": "Polished Concrete System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 35,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": null,
+        "substrateMaxMoisturePctCM": 6,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Полированный бетон — не покрытие, а механо-химическая обработка существующего бетона."
+      },
+      "potLife": {
+        "minutesAt20C": null,
+        "recoatMinHours": null,
+        "recoatMaxHours": null,
+        "lightTrafficHours": 24,
+        "fullCureDays": 28,
+        "note": "Не реакционная система — этапы шлифовки разными зернистостями + лит. наносится между."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C25/30",
+        "maxMoisturePctCM": 6,
+        "prepMethod": "Шлифовка крупным алмазом → литификация → шлифовка средним → литификация → шлифовка мелким → полировка.",
+        "note": "Существующий бетон должен быть высокого качества — иначе результат непредсказуем."
+      },
+      "slipClass": {
+        "din51130": "R9 (полированный) / R10 (матовый)",
+        "din51097": "A",
+        "optional": [
+          "Текстура алмазом увеличивает до R11"
+        ],
+        "note": "Полированный бетон — гладкий, скользкий во влажных зонах."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + регулярная литификация + защитный лак.",
+        "exclusions": "Удар, кислоты, нефтепродукты. Полированный бетон — пористая система без покрытия.",
+        "note": "Гарантия на полировку, не на сам бетон."
+      },
+      "jointTreatment": {
+        "required": false,
+        "methodRu": "Существующие швы основания сохраняются. Можно расшить + герметизировать.",
+        "costAddIlsPerLm": 20,
+        "note": "Естественные усадочные трещины часть эстетики."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A1fl — бетон негорючий."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9-R10. R11 опционально через текстурирование."
+        },
+        "chemicalResistance": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Полированный бетон уязвим к кислотам, нефтепродуктам, кофе. Защитный лак рекомендуется."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для прямого контакта с пищей без защитного лака."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ — литификаторы и лаки без растворителей."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет на полировку."
+        }
+      }
+    },
+    {
+      "id": "concrete-grind-sealer",
+      "slug": "concrete-grind-sealer-system",
+      "name": "Concrete Grinding + Sealer System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 35,
+        "humidityMaxPct": 85,
+        "dewPointMarginC": null,
+        "substrateMaxMoisturePctCM": 6,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Минимальная обработка: шлифовка крупным алмазом + проникающий силикатный лак."
+      },
+      "potLife": {
+        "minutesAt20C": null,
+        "recoatMinHours": 2,
+        "recoatMaxHours": 12,
+        "lightTrafficHours": 8,
+        "fullCureDays": 28,
+        "note": "ProSeal — реактивный силикат, реагирует с известью бетона за 28 дней."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1,
+        "minCompressiveClass": "C20/25",
+        "maxMoisturePctCM": 6,
+        "prepMethod": "Шлифовка алмазной чашкой #30-60 + обеспыливание + распыление лит. в 2 слоя.",
+        "note": "Бюджетная отделка существующего пола."
+      },
+      "slipClass": {
+        "din51130": "R9-R10",
+        "din51097": "A",
+        "optional": [],
+        "note": "Очень близко к естественному бетону."
+      },
+      "warranty": {
+        "termYears": 3,
+        "conditions": "Сертифицированный аппликатор + регулярная литификация.",
+        "exclusions": "Кислоты, нефтепродукты, удар.",
+        "note": "Бюджетная система — короткая гарантия."
+      },
+      "jointTreatment": {
+        "required": false,
+        "methodRu": "Существующие швы сохраняются.",
+        "costAddIlsPerLm": 15,
+        "note": "Никаких декоративных вмешательств."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A1fl."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9-R10."
+        },
+        "chemicalResistance": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Минимальная защита. Уязвим к кислотам и нефтепродуктам."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для пищевых производств."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "3 года."
+        }
+      }
+    },
+    {
+      "id": "crack-repair-epoxy",
+      "slug": "crack-repair-epoxy-coating",
+      "name": "Crack Repair + Epoxy Coating System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Структурный эпокси-клей для ремонта трещин. Sikadur 31 CF Normal."
+      },
+      "potLife": {
+        "minutesAt20C": 60,
+        "recoatMinHours": 12,
+        "recoatMaxHours": 48,
+        "lightTrafficHours": 8,
+        "fullCureDays": 7,
+        "note": "Pot life в зависимости от температуры и массы смешения. Sikadur 31 — тиксотропный."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1.5,
+        "minCompressiveClass": "C20/25",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Расшивка трещины V-образно + обеспыливание + грунт Sikadur 32.",
+        "note": "Точечный ремонт — не для покрытия всей площади."
+      },
+      "slipClass": {
+        "din51130": "N/A — линейный ремонт",
+        "din51097": "N/A",
+        "optional": [],
+        "note": "Не покрытие — система ремонта."
+      },
+      "warranty": {
+        "termYears": 5,
+        "conditions": "Сертифицированный аппликатор + контроль температуры при затвердевании.",
+        "exclusions": "Динамические трещины с подвижкой основания — требуется конструкционное решение.",
+        "note": "Гарантия только на конкретный ремонт, не на основание."
+      },
+      "jointTreatment": {
+        "required": false,
+        "methodRu": "Для активных деформационных швов — Sikaflex Pro-3 (не Sikadur).",
+        "costAddIlsPerLm": 30,
+        "note": "Sikadur — структурный клей, не герметик."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1 после отверждения."
+        },
+        "slipClass": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не покрытие — линейный ремонт. Slip class не применим."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Очень высокая. Структурный эпокси выдерживает большинство химических нагрузок после полимеризации."
+        },
+        "foodSafety": {
+          "status": "pending",
+          "source": null,
+          "lastVerified": null,
+          "note": "После полимеризации Sikadur 31 inert. Прямой контакт с пищей требует уточнения сертификата."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+ по AgBB."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "5 лет на конкретный ремонт."
+        }
+      }
+    },
+    {
+      "id": "old-tile-overlay",
+      "slug": "old-tile-overlay-system",
+      "name": "Old Tile Overlay System",
+      "p0Status": "filled",
+      "applicationConditions": {
+        "tempMinC": 10,
+        "tempMaxC": 30,
+        "humidityMaxPct": 80,
+        "dewPointMarginC": 3,
+        "substrateMaxMoisturePctCM": 4,
+        "storageTempMinC": 5,
+        "storageTempMaxC": 30,
+        "note": "Овелай-система на существующую плитку. Чувствительна к качеству сцепления плитки с основанием."
+      },
+      "potLife": {
+        "minutesAt20C": 30,
+        "recoatMinHours": 16,
+        "recoatMaxHours": 36,
+        "lightTrafficHours": 24,
+        "fullCureDays": 7,
+        "note": "SL Level выравнивает плиточный шов + эпокси топкоат."
+      },
+      "substrateRequirements": {
+        "minPullOffMpa": 1,
+        "minCompressiveClass": "N/A (плитка)",
+        "maxMoisturePctCM": 4,
+        "prepMethod": "Шлифовка плитки алмазной чашкой для матовости + адгезионный грунт Sika.",
+        "note": "Если плитка отслаивается — она будет отслаиваться и под покрытием. Тест адгезии обязателен."
+      },
+      "slipClass": {
+        "din51130": "R9-R10",
+        "din51097": "A",
+        "optional": [
+          "R11 с присадкой"
+        ],
+        "note": "Гладкий финиш."
+      },
+      "warranty": {
+        "termYears": 3,
+        "conditions": "Сертифицированный аппликатор + положительный тест адгезии плитки + регулярная очистка.",
+        "exclusions": "Отслоение базовой плитки от основания, кислоты, удар.",
+        "note": "Гарантия меньше из-за неопределённости состояния плитки."
+      },
+      "jointTreatment": {
+        "required": true,
+        "methodRu": "Швы плитки шириной >5 мм заполняются Sikafloor Level + анкерующая лента.",
+        "costAddIlsPerLm": 30,
+        "note": "Большие швы плитки могут вылезть через тонкое покрытие."
+      },
+      "claimVerification": {
+        "fireRating": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Bfl-s1."
+        },
+        "slipClass": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "R9-R10, R11 опционально."
+        },
+        "chemicalResistance": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "Средняя стойкость. Подходит для жилых и лёгких коммерческих."
+        },
+        "foodSafety": {
+          "status": "placeholder",
+          "source": null,
+          "lastVerified": null,
+          "note": "Не для пищевых производств."
+        },
+        "voc": {
+          "status": "verified",
+          "source": "Sika TDS (public, consolidated 2026-05-27)",
+          "lastVerified": "2026-05-27",
+          "note": "A+."
+        },
+        "warranty": {
+          "status": "verified",
+          "source": "Sika applicator warranty",
+          "lastVerified": "2026-05-27",
+          "note": "3 года."
+        }
+      }
+    }
+  ]
+}

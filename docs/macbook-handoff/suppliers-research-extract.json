@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "generated": "2026-05-27",
+  "suppliers": [
+    {
+      "id": "sika",
+      "slug": "sika",
+      "displayMode": "full",
+      "publicDisplayName": "Sika",
+      "name": "Sika AG",
+      "country": "CH",
+      "_research": null
+    },
+    {
+      "id": "mapei",
+      "slug": "supplier-candidate-1",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 1 — Decorative & Repair",
+      "name": "Mapei S.p.A. (internal — hidden publicly)",
+      "country": "IT",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "ilDistributor": {
+          "name": null,
+          "notes": "No exclusive IL importer for industrial/resin (Mapefloor / Ultratop) line found in public sources. Tile-grout resellers exist (Negev Group, Amrusi, Saadon), but not for the Loft / industrial range."
+        },
+        "heroProducts": [
+          {
+            "name": "Mapefloor I 300 SL",
+            "category": "industrial-epoxy-sl",
+            "tdsUrl": "https://cdnmedia.mapei.com/docs/librariesprovider29/products-documents/1_mapefloor-i-300-sl_tds_bg_39b886067a5948de81032b8dd2a75b07.pdf",
+            "notes": "Direct competitor to Sikafloor 263 SL."
+          },
+          {
+            "name": "Ultratop Loft F",
+            "category": "microtopping-floor",
+            "tdsUrl": "https://www.mapei.com/it/en/products-and-solutions/products/detail/ultratop-loft-f",
+            "notes": "Cementitious decorative microtopping — competes with Pandomo Loft / Sika ComfortFloor decorative."
+          },
+          {
+            "name": "Ultratop Loft W",
+            "category": "microtopping-walls",
+            "tdsUrl": "https://www.mapei.com/it/en/products-and-solutions/products/detail/ultratop-loft-w",
+            "notes": "Wall version of Loft F."
+          }
+        ],
+        "certifications": [
+          "CE EN 13813",
+          "CE EN 1504-2",
+          "EC1 Plus (per-product, verify)",
+          "ISO 9001/14001 group-level"
+        ],
+        "partnershipProgram": {
+          "found": false,
+          "notes": "No formal design-partner program surfaced. Country dealer model."
+        },
+        "sources": [
+          "https://www.mapei.com/",
+          "https://cdnmedia.mapei.com/docs/librariesprovider29/products-documents/1_mapefloor-i-300-sl_tds_bg_39b886067a5948de81032b8dd2a75b07.pdf"
+        ],
+        "gaps": [
+          "Official IL importer for industrial line unconfirmed",
+          "Per-product EC1 Plus / LEED status not verified"
+        ]
+      }
+    },
+    {
+      "id": "mc-bauchemie",
+      "slug": "supplier-candidate-2",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 2 — Industrial Epoxy/PU",
+      "name": "MC-Bauchemie (internal — hidden publicly)",
+      "country": "DE",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "ilDistributor": {
+          "name": "A.Z Marketing Ltd.",
+          "city": "Ramle, IL",
+          "phone": "+972-8-9150190",
+          "notes": "PO Box 1010, Ramle 72120. Listed on MC worldwide locations page. Scope (full MC-DUR range vs only repair mortars) needs direct confirmation."
+        },
+        "heroProducts": [
+          {
+            "name": "MC-DUR 1320 VK",
+            "category": "parking-epoxy",
+            "tdsUrl": "https://www.mc-bauchemie.com/assets/downloads/products/en/technical_datasheet/MC-DUR_1320_VK_DE_DE_EN_TDS.pdf",
+            "notes": "Transparent epoxy for car-parks/industrial. Competes with Sika car-park line."
+          },
+          {
+            "name": "MC-DUR PowerCoat",
+            "category": "heavy-duty-industrial",
+            "tdsUrl": "https://www.mc-bauchemie.com/products/floor-coatings/coatings/mc-dur-powercoat-cat.html",
+            "notes": "Heavy-duty industrial coating, chemical+mechanical to 120°C. Competes with Sikafloor PurCem in some scenarios."
+          },
+          {
+            "name": "MC-DUR TopSpeed SC",
+            "category": "fast-cure-primer",
+            "tdsUrl": "https://mcbifi-bauchemie.com/wp-content/uploads/2024/02/TDS_MC-DUR-TopSpeed-SC_EN-1.pdf",
+            "notes": "KineticBoost rapid-cure primer/coating — fast cure use case."
+          }
+        ],
+        "certifications": [
+          "CE EN 13813",
+          "CE EN 1504-2",
+          "AgBB low-emission",
+          "ISO 9001/14001 group-level"
+        ],
+        "partnershipProgram": {
+          "found": false,
+          "notes": "Country representation model."
+        },
+        "sources": [
+          "https://www.mc-bauchemie.com/",
+          "https://www.mc-bauchemie.co.il/",
+          "https://www.mc-bauchemie.com/worldwide/locations.html"
+        ],
+        "gaps": [
+          "A.Z Marketing scope unconfirmed (full MC-DUR range vs only repair)",
+          "MC-Floor TopSpeed product (PU) named in brief — only MC-DUR TopSpeed SC publicly found, naming may be outdated/regional"
+        ]
+      }
+    },
+    {
+      "id": "basf-master-builders",
+      "slug": "supplier-candidate-3",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 3 — Industrial Epoxy/PU",
+      "name": "Master Builders Solutions (internal — hidden publicly)",
+      "country": "DE",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "criticalNote": "⚠️ Sika acquired MBCC (Master Builders Construction Chemicals) in May 2023. MasterTop / MasterEmaco lines are being rebranded into Sika portfolio. Listing MBS as a Sika *alternative* is FACTUALLY OUTDATED and misleading.",
+        "recommendation": "Either remove this supplier OR replace with a true independent: suggested replacements — Remmers (DE), Flowcrete (PPG, US/EU), Bautech, Sherwin-Williams General Polymers. Owner decision required.",
+        "ilDistributor": {
+          "name": null,
+          "notes": "N/A — MBCC integration into Sika ongoing."
+        },
+        "heroProducts": [
+          {
+            "name": "MasterTop 1325 (being absorbed into Sika)",
+            "category": "industrial-pu-sl",
+            "tdsUrl": "https://www.petrolinetech.com/wp-content/uploads/2021/12/30-TDS-Mastertop-1325-AB.pdf"
+          },
+          {
+            "name": "MasterTop 1273 / 1273 ESD (being absorbed into Sika)",
+            "category": "industrial-epoxy-sl-esd",
+            "tdsUrl": "https://www.master-builders-solutions.com/en-ae/products/mastertop/mastertop-1273-as"
+          }
+        ],
+        "certifications": [
+          "CE EN 13813",
+          "CE EN 1504",
+          "TÜV Rheinland very-low-VOC (MasterTop 1273 ESD)",
+          "LEED contribution"
+        ],
+        "partnershipProgram": {
+          "found": "superseded",
+          "notes": "See https://gcc.sika.com/en/mbcc-product-integration.html"
+        },
+        "sources": [
+          "https://gcc.sika.com/en/mbcc-product-integration.html",
+          "https://www.sika.com/en/media/insights/sikanews/strong-platform-for-future-growth.html",
+          "https://en.wikipedia.org/wiki/Master_Builders_Solutions"
+        ],
+        "gaps": [
+          "Decision needed on whether to keep this supplier slot or replace with true independent (Remmers / Flowcrete / Bautech)"
+        ]
+      }
+    },
+    {
+      "id": "ardex-pandomo",
+      "slug": "supplier-candidate-4",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 4 — Decorative / Microtopping",
+      "name": "Ardex / Pandomo (internal — hidden publicly)",
+      "country": "DE",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "ilDistributor": {
+          "name": "Harel v'Idan – Hakol L'Binyan",
+          "city": "Holon, IL",
+          "phone": "058-403-5595",
+          "notes": "Hamerkava 33, Holon. Ardex Israel Facebook page lists Rosh Ha'Ayin presence. Scope of Pandomo decorative range vs Ardex tile-substrate products unconfirmed."
+        },
+        "heroProducts": [
+          {
+            "name": "Pandomo K2 / K2 Loft",
+            "category": "microtopping-floor-decorative",
+            "tdsUrl": "https://www.ardexamericas.com/wp-content/uploads/ARDEX-PANDOMO-K2-Technical-Data.pdf",
+            "notes": "Category benchmark for decorative microtopping."
+          },
+          {
+            "name": "Pandomo W1",
+            "category": "microtopping-walls",
+            "tdsUrl": "https://www.ardexamericas.com/wp-content/uploads/2018/05/ARDEX-PANDOMO-W1-Technical-Data.pdf",
+            "notes": "Wall companion to K2."
+          },
+          {
+            "name": "Pandomo Floor / Floor Plus",
+            "category": "polished-cementitious",
+            "tdsUrl": "https://www.ardex-pandomo.com/en_US/floor-floorplus/technik/technische-daten.html",
+            "notes": "Polished cementitious floor."
+          }
+        ],
+        "certifications": [
+          "EMICODE EC1 Plus (Pandomo K2)",
+          "CE EN 13813",
+          "Sustainability data sheet published"
+        ],
+        "partnershipProgram": {
+          "found": true,
+          "name": "Pandomo Certified Applicator / Lizenzpartner network",
+          "notes": "Training-licensed installers. Not confirmed for IL."
+        },
+        "sources": [
+          "https://www.ardex.com/",
+          "https://homreybinyan.co.il/collections/ardex",
+          "https://www.facebook.com/ARDEXIsrael/"
+        ],
+        "gaps": [
+          "Harel v'Idan scope (full Pandomo decorative range vs only tile-substrate Ardex) unconfirmed",
+          "No official Ardex IL subsidiary — IL served via importer"
+        ]
+      }
+    },
+    {
+      "id": "kerakoll",
+      "slug": "supplier-candidate-5",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 5 — Eco Decorative",
+      "name": "Kerakoll (internal — hidden publicly)",
+      "country": "IT",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "ilDistributor": {
+          "name": null,
+          "notes": "No IL importer or distributor found. Official contacts page and group-locations page list no Israel presence. No Hebrew-language reseller surfaced."
+        },
+        "heroProducts": [
+          {
+            "name": "Cementoresina (CR)",
+            "category": "eco-resin-floor",
+            "tdsUrl": "https://media.kerakoll.com/Sito_Web/techSheet/International/0_Design/Cementoresina%201_2024_en.pdf",
+            "notes": "2-component eco-resin floor coating, coloured-through. Competes with Sika ComfortFloor decorative."
+          },
+          {
+            "name": "Cementoresina Wall",
+            "category": "eco-resin-wall",
+            "tdsUrl": "https://media.kerakoll.com/Sito_Web/techSheet/International/0_Design/Cementoresina%20Wall%20CC_2024_en.pdf",
+            "notes": "Wall coordination. 3.5 mm troweled cement-resin."
+          },
+          {
+            "name": "Wallcrete",
+            "category": "wet-room-wall",
+            "tdsUrl": "https://int.kerakoll.com/p/wallcrete",
+            "notes": "Water-based resin for wet rooms (kitchens/baths)."
+          }
+        ],
+        "certifications": [
+          "GreenBuilding Rating + EPDs",
+          "CE EN 13813",
+          "EMICODE EC1 Plus / GEV-EMICODE (per-product)",
+          "B-Corp group level"
+        ],
+        "partnershipProgram": {
+          "found": true,
+          "name": "Kerakoll Design House applicator-certification + showroom-partner network",
+          "notes": "Italy/EU-focused. Not confirmed for IL."
+        },
+        "sources": [
+          "https://int.kerakoll.com/contacts",
+          "https://www.kerakollgroup.com/en/locations",
+          "https://kerakolldesignhouse.com/en/materials/"
+        ],
+        "gaps": [
+          "IL importer / boutique stocking Cementoresina not verifiable publicly",
+          "Direct-import-from-Italy possible but unconfirmed"
+        ]
+      }
+    },
+    {
+      "id": "stocretec",
+      "slug": "supplier-candidate-6",
+      "displayMode": "candidate-placeholder",
+      "publicDisplayName": "Supplier Candidate 6 — Concrete Protection / Industrial",
+      "name": "StoCretec (internal — hidden publicly)",
+      "country": "DE",
+      "_research": {
+        "researchedDate": "2026-05-27",
+        "ilDistributor": {
+          "name": null,
+          "notes": "No IL representative surfaced publicly. Sto's country dropdown lists Israel but no named representative. sto.co.il is unrelated. No Tambour-Sto licensing confirmed."
+        },
+        "heroProducts": [
+          {
+            "name": "StoPox WL 100",
+            "category": "industrial-water-based-epoxy",
+            "tdsUrl": "https://www.stocretec.de/webdocs/0000/SDB/techdoc_out_renamed/TechnicalDataSheet_StoPox_WL_100_0101_EN_00_00.PDF",
+            "notes": "2-component water-based epoxy, low-emission."
+          },
+          {
+            "name": "StoPox KU 601",
+            "category": "industrial-epoxy-sealer",
+            "tdsUrl": "https://stocretec.no/wp-content/uploads/2020/02/StoPox-KU-601_TDS_en.pdf",
+            "notes": "2-component epoxy floor sealer."
+          },
+          {
+            "name": "StoPox WHG Deck 100",
+            "category": "chemical-containment-sl",
+            "tdsUrl": "https://www.sto-sea.com/media/documents/download_broschuere_1/01__floor_coating/03__self_levelling/StoPox_WHG_Deck_100_TD_SE_1911_RV_03.00.pdf",
+            "notes": "Self-levelling, water-pollutant containment certified."
+          }
+        ],
+        "certifications": [
+          "AgBB-compliance",
+          "GISCODE",
+          "CE EN 13813",
+          "CE EN 1504-2",
+          "WHG (German water pollution control)",
+          "Sustainability Data Sheets"
+        ],
+        "partnershipProgram": {
+          "found": true,
+          "name": "Sto Verarbeiter certified-applicator program",
+          "notes": "DE/EU. Not confirmed for IL."
+        },
+        "sources": [
+          "https://www.sto.com/",
+          "https://www.sto.com/en/sto-in-your-country.html",
+          "https://www.stocretec.de/"
+        ],
+        "gaps": [
+          "No IL importer publicly visible",
+          "Project-by-project import via specifying contractor is the likely channel"
+        ]
+      }
+    }
+  ]
+}

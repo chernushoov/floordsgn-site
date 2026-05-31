@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "generated": "2026-05-27",
+  "source": "200-user simulation (10 role groups) + hostile expert review consolidation",
+  "avatars": [
+    {
+      "id": "designer-maya",
+      "slug": "interior-designer",
+      "role": "interior-designer",
+      "displayNameRu": "Майя — дизайнер интерьеров",
+      "displayNameEn": "Maya — Interior Designer",
+      "iconKey": "designer",
+      "share": 0.20,
+      "demographics": {
+        "ageRange": "30–45",
+        "location": "Тель-Авив / Герцлия / Рамат-Ган",
+        "income": "средний+",
+        "experienceYears": "8+",
+        "businessModel": "Частная практика / небольшая студия 2–5 проектов одновременно"
+      },
+      "context": {
+        "typicalProject": "Квартира 90–180 м² премиум-сегмент, бутик-офис до 250 м², ресторанный концепт",
+        "stakeholders": ["Заказчик", "Архитектор/Конструктор", "Подрядчик", "Поставщик материалов"],
+        "decisionAuthority": "Влияет на выбор материала, конечное решение за заказчиком",
+        "budgetSensitivity": "medium",
+        "timelinePressure": "medium"
+      },
+      "goals": [
+        "Найти декоративное бесшовное покрытие с фотогенной фактурой",
+        "Получить готовые цветовые/декоративные пресеты для презентации клиенту",
+        "Заказать образцы (sample kit) для встречи с клиентом",
+        "Сравнить варианты по бюджету и сроку без долгих переговоров с подрядчиком"
+      ],
+      "painPoints": [
+        "Стоковые рендеры выглядят неубедительно — клиент не верит",
+        "Подрядчики говорят 'примерно столько' без сметы — заказчик нервничает",
+        "Боится подписать спецификацию, которая потом провалится по техническим причинам",
+        "Не понимает разницу между микротопингом и эпокси-террацо"
+      ],
+      "decisionCriteria": [
+        "Качество визуала (3D + реальные фото проектов)",
+        "Наличие цветовой палитры и декоративных опций",
+        "Сроки и downtime",
+        "Возможность получить sample kit",
+        "Гарантия подрядчика"
+      ],
+      "journey": {
+        "entry": "Приходит через Instagram / Pinterest / коллегу",
+        "first5Seconds": "Смотрит на hero-визуал. Если убедительно — остаётся. Если конструкторский интерфейс — уходит",
+        "explore": "Открывает Микротопинг → смотрит фото проектов → переключает цвет → читает 'не рекомендуется' → переходит на Террацо",
+        "decide": "Сравнивает 2–3 системы по визуалу + цене + downtime, выбирает фаворита",
+        "convert": "Запрашивает sample kit + PDF spec для клиента"
+      },
+      "trustTriggers": [
+        "Реальные фото завершённых проектов (не рендеры)",
+        "Кейсы коллег с похожим стилем",
+        "Прозрачные сроки и downtime",
+        "Указание материалов с TDS"
+      ],
+      "objections": [
+        "А если клиент захочет другой цвет — это возможно?",
+        "Кто даёт гарантию — подрядчик или производитель?",
+        "Что если будут трещины через год?",
+        "Можно ли заказать образец 30×30 см?"
+      ],
+      "platformBehaviorRules": [
+        "При входе по avatar=designer — показать декоративные системы сверху (микротопинг, террацо, polished concrete)",
+        "Hero-image крупно, технические таблицы скрыть под аккордеон",
+        "CTA: 'Заказать sample kit' первым, 'WhatsApp подрядчику' вторым",
+        "Скрыть индустриальные системы в фильтре по умолчанию"
+      ],
+      "kpis": ["sample-kit-request", "pdf-download", "whatsapp-click"],
+      "linkedSystems": ["microtopping-floor", "microtopping-walls", "epoxy-terrazzo", "cement-terrazzo", "palladiana-terrazzo", "polished-concrete"]
+    },
+    {
+      "id": "architect-daniel",
+      "slug": "architect",
+      "role": "architect",
+      "displayNameRu": "Даниэль — архитектор",
+      "displayNameEn": "Daniel — Architect",
+      "iconKey": "architect",
+      "share": 0.15,
+      "demographics": {
+        "ageRange": "35–55",
+        "location": "Тель-Авив / Хайфа",
+        "income": "высокий",
+        "experienceYears": "12+",
+        "businessModel": "Архитектурное бюро 5–30 человек, объекты 500 м² – 10 000 м²"
+      },
+      "context": {
+        "typicalProject": "Коммерческий объект, ресторан, шоурум, офис, инфраструктура",
+        "stakeholders": ["Заказчик-инвестор", "Конструктор", "ГИП", "Подрядчик", "Производитель"],
+        "decisionAuthority": "Прописывает в спецификацию — подрядчик обязан выполнить",
+        "budgetSensitivity": "low-medium",
+        "timelinePressure": "high"
+      },
+      "goals": [
+        "Прописать конкретную систему в проектной документации",
+        "Получить TDS + SDS + сертификаты для архитектурного раздела",
+        "Убедиться, что подрядчик не сможет 'упростить' решение",
+        "Получить spec/PDF в брендированном формате"
+      ],
+      "painPoints": [
+        "Поставщики говорят красиво на сайте, а TDS не дают",
+        "Подрядчики 'упрощают' решение и теряется гарантия",
+        "Нет открытой информации по влажностным/температурным лимитам",
+        "Нужно знать про швы, но в маркетинговых материалах их нет"
+      ],
+      "decisionCriteria": [
+        "Полный набор документов (TDS, SDS, сертификаты)",
+        "Прозрачные substrate requirements + moisture limits",
+        "Слоистая структура с указанием толщин и материалов",
+        "Информация о деформационных швах",
+        "Реальные проекты с похожими нагрузками"
+      ],
+      "journey": {
+        "entry": "Приходит через поиск 'эпокси пол спецификация', LinkedIn или коллегу",
+        "first5Seconds": "Сканирует наличие технических данных — если placeholder/'lorem' — закрывает",
+        "explore": "Открывает систему → ищет TDS → проверяет moisture % → читает joints → пробует скачать PDF",
+        "decide": "Сравнивает гарантии + сертификаты + ссылки на стандарты",
+        "convert": "Скачивает PDF spec, добавляет в проектную документацию, контакт поставщика"
+      },
+      "trustTriggers": [
+        "Verified TDS PDF с реальной датой публикации",
+        "Указание стандартов (EN 13813, EN 1504-2, DIN 51130)",
+        "Pull-off strength + moisture limits + температурные диапазоны",
+        "Прозрачная схема ответственности (production / installation / warranty)"
+      ],
+      "objections": [
+        "Где TDS?",
+        "Какая прочность сцепления с основанием?",
+        "Что с деформационными швами?",
+        "Есть сертификат огнестойкости с номером?",
+        "Этот placeholder когда станет verified?"
+      ],
+      "platformBehaviorRules": [
+        "Технические данные на видном месте, не за аккордеоном",
+        "Verification badge на каждое утверждение (verified / pending / placeholder)",
+        "Кнопка 'Скачать TDS' — если PDF нет, явно сказать 'TDS pending, request from supplier'",
+        "Показать стандарты (EN/DIN/ISO) рядом с показателями",
+        "PDF spec — brand-clean, печатно-готовый формат"
+      ],
+      "kpis": ["pdf-download", "tds-download", "spec-generated", "supplier-contact"],
+      "linkedSystems": ["pu-cement-kitchen-6-9", "pu-cement-heavy-9-12", "heavy-duty-epoxy-4-6", "quartz-broadcast-epoxy", "antistatic-epoxy"]
+    },
+    {
+      "id": "restaurant-owner-yael",
+      "slug": "restaurant-owner",
+      "role": "restaurant-owner",
+      "displayNameRu": "Яэль — владелец ресторана",
+      "displayNameEn": "Yael — Restaurant / Café Owner",
+      "iconKey": "restaurant",
+      "share": 0.125,
+      "demographics": {
+        "ageRange": "32–55",
+        "location": "Тель-Авив / Иерусалим / Эйлат",
+        "income": "средний-высокий",
+        "experienceYears": "3+",
+        "businessModel": "1–5 точек, F&B"
+      },
+      "context": {
+        "typicalProject": "Кухня 30–80 м² + зал 80–250 м²",
+        "stakeholders": ["Партнёр/инвестор", "Шеф-повар", "Подрядчик", "Минздрав"],
+        "decisionAuthority": "Полная — деньги его",
+        "budgetSensitivity": "high",
+        "timelinePressure": "very_high"
+      },
+      "goals": [
+        "Найти противоскользящий пол для кухни, который пройдёт инспекцию Минздрава",
+        "Минимизировать downtime — каждый закрытый день = 8 000–25 000 ₪",
+        "Не платить дважды (плохой подрядчик → переделка через год)",
+        "Гарантия на 2–5 лет письменно"
+      ],
+      "painPoints": [
+        "Уже горели на 'дешёвом эпокси' — пузыри через 3 месяца",
+        "Не понимает разницу между PU-Cement и эпокси",
+        "Боится что после ремонта Минздрав не примет",
+        "Не хочет читать TDS — хочет 'просто работающее решение'"
+      ],
+      "decisionCriteria": [
+        "Anti-slip класс (R11/R12)",
+        "Сертификат food-safe / HACCP",
+        "Downtime в днях",
+        "Гарантия",
+        "Цена за м²"
+      ],
+      "journey": {
+        "entry": "Приходит через коллегу-ресторатора или Google 'пол для кухни ресторана'",
+        "first5Seconds": "Смотрит: подходит ли для кухни. Если непонятно — уходит",
+        "explore": "Открывает 'Pуководство по кухне' → читает downtime → смотрит цену",
+        "decide": "Сравнивает 2 системы: PU-Cement vs Quartz Broadcast. Хочет 'быстрее и дешевле'",
+        "convert": "WhatsApp с вопросом — 'сколько и когда?'"
+      },
+      "trustTriggers": [
+        "Кейсы других ресторанов",
+        "R11/R12 + DIN 51130 явно указан",
+        "Указание HACCP / food-safe сертификата",
+        "Чёткий downtime ('кухня закрыта 5 дней')",
+        "Гарантия 2–5 лет письменно"
+      ],
+      "objections": [
+        "А микротопинг не подойдёт?",
+        "Сколько дней кухня будет закрыта?",
+        "Если через год пойдут трещины — кто платит?",
+        "Можно ночью класть?",
+        "Минздрав примет?"
+      ],
+      "platformBehaviorRules": [
+        "ЯВНО показать 'Microtopping NOT for kitchens' — с объяснением (hygiene + slip)",
+        "Hero: PU-Cement Kitchen + MMA Fast Repair наверх",
+        "Скрыть индустриальные системы (heavy duty quartz) если не выбрана опция 'тяжёлое оборудование'",
+        "Калькулятор downtime на видном месте",
+        "CTA WhatsApp с автотекстом 'для кухни ресторана'"
+      ],
+      "kpis": ["whatsapp-click", "calculator-completed", "sample-kit-request"],
+      "linkedSystems": ["pu-cement-kitchen-6-9", "pu-cement-heavy-9-12", "mma-fast-kitchen-2-4", "anti-slip-wet-area"]
+    },
+    {
+      "id": "warehouse-manager-igor",
+      "slug": "warehouse-manager",
+      "role": "warehouse-manager",
+      "displayNameRu": "Игорь — управляющий складом",
+      "displayNameEn": "Igor — Warehouse / Factory Manager",
+      "iconKey": "warehouse",
+      "share": 0.125,
+      "demographics": {
+        "ageRange": "35–60",
+        "location": "Ашдод / Хайфа / Реховот / Лод",
+        "income": "средний",
+        "experienceYears": "10+",
+        "businessModel": "Логистика / дистрибуция / лёгкое производство, объекты 500–10 000 м²"
+      },
+      "context": {
+        "typicalProject": "Склад 1000–8000 м² с погрузчиками 1.5–5 т, стеллажные системы, температурные зоны",
+        "stakeholders": ["Собственник", "CFO", "HSE", "Главный инженер", "Подрядчик"],
+        "decisionAuthority": "Готовит рекомендацию + смету, собственник утверждает",
+        "budgetSensitivity": "very_high",
+        "timelinePressure": "medium"
+      },
+      "goals": [
+        "Заменить разрушенный пол на новый, выдерживающий 5+ лет нагрузки",
+        "Получить смету с разбивкой материалы + работа + подготовка основания",
+        "Минимизировать остановку склада (ночные/выходные работы)",
+        "Получить пол с разметкой и нанесением номеров"
+      ],
+      "painPoints": [
+        "Цены 'от и до' без понимания что входит",
+        "Подрядчик через год обвиняет в 'плохом основании'",
+        "Нет понимания, выдержит ли система ричтрак 3 т",
+        "Не понятно, нужно ли удалять старый эпокси"
+      ],
+      "decisionCriteria": [
+        "Цена за м² материал + работа",
+        "Толщина и нагрузочная способность",
+        "Срок укладки",
+        "Возможность работы по этапам/ночам",
+        "Гарантия + кейсы похожих объектов"
+      ],
+      "journey": {
+        "entry": "B2B-запрос, Google 'промышленный пол склад'",
+        "first5Seconds": "Смотрит: цена и нагрузка указаны? Если нет — закрывает",
+        "explore": "Heavy Duty Epoxy → Quartz Broadcast → PU-Cement Heavy → сравнивает по цене и сроку",
+        "decide": "Делает Excel с 3 вариантами, шлёт собственнику",
+        "convert": "Запрашивает выезд инженера + смету"
+      },
+      "trustTriggers": [
+        "Цена с разбивкой материал/работа/подготовка",
+        "Указание нагрузочной способности (кг/см², тип погрузчика)",
+        "Кейсы складов аналогичной площади",
+        "График работ с этапами",
+        "Гарантия от подрядчика + от производителя"
+      ],
+      "objections": [
+        "Старый эпокси удалять? Сколько ещё это будет стоить?",
+        "Ричтрак 3 т выдержит?",
+        "Можно ли по ночам класть?",
+        "Что с деформационными швами?",
+        "Гарантия на сколько лет реально?"
+      ],
+      "platformBehaviorRules": [
+        "Калькулятор: 'площадь + нагрузка + старый пол да/нет + ночные работы да/нет' → смета-вилка",
+        "Сравнительная таблица 3 систем по умолчанию",
+        "Hero: Heavy Duty Epoxy + Quartz Broadcast + PU-Cement Heavy",
+        "Joints info — обязательно видно",
+        "CTA: 'Запросить выезд инженера'"
+      ],
+      "kpis": ["calculator-completed", "engineer-visit-request", "pdf-download"],
+      "linkedSystems": ["heavy-duty-epoxy-4-6", "quartz-broadcast-epoxy", "pu-cement-heavy-9-12", "epoxy-self-leveling-2-3", "antistatic-epoxy", "crack-repair-epoxy"]
+    },
+    {
+      "id": "private-client-anna",
+      "slug": "private-client",
+      "role": "private-client",
+      "displayNameRu": "Анна — частный клиент / вилла",
+      "displayNameEn": "Anna — Private / Villa Client",
+      "iconKey": "home",
+      "share": 0.05,
+      "demographics": {
+        "ageRange": "35–60",
+        "location": "Кейсария / Герцлия Питуах / Савьон / Раанана",
+        "income": "высокий",
+        "experienceYears": "—",
+        "businessModel": "Собственный дом 200–600 м², 1–3 проекта в жизни"
+      },
+      "context": {
+        "typicalProject": "Дом 250–500 м² + парковка + терраса",
+        "stakeholders": ["Супруг(а)", "Архитектор", "Дизайнер", "Подрядчик"],
+        "decisionAuthority": "Совместно с супругом, дизайнер влияет сильно",
+        "budgetSensitivity": "low-medium",
+        "timelinePressure": "low"
+      },
+      "goals": [
+        "Бесшовный пол в гостиной/кухне (микротопинг или террацо)",
+        "Понять стоимость на 200–400 м² с подготовкой",
+        "Найти проверенного подрядчика",
+        "Получить визуализацию в выбранном цвете"
+      ],
+      "painPoints": [
+        "Тонет в технических терминах",
+        "Боится что 'через год пойдут трещины'",
+        "Не понимает, кому верить — дизайнеру или подрядчику",
+        "Не хочет звонить и общаться — хочет всё посмотреть на сайте"
+      ],
+      "decisionCriteria": [
+        "Визуал (цвета, текстуры)",
+        "Цена в диапазоне",
+        "Кейсы похожих домов",
+        "Простота ухода",
+        "Доверие к подрядчику"
+      ],
+      "journey": {
+        "entry": "Pinterest → Houzz → Google 'микротопинг дом'",
+        "first5Seconds": "Если красиво и понятно — остаётся, если 'индустриально' — уходит",
+        "explore": "Смотрит микротопинг → переключает цвет → читает уход → смотрит цену",
+        "decide": "Откладывает в закладки, обсуждает с супругом",
+        "convert": "Запрашивает консультацию + sample kit"
+      },
+      "trustTriggers": [
+        "Реальные фото частных домов",
+        "Простой язык + минимум жаргона",
+        "Чёткая цена-вилка с пояснением",
+        "Доступная гарантия от подрядчика"
+      ],
+      "objections": [
+        "С детьми/собакой можно?",
+        "Что с трещинами?",
+        "Как мыть?",
+        "Сколько по времени всё это?",
+        "Можно ли частично — только в гостиной?"
+      ],
+      "platformBehaviorRules": [
+        "Жилой режим: убрать индустриальную лексику",
+        "Hero: микротопинг + террацо + полированный бетон",
+        "Калькулятор для жилого: площадь + комнаты + цвет → визуал + смета",
+        "Раздел 'Уход и эксплуатация' на видном месте",
+        "CTA: 'Заказать консультацию' или 'WhatsApp'"
+      ],
+      "kpis": ["whatsapp-click", "sample-kit-request", "consultation-request"],
+      "linkedSystems": ["microtopping-floor", "microtopping-walls", "epoxy-terrazzo", "polished-concrete", "concrete-grind-sealer"]
+    }
+  ],
+  "secondaryAvatars": [
+    {
+      "id": "supplier",
+      "slug": "supplier",
+      "role": "supplier",
+      "displayNameRu": "Поставщик",
+      "displayNameEn": "Supplier",
+      "share": 0.075,
+      "platformBehaviorRules": [
+        "Отдельный лендинг /suppliers/partner.html с value proposition",
+        "Прозрачные условия партнёрства (basic / featured / preferred)",
+        "Чёткое уважение IP — все ваши данные помечаются как ваши",
+        "Брендинг только с письменного разрешения"
+      ]
+    },
+    {
+      "id": "contractor",
+      "slug": "contractor",
+      "role": "contractor",
+      "displayNameRu": "Подрядчик / Аппликатор",
+      "displayNameEn": "Contractor / Applicator",
+      "share": 0.075,
+      "platformBehaviorRules": [
+        "Лендинг /contractors/partner.html",
+        "Доступ к спецификациям + лиды от заказчиков",
+        "Кейсы для своих клиентов"
+      ]
+    },
+    {
+      "id": "engineer-pm",
+      "slug": "engineer-pm",
+      "role": "engineer-project-manager",
+      "displayNameRu": "Инженер / Project Manager",
+      "displayNameEn": "Engineer / Project Manager",
+      "share": 0.10,
+      "platformBehaviorRules": [
+        "Профессиональный режим — все технические данные открыты сразу",
+        "Доступ к moisture/joints/temperature limits",
+        "Сравнительная таблица систем"
+      ]
+    },
+    {
+      "id": "developer-asset",
+      "slug": "developer-asset",
+      "role": "developer-asset-manager",
+      "displayNameRu": "Девелопер / Управление активами",
+      "displayNameEn": "Developer / Asset Manager",
+      "share": 0.05,
+      "platformBehaviorRules": [
+        "Multi-object калькулятор (P1)",
+        "Maintenance roadmap",
+        "Стандартизация: одна система на весь портфель"
+      ]
+    },
+    {
+      "id": "safety-officer",
+      "slug": "safety-officer",
+      "role": "safety-officer",
+      "displayNameRu": "Специалист по безопасности",
+      "displayNameEn": "Safety / Fire / Operations Officer",
+      "share": 0.05,
+      "platformBehaviorRules": [
+        "Compliance-панель с сертификатами",
+        "Slip rating + fire rating + hygiene level — на видном месте",
+        "Линки на исходные стандарты (EN/DIN/ISO)"
+      ]
+    }
+  ]
+}
