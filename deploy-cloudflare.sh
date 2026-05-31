@@ -35,20 +35,19 @@ fi
 echo "[1/4] build (npm run build -> dist/)"
 npm run build
 
-# 3) strip unreviewed Hebrew + dev files from the artifact (source tree untouched)
-echo "[2/4] strip unreviewed Hebrew /he/ + dev files from dist"
-rm -rf dist/articles/he dist/he.css
+# 3) clean only dev files (Hebrew /he/ is now SHIPPED — live for native-speaker review)
+echo "[2/4] clean dev files from dist (keeping Hebrew /he/ + he.css + HE buttons live)"
 find dist -maxdepth 1 -name '*.md' -delete 2>/dev/null || true
-node -e 'const fs=require("fs"),p=require("path");let n=0;(function w(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const f=p.join(d,e.name);if(e.isDirectory())w(f);else if(e.name.endsWith(".html")){let s=fs.readFileSync(f,"utf8"),b=s;s=s.replace(/<button[^>]*data-lang=["\x27]he["\x27][^>]*>[^<]*<\/button>/gi,"");if(s!==b){fs.writeFileSync(f,s);n++;}}}})("dist");console.log("   HE buttons stripped from",n,"files")'
 find dist -name '*.sh' -delete 2>/dev/null || true
 find dist -maxdepth 1 \( -name '.env*' -o -name '*.log' -o -name 'netlify.toml' \) -delete 2>/dev/null || true
 rm -rf dist/netlify 2>/dev/null || true
 
 # 4) verify
 echo "[3/4] verify"
-if [ -d dist/articles/he ] || [ -f dist/he.css ]; then echo "   !! Hebrew still in dist — ABORT"; exit 2; fi
+if [ ! -d dist/articles/he ] || [ ! -f dist/he.css ]; then echo "   !! Hebrew MISSING from dist — ABORT"; exit 2; fi
+HE=$(find dist/articles/he -name '*.html' | wc -l | tr -d ' ')
 PAGES=$(find dist -name '*.html' | wc -l | tr -d ' ')
-echo "   ok: no /he/ surface; html pages: $PAGES"
+echo "   ok: Hebrew present ($HE he pages); total html pages: $PAGES"
 if grep -rIlE 'sk-ant-[A-Za-z0-9_-]{20,}|-----BEGIN (RSA|OPENSSH|EC) PRIVATE KEY-----' dist >/dev/null 2>&1; then
   echo "   !! secret-like string in dist — ABORT"; exit 3
 fi
