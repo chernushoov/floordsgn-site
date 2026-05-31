@@ -3786,3 +3786,15 @@ function initLanguage() {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', initLanguage);
+
+// Page-level Hebrew (/he/) switcher: loaded on every page that has translations.js.
+// It rewires the .lang-btn buttons to navigate to the parallel /he/ page (see lang-switch.js).
+// (he/ pages also include lang-switch.js directly; the guard prevents a double-load.)
+(function () {
+    if (!document.querySelector('script[src*="lang-switch.js"]')) {
+        var s = document.createElement('script');
+        s.src = '/lang-switch.js';
+        s.defer = true;
+        (document.head || document.documentElement).appendChild(s);
+    }
+})();

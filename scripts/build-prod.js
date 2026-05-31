@@ -13,7 +13,7 @@ const DIST = path.join(ROOT, 'dist');
 
 const ASSET_DIRS = [
   'images', 'fonts', 'css', 'js', '3d-assets', '3d-assets-cfg', 'articles',
-  'encyclopedia', 'en', 'floors', 'verticals', 'content',
+  'he', 'encyclopedia', 'en', 'floors', 'verticals', 'content',
   'materials', 'specs', 'plate3d', 'public', 'assets'
 ];
 
@@ -211,6 +211,30 @@ async function walkDir(srcDir, dstDir) {
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, path.join(DIST, f));
     }
+  }
+
+  // 3b. Generate /he-manifest.json — keys of every Hebrew-mirror page (path under /he/, no .html).
+  //     lang-switch.js reads this to point the HE button at the exact twin (or /he/ home if absent).
+  try {
+    const heRoot = path.join(DIST, 'he');
+    const keys = [];
+    if (fs.existsSync(heRoot)) {
+      (function scan(dir) {
+        for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+          const f = path.join(dir, e.name);
+          if (e.isDirectory()) { scan(f); continue; }
+          if (!e.name.endsWith('.html')) continue;
+          let rel = path.relative(heRoot, f).replace(/\\/g, '/').replace(/\.html$/, '');
+          rel = rel.replace(/\/index$/, '');     // dir index -> dir
+          if (rel === 'index') rel = '';         // /he/ home
+          keys.push(rel);
+        }
+      })(heRoot);
+    }
+    fs.writeFileSync(path.join(DIST, 'he-manifest.json'), JSON.stringify(keys));
+    console.log(`[build-prod] he-manifest.json — ${keys.length} Hebrew pages`);
+  } catch (e) {
+    console.warn('[build-prod] he-manifest gen failed:', e.message);
   }
 
   console.log(`[build-prod] done — ${htmlCount} html, ${assetCount} root assets → dist/`);
