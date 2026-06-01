@@ -65,3 +65,4 @@ assets/real-portfolio/
 # Raw HTML caches and downloaded TDS PDFs stay local — they are third-party copyrighted material.
 data/brands/*/_raw_*.html
 data/brands/*/tds/
+3d-assets/textures-v4-orig/
