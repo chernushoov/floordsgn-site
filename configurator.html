@@ -149,9 +149,10 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matprev.show{opacity:1}
 
 @media (max-width:1100px){
-  .grid{grid-template-columns:1fr;gap:24px}
+  .grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .grid > *{min-width:0}
   .head{grid-template-columns:1fr;gap:24px}
-  .stage{min-height:520px;order:1}
+  .stage{min-height:520px;order:1;min-width:0;max-width:100%}
 
   /* Left rail → horizontal chip strip */
   .matlist{order:2;border-top:1px solid var(--line);padding-top:14px}
@@ -178,6 +179,13 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
   .stage{min-height:380px}
   .s-tl,.s-tr,.s-bl{font-size:9px;letter-spacing:.16em}
   .s-tr .ttl{font-size:13px}
+  /* declutter HUD on narrow screens: drop decorative/label chips, keep material name + view buttons */
+  .s-tl,.s-bl{display:none}
+  .s-tr{max-width:56%}
+  /* eyebrow: stack cleanly, drop the dev FPS/version row (cfg-mobile etalon) */
+  .eyebrow{flex-wrap:wrap;gap:6px 14px;margin-bottom:32px}
+  .eyebrow .l{gap:10px;flex-wrap:wrap}
+  .eyebrow .r{display:none}
 }
 </style>
 
