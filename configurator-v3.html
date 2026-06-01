@@ -1142,25 +1142,30 @@ function selectMaterial(slug) {
   if (!def || !topcoatMesh) return;
   activeSlug = slug;
 
-  /* PHOTO MODE: material has real photo textures on body + transparent gloss topcoat.
-     The chip pattern reads from the body diffuse map instead of the procedural Voronoi. */
   const photoMode = !!(def.body_textures && def.topcoat_glass);
 
-  let newMat;
-  if (photoMode) {
-    newMat = buildGlassTopcoatMaterial();
-  } else {
-    newMat = buildPbrMaterial(def);
-  }
-  const oldMat = topcoatMesh.material;
+  /* TOPCOAT IS A CLEAR SEALER (lacquer) — it NEVER carries the chip pattern, colour or
+     design photo. The visible floor surface lives on the BODY slab beneath it; the
+     topcoat only contributes the sealed gloss/reflection. This matches a real system:
+     you look at the floor *through* a thin transparent sealer, not at a printed top film. */
+  const glossInit = (def.clearcoat && def.clearcoat.roughness != null) ? def.clearcoat.roughness : 0.08;
+  const oldTc = topcoatMesh.material;
+  topcoatMesh.material = buildGlassTopcoatMaterial(glossInit);
+  if (oldTc && oldTc !== topcoatMesh.material && oldTc.dispose) setTimeout(() => oldTc.dispose(), 600);
 
+  // Surface material (texture / colour / chips) → BODY slab. The body is matte/raw —
+  // gloss is owned by the topcoat sealer above, so strip any clearcoat off the body.
+  const newMat = buildPbrMaterial(def);
+  if (newMat.isMeshPhysicalMaterial) newMat.clearcoat = 0;
+  const oldMat = bodyMesh ? bodyMesh.material : null;
   const fromColor = oldMat && oldMat.color ? oldMat.color.clone() : new THREE.Color('#ffffff');
-  const fromRough = oldMat ? oldMat.roughness : 0.8;
-  topcoatMesh.material = newMat;
+  const fromRough = oldMat && oldMat.roughness != null ? oldMat.roughness : 0.8;
+  if (bodyMesh) bodyMesh.material = newMat;
   const targetColor = newMat.color.clone();
   const targetRough = newMat.roughness;
+  // Crossfade the body between the old and new surface look (procedural materials only;
+  // a photo body is replaced outright below).
   if (!photoMode) {
-    // Crossfade only when both old and new materials are opaque standards.
     newMat.color.copy(fromColor);
     newMat.roughness = fromRough;
     transition.active = true;
@@ -1185,26 +1190,14 @@ function selectMaterial(slug) {
   renderBuildup(def);
   renderCallouts(def);
 
-  // Body slab: in photo mode load real diffuse; otherwise tint towards topcoat colour.
-  if (bodyMesh) {
+  // Body slab in PHOTO MODE uses the real photograph. In procedural mode the body keeps the
+  // buildPbrMaterial base set above and receives the chip/aggregate texture from
+  // refreshCompositeMap() below — so the surface AND the cut cross-section share one map.
+  if (bodyMesh && photoMode) {
     const oldBodyMat = bodyMesh.material;
-    if (photoMode) {
-      const variant = def.body_default || Object.keys(def.body_textures)[0];
-      const photoMat = buildBodyPhotoMaterial(def, variant);
-      if (photoMat) bodyMesh.material = photoMat;
-    } else if (def.procedural) {
-      // The slab SIDE is the body's cross-section — map the same aggregate texture onto it so
-      // the cut edge shows real chips (not one flat colour). Box-UVs on the GLB body do the rest.
-      const bm = new THREE.MeshStandardMaterial({ name: 'body', roughness: 0.82, metalness: 0 });
-      if (def.pbr && def.pbr.diffuse) {
-        const tile = def.tile || 1;
-        const dm = loadTex(def.pbr.diffuse, { srgb: true }); dm.repeat.set(tile, tile); bm.map = dm;
-        if (def.pbr.normal) { const nm = loadTex(def.pbr.normal); nm.repeat.set(tile, tile); bm.normalMap = nm; bm.normalScale = new THREE.Vector2(0.6, 0.6); }
-      } else {
-        const bodyColor = new THREE.Color(def.procedural.color); bodyColor.lerp(new THREE.Color('#9c9484'), 0.45); bm.color.copy(bodyColor);
-      }
-      bodyMesh.material = bm;
-    }
+    const variant = def.body_default || Object.keys(def.body_textures)[0];
+    const photoMat = buildBodyPhotoMaterial(def, variant);
+    if (photoMat) bodyMesh.material = photoMat;
     if (oldBodyMat && oldBodyMat !== bodyMesh.material && oldBodyMat.dispose) {
       setTimeout(() => oldBodyMat.dispose(), 600);
     }
@@ -1290,7 +1283,8 @@ function renderDesigns(def) {
       root.querySelectorAll('.ds').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
       el.classList.add('on'); el.setAttribute('aria-checked', 'true');
       orderState[def.slug] ||= {}; orderState[def.slug].design = d.id;
-      const mat = topcoatMesh && topcoatMesh.material;
+      // The selected design photo is the FLOOR surface → it goes on the body, never the clear topcoat.
+      const mat = bodyMesh && bodyMesh.material;
       if (mat) applyVariantTextures(mat, def, { diffuse: d.file, normal: d.normal, roughness: d.roughness, ao: d.ao });
     });
     root.appendChild(el);
@@ -1448,15 +1442,10 @@ function applyVariantTextures(mat, def, v) {
   if (v.normal)    { const nm = loadTex(v.normal);    nm.repeat.set(tile, tile); mat.normalMap = nm; if (mat.normalScale) mat.normalScale.set(0.85, 0.85); }
   if (v.roughness) { const rm = loadTex(v.roughness); rm.repeat.set(tile, tile); mat.roughnessMap = rm; }
   if (v.ao)        { const ao = loadTex(v.ao);        ao.repeat.set(tile, tile); mat.aoMap = ao; mat.aoMapIntensity = 0.55; }
-  const g = (orderState[def.slug] || {}).glossLevel; if (g != null) setGloss(mat, def, g);
+  // Gloss lives on the topcoat sealer, not on this body surface.
+  const g = (orderState[def.slug] || {}).glossLevel; if (g != null && topcoatMesh) setGloss(topcoatMesh.material, def, g);
   mat.needsUpdate = true;
   if (oldMap && oldMap.dispose && oldMap !== dm) oldMap.dispose();
-  // Keep the slab edge (body) in sync with the chosen design so the cut cross-section matches.
-  if (bodyMesh && bodyMesh.material && !bodyMesh.material.map?.userData?.locked) {
-    const tile = def.tile || 1;
-    const bdm = loadTex(v.diffuse, { srgb: true }); bdm.repeat.set(tile, tile);
-    bodyMesh.material.map = bdm; bodyMesh.material.color.set(0xffffff); bodyMesh.material.needsUpdate = true;
-  }
 }
 
 /* Surface sheen. On a SEALED material (MeshPhysicalMaterial with clearcoat) the gloss is the
@@ -1475,8 +1464,9 @@ function setGloss(mat, def, g) {
 }
 
 function applyControlEffect(def, cid, opt) {
-  if (!topcoatMesh) return;
-  const mat = topcoatMesh.material;
+  if (!topcoatMesh || !bodyMesh) return;
+  const mat = bodyMesh.material;        // surface (texture / colour / chips)
+  const glossMat = topcoatMesh.material; // clear sealer (gloss / reflection)
   const photoMode = !!(def.body_textures && def.topcoat_glass);
 
   // Per-option real photo wins over procedural recolour when present.
@@ -1513,16 +1503,14 @@ function applyControlEffect(def, cid, opt) {
   if (cid === 'gloss') {
     const g = { low: 0.7, mid: 0.4, high: 0.08 }[opt.id];
     if (g != null) {
-      setGloss(mat, def, g);   // sealed → clearcoatRoughness; matte → base roughness (texture kept)
-      if (photoMode) {
-        const o = { low: 0.28, mid: 0.22, high: 0.14 };
-        mat.opacity = o[opt.id] ?? mat.opacity;
-        mat.needsUpdate = true;
-      }
+      setGloss(glossMat, def, g);   // gloss on the topcoat sealer → clearcoatRoughness
+      const o = { low: 0.28, mid: 0.22, high: 0.14 };
+      glossMat.opacity = o[opt.id] ?? glossMat.opacity;
+      glossMat.needsUpdate = true;
     }
   }
   if (cid === 'finish') {
-    setGloss(mat, def, { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id]);
+    setGloss(glossMat, def, { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id]);
   }
   if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
     if (!photoMode) refreshCompositeMap(def);
@@ -1536,8 +1524,8 @@ async function refreshCompositeMap(def) {
   try {
     const state = orderState[def.slug] || {};
     const tex = await buildCompositeMap(def, state);
-    if (topcoatMesh && def.slug === activeSlug) {
-      const mat = topcoatMesh.material;
+    if (bodyMesh && def.slug === activeSlug) {
+      const mat = bodyMesh.material;
       const oldMap = mat.map;
       mat.map = tex;
       const tile = def.tile || 1;
@@ -1575,9 +1563,9 @@ async function refreshCompositeMap(def) {
       }
 
       // Re-apply the user's finish/gloss so rebuilding the composite (colour/aggregate change)
-      // doesn't reset the sheen. setGloss routes to clearcoatRoughness (sealed) or roughness (matte).
+      // doesn't reset the sheen. Gloss lives on the TOPCOAT sealer, not the body.
       const g = (orderState[def.slug] || {}).glossLevel;
-      if (g != null) setGloss(mat, def, g);
+      if (g != null && topcoatMesh) setGloss(topcoatMesh.material, def, g);
 
       mat.needsUpdate = true;
       if (oldMap && oldMap.dispose) oldMap.dispose();
@@ -1658,10 +1646,10 @@ function animate(t) {
     plateRoot.rotation.y = THREE.MathUtils.lerp(plateRoot.rotation.y, target, 0.08);
   }
 
-  if (transition.active && topcoatMesh) {
+  if (transition.active && bodyMesh) {
     transition.t += dt / transition.dur;
     const k = easeOutCubic(Math.min(1, transition.t));
-    const mat = topcoatMesh.material;
+    const mat = bodyMesh.material;
     mat.color.copy(transition.from.color).lerp(transition.to.color, k);
     mat.roughness = THREE.MathUtils.lerp(transition.from.roughness, transition.to.roughness, k);
     if (transition.t >= 1) transition.active = false;
