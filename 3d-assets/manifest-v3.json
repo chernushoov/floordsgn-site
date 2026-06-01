@@ -27,7 +27,7 @@
       "group": "decorative",
       "tag": "TC",
       "code": "TC",
-      "swatch": "#efe7d6",
+      "swatch": "#9a9a9d",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-cement_lifestyle_01.webp",
@@ -36,7 +36,7 @@
         "pirog": "previews/pirog_terrazzo-cement.webp"
       },
       "procedural": {
-        "color": "#efe7d6",
+        "color": "#9a9a9d",
         "roughness": 0.55,
         "metalness": 0
       },
