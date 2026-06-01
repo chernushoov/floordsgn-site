@@ -63,7 +63,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
 .matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
 .matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
-.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
+.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
 .matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
 .matlist li:hover{color:var(--ink);padding-left:6px}
@@ -820,7 +820,10 @@ function setView(view) {
   if (view === 'layers') { explodeTarget = 1; controls.enabled = true; }
   if (view === 'top')    { explodeTarget = 0; controls.enabled = false; camera.position.set(0.001, 0.85, 0.001); controls.target.set(0,0,0); }
   if (view === 'reset')  { explodeTarget = 0; controls.enabled = true; camera.position.set(0.55, 0.42, 0.55); controls.target.set(0,0,0); }
-  document.querySelectorAll('.s-br button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  // RESET is an ACTION, not a mode — after it runs the scene is in 'solid'. Highlight the
+  // actual resulting mode so the button state never desyncs from the scene (audit fix).
+  const activeMode = (view === 'reset') ? 'solid' : view;
+  document.querySelectorAll('.s-br button').forEach(b => b.classList.toggle('on', b.dataset.view === activeMode));
 }
 document.querySelectorAll('.s-br button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 
@@ -1430,7 +1433,13 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  const params = new URLSearchParams({ subject: 'sample-kit', fd_material: activeSlug || '' });
+  // Carry the FULL configuration (like ctaOrder), not just the material, so the physical
+  // sample request reflects the chosen colour/aggregate/finish (audit fix).
+  const params = new URLSearchParams({
+    subject: 'sample-kit',
+    fd_material: activeSlug || '',
+    fd_state: JSON.stringify(orderState[activeSlug] || {})
+  });
   window.location.href = 'contact.html?' + params.toString();
 });
 
