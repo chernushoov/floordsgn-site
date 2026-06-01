@@ -132,7 +132,9 @@
       "clearcoat": {
         "amount": 0.6,
         "roughness": 0.35
-      }
+      },
+      "systemType": "cement_terrazzo",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "terrazzo-multi",
@@ -263,7 +265,9 @@
       "clearcoat": {
         "amount": 0.85,
         "roughness": 0.18
-      }
+      },
+      "systemType": "epoxy_terrazzo",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "terrazzo-epoxy",
@@ -347,7 +351,9 @@
       "clearcoat": {
         "amount": 1,
         "roughness": 0.08
-      }
+      },
+      "systemType": "epoxy_terrazzo",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "microtopping",
@@ -455,7 +461,9 @@
       "clearcoat": {
         "amount": 0.5,
         "roughness": 0.45
-      }
+      },
+      "systemType": "microtopping",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "rubber",
@@ -557,7 +565,9 @@
       "clearcoat": {
         "amount": 0.5,
         "roughness": 0.45
-      }
+      },
+      "systemType": "resin_floor",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "comfortfloor",
@@ -612,7 +622,9 @@
       "clearcoat": {
         "amount": 0.7,
         "roughness": 0.3
-      }
+      },
+      "systemType": "resin_floor",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "decorative-concrete",
@@ -722,7 +734,9 @@
       "clearcoat": {
         "amount": 0.5,
         "roughness": 0.45
-      }
+      },
+      "systemType": "decorative_concrete",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "mma",
@@ -779,7 +793,9 @@
       "clearcoat": {
         "amount": 0.8,
         "roughness": 0.25
-      }
+      },
+      "systemType": "resin_floor",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "pu-cement",
@@ -835,7 +851,9 @@
       "clearcoat": {
         "amount": 0.6,
         "roughness": 0.35
-      }
+      },
+      "systemType": "resin_floor",
+      "approvedStatus": "needs_calibration"
     },
     {
       "slug": "epoxy",
@@ -893,7 +911,9 @@
       "clearcoat": {
         "amount": 1,
         "roughness": 0.1
-      }
+      },
+      "systemType": "resin_floor",
+      "approvedStatus": "needs_calibration"
     }
   ],
   "control_options": {
