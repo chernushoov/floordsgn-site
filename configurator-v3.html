@@ -1357,10 +1357,34 @@ function renderCallouts(def) {
   });
 }
 
+/* Per-option PHOTO VARIANT — when the manifest provides a real texture for this exact
+   control option, swap the surface to that photo ("each button = its own photo", per owner)
+   instead of a procedural recolour. Falls back to the normal logic when no variant exists. */
+function applyVariantTextures(mat, def, v) {
+  const tile = def.tile || 1;
+  const oldMap = mat.map;
+  const dm = loadTex(v.diffuse, { srgb: true }); dm.repeat.set(tile, tile);
+  mat.map = dm; mat.color.set(0xffffff);
+  if (v.normal)    { const nm = loadTex(v.normal);    nm.repeat.set(tile, tile); mat.normalMap = nm; if (mat.normalScale) mat.normalScale.set(0.85, 0.85); }
+  if (v.roughness) { const rm = loadTex(v.roughness); rm.repeat.set(tile, tile); mat.roughnessMap = rm; }
+  if (v.ao)        { const ao = loadTex(v.ao);        ao.repeat.set(tile, tile); mat.aoMap = ao; mat.aoMapIntensity = 0.55; }
+  const rs = (orderState[def.slug] || {}).roughnessScalar; if (rs != null) mat.roughness = rs;
+  mat.needsUpdate = true;
+  if (oldMap && oldMap.dispose && oldMap !== dm) oldMap.dispose();
+}
+
 function applyControlEffect(def, cid, opt) {
   if (!topcoatMesh) return;
   const mat = topcoatMesh.material;
   const photoMode = !!(def.body_textures && def.topcoat_glass);
+
+  // Per-option real photo wins over procedural recolour when present.
+  const variant = def.variants && def.variants[cid] && def.variants[cid][opt.id];
+  if (variant && variant.diffuse && !photoMode) {
+    orderState[def.slug][cid] = opt.id;
+    applyVariantTextures(mat, def, variant);
+    return;
+  }
 
   if (cid === 'color' && opt.hex && !photoMode) {
     // TRUE COLOUR: no white-lerp. For textured materials, drive the picked colour into

@@ -193,7 +193,23 @@
         "ao": "textures/terrazzo-multi/ao.png"
       },
       "glb_plate": "plates/terrazzo-multi.glb",
-      "roughness_override": 0.4
+      "roughness_override": 0.4,
+      "variants": {
+        "aggregates": {
+          "marble-white": {
+            "diffuse": "textures/terrazzo-multi/diffuse.jpg",
+            "normal": "textures/terrazzo-multi/normal.png",
+            "roughness": "textures/terrazzo-multi/roughness.png",
+            "ao": "textures/terrazzo-multi/ao.png"
+          },
+          "marble-black": {
+            "diffuse": "textures/terrazzo-epoxy/diffuse.jpg",
+            "normal": "textures/terrazzo-epoxy/normal.png",
+            "roughness": "textures/terrazzo-epoxy/roughness.png",
+            "ao": "textures/terrazzo-epoxy/ao.png"
+          }
+        }
+      }
     },
     {
       "slug": "terrazzo-epoxy",
