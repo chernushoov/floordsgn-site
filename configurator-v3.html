@@ -329,11 +329,11 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       <div class="s-bl">
         <b>30×30 см</b> · фаска 2 мм · слоистый торец
       </div>
-      <div class="s-br">
-        <button data-view="solid" class="on">Solid</button>
-        <button data-view="layers">Layers</button>
-        <button data-view="top">Top</button>
-        <button data-view="reset">Reset</button>
+      <div class="s-br" role="group" aria-label="Вид плиты">
+        <button type="button" data-view="solid" class="on" aria-pressed="true">Solid</button>
+        <button type="button" data-view="layers" aria-pressed="false">Layers</button>
+        <button type="button" data-view="top" aria-pressed="false">Top</button>
+        <button type="button" data-view="reset" aria-label="Сбросить вид">Reset</button>
       </div>
     </div>
 
@@ -355,6 +355,11 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
           <span>Получить sample-kit · 100×100 мм</span>
           <span>↘</span>
         </button>
+        <button class="cta-ghost" id="ctaShare" type="button">
+          <span>Поделиться этой формулой</span>
+          <span>⧉</span>
+        </button>
+        <div id="cfgToast" role="status" aria-live="polite" style="margin-top:8px;min-height:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:0;transition:opacity .2s"></div>
       </div>
     </aside>
 
@@ -379,6 +384,20 @@ const ASSET_ROOT = '3d-assets/';
 // configurator.html (textures/ + manifest.json) stays byte-identical until an explicit swap.
 const TEXSET = 'textures-v4';
 const texURL = p => ASSET_ROOT + String(p).replace(/^textures\//, TEXSET + '/');
+
+// Shared-config restore: a "Поделиться" link encodes ?m=<slug>&s=<json state>; on load we
+// re-select that material and re-apply its controls so a returning visitor sees their floor.
+let pendingRestore = null;
+function parseSharedConfig() {
+  try {
+    const q = new URLSearchParams(location.search);
+    const m = q.get('m'); if (!m) return null;
+    let state = {};
+    const s = q.get('s');
+    if (s) { try { state = JSON.parse(decodeURIComponent(s)) || {}; } catch (e) {} }
+    return { slug: m, state: (state && typeof state === 'object') ? state : {} };
+  } catch (e) { return null; }
+}
 
 const stageEl = document.getElementById('stage');
 const bootEl = document.getElementById('boot');
@@ -823,7 +842,11 @@ function setView(view) {
   // RESET is an ACTION, not a mode — after it runs the scene is in 'solid'. Highlight the
   // actual resulting mode so the button state never desyncs from the scene (audit fix).
   const activeMode = (view === 'reset') ? 'solid' : view;
-  document.querySelectorAll('.s-br button').forEach(b => b.classList.toggle('on', b.dataset.view === activeMode));
+  document.querySelectorAll('.s-br button').forEach(b => {
+    const on = b.dataset.view === activeMode;
+    b.classList.toggle('on', on);
+    if (b.dataset.view !== 'reset') b.setAttribute('aria-pressed', String(on)); // reset is an action, not a toggle
+  });
 }
 document.querySelectorAll('.s-br button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 
@@ -969,11 +992,17 @@ async function init() {
     const li = document.createElement('li');
     li.dataset.slug = m.slug;
     li.tabIndex = 0;
+    li.setAttribute('role', 'radio');
+    li.setAttribute('aria-checked', 'false');
+    li.setAttribute('aria-label', m.label_ru);
     li.innerHTML = `
       <span class="idx">${String(idx+1).padStart(2,'0')}</span>
       <span>${m.label_ru}</span>
       <span class="tag">${m.tag}</span>`;
     li.addEventListener('click', () => selectMaterial(m.slug));
+    li.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ' || ev.code === 'Space') { ev.preventDefault(); selectMaterial(m.slug); }
+    });
     li.addEventListener('mouseenter', e => {
       if (matchMedia('(max-width:1100px)').matches) return;
       if (m.previews && m.previews.light) {
@@ -1061,8 +1090,11 @@ async function init() {
     if (m) ORIG_POS.set(m.uuid, m.position.y);
   });
 
+  pendingRestore = parseSharedConfig();
+  if (pendingRestore && !manifest.materials.some(x => x.slug === pendingRestore.slug)) pendingRestore = null;
   const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
-  selectMaterial(manifest.materials[defaultIdx].slug);
+  const startSlug = pendingRestore ? pendingRestore.slug : manifest.materials[defaultIdx].slug;
+  selectMaterial(startSlug);
   bootEl.classList.add('gone');
 }
 
@@ -1109,7 +1141,9 @@ function selectMaterial(slug) {
 
   renderSpecs(def);
   renderBadges(def);
-  renderControls(def);
+  const restoreState = (pendingRestore && pendingRestore.slug === def.slug) ? pendingRestore.state : null;
+  if (restoreState) pendingRestore = null;
+  renderControls(def, restoreState);
   renderBuildup(def);
   renderCallouts(def);
 
@@ -1140,7 +1174,9 @@ function selectMaterial(slug) {
   document.getElementById('stTag').textContent = `${def.tag} · ${dims} мм`;
 
   document.querySelectorAll('#matlist li').forEach(li => {
-    li.classList.toggle('on', li.dataset.slug === slug);
+    const on = li.dataset.slug === slug;
+    li.classList.toggle('on', on);
+    li.setAttribute('aria-checked', on ? 'true' : 'false');
   });
 
   // In photo mode the chips come from the photo; skip the Voronoi/canvas composite
@@ -1175,7 +1211,7 @@ window.__cfg = {
   }
 };
 
-function renderControls(def) {
+function renderControls(def, saved = null) {
   const root = document.getElementById('controls');
   root.innerHTML = '';
   orderState[def.slug] ||= {};
@@ -1195,28 +1231,39 @@ function renderControls(def) {
     wrap.appendChild(k);
     const opts = document.createElement('div');
     opts.className = 'opts';
-    spec.options.forEach((opt, i) => {
+    // Which option is initially selected: a restored value (from a shared URL) or the first.
+    const selId = (saved && saved[cid]) || spec.options[0].id;
+    spec.options.forEach((opt) => {
       const b = document.createElement('button');
+      b.type = 'button';
       const hasChip = !!opt.hex;
       b.className = hasChip ? 'sw' : '';
+      b.setAttribute('role', 'radio');
+      b.dataset.optId = opt.id;
       if (hasChip) {
         const chip = document.createElement('span');
         chip.className = 'chip';
         chip.style.background = opt.hex;
         b.appendChild(chip);
+        b.setAttribute('aria-label', opt.name);
       }
       const t = document.createElement('span');
       t.textContent = opt.name;
       b.appendChild(t);
-      b.addEventListener('click', () => {
+      const select = () => {
         orderState[def.slug][cid] = opt.id;
-        opts.querySelectorAll('button').forEach(x => x.classList.remove('on'));
-        b.classList.add('on');
+        opts.querySelectorAll('button').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-checked', 'true');
         applyControlEffect(def, cid, opt);
-      });
-      if (i === 0) {
+      };
+      b.addEventListener('click', select);
+      const isSel = opt.id === selId;
+      b.setAttribute('aria-checked', isSel ? 'true' : 'false');
+      if (isSel) {
         b.classList.add('on');
         orderState[def.slug][cid] = opt.id;
+        // Restoring from a shared URL → actually apply the effect (default first-option does not).
+        if (saved && saved[cid]) applyControlEffect(def, cid, opt);
       }
       opts.appendChild(b);
     });
@@ -1441,6 +1488,24 @@ document.getElementById('ctaSample').addEventListener('click', () => {
     fd_state: JSON.stringify(orderState[activeSlug] || {})
   });
   window.location.href = 'contact.html?' + params.toString();
+});
+
+// Share: copy a deep link that restores this exact material + configuration.
+const ctaShareBtn = document.getElementById('ctaShare');
+if (ctaShareBtn) ctaShareBtn.addEventListener('click', async () => {
+  const state = { ...(orderState[activeSlug] || {}) };
+  delete state.colorHex; delete state.roughnessScalar; // internal/derived — rebuilt on restore
+  const url = location.origin + location.pathname + '?m=' + encodeURIComponent(activeSlug || '') +
+              (Object.keys(state).length ? '&s=' + encodeURIComponent(JSON.stringify(state)) : '');
+  const toast = document.getElementById('cfgToast');
+  const flash = (msg) => { if (toast) { toast.textContent = msg; toast.style.opacity = '1'; setTimeout(() => toast.style.opacity = '0', 2400); } };
+  try {
+    await navigator.clipboard.writeText(url);
+    flash('Ссылка скопирована');
+  } catch (e) {
+    history.replaceState(null, '', url); // clipboard blocked → at least put it in the address bar
+    flash('Ссылка в адресной строке');
+  }
 });
 
 let lastUserInputT = performance.now();
