@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <title>3D-конфигуратор пола — Floor.DSGN | подбор материала и системы</title>
-<meta name="description" content="Соберите свой пол: материал, цвет, размер, толщина. 9 систем — эпокси, терраццо, микротопинг, PU-cement, MMA, бетон, каучук. Спецификация и цена."/>
+<meta name="description" content="Floor.DSGN · соберите образец премиум-пола под вашу задачу. WebGL-конфигуратор: 9 материалов, реальные текстуры, экспорт формулы заказа."/>
+<link rel="canonical" href="https://floordsgn.com/configurator.html">
+<meta property="og:url" content="https://floordsgn.com/configurator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="3D-конфигуратор пола — Floor.DSGN | подбор материала и системы">
+<meta property="og:description" content="Соберите свой пол: материал, цвет, размер, толщина. 9 систем — эпокси, терраццо, микротопинг, PU-cement, MMA, бетон, каучук. Спецификация и цена.">
+<meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231a1a1a' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -44,6 +50,8 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 @keyframes pulse{50%{opacity:.4;transform:scale(.8)}}
 .eyebrow .r{display:flex;gap:24px}
 .eyebrow .r b{color:var(--ink);font-weight:500}
+.eyebrow .home{color:var(--ink-3);text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+.eyebrow .home:hover{color:var(--ink);border-color:var(--ink)}
 
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:end;margin-bottom:56px}
 .h1{font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,104px);line-height:1.0;letter-spacing:-.035em;margin:0;color:var(--ink);text-wrap:balance}
@@ -61,8 +69,9 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
 .matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
 .matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
-.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
+.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
 .matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
+.matlist li .chip{width:30px;height:30px;object-fit:contain;background:var(--paper-2);border:1px solid var(--line)}
 .matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
 .matlist li:hover{color:var(--ink);padding-left:6px}
 .matlist li:hover .tag{opacity:1}
@@ -90,25 +99,25 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .s-br button:hover{background:#fff;color:var(--ink)}
 .s-br button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
+/* Layer callouts — visible when exploded. Right-edge labels with leader line + accent dot. */
+.callouts{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .35s}
+.callouts.on{opacity:1}
+.callouts .co{position:absolute;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.94);padding:7px 12px;border:1px solid var(--line-2);white-space:nowrap;backdrop-filter:blur(4px);right:8%;transform:translateY(-50%)}
+.callouts .co b{display:block;font-family:var(--sans);font-weight:500;font-size:12.5px;letter-spacing:-.005em;text-transform:none;color:var(--ink);margin-bottom:1px}
+.callouts .co::before{content:"";position:absolute;right:100%;top:50%;width:48px;height:1px;background:var(--ink)}
+.callouts .co::after{content:"";position:absolute;right:calc(100% + 48px);top:50%;width:7px;height:7px;background:var(--accent);transform:translateY(-50%);border-radius:50%}
+.callouts .co.is-hidden{display:none}
+@media (max-width:1100px){
+  .callouts .co{right:4%;font-size:8.5px;padding:5px 8px}
+  .callouts .co b{font-size:11px}
+  .callouts .co::before{width:24px}
+  .callouts .co::after{right:calc(100% + 24px);width:5px;height:5px}
+}
+
 /* Loading overlay */
-.boot{position:absolute;inset:0;z-index:10;background:#ffffff;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);transition:opacity .55s cubic-bezier(.2,.8,.2,1),visibility 0s linear .55s;opacity:1;visibility:visible}
+.boot{position:absolute;inset:0;z-index:10;background:#ffffff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);transition:opacity .5s,visibility 0s linear .5s;opacity:1;visibility:visible}
 .boot.gone{opacity:0;visibility:hidden}
 .boot i{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.0s infinite;margin-right:10px}
-/* [PREVIEW-ANIM] Logo-assembly loader (re-uses logo.svg, see loader-preview.html for standalone) */
-.boot .b-logo{width:min(220px,40vw);aspect-ratio:1/1;color:var(--ink)}
-.boot .b-logo svg{width:100%;height:100%;display:block}
-.boot .b-logo .L-mono path,.boot .b-logo .L-wm path,.boot .b-logo .L-tag path{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.55)}
-.boot .b-logo .L-sep path{opacity:0;transform-box:fill-box;transform-origin:center;transform:scaleX(0)}
-.boot.play .b-logo .L-mono path{animation:b-tile .38s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(28ms * var(--i))}
-.boot.play .b-logo .L-wm path{animation:b-group .42s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:480ms}
-.boot.play .b-logo .L-sep path{animation:b-sep .50s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:780ms}
-.boot.play .b-logo .L-tag path{animation:b-group .40s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:900ms}
-@keyframes b-tile{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
-@keyframes b-group{0%{opacity:0;transform:translateY(4px)}100%{opacity:1;transform:none}}
-@keyframes b-sep{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){
-  .boot .b-logo .L-mono path,.boot .b-logo .L-wm path,.boot .b-logo .L-tag path,.boot .b-logo .L-sep path{opacity:1!important;transform:none!important;animation:none!important}
-}
 
 /* Right rail */
 .specs{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column}
@@ -134,6 +143,21 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .buildup .row .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
 .buildup .row .v{color:var(--ink-2)}
 
+/* System spec table — readonly key/value rows derived from manifest.spec */
+.specs-tbl{display:flex;flex-direction:column;margin-bottom:18px}
+.specs-tbl .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.specs-tbl .row:last-child{border-bottom:0}
+.specs-tbl .row .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+.specs-tbl .row .v{color:var(--ink);text-align:right;font-weight:500;letter-spacing:-.005em}
+
+/* Compliance / class badges (R-class slip, ESD, HACCP, etc.) */
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}
+.badges .b{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--line-2);color:var(--ink-2);background:#fff}
+.badges .b.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+.badges .b.warn{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.specs h4 + h4{margin-top:6px}
+
 .cta-stack{margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:8px}
 .cta-primary{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--ink);color:#fff;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:-.005em;transition:background .2s;border:0}
 .cta-primary:hover{background:var(--accent)}
@@ -150,57 +174,107 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matprev.show{opacity:1}
 
 @media (max-width:1100px){
-  .grid{grid-template-columns:minmax(0,1fr);gap:24px}
-  .grid > *{min-width:0}
+  .grid{grid-template-columns:1fr;gap:24px;min-height:0}
+  /* Critical: grid children default to min-width:auto which equals min-content.
+     The matlist UL is a horizontally-scrolling row of pill-buttons, so its min-content
+     is hundreds of px wide and was inflating .matlist past the viewport. */
+  .grid > *{min-width:0;max-width:100%}
   .head{grid-template-columns:1fr;gap:24px}
-  .stage{min-height:520px;order:1;min-width:0;max-width:100%}
+  .stage{min-height:520px;order:1;width:100%}
+  .stage::after{background-size:36px 36px}
 
-  /* Left rail → horizontal chip strip */
-  .matlist{order:2;border-top:1px solid var(--line);padding-top:14px}
+  .matlist{order:2;border-top:1px solid var(--line);padding-top:14px;width:100%}
   .matlist .grp{margin-bottom:14px}
   .matlist .grp-h::after{display:none}
   .matlist ul{flex-direction:row;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .matlist ul::-webkit-scrollbar{display:none}
-  .matlist li{flex:0 0 auto;border:1px solid var(--line);padding:8px 12px;grid-template-columns:auto auto;gap:8px}
+  .matlist li{flex:0 0 auto;border:1px solid var(--line);padding:8px 12px;grid-template-columns:auto auto auto;gap:8px}
+  .matlist li .chip{width:24px;height:24px}
   .matlist li::before{display:none}
   .matlist li.on{padding-left:12px;border-color:var(--ink);background:var(--ink);color:#fff}
   .matlist li.on .idx{color:#fff}
   .matlist li .tag{display:none}
 
-  /* Right rail */
-  .specs{order:3}
+  .specs{order:3;width:100%}
   .controls{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ctrl .opts{flex-wrap:wrap}
+  .ctrl button{font-size:12px;padding:6px 9px}
+
+  .specs-tbl .row .v{font-size:12px}
 
   .cta-stack{padding-top:18px}
+  .cta-primary{padding:16px 18px;font-size:14px}
 }
 @media (max-width:600px){
-  .sec{padding:32px 18px 56px}
-  .h1{font-size:38px}
-  .controls{grid-template-columns:1fr}
-  .stage{min-height:380px}
-  .s-tl,.s-tr,.s-bl{font-size:9px;letter-spacing:.16em}
-  .s-tr .ttl{font-size:13px}
-  /* declutter HUD on narrow screens: drop decorative/label chips, keep material name + view buttons */
+  /* iPhone 14 Pro: 393px logical. Respect notch + safe-area on rotate. */
+  .sec{padding:32px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
+  .eyebrow{font-size:9px;flex-wrap:wrap;gap:8px;margin-bottom:28px;padding-bottom:12px;letter-spacing:.18em}
+  .eyebrow .l,.eyebrow .r{flex-wrap:wrap;gap:8px}
+  .eyebrow .r{gap:12px;display:none} /* hide secondary meta on phone — reduces top noise */
+  .eyebrow .l .num{padding:2px 6px}
+  .h1{font-size:clamp(34px,10vw,46px);line-height:1.04}
+  .lede{font-size:14px;line-height:1.5}
+  .controls{grid-template-columns:1fr 1fr;gap:12px}
+
+  /* Stage HUD on mobile: keep everything functional but adapt geometry.
+     Desktop HUD was designed for ~720px-wide stage with absolute overlays;
+     on 393px those overlays would collide with the model. So:
+     - .s-tl and .s-tr: compact corner chips with opaque-glass background
+     - .s-bl: small chip pushed UP above the .s-br button row (was overlapping it)
+     - .callouts: drop leader lines + dot (they cut through model), let pills wrap,
+       anchor to right edge with max-width, opaque background
+     - .matprev hover-popover: drop on touch */
+  .stage{min-height:62vh;max-height:560px}
+  .stage::after{background-size:32px 32px}
+
+  /* Hide decorative HUD labels on mobile — overlap the model, no functional value.
+     .s-tl: "Render · live / Drag · orbit · scroll · explode" (instruction overlay)
+     .s-bl: "30×30 см · фаска · слоистый торец" (spec label — duplicated in .specs) */
   .s-tl,.s-bl{display:none}
-  .s-tr{max-width:56%}
-  /* eyebrow: stack cleanly, drop the dev FPS/version row (cfg-mobile etalon) */
-  .eyebrow{flex-wrap:wrap;gap:6px 14px;margin-bottom:32px}
-  .eyebrow .l{gap:10px;flex-wrap:wrap}
-  .eyebrow .r{display:none}
+
+  .s-tr{top:10px;right:10px;max-width:44%;text-align:right;
+        background:rgba(255,255,255,.78);padding:5px 8px;
+        -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .s-tr .ttl{font-size:12px;line-height:1.15}
+  .s-tr .ttl + *{font-size:8.5px;letter-spacing:.16em;line-height:1.3;margin-top:2px;display:block}
+
+  .s-br{bottom:10px;right:10px;left:10px;justify-content:space-between;gap:3px}
+  .s-br button{padding:9px 8px;font-size:9.5px;min-height:38px;flex:1 1 0;
+               background:rgba(255,255,255,.88)}
+
+  .callouts .co{right:6px;max-width:54%;white-space:normal;
+                font-size:8.5px;padding:5px 8px;line-height:1.25;
+                background:rgba(255,255,255,.94)}
+  .callouts .co b{font-size:11px;margin-bottom:0}
+  .callouts .co::before,.callouts .co::after{display:none}
+
+  .matprev{display:none}
+
+  /* Material list: bigger tap target + right-edge fade so users see it scrolls */
+  .matlist ul{
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent);
+            mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent);
+    padding-right:24px;
+  }
+  .matlist li{padding:11px 14px;min-height:44px;align-items:center}
+
+  /* Tap-target floor on all control buttons (filler / gloss / colour swatches) */
+  .ctrl button{min-height:44px;padding:10px 12px;font-size:12.5px}
+  .ctrl button.sw{padding:6px 11px 6px 6px}
+  .ctrl button.sw .chip{width:26px;height:26px}
+
+  .cta-primary{padding:18px 20px;font-size:15px;min-height:56px}
+  .cta-ghost{min-height:48px}
+
+  .foot{flex-direction:column;gap:8px;align-items:flex-start;font-size:9px}
 }
+@media (max-width:420px){
+  .controls{grid-template-columns:1fr}
+  .s-br button{padding:7px 9px;font-size:9px}
+}
+.fd-toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-family:var(--sans);font-size:13px;letter-spacing:-.005em;box-shadow:0 12px 32px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:9999}
+.fd-toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
-
-    <link rel="canonical" href="https://floordsgn.com/configurator.html">
-
-    <meta property="og:url" content="https://floordsgn.com/configurator.html">
-
-    <meta property="og:image" content="https://floordsgn.com/images/og-preview.jpg">
-
-    <meta property="og:title" content="3D-конфигуратор пола — Floor.DSGN | подбор материала и системы">
-
-    <meta property="og:type" content="website">
-
-    <meta property="og:description" content="Соберите свой пол: материал, цвет, размер, толщина. 9 систем — эпокси, терраццо, микротопинг, PU-cement, MMA, бетон, каучук. Спецификация и цена.">
 </head>
 <body>
 
@@ -210,7 +284,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
     <div class="l">
       <span class="dot"></span>
       <span class="num">01 / 06</span>
-      <span>Floor.DSGN · Israel · <b>3D Configurator</b></span>
+      <span><a href="/" class="home">Floor.DSGN</a> · Israel · <b>3D Configurator</b></span>
     </div>
     <div class="r">
       <span>WebGL · <b id="fps">— FPS</b></span>
@@ -229,7 +303,6 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 
   <div class="grid">
 
-    <!-- LEFT: material list — built from manifest -->
     <aside class="matlist" id="matlist">
       <div class="grp" data-grp="decorative">
         <div class="grp-h"><span class="k">D</span>Декоративные</div>
@@ -241,11 +314,8 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       </div>
     </aside>
 
-    <!-- CENTER: 3D stage -->
     <div class="stage" id="stage">
-      <div class="boot" id="boot">
-        <div class="b-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1871 1871" aria-label="Floor.DSGN"><g transform="translate(0,1871) scale(.1,-.1)" fill="currentColor" stroke="none"></g></svg></div>
-      </div>
+      <div class="boot" id="boot"><i></i>Загрузка геометрии и текстур…</div>
       <div class="s-tl">
         <span class="live"><i></i>Render · live</span>
         <span>Drag <b>↻</b> orbit · scroll · explode</span>
@@ -253,6 +323,15 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       <div class="s-tr">
         <span class="ttl" id="stTitle">—</span>
         <span style="color:var(--ink-4)" id="stTag">—</span>
+      </div>
+      <!-- Layer callouts — populated from manifest.buildup, visible when explode > 0.5 -->
+      <div class="callouts" id="callouts">
+        <div class="co" data-slot="topcoat"  style="top:14%"><b>—</b><span></span></div>
+        <div class="co" data-slot="body"     style="top:32%"><b>—</b><span></span></div>
+        <div class="co" data-slot="mesh"     style="top:50%"><b>—</b><span></span></div>
+        <div class="co" data-slot="membrane" style="top:58%"><b>—</b><span></span></div>
+        <div class="co" data-slot="primer"   style="top:66%"><b>—</b><span></span></div>
+        <div class="co" data-slot="substrate" style="top:82%"><b>—</b><span></span></div>
       </div>
       <div class="s-bl">
         <b>30×30 см</b> · фаска 2 мм · слоистый торец
@@ -265,9 +344,12 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       </div>
     </div>
 
-    <!-- RIGHT: dynamic controls -->
     <aside class="specs">
-      <h4><span class="k">S</span>Параметры</h4>
+      <h4><span class="k">P</span>Параметры системы</h4>
+      <div class="specs-tbl" id="specsTbl"></div>
+      <div class="badges" id="specsBadges"></div>
+
+      <h4><span class="k">S</span>Настройка</h4>
       <div class="controls" id="controls"></div>
       <div class="buildup" id="buildup"></div>
 
@@ -280,6 +362,10 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
           <span>Получить sample-kit · 100×100 мм</span>
           <span>↘</span>
         </button>
+        <button class="cta-ghost" id="ctaShare" type="button">
+          <span>Поделиться этой формулой</span>
+          <span>⎘</span>
+        </button>
       </div>
     </aside>
 
@@ -287,7 +373,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 
   <div class="foot">
     <span>FD-CFG · v2.05 · <b>floor.dsgn / configurator</b></span>
-    <span>Геометрия — Blender · PBR — Poly Haven · WebGL via Three.js</span>
+    <span>Геометрия — Three.js · Текстуры — Floor.DSGN · WebGL · Voronoi-композит</span>
   </div>
 
 </section>
@@ -298,29 +384,14 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { Reflector } from 'three/addons/objects/Reflector.js';
-import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
-const ASSET_ROOT = '3d-assets-cfg/';
+const ASSET_ROOT = '3d-assets/';
 
 const stageEl = document.getElementById('stage');
 const bootEl = document.getElementById('boot');
 
-// [PREVIEW-ANIM] Inject logo SVG into the boot overlay and kick the assembly animation.
-(async () => {
-  try {
-    const res = await fetch('/images/logo/logo.svg', { cache: 'force-cache' });
-    const text = await res.text();
-    const m = text.match(/<g[^>]*transform="[^"]+"[^>]*>([\s\S]*?)<\/g>\s*<\/svg>/);
-    const target = bootEl && bootEl.querySelector('.b-logo svg > g');
-    if (m && target) target.innerHTML = m[1];
-    requestAnimationFrame(() => bootEl && bootEl.classList.add('play'));
-  } catch (_) { /* if SVG fetch fails, the plain "Loading…" text still shows */ }
-})();
-
 /* ---------- renderer / scene / camera ---------- */
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-// Mobile: cap DPR at 1.5 to keep framerate ~60. Desktop: up to 2 for retina.
 const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -335,8 +406,6 @@ camera.position.set(0.55, 0.42, 0.55);
 const pmrem = new THREE.PMREMGenerator(renderer);
 pmrem.compileEquirectangularShader();
 
-// Initial environment: RoomEnvironment as a fast fallback so first frame is lit.
-// Real HDRI loads asynchronously and replaces this.
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
 new RGBELoader()
@@ -345,14 +414,11 @@ new RGBELoader()
     const env = pmrem.fromEquirectangular(hdr).texture;
     scene.environment = env;
     hdr.dispose();
-  });
+  }, undefined, () => { /* HDRI optional — RoomEnvironment fallback already in place */ });
 
-// Light scaffolding stays as fill on top of HDRI — softer than before.
 const key = new THREE.DirectionalLight(0xfff4dd, 0.8);  key.position.set(0.6, 0.9, 0.4);  scene.add(key);
 const fill = new THREE.DirectionalLight(0xc9d4e0, 0.25); fill.position.set(-0.5, 0.5, -0.3); scene.add(fill);
 
-// Reflection removed per design — ground is plain white + contact shadow only.
-// Soft contact shadow
 const shadowTex = (() => {
   const c = document.createElement('canvas');
   c.width = c.height = 256;
@@ -373,7 +439,6 @@ shadow.rotation.x = -Math.PI/2;
 shadow.position.y = -0.0148;
 scene.add(shadow);
 
-/* ---------- controls ---------- */
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
@@ -385,7 +450,6 @@ controls.maxPolarAngle = Math.PI * 0.50;
 controls.enablePan = false;
 controls.update();
 
-/* ---------- sizing ---------- */
 function resize() {
   const r = stageEl.getBoundingClientRect();
   const w = Math.max(1, r.width), h = Math.max(1, r.height);
@@ -396,15 +460,12 @@ function resize() {
 new ResizeObserver(resize).observe(stageEl);
 resize();
 
-/* ---------- texture loader cache ---------- */
 const texLoader = new THREE.TextureLoader();
 const texCache = new Map();
 function loadTex(path, opts = {}) {
   const key = path + '|' + (opts.srgb ? 's' : 'l');
   if (texCache.has(key)) return texCache.get(key);
-  const t = texLoader.load(ASSET_ROOT + path, tt => {
-    tt.needsUpdate = true;
-  });
+  const t = texLoader.load(ASSET_ROOT + path, tt => { tt.needsUpdate = true; });
   t.colorSpace = opts.srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
   t.anisotropy = 8;
@@ -412,7 +473,6 @@ function loadTex(path, opts = {}) {
   return t;
 }
 
-/* ---------- image cache (for canvas compositing) ---------- */
 const imgCache = new Map();
 function loadImg(path) {
   if (imgCache.has(path)) return imgCache.get(path);
@@ -427,7 +487,6 @@ function loadImg(path) {
   return p;
 }
 
-/* ---------- decal palettes ---------- */
 const AGG_PALETTE = {
   'marble-white':  ['#f0ece2','#e6dec8','#d9ce9b','#cabf9a','#a89c80','#fff'],
   'marble-black':  ['#1a1816','#2c2a26','#3a352e','#62584a','#a09384','#fff'],
@@ -448,14 +507,12 @@ const MARKING_COLORS = { yellow:'#f1c40f', white:'#f6f6f4', red:'#d63027' };
 function hashSeed(s) { let h=2166136261; for (let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return h>>>0; }
 function mulberry32(seed){ return function(){let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
 
-/* Composite the topcoat texture: base photo + chips + flecks + stripes + marking. */
 async function buildCompositeMap(def, state) {
   const SIZE = 1024;
   const cv = document.createElement('canvas');
   cv.width = cv.height = SIZE;
   const ctx = cv.getContext('2d');
 
-  // Base: tiled photo (or solid color for procedural rubber)
   if (def.pbr && def.pbr.diffuse) {
     try {
       const img = await loadImg(def.pbr.diffuse);
@@ -464,7 +521,6 @@ async function buildCompositeMap(def, state) {
   } else if (def.procedural) {
     ctx.fillStyle = def.procedural.color || '#2e2e32';
     ctx.fillRect(0,0,SIZE,SIZE);
-    // Add subtle grain for rubber
     const rnd = mulberry32(hashSeed(def.slug));
     ctx.globalAlpha = 0.4;
     for (let i = 0; i < 4000; i++) {
@@ -476,24 +532,48 @@ async function buildCompositeMap(def, state) {
 
   const rnd = mulberry32(hashSeed(def.slug + (state.aggregates||'')+(state.flecks||'')+(state.stripes||'')+(state.marking||'')));
 
-  // Aggregates — Voronoi cells (true terrazzo look: packed chips + cement matrix)
-  if (state.aggregates && AGG_PALETTE[state.aggregates]) {
-    const palette = AGG_PALETTE[state.aggregates];
-    // Decode palette colors to RGB tuples once
-    const palRGB = palette.map(hex => {
-      const c = new THREE.Color(hex);
-      return [Math.round(c.r*255), Math.round(c.g*255), Math.round(c.b*255)];
-    });
-    // Seed sites with mild jitter — stratified for even chip distribution
-    const GRID = 9;                  // 9x9 = 81 seeds
+  /* Decide aggregates source:
+     - User picked an explicit AGG_PALETTE entry (marble-white, glass-color, …) → use it (Voronoi over photo).
+     - No explicit pick AND material has its own def.chips AND no real photo → use chips with weighted sampling.
+     - Material has a real photo → the photo IS the chips; no Voronoi by default.
+     - Otherwise no Voronoi pass. */
+  const userPickedAgg = state.aggregates && state.aggregates !== 'default' && AGG_PALETTE[state.aggregates];
+  const hasRealPhoto = !!(def.pbr && def.pbr.diffuse);
+  const useAutoChips = (!userPickedAgg) && (!hasRealPhoto) && Array.isArray(def.chips) && def.chips.length > 0;
+
+  if (userPickedAgg || useAutoChips) {
+    let palRGB, weights;
+    if (userPickedAgg) {
+      palRGB = AGG_PALETTE[state.aggregates].map(hex => {
+        const c = new THREE.Color(hex);
+        return [Math.round(c.r*255), Math.round(c.g*255), Math.round(c.b*255)];
+      });
+      weights = palRGB.map(() => 1);
+    } else {
+      palRGB = def.chips.map(ch => {
+        const c = new THREE.Color(ch.c);
+        return [Math.round(c.r*255), Math.round(c.g*255), Math.round(c.b*255)];
+      });
+      weights = def.chips.map(ch => Math.max(0.001, ch.w || 1));
+    }
+    // Build cumulative-weight array for weighted-random chip selection.
+    const cumulative = [];
+    let total = 0;
+    weights.forEach(w => { total += w; cumulative.push(total); });
+    const pickWeighted = () => {
+      const r = rnd() * total;
+      for (let i = 0; i < cumulative.length; i++) if (r <= cumulative[i]) return i;
+      return cumulative.length - 1;
+    };
+
+    const GRID = 9;
     const seeds = [];
     for (let gy = 0; gy < GRID; gy++) {
       for (let gx = 0; gx < GRID; gx++) {
         const cellW = SIZE / GRID;
         const x = (gx + 0.15 + rnd()*0.70) * cellW;
         const y = (gy + 0.15 + rnd()*0.70) * cellW;
-        const ci = Math.floor(rnd() * palRGB.length);
-        // Light/dark variation per seed
+        const ci = pickWeighted();
         const v = 0.85 + rnd()*0.30;
         const c = palRGB[ci];
         seeds.push({
@@ -504,13 +584,12 @@ async function buildCompositeMap(def, state) {
         });
       }
     }
-    // Render Voronoi at 256×256 then upscale; matrix lines at boundaries
     const R = 256;
     const off = document.createElement('canvas');
     off.width = off.height = R;
     const oc = off.getContext('2d');
     const img = oc.createImageData(R, R);
-    const ass = new Uint16Array(R*R);   // nearest seed index per pixel
+    const ass = new Uint16Array(R*R);
     for (let py = 0; py < R; py++) {
       for (let px = 0; px < R; px++) {
         let best = 0, bd = Infinity;
@@ -530,7 +609,6 @@ async function buildCompositeMap(def, state) {
         img.data[di+3] = 255;
       }
     }
-    // Cement matrix: dim pixels where neighbor has a different seed
     for (let py = 0; py < R; py++) {
       for (let px = 0; px < R; px++) {
         const a = ass[py*R + px];
@@ -547,7 +625,6 @@ async function buildCompositeMap(def, state) {
       }
     }
     oc.putImageData(img, 0, 0);
-    // Composite over base photo with strong opacity (chips dominate top face)
     ctx.globalAlpha = 0.88;
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
@@ -555,7 +632,6 @@ async function buildCompositeMap(def, state) {
     ctx.globalAlpha = 1;
   }
 
-  // Flecks (epoxy paint chips)
   if (state.flecks && state.flecks !== 'none' && FLECK_DEFS[state.flecks]) {
     const F = FLECK_DEFS[state.flecks];
     ctx.globalAlpha = 0.9;
@@ -570,7 +646,6 @@ async function buildCompositeMap(def, state) {
     ctx.globalAlpha = 1;
   }
 
-  // Stripes (decorative inlay — one diagonal band per tile)
   if (state.stripes && state.stripes !== 'none' && STRIPE_COLORS[state.stripes]) {
     ctx.strokeStyle = STRIPE_COLORS[state.stripes];
     ctx.lineWidth = 8;
@@ -586,7 +661,6 @@ async function buildCompositeMap(def, state) {
     ctx.globalAlpha = 1;
   }
 
-  // Marking (zone marking — wide painted line)
   if (state.marking && state.marking !== 'none' && MARKING_COLORS[state.marking]) {
     ctx.strokeStyle = MARKING_COLORS[state.marking];
     ctx.lineWidth = 28;
@@ -602,12 +676,70 @@ async function buildCompositeMap(def, state) {
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
   tex.anisotropy = 8;
-  const tile = def.tile || 4;
+  const tile = def.tile || 1;
   tex.repeat.set(tile, tile);
   return tex;
 }
 
-/* ---------- material builder ---------- */
+/* Glass topcoat — used by materials where the visible chip-pattern lives on the body
+   slab (real photo texture) and the topcoat is a thin transparent gloss layer.
+   We use MeshPhysicalMaterial for clearcoat + envMap reflections; we keep opacity
+   moderate so the seam between topcoat and body still reads in the explode view. */
+function buildGlassTopcoatMaterial(roughness = 0.06) {
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    roughness,
+    metalness: 0,
+    transparent: true,
+    opacity: 0.18,
+    clearcoat: 1.0,
+    clearcoatRoughness: roughness * 0.5,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+  });
+  return mat;
+}
+
+/* Fallback colours per chip variant — used when the photo texture has not been
+   dropped into 3d-assets/textures/<slug>/ yet. Keeps the body looking plausible
+   instead of a black slab while we wait for the real photos. */
+const CHIPS_FALLBACK_COLOR = {
+  grey:  '#9a9a98',
+  white: '#e8e8e4',
+  black: '#2b2b2b'
+};
+
+/* Body texture material — real photograph from the user. sRGB diffuse, tiled.
+   If the file is missing (404), gracefully falls back to a solid colour matching
+   the chip variant, so the configurator stays usable before photos are dropped. */
+function buildBodyPhotoMaterial(def, variantId) {
+  const path = def.body_textures && def.body_textures[variantId];
+  if (!path) return null;
+  const tile = def.body_tile || 1;
+  const fallback = CHIPS_FALLBACK_COLOR[variantId] || '#9a9a98';
+  const mat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(fallback),
+    roughness: 0.55,
+    metalness: 0.0,
+  });
+  // Load the texture separately so we can detect errors and keep the fallback colour.
+  const t = new THREE.TextureLoader().load(
+    ASSET_ROOT + path,
+    (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.anisotropy = 8;
+      tex.repeat.set(tile, tile);
+      mat.map = tex;
+      mat.color.set(0xffffff); // Let the texture drive colour now.
+      mat.needsUpdate = true;
+    },
+    undefined,
+    () => { /* 404 — keep fallback colour, no error spam */ }
+  );
+  return mat;
+}
+
 function buildPbrMaterial(def) {
   if (def.procedural) {
     return new THREE.MeshStandardMaterial({
@@ -652,24 +784,20 @@ function buildPbrMaterial(def) {
   return mat;
 }
 
-/* ---------- scroll-driven orbit ---------- */
 let scrollAzimuth = 0;
 function onScroll() {
   const r = stageEl.getBoundingClientRect();
   const vh = window.innerHeight;
-  // Section progress: 0 when stage center at vh, 1 when at 0
   const center = (r.top + r.bottom) / 2;
   const progress = Math.max(0, Math.min(1, 1 - center / vh));
-  // Map progress 0..1 → -5° .. +5° azimuth nudge
   scrollAzimuth = (progress - 0.5) * (10 * Math.PI / 180);
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-/* ---------- explode (layers view) ---------- */
-let explodeAmount = 0; // 0..1
+let explodeAmount = 0;
 let explodeTarget = 0;
-const ORIG_POS = new Map(); // mesh.uuid -> original y offset
+const ORIG_POS = new Map();
 
 function setView(view) {
   if (view === 'solid')  { explodeTarget = 0; controls.enabled = true; }
@@ -680,29 +808,146 @@ function setView(view) {
 }
 document.querySelectorAll('.s-br button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 
-/* ---------- plate load ---------- */
 let plateRoot = null;
 let topcoatMesh = null;
+let bodyMesh = null;
+let meshLayerMesh = null;   // fibreglass mesh slab (hairline)
+let membraneMesh = null;    // acoustic/recycled-PU pad (only comfortfloor + future)
 let primerMesh = null;
 let substrateMesh = null;
 
+/* Plate registry: tracks which GLB (or 'procedural') is in scene right now,
+   plus an in-memory cache so swapping back doesn't reload. Allows per-material
+   GLB plates from `def.glb_plate` while keeping the procedural fallback when a
+   material has no GLB delivered yet. */
+let proceduralPlateRoot = null;
+const glbPlateCache = {};
+let activePlateKey = '__procedural__';
+
 function findMeshesByMaterialIndex(root) {
-  // After GLTF export, Blender split the multi-material mesh into 3 primitives.
-  // Each primitive is a separate THREE.Mesh in the imported group.
-  // We can identify them by the material name from the GLB.
-  const found = { topcoat: null, primer: null, substrate: null };
+  const found = { topcoat: null, body: null, mesh: null, membrane: null, primer: null, substrate: null };
   root.traverse(o => {
     if (o.isMesh) {
       const matName = (o.material && o.material.name) || '';
-      if (/VAR_|topcoat/i.test(matName)) found.topcoat = o;
-      else if (/primer/i.test(matName)) found.primer = o;
-      else if (/substrate/i.test(matName)) found.substrate = o;
+      const objName = o.name || '';
+      const key = (matName + ' ' + objName).toLowerCase();
+      // Order matters: mesh-layer + membrane checks BEFORE the broad "topcoat/body" branches.
+      // Note: designer's plate-gen 1.0 uses VAR_ prefix on both topcoat AND body materials,
+      // so we match on the slot keyword itself, not on the VAR_ shortcut.
+      if (/mesh-?layer|fibreglass/i.test(key)) found.mesh = o;
+      else if (/membrane|acoustic/i.test(key)) found.membrane = o;
+      else if (/topcoat/i.test(key)) found.topcoat = o;
+      else if (/\bbody\b/i.test(key)) found.body = o;
+      else if (/primer/i.test(key)) found.primer = o;
+      else if (/substrate/i.test(key)) found.substrate = o;
     }
   });
   return found;
 }
 
-const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+/* Bevel-slab — a flat tile with rounded corners (radius bv) and bevelled top/bottom
+   edges (depth bv). Uses ExtrudeGeometry over a rounded-rectangle Shape so the
+   resulting plate looks like a real physical sample, not a sharp BoxGeometry primitive.
+   Borrowed from configurator.v3 (Claude.ai build) and adapted to our 5-slab stack. */
+function bevelSlab(w, d, h, bv) {
+  const r = Math.max(0.0005, bv * 0.6);
+  const sh = new THREE.Shape();
+  sh.moveTo(-w/2 + r, -d/2);                                          sh.lineTo(w/2 - r, -d/2);
+  sh.quadraticCurveTo(w/2,  -d/2,  w/2,  -d/2 + r);                   sh.lineTo(w/2,  d/2 - r);
+  sh.quadraticCurveTo(w/2,   d/2,  w/2 - r,  d/2);                    sh.lineTo(-w/2 + r,  d/2);
+  sh.quadraticCurveTo(-w/2,  d/2, -w/2,  d/2 - r);                    sh.lineTo(-w/2, -d/2 + r);
+  sh.quadraticCurveTo(-w/2, -d/2, -w/2 + r, -d/2);
+  const geo = new THREE.ExtrudeGeometry(sh, {
+    depth: h,
+    bevelEnabled: true,
+    bevelThickness: bv,
+    bevelSize: bv,
+    bevelSegments: 4,
+    curveSegments: 8,
+  });
+  // Extrusion is along +Z by default; rotate so depth maps to Y for our top-down stack.
+  geo.translate(0, 0, -h/2);
+  geo.rotateX(-Math.PI / 2);
+  // AO maps in Three.js r158 use the second UV channel — clone uv → uv2 so the AO
+  // texture lines up with the diffuse without authoring a separate lightmap UV.
+  if (geo.attributes.uv && !geo.attributes.uv2) {
+    geo.setAttribute('uv2', geo.attributes.uv.clone());
+  }
+  return geo;
+}
+
+/* Build a procedural 5-layer plate when no GLB is available.
+   Stack from bottom up: substrate, primer, mesh (hairline), body, topcoat.
+   Each slab is slightly inset versus the one above it (wedding-cake step) so
+   layers read separately in the explode view but blend in the solid view.
+   World units: meters. Heights tuned so the visible top sits at y ≈ 0. */
+function buildProceduralPlate() {
+  const root = new THREE.Group();
+  root.name = 'plateRoot';
+
+  const W = 0.30, D = 0.30;
+  // Slab heights — exaggerated for visibility in explode view.
+  const tcH = 0.006;   // topcoat
+  const bdH = 0.012;   // body system
+  const msH = 0.0015;  // fibreglass mesh (hairline)
+  const prH = 0.003;   // primer
+  const subH = 0.020;  // substrate
+
+  // Inset factor per layer so lower slabs are slightly smaller — gives a stepped
+  // edge profile when exploded, like a real sample with each coating offset.
+  const tcS = 1.000, bdS = 0.998, msS = 0.996, prS = 0.994, subS = 0.992;
+
+  const yTop = 0;
+  const yTopcoat   = yTop - tcH * 0.5;
+  const yBody      = yTop - tcH - bdH * 0.5;
+  const yMeshLayer = yTop - tcH - bdH - msH * 0.5;
+  const yPrimer    = yTop - tcH - bdH - msH - prH * 0.5;
+  const ySubstrate = yTop - tcH - bdH - msH - prH - subH * 0.5;
+
+  const topcoat = new THREE.Mesh(
+    bevelSlab(W * tcS, D * tcS, tcH, 0.0018),
+    new THREE.MeshStandardMaterial({ name: 'VAR_topcoat', color: 0xcccccc, roughness: 0.5 })
+  );
+  topcoat.name = 'topcoat';
+  topcoat.position.y = yTopcoat;
+
+  const body = new THREE.Mesh(
+    bevelSlab(W * bdS, D * bdS, bdH, 0.0015),
+    new THREE.MeshStandardMaterial({ name: 'body', color: 0xb8b0a0, roughness: 0.7 })
+  );
+  body.name = 'body';
+  body.position.y = yBody;
+
+  const meshLayer = new THREE.Mesh(
+    bevelSlab(W * msS, D * msS, msH, 0.0004),
+    new THREE.MeshStandardMaterial({ name: 'mesh-layer fibreglass', color: 0xe6dcc4, roughness: 0.4 })
+  );
+  meshLayer.name = 'mesh-layer';
+  meshLayer.position.y = yMeshLayer;
+
+  const primer = new THREE.Mesh(
+    bevelSlab(W * prS, D * prS, prH, 0.0008),
+    new THREE.MeshStandardMaterial({ name: 'primer', color: 0xc8b08a, roughness: 0.6 })
+  );
+  primer.name = 'primer';
+  primer.position.y = yPrimer;
+
+  const substrate = new THREE.Mesh(
+    bevelSlab(W * subS, D * subS, subH, 0.0010),
+    new THREE.MeshStandardMaterial({ name: 'substrate', color: 0x9a9a98, roughness: 0.85 })
+  );
+  substrate.name = 'substrate';
+  substrate.position.y = ySubstrate;
+
+  root.add(substrate);
+  root.add(primer);
+  root.add(meshLayer);
+  root.add(body);
+  root.add(topcoat);
+  return root;
+}
+
+const loader = new GLTFLoader();
 let manifest = null;
 let activeSlug = null;
 
@@ -710,7 +955,45 @@ async function init() {
   const res = await fetch(ASSET_ROOT + 'manifest.json');
   manifest = await res.json();
 
-  // Build left-rail list
+  /* textures-v2 sandbox: when `?textures=v2` is set, swap diffuse paths for the
+     5 materials with broken/missing textures. Etalon textures/ stays intact. */
+  if (new URLSearchParams(location.search).get('textures') === 'v2') {
+    /* Per-slug roughness_override matches real-world finish — without this, the
+       per-pixel roughnessMap from gen-pbr-maps reads too glossy on mma/comfortfloor
+       and hides the diffuse under mirror-like reflection. */
+    const V2 = {
+      epoxy:        { rough: 0.40 },   // self-leveling industrial epoxy — semi-gloss
+      microtopping: { rough: 0.85 },   // matte hand-trowel micro-cement
+      mma:          { rough: 0.70 },   // signal-yellow safety paint — satin
+      'pu-cement':  { rough: 0.80 },   // food-grade pu-cement — matte non-slip
+      comfortfloor: { rough: 0.70 },   // elastic PU healthcare — satin
+    };
+    for (const m of manifest.materials) {
+      const v2 = V2[m.slug];
+      if (!v2) continue;
+      m.pbr = { diffuse: `textures-v2/${m.slug}/diffuse.jpg`, normal: `textures-v2/${m.slug}/normal.png`, ao: `textures-v2/${m.slug}/ao.png` };
+      m.roughness_override = v2.rough;
+    }
+  }
+
+  /* textures-v3 — owner's real-photo close-ups (diffuse only, normal/ao stay procedural).
+     Opt-in via `?textures=v3` so we can compare against etalon before promoting to default. */
+  if (new URLSearchParams(location.search).get('textures') === 'v3') {
+    const V3 = {
+      'terrazzo-cement': { rough: 0.30 },   // honed cement terrazzo — semi-matte
+      'terrazzo-multi':  { rough: 0.35 },   // honed terrazzo with mixed aggregates
+      'terrazzo-epoxy':  { rough: 0.20 },   // epoxy terrazzo — polished
+      microtopping:      { rough: 0.85 },   // matte hand-trowel micro-cement
+      rubber:            { rough: 0.75 },   // rubber surface — matte
+    };
+    for (const m of manifest.materials) {
+      const v3 = V3[m.slug];
+      if (!v3) continue;
+      m.pbr = { diffuse: `textures-v3/${m.slug}/diffuse.jpg` };
+      m.roughness_override = v3.rough;
+    }
+  }
+
   const grpD = document.getElementById('grpDecorative');
   const grpI = document.getElementById('grpIndustrial');
   const prevEl = (() => { const e = document.createElement('div'); e.className = 'matprev'; document.body.appendChild(e); return e; })();
@@ -718,15 +1001,21 @@ async function init() {
     const li = document.createElement('li');
     li.dataset.slug = m.slug;
     li.tabIndex = 0;
+    const chip = (m.previews && m.previews.plate)
+      ? `<img class="chip" src="${ASSET_ROOT}${m.previews.plate}" alt="" loading="lazy" decoding="async">`
+      : `<span class="chip"></span>`;
     li.innerHTML = `
+      ${chip}
       <span class="idx">${String(idx+1).padStart(2,'0')}</span>
       <span>${m.label_ru}</span>
       <span class="tag">${m.tag}</span>`;
     li.addEventListener('click', () => selectMaterial(m.slug));
     li.addEventListener('mouseenter', e => {
       if (matchMedia('(max-width:1100px)').matches) return;
-      prevEl.style.backgroundImage = `url(${ASSET_ROOT}${m.previews.light})`;
-      prevEl.classList.add('show');
+      if (m.previews && m.previews.light) {
+        prevEl.style.backgroundImage = `url(${ASSET_ROOT}${m.previews.light})`;
+        prevEl.classList.add('show');
+      }
     });
     li.addEventListener('mousemove', e => {
       prevEl.style.left = e.clientX + 'px';
@@ -736,7 +1025,6 @@ async function init() {
     (m.group === 'industrial' ? grpI : grpD).appendChild(li);
   });
 
-  // Keyboard nav: ↑↓ cycle materials, Space toggles explode, T = top view
   window.addEventListener('keydown', ev => {
     if (ev.target && /^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName)) return;
     const slugs = manifest.materials.map(x => x.slug);
@@ -757,184 +1045,216 @@ async function init() {
     }
   });
 
-  // Click on plate (3D canvas) toggles explode
   renderer.domElement.addEventListener('dblclick', () => {
     setView(explodeTarget < 0.5 ? 'layers' : 'solid');
   });
 
-  // Load GLB
-  await new Promise((resolve, reject) => {
-    loader.load(ASSET_ROOT + manifest.geometry.glb, gltf => {
-      plateRoot = gltf.scene;
-      // Center the plate at origin so OrbitControls.target (0,0,0) frames it correctly.
-      const box = new THREE.Box3().setFromObject(plateRoot);
-      const center = box.getCenter(new THREE.Vector3());
-      plateRoot.position.sub(center);
-      // Lift slightly so substrate is the visual base
-      plateRoot.position.y += 0.005;
-      scene.add(plateRoot);
-
-      const meshes = findMeshesByMaterialIndex(plateRoot);
-      topcoatMesh = meshes.topcoat;
-      primerMesh = meshes.primer;
-      substrateMesh = meshes.substrate;
-
-      // Static materials for primer and substrate
-      const sm = manifest.static_materials;
-      if (primerMesh) {
-        primerMesh.material = new THREE.MeshStandardMaterial({
-          color: new THREE.Color(sm.primer.color),
-          roughness: sm.primer.roughness, metalness: 0,
-        });
-      }
-      if (substrateMesh) {
-        substrateMesh.material = new THREE.MeshStandardMaterial({
-          color: new THREE.Color(sm.substrate.color),
-          roughness: sm.substrate.roughness, metalness: 0,
-        });
-      }
-
-      // Cache original Y position for explode animation
-      [topcoatMesh, primerMesh, substrateMesh].forEach(m => {
-        if (m) ORIG_POS.set(m.uuid, m.position.y);
-      });
-
-      // [PREVIEW-ANIM] Intro: 3 layers spawn over-spread and fade-in, then assemble.
-      // Stagger so substrate settles first (foundation), then primer, then topcoat — reads as "build-up".
-      intro.active = true;
-      intro.t = 0;
-      [topcoatMesh, primerMesh, substrateMesh].forEach(m => {
-        if (!m || !m.material) return;
-        m.material.transparent = true;
-        m.material.opacity = 0;
-      });
-
-      resolve();
-    }, undefined, reject);
-  });
-
-  // Restore state from URL (?fd_material=slug&fd_state={json}) if present,
-  // otherwise fall back to the default material.
-  const restored = restoreFromURL();
-  if (!restored) selectMaterial(manifest.materials[1].slug);
-  bootEl.classList.add('gone');
-}
-
-function restoreFromURL() {
-  const qs = new URLSearchParams(location.search);
-  const slug = qs.get('fd_material');
-  if (!slug || !manifest.materials.some(m => m.slug === slug)) return false;
-  selectMaterial(slug);
-  let state = null;
-  try { state = JSON.parse(qs.get('fd_state') || 'null'); } catch (_) {}
-  // Support both {options:{...}} and a flat {...} shape — the order CTA writes the former.
-  const opts = state && (state.options || state);
-  if (!opts || typeof opts !== 'object') return true;
-  const def = manifest.materials.find(m => m.slug === slug);
-  (def.controls || []).forEach(cid => {
-    const wantId = opts[cid];
-    if (!wantId) return;
-    const spec = manifest.control_options[cid];
-    const opt = spec && spec.options.find(o => o.id === wantId);
-    if (!opt) return;
-    orderState[slug][cid] = opt.id;
-    applyControlEffect(def, cid, opt);
-    // Reflect selection in the rendered buttons
-    const ctrlBlocks = document.querySelectorAll('#controls .ctrl');
-    ctrlBlocks.forEach(block => {
-      const label = block.querySelector('.ctrl-k');
-      if (!label || label.textContent !== spec.label_ru) return;
-      block.querySelectorAll('button').forEach(btn => {
-        const name = btn.querySelector('span:last-child')?.textContent || btn.textContent;
-        btn.classList.toggle('on', name.trim() === opt.name);
-      });
+  // Geometry source: either a baked GLB or procedural stacked boxes.
+  if (manifest.geometry && manifest.geometry.glb && !manifest.geometry.procedural) {
+    await new Promise((resolve, reject) => {
+      loader.load(ASSET_ROOT + manifest.geometry.glb, gltf => {
+        plateRoot = gltf.scene;
+        const box = new THREE.Box3().setFromObject(plateRoot);
+        const center = box.getCenter(new THREE.Vector3());
+        plateRoot.position.sub(center);
+        plateRoot.position.y += 0.005;
+        scene.add(plateRoot);
+        applyPlateMeshRefs(plateRoot);
+        resolve();
+      }, undefined, reject);
     });
+  } else {
+    proceduralPlateRoot = buildProceduralPlate();
+    plateRoot = proceduralPlateRoot;
+    scene.add(plateRoot);
+    applyPlateMeshRefs(plateRoot);
+  }
+
+  const sm = manifest.static_materials || {};
+  if (primerMesh && sm.primer) {
+    primerMesh.material = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(sm.primer.color),
+      roughness: sm.primer.roughness ?? 0.6, metalness: 0,
+    });
+  }
+  if (substrateMesh && sm.substrate) {
+    substrateMesh.material = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(sm.substrate.color),
+      roughness: sm.substrate.roughness ?? 0.85, metalness: 0,
+    });
+  }
+
+  [topcoatMesh, bodyMesh, meshLayerMesh, primerMesh, substrateMesh].forEach(m => {
+    if (m) ORIG_POS.set(m.uuid, m.position.y);
   });
-  return true;
+
+  const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
+  selectMaterial(manifest.materials[defaultIdx].slug);
+  bootEl.classList.add('gone');
+
+  /* `?debug=1` exposes module-private refs for the audit harness. No-op in prod URL. */
+  if (new URLSearchParams(location.search).has('debug')) {
+    Object.defineProperty(window, '__cfg', {
+      get: () => ({ scene, topcoatMesh, bodyMesh, plateRoot, activeSlug, manifest, orderState })
+    });
+  }
 }
 
-// Animated transition state for crossfade between materials.
 const transition = { active: false, t: 0, dur: 0.45, from: null, to: null };
 
-// [PREVIEW-ANIM] Intro assembly state — 3 layers settle from spread + fade-in opacity
-const intro = { active: false, t: 0, dur: 1.6 };
-// [PREVIEW-ANIM] Ghost mesh registry — drives two-mesh cross-fade (old topcoat fades out while new mesh fades in)
-const ghosts = []; // {mesh, t, dur, onDone}
-// [PREVIEW-ANIM] Light sweep clock — phased independent of material swap
-const sweep = { t: 0, period: 8.0, amp: 0.18, base: 1.0 };
-// [PREVIEW-ANIM] Breathing camera — tiny sinusoidal bob during idle (Loro Piana pattern)
-const breath = { camY0: null, camDist0: null, phase: 0 };
+/* Update module-level mesh refs from a freshly-mounted plateRoot. */
+function applyPlateMeshRefs(root) {
+  const meshes = findMeshesByMaterialIndex(root);
+  topcoatMesh   = meshes.topcoat;
+  bodyMesh      = meshes.body;
+  meshLayerMesh = meshes.mesh;
+  membraneMesh  = meshes.membrane;
+  primerMesh    = meshes.primer;
+  substrateMesh = meshes.substrate;
+}
+
+/* Swap to the correct plate (per-material GLB if def.glb_plate is set, otherwise
+   procedural fallback). Cached after first load. Returns a Promise that resolves
+   once the plate is in scene and mesh refs are updated. Safe to call repeatedly. */
+async function ensureCorrectPlate(def) {
+  const targetKey = def.glb_plate ? def.slug : '__procedural__';
+  if (targetKey === activePlateKey) return;
+
+  // Detach current plate (don't dispose — cache it for reuse).
+  if (plateRoot && plateRoot.parent) plateRoot.parent.remove(plateRoot);
+
+  if (targetKey === '__procedural__') {
+    if (!proceduralPlateRoot) proceduralPlateRoot = buildProceduralPlate();
+    plateRoot = proceduralPlateRoot;
+  } else {
+    if (!glbPlateCache[def.slug]) {
+      try {
+        const gltf = await new Promise((resolve, reject) =>
+          loader.load(ASSET_ROOT + def.glb_plate, resolve, undefined, reject));
+        const root = gltf.scene;
+        // Normalise pivot to top-center, same convention as procedural plate.
+        const box = new THREE.Box3().setFromObject(root);
+        const center = box.getCenter(new THREE.Vector3());
+        root.position.sub(center);
+        root.position.y += 0.005;
+        glbPlateCache[def.slug] = root;
+      } catch (e) {
+        console.warn('[FD-CFG] failed to load GLB plate', def.glb_plate, '— falling back to procedural', e);
+        if (!proceduralPlateRoot) proceduralPlateRoot = buildProceduralPlate();
+        plateRoot = proceduralPlateRoot;
+        scene.add(plateRoot);
+        applyPlateMeshRefs(plateRoot);
+        activePlateKey = '__procedural__';
+        return;
+      }
+    }
+    plateRoot = glbPlateCache[def.slug];
+  }
+  scene.add(plateRoot);
+  applyPlateMeshRefs(plateRoot);
+  activePlateKey = targetKey;
+}
 
 function selectMaterial(slug) {
   if (slug === activeSlug) return;
   const def = manifest.materials.find(m => m.slug === slug);
   if (!def || !topcoatMesh) return;
+
+  // Plate swap is async; defer the material/state update so refs are current.
+  ensureCorrectPlate(def).then(() => _applyMaterialState(def, slug)).catch(e => {
+    console.warn('[FD-CFG] ensureCorrectPlate error', e);
+    _applyMaterialState(def, slug);
+  });
+}
+
+function _applyMaterialState(def, slug) {
+  if (!topcoatMesh) return;
   activeSlug = slug;
 
-  // Build new material
-  const newMat = buildPbrMaterial(def);
+  /* PHOTO MODE: material has real photo textures on body + transparent gloss topcoat.
+     The chip pattern reads from the body diffuse map instead of the procedural Voronoi. */
+  const photoMode = !!(def.body_textures && def.topcoat_glass);
+
+  let newMat;
+  if (photoMode) {
+    newMat = buildGlassTopcoatMaterial();
+  } else {
+    newMat = buildPbrMaterial(def);
+  }
   const oldMat = topcoatMesh.material;
 
-  // [PREVIEW-ANIM] Two-mesh cross-fade (Cartier "Find Your Love" pattern):
-  // clone the topcoat geometry, paint the OLD material onto the clone, then swap real mesh to NEW material.
-  // Both visible briefly — clone fades out 0.45s while real mesh fades in. Smooths Safari first-frame flash too.
-  if (oldMat && oldMat !== newMat) {
-    const ghost = new THREE.Mesh(topcoatMesh.geometry, oldMat);
-    ghost.position.copy(topcoatMesh.position);
-    ghost.rotation.copy(topcoatMesh.rotation);
-    ghost.scale.copy(topcoatMesh.scale);
-    ghost.renderOrder = (topcoatMesh.renderOrder || 0) + 1;
-    if (ghost.material.opacity == null) ghost.material.opacity = 1;
-    ghost.material = ghost.material.clone(); // independent opacity tween — avoid mutating shared mat
-    ghost.material.transparent = true;
-    ghost.material.opacity = 1;
-    ghost.material.depthWrite = false;       // ghost on top, don't z-fight when fading
-    topcoatMesh.parent.add(ghost);
-    ghosts.push({ mesh: ghost, t: 0, dur: 0.45, onDone: () => {
-      ghost.parent && ghost.parent.remove(ghost);
-      ghost.material.dispose && ghost.material.dispose();
-    }});
-  }
-
-  // Apply new material to real mesh — start invisible, fade in along with ghost fade-out.
-  newMat.transparent = true;
-  newMat.opacity = 0;
-  topcoatMesh.material = newMat;
-
-  // Keep color/roughness lerp for envmap-aware blend (vendor pattern from etalon).
   const fromColor = oldMat && oldMat.color ? oldMat.color.clone() : new THREE.Color('#ffffff');
   const fromRough = oldMat ? oldMat.roughness : 0.8;
+  topcoatMesh.material = newMat;
   const targetColor = newMat.color.clone();
   const targetRough = newMat.roughness;
-  newMat.color.copy(fromColor);
-  newMat.roughness = fromRough;
-  transition.active = true;
-  transition.t = 0;
-  transition.from = { color: fromColor, roughness: fromRough };
-  transition.to = { color: targetColor, roughness: targetRough };
+  if (!photoMode) {
+    // Crossfade only when both old and new materials are opaque standards.
+    newMat.color.copy(fromColor);
+    newMat.roughness = fromRough;
+    transition.active = true;
+    transition.t = 0;
+    transition.from = { color: fromColor, roughness: fromRough };
+    transition.to = { color: targetColor, roughness: targetRough };
+  } else {
+    transition.active = false;
+  }
   if (oldMat && oldMat !== newMat && oldMat.dispose) {
-    setTimeout(() => oldMat.dispose(), 800);
+    setTimeout(() => oldMat.dispose(), 600);
   }
   bumpIdle();
 
-  // Update right rail (this also seeds orderState with default option ids)
+  renderSpecs(def);
+  renderBadges(def);
   renderControls(def);
   renderBuildup(def);
+  renderCallouts(def);
 
-  // Update header
+  // Body slab: in photo mode load real diffuse; otherwise tint towards topcoat colour.
+  if (bodyMesh) {
+    const oldBodyMat = bodyMesh.material;
+    if (photoMode) {
+      const variant = def.body_default || Object.keys(def.body_textures)[0];
+      const photoMat = buildBodyPhotoMaterial(def, variant);
+      if (photoMat) bodyMesh.material = photoMat;
+    } else if (def.procedural) {
+      // Reset to a tinted standard material in case we just left photo mode.
+      const bodyColor = new THREE.Color(def.procedural.color);
+      bodyColor.lerp(new THREE.Color('#9c9484'), 0.45);
+      bodyMesh.material = new THREE.MeshStandardMaterial({
+        name: 'body',
+        color: bodyColor,
+        roughness: 0.7,
+      });
+    }
+    if (oldBodyMat && oldBodyMat !== bodyMesh.material && oldBodyMat.dispose) {
+      setTimeout(() => oldBodyMat.dispose(), 600);
+    }
+  }
+
   document.getElementById('stTitle').textContent = def.label_ru;
-  document.getElementById('stTag').textContent = `${def.tag} · ${manifest.geometry.dimensions_mm.join('×')} мм`;
+  const dims = (manifest.geometry && manifest.geometry.dimensions_mm) ? manifest.geometry.dimensions_mm.join('×') : '300×300';
+  document.getElementById('stTag').textContent = `${def.tag} · ${dims} мм`;
 
-  // Update active state on list
   document.querySelectorAll('#matlist li').forEach(li => {
     li.classList.toggle('on', li.dataset.slug === slug);
   });
 
-  // Bake initial decals (aggregates/flecks default to first option in their list)
-  refreshCompositeMap(def);
+  /* Honest-geometry pass: hide procedural slabs whose layer is absent from manifest.buildup.
+     Without this, every material shows a phantom mesh/primer layer in explode view
+     even though only microtopping actually uses a fibreglass mesh. Body+topcoat+substrate
+     are always visible (every floor system has them). Real-world fix needs per-material
+     GLB geometry from Blender — this is the interim accuracy bandaid. */
+  const bu = def.buildup || {};
+  if (meshLayerMesh) meshLayerMesh.visible = !!bu.mesh;
+  if (membraneMesh)  membraneMesh.visible  = !!bu.membrane;
+  if (primerMesh)    primerMesh.visible    = !!bu.primer;
+
+  // In photo mode the chips come from the photo; skip the Voronoi/canvas composite
+  // so we don't double-paint chips on top of the body texture.
+  if (!photoMode) refreshCompositeMap(def);
 }
 
-/* ---------- right-rail controls ---------- */
 const orderState = {};
 
 function renderControls(def) {
@@ -977,7 +1297,6 @@ function renderControls(def) {
         applyControlEffect(def, cid, opt);
       });
       if (i === 0) {
-        // pre-select first option
         b.classList.add('on');
         orderState[def.slug][cid] = opt.id;
       }
@@ -988,41 +1307,130 @@ function renderControls(def) {
   });
 }
 
+/* Right-rail "Параметры системы" — readonly key/value table from manifest.spec.
+   Spec keys are mapped to Russian labels here; missing fields are gracefully skipped. */
+function renderSpecs(def) {
+  const root = document.getElementById('specsTbl');
+  if (!root) return;
+  const sp = def.spec || {};
+  const labels = {
+    type: 'тип', thk: 'толщина', base: 'основа', cure: 'cure-time',
+    warr: 'гарантия', price: 'цена', load: 'нагрузка'
+  };
+  const rows = ['type', 'thk', 'base', 'cure', 'warr', 'price', 'load']
+    .filter(k => sp[k])
+    .map(k => `<div class="row"><span class="k">${labels[k]}</span><span class="v">${sp[k]}</span></div>`)
+    .join('');
+  root.innerHTML = rows || '<div class="row"><span class="k">—</span><span class="v">нет данных</span></div>';
+}
+
+/* Compliance / class badges. First badge gets `solid` (filled-dark), accent badge
+   (R12, HACCP, RAPID — anything urgent/notable) gets `warn` (filled-orange).
+   Default badges keep the outlined look. */
+function renderBadges(def) {
+  const root = document.getElementById('specsBadges');
+  if (!root) return;
+  const list = def.badges || [];
+  const accentRe = /R12|HACCP|RAPID|−|GLOSS|ANTI-SLIP|FOOD-SAFE/i;
+  root.innerHTML = list.map((b, i) => {
+    const cls = (i === 0) ? 'solid' : (accentRe.test(b) ? 'warn' : '');
+    return `<span class="b ${cls}">${b}</span>`;
+  }).join('');
+}
+
 function renderBuildup(def) {
   const root = document.getElementById('buildup');
   const bu = def.buildup || {};
+  const meshRow     = bu.mesh     ? `<div class="row"><span class="k">сетка</span><span class="v">${bu.mesh}</span></div>` : '';
+  const membraneRow = bu.membrane ? `<div class="row"><span class="k">мембрана</span><span class="v">${bu.membrane}</span></div>` : '';
   root.innerHTML = `
     <h5>Системный пирог</h5>
     <div class="row"><span class="k">топкоат</span><span class="v">${bu.topcoat||'—'}</span></div>
     <div class="row"><span class="k">тело</span><span class="v">${bu.body||'—'}</span></div>
+    ${meshRow}
+    ${membraneRow}
     <div class="row"><span class="k">праймер</span><span class="v">${bu.primer||'—'}</span></div>
     <div class="row"><span class="k">основа</span><span class="v">${bu.substrate||'—'}</span></div>
   `;
 }
 
+/* Populate the stage-side callouts from the manifest buildup. Each `.co` block has
+   a `data-slot="topcoat|body|mesh|primer|substrate"` and is hidden when the slot
+   is missing from the material's buildup (e.g. `mesh` is only set on microtopping). */
+function renderCallouts(def) {
+  const bu = def.buildup || {};
+  const labels = {
+    topcoat: 'Топкоат',
+    body: 'Тело системы',
+    mesh: 'Стеклосетка',
+    membrane: 'Мембрана / акустика',
+    primer: 'Праймер',
+    substrate: 'Подложка'
+  };
+  // Recompute top positions so visible callouts spread evenly along the stage edge.
+  const slots = ['topcoat', 'body', 'mesh', 'membrane', 'primer', 'substrate'];
+  const visible = slots.filter(s => bu[s]);
+  const root = document.getElementById('callouts');
+  if (!root) return;
+  const span = 72;   // total vertical % range used by callouts
+  const top0 = 14;   // first callout starts at top:14%
+  const step = visible.length > 1 ? span / (visible.length - 1) : 0;
+  root.querySelectorAll('.co').forEach(co => {
+    const slot = co.dataset.slot;
+    const idx = visible.indexOf(slot);
+    if (idx === -1 || !bu[slot]) {
+      co.classList.add('is-hidden');
+      return;
+    }
+    co.classList.remove('is-hidden');
+    co.style.top = (top0 + idx * step) + '%';
+    co.querySelector('b').textContent = labels[slot];
+    co.querySelector('span').textContent = bu[slot];
+  });
+}
+
 function applyControlEffect(def, cid, opt) {
   if (!topcoatMesh) return;
   const mat = topcoatMesh.material;
-  if (cid === 'color' && opt.hex) {
+  const photoMode = !!(def.body_textures && def.topcoat_glass);
+
+  if (cid === 'color' && opt.hex && !photoMode) {
     const c = new THREE.Color(opt.hex);
     const lum = 0.2126*c.r + 0.7152*c.g + 0.0722*c.b;
-    const lerpAmount = 0.55 + (1 - lum) * 0.25;
+    /* Old formula (0.55-0.80) crushed dark colors to indistinguishable off-whites:
+       graphite and ral7016 both resolved to ~#e7e7e7. New range 0.30-0.50 keeps
+       the texture visible while preserving the user's pick as a recognisable tint. */
+    const lerpAmount = 0.30 + (1 - lum) * 0.20;
     c.lerp(new THREE.Color('#ffffff'), lerpAmount);
     mat.color.copy(c);
   }
+  // Chips color: swap the body diffuse texture (real photo of terrazzo crumb).
+  if (cid === 'chips_color' && opt.body_variant && bodyMesh) {
+    const newBody = buildBodyPhotoMaterial(def, opt.body_variant);
+    if (newBody) {
+      const oldBody = bodyMesh.material;
+      bodyMesh.material = newBody;
+      if (oldBody && oldBody.dispose) setTimeout(() => oldBody.dispose(), 600);
+    }
+  }
   if (cid === 'gloss') {
-    const m = { low: 0.7, mid: 0.4, high: 0.15 };
+    const m = { low: 0.7, mid: 0.4, high: 0.08 };
     mat.roughness = m[opt.id] ?? mat.roughness;
     mat.roughnessMap = null;
+    // Glass topcoat: also vary opacity slightly with gloss level.
+    if (photoMode) {
+      const o = { low: 0.28, mid: 0.22, high: 0.14 };
+      mat.opacity = o[opt.id] ?? mat.opacity;
+      if (mat.clearcoatRoughness !== undefined) mat.clearcoatRoughness = mat.roughness * 0.5;
+    }
     mat.needsUpdate = true;
   }
   if (cid === 'finish') {
     const r = { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id];
     if (r != null) { mat.roughness = r; mat.roughnessMap = null; mat.needsUpdate = true; }
   }
-  // Visual decals — rebuild composite map
   if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
-    refreshCompositeMap(def);
+    if (!photoMode) refreshCompositeMap(def);
   }
 }
 
@@ -1034,10 +1442,45 @@ async function refreshCompositeMap(def) {
     const state = orderState[def.slug] || {};
     const tex = await buildCompositeMap(def, state);
     if (topcoatMesh && def.slug === activeSlug) {
-      const old = topcoatMesh.material.map;
-      topcoatMesh.material.map = tex;
-      topcoatMesh.material.needsUpdate = true;
-      if (old && old.dispose) old.dispose();
+      const mat = topcoatMesh.material;
+      const oldMap = mat.map;
+      mat.map = tex;
+      const tile = def.tile || 1;
+
+      // Normal map — tangent-space relief, lights the chips. Tiled like the diffuse.
+      if (def.pbr && def.pbr.normal) {
+        const nm = loadTex(def.pbr.normal); // linear, NoColorSpace by default
+        nm.repeat.set(tile, tile);
+        mat.normalMap = nm;
+        if (mat.normalScale) mat.normalScale.set(0.85, 0.85);
+      } else {
+        mat.normalMap = null;
+      }
+
+      // Roughness map — modulates the scalar `mat.roughness` (final = scalar * map.r).
+      // So the gloss/finish controls still work as a master, the map just shapes the
+      // distribution per chip vs matrix.
+      if (def.pbr && def.pbr.roughness) {
+        const rm = loadTex(def.pbr.roughness); // linear
+        rm.repeat.set(tile, tile);
+        mat.roughnessMap = rm;
+      } else {
+        mat.roughnessMap = null;
+      }
+
+      // AO map — darkens recessed areas. Three.js r158 reads it from the second UV
+      // channel (uv2), which bevelSlab() already populated for us.
+      if (def.pbr && def.pbr.ao) {
+        const ao = loadTex(def.pbr.ao); // linear
+        ao.repeat.set(tile, tile);
+        mat.aoMap = ao;
+        mat.aoMapIntensity = 0.55;
+      } else {
+        mat.aoMap = null;
+      }
+
+      mat.needsUpdate = true;
+      if (oldMap && oldMap.dispose) oldMap.dispose();
     } else if (tex.dispose) {
       tex.dispose();
     }
@@ -1046,32 +1489,88 @@ async function refreshCompositeMap(def) {
   }
 }
 
-/* ---------- order CTA ---------- */
 document.getElementById('ctaOrder').addEventListener('click', () => {
-  const payload = { material: activeSlug, options: orderState[activeSlug] };
+  // Bridge to /quote — passes:
+  //   m: material slug for quote.html's calculator pre-select (LABELS["m"] in enhance.js)
+  //   config_url: full configurator URL so lead-form can include link to the user's exact assembly
+  //   fd_state: opaque state JSON for the audit trail in Netlify Forms submission
+  // Mapping slugs: configurator uses 'terrazzo-cement', quote uses 'terrazzo' etc.
+  /* Map configurator slugs to /quote calculator material IDs (see enhance.js LABELS).
+     Closest-chemistry fallback for slugs /quote doesn't handle natively: comfortfloor → purcem. */
+  const slugMap = {
+    'terrazzo-cement': 'terrazzo', 'terrazzo-multi': 'terrazzo', 'terrazzo-epoxy': 'terrazzo',
+    'microtopping': 'micro', 'decorative-concrete': 'concrete',
+    'pu-cement': 'purcem', 'epoxy': 'epoxy', 'mma': 'mma',
+    'rubber': 'rubber', 'comfortfloor': 'purcem'
+  };
+  const quoteMat = slugMap[activeSlug] || 'epoxy';
   const params = new URLSearchParams({
-    fd_material: payload.material,
-    fd_state: JSON.stringify(payload.options)
+    material: quoteMat,                                  // enhance.js line 807 — pre-selects calculator chip
+    m: quoteMat,                                          // enhance.js line 860 — config-summary label
+    fd_material: activeSlug,                              // original full slug, audit trail
+    fd_state: JSON.stringify(orderState[activeSlug] || {}),
+    config_url: window.location.href                      // hidden field in lead-form, link back to user's exact assembly
   });
-  // For now: log + put state in URL for downstream order page
-  console.log('[FD-CFG] order payload', payload);
-  alert('Формула собрана:\n' + JSON.stringify(payload, null, 2) + '\n\nЭтот state передаётся в систему заказа через URL-параметры.');
-  history.replaceState(null, '', '?' + params.toString());
+  console.log('[FD-CFG] order payload', { material: activeSlug, quoteMat, options: orderState[activeSlug] });
+  window.location.href = 'quote.html?' + params.toString();
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  alert('Sample-kit 100×100 мм для материала: ' + (activeSlug || '—'));
+  // Bridge to /sample-kit standalone form — passes:
+  //   system: configurator's material slug → sample-kit's hidden material_slug + readonly label
+  //   fd_state: opaque config state for the audit trail in Netlify submission
+  //   config_url: link back to user's exact 3D assembly
+  const params = new URLSearchParams({
+    system: activeSlug || '',
+    fd_state: JSON.stringify(orderState[activeSlug] || {}),
+    config_url: window.location.href
+  });
+  window.location.href = 'sample-kit.html?' + params.toString();
 });
 
-/* ---------- idle auto-rotation ---------- */
+// Share-link — copies current configurator URL (URL already encodes
+// fd_state / fd_material via earlier ctaOrder/ctaSample work).
+(function() {
+  const btn = document.getElementById('ctaShare');
+  if (!btn) return;
+  let toast = document.querySelector('.fd-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'fd-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+  }
+  btn.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+      }
+      showToast('Ссылка скопирована');
+    } catch (e) {
+      showToast('Не удалось скопировать — скопируйте из адресной строки');
+    }
+  });
+})();
+
 let lastUserInputT = performance.now();
-let idleSpin = 0;        // accumulated rotation (rad)
+let idleSpin = 0;
 let idleSpinTarget = 0;
 function bumpIdle() { lastUserInputT = performance.now(); idleSpinTarget = idleSpin; }
 ['pointerdown','wheel','touchstart','keydown'].forEach(ev =>
   window.addEventListener(ev, bumpIdle, { passive: true }));
 
-/* ---------- render loop ---------- */
 let lastT = performance.now();
 let fpsEMA = 60;
 const fpsEl = document.getElementById('fps');
@@ -1082,114 +1581,39 @@ function animate(t) {
   if (dt > 0) fpsEMA = fpsEMA * 0.92 + (1/dt) * 0.08;
   if (Math.random() < 0.05) fpsEl.textContent = `${Math.round(fpsEMA)} FPS`;
 
-  // Idle auto-rotation: after 4s of no input, slowly orbit Y
   const idleSec = (t - lastUserInputT) / 1000;
   if (idleSec > 4) {
-    const ramp = Math.min(1, (idleSec - 4) / 1.2);  // 0..1 over 1.2s ramp-in
-    idleSpinTarget += dt * 0.18 * ramp;             // ~10°/s when fully ramped
+    const ramp = Math.min(1, (idleSec - 4) / 1.2);
+    idleSpinTarget += dt * 0.18 * ramp;
   }
   idleSpin = THREE.MathUtils.lerp(idleSpin, idleSpinTarget, 0.18);
 
-  // Compose plate.rotation.y = scroll-azimuth + idle-spin
   if (plateRoot) {
     const target = scrollAzimuth + idleSpin;
     plateRoot.rotation.y = THREE.MathUtils.lerp(plateRoot.rotation.y, target, 0.08);
   }
 
-  // Material transition lerp (color + roughness)
   if (transition.active && topcoatMesh) {
     transition.t += dt / transition.dur;
     const k = easeOutCubic(Math.min(1, transition.t));
     const mat = topcoatMesh.material;
     mat.color.copy(transition.from.color).lerp(transition.to.color, k);
     mat.roughness = THREE.MathUtils.lerp(transition.from.roughness, transition.to.roughness, k);
-    mat.opacity = k;                               // [PREVIEW-ANIM] real mesh fades IN
-    if (k >= 1 && mat.transparent) {
-      mat.transparent = false; mat.opacity = 1;    // restore opaque z-write when done
-    }
     if (transition.t >= 1) transition.active = false;
   }
 
-  // [PREVIEW-ANIM] Ghost (old topcoat) fade-out + dispose
-  for (let i = ghosts.length - 1; i >= 0; i--) {
-    const g = ghosts[i];
-    g.t += dt / g.dur;
-    const k = easeOutCubic(Math.min(1, g.t));
-    g.mesh.material.opacity = 1 - k;
-    if (g.t >= 1) {
-      g.onDone();
-      ghosts.splice(i, 1);
-    }
-  }
+  explodeAmount = THREE.MathUtils.lerp(explodeAmount, explodeTarget, 0.10);
+  // 5-layer explode (top→bottom). Distances chosen so the gaps match the callout
+  // distribution (top:14% → 86%) when the stage is fully exploded.
+  if (topcoatMesh)    topcoatMesh.position.y    = (ORIG_POS.get(topcoatMesh.uuid)    ?? 0) + 0.080 * explodeAmount;
+  if (bodyMesh)       bodyMesh.position.y       = (ORIG_POS.get(bodyMesh.uuid)       ?? 0) + 0.045 * explodeAmount;
+  if (meshLayerMesh)  meshLayerMesh.position.y  = (ORIG_POS.get(meshLayerMesh.uuid)  ?? 0) + 0.018 * explodeAmount;
+  if (primerMesh)     primerMesh.position.y     = (ORIG_POS.get(primerMesh.uuid)     ?? 0) - 0.012 * explodeAmount;
+  if (substrateMesh)  substrateMesh.position.y  = (ORIG_POS.get(substrateMesh.uuid)  ?? 0) - 0.045 * explodeAmount;
 
-  // [PREVIEW-ANIM] Intro assembly: 3 layers settle from over-spread (1.4x explode) → 0,
-  // simultaneously fade opacity 0 → 1 with staggered offsets per layer.
-  if (intro.active) {
-    intro.t += dt / intro.dur;
-    const k = Math.min(1, intro.t);
-    // easeOutQuart for the position settle — feels mechanical/precise (industrial brand)
-    const easeQ = 1 - Math.pow(1 - k, 4);
-    const spreadFactor = (1 - easeQ) * 1.4; // 0 once settled
-    // Per-layer stagger via clamped sub-ranges
-    const topK   = Math.min(1, Math.max(0, (k - 0.30) / 0.55));
-    const primK  = Math.min(1, Math.max(0, (k - 0.15) / 0.55));
-    const subK   = Math.min(1, Math.max(0, (k - 0.00) / 0.55));
-    const easeOpac = x => 1 - Math.pow(1 - x, 3);
-    if (topcoatMesh)   topcoatMesh.material.opacity   = easeOpac(topK);
-    if (primerMesh)    primerMesh.material.opacity    = easeOpac(primK);
-    if (substrateMesh) substrateMesh.material.opacity = easeOpac(subK);
-    // Spread along Y: layers compress into final stack
-    if (topcoatMesh)   topcoatMesh.position.y   = (ORIG_POS.get(topcoatMesh.uuid)   ?? 0) + 0.10 * spreadFactor;
-    if (primerMesh)    primerMesh.position.y    = (ORIG_POS.get(primerMesh.uuid)    ?? 0) + 0.05 * spreadFactor;
-    if (substrateMesh) substrateMesh.position.y = (ORIG_POS.get(substrateMesh.uuid) ?? 0) - 0.04 * spreadFactor;
-    if (intro.t >= 1) {
-      intro.active = false;
-      [topcoatMesh, primerMesh, substrateMesh].forEach(m => {
-        if (!m || !m.material) return;
-        m.material.opacity = 1;
-        m.material.transparent = false;
-      });
-    }
-  } else {
-    // Explode animation (user-driven, normal mode)
-    explodeAmount = THREE.MathUtils.lerp(explodeAmount, explodeTarget, 0.10);
-    if (topcoatMesh)   topcoatMesh.position.y   = (ORIG_POS.get(topcoatMesh.uuid)   ?? 0) + 0.05  * explodeAmount;
-    if (primerMesh)    primerMesh.position.y    = (ORIG_POS.get(primerMesh.uuid)    ?? 0) + 0.022 * explodeAmount;
-    if (substrateMesh) substrateMesh.position.y = (ORIG_POS.get(substrateMesh.uuid) ?? 0) - 0.005 * explodeAmount;
-  }
-
-  // [PREVIEW-ANIM] Light sweep — slow envMapIntensity oscillation (~8s loop).
-  // Reads as polish/honed depth without changing source data.
-  // Sweep runs ALWAYS so there's no value jump at the end of cross-fade; during transition we just modulate
-  // the new material's envMapIntensity in lockstep (and the lerp won't touch it).
-  sweep.t += dt;
-  if (topcoatMesh && topcoatMesh.material) {
-    const m = topcoatMesh.material;
-    if (m._baseEnvI == null) m._baseEnvI = m.envMapIntensity ?? 1.0;
-    const phase = (sweep.t / sweep.period) * Math.PI * 2;
-    m.envMapIntensity = m._baseEnvI * (sweep.base + sweep.amp * Math.sin(phase));
-  }
-
-  // [PREVIEW-ANIM] Breathing camera — sinusoidal Y-bob (+ tiny dolly) once idle is engaged.
-  // Pauses during user input and intro. The amplitude is intentionally subliminal (~3mm @ scene scale).
-  const idleSecB = (t - lastUserInputT) / 1000;
-  if (idleSecB > 4 && !intro.active) {
-    if (breath.camY0 == null) breath.camY0 = camera.position.y;
-    if (breath.camDist0 == null) breath.camDist0 = camera.position.length();
-    breath.phase += dt * 0.55; // ~5.7s period
-    const bob = Math.sin(breath.phase) * 0.006;     // 6 mm bob
-    const dolly = Math.sin(breath.phase * 0.7) * 0.004; // 4 mm dolly
-    // Apply bob to camera Y, dolly along view direction
-    camera.position.y = breath.camY0 + bob;
-    const dir = camera.position.clone().sub(controls.target).normalize();
-    const targetLen = breath.camDist0 + dolly;
-    const curLen = camera.position.distanceTo(controls.target);
-    camera.position.addScaledVector(dir, targetLen - curLen);
-  } else if (breath.camY0 != null) {
-    // Drift back to base when user grabs control
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, breath.camY0, 0.06);
-    breath.phase = 0;
-  }
+  // Show callouts only when sufficiently exploded.
+  const calloutsEl = document.getElementById('callouts');
+  if (calloutsEl) calloutsEl.classList.toggle('on', explodeAmount > 0.5);
 
   controls.update();
   renderer.render(scene, camera);
