@@ -960,7 +960,7 @@ function buildProceduralPlate() {
 
   const W = 0.30, D = 0.30;
   // Slab heights — exaggerated for visibility in explode view.
-  const tcH = 0.006;   // topcoat
+  const tcH = 0.0016;  // topcoat — a sealer is microns/tenths-of-mm thin: keep it a hairline film
   const bdH = 0.012;   // body system
   const msH = 0.0015;  // fibreglass mesh (hairline)
   const prH = 0.003;   // primer
@@ -978,7 +978,7 @@ function buildProceduralPlate() {
   const ySubstrate = yTop - tcH - bdH - msH - prH - subH * 0.5;
 
   const topcoat = new THREE.Mesh(
-    bevelSlab(W * tcS, D * tcS, tcH, 0.0018),
+    bevelSlab(W * tcS, D * tcS, tcH, 0.0005),
     new THREE.MeshStandardMaterial({ name: 'VAR_topcoat', color: 0xcccccc, roughness: 0.5 })
   );
   topcoat.name = 'topcoat';
@@ -1394,13 +1394,21 @@ function renderBuildup(def) {
   const root = document.getElementById('buildup');
   const bu = def.buildup || {};
   const meshRow = bu.mesh ? `<div class="row"><span class="k">сетка</span><span class="v">${bu.mesh}</span></div>` : '';
+  // Topcoat type — a sealer is microns thin; two grades: standard (interior) vs UV (exterior/constant sun).
+  const tt = (orderState[def.slug] || {}).topcoatType || 'standard';
+  const ttLabel = tt === 'uv' ? 'UV-стойкий · улица/солнце' : 'обычный · интерьер';
+  const ttNote = tt === 'uv'
+    ? 'UV-топкоат: алифатический, не желтеет под прямым солнцем — для улицы, витрин и зон постоянного света.'
+    : 'Обычный топкоат: для интерьера. Под прямым УФ со временем желтеет — для улицы/солнца выбирайте UV.';
+  const tcBase = (bu.topcoat || '—').replace(/ · (обычный|UV)[^·]*$/i, '');
   root.innerHTML = `
     <h5>Системный пирог</h5>
-    <div class="row"><span class="k">топкоат</span><span class="v">${bu.topcoat||'—'}</span></div>
+    <div class="row"><span class="k">топкоат</span><span class="v">${tcBase} · ${ttLabel}</span></div>
     <div class="row"><span class="k">тело</span><span class="v">${bu.body||'—'}</span></div>
     ${meshRow}
     <div class="row"><span class="k">праймер</span><span class="v">${bu.primer||'—'}</span></div>
     <div class="row"><span class="k">основа</span><span class="v">${bu.substrate||'—'}</span></div>
+    <div class="bu-note" style="margin-top:9px;font-family:var(--mono);font-size:9.5px;line-height:1.5;letter-spacing:.02em;color:var(--ink-3)">${ttNote}</div>
   `;
 }
 
@@ -1519,6 +1527,10 @@ function applyControlEffect(def, cid, opt) {
   }
   if (cid === 'finish') {
     setGloss(glossMat, def, { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id]);
+  }
+  if (cid === 'topcoat_type') {
+    orderState[def.slug].topcoatType = opt.id;
+    renderBuildup(def);   // re-render the system pie with the chosen sealer grade + note
   }
   if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
     if (!photoMode) refreshCompositeMap(def);

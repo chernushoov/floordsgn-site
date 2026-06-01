@@ -42,6 +42,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "aggregates",
         "finish"
@@ -163,6 +164,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "aggregates",
         "gloss"
       ],
@@ -302,6 +304,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "aggregates",
         "gloss"
@@ -388,6 +391,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "finish"
       ],
@@ -498,6 +502,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "marking"
       ],
@@ -595,6 +600,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "finish"
       ],
@@ -659,6 +665,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "finish",
         "stripes"
@@ -771,6 +778,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "marking",
         "gloss"
@@ -830,6 +838,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "marking"
       ],
@@ -888,6 +897,7 @@
       },
       "tile": 2,
       "controls": [
+        "topcoat_type",
         "color",
         "flecks",
         "marking",
@@ -1117,6 +1127,19 @@
           "id": "red",
           "name": "Красная",
           "hex": "#d63027"
+        }
+      ]
+    },
+    "topcoat_type": {
+      "label_ru": "Топкоат",
+      "options": [
+        {
+          "id": "standard",
+          "name": "Обычный · интерьер"
+        },
+        {
+          "id": "uv",
+          "name": "UV · улица/солнце"
         }
       ]
     }
