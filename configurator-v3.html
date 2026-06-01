@@ -758,8 +758,13 @@ function buildGlassTopcoatMaterial(roughness = 0.06) {
     side: THREE.DoubleSide,
     depthWrite: false,
   });
+  // baseOpacity = how clear the sealer is in SURFACE view (you look through it). The explode
+  // loop raises opacity toward EXPLODE_TOPCOAT_OPACITY so the lacquer reads as a glass layer
+  // in the System view (it has its own callout) without hazing the floor when collapsed.
+  mat.userData.baseOpacity = mat.opacity;
   return mat;
 }
+const EXPLODE_TOPCOAT_OPACITY = 0.46;
 
 /* Fallback colours per chip variant — used when the photo texture has not been
    dropped into 3d-assets/textures/<slug>/ yet. Keeps the body looking plausible
@@ -1505,7 +1510,8 @@ function applyControlEffect(def, cid, opt) {
     if (g != null) {
       setGloss(glossMat, def, g);   // gloss on the topcoat sealer → clearcoatRoughness
       const o = { low: 0.28, mid: 0.22, high: 0.14 };
-      glossMat.opacity = o[opt.id] ?? glossMat.opacity;
+      // Store as baseOpacity (surface-view clarity); the explode loop drives live opacity.
+      glossMat.userData.baseOpacity = o[opt.id] ?? glossMat.userData.baseOpacity ?? glossMat.opacity;
       glossMat.needsUpdate = true;
     }
   }
@@ -1658,7 +1664,12 @@ function animate(t) {
   explodeAmount = THREE.MathUtils.lerp(explodeAmount, explodeTarget, 0.10);
   // 5-layer explode (top→bottom). Distances chosen so the gaps match the callout
   // distribution (top:14% → 86%) when the stage is fully exploded.
-  if (topcoatMesh)    topcoatMesh.position.y    = (ORIG_POS.get(topcoatMesh.uuid)    ?? 0) + 0.080 * explodeAmount;
+  if (topcoatMesh) {
+    topcoatMesh.position.y = (ORIG_POS.get(topcoatMesh.uuid) ?? 0) + 0.080 * explodeAmount;
+    // Clear sealer when collapsed; visible glass slab when exploded (so its callout reads).
+    const tm = topcoatMesh.material;
+    if (tm && tm.transparent) tm.opacity = THREE.MathUtils.lerp(tm.userData.baseOpacity ?? 0.16, EXPLODE_TOPCOAT_OPACITY, explodeAmount);
+  }
   if (bodyMesh)       bodyMesh.position.y       = (ORIG_POS.get(bodyMesh.uuid)       ?? 0) + 0.045 * explodeAmount;
   if (meshLayerMesh)  meshLayerMesh.position.y  = (ORIG_POS.get(meshLayerMesh.uuid)  ?? 0) + 0.018 * explodeAmount;
   if (primerMesh)     primerMesh.position.y     = (ORIG_POS.get(primerMesh.uuid)     ?? 0) - 0.012 * explodeAmount;

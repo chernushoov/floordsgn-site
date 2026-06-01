@@ -7,9 +7,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
+const { chromiumLaunchOptions } = require('./browser-launch-options');
 
 const ROOT = path.resolve(__dirname, '..');
-const CHROMIUM_BIN = '/Applications/Chromium.app/Contents/MacOS/Chromium';
 const args = process.argv.slice(2);
 const slug = (args.find(a => !a.startsWith('--')) || 'microtopping');
 const page_ = (args.find(a => a.startsWith('--page=')) || '').split('=')[1] || 'configurator-v3.html';
@@ -38,7 +38,7 @@ function serve() {
 
 (async () => {
   const srv = await serve();
-  const browser = await chromium.launch({ executablePath: CHROMIUM_BIN, headless: true });
+  const browser = await chromium.launch(chromiumLaunchOptions(chromium, { headless: true }));
   const ctx = await browser.newContext({ viewport: { width: 1500, height: 845 }, deviceScaleFactor: 2 });
   const pg = await ctx.newPage();
   const errs = [];
