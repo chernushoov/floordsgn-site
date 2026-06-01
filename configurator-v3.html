@@ -794,11 +794,21 @@ function buildBodyPhotoMaterial(def, variantId) {
 
 function buildPbrMaterial(def) {
   if (def.procedural) {
-    return new THREE.MeshStandardMaterial({
+    const base = {
       color: new THREE.Color(def.procedural.color),
-      roughness: def.procedural.roughness ?? 0.9,
-      metalness: def.procedural.metalness ?? 0.0,
-    });
+      roughness: def.roughness_override ?? def.procedural.roughness ?? 0.9,
+      metalness: 0,   // floors are never metallic (research: metalness=0 always)
+    };
+    // SEALED systems (epoxy/terrazzo/polished topcoat) get a clearcoat lacquer layer →
+    // gloss comes from the topcoat, not from flattening the base texture.
+    if (def.clearcoat) {
+      return new THREE.MeshPhysicalMaterial({
+        ...base,
+        clearcoat: def.clearcoat.amount ?? 0.8,
+        clearcoatRoughness: def.clearcoat.roughness ?? 0.2,
+      });
+    }
+    return new THREE.MeshStandardMaterial(base);
   }
   if (!def.pbr) return new THREE.MeshStandardMaterial({ color: 0x888888 });
 
@@ -1407,9 +1417,24 @@ function applyVariantTextures(mat, def, v) {
   if (v.normal)    { const nm = loadTex(v.normal);    nm.repeat.set(tile, tile); mat.normalMap = nm; if (mat.normalScale) mat.normalScale.set(0.85, 0.85); }
   if (v.roughness) { const rm = loadTex(v.roughness); rm.repeat.set(tile, tile); mat.roughnessMap = rm; }
   if (v.ao)        { const ao = loadTex(v.ao);        ao.repeat.set(tile, tile); mat.aoMap = ao; mat.aoMapIntensity = 0.55; }
-  const rs = (orderState[def.slug] || {}).roughnessScalar; if (rs != null) mat.roughness = rs;
+  const g = (orderState[def.slug] || {}).glossLevel; if (g != null) setGloss(mat, def, g);
   mat.needsUpdate = true;
   if (oldMap && oldMap.dispose && oldMap !== dm) oldMap.dispose();
+}
+
+/* Surface sheen. On a SEALED material (MeshPhysicalMaterial with clearcoat) the gloss is the
+   clearcoat roughness — the topcoat reflects while the base roughnessMap keeps the texture.
+   On an unsealed/matte material the base roughness scalar is the gloss. */
+function setGloss(mat, def, g) {
+  if (g == null || !mat) return;
+  orderState[def.slug] ||= {};
+  orderState[def.slug].glossLevel = g;
+  if (mat.isMeshPhysicalMaterial && mat.clearcoat > 0) {
+    mat.clearcoatRoughness = g;
+  } else {
+    mat.roughness = g;
+  }
+  mat.needsUpdate = true;
 }
 
 function applyControlEffect(def, cid, opt) {
@@ -1449,28 +1474,18 @@ function applyControlEffect(def, cid, opt) {
     }
   }
   if (cid === 'gloss') {
-    // Keep the roughnessMap: final roughness = scalar × map, so the per-pixel surface
-    // texture (chip vs matrix) survives. The control only moves the master scalar.
-    const m = { low: 0.7, mid: 0.4, high: 0.08 };
-    const r = m[opt.id];
-    if (r != null) {
-      orderState[def.slug].roughnessScalar = r;
-      mat.roughness = r;
+    const g = { low: 0.7, mid: 0.4, high: 0.08 }[opt.id];
+    if (g != null) {
+      setGloss(mat, def, g);   // sealed → clearcoatRoughness; matte → base roughness (texture kept)
       if (photoMode) {
         const o = { low: 0.28, mid: 0.22, high: 0.14 };
         mat.opacity = o[opt.id] ?? mat.opacity;
-        if (mat.clearcoatRoughness !== undefined) mat.clearcoatRoughness = r * 0.5;
+        mat.needsUpdate = true;
       }
-      mat.needsUpdate = true;
     }
   }
   if (cid === 'finish') {
-    const r = { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id];
-    if (r != null) {
-      orderState[def.slug].roughnessScalar = r;
-      mat.roughness = r;            // keep roughnessMap (per-pixel shape), scalar is master
-      mat.needsUpdate = true;
-    }
+    setGloss(mat, def, { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id]);
   }
   if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
     if (!photoMode) refreshCompositeMap(def);
@@ -1522,10 +1537,10 @@ async function refreshCompositeMap(def) {
         mat.aoMap = null;
       }
 
-      // Re-apply the user's finish/gloss scalar (roughnessMap shapes per-pixel; scalar is master),
-      // so rebuilding the composite (e.g. on a colour/aggregate change) doesn't reset the finish.
-      const rs = (orderState[def.slug] || {}).roughnessScalar;
-      if (rs != null) mat.roughness = rs;
+      // Re-apply the user's finish/gloss so rebuilding the composite (colour/aggregate change)
+      // doesn't reset the sheen. setGloss routes to clearcoatRoughness (sealed) or roughness (matte).
+      const g = (orderState[def.slug] || {}).glossLevel;
+      if (g != null) setGloss(mat, def, g);
 
       mat.needsUpdate = true;
       if (oldMap && oldMap.dispose) oldMap.dispose();
@@ -1563,7 +1578,7 @@ document.getElementById('ctaSample').addEventListener('click', () => {
 const ctaShareBtn = document.getElementById('ctaShare');
 if (ctaShareBtn) ctaShareBtn.addEventListener('click', async () => {
   const state = { ...(orderState[activeSlug] || {}) };
-  delete state.colorHex; delete state.roughnessScalar; // internal/derived — rebuilt on restore
+  delete state.colorHex; delete state.glossLevel; // internal/derived — rebuilt on restore
   const url = location.origin + location.pathname + '?m=' + encodeURIComponent(activeSlug || '') +
               (Object.keys(state).length ? '&s=' + encodeURIComponent(JSON.stringify(state)) : '');
   const toast = document.getElementById('cfgToast');

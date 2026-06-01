@@ -128,7 +128,11 @@
           "file": "textures-v4/_designs/terrazzo-cement/stone-grey.jpg",
           "hex": "#99a1ae"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 0.6,
+        "roughness": 0.35
+      }
     },
     {
       "slug": "terrazzo-multi",
@@ -255,7 +259,11 @@
           "file": "textures-v4/_designs/terrazzo-multi/confetti-sparse.jpg",
           "hex": "#ece9e4"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 0.85,
+        "roughness": 0.18
+      }
     },
     {
       "slug": "terrazzo-epoxy",
@@ -335,7 +343,11 @@
           "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-macro.jpg",
           "hex": "#414142"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 1,
+        "roughness": 0.08
+      }
     },
     {
       "slug": "microtopping",
@@ -439,7 +451,11 @@
           "file": "textures-v4/_designs/microtopping/grey-render.jpg",
           "hex": "#8d949c"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 0.5,
+        "roughness": 0.45
+      }
     },
     {
       "slug": "rubber",
@@ -537,7 +553,11 @@
           "file": "textures-v4/_designs/rubber/greyblue-light.jpg",
           "hex": "#afbec8"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 0.5,
+        "roughness": 0.45
+      }
     },
     {
       "slug": "comfortfloor",
@@ -588,6 +608,10 @@
         "plate": "previews/plate_comfortfloor.webp",
         "hero3d": "previews/hero3d_comfortfloor.webp",
         "pirog": "previews/pirog_comfortfloor.webp"
+      },
+      "clearcoat": {
+        "amount": 0.7,
+        "roughness": 0.3
       }
     },
     {
@@ -694,7 +718,11 @@
           "file": "textures-v4/_designs/decorative-concrete/boardform-deep-seam.jpg",
           "hex": "#808080"
         }
-      ]
+      ],
+      "clearcoat": {
+        "amount": 0.5,
+        "roughness": 0.45
+      }
     },
     {
       "slug": "mma",
@@ -747,7 +775,11 @@
         "roughness": "textures/mma/roughness.png",
         "ao": "textures/mma/ao.png"
       },
-      "glb_plate": "plates/mma.glb"
+      "glb_plate": "plates/mma.glb",
+      "clearcoat": {
+        "amount": 0.8,
+        "roughness": 0.25
+      }
     },
     {
       "slug": "pu-cement",
@@ -799,7 +831,11 @@
         "roughness": "textures/pu-cement/roughness.png",
         "ao": "textures/pu-cement/ao.png"
       },
-      "glb_plate": "plates/pu-cement.glb"
+      "glb_plate": "plates/pu-cement.glb",
+      "clearcoat": {
+        "amount": 0.6,
+        "roughness": 0.35
+      }
     },
     {
       "slug": "epoxy",
@@ -853,7 +889,11 @@
         "roughness": "textures/epoxy/roughness.png",
         "ao": "textures/epoxy/ao.png"
       },
-      "glb_plate": "plates/epoxy.glb"
+      "glb_plate": "plates/epoxy.glb",
+      "clearcoat": {
+        "amount": 1,
+        "roughness": 0.1
+      }
     }
   ],
   "control_options": {
