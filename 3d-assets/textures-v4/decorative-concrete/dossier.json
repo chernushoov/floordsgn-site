@@ -1,0 +1,70 @@
+{
+  "slug": "decorative-concrete",
+  "label": "Decorative concrete · board-formed (light grey, vertical form lines + tie recesses)",
+  "generated": "2026-06-01",
+  "pipeline": "texture-production-pilot v4",
+  "source": {
+    "primary": "/Users/agentmachine/Desktop/текстуры /декоративный бетон /grey-concrete-texture-background.jpg",
+    "candidates_considered": [
+      "/Users/agentmachine/Desktop/текстуры /декоративный бетон /grey-concrete-texture-background.jpg",
+      "/Users/agentmachine/Desktop/текстуры /декоративный бетон /lined-concrete-texture.jpg"
+    ],
+    "selection_reason": "Owner-curated board-formed concrete — clean, bright, even, face-on, with crisp vertical form-board lines, tie-bolt recesses and fine pitting. The flatter/cleaner of the two board-formed candidates (the brief's tie-break) at high resolution (4898x3674).",
+    "native_resolution": "4898x3674",
+    "crop_region": { "left": 700, "top": 120, "width": 3500, "height": 3500 },
+    "crop_reason": "3500px square from the centre, capturing several full form-board widths and tie recesses with the most even lighting; trims the extreme edges.",
+    "rejected_set": "lined-concrete-texture = darker, higher-contrast, more uneven board-to-board tone (more grunge but harder to de-light evenly). EXCLUDED per brief: kitchen-with-sink scene, plasterer-renovating-walls, brick-wall, full-frame-shot-wall (wall not floor), and the .mov video."
+  },
+  "material_truth": {
+    "fillers": "None as aggregate — this is a board-formed cast concrete surface. Texture = vertical timber-form-board imprint (grain + plank seams), circular form-tie recesses, and fine bug-hole pitting.",
+    "matrix": "Light neutral grey concrete.",
+    "finish": "As-cast / lightly sealed, matte. Real surface relief from board seams and tie recesses.",
+    "manufacturer_recipe": "Architectural board-formed concrete (timber-board formwork imprint) or a decorative-concrete overlay stamped/textured to a board-formed pattern; matte penetrating sealer. For a floor application this is typically a polished or sealed decorative topping carrying the board-formed look."
+  },
+  "colour": {
+    "delit_matrix_hex": "#bcbbbb",
+    "delit_matrix_rgb": [188, 187, 187],
+    "delit_overall_mean_hex": "#babab9",
+    "note": "Moderate variance (stdev ~19) from the form lines + pitting. Matrix hex ≈ overall mean — light neutral grey, very slightly warm."
+  },
+  "scale": {
+    "physical_mm_per_tile": "~500-600 mm represented by the 2048px master (form boards read ~90-110 mm wide; the crop spans roughly 5-6 boards).",
+    "recommended_manifest_tile": 2,
+    "tile_note": "Manifest 'tile' is an integer repeat. 2 keeps the form boards at a realistic ~90-110 mm read on a ~600-900 mm plate and the vertical lines wrap cleanly. 2-3 is the usable band; 1 makes the boards look oversized."
+  },
+  "gloss": {
+    "roughness_scalar": 0.76,
+    "roughness_map_mean": 0.764,
+    "note": "Matte as-cast concrete. roughness.png mean 0.764 (chipsSmooth=false → high uniform roughness). 0.72-0.80 reads as matte concrete; lower toward 0.5 for a sealed/polished decorative-concrete floor."
+  },
+  "outputs": {
+    "diffuse.jpg": { "res": "2048x2048", "q": 90, "space": "sRGB" },
+    "normal.png": { "res": "1024x1024", "space": "linear", "strength": "gen-pbr bump 5.5 (board seams + tie recesses + pitting); R range 0-254" },
+    "roughness.png": { "res": "512x512", "mean": 0.764 },
+    "ao.png": { "res": "512x512", "mean": 0.846 }
+  },
+  "processing": {
+    "decode": "sharp JPG -> extract 3500px square -> lanczos3 DOWNSCALE to 2048 (sharp, no upscaling).",
+    "delight": "sharp divide-by-heavy-blur (sigma scaled to ~128px) re-multiplied by per-channel means -> flattened the gentle left-right lighting falloff, lighting-neutral albedo.",
+    "seamless": "Half-offset (quadrant-swap) wrap + feathered cross-fade heal blending with a 180°-rotated copy of the offset. Vertical form lines wrap naturally; the horizontal heal band is barely perceptible against the pitting. Validated by 2x2 tiling.",
+    "pbr": "scripts/gen-pbr-maps.js decorative-concrete --root=3d-assets/textures-v4 (bump 5.5, baseRough 0.8, chipsSmooth false, ao 1.0)."
+  },
+  "caveats": [
+    "Not upscaled — downscaled from a 3500px crop.",
+    "Board-formed concrete is directional (vertical lines): looks best when the plate UVs keep the lines vertical. Rotating 90° will make the seams read horizontal.",
+    "Faint residual horizontal band at the seam-heal line under raking light; invisible at render scale on a matte surface.",
+    "This is a board-formed WALL-style imprint applied as a floor texture (the source is a clean architectural-concrete surface). If a troweled/polished decorative-concrete floor without the plank pattern is preferred, that is closer to the microtopping master."
+  ],
+  "previews_scratch": {
+    "tile_2x2": "/Users/agentmachine/floordsgn-tex-scratch/decorative-concrete/preview_2x2.jpg"
+  },
+  "recommended_manifest": {
+    "tile": 2,
+    "roughness_override": 0.76,
+    "swatch_suggestion": "#bcbbbb",
+    "procedural_color_suggestion": "#bcbbbb",
+    "palette_hex": ["#bcbbbb", "#babab9", "#cecdcc", "#9a9999", "#6f6e6d"],
+    "palette_note": "matrix light-grey, overall mean, light board, mid-grey seam, dark recess/pit",
+    "note": "Repoint pbr.* to textures-v4/decorative-concrete/* to use this new set. (Orchestrator applies — do not edit manifest here.)"
+  }
+}

@@ -110,7 +110,7 @@
       "group": "decorative",
       "tag": "TM",
       "code": "TM",
-      "swatch": "#f0ece2",
+      "swatch": "#ebe9e3",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
@@ -119,11 +119,11 @@
         "pirog": "previews/pirog_terrazzo-multi.webp"
       },
       "procedural": {
-        "color": "#dcd3c0",
+        "color": "#ebe9e3",
         "roughness": 0.35,
         "metalness": 0
       },
-      "tile": 3,
+      "tile": 4,
       "controls": [
         "aggregates",
         "gloss"
@@ -192,7 +192,8 @@
         "roughness": "textures/terrazzo-multi/roughness.png",
         "ao": "textures/terrazzo-multi/ao.png"
       },
-      "glb_plate": "plates/terrazzo-multi.glb"
+      "glb_plate": "plates/terrazzo-multi.glb",
+      "roughness_override": 0.4
     },
     {
       "slug": "terrazzo-epoxy",
@@ -200,7 +201,7 @@
       "group": "decorative",
       "tag": "TE",
       "code": "TE",
-      "swatch": "#3a3833",
+      "swatch": "#464647",
       "previews": {
         "light": "previews/terrazzo-epoxy_hero_02.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
@@ -209,20 +210,14 @@
         "pirog": "previews/pirog_terrazzo-epoxy.webp"
       },
       "procedural": {
-        "color": "#dad3c2",
+        "color": "#464647",
         "roughness": 0.35,
         "metalness": 0
       },
-      "body_textures": {
-        "grey": "textures/terrazzo-epoxy/grey.jpg",
-        "white": "textures/terrazzo-epoxy/white.jpg",
-        "black": "textures/terrazzo-epoxy/black.jpg"
-      },
-      "body_default": "grey",
-      "topcoat_glass": true,
-      "tile": 1,
+      "tile": 5,
       "controls": [
-        "chips_color",
+        "color",
+        "aggregates",
         "gloss"
       ],
       "spec": {
@@ -245,7 +240,14 @@
         "primer": "Sikafloor-156 · 0.15 мм",
         "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       },
-      "glb_plate": "plates/terrazzo-epoxy.glb"
+      "glb_plate": "plates/terrazzo-epoxy.glb",
+      "roughness_override": 0.35,
+      "pbr": {
+        "diffuse": "textures/terrazzo-epoxy/diffuse.jpg",
+        "normal": "textures/terrazzo-epoxy/normal.png",
+        "roughness": "textures/terrazzo-epoxy/roughness.png",
+        "ao": "textures/terrazzo-epoxy/ao.png"
+      }
     },
     {
       "slug": "microtopping",
@@ -253,7 +255,7 @@
       "group": "decorative",
       "tag": "MC",
       "code": "MC",
-      "swatch": "#cfc4b3",
+      "swatch": "#afadab",
       "previews": {
         "light": "previews/microtopping_hero_04.webp",
         "dark": "previews/microtopping_lifestyle_05.webp",
@@ -262,7 +264,7 @@
         "pirog": "previews/pirog_microtopping.webp"
       },
       "procedural": {
-        "color": "#cfc4b3",
+        "color": "#afadab",
         "roughness": 0.7,
         "metalness": 0
       },
@@ -298,7 +300,8 @@
         "roughness": "textures/microtopping/roughness.png",
         "ao": "textures/microtopping/ao.png"
       },
-      "glb_plate": "plates/microtopping.glb"
+      "glb_plate": "plates/microtopping.glb",
+      "roughness_override": 0.72
     },
     {
       "slug": "rubber",
@@ -409,7 +412,7 @@
       "group": "decorative",
       "tag": "DC",
       "code": "DC",
-      "swatch": "#7a7468",
+      "swatch": "#bcbbbb",
       "previews": {
         "light": "previews/decorative-concrete_hero_06.webp",
         "dark": "previews/decorative-concrete_lifestyle_07.webp",
@@ -418,11 +421,11 @@
         "pirog": "previews/pirog_decorative-concrete.webp"
       },
       "procedural": {
-        "color": "#7a7468",
+        "color": "#bcbbbb",
         "roughness": 0.78,
         "metalness": 0
       },
-      "tile": 3,
+      "tile": 2,
       "controls": [
         "color",
         "finish",
@@ -480,7 +483,8 @@
         "roughness": "textures/decorative-concrete/roughness.png",
         "ao": "textures/decorative-concrete/ao.png"
       },
-      "glb_plate": "plates/decorative-concrete.glb"
+      "glb_plate": "plates/decorative-concrete.glb",
+      "roughness_override": 0.76
     },
     {
       "slug": "mma",
