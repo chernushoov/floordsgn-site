@@ -309,7 +309,7 @@
       "group": "decorative",
       "tag": "RB",
       "code": "RB",
-      "swatch": "#2a2a2a",
+      "swatch": "#c4c2c0",
       "previews": {
         "light": "previews/rubber_hero_10.webp",
         "dark": "previews/rubber_lifestyle_11.webp",
@@ -318,8 +318,8 @@
         "pirog": "previews/pirog_rubber.webp"
       },
       "procedural": {
-        "color": "#2a2a2a",
-        "roughness": 0.95,
+        "color": "#c4c2c0",
+        "roughness": 0.5,
         "metalness": 0
       },
       "tile": 2,
@@ -353,7 +353,9 @@
         "roughness": "textures/rubber/roughness.png",
         "ao": "textures/rubber/ao.png"
       },
-      "glb_plate": "plates/rubber.glb"
+      "glb_plate": "plates/rubber.glb",
+      "roughness_override": 0.5,
+      "_note": "rubber = microtopping on epoxy base per owner (smooth poured, not EPDM granule)"
     },
     {
       "slug": "comfortfloor",

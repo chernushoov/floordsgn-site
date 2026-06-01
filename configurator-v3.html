@@ -413,6 +413,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
+// Max anisotropy — mandatory so grazing-angle floor textures stay sharp (research §4).
+const MAX_ANISO = renderer.capabilities.getMaxAnisotropy();
 stageEl.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
@@ -425,8 +427,8 @@ pmrem.compileEquirectangularShader();
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
 new RGBELoader()
-  .setPath(ASSET_ROOT + 'textures/_hdri/')
-  .load('brown_photostudio_02.hdr', (hdr) => {
+  .setPath(ASSET_ROOT + TEXSET + '/_hdri/')
+  .load('studio_small_08.hdr', (hdr) => {   // neutral CC0 studio (Poly Haven) — no colour tint (research §1c)
     const env = pmrem.fromEquirectangular(hdr).texture;
     scene.environment = env;
     hdr.dispose();
@@ -484,7 +486,7 @@ function loadTex(path, opts = {}) {
   const t = texLoader.load(texURL(path), tt => { tt.needsUpdate = true; });
   t.colorSpace = opts.srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  t.anisotropy = 8;
+  t.anisotropy = MAX_ANISO;
   texCache.set(key, t);
   return t;
 }
@@ -714,7 +716,7 @@ async function buildCompositeMap(def, state) {
   const tex = new THREE.CanvasTexture(cv);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.anisotropy = 8;
+  tex.anisotropy = MAX_ANISO;
   const tile = def.tile || 1;
   tex.repeat.set(tile, tile);
   return tex;
@@ -767,7 +769,7 @@ function buildBodyPhotoMaterial(def, variantId) {
     (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.anisotropy = 8;
+      tex.anisotropy = MAX_ANISO;
       tex.repeat.set(tile, tile);
       mat.map = tex;
       mat.color.set(0xffffff); // Let the texture drive colour now.
@@ -792,7 +794,7 @@ function buildPbrMaterial(def) {
   const tile = def.tile || 4;
   const mat = new THREE.MeshStandardMaterial({
     roughness: def.roughness_override ?? 1.0,
-    metalness: 0.02,
+    metalness: 0,
   });
 
   const map = loadTex(def.pbr.diffuse, { srgb: true });
