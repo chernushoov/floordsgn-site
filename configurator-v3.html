@@ -1193,14 +1193,17 @@ function selectMaterial(slug) {
       const photoMat = buildBodyPhotoMaterial(def, variant);
       if (photoMat) bodyMesh.material = photoMat;
     } else if (def.procedural) {
-      // Reset to a tinted standard material in case we just left photo mode.
-      const bodyColor = new THREE.Color(def.procedural.color);
-      bodyColor.lerp(new THREE.Color('#9c9484'), 0.45);
-      bodyMesh.material = new THREE.MeshStandardMaterial({
-        name: 'body',
-        color: bodyColor,
-        roughness: 0.7,
-      });
+      // The slab SIDE is the body's cross-section — map the same aggregate texture onto it so
+      // the cut edge shows real chips (not one flat colour). Box-UVs on the GLB body do the rest.
+      const bm = new THREE.MeshStandardMaterial({ name: 'body', roughness: 0.82, metalness: 0 });
+      if (def.pbr && def.pbr.diffuse) {
+        const tile = def.tile || 1;
+        const dm = loadTex(def.pbr.diffuse, { srgb: true }); dm.repeat.set(tile, tile); bm.map = dm;
+        if (def.pbr.normal) { const nm = loadTex(def.pbr.normal); nm.repeat.set(tile, tile); bm.normalMap = nm; bm.normalScale = new THREE.Vector2(0.6, 0.6); }
+      } else {
+        const bodyColor = new THREE.Color(def.procedural.color); bodyColor.lerp(new THREE.Color('#9c9484'), 0.45); bm.color.copy(bodyColor);
+      }
+      bodyMesh.material = bm;
     }
     if (oldBodyMat && oldBodyMat !== bodyMesh.material && oldBodyMat.dispose) {
       setTimeout(() => oldBodyMat.dispose(), 600);
@@ -1448,6 +1451,12 @@ function applyVariantTextures(mat, def, v) {
   const g = (orderState[def.slug] || {}).glossLevel; if (g != null) setGloss(mat, def, g);
   mat.needsUpdate = true;
   if (oldMap && oldMap.dispose && oldMap !== dm) oldMap.dispose();
+  // Keep the slab edge (body) in sync with the chosen design so the cut cross-section matches.
+  if (bodyMesh && bodyMesh.material && !bodyMesh.material.map?.userData?.locked) {
+    const tile = def.tile || 1;
+    const bdm = loadTex(v.diffuse, { srgb: true }); bdm.repeat.set(tile, tile);
+    bodyMesh.material.map = bdm; bodyMesh.material.color.set(0xffffff); bodyMesh.material.needsUpdate = true;
+  }
 }
 
 /* Surface sheen. On a SEALED material (MeshPhysicalMaterial with clearcoat) the gloss is the
