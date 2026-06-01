@@ -1,0 +1,254 @@
+{
+  "terrazzo-cement": [
+    {
+      "id": "cream-fine",
+      "name": "Кремовый мелкий",
+      "file": "textures-v4/_designs/terrazzo-cement/cream-fine.jpg",
+      "hex": "#e8dcc9",
+      "src": "1.61gX4.jpg",
+      "note": "object-cropped (entrance/car excluded); slight perspective; upscaled"
+    },
+    {
+      "id": "grey-macro-dense",
+      "name": "Серый плотный",
+      "file": "textures-v4/_designs/terrazzo-cement/grey-macro-dense.jpg",
+      "hex": "#9e9ea1",
+      "src": "cement-concrete-texture-copy-space.jpg",
+      "note": ""
+    },
+    {
+      "id": "grey-fine-speckle",
+      "name": "Серый крап",
+      "file": "textures-v4/_designs/terrazzo-cement/grey-fine-speckle.jpg",
+      "hex": "#c6cbcf",
+      "src": "rock-texture-background-detail.jpg",
+      "note": ""
+    },
+    {
+      "id": "stone-grey",
+      "name": "Каменный серый",
+      "file": "textures-v4/_designs/terrazzo-cement/stone-grey.jpg",
+      "hex": "#99a1ae",
+      "src": "texture-natural-stone.jpg",
+      "note": ""
+    }
+  ],
+  "terrazzo-multi": [
+    {
+      "id": "confetti-white",
+      "name": "Конфетти белый",
+      "file": "textures-v4/_designs/terrazzo-multi/confetti-white.jpg",
+      "hex": "#dbdad6",
+      "src": "1627478409_7-kartinkin-com-p-terratstso-stoleshnitsa-tekstura-krasivo-7.jpg",
+      "note": ""
+    },
+    {
+      "id": "confetti-large",
+      "name": "Конфетти крупный",
+      "file": "textures-v4/_designs/terrazzo-multi/confetti-large.jpg",
+      "hex": "#f2f0ec",
+      "src": "c2676cda97fb8d4b08bdf5f61df9e4cf.jpg",
+      "note": "upscaled (source 564px)"
+    },
+    {
+      "id": "confetti-sparse",
+      "name": "Конфетти редкий",
+      "file": "textures-v4/_designs/terrazzo-multi/confetti-sparse.jpg",
+      "hex": "#ece9e4",
+      "src": "dna-terrazzo-white-colours-32x37-253275.jpg",
+      "note": "tile-render center (hexagon bg excluded); upscaled (source 485px)"
+    }
+  ],
+  "terrazzo-epoxy": [
+    {
+      "id": "black-fine",
+      "name": "Чёрный мелкий",
+      "file": "textures-v4/_designs/terrazzo-epoxy/black-fine.jpg",
+      "hex": "#292426",
+      "src": "Terrazzo_Black_Lappato_75x75.jpg",
+      "note": "upscaled"
+    },
+    {
+      "id": "charcoal-shell",
+      "name": "Графит ракушка",
+      "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-shell.jpg",
+      "hex": "#47484b",
+      "src": "dark-mosaic-textured-background.jpg",
+      "note": ""
+    },
+    {
+      "id": "graphite-large",
+      "name": "Графит крупный",
+      "file": "textures-v4/_designs/terrazzo-epoxy/graphite-large.jpg",
+      "hex": "#464440",
+      "src": "dna-terrazzo-graphite-32x37-253274.jpg",
+      "note": "tile-render center (hexagon bg excluded); upscaled (source 485px)"
+    },
+    {
+      "id": "charcoal-macro",
+      "name": "Графит макро",
+      "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-macro.jpg",
+      "hex": "#414142",
+      "src": "macrophotography-terrazzo-slab-texture.jpg",
+      "note": ""
+    }
+  ],
+  "microtopping": [
+    {
+      "id": "beige-stone",
+      "name": "Бежевый камень",
+      "file": "textures-v4/_designs/microtopping/beige-stone.jpg",
+      "hex": "#ccc0b0",
+      "src": "background-natural-cement-stone-brown-colors-aged-rich-colors.jpg",
+      "note": ""
+    },
+    {
+      "id": "bluegrey-dough",
+      "name": "Сине-серый",
+      "file": "textures-v4/_designs/microtopping/bluegrey-dough.jpg",
+      "hex": "#6c8399",
+      "src": "boiled-dough-with-chopped-vegetables-colorful-plate.jpg",
+      "note": "object-cropped (plate excluded)"
+    },
+    {
+      "id": "bluegrey-anise",
+      "name": "Сине-серый тёмный",
+      "file": "textures-v4/_designs/microtopping/bluegrey-anise.jpg",
+      "hex": "#aac0ce",
+      "src": "dried-green-anise-seeds-wooden-cup-high-quality-photo.jpg",
+      "note": "object-cropped (cup excluded); diff region from dough"
+    },
+    {
+      "id": "grey-scratched",
+      "name": "Серый шлиф",
+      "file": "textures-v4/_designs/microtopping/grey-scratched.jpg",
+      "hex": "#878787",
+      "src": "gray-old-scratched-textured-surface-background.jpg",
+      "note": ""
+    },
+    {
+      "id": "graphite-panel",
+      "name": "Графит панель",
+      "file": "textures-v4/_designs/microtopping/graphite-panel.jpg",
+      "hex": "#8a8885",
+      "src": "grunge-cement-tiles-textured.jpg",
+      "note": "centre panel (seams + corner shadow excluded)"
+    },
+    {
+      "id": "offwhite-trowel",
+      "name": "Молочный затёртый",
+      "file": "textures-v4/_designs/microtopping/offwhite-trowel.jpg",
+      "hex": "#c6c6c7",
+      "src": "old-grey-wall-grunge-concrete-background-with-natural-cement-texture.jpeg",
+      "note": ""
+    },
+    {
+      "id": "grey-toping",
+      "name": "Серый топинг",
+      "file": "textures-v4/_designs/microtopping/grey-toping.jpg",
+      "hex": "#b0adaa",
+      "src": "топинг .jpg",
+      "note": "object-cropped (towel + jar excluded)"
+    },
+    {
+      "id": "grey-render",
+      "name": "Серый накат",
+      "file": "textures-v4/_designs/microtopping/grey-render.jpg",
+      "hex": "#8d949c",
+      "src": "plasterer-renovating-indoor-walls.jpg",
+      "note": "smooth troweled render; object-cropped (hand + trowel excluded)"
+    }
+  ],
+  "decorative-concrete": [
+    {
+      "id": "boardform-horizontal",
+      "name": "Опалубка горизонталь",
+      "file": "textures-v4/_designs/decorative-concrete/boardform-horizontal.jpg",
+      "hex": "#c8c8c8",
+      "src": "full-frame-shot-wall.jpg",
+      "note": ""
+    },
+    {
+      "id": "boardform-vertical",
+      "name": "Опалубка вертикаль",
+      "file": "textures-v4/_designs/decorative-concrete/boardform-vertical.jpg",
+      "hex": "#bebfbd",
+      "src": "grey-concrete-texture-background.jpg",
+      "note": ""
+    },
+    {
+      "id": "boardform-weathered",
+      "name": "Опалубка фактурная",
+      "file": "textures-v4/_designs/decorative-concrete/boardform-weathered.jpg",
+      "hex": "#818388",
+      "src": "grunge-stone-brick-wall-background-texture.jpg",
+      "note": "board-formed concrete (filename misleading)"
+    },
+    {
+      "id": "boardform-deep-seam",
+      "name": "Опалубка рельеф",
+      "file": "textures-v4/_designs/decorative-concrete/boardform-deep-seam.jpg",
+      "hex": "#808080",
+      "src": "lined-concrete-texture.jpg",
+      "note": ""
+    }
+  ],
+  "rubber": [
+    {
+      "id": "cream-poured",
+      "name": "Кремовый наливной",
+      "file": "textures-v4/_designs/rubber/cream-poured.jpg",
+      "hex": "#e7ded4",
+      "src": "beige-living-room-interior.jpg",
+      "note": "foreground floor; object-cropped (furniture excluded); mild perspective"
+    },
+    {
+      "id": "bluegrey-bay",
+      "name": "Голубоватый лёгкий",
+      "file": "textures-v4/_designs/rubber/bluegrey-bay.jpg",
+      "hex": "#b7c9d4",
+      "src": "dry-green-bay-leaves-wooden-cup-high-quality-photo.jpg",
+      "note": "object-cropped (bowl excluded)"
+    },
+    {
+      "id": "grey-poured",
+      "name": "Серый наливной",
+      "file": "textures-v4/_designs/rubber/grey-poured.jpg",
+      "hex": "#cccac8",
+      "src": "g12ground.jpg",
+      "note": "mild perspective; faint join lines healed"
+    },
+    {
+      "id": "bluegrey-marble",
+      "name": "Голубоватый мрамор",
+      "file": "textures-v4/_designs/rubber/bluegrey-marble.jpg",
+      "hex": "#c1d6df",
+      "src": "green-plate-star-anise-orange-marmalades.jpg",
+      "note": "object-cropped (plate excluded)"
+    },
+    {
+      "id": "bluegrey-dark",
+      "name": "Голубоватый тёмный",
+      "file": "textures-v4/_designs/rubber/bluegrey-dark.jpg",
+      "hex": "#798490",
+      "src": "single-raw-egg-marble-background.jpg",
+      "note": "object-cropped (egg-cup excluded); darkest of set"
+    },
+    {
+      "id": "greyblue-veg",
+      "name": "Серо-голубой",
+      "file": "textures-v4/_designs/rubber/greyblue-veg.jpg",
+      "hex": "#bec7cd",
+      "src": "various-vegetables-cup-marble.jpg",
+      "note": "object-cropped (cup excluded)"
+    },
+    {
+      "id": "greyblue-light",
+      "name": "Серо-голубой светлый",
+      "file": "textures-v4/_designs/rubber/greyblue-light.jpg",
+      "hex": "#afbec8",
+      "src": "white-plate-macaroni-cabbage-white-plate-high-quality-photo.jpg",
+      "note": "object-cropped (bowl bottom-right excluded)"
+    }
+  ]
+}

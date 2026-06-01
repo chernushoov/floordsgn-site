@@ -102,7 +102,33 @@
         "roughness": "textures/terrazzo-cement/roughness.png",
         "ao": "textures/terrazzo-cement/ao.png"
       },
-      "glb_plate": "plates/terrazzo-cement.glb"
+      "glb_plate": "plates/terrazzo-cement.glb",
+      "designs": [
+        {
+          "id": "cream-fine",
+          "name": "Кремовый мелкий",
+          "file": "textures-v4/_designs/terrazzo-cement/cream-fine.jpg",
+          "hex": "#e8dcc9"
+        },
+        {
+          "id": "grey-macro-dense",
+          "name": "Серый плотный",
+          "file": "textures-v4/_designs/terrazzo-cement/grey-macro-dense.jpg",
+          "hex": "#9e9ea1"
+        },
+        {
+          "id": "grey-fine-speckle",
+          "name": "Серый крап",
+          "file": "textures-v4/_designs/terrazzo-cement/grey-fine-speckle.jpg",
+          "hex": "#c6cbcf"
+        },
+        {
+          "id": "stone-grey",
+          "name": "Каменный серый",
+          "file": "textures-v4/_designs/terrazzo-cement/stone-grey.jpg",
+          "hex": "#99a1ae"
+        }
+      ]
     },
     {
       "slug": "terrazzo-multi",
@@ -209,7 +235,27 @@
             "ao": "textures/terrazzo-epoxy/ao.png"
           }
         }
-      }
+      },
+      "designs": [
+        {
+          "id": "confetti-white",
+          "name": "Конфетти белый",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-white.jpg",
+          "hex": "#dbdad6"
+        },
+        {
+          "id": "confetti-large",
+          "name": "Конфетти крупный",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-large.jpg",
+          "hex": "#f2f0ec"
+        },
+        {
+          "id": "confetti-sparse",
+          "name": "Конфетти редкий",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-sparse.jpg",
+          "hex": "#ece9e4"
+        }
+      ]
     },
     {
       "slug": "terrazzo-epoxy",
@@ -263,7 +309,33 @@
         "normal": "textures/terrazzo-epoxy/normal.png",
         "roughness": "textures/terrazzo-epoxy/roughness.png",
         "ao": "textures/terrazzo-epoxy/ao.png"
-      }
+      },
+      "designs": [
+        {
+          "id": "black-fine",
+          "name": "Чёрный мелкий",
+          "file": "textures-v4/_designs/terrazzo-epoxy/black-fine.jpg",
+          "hex": "#292426"
+        },
+        {
+          "id": "charcoal-shell",
+          "name": "Графит ракушка",
+          "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-shell.jpg",
+          "hex": "#47484b"
+        },
+        {
+          "id": "graphite-large",
+          "name": "Графит крупный",
+          "file": "textures-v4/_designs/terrazzo-epoxy/graphite-large.jpg",
+          "hex": "#464440"
+        },
+        {
+          "id": "charcoal-macro",
+          "name": "Графит макро",
+          "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-macro.jpg",
+          "hex": "#414142"
+        }
+      ]
     },
     {
       "slug": "microtopping",
@@ -317,7 +389,57 @@
         "ao": "textures/microtopping/ao.png"
       },
       "glb_plate": "plates/microtopping.glb",
-      "roughness_override": 0.72
+      "roughness_override": 0.72,
+      "designs": [
+        {
+          "id": "beige-stone",
+          "name": "Бежевый камень",
+          "file": "textures-v4/_designs/microtopping/beige-stone.jpg",
+          "hex": "#ccc0b0"
+        },
+        {
+          "id": "bluegrey-dough",
+          "name": "Сине-серый",
+          "file": "textures-v4/_designs/microtopping/bluegrey-dough.jpg",
+          "hex": "#6c8399"
+        },
+        {
+          "id": "bluegrey-anise",
+          "name": "Сине-серый тёмный",
+          "file": "textures-v4/_designs/microtopping/bluegrey-anise.jpg",
+          "hex": "#aac0ce"
+        },
+        {
+          "id": "grey-scratched",
+          "name": "Серый шлиф",
+          "file": "textures-v4/_designs/microtopping/grey-scratched.jpg",
+          "hex": "#878787"
+        },
+        {
+          "id": "graphite-panel",
+          "name": "Графит панель",
+          "file": "textures-v4/_designs/microtopping/graphite-panel.jpg",
+          "hex": "#8a8885"
+        },
+        {
+          "id": "offwhite-trowel",
+          "name": "Молочный затёртый",
+          "file": "textures-v4/_designs/microtopping/offwhite-trowel.jpg",
+          "hex": "#c6c6c7"
+        },
+        {
+          "id": "grey-toping",
+          "name": "Серый топинг",
+          "file": "textures-v4/_designs/microtopping/grey-toping.jpg",
+          "hex": "#b0adaa"
+        },
+        {
+          "id": "grey-render",
+          "name": "Серый накат",
+          "file": "textures-v4/_designs/microtopping/grey-render.jpg",
+          "hex": "#8d949c"
+        }
+      ]
     },
     {
       "slug": "rubber",
@@ -371,7 +493,51 @@
       },
       "glb_plate": "plates/rubber.glb",
       "roughness_override": 0.5,
-      "_note": "rubber = microtopping on epoxy base per owner (smooth poured, not EPDM granule)"
+      "_note": "rubber = microtopping on epoxy base per owner (smooth poured, not EPDM granule)",
+      "designs": [
+        {
+          "id": "cream-poured",
+          "name": "Кремовый наливной",
+          "file": "textures-v4/_designs/rubber/cream-poured.jpg",
+          "hex": "#e7ded4"
+        },
+        {
+          "id": "bluegrey-bay",
+          "name": "Голубоватый лёгкий",
+          "file": "textures-v4/_designs/rubber/bluegrey-bay.jpg",
+          "hex": "#b7c9d4"
+        },
+        {
+          "id": "grey-poured",
+          "name": "Серый наливной",
+          "file": "textures-v4/_designs/rubber/grey-poured.jpg",
+          "hex": "#cccac8"
+        },
+        {
+          "id": "bluegrey-marble",
+          "name": "Голубоватый мрамор",
+          "file": "textures-v4/_designs/rubber/bluegrey-marble.jpg",
+          "hex": "#c1d6df"
+        },
+        {
+          "id": "bluegrey-dark",
+          "name": "Голубоватый тёмный",
+          "file": "textures-v4/_designs/rubber/bluegrey-dark.jpg",
+          "hex": "#798490"
+        },
+        {
+          "id": "greyblue-veg",
+          "name": "Серо-голубой",
+          "file": "textures-v4/_designs/rubber/greyblue-veg.jpg",
+          "hex": "#bec7cd"
+        },
+        {
+          "id": "greyblue-light",
+          "name": "Серо-голубой светлый",
+          "file": "textures-v4/_designs/rubber/greyblue-light.jpg",
+          "hex": "#afbec8"
+        }
+      ]
     },
     {
       "slug": "comfortfloor",
@@ -502,7 +668,33 @@
         "ao": "textures/decorative-concrete/ao.png"
       },
       "glb_plate": "plates/decorative-concrete.glb",
-      "roughness_override": 0.76
+      "roughness_override": 0.76,
+      "designs": [
+        {
+          "id": "boardform-horizontal",
+          "name": "Опалубка горизонталь",
+          "file": "textures-v4/_designs/decorative-concrete/boardform-horizontal.jpg",
+          "hex": "#c8c8c8"
+        },
+        {
+          "id": "boardform-vertical",
+          "name": "Опалубка вертикаль",
+          "file": "textures-v4/_designs/decorative-concrete/boardform-vertical.jpg",
+          "hex": "#bebfbd"
+        },
+        {
+          "id": "boardform-weathered",
+          "name": "Опалубка фактурная",
+          "file": "textures-v4/_designs/decorative-concrete/boardform-weathered.jpg",
+          "hex": "#818388"
+        },
+        {
+          "id": "boardform-deep-seam",
+          "name": "Опалубка рельеф",
+          "file": "textures-v4/_designs/decorative-concrete/boardform-deep-seam.jpg",
+          "hex": "#808080"
+        }
+      ]
     },
     {
       "slug": "mma",
