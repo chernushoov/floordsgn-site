@@ -1,0 +1,73 @@
+{
+  "slug": "terrazzo-cement",
+  "label": "Terrazzo · cement (light grey/cream, marble + recycled-glass chips)",
+  "generated": "2026-06-01",
+  "pipeline": "texture-production-pilot v4",
+  "source": {
+    "primary": "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/Terrazo /проект 1/IMG_8943.HEIC",
+    "candidates_considered": [
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/Terrazo /проект 1/IMG_8943.HEIC",
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/Terrazo /1627478409_7-kartinkin-com-p-terratstso-stoleshnitsa-tekstura-krasivo-7.jpg",
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/террацо/188339_vitra-terrazzo-x-k949753lpr01vte0-svetlyj-lpr-60x120-re0.jpg"
+    ],
+    "selection_reason": "IMG_8943 is a real FloorDSGN installed cement-terrazzo floor, shot near-top-down at 4032x3024 (12 MP) with even diffuse lighting. Authentic owner work, high enough resolution to crop a 2048 master, and shows the true light-grey cement matrix with fine marble + recycled-glass chips. The web product swatches (vitra/kartinkin) were sharper but small (768x384 / 2048x1536) and read as decorative resin terrazzo rather than the grey cement product this slug represents.",
+    "native_resolution": "4032x3024",
+    "crop_region": { "left": 1500, "top": 140, "width": 1330, "height": 1330 },
+    "crop_reason": "Upper band ABOVE the floor control-joint line; flattest face-on patch with the most even chip distribution and no grout seam.",
+    "rejected_set": "The 'Фил Фото пардес хана' DSC08xxx set (6000x4000, very flat light) was rejected for THIS slug — it is smooth grey microcement / decorative-concrete with no chips, shot oblique with shallow depth-of-field. Better suited to microtopping/decorative-concrete."
+  },
+  "material_truth": {
+    "fillers": "Marble / natural-stone chips ~4-12 mm plus recycled-glass aggregate (visible green + amber + black chips) set in a Portland-cement matrix. Fine quartz sand fills the inter-chip matrix.",
+    "matrix": "Light warm-grey cement (CEM I + polymer additives).",
+    "finish": "Ground + sealed, matte-to-satin (lithium-silicate / waxed seal). Not high-gloss.",
+    "manufacturer_recipe": "Sika Sikafloor Terrazzo CS-31 — mineral cement terrazzo, 12-18 mm body over Sika Primer-3N on C25/30 concrete; marble crushed aggregate 4-12 mm; sealed topcoat. Matches the manifest buildup already on file."
+  },
+  "colour": {
+    "delit_matrix_hex": "#a3a298",
+    "delit_matrix_rgb": [163, 162, 152],
+    "delit_overall_mean_hex": "#959389",
+    "note": "Matrix hex sampled from light pixels (luma>150) of the de-lit albedo, excluding dark chips. Warm light-grey — markedly more honest than the current manifest swatch #efe7d6 (near-white)."
+  },
+  "scale": {
+    "physical_mm_per_tile": "~300-360 mm represented by the 2048px master (chips read ~4-12 mm at this crop).",
+    "recommended_manifest_tile": 3,
+    "tile_note": "Manifest 'tile' is an integer repeat across the plate, not mm. Current value 3 is correct; 3-4 keeps chips at a realistic 4-12 mm read on a ~600 mm plate. Do NOT drop to 1 (chips would look oversized)."
+  },
+  "gloss": {
+    "roughness_scalar": 0.5,
+    "roughness_map_mean_anchored": 0.502,
+    "note": "Matte-ish ground+sealed terrazzo. roughness.png mean anchored to 0.50."
+  },
+  "outputs": {
+    "diffuse.jpg": { "res": "2048x2048", "q": 90, "space": "sRGB" },
+    "normal.png": { "res": "1024x1024", "space": "linear", "strength": "gen-pbr bump 6.5 (per-chip relief + matrix grain)" },
+    "roughness.png": { "res": "512x512", "mean": 0.502 },
+    "ao.png": { "res": "512x512", "mean": 0.845 }
+  },
+  "processing": {
+    "decode": "sips HEIC->PNG, crop 1330px square, lanczos3 upscale to 2048 (UPSCALED from 1330px source).",
+    "delight": "sharp divide-by-heavy-blur (sigma=256, blurDiv 8) re-multiplied by channel means, strength 0.85 -> lighting-neutral albedo.",
+    "seamless": "50% wrap-roll + offset-patch seam heal (raised-cosine feather, perpendicular clone offset 10% of width). Validated by 2x2 tiling.",
+    "pbr": "scripts/gen-pbr-maps.js terrazzo-cement --root=3d-assets/textures-v4 (bump 6.5, chipsSmooth true, ao 1.4); roughness then linear-shifted to mean 0.50."
+  },
+  "caveats": [
+    "Source master was UPSCALED from a 1330px crop to 2048px (lanczos3) — fine matrix grain is slightly soft at 1:1; fine at normal viewing/render distance.",
+    "Matrix is warm light-grey (#a3a298), not neutral grey — this is the true colour of the owner's CS-31 install. If a cooler/neutral grey is desired, the colour control in the configurator can shift it.",
+    "Chips include recycled-glass (green/amber) which is characteristic of this specific floor; if a pure marble-only look is wanted, the kartinkin product swatch is an alternate source on file."
+  ],
+  "previews_scratch": {
+    "delit_albedo": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-cement/prev_albedo.jpg",
+    "tile_2x2": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-cement/tile2x2.jpg",
+    "normal": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-cement/prev_normal.jpg",
+    "ao": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-cement/prev_ao.jpg"
+  },
+  "recommended_manifest": {
+    "tile": 3,
+    "roughness_override": 0.5,
+    "swatch_suggestion": "#a3a298",
+    "procedural_color_suggestion": "#a3a298",
+    "palette_hex": ["#a3a298", "#959389", "#cfcabd", "#7a766c", "#1d1d1f", "#3f6b4e", "#b58a4a"],
+    "palette_note": "matrix light-grey, matrix mean, light chips, mid-grey chips, black chips, green recycled-glass, amber recycled-glass",
+    "note": "Repoint pbr.* from textures/terrazzo-cement/* to textures-v4/terrazzo-cement/* to use this new set. (Orchestrator applies — do not edit manifest here.)"
+  }
+}

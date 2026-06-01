@@ -1,0 +1,72 @@
+{
+  "slug": "epoxy",
+  "label": "Epoxy · self-leveling industrial (neutral light grey, semi-gloss)",
+  "generated": "2026-06-01",
+  "pipeline": "texture-production-pilot v4",
+  "source": {
+    "primary": "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/сайт фото/фото фрипик/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+    "candidates_considered": [
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/сайт фото/фото фрипик/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/сайт фото/фото фрипик/worker-applies-gray-epoxy-resin-new-floor.jpg",
+      "/Volumes/SAMSUNG 1TB/ФФото Виде материалы терраццо/Terrazo /проект 2/IMG_2298.PNG (light-grey semi-gloss quartz floor, but AI-render look, 1024px, heavy window reflections)"
+    ],
+    "selection_reason": "The archive contains NO clean face-on flat photo of a smooth light epoxy floor. This 6719x3649 professional photo of grey epoxy-resin being applied has the largest clean expanse of freshly self-leveled mid-grey resin in its lower-left quadrant — genuinely the right material (self-leveling epoxy, semi-gloss). The проект 2 light-grey gloss floors are the iconic look but are 1024px AI-style renders shot at extreme oblique angles with baked window reflections (unusable as flat sources).",
+    "native_resolution": "6719x3649",
+    "crop_region": { "left": 500, "top": 1500, "width": 1800, "height": 1800 },
+    "crop_reason": "Lower-left clean self-leveled resin patch, fewest specks/bubbles; pure smooth surface with only a low-frequency lighting gradient (no hard geometry) — ideal for de-lighting."
+  },
+  "material_truth": {
+    "fillers": "Mostly solid epoxy resin (self-leveling). No aggregate in this product; only sparse trapped air-bubbles / pin-specks visible. (Optional quartz-broadcast or vinyl flakes exist as variants but are NOT in this pilot texture.)",
+    "matrix": "Pigmented epoxy resin, neutral light grey.",
+    "finish": "Self-leveling, semi-gloss to gloss (aliphatic PU topcoat). Smooth — near-zero surface relief.",
+    "manufacturer_recipe": "Sika Sikafloor-263 SL — self-leveling epoxy 3-5 mm over Sikafloor-156 primer on C25/30 concrete, finished with Sikafloor-264 PU topcoat for the semi-gloss sheen. (Sikafloor-264 is the gloss/UV-stable seal; 263 SL is the body.) Matches the manifest buildup already on file."
+  },
+  "colour": {
+    "delit_matrix_hex": "#9c9b98",
+    "delit_matrix_rgb": [156, 155, 152],
+    "note": "Near-uniform surface, so matrix hex = de-lit overall mean. The original source had a strong cool/blue ambient cast (raw de-lit mean #44515a, dark+blue); de-lighting flattened the gradient and the albedo was then grey-world neutralised and retargeted to a believable neutral light-grey resin (#9c9b98). Current manifest swatch is near-black #2a2620 — recommend updating to a neutral light grey, or keep dark via the configurator colour control."
+  },
+  "scale": {
+    "physical_mm_per_tile": "Scale-agnostic — a near-uniform surface has no aggregate to size against. The 2048px master maps to roughly 600-900 mm but reads identically at any repeat.",
+    "recommended_manifest_tile": 2,
+    "tile_note": "Manifest 'tile' is an integer repeat. Current value 2 is fine; even tile=1 works because the surface is uniform. Keep 2."
+  },
+  "gloss": {
+    "roughness_scalar": 0.22,
+    "roughness_map_mean": 0.232,
+    "note": "Semi-gloss epoxy in the 0.15-0.3 target band. roughness.png mean 0.232, very tight range (uniform sheen). Procedural roughness on file is 0.15 (fuller gloss) — both are defensible; 0.20-0.23 reads as semi-gloss, 0.15 as gloss."
+  },
+  "outputs": {
+    "diffuse.jpg": { "res": "2048x2048", "q": 90, "space": "sRGB" },
+    "normal.png": { "res": "1024x1024", "space": "linear", "strength": "gen-pbr bump 1.5 (capped flat); R channel range 121-134 i.e. ~+-7 of 128 — essentially flat, correct for smooth resin" },
+    "roughness.png": { "res": "512x512", "mean": 0.232 },
+    "ao.png": { "res": "512x512", "mean": 0.847 }
+  },
+  "processing": {
+    "decode": "sips JPG->extract 1800px square -> lanczos3 upscale to 2048 (UPSCALED from 1800px).",
+    "delight": "sharp divide-by-heavy-blur (sigma=341, blurDiv 6) re-multiplied by channel means; then tight high-pass (blur radius width/12) to remove residual mid-frequency tonal blobs while keeping fine specks/grain (gain 0.8); grey-world neutralise + retarget mean to #9c9b98.",
+    "seamless": "Toroidal (2x2-mosaic) low-frequency flatten so the large-scale field is seamless, then separable wrap edge-blend on the 5% borders. NO 50% roll / clone-patch was used — on a near-uniform surface that introduced a repeating signature; the toroidal+edge-blend approach tiles cleanly with no internal motif. Validated by 2x2 tiling.",
+    "pbr": "scripts/gen-pbr-maps.js epoxy --root=3d-assets/textures-v4 (bump 1.5 capped, baseRough 0.25, chipsSmooth false, ao 0.4)."
+  },
+  "caveats": [
+    "Source master was UPSCALED from an 1800px crop to 2048px (lanczos3).",
+    "Source had a strong cool/blue ambient cast and a steep lighting gradient; both were removed in processing. The result is an idealised neutral grey resin rather than a 1:1 colour match of the original lit photo.",
+    "2x2 tiling shows a very faint soft tonal undulation at the seam (no hard line, no repeating feature). On a semi-gloss floor where reflections dominate the read, this is invisible at render scale. Acceptable for a near-uniform material.",
+    "No quartz/flake variant produced — this is the plain self-leveling resin look only."
+  ],
+  "previews_scratch": {
+    "delit_tileable": "/Users/agentmachine/floordsgn-tex-scratch/epoxy/prev_tileable.jpg",
+    "tile_2x2": "/Users/agentmachine/floordsgn-tex-scratch/epoxy/tile2x2.jpg",
+    "normal": "/Users/agentmachine/floordsgn-tex-scratch/epoxy/prev_normal.jpg",
+    "ao": "/Users/agentmachine/floordsgn-tex-scratch/epoxy/prev_ao.jpg"
+  },
+  "recommended_manifest": {
+    "tile": 2,
+    "roughness_override": 0.22,
+    "swatch_suggestion": "#9c9b98",
+    "procedural_color_suggestion": "#9c9b98",
+    "palette_hex": ["#9c9b98", "#b4b3b0", "#86857f", "#6f6e69"],
+    "palette_note": "neutral light-grey resin, lighter sheen tint, mid-grey, darker shade variant",
+    "note": "Repoint pbr.* from textures/epoxy/* to textures-v4/epoxy/* to use this new set. If keeping the dark swatch #2a2620, the diffuse here is light-grey — pick one direction (light texture vs dark swatch) for consistency. (Orchestrator applies — do not edit manifest here.)"
+  }
+}
