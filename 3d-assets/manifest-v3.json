@@ -40,7 +40,7 @@
         "roughness": 0.55,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 1,
       "controls": [
         "color",
         "aggregates",
@@ -161,7 +161,7 @@
         "roughness": 0.35,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 1,
       "controls": [
         "aggregates",
         "gloss"
@@ -300,7 +300,7 @@
         "roughness": 0.35,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 1,
       "controls": [
         "color",
         "aggregates",

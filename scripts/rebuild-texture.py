@@ -5,7 +5,7 @@ Usage: rebuild-texture.py <src.jpg> <out_dir> [size=2048] [normal_strength=2.2]"
 import sys, os, numpy as np
 from PIL import Image
 
-def edge_blend(a, frac=0.12):
+def edge_blend(a, frac=0.08):
     a=a.astype(np.float32); H,W,C=a.shape; out=a.copy()
     m=max(8,int(W*frac))
     for i in range(m):
