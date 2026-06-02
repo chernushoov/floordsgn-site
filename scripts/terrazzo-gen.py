@@ -23,7 +23,7 @@ PRESETS = {
         "matrix": "#cfcdc8",                                   # warm-neutral light grey (RAL 7047 dir)
         "palette": [("#f4f1ea", 5), ("#e9e4d8", 3), ("#ffffff", 2),
                     ("#cdc9bf", 2), ("#b3b0a7", 2), ("#86837b", 1), ("#56544f", 1)],
-        "min_mm": 1.0, "max_mm": 6.5, "alpha": 1.8,            # power-law -> fine-dominated
+        "min_mm": 0.9, "max_mm": 6.5, "alpha": 2.0,            # power-law -> strongly fine-dominated
         "coverage": 0.70, "matrix_rough": 0.52, "chip_rough": 0.18,
     },
     "dark-charcoal": {
@@ -118,12 +118,17 @@ def gen(outdir, preset, size, seed):
     arr = np.asarray(img, np.float32) / 255.0
     m = np.asarray(mask, np.float32) / 255.0
 
-    # chip internal tonal variation (marble drift), NOT flat colour; tiny global grain
-    lo = rng.normal(0, 1, (size // 6, size // 6)).astype(np.float32)
-    lo = np.asarray(Image.fromarray(((lo - lo.min()) / (np.ptp(lo) + 1e-6) * 255).astype(np.uint8))
-                    .resize((size, size), Image.LANCZOS), np.float32) / 255.0
+    # chip internal MINERAL variation: two octaves (coarse drift + fine speckle) so chips read
+    # as sliced stone with internal character, not one flat printed tone (critique). + tiny global grain.
+    def octave(div):
+        k = max(2, size // div)
+        n = rng.normal(0, 1, (k, k)).astype(np.float32)
+        n = (n - n.min()) / (np.ptp(n) + 1e-6)
+        return np.asarray(Image.fromarray((n * 255).astype(np.uint8)).resize((size, size), Image.LANCZOS),
+                          np.float32) / 255.0
+    mottle = (octave(6) - 0.5) * 0.10 + (octave(2) - 0.5) * 0.13     # coarse + fine intra-chip variation
     arr = np.clip(arr + rng.normal(0, 3.0 / 255.0, (size, size, 1)).astype(np.float32)
-                  + ((lo - 0.5) * 0.12)[..., None] * m[..., None], 0, 1)
+                  + mottle[..., None] * m[..., None], 0, 1)
     Image.fromarray((arr * 255).astype(np.uint8), "RGB").save(os.path.join(outdir, "diffuse.jpg"), quality=92)
 
     # ---- normal: subtle relief (polished/ground = near-flat), wrap-aware ----
