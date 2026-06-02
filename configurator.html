@@ -63,7 +63,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .matlist .grp-h .k{color:var(--accent);font-feature-settings:"zero"}
 .matlist .grp-h::after{content:"";flex:1;height:1px;background:var(--line)}
 .matlist ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
-.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s}
+.matlist li{position:relative;cursor:pointer;padding:11px 0;color:var(--ink-3);font-size:14.5px;letter-spacing:-.005em;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);transition:color .18s,padding-left .25s;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .matlist li .idx{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);letter-spacing:.06em}
 .matlist li .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-4);text-transform:uppercase;opacity:0;transition:opacity .25s}
 .matlist li:hover{color:var(--ink);padding-left:6px}
@@ -122,6 +122,19 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .ctrl{display:flex;flex-direction:column;gap:8px}
 .ctrl .ctrl-k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4)}
 .ctrl .opts{display:flex;flex-wrap:wrap;gap:5px}
+/* Design/sample gallery — each swatch is a REAL photo (owner: use every photo) */
+.designs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:196px;overflow-y:auto;margin:4px 0 10px;padding-right:2px}
+.designs .ds{position:relative;aspect-ratio:1/1;border:1px solid var(--line);cursor:pointer;background-size:cover;background-position:center;padding:0;transition:.15s;-webkit-tap-highlight-color:transparent}
+.designs .ds:hover{border-color:var(--ink)}
+.designs .ds.on{outline:2px solid var(--accent);outline-offset:-2px;border-color:var(--accent)}
+.designs .ds span{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:7.5px;letter-spacing:.02em;background:rgba(255,255,255,.9);color:var(--ink);padding:2px 3px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+/* Material reference card — honest status + matrix swatch */
+.refcard{margin:12px 0 2px}
+.refcard .rc-status{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:8.5px;border:1px solid var(--line-2);color:var(--ink-3)}
+.refcard .rc-status.needs{color:var(--accent);border-color:var(--accent)}
+.refcard .rc-status.approved{color:#3a7d44;border-color:#3a7d44}
+.refcard .rc-row{display:flex;align-items:center;gap:8px;margin-top:9px;color:var(--ink-3);font-size:11.5px}
+.refcard .rc-sw{width:16px;height:16px;border:1px solid var(--line-2);display:inline-block;flex:0 0 auto}
 .ctrl button{font-family:var(--sans);font-size:12.5px;letter-spacing:-.005em;background:#fff;border:1px solid var(--line);color:var(--ink-3);padding:7px 10px;cursor:pointer;transition:.15s;border-radius:0}
 .ctrl button:hover{border-color:var(--ink-3);color:var(--ink)}
 .ctrl button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -282,7 +295,7 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
     </div>
     <div class="r">
       <span>WebGL · <b id="fps">— FPS</b></span>
-      <span>PBR · <b>Real Textures</b></span>
+      <span>PBR · <b>Визуальная симуляция</b></span>
       <span>v <b>2.05</b></span>
     </div>
   </div>
@@ -329,11 +342,11 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       <div class="s-bl">
         <b>30×30 см</b> · фаска 2 мм · слоистый торец
       </div>
-      <div class="s-br">
-        <button data-view="solid" class="on">Solid</button>
-        <button data-view="layers">Layers</button>
-        <button data-view="top">Top</button>
-        <button data-view="reset">Reset</button>
+      <div class="s-br" role="group" aria-label="Режим просмотра">
+        <button type="button" data-view="solid" class="on" aria-pressed="true" title="Поверхность — как пол выглядит уложенным">Поверхность</button>
+        <button type="button" data-view="layers" aria-pressed="false" title="Система — технический пирог слоёв">Система</button>
+        <button type="button" data-view="top" aria-pressed="false" title="Образец — макро-вид образца">Образец</button>
+        <button type="button" data-view="reset" aria-label="Сбросить вид">Сброс</button>
       </div>
     </div>
 
@@ -342,19 +355,35 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
       <div class="specs-tbl" id="specsTbl"></div>
       <div class="badges" id="specsBadges"></div>
 
+      <div class="refcard" id="refCard"></div>
+
+      <div id="designsWrap" hidden>
+        <h4><span class="k">D</span>Образец · дизайн</h4>
+        <div class="designs" id="designs" role="radiogroup" aria-label="Выбор образца"></div>
+      </div>
+
       <h4><span class="k">S</span>Настройка</h4>
       <div class="controls" id="controls"></div>
       <div class="buildup" id="buildup"></div>
 
       <div class="cta-stack">
         <button class="cta-primary" id="ctaOrder">
-          Заказать эту формулу
+          Получить смету по формуле
           <svg width="34" height="12" viewBox="0 0 34 12" fill="none"><path d="M0 6H31M31 6L26 1M31 6L26 11" stroke="currentColor" stroke-width="1.4"/></svg>
         </button>
         <button class="cta-ghost" id="ctaSample">
-          <span>Получить sample-kit · 100×100 мм</span>
+          <span>Запросить физический образец · 100×100 мм</span>
           <span>↘</span>
         </button>
+        <button class="cta-ghost" id="ctaShare" type="button">
+          <span>Поделиться этой формулой</span>
+          <span>⧉</span>
+        </button>
+        <div id="cfgToast" role="status" aria-live="polite" style="margin-top:8px;min-height:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:0;transition:opacity .2s"></div>
+        <p class="cfg-disclaimer" style="margin-top:14px;font-size:11.5px;line-height:1.5;color:var(--ink-3);border-top:1px solid var(--line);padding-top:12px">
+          3D-превью — <b style="color:var(--ink);font-weight:500">визуальная симуляция</b> системы пола (PBR).
+          Финальный цвет, распределение крошки и фактура подтверждаются физическим образцом.
+        </p>
       </div>
     </aside>
 
@@ -375,6 +404,24 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 const ASSET_ROOT = '3d-assets/';
+// SIDE-VERSION ISOLATION: v3 reads its own texture set + manifest so the live
+// configurator.html (textures/ + manifest.json) stays byte-identical until an explicit swap.
+const TEXSET = 'textures-v4';
+const texURL = p => ASSET_ROOT + String(p).replace(/^textures\//, TEXSET + '/');
+
+// Shared-config restore: a "Поделиться" link encodes ?m=<slug>&s=<json state>; on load we
+// re-select that material and re-apply its controls so a returning visitor sees their floor.
+let pendingRestore = null;
+function parseSharedConfig() {
+  try {
+    const q = new URLSearchParams(location.search);
+    const m = q.get('m'); if (!m) return null;
+    let state = {};
+    const s = q.get('s');
+    if (s) { try { state = JSON.parse(decodeURIComponent(s)) || {}; } catch (e) {} }
+    return { slug: m, state: (state && typeof state === 'object') ? state : {} };
+  } catch (e) { return null; }
+}
 
 const stageEl = document.getElementById('stage');
 const bootEl = document.getElementById('boot');
@@ -386,6 +433,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
+// Max anisotropy — mandatory so grazing-angle floor textures stay sharp (research §4).
+const MAX_ANISO = renderer.capabilities.getMaxAnisotropy();
 stageEl.appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
@@ -398,8 +447,8 @@ pmrem.compileEquirectangularShader();
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
 new RGBELoader()
-  .setPath(ASSET_ROOT + 'textures/_hdri/')
-  .load('brown_photostudio_02.hdr', (hdr) => {
+  .setPath(ASSET_ROOT + TEXSET + '/_hdri/')
+  .load('studio_small_08.hdr', (hdr) => {   // neutral CC0 studio (Poly Haven) — no colour tint (research §1c)
     const env = pmrem.fromEquirectangular(hdr).texture;
     scene.environment = env;
     hdr.dispose();
@@ -454,10 +503,10 @@ const texCache = new Map();
 function loadTex(path, opts = {}) {
   const key = path + '|' + (opts.srgb ? 's' : 'l');
   if (texCache.has(key)) return texCache.get(key);
-  const t = texLoader.load(ASSET_ROOT + path, tt => { tt.needsUpdate = true; });
+  const t = texLoader.load(texURL(path), tt => { tt.needsUpdate = true; });
   t.colorSpace = opts.srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  t.anisotropy = 8;
+  t.anisotropy = MAX_ANISO;
   texCache.set(key, t);
   return t;
 }
@@ -470,7 +519,7 @@ function loadImg(path) {
     img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
     img.onerror = reject;
-    img.src = ASSET_ROOT + path;
+    img.src = texURL(path);
   });
   imgCache.set(path, p);
   return p;
@@ -496,8 +545,29 @@ const MARKING_COLORS = { yellow:'#f1c40f', white:'#f6f6f4', red:'#d63027' };
 function hashSeed(s) { let h=2166136261; for (let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return h>>>0; }
 function mulberry32(seed){ return function(){let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};}
 
+/* True-colour grade: shift the canvas mean to the target colour while preserving local
+   variation (texture/grain/chips). Gives an accurate on-screen colour (small ΔE) without
+   flattening the material. k = how much local deviation to keep (1 = full texture). */
+function applyColorGrade(ctx, SIZE, hex, k = 0.85) {
+  const c = new THREE.Color(hex);
+  const tr = c.r * 255, tg = c.g * 255, tb = c.b * 255;
+  const id = ctx.getImageData(0, 0, SIZE, SIZE);
+  const d = id.data, n = d.length / 4;
+  let mr = 0, mg = 0, mb = 0;
+  for (let i = 0; i < d.length; i += 4) { mr += d[i]; mg += d[i+1]; mb += d[i+2]; }
+  mr /= n; mg /= n; mb /= n;
+  for (let i = 0; i < d.length; i += 4) {
+    d[i]   = Math.max(0, Math.min(255, tr + (d[i]   - mr) * k));
+    d[i+1] = Math.max(0, Math.min(255, tg + (d[i+1] - mg) * k));
+    d[i+2] = Math.max(0, Math.min(255, tb + (d[i+2] - mb) * k));
+  }
+  ctx.putImageData(id, 0, 0);
+}
+
 async function buildCompositeMap(def, state) {
-  const SIZE = 2048;
+  // Body composite resolution. 2048 is a clear sharpness bump over 1024 while still
+  // downsampling the tiled source enough to keep repeat seams from popping.
+  const SIZE = isMobile ? 1280 : 2048;
   const cv = document.createElement('canvas');
   cv.width = cv.height = SIZE;
   const ctx = cv.getContext('2d');
@@ -519,6 +589,10 @@ async function buildCompositeMap(def, state) {
     ctx.globalAlpha = 1;
   }
 
+  // True-colour: shift the base field to the picked colour BEFORE chips are laid on top,
+  // so user-picked aggregates keep their own palette colour while the matrix recolours.
+  if (state.colorHex) applyColorGrade(ctx, SIZE, state.colorHex);
+
   const rnd = mulberry32(hashSeed(def.slug + (state.aggregates||'')+(state.flecks||'')+(state.stripes||'')+(state.marking||'')));
 
   /* Decide aggregates source:
@@ -530,7 +604,7 @@ async function buildCompositeMap(def, state) {
   const hasRealPhoto = !!(def.pbr && def.pbr.diffuse);
   const useAutoChips = (!userPickedAgg) && (!hasRealPhoto) && Array.isArray(def.chips) && def.chips.length > 0;
 
-  if ((userPickedAgg && !hasRealPhoto) || useAutoChips) {
+  if (userPickedAgg || useAutoChips) {
     let palRGB, weights;
     if (userPickedAgg) {
       palRGB = AGG_PALETTE[state.aggregates].map(hex => {
@@ -664,7 +738,7 @@ async function buildCompositeMap(def, state) {
   const tex = new THREE.CanvasTexture(cv);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-  tex.anisotropy = 8;
+  tex.anisotropy = MAX_ANISO;
   const tile = def.tile || 1;
   tex.repeat.set(tile, tile);
   return tex;
@@ -686,8 +760,13 @@ function buildGlassTopcoatMaterial(roughness = 0.06) {
     side: THREE.DoubleSide,
     depthWrite: false,
   });
+  // baseOpacity = how clear the sealer is in SURFACE view (you look through it). The explode
+  // loop raises opacity toward EXPLODE_TOPCOAT_OPACITY so the lacquer reads as a glass layer
+  // in the System view (it has its own callout) without hazing the floor when collapsed.
+  mat.userData.baseOpacity = mat.opacity;
   return mat;
 }
+const EXPLODE_TOPCOAT_OPACITY = 0.46;
 
 /* Fallback colours per chip variant — used when the photo texture has not been
    dropped into 3d-assets/textures/<slug>/ yet. Keeps the body looking plausible
@@ -713,11 +792,11 @@ function buildBodyPhotoMaterial(def, variantId) {
   });
   // Load the texture separately so we can detect errors and keep the fallback colour.
   const t = new THREE.TextureLoader().load(
-    ASSET_ROOT + path,
+    texURL(path),
     (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.anisotropy = 8;
+      tex.anisotropy = MAX_ANISO;
       tex.repeat.set(tile, tile);
       mat.map = tex;
       mat.color.set(0xffffff); // Let the texture drive colour now.
@@ -731,18 +810,28 @@ function buildBodyPhotoMaterial(def, variantId) {
 
 function buildPbrMaterial(def) {
   if (def.procedural) {
-    return new THREE.MeshStandardMaterial({
+    const base = {
       color: new THREE.Color(def.procedural.color),
-      roughness: def.procedural.roughness ?? 0.9,
-      metalness: def.procedural.metalness ?? 0.0,
-    });
+      roughness: def.roughness_override ?? def.procedural.roughness ?? 0.9,
+      metalness: 0,   // floors are never metallic (research: metalness=0 always)
+    };
+    // SEALED systems (epoxy/terrazzo/polished topcoat) get a clearcoat lacquer layer →
+    // gloss comes from the topcoat, not from flattening the base texture.
+    if (def.clearcoat) {
+      return new THREE.MeshPhysicalMaterial({
+        ...base,
+        clearcoat: def.clearcoat.amount ?? 0.8,
+        clearcoatRoughness: def.clearcoat.roughness ?? 0.2,
+      });
+    }
+    return new THREE.MeshStandardMaterial(base);
   }
   if (!def.pbr) return new THREE.MeshStandardMaterial({ color: 0x888888 });
 
   const tile = def.tile || 4;
   const mat = new THREE.MeshStandardMaterial({
     roughness: def.roughness_override ?? 1.0,
-    metalness: 0.02,
+    metalness: 0,
   });
 
   const map = loadTex(def.pbr.diffuse, { srgb: true });
@@ -793,7 +882,14 @@ function setView(view) {
   if (view === 'layers') { explodeTarget = 1; controls.enabled = true; }
   if (view === 'top')    { explodeTarget = 0; controls.enabled = false; camera.position.set(0.001, 0.85, 0.001); controls.target.set(0,0,0); }
   if (view === 'reset')  { explodeTarget = 0; controls.enabled = true; camera.position.set(0.55, 0.42, 0.55); controls.target.set(0,0,0); }
-  document.querySelectorAll('.s-br button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  // RESET is an ACTION, not a mode — after it runs the scene is in 'solid'. Highlight the
+  // actual resulting mode so the button state never desyncs from the scene (audit fix).
+  const activeMode = (view === 'reset') ? 'solid' : view;
+  document.querySelectorAll('.s-br button').forEach(b => {
+    const on = b.dataset.view === activeMode;
+    b.classList.toggle('on', on);
+    if (b.dataset.view !== 'reset') b.setAttribute('aria-pressed', String(on)); // reset is an action, not a toggle
+  });
 }
 document.querySelectorAll('.s-br button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 
@@ -864,7 +960,7 @@ function buildProceduralPlate() {
 
   const W = 0.30, D = 0.30;
   // Slab heights — exaggerated for visibility in explode view.
-  const tcH = 0.006;   // topcoat
+  const tcH = 0.0016;  // topcoat — a sealer is microns/tenths-of-mm thin: keep it a hairline film
   const bdH = 0.012;   // body system
   const msH = 0.0015;  // fibreglass mesh (hairline)
   const prH = 0.003;   // primer
@@ -882,7 +978,7 @@ function buildProceduralPlate() {
   const ySubstrate = yTop - tcH - bdH - msH - prH - subH * 0.5;
 
   const topcoat = new THREE.Mesh(
-    bevelSlab(W * tcS, D * tcS, tcH, 0.0018),
+    bevelSlab(W * tcS, D * tcS, tcH, 0.0005),
     new THREE.MeshStandardMaterial({ name: 'VAR_topcoat', color: 0xcccccc, roughness: 0.5 })
   );
   topcoat.name = 'topcoat';
@@ -929,7 +1025,7 @@ let manifest = null;
 let activeSlug = null;
 
 async function init() {
-  const res = await fetch(ASSET_ROOT + 'manifest.json');
+  const res = await fetch(ASSET_ROOT + 'manifest-v3.json');
   manifest = await res.json();
 
   const grpD = document.getElementById('grpDecorative');
@@ -939,11 +1035,17 @@ async function init() {
     const li = document.createElement('li');
     li.dataset.slug = m.slug;
     li.tabIndex = 0;
+    li.setAttribute('role', 'radio');
+    li.setAttribute('aria-checked', 'false');
+    li.setAttribute('aria-label', m.label_ru);
     li.innerHTML = `
       <span class="idx">${String(idx+1).padStart(2,'0')}</span>
       <span>${m.label_ru}</span>
       <span class="tag">${m.tag}</span>`;
     li.addEventListener('click', () => selectMaterial(m.slug));
+    li.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ' || ev.code === 'Space') { ev.preventDefault(); selectMaterial(m.slug); }
+    });
     li.addEventListener('mouseenter', e => {
       if (matchMedia('(max-width:1100px)').matches) return;
       if (m.previews && m.previews.light) {
@@ -1031,8 +1133,11 @@ async function init() {
     if (m) ORIG_POS.set(m.uuid, m.position.y);
   });
 
+  pendingRestore = parseSharedConfig();
+  if (pendingRestore && !manifest.materials.some(x => x.slug === pendingRestore.slug)) pendingRestore = null;
   const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
-  selectMaterial(manifest.materials[defaultIdx].slug);
+  const startSlug = pendingRestore ? pendingRestore.slug : manifest.materials[defaultIdx].slug;
+  selectMaterial(startSlug);
   bootEl.classList.add('gone');
 }
 
@@ -1044,25 +1149,30 @@ function selectMaterial(slug) {
   if (!def || !topcoatMesh) return;
   activeSlug = slug;
 
-  /* PHOTO MODE: material has real photo textures on body + transparent gloss topcoat.
-     The chip pattern reads from the body diffuse map instead of the procedural Voronoi. */
   const photoMode = !!(def.body_textures && def.topcoat_glass);
 
-  let newMat;
-  if (photoMode) {
-    newMat = buildGlassTopcoatMaterial();
-  } else {
-    newMat = buildPbrMaterial(def);
-  }
-  const oldMat = topcoatMesh.material;
+  /* TOPCOAT IS A CLEAR SEALER (lacquer) — it NEVER carries the chip pattern, colour or
+     design photo. The visible floor surface lives on the BODY slab beneath it; the
+     topcoat only contributes the sealed gloss/reflection. This matches a real system:
+     you look at the floor *through* a thin transparent sealer, not at a printed top film. */
+  const glossInit = (def.clearcoat && def.clearcoat.roughness != null) ? def.clearcoat.roughness : 0.08;
+  const oldTc = topcoatMesh.material;
+  topcoatMesh.material = buildGlassTopcoatMaterial(glossInit);
+  if (oldTc && oldTc !== topcoatMesh.material && oldTc.dispose) setTimeout(() => oldTc.dispose(), 600);
 
+  // Surface material (texture / colour / chips) → BODY slab. The body is matte/raw —
+  // gloss is owned by the topcoat sealer above, so strip any clearcoat off the body.
+  const newMat = buildPbrMaterial(def);
+  if (newMat.isMeshPhysicalMaterial) newMat.clearcoat = 0;
+  const oldMat = bodyMesh ? bodyMesh.material : null;
   const fromColor = oldMat && oldMat.color ? oldMat.color.clone() : new THREE.Color('#ffffff');
-  const fromRough = oldMat ? oldMat.roughness : 0.8;
-  topcoatMesh.material = newMat;
+  const fromRough = oldMat && oldMat.roughness != null ? oldMat.roughness : 0.8;
+  if (bodyMesh) bodyMesh.material = newMat;
   const targetColor = newMat.color.clone();
   const targetRough = newMat.roughness;
+  // Crossfade the body between the old and new surface look (procedural materials only;
+  // a photo body is replaced outright below).
   if (!photoMode) {
-    // Crossfade only when both old and new materials are opaque standards.
     newMat.color.copy(fromColor);
     newMat.roughness = fromRough;
     transition.active = true;
@@ -1079,27 +1189,22 @@ function selectMaterial(slug) {
 
   renderSpecs(def);
   renderBadges(def);
-  renderControls(def);
+  renderRefCard(def);
+  renderDesigns(def);
+  const restoreState = (pendingRestore && pendingRestore.slug === def.slug) ? pendingRestore.state : null;
+  if (restoreState) pendingRestore = null;
+  renderControls(def, restoreState);
   renderBuildup(def);
   renderCallouts(def);
 
-  // Body slab: in photo mode load real diffuse; otherwise tint towards topcoat colour.
-  if (bodyMesh) {
+  // Body slab in PHOTO MODE uses the real photograph. In procedural mode the body keeps the
+  // buildPbrMaterial base set above and receives the chip/aggregate texture from
+  // refreshCompositeMap() below — so the surface AND the cut cross-section share one map.
+  if (bodyMesh && photoMode) {
     const oldBodyMat = bodyMesh.material;
-    if (photoMode) {
-      const variant = def.body_default || Object.keys(def.body_textures)[0];
-      const photoMat = buildBodyPhotoMaterial(def, variant);
-      if (photoMat) bodyMesh.material = photoMat;
-    } else if (def.procedural) {
-      // Reset to a tinted standard material in case we just left photo mode.
-      const bodyColor = new THREE.Color(def.procedural.color);
-      bodyColor.lerp(new THREE.Color('#9c9484'), 0.45);
-      bodyMesh.material = new THREE.MeshStandardMaterial({
-        name: 'body',
-        color: bodyColor,
-        roughness: 0.7,
-      });
-    }
+    const variant = def.body_default || Object.keys(def.body_textures)[0];
+    const photoMat = buildBodyPhotoMaterial(def, variant);
+    if (photoMat) bodyMesh.material = photoMat;
     if (oldBodyMat && oldBodyMat !== bodyMesh.material && oldBodyMat.dispose) {
       setTimeout(() => oldBodyMat.dispose(), 600);
     }
@@ -1110,7 +1215,9 @@ function selectMaterial(slug) {
   document.getElementById('stTag').textContent = `${def.tag} · ${dims} мм`;
 
   document.querySelectorAll('#matlist li').forEach(li => {
-    li.classList.toggle('on', li.dataset.slug === slug);
+    const on = li.dataset.slug === slug;
+    li.classList.toggle('on', on);
+    li.setAttribute('aria-checked', on ? 'true' : 'false');
   });
 
   // In photo mode the chips come from the photo; skip the Voronoi/canvas composite
@@ -1120,7 +1227,78 @@ function selectMaterial(slug) {
 
 const orderState = {};
 
-function renderControls(def) {
+/* QA/debug hook — used by scripts/cfg-qa.js to drive states headlessly. No UX effect.
+   Enabled always (read-only surface); harmless in production. */
+window.__cfg = {
+  get scene() { return scene; },
+  get renderer() { return renderer; },
+  get topcoatMesh() { return topcoatMesh; },
+  get bodyMesh() { return bodyMesh; },
+  get manifest() { return manifest; },
+  get activeSlug() { return activeSlug; },
+  orderState,
+  selectMaterial, setView,
+  // Programmatically apply a control option by id (mirrors a button click).
+  applyControl(slug, cid, optId) {
+    const def = manifest && manifest.materials.find(m => m.slug === slug);
+    if (!def) return false;
+    const spec = manifest.control_options[cid];
+    const opt = spec && spec.options.find(o => o.id === optId);
+    if (!opt) return false;
+    orderState[def.slug] ||= {};
+    orderState[def.slug][cid] = opt.id;
+    applyControlEffect(def, cid, opt);
+    return true;
+  }
+};
+
+/* Material reference card — honest status + matrix. Trust element: no material is
+   'approved_real_sample' until a real physical sample is shot & matched. */
+function renderRefCard(def) {
+  const el = document.getElementById('refCard');
+  if (!el) return;
+  const st = def.approvedStatus || 'needs_calibration';
+  const label = {
+    needs_calibration: 'Концепт-превью · цвет и фактура подтверждаются образцом',
+    concept_preview: 'Концепт-превью',
+    approved_real_sample: 'Подтверждён физическим образцом',
+  }[st] || st;
+  const cls = st === 'approved_real_sample' ? 'approved' : 'needs';
+  const matrix = def.swatch || (def.procedural && def.procedural.color) || '#999999';
+  const sys = (def.systemType || '').replace(/_/g, ' ');
+  el.innerHTML = `<span class="rc-status ${cls}">● ${label}</span>
+    <div class="rc-row"><span class="rc-sw" style="background:${matrix}"></span> Матрица <b>${matrix}</b>${sys ? ' · ' + sys : ''}</div>`;
+}
+
+/* Design/sample gallery — one swatch per REAL owner photo (def.designs). Clicking swaps the
+   surface to that exact photo (diffuse; reuses the material's base normal/roughness/ao). */
+function renderDesigns(def) {
+  const wrap = document.getElementById('designsWrap');
+  const root = document.getElementById('designs');
+  if (!root || !wrap) return;
+  root.innerHTML = '';
+  const list = Array.isArray(def.designs) ? def.designs : [];
+  if (!list.length) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+  list.forEach((d) => {
+    const el = document.createElement('button');
+    el.type = 'button'; el.className = 'ds'; el.setAttribute('role', 'radio'); el.setAttribute('aria-checked', 'false');
+    el.style.backgroundImage = `url(${texURL(d.file)})`;
+    el.title = d.name || d.id; el.setAttribute('aria-label', d.name || d.id);
+    const s = document.createElement('span'); s.textContent = d.name || d.id; el.appendChild(s);
+    el.addEventListener('click', () => {
+      root.querySelectorAll('.ds').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+      el.classList.add('on'); el.setAttribute('aria-checked', 'true');
+      orderState[def.slug] ||= {}; orderState[def.slug].design = d.id;
+      // The selected design photo is the FLOOR surface → it goes on the body, never the clear topcoat.
+      const mat = bodyMesh && bodyMesh.material;
+      if (mat) applyVariantTextures(mat, def, { diffuse: d.file, normal: d.normal, roughness: d.roughness, ao: d.ao });
+    });
+    root.appendChild(el);
+  });
+}
+
+function renderControls(def, saved = null) {
   const root = document.getElementById('controls');
   root.innerHTML = '';
   orderState[def.slug] ||= {};
@@ -1140,28 +1318,39 @@ function renderControls(def) {
     wrap.appendChild(k);
     const opts = document.createElement('div');
     opts.className = 'opts';
-    spec.options.forEach((opt, i) => {
+    // Which option is initially selected: a restored value (from a shared URL) or the first.
+    const selId = (saved && saved[cid]) || spec.options[0].id;
+    spec.options.forEach((opt) => {
       const b = document.createElement('button');
+      b.type = 'button';
       const hasChip = !!opt.hex;
       b.className = hasChip ? 'sw' : '';
+      b.setAttribute('role', 'radio');
+      b.dataset.optId = opt.id;
       if (hasChip) {
         const chip = document.createElement('span');
         chip.className = 'chip';
         chip.style.background = opt.hex;
         b.appendChild(chip);
+        b.setAttribute('aria-label', opt.name);
       }
       const t = document.createElement('span');
       t.textContent = opt.name;
       b.appendChild(t);
-      b.addEventListener('click', () => {
+      const select = () => {
         orderState[def.slug][cid] = opt.id;
-        opts.querySelectorAll('button').forEach(x => x.classList.remove('on'));
-        b.classList.add('on');
+        opts.querySelectorAll('button').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-checked', 'true');
         applyControlEffect(def, cid, opt);
-      });
-      if (i === 0) {
+      };
+      b.addEventListener('click', select);
+      const isSel = opt.id === selId;
+      b.setAttribute('aria-checked', isSel ? 'true' : 'false');
+      if (isSel) {
         b.classList.add('on');
         orderState[def.slug][cid] = opt.id;
+        // Restoring from a shared URL → actually apply the effect (default first-option does not).
+        if (saved && saved[cid]) applyControlEffect(def, cid, opt);
       }
       opts.appendChild(b);
     });
@@ -1249,17 +1438,65 @@ function renderCallouts(def) {
   });
 }
 
+/* Per-option PHOTO VARIANT — when the manifest provides a real texture for this exact
+   control option, swap the surface to that photo ("each button = its own photo", per owner)
+   instead of a procedural recolour. Falls back to the normal logic when no variant exists. */
+function applyVariantTextures(mat, def, v) {
+  const tile = def.tile || 1;
+  const oldMap = mat.map;
+  const dm = loadTex(v.diffuse, { srgb: true }); dm.repeat.set(tile, tile);
+  mat.map = dm; mat.color.set(0xffffff);
+  if (v.normal)    { const nm = loadTex(v.normal);    nm.repeat.set(tile, tile); mat.normalMap = nm; if (mat.normalScale) mat.normalScale.set(0.85, 0.85); }
+  if (v.roughness) { const rm = loadTex(v.roughness); rm.repeat.set(tile, tile); mat.roughnessMap = rm; }
+  if (v.ao)        { const ao = loadTex(v.ao);        ao.repeat.set(tile, tile); mat.aoMap = ao; mat.aoMapIntensity = 0.55; }
+  // Gloss lives on the topcoat sealer, not on this body surface.
+  const g = (orderState[def.slug] || {}).glossLevel; if (g != null && topcoatMesh) setGloss(topcoatMesh.material, def, g);
+  mat.needsUpdate = true;
+  if (oldMap && oldMap.dispose && oldMap !== dm) oldMap.dispose();
+}
+
+/* Surface sheen. On a SEALED material (MeshPhysicalMaterial with clearcoat) the gloss is the
+   clearcoat roughness — the topcoat reflects while the base roughnessMap keeps the texture.
+   On an unsealed/matte material the base roughness scalar is the gloss. */
+function setGloss(mat, def, g) {
+  if (g == null || !mat) return;
+  orderState[def.slug] ||= {};
+  orderState[def.slug].glossLevel = g;
+  if (mat.isMeshPhysicalMaterial && mat.clearcoat > 0) {
+    mat.clearcoatRoughness = g;
+  } else {
+    mat.roughness = g;
+  }
+  mat.needsUpdate = true;
+}
+
 function applyControlEffect(def, cid, opt) {
-  if (!topcoatMesh) return;
-  const mat = topcoatMesh.material;
+  if (!topcoatMesh || !bodyMesh) return;
+  const mat = bodyMesh.material;        // surface (texture / colour / chips)
+  const glossMat = topcoatMesh.material; // clear sealer (gloss / reflection)
   const photoMode = !!(def.body_textures && def.topcoat_glass);
 
+  // Per-option real photo wins over procedural recolour when present.
+  const variant = def.variants && def.variants[cid] && def.variants[cid][opt.id];
+  if (variant && variant.diffuse && !photoMode) {
+    orderState[def.slug][cid] = opt.id;
+    applyVariantTextures(mat, def, variant);
+    return;
+  }
+
   if (cid === 'color' && opt.hex && !photoMode) {
-    const c = new THREE.Color(opt.hex);
-    const lum = 0.2126*c.r + 0.7152*c.g + 0.0722*c.b;
-    const lerpAmount = 0.55 + (1 - lum) * 0.25;
-    c.lerp(new THREE.Color('#ffffff'), lerpAmount);
-    mat.color.copy(c);
+    // TRUE COLOUR: no white-lerp. For textured materials, drive the picked colour into
+    // the composite via a mean-shift (preserves chip/grain structure, hits the colour
+    // accurately) and keep mat.color white so the diffuse map isn't multiplied dark.
+    // For solid materials (no diffuse), set the exact hex directly.
+    orderState[def.slug].colorHex = opt.hex;
+    if (def.pbr && def.pbr.diffuse) {
+      mat.color.set(0xffffff);
+      refreshCompositeMap(def);
+    } else {
+      mat.color.set(opt.hex);
+      mat.needsUpdate = true;
+    }
   }
   // Chips color: swap the body diffuse texture (real photo of terrazzo crumb).
   if (cid === 'chips_color' && opt.body_variant && bodyMesh) {
@@ -1271,20 +1508,17 @@ function applyControlEffect(def, cid, opt) {
     }
   }
   if (cid === 'gloss') {
-    const m = { low: 0.7, mid: 0.4, high: 0.08 };
-    mat.roughness = m[opt.id] ?? mat.roughness;
-    mat.roughnessMap = null;
-    // Glass topcoat: also vary opacity slightly with gloss level.
-    if (photoMode) {
+    const g = { low: 0.7, mid: 0.4, high: 0.08 }[opt.id];
+    if (g != null) {
+      setGloss(glossMat, def, g);   // gloss on the topcoat sealer → clearcoatRoughness
       const o = { low: 0.28, mid: 0.22, high: 0.14 };
-      mat.opacity = o[opt.id] ?? mat.opacity;
-      if (mat.clearcoatRoughness !== undefined) mat.clearcoatRoughness = mat.roughness * 0.5;
+      // Store as baseOpacity (surface-view clarity); the explode loop drives live opacity.
+      glossMat.userData.baseOpacity = o[opt.id] ?? glossMat.userData.baseOpacity ?? glossMat.opacity;
+      glossMat.needsUpdate = true;
     }
-    mat.needsUpdate = true;
   }
   if (cid === 'finish') {
-    const r = { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id];
-    if (r != null) { mat.roughness = r; mat.roughnessMap = null; mat.needsUpdate = true; }
+    setGloss(glossMat, def, { matte: 0.85, satin: 0.45, polished: 0.12 }[opt.id]);
   }
   if (cid === 'aggregates' || cid === 'flecks' || cid === 'stripes' || cid === 'marking') {
     if (!photoMode) refreshCompositeMap(def);
@@ -1298,8 +1532,8 @@ async function refreshCompositeMap(def) {
   try {
     const state = orderState[def.slug] || {};
     const tex = await buildCompositeMap(def, state);
-    if (topcoatMesh && def.slug === activeSlug) {
-      const mat = topcoatMesh.material;
+    if (bodyMesh && def.slug === activeSlug) {
+      const mat = bodyMesh.material;
       const oldMap = mat.map;
       mat.map = tex;
       const tile = def.tile || 1;
@@ -1336,6 +1570,11 @@ async function refreshCompositeMap(def) {
         mat.aoMap = null;
       }
 
+      // Re-apply the user's finish/gloss so rebuilding the composite (colour/aggregate change)
+      // doesn't reset the sheen. Gloss lives on the TOPCOAT sealer, not the body.
+      const g = (orderState[def.slug] || {}).glossLevel;
+      if (g != null && topcoatMesh) setGloss(topcoatMesh.material, def, g);
+
       mat.needsUpdate = true;
       if (oldMap && oldMap.dispose) oldMap.dispose();
     } else if (tex.dispose) {
@@ -1358,8 +1597,32 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
 });
 
 document.getElementById('ctaSample').addEventListener('click', () => {
-  const params = new URLSearchParams({ subject: 'sample-kit', fd_material: activeSlug || '' });
+  // Carry the FULL configuration (like ctaOrder), not just the material, so the physical
+  // sample request reflects the chosen colour/aggregate/finish (audit fix).
+  const params = new URLSearchParams({
+    subject: 'sample-kit',
+    fd_material: activeSlug || '',
+    fd_state: JSON.stringify(orderState[activeSlug] || {})
+  });
   window.location.href = 'contact.html?' + params.toString();
+});
+
+// Share: copy a deep link that restores this exact material + configuration.
+const ctaShareBtn = document.getElementById('ctaShare');
+if (ctaShareBtn) ctaShareBtn.addEventListener('click', async () => {
+  const state = { ...(orderState[activeSlug] || {}) };
+  delete state.colorHex; delete state.glossLevel; // internal/derived — rebuilt on restore
+  const url = location.origin + location.pathname + '?m=' + encodeURIComponent(activeSlug || '') +
+              (Object.keys(state).length ? '&s=' + encodeURIComponent(JSON.stringify(state)) : '');
+  const toast = document.getElementById('cfgToast');
+  const flash = (msg) => { if (toast) { toast.textContent = msg; toast.style.opacity = '1'; setTimeout(() => toast.style.opacity = '0', 2400); } };
+  try {
+    await navigator.clipboard.writeText(url);
+    flash('Ссылка скопирована');
+  } catch (e) {
+    history.replaceState(null, '', url); // clipboard blocked → at least put it in the address bar
+    flash('Ссылка в адресной строке');
+  }
 });
 
 let lastUserInputT = performance.now();
@@ -1391,10 +1654,10 @@ function animate(t) {
     plateRoot.rotation.y = THREE.MathUtils.lerp(plateRoot.rotation.y, target, 0.08);
   }
 
-  if (transition.active && topcoatMesh) {
+  if (transition.active && bodyMesh) {
     transition.t += dt / transition.dur;
     const k = easeOutCubic(Math.min(1, transition.t));
-    const mat = topcoatMesh.material;
+    const mat = bodyMesh.material;
     mat.color.copy(transition.from.color).lerp(transition.to.color, k);
     mat.roughness = THREE.MathUtils.lerp(transition.from.roughness, transition.to.roughness, k);
     if (transition.t >= 1) transition.active = false;
@@ -1403,7 +1666,12 @@ function animate(t) {
   explodeAmount = THREE.MathUtils.lerp(explodeAmount, explodeTarget, 0.10);
   // 5-layer explode (top→bottom). Distances chosen so the gaps match the callout
   // distribution (top:14% → 86%) when the stage is fully exploded.
-  if (topcoatMesh)    topcoatMesh.position.y    = (ORIG_POS.get(topcoatMesh.uuid)    ?? 0) + 0.080 * explodeAmount;
+  if (topcoatMesh) {
+    topcoatMesh.position.y = (ORIG_POS.get(topcoatMesh.uuid) ?? 0) + 0.080 * explodeAmount;
+    // Clear sealer when collapsed; visible glass slab when exploded (so its callout reads).
+    const tm = topcoatMesh.material;
+    if (tm && tm.transparent) tm.opacity = THREE.MathUtils.lerp(tm.userData.baseOpacity ?? 0.16, EXPLODE_TOPCOAT_OPACITY, explodeAmount);
+  }
   if (bodyMesh)       bodyMesh.position.y       = (ORIG_POS.get(bodyMesh.uuid)       ?? 0) + 0.045 * explodeAmount;
   if (meshLayerMesh)  meshLayerMesh.position.y  = (ORIG_POS.get(meshLayerMesh.uuid)  ?? 0) + 0.018 * explodeAmount;
   if (primerMesh)     primerMesh.position.y     = (ORIG_POS.get(primerMesh.uuid)     ?? 0) - 0.012 * explodeAmount;
