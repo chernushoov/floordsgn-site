@@ -58,6 +58,7 @@
     <button class="chip on" data-v="hall">Обзор</button>
     <button class="chip" data-v="window">Окно</button>
     <button class="chip" data-v="detail">Деталь</button>
+    <button class="chip" id="tourBtn">Тур</button>
   </div>
   <div class="seg" id="finishCtl">
     <button data-f="satin" class="on">Сатин</button>
@@ -346,7 +347,7 @@ function clampCamera(){
 controls.minPolarAngle = Math.PI*0.26; controls.maxPolarAngle = Math.PI*0.495;
 controls.enablePan = false; controls.autoRotate = true; controls.autoRotateSpeed = 0.32;
 controls.update();
-controls.addEventListener('start', () => { controls.autoRotate = false; });
+controls.addEventListener('start', () => { controls.autoRotate = false; stopTour(); });
 
 /* ───────────────── view presets ───────────────── */
 const VIEWS = {
@@ -357,14 +358,36 @@ const VIEWS = {
 let tween = null;
 function goView(name){
   const v = VIEWS[name]; if(!v) return;
-  controls.autoRotate = false;
+  controls.autoRotate = false; stopTour();
   tween = { t0:0, dur:46, p0:camera.position.clone(), p1:new THREE.Vector3(...v.p),
             g0:controls.target.clone(), g1:new THREE.Vector3(...v.t) };
 }
-document.querySelectorAll('#viewCtl .chip').forEach(b => b.addEventListener('click', () => {
+document.querySelectorAll('#viewCtl .chip[data-v]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#viewCtl .chip').forEach(x => x.classList.remove('on'));
   b.classList.add('on'); goView(b.dataset.v);
 }));
+
+/* ───────────────── room tour — cinematic auto-flythrough ───────────────── */
+const TOUR = [
+  { p:[-2.6,1.9,3.5],  t:[1.4,0.5,-0.7]  },   // hero wide
+  { p:[-0.8,1.25,1.4], t:[-1.1,0.9,-3.5] },   // glide toward console + window
+  { p:[2.6,0.62,2.7],  t:[-0.6,0.15,-0.8]},   // low graze across the floor (reflections)
+  { p:[2.2,1.25,1.7],  t:[4.9,0.6,-0.3]  },   // turn to the sofa
+  { p:[-3.1,2.7,2.9],  t:[0.4,0.15,-0.9] },   // rise to overview — floor fills frame
+];
+let tour = null;
+const tourBtn = document.getElementById('tourBtn');
+function startTour(){ tour = { i:0, t:0, dur:160 }; tween=null; controls.autoRotate=false; tourBtn.classList.add('on'); tourBtn.textContent='Стоп'; }
+function stopTour(){ if(!tour) return; tour=null; tourBtn.classList.remove('on'); tourBtn.textContent='Тур'; }
+function advanceTour(){
+  const A = TOUR[tour.i], B = TOUR[(tour.i+1)%TOUR.length];
+  tour.t++; const k = Math.min(1, tour.t/tour.dur);
+  const e = k<0.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;   // easeInOutQuad
+  camera.position.set(A.p[0]+(B.p[0]-A.p[0])*e, A.p[1]+(B.p[1]-A.p[1])*e, A.p[2]+(B.p[2]-A.p[2])*e);
+  controls.target.set(A.t[0]+(B.t[0]-A.t[0])*e, A.t[1]+(B.t[1]-A.t[1])*e, A.t[2]+(B.t[2]-A.t[2])*e);
+  if (k>=1){ tour.i=(tour.i+1)%TOUR.length; tour.t=0; }
+}
+tourBtn.addEventListener('click', () => { tour ? stopTour() : startTour(); });
 document.querySelectorAll('#floorCtl .chip').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#floorCtl .chip').forEach(x => x.classList.remove('on'));
   b.classList.add('on'); setFloor(b.dataset.fl);
@@ -436,13 +459,17 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
                   composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
-  if (tween){
-    tween.t0++; const k = tween.t0/tween.dur, e = k<1 ? (1-Math.pow(1-k,3)) : 1;
-    camera.position.lerpVectors(tween.p0, tween.p1, e);
-    controls.target.lerpVectors(tween.g0, tween.g1, e);
-    if (k>=1) tween = null;
+  if (tour){
+    advanceTour(); camera.lookAt(controls.target);
+  } else {
+    if (tween){
+      tween.t0++; const k = tween.t0/tween.dur, e = k<1 ? (1-Math.pow(1-k,3)) : 1;
+      camera.position.lerpVectors(tween.p0, tween.p1, e);
+      controls.target.lerpVectors(tween.g0, tween.g1, e);
+      if (k>=1) tween = null;
+    }
+    controls.update();
   }
-  controls.update();
   clampCamera();
   if (gradePass) gradePass.uniforms.uTime.value = performance.now()*0.001;
   if (useComposer && composer) composer.render(); else renderer.render(scene, camera);
