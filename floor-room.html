@@ -49,6 +49,9 @@
     <button class="chip" data-fl="venetian">Венеция</button>
     <button class="chip" data-fl="graphite">Графит</button>
     <button class="chip" data-fl="cement">Бетон</button>
+    <button class="chip" data-fl="comfort">Комфорт</button>
+    <button class="chip" data-fl="micro">Микроцемент</button>
+    <button class="chip" data-fl="multi">Мультиколор</button>
   </div>
   <div class="row" id="viewCtl">
     <span class="lbl" style="align-self:center">вид</span>
@@ -135,6 +138,9 @@ const FLOORS = {
   venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', ext: 'jpg', tile: 1.6, ns: 0.5, label: 'Венецианское терраццо' },  // bold, colourful
   graphite: { path: '3d-assets/textures-v4/terrazzo-epoxy/',    ext: 'png', tile: 1.1, ns: 0.7, mirror: true, label: 'Графитовое эпокси-терраццо' },  // dark charcoal matrix, white/grey chips
   cement:   { path: '3d-assets/textures-v4/terrazzo-cement/',   ext: 'png', tile: 1.4, ns: 0.6, mirror: true, label: 'Цементное терраццо' },  // warm light-grey cement terrazzo
+  comfort:  { path: '3d-assets/textures-v4/comfortfloor/',      ext: 'png', tile: 2.2, ns: 0.25, label: 'Комфорт-пол (кремовый)' },   // warm seamless poured polyurethane
+  micro:    { path: '3d-assets/textures-v4/microtopping/',      ext: 'png', tile: 2.2, ns: 0.25, label: 'Микроцемент (серый)' },     // troweled fine cement, no chips
+  multi:    { path: '3d-assets/textures-v4/terrazzo-multi/',    ext: 'png', tile: 1.5, ns: 0.5, label: 'Мультиколор терраццо' },     // white matrix, multicolour confetti chips
 };
 const floorMat = new THREE.MeshPhysicalMaterial({
   roughness: 1.0, metalness: 0.0, normalScale: new THREE.Vector2(0.5, 0.5),
