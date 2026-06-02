@@ -61,6 +61,15 @@ async function steady(pg, ms = 850) {
   pg.on('console', m => { if (m.type() === 'error') errs.push('console.error: ' + m.text()); });
   await pg.goto(`http://127.0.0.1:${port}/${page_}`, { waitUntil: 'networkidle', timeout: 30000 });
   await pg.waitForFunction(() => window.__cfg && window.__cfg.manifest && window.__cfg.bodyMesh, { timeout: 20000 });
+
+  // Optional: inject a test material def (runtime only) so we can render generated textures
+  // without editing the committed manifest. --inject=path/to/def.json
+  const injectPath = (process.argv.slice(2).find(a => a.startsWith('--inject=')) || '').split('=')[1];
+  if (injectPath) {
+    const def = JSON.parse(fs.readFileSync(injectPath, 'utf8'));
+    await pg.evaluate((d) => { window.__cfg.manifest.materials.push(d); }, def);
+  }
+
   await pg.evaluate((s) => window.__cfg.selectMaterial(s), slug);
   await pg.waitForTimeout(1100); // composite map build
 
