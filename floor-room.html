@@ -128,7 +128,7 @@ function loadTex(p, srgb, repX, repY) {
 /* ───────────────── floor (hero) — switchable terrazzo ───────────────── */
 const fW = W + 2, fD = D + 2;
 const FLOORS = {
-  light:    { path: '3d-assets/textures-v4/terrazzo-acg/',      tile: 1.5, ns: 0.5 },  // seamless light grey, on-spec
+  light:    { path: '3d-assets/textures-v4/terrazzo-acg-flat/', tile: 1.5, ns: 0.5 },  // flat-fielded photoscan — no macro-luminance grid
   venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', tile: 1.6, ns: 0.5 },  // bold, colourful (tiles a little)
 };
 const floorMat = new THREE.MeshPhysicalMaterial({
@@ -181,9 +181,12 @@ box(jamb, winT-winB, 0.2, wallMat,  hw - jamb/2, (winB+winT)/2, -hd);
 /* daylight = the soft HDRI backdrop showing THROUGH the window (set on HDRI load) —
    reads more real than a flat bright plane. Here we just build the window frame. */
 const mullMat = new THREE.MeshStandardMaterial({ color: 0xb0aa9e, roughness: 0.85 });
-box(0.07, winT-winB, 0.07, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02);
-box(0.07, winT-winB, 0.07, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02);
-box(W-2*jamb, 0.07, 0.07, mullMat, 0, (winB+winT)/2, -hd+0.02);   // transom
+/* cast=false: the thin frame is decorative only. If it casts, the sun projects a
+   hard window-pane grid onto the floor that reads as tile seams — wrong message for
+   a SEAMLESS poured terrazzo. Daylight still enters as one soft window-shaped wash. */
+box(0.07, winT-winB, 0.07, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02, false, false);
+box(0.07, winT-winB, 0.07, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02, false, false);
+box(W-2*jamb, 0.07, 0.07, mullMat, 0, (winB+winT)/2, -hd+0.02, false, false);   // transom
 
 /* ceiling light strips (emissive) → linear reflections */
 const stripMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff2e2, emissiveIntensity: 1.5, roughness: 1, fog:false });
@@ -369,7 +372,7 @@ function resize(){
 new ResizeObserver(resize).observe(app); resize();
 
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
-                  grade: ()=>gradePass && gradePass.uniforms };
+                  composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tween){
