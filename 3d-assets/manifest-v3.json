@@ -27,7 +27,7 @@
       "group": "decorative",
       "tag": "TC",
       "code": "TC",
-      "swatch": "#b9b6b0",
+      "swatch": "#9a9a9d",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-cement_lifestyle_01.webp",
@@ -40,9 +40,8 @@
         "roughness": 0.55,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 3,
       "controls": [
-        "topcoat_type",
         "color",
         "aggregates",
         "finish"
@@ -106,34 +105,28 @@
       "glb_plate": "plates/terrazzo-cement.glb",
       "designs": [
         {
-          "id": "grey-classic",
-          "name": "Серый классический",
-          "file": "textures-v4/_designs/terrazzo-cement/grey-classic.jpg",
-          "hex": "#b9b6b0"
+          "id": "cream-fine",
+          "name": "Кремовый мелкий",
+          "file": "textures-v4/_designs/terrazzo-cement/cream-fine.jpg",
+          "hex": "#e8dcc9"
         },
         {
-          "id": "grey-dense",
+          "id": "grey-macro-dense",
           "name": "Серый плотный",
-          "file": "textures-v4/_designs/terrazzo-cement/grey-dense.jpg",
-          "hex": "#a9a6a1"
+          "file": "textures-v4/_designs/terrazzo-cement/grey-macro-dense.jpg",
+          "hex": "#9e9ea1"
         },
         {
-          "id": "grey-blue",
-          "name": "Серо-голубой",
-          "file": "textures-v4/_designs/terrazzo-cement/grey-blue.jpg",
-          "hex": "#b7bcc0"
+          "id": "grey-fine-speckle",
+          "name": "Серый крап",
+          "file": "textures-v4/_designs/terrazzo-cement/grey-fine-speckle.jpg",
+          "hex": "#c6cbcf"
         },
         {
-          "id": "light-fine",
-          "name": "Светлый мелкий",
-          "file": "textures-v4/_designs/terrazzo-cement/light-fine.jpg",
-          "hex": "#d7d6d2"
-        },
-        {
-          "id": "installed-light",
-          "name": "Светлый · объект",
-          "file": "textures-v4/_designs/terrazzo-cement/installed-light.jpg",
-          "hex": "#cfcabf"
+          "id": "stone-grey",
+          "name": "Каменный серый",
+          "file": "textures-v4/_designs/terrazzo-cement/stone-grey.jpg",
+          "hex": "#99a1ae"
         }
       ],
       "clearcoat": {
@@ -149,7 +142,7 @@
       "group": "decorative",
       "tag": "TM",
       "code": "TM",
-      "swatch": "#e0d8cb",
+      "swatch": "#ebe9e3",
       "previews": {
         "light": "previews/terrazzo-cement_hero_00.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
@@ -162,9 +155,8 @@
         "roughness": 0.35,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 4,
       "controls": [
-        "topcoat_type",
         "aggregates",
         "gloss"
       ],
@@ -252,28 +244,22 @@
       },
       "designs": [
         {
-          "id": "white-multi",
-          "name": "Белый мультицвет",
-          "file": "textures-v4/_designs/terrazzo-multi/white-multi.jpg",
-          "hex": "#e6e2da"
+          "id": "confetti-white",
+          "name": "Конфетти белый",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-white.jpg",
+          "hex": "#dbdad6"
         },
         {
-          "id": "colorful-big",
-          "name": "Цветной крупный",
-          "file": "textures-v4/_designs/terrazzo-multi/colorful-big.jpg",
-          "hex": "#cabfae"
+          "id": "confetti-large",
+          "name": "Конфетти крупный",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-large.jpg",
+          "hex": "#f2f0ec"
         },
         {
-          "id": "graphite-dna",
-          "name": "Графит мульти",
-          "file": "textures-v4/_designs/terrazzo-multi/graphite-dna.jpg",
-          "hex": "#4a4a48"
-        },
-        {
-          "id": "white-dna",
-          "name": "Белый колор",
-          "file": "textures-v4/_designs/terrazzo-multi/white-dna.jpg",
-          "hex": "#ece9e0"
+          "id": "confetti-sparse",
+          "name": "Конфетти редкий",
+          "file": "textures-v4/_designs/terrazzo-multi/confetti-sparse.jpg",
+          "hex": "#ece9e4"
         }
       ],
       "clearcoat": {
@@ -289,7 +275,7 @@
       "group": "decorative",
       "tag": "TE",
       "code": "TE",
-      "swatch": "#36352f",
+      "swatch": "#464647",
       "previews": {
         "light": "previews/terrazzo-epoxy_hero_02.webp",
         "dark": "previews/terrazzo-epoxy_lifestyle_03.webp",
@@ -302,9 +288,8 @@
         "roughness": 0.35,
         "metalness": 0
       },
-      "tile": 2,
+      "tile": 5,
       "controls": [
-        "topcoat_type",
         "color",
         "aggregates",
         "gloss"
@@ -339,28 +324,28 @@
       },
       "designs": [
         {
-          "id": "dark-classic",
-          "name": "Тёмный классический",
-          "file": "textures-v4/_designs/terrazzo-epoxy/dark-classic.jpg",
-          "hex": "#3a3a38"
+          "id": "black-fine",
+          "name": "Чёрный мелкий",
+          "file": "textures-v4/_designs/terrazzo-epoxy/black-fine.jpg",
+          "hex": "#292426"
         },
         {
-          "id": "black-lappato",
-          "name": "Чёрный лаппато",
-          "file": "textures-v4/_designs/terrazzo-epoxy/black-lappato.jpg",
-          "hex": "#2a2a28"
+          "id": "charcoal-shell",
+          "name": "Графит ракушка",
+          "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-shell.jpg",
+          "hex": "#47484b"
         },
         {
-          "id": "dark-mosaic",
-          "name": "Чёрная мозаика",
-          "file": "textures-v4/_designs/terrazzo-epoxy/dark-mosaic.jpg",
-          "hex": "#44443f"
+          "id": "graphite-large",
+          "name": "Графит крупный",
+          "file": "textures-v4/_designs/terrazzo-epoxy/graphite-large.jpg",
+          "hex": "#464440"
         },
         {
-          "id": "graphite",
-          "name": "Графит",
-          "file": "textures-v4/_designs/terrazzo-epoxy/graphite.jpg",
-          "hex": "#4a4a48"
+          "id": "charcoal-macro",
+          "name": "Графит макро",
+          "file": "textures-v4/_designs/terrazzo-epoxy/charcoal-macro.jpg",
+          "hex": "#414142"
         }
       ],
       "clearcoat": {
@@ -391,7 +376,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "finish"
       ],
@@ -502,7 +486,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "marking"
       ],
@@ -600,7 +583,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "finish"
       ],
@@ -665,7 +647,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "finish",
         "stripes"
@@ -778,7 +759,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "marking",
         "gloss"
@@ -838,7 +818,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "marking"
       ],
@@ -897,7 +876,6 @@
       },
       "tile": 2,
       "controls": [
-        "topcoat_type",
         "color",
         "flecks",
         "marking",
@@ -1050,6 +1028,18 @@
         {
           "id": "marble-black",
           "name": "Мрамор чёрный"
+        },
+        {
+          "id": "glass-color",
+          "name": "Цветное стекло"
+        },
+        {
+          "id": "pearl",
+          "name": "Перламутр"
+        },
+        {
+          "id": "mirror",
+          "name": "Зеркало"
         }
       ]
     },
@@ -1127,19 +1117,6 @@
           "id": "red",
           "name": "Красная",
           "hex": "#d63027"
-        }
-      ]
-    },
-    "topcoat_type": {
-      "label_ru": "Топкоат",
-      "options": [
-        {
-          "id": "standard",
-          "name": "Обычный · интерьер"
-        },
-        {
-          "id": "uv",
-          "name": "UV · улица/солнце"
         }
       ]
     }
