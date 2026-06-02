@@ -565,7 +565,9 @@ function applyColorGrade(ctx, SIZE, hex, k = 0.85) {
 }
 
 async function buildCompositeMap(def, state) {
-  const SIZE = 1024;
+  // Body composite resolution. 2048 is a clear sharpness bump over 1024 while still
+  // downsampling the tiled source enough to keep repeat seams from popping.
+  const SIZE = isMobile ? 1280 : 2048;
   const cv = document.createElement('canvas');
   cv.width = cv.height = SIZE;
   const ctx = cv.getContext('2d');
