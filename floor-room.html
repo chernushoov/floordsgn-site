@@ -39,7 +39,7 @@
 </head>
 <body>
 <div id="app"></div>
-<div class="hud tl"><div class="t">Floor.DSGN · Epoxy Terrazzo</div><div class="s">пол в интерьере · превью</div></div>
+<div class="hud tl"><div class="t" id="ftitle">Floor.DSGN · Терраццо</div><div class="s">пол в интерьере · превью</div></div>
 <div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>
 
 <div class="bar">
@@ -47,6 +47,8 @@
     <span class="lbl" style="align-self:center">терраццо</span>
     <button class="chip on" data-fl="light">Светлое</button>
     <button class="chip" data-fl="venetian">Венеция</button>
+    <button class="chip" data-fl="graphite">Графит</button>
+    <button class="chip" data-fl="cement">Бетон</button>
   </div>
   <div class="row" id="viewCtl">
     <span class="lbl" style="align-self:center">вид</span>
@@ -117,10 +119,11 @@ pmrem.compileEquirectangularShader();
 
 /* ───────────────── texture loader ───────────────── */
 const texLoader = new THREE.TextureLoader();
-function loadTex(p, srgb, repX, repY) {
+function loadTex(p, srgb, repX, repY, mirror) {
   const t = texLoader.load(p);
   t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  // mirrored wrap = edges always match → seamless even for non-tileable photoscans
+  t.wrapS = t.wrapT = mirror ? THREE.MirroredRepeatWrapping : THREE.RepeatWrapping;
   t.anisotropy = MAXA; t.repeat.set(repX, repY);
   return t;
 }
@@ -128,8 +131,10 @@ function loadTex(p, srgb, repX, repY) {
 /* ───────────────── floor (hero) — switchable terrazzo ───────────────── */
 const fW = W + 2, fD = D + 2;
 const FLOORS = {
-  light:    { path: '3d-assets/textures-v4/terrazzo-acg-flat/', tile: 1.5, ns: 0.5 },  // flat-fielded photoscan — no macro-luminance grid
-  venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', tile: 1.6, ns: 0.5 },  // bold, colourful (tiles a little)
+  light:    { path: '3d-assets/textures-v4/terrazzo-acg-flat/', ext: 'jpg', tile: 1.5, ns: 0.5, label: 'Светлое терраццо' },  // flat-fielded photoscan — no macro-luminance grid
+  venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', ext: 'jpg', tile: 1.6, ns: 0.5, label: 'Венецианское терраццо' },  // bold, colourful
+  graphite: { path: '3d-assets/textures-v4/terrazzo-epoxy/',    ext: 'png', tile: 1.1, ns: 0.7, mirror: true, label: 'Графитовое эпокси-терраццо' },  // dark charcoal matrix, white/grey chips
+  cement:   { path: '3d-assets/textures-v4/terrazzo-cement/',   ext: 'png', tile: 1.4, ns: 0.6, mirror: true, label: 'Цементное терраццо' },  // warm light-grey cement terrazzo
 };
 const floorMat = new THREE.MeshPhysicalMaterial({
   roughness: 1.0, metalness: 0.0, normalScale: new THREE.Vector2(0.5, 0.5),
@@ -139,10 +144,11 @@ function setFloor(key){
   const f = FLOORS[key]; if(!f) return;
   const rxx = fW/f.tile, ryy = fD/f.tile;
   const old = [floorMat.map, floorMat.normalMap, floorMat.roughnessMap];
-  floorMat.map          = loadTex(f.path+'diffuse.jpg',  true,  rxx, ryy);
-  floorMat.normalMap    = loadTex(f.path+'normal.jpg',   false, rxx, ryy);
-  floorMat.roughnessMap = loadTex(f.path+'roughness.jpg',false, rxx, ryy);
+  floorMat.map          = loadTex(f.path+'diffuse.jpg',       true,  rxx, ryy, f.mirror);
+  floorMat.normalMap    = loadTex(f.path+'normal.'+f.ext,     false, rxx, ryy, f.mirror);
+  floorMat.roughnessMap = loadTex(f.path+'roughness.'+f.ext,  false, rxx, ryy, f.mirror);
   floorMat.normalScale.set(f.ns, f.ns); floorMat.needsUpdate = true;
+  const ft = document.getElementById('ftitle'); if (ft && f.label) ft.textContent = 'Floor.DSGN · ' + f.label;
   old.forEach(t => t && t.dispose());
 }
 setFloor('light');
