@@ -55,19 +55,30 @@ def hex_rgb(h):
 
 def extract_preset_from_photo(path, k=9):
     """REPRODUCE any reference: quantise a terrazzo photo to a palette and build a preset.
-    Most-frequent colour = binder/matrix; the rest = chips weighted by their area share."""
+    Binder/matrix = the colour of the FLAT (low-gradient) regions — the binder is smooth while
+    chips create edges — which is more accurate than raw frequency on chip-dense photos. The
+    quantised colours are the chips, weighted by area share."""
     im = Image.open(path).convert("RGB").resize((320, 320))
+    arr = np.asarray(im, np.float32)
+    gray = arr.mean(2)
+    gy, gx = np.gradient(gray)
+    grad = np.hypot(gx, gy)
+    flat = grad < np.percentile(grad, 35)            # flattest 35% of pixels = binder, not chips
+    mr, mg, mb = (np.median(arr[flat], axis=0) if flat.sum() > 50 else arr.reshape(-1, 3).mean(0))
+    matrix = "#%02x%02x%02x" % (int(mr), int(mg), int(mb))
     q = im.quantize(colors=k, method=Image.MEDIANCUT)
     pal = q.getpalette()[:k * 3]
-    idx = np.asarray(q)
-    counts = np.bincount(idx.ravel(), minlength=k).astype(float)
+    counts = np.bincount(np.asarray(q).ravel(), minlength=k).astype(float)
     cols = [(pal[i * 3], pal[i * 3 + 1], pal[i * 3 + 2]) for i in range(k)]
-    order = list(np.argsort(counts)[::-1])
-    mi = order[0]                                   # dominant colour = matrix/binder
-    matrix = "#%02x%02x%02x" % cols[mi]
     total = counts.sum()
-    palette = [("#%02x%02x%02x" % cols[i], float(counts[i]))
-               for i in order[1:] if counts[i] > total * 0.012]
+    # chips = quantised colours that are NOT within ~22 of the detected binder (those ARE matrix)
+    palette = []
+    for i in np.argsort(counts)[::-1]:
+        if counts[i] <= total * 0.012:
+            continue
+        if abs(cols[i][0] - mr) + abs(cols[i][1] - mg) + abs(cols[i][2] - mb) < 22:
+            continue
+        palette.append(("#%02x%02x%02x" % cols[i], float(counts[i])))
     return {"matrix": matrix, "palette": palette or [("#ffffff", 1.0)],
             "min_mm": 1.0, "max_mm": 6.5, "alpha": 2.0, "coverage": 0.70,
             "matrix_rough": 0.5, "chip_rough": 0.18}
