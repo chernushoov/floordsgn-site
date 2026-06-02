@@ -43,6 +43,11 @@
 <div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>
 
 <div class="bar">
+  <div class="row" id="floorCtl">
+    <span class="lbl" style="align-self:center">терраццо</span>
+    <button class="chip on" data-fl="light">Светлое</button>
+    <button class="chip" data-fl="venetian">Венеция</button>
+  </div>
   <div class="row" id="viewCtl">
     <span class="lbl" style="align-self:center">вид</span>
     <button class="chip on" data-v="hall">Обзор</button>
@@ -69,9 +74,9 @@ import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js';
+import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 
 /* ───────────────── assets ───────────────── */
-const TEX  = '3d-assets/textures-v4/terrazzo-venetian/';
 const WALLT = '3d-assets/textures-v4/microtopping/';
 const HDRI = '3d-assets/textures-v4/_hdri/blocky_photo_studio.hdr';
 
@@ -120,16 +125,27 @@ function loadTex(p, srgb, repX, repY) {
   return t;
 }
 
-/* ───────────────── floor (hero) ───────────────── */
-const fW = W + 2, fD = D + 2, rx = (W+2)/TILE, ry = (D+2)/TILE;
+/* ───────────────── floor (hero) — switchable terrazzo ───────────────── */
+const fW = W + 2, fD = D + 2;
+const FLOORS = {
+  light:    { path: '3d-assets/textures-v4/terrazzo-acg/',      tile: 1.5, ns: 0.5 },  // seamless light grey, on-spec
+  venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', tile: 1.6, ns: 0.5 },  // bold, colourful (tiles a little)
+};
 const floorMat = new THREE.MeshPhysicalMaterial({
-  map:          loadTex(TEX + 'diffuse.jpg',  true,  rx, ry),
-  normalMap:    loadTex(TEX + 'normal.jpg',   false, rx, ry),
-  roughnessMap: loadTex(TEX + 'roughness.jpg',false, rx, ry),
-  roughness: 1.0, metalness: 0.0,
-  normalScale: new THREE.Vector2(0.5, 0.5),
+  roughness: 1.0, metalness: 0.0, normalScale: new THREE.Vector2(0.5, 0.5),
   clearcoat: 1.0, clearcoatRoughness: 0.10, envMapIntensity: 1.1,
 });
+function setFloor(key){
+  const f = FLOORS[key]; if(!f) return;
+  const rxx = fW/f.tile, ryy = fD/f.tile;
+  const old = [floorMat.map, floorMat.normalMap, floorMat.roughnessMap];
+  floorMat.map          = loadTex(f.path+'diffuse.jpg',  true,  rxx, ryy);
+  floorMat.normalMap    = loadTex(f.path+'normal.jpg',   false, rxx, ryy);
+  floorMat.roughnessMap = loadTex(f.path+'roughness.jpg',false, rxx, ryy);
+  floorMat.normalScale.set(f.ns, f.ns); floorMat.needsUpdate = true;
+  old.forEach(t => t && t.dispose());
+}
+setFloor('light');
 const floor = new THREE.Mesh(new THREE.PlaneGeometry(fW, fD), floorMat);
 floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; scene.add(floor);
 
@@ -162,21 +178,12 @@ box(W, H-winT, 0.2, wallMat, 0, winT + (H-winT)/2, -hd);
 box(jamb, winT-winB, 0.2, wallMat, -hw + jamb/2, (winB+winT)/2, -hd);
 box(jamb, winT-winB, 0.2, wallMat,  hw - jamb/2, (winB+winT)/2, -hd);
 
-/* daylight: a gradient sky behind the window (cool top → warm horizon) — what the floor mirrors */
-function makeSky(){
-  const c = document.createElement('canvas'); c.width = 8; c.height = 256;
-  const g = c.getContext('2d'); const grd = g.createLinearGradient(0,0,0,256);
-  grd.addColorStop(0.00,'#b9d0f1'); grd.addColorStop(0.46,'#e9eff9');
-  grd.addColorStop(0.72,'#fff6ea'); grd.addColorStop(1.00,'#ffe7cb');
-  g.fillStyle = grd; g.fillRect(0,0,8,256);
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
-}
-const day = new THREE.Mesh(new THREE.PlaneGeometry(W*1.5, H*1.7),
-  new THREE.MeshBasicMaterial({ map: makeSky(), fog:false }));
-day.position.set(0, H*0.5, -hd - 0.6); scene.add(day);
-const mullMat = new THREE.MeshStandardMaterial({ color: 0xcfcabf, roughness: 0.9 });
-box(0.06, winT-winB, 0.06, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02);
-box(0.06, winT-winB, 0.06, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02);
+/* daylight = the soft HDRI backdrop showing THROUGH the window (set on HDRI load) —
+   reads more real than a flat bright plane. Here we just build the window frame. */
+const mullMat = new THREE.MeshStandardMaterial({ color: 0xb0aa9e, roughness: 0.85 });
+box(0.07, winT-winB, 0.07, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02);
+box(0.07, winT-winB, 0.07, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02);
+box(W-2*jamb, 0.07, 0.07, mullMat, 0, (winB+winT)/2, -hd+0.02);   // transom
 
 /* ceiling light strips (emissive) → linear reflections */
 const stripMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff2e2, emissiveIntensity: 1.5, roughness: 1, fog:false });
@@ -195,17 +202,19 @@ for (const [lx,lz] of [[-0.5,-0.24],[0.5,-0.24],[-0.5,0.24],[0.5,0.24]]) {
   leg.position.set(0.1+lx, 0.20, 1.35+lz); leg.castShadow=true; leg.receiveShadow=true; scene.add(leg);
 }
 
-/* focal piece: matte ceramic vase on a graphite plinth (natural, not chrome) */
-rbox(0.5, 0.42, 0.5, new THREE.MeshStandardMaterial({ color: C.graphite, roughness: 0.88 }), -0.4, 0.21, -1.5, 0.02);
+/* focal piece: matte ceramic vase on a slim stone pedestal (gallery, not a CG cube) */
+const ped = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 0.55, 40),
+  new THREE.MeshStandardMaterial({ color: 0xb3a791, roughness: 0.74 }));   // warm travertine, reads under the white vase
+ped.position.set(-0.4, 0.275, -1.5); ped.castShadow = ped.receiveShadow = true; scene.add(ped);
 const vaseProfile = [[0,0],[0.085,0],[0.10,0.03],[0.135,0.14],[0.155,0.24],[0.135,0.33],[0.10,0.40],[0.085,0.45],[0.095,0.47]]
   .map(p => new THREE.Vector2(p[0], p[1]));
 const vase = new THREE.Mesh(new THREE.LatheGeometry(vaseProfile, 48),
   new THREE.MeshPhysicalMaterial({ color: 0xe7e0d3, roughness: 0.5, metalness: 0.0, clearcoat: 0.25, clearcoatRoughness: 0.5 }));
-vase.position.set(-0.4, 0.42, -1.5); vase.castShadow = true; vase.receiveShadow = true; scene.add(vase);
+vase.position.set(-0.4, 0.55, -1.5); vase.castShadow = true; vase.receiveShadow = true; scene.add(vase);
 
 /* Signal-accent art panel on the left wall (single brand accent) */
 box(0.07, 1.5, 2.05, new THREE.MeshStandardMaterial({ color: 0xf3f0ea, roughness: 0.85 }), -hw+0.10, 1.65, -0.4, true, false);
-box(0.05, 1.35, 1.9, new THREE.MeshStandardMaterial({ color: C.signal, roughness: 0.72, emissive: C.signal, emissiveIntensity: 0.05 }), -hw+0.13, 1.65, -0.4);
+box(0.05, 1.35, 1.9, new THREE.MeshStandardMaterial({ color: C.signal, roughness: 0.78 }), -hw+0.13, 1.65, -0.4);
 
 /* arc floor lamp, left-front (warm point light + tall reflection) */
 const lampMet = new THREE.MeshStandardMaterial({ color: 0x20201e, roughness: 0.4, metalness: 0.6 });
@@ -216,9 +225,9 @@ pole.position.set(-3.4,1.1,1.7); pole.castShadow=true; scene.add(pole);
 const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,1.0,16), lampMet);
 arm.position.set(-3.05,2.12,1.55); arm.rotation.z = Math.PI*0.42; arm.rotation.y = -0.3; arm.castShadow=true; scene.add(arm);
 const shade = new THREE.Mesh(new THREE.ConeGeometry(0.16,0.22,28,1,true),
-  new THREE.MeshStandardMaterial({ color: 0x2a2a28, roughness:0.6, metalness:0.3, side: THREE.DoubleSide, emissive:0xffce8a, emissiveIntensity:0.55 }));
+  new THREE.MeshStandardMaterial({ color: 0x2a2a28, roughness:0.6, metalness:0.3, side: THREE.DoubleSide, emissive:0xffce8a, emissiveIntensity:0.30 }));
 shade.position.set(-2.7,2.02,1.42); shade.rotation.x = Math.PI; scene.add(shade);
-const lampLight = new THREE.PointLight(0xffd29a, 6.5, 7, 2.0);
+const lampLight = new THREE.PointLight(0xffd29a, 3.0, 5, 2.0);
 lampLight.position.set(-2.7,1.9,1.42); scene.add(lampLight);
 
 /* live plant (snake plant) in the far-left corner — organic life */
@@ -291,6 +300,10 @@ document.querySelectorAll('#viewCtl .chip').forEach(b => b.addEventListener('cli
   document.querySelectorAll('#viewCtl .chip').forEach(x => x.classList.remove('on'));
   b.classList.add('on'); goView(b.dataset.v);
 }));
+document.querySelectorAll('#floorCtl .chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#floorCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); setFloor(b.dataset.fl);
+}));
 
 /* ───────────────── finish control → clearcoat sheen ───────────────── */
 const FIN = { matte: 0.55, satin: 0.12, polished: 0.025 };
@@ -326,6 +339,8 @@ function setupComposer(){
       const ssao = new SSAOPass(scene, camera, app.clientWidth, app.clientHeight);
       ssao.kernelRadius = 0.5; ssao.minDistance = 0.0015; ssao.maxDistance = 0.05;
       composer.addPass(ssao);
+      // depth of field → photographic focus (window/foreground soften, floor mid stays crisp)
+      composer.addPass(new BokehPass(scene, camera, { focus: 3.0, aperture: 0.0007, maxblur: 0.005 }));
     }
     composer.addPass(new UnrealBloomPass(new THREE.Vector2(app.clientWidth, app.clientHeight), isMobile?0.18:0.24, 0.55, 0.9));
     composer.addPass(new OutputPass());
@@ -340,7 +355,9 @@ function reveal(){ document.getElementById('boot').classList.add('gone'); }
 new RGBELoader().load(HDRI, (hdr) => {
   hdr.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = pmrem.fromEquirectangular(hdr).texture;
-  hdr.dispose(); bakeFloorReflection(); reveal();
+  scene.background = hdr;                  // soft daylight visible through the window
+  scene.backgroundBlurriness = 0.38;       // (don't dispose hdr — it's the backdrop now)
+  bakeFloorReflection(); reveal();
 }, undefined, () => { bakeFloorReflection(); reveal(); });
 
 /* ───────────────── resize + loop ───────────────── */
