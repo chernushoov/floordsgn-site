@@ -3,340 +3,33 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Floor.DSGN — floor room showroom</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Floor.DSGN — пол в интерьере (превью)</title>
 <style>
-  :root{
-    --carbon:#151515;
-    --graphite:#2d2d2d;
-    --steel:#72716d;
-    --signal:#c86b3c;
-    --concrete:#f3f0ea;
-    --paper:rgba(243,240,234,.1);
-    --line:rgba(243,240,234,.22);
-    --line-strong:rgba(243,240,234,.42);
-    --text:#f3f0ea;
-    --muted:rgba(243,240,234,.72);
-    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
-    --sans:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
-    --display:'Cormorant Garamond',Georgia,serif;
-  }
+  :root{--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:-apple-system,BlinkMacSystemFont,'Montserrat',sans-serif}
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;background:var(--carbon);overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased}
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-      radial-gradient(circle at 18% 18%, rgba(200,107,60,.12), transparent 28%),
-      radial-gradient(circle at 82% 80%, rgba(255,255,255,.06), transparent 26%),
-      linear-gradient(180deg, rgba(8,8,8,.12), rgba(8,8,8,.55));
-    z-index:1;
-  }
-  #app{position:fixed;inset:0;z-index:0}
+  html,body{height:100%;background:#0b0b0c;overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  #app{position:fixed;inset:0}
   canvas{display:block;width:100%!important;height:100%!important;touch-action:none}
-
-  .frame{
-    position:fixed;
-    inset:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
-    border:1px solid rgba(243,240,234,.12);
-    pointer-events:none;
-    z-index:2;
-  }
-
-  .story,
-  .dossier,
-  .dock,
-  .tip,
-  .boot{
-    position:fixed;
-    z-index:5;
-  }
-
-  .story,
-  .dossier,
-  .dock,
-  .tip{
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-  }
-
-  .story{
-    top:max(18px,env(safe-area-inset-top));
-    left:max(18px,env(safe-area-inset-left));
-    width:min(420px,calc(100vw - 36px));
-    padding:22px 22px 20px;
-    background:linear-gradient(180deg, rgba(21,21,21,.58), rgba(21,21,21,.22));
-    border:1px solid var(--line);
-  }
-  .story__eyebrow,
-  .dossier__eyebrow,
-  .tip{
-    font-family:var(--mono);
-    font-size:10px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--muted);
-  }
-  .story__eyebrow{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .story__dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--signal);
-    flex:0 0 auto;
-  }
-  .story__title{
-    margin-top:16px;
-    font-family:var(--display);
-    font-size:clamp(46px,7vw,76px);
-    line-height:.9;
-    color:var(--text);
-    max-width:7ch;
-  }
-  .story__lede{
-    margin-top:16px;
-    max-width:34ch;
-    font-size:14px;
-    line-height:1.6;
-    color:var(--muted);
-  }
-  .story__metrics{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:14px 20px;
-    margin-top:22px;
-    padding-top:16px;
-    border-top:1px solid rgba(243,240,234,.12);
-  }
-  .story__metric span,
-  .dossier__row span{
-    display:block;
-    font-family:var(--mono);
-    font-size:9px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:rgba(243,240,234,.56);
-  }
-  .story__metric strong,
-  .dossier__row strong{
-    display:block;
-    margin-top:6px;
-    font-size:13px;
-    line-height:1.45;
-    font-weight:600;
-    color:var(--text);
-  }
-  .story__cta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
-    pointer-events:auto;
-  }
-  .story__btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    min-height:42px;
-    padding:0 16px;
-    border-radius:980px;
-    border:1px solid var(--line-strong);
-    color:var(--text);
-    text-decoration:none;
-    font-size:11px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    transition:background .24s ease,border-color .24s ease,color .24s ease,transform .24s ease;
-  }
-  .story__btn:hover{transform:translateY(-1px)}
-  .story__btn--signal{
-    background:var(--signal);
-    border-color:var(--signal);
-    color:var(--concrete);
-  }
-
-  .dossier{
-    top:max(18px,env(safe-area-inset-top));
-    right:max(18px,env(safe-area-inset-right));
-    width:min(320px,calc(100vw - 36px));
-    padding:18px 18px 16px;
-    background:linear-gradient(180deg, rgba(21,21,21,.44), rgba(21,21,21,.18));
-    border:1px solid rgba(243,240,234,.15);
-  }
-  .dossier__eyebrow{margin-bottom:14px}
-  .dossier__grid{
-    display:grid;
-    gap:12px;
-  }
-  .dossier__row{
-    padding-bottom:12px;
-    border-bottom:1px solid rgba(243,240,234,.08);
-  }
-  .dossier__row:last-child{
-    padding-bottom:0;
-    border-bottom:0;
-  }
-  .dossier__note{
-    margin-top:16px;
-    font-size:12px;
-    line-height:1.6;
-    color:var(--muted);
-  }
-
-  .tip{
-    left:max(18px,env(safe-area-inset-left));
-    bottom:max(18px,env(safe-area-inset-bottom));
-    padding:10px 12px;
-    background:rgba(21,21,21,.34);
-    border:1px solid rgba(243,240,234,.1);
-    pointer-events:none;
-  }
-
-  .dock{
-    left:50%;
-    bottom:max(18px,env(safe-area-inset-bottom));
-    transform:translateX(-50%);
-    display:flex;
-    align-items:flex-end;
-    gap:10px;
-    pointer-events:auto;
-  }
-  .dock__group{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding:10px;
-    background:rgba(21,21,21,.4);
-    border:1px solid rgba(243,240,234,.14);
-    min-width:180px;
-  }
-  .dock__label{
-    font-family:var(--mono);
-    font-size:9px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:rgba(243,240,234,.56);
-  }
-  .dock__row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-  }
-  .dock button{
-    font-family:var(--mono);
-    font-size:10px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--text);
-    background:rgba(243,240,234,.06);
-    border:1px solid rgba(243,240,234,.16);
-    padding:10px 12px;
-    min-height:40px;
-    cursor:pointer;
-    transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
-  }
-  .dock button:hover{transform:translateY(-1px)}
-  .dock button.on{
-    background:var(--concrete);
-    color:var(--carbon);
-    border-color:var(--concrete);
-  }
-
-  .boot{
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--carbon);
-    color:var(--text);
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    transition:opacity .6s ease;
-  }
+  .hud{position:fixed;z-index:5;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none}
+  .tl{top:max(14px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left))}
+  .tl .t{font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .tl .s{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.82;margin-top:3px}
+  .br{bottom:max(74px,calc(env(safe-area-inset-bottom) + 60px));right:max(16px,env(safe-area-inset-right));text-align:right;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.66;line-height:1.5}
+  /* bottom control bar */
+  .bar{position:fixed;z-index:6;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;gap:7px;align-items:center}
+  .row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+  .seg{display:flex;gap:0;border:1px solid rgba(255,255,255,.26);border-radius:0;overflow:hidden;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);background:rgba(18,18,20,.34)}
+  .seg button,.chip{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:transparent;border:0;padding:9px 13px;cursor:pointer;min-height:40px;transition:background .15s,color .15s;white-space:nowrap}
+  .seg button + button{border-left:1px solid rgba(255,255,255,.18)}
+  .seg button.on{background:#fff;color:#111}
+  .chip{border:1px solid rgba(255,255,255,.26);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);background:rgba(18,18,20,.34)}
+  .chip.on{background:#fff;color:#111;border-color:#fff}
+  .lbl{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.5;margin-bottom:-2px}
+  .boot{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0b0b0c;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;transition:opacity .7s}
   .boot.gone{opacity:0;pointer-events:none}
-
-  @media (max-width: 980px){
-    html,body{overflow:auto}
-    #app{position:fixed;inset:0}
-    .story{
-      width:auto;
-      right:max(18px,env(safe-area-inset-right));
-      padding:18px 18px 16px;
-    }
-    .story__title{
-      max-width:none;
-      font-size:clamp(34px,13vw,58px);
-    }
-    .story__lede{max-width:none}
-    .dossier{
-      top:auto;
-      right:max(18px,env(safe-area-inset-right));
-      left:max(18px,env(safe-area-inset-left));
-      bottom:164px;
-      width:auto;
-    }
-    .dock{
-      left:max(18px,env(safe-area-inset-left));
-      right:max(18px,env(safe-area-inset-right));
-      bottom:max(18px,env(safe-area-inset-bottom));
-      transform:none;
-      flex-direction:column;
-      align-items:stretch;
-    }
-    .dock__group{min-width:0}
-    .tip{
-      left:auto;
-      right:max(18px,env(safe-area-inset-right));
-      bottom:calc(max(18px,env(safe-area-inset-bottom)) + 224px);
-      max-width:min(260px,70vw);
-    }
-  }
-
-  @media (max-width: 640px){
-    .story{
-      padding:16px 16px 14px;
-    }
-    .story__title{
-      font-size:clamp(28px,10.6vw,48px);
-      line-height:.92;
-    }
-    .story__lede{
-      font-size:12px;
-      line-height:1.5;
-      max-width:none;
-    }
-    .story__metrics{
-      display:none;
-    }
-    .story__cta{
-      margin-top:16px;
-    }
-    .dossier,
-    .tip{
-      display:none;
-    }
-    .dock{
-      gap:8px;
-    }
-    .dock__group{
-      padding:8px;
-    }
-    .dock button{
-      min-height:38px;
-      padding:9px 10px;
-      font-size:9px;
-    }
-  }
+  .boot .ring{width:26px;height:26px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
 <script type="importmap">
 { "imports": {
@@ -347,431 +40,292 @@
 </head>
 <body>
 <div id="app"></div>
-<div class="frame" aria-hidden="true"></div>
+<div class="hud tl"><div class="t">Floor.DSGN · Epoxy Terrazzo</div><div class="s">пол в интерьере · превью</div></div>
+<div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>
 
-<section class="story">
-  <p class="story__eyebrow"><span class="story__dot" aria-hidden="true"></span><span id="sceneTag">Floor.DSGN · room study · terrazzo</span></p>
-  <h1 class="story__title" id="sceneTitle">Floor as the room’s first material.</h1>
-  <p class="story__lede" id="sceneLead">Не просто текстура на плоскости, а быстрый интерьерный read: отражение, масштаб чипа, поведение кромки и уровень блеска до физического sample-kit.</p>
-  <div class="story__metrics">
-    <div class="story__metric"><span>System</span><strong id="metricSystem">Epoxy terrazzo / Venetian chip</strong></div>
-    <div class="story__metric"><span>Build-up</span><strong id="metricBuild">8–10 mm decorative topping</strong></div>
-    <div class="story__metric"><span>Chip scale</span><strong id="metricChip">16–22 mm aggregate</strong></div>
-    <div class="story__metric"><span>Finish</span><strong id="metricFinish">Satin / soft reflection</strong></div>
+<div class="bar">
+  <div class="row" id="viewCtl">
+    <span class="lbl" style="align-self:center">вид</span>
+    <button class="chip on" data-v="hall">Обзор</button>
+    <button class="chip" data-v="window">Окно</button>
+    <button class="chip" data-v="detail">Деталь</button>
   </div>
-  <div class="story__cta">
-    <a class="story__btn story__btn--signal" href="configurator.html">Open configurator</a>
-    <a class="story__btn" href="floors/terrazzo.html">System dossier</a>
+  <div class="seg" id="finishCtl">
+    <button data-f="satin" class="on">Сатин</button>
+    <button data-f="polished">Полировка</button>
+    <button data-f="matte">Мат</button>
   </div>
-</section>
+</div>
 
-<aside class="dossier">
-  <p class="dossier__eyebrow">Visual brief / material read</p>
-  <div class="dossier__grid">
-    <div class="dossier__row"><span>Scene</span><strong id="dScene">Gallery lobby</strong></div>
-    <div class="dossier__row"><span>Use case</span><strong id="dUse">Reception, boutique retail, quiet hospitality</strong></div>
-    <div class="dossier__row"><span>Surface feel</span><strong id="dFeel">Controlled gloss with visible depth in the chips</strong></div>
-    <div class="dossier__row"><span>Camera read</span><strong id="dShot">Low grazing shot to judge reflection and grain scale</strong></div>
-  </div>
-  <p class="dossier__note" id="dNote">3D is a visual simulation. Final tone, aggregate and sheen are fixed only after physical sample approval and the selected Sika-compatible build-up.</p>
-</aside>
-
-<p class="tip">Drag to orbit. Keys: Q / W / E scenes, A / S / D shots, 1 / 2 / 3 finishes.</p>
-
-<section class="dock" aria-label="Room controls">
-  <div class="dock__group">
-    <div class="dock__label">Scene</div>
-    <div class="dock__row" id="sceneCtl">
-      <button data-scene="gallery" class="on">Gallery</button>
-      <button data-scene="residential">Residential</button>
-      <button data-scene="night">Night</button>
-    </div>
-  </div>
-  <div class="dock__group">
-    <div class="dock__label">Camera</div>
-    <div class="dock__row" id="shotCtl">
-      <button data-shot="wide" class="on">Wide</button>
-      <button data-shot="grazing">Grazing</button>
-      <button data-shot="macro">Macro</button>
-    </div>
-  </div>
-  <div class="dock__group">
-    <div class="dock__label">Finish</div>
-    <div class="dock__row" id="finishCtl">
-      <button data-f="satin" class="on">Satin</button>
-      <button data-f="polished">Polished</button>
-      <button data-f="matte">Matte</button>
-    </div>
-  </div>
-</section>
-
-<div class="boot" id="boot">Loading room study…</div>
+<div class="boot" id="boot"><div class="ring"></div><div>Сборка сцены…</div></div>
 
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
-const TEX = '3d-assets/textures-v4/terrazzo-venetian/';
+/* ───────────────── assets ───────────────── */
+const TEX  = '3d-assets/textures-v4/terrazzo-venetian/';
 const HDRI = '3d-assets/textures-v4/_hdri/blocky_photo_studio.hdr';
+
+/* ───────────────── palette (Industrial Proof) ───────────────── */
+const C = {
+  concrete: 0xe9e5dc,   // walls — warm off-white
+  ceiling:  0xf1eee7,
+  graphite: 0x2c2c2c,
+  carbon:   0x171717,
+  signal:   0xc86b3c,   // the single accent (art panel)
+  oak:      0x7a5a3a,
+  steel:    0x8d8b85,
+  daylight: 0xfff4e6,   // window glow
+};
+
+/* ───────────────── renderer ───────────────── */
 const app = document.getElementById('app');
-
-const ui = {
-  sceneTag: document.getElementById('sceneTag'),
-  sceneTitle: document.getElementById('sceneTitle'),
-  sceneLead: document.getElementById('sceneLead'),
-  metricSystem: document.getElementById('metricSystem'),
-  metricBuild: document.getElementById('metricBuild'),
-  metricChip: document.getElementById('metricChip'),
-  metricFinish: document.getElementById('metricFinish'),
-  dScene: document.getElementById('dScene'),
-  dUse: document.getElementById('dUse'),
-  dFeel: document.getElementById('dFeel'),
-  dShot: document.getElementById('dShot'),
-  dNote: document.getElementById('dNote'),
-};
-
-const SCENES = {
-  gallery: {
-    tag: 'Floor.DSGN · showroom cut · terrazzo',
-    title: 'Epoxy terrazzo that already feels installed.',
-    lead: 'Быстрый интерьерный кадр для оценки масштаба крошки, блика и спокойствия фона до того, как команда открывает полный конфигуратор.',
-    scene: 'Gallery lobby',
-    use: 'Reception, boutique retail, quiet hospitality',
-    feel: 'Balanced gloss with a calm wall wash and deep aggregate contrast',
-    note: 'Лучший режим для первого разговора с дизайнером: видно и блеск, и массу материала, но сцена не превращается в “визуализацию ради визуализации”.',
-    system: 'Epoxy terrazzo / Venetian chip',
-    build: '8–10 mm decorative topping',
-    chip: '16–22 mm aggregate',
-    wall: 0xd9d2c8,
-    side: 0xcbc2b6,
-    pedestal: 0xede7df,
-    fog: 0xcfc8c0,
-    bgBlur: 0.18,
-    exposure: 1.04,
-    env: 1.22,
-  },
-  residential: {
-    tag: 'Floor.DSGN · warm interior study',
-    title: 'A quieter residential read with softer light.',
-    lead: 'Режим, где материал выглядит ближе к частному интерьеру: меньше салонного контраста, больше ощущения тактильности и спокойного света.',
-    scene: 'Residential suite',
-    use: 'Private home, kitchen-dining, boutique apartment',
-    feel: 'Softer contrast, warmer walls, less mirror and more body',
-    note: 'Полезно, когда нужно убедить клиента, что декоративный пол может быть не холодным и не “коммерческим”, а очень тихим по атмосфере.',
-    system: 'Decorative resin terrazzo / warm read',
-    build: '6–8 mm topping + satin sealer logic',
-    chip: '14–18 mm aggregate',
-    wall: 0xe3ddd5,
-    side: 0xd5cdc2,
-    pedestal: 0xf3eee7,
-    fog: 0xd9d3cb,
-    bgBlur: 0.22,
-    exposure: 0.96,
-    env: 1.05,
-  },
-  night: {
-    tag: 'Floor.DSGN · contrast study · after hours',
-    title: 'Night mode to judge reflection under harder contrast.',
-    lead: 'Здесь видно, где пол остаётся благородным, а где уже начинает спорить с интерьером. Хороший режим для ресторанов, шоурумов и лобби.',
-    scene: 'Night hospitality',
-    use: 'Restaurant, bar foyer, late-hour retail, premium lobby',
-    feel: 'Harder black mirror moments with controlled edge glow',
-    note: 'Это не “красивый фильтр”, а проверка: насколько пол держит рисунок и глубину под вечерним светом и острым отражением.',
-    system: 'High-contrast terrazzo / polished study',
-    build: '8–10 mm decorative topping',
-    chip: '16–22 mm aggregate',
-    wall: 0x6d6660,
-    side: 0x595450,
-    pedestal: 0x93897f,
-    fog: 0x7a726a,
-    bgBlur: 0.12,
-    exposure: 0.78,
-    env: 1.48,
-  },
-};
-
-const SHOTS = {
-  wide: {
-    label: 'Wide room read',
-    pos: [0.25, 1.8, 5.1],
-    target: [0, 0.28, -1.9],
-    fov: 47,
-  },
-  grazing: {
-    label: 'Low grazing check',
-    pos: [-1.15, 1.28, 3.25],
-    target: [-0.2, 0.12, -1.5],
-    fov: 42,
-  },
-  macro: {
-    label: 'Near-field aggregate check',
-    pos: [0.82, 0.74, 1.8],
-    target: [0.25, 0.02, -0.45],
-    fov: 33,
-  },
-};
-
-const FINISHES = {
-  satin: {
-    roughness: 0.12,
-    metric: 'Satin / soft reflection',
-    feel: 'Soft reflection with enough diffusion for daily use',
-  },
-  polished: {
-    roughness: 0.03,
-    metric: 'Polished / high clarity',
-    feel: 'Cleaner reflection and stronger contrast in the chips',
-  },
-  matte: {
-    roughness: 0.58,
-    metric: 'Matte / low glare',
-    feel: 'Low glare with flatter reading and quieter reflection',
-  },
-};
-
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 2 : 2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.04;
-renderer.shadowMap.enabled = false;
+renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 app.appendChild(renderer.domElement);
-const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+const MAXA = renderer.capabilities.getMaxAnisotropy();
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0xcfc8c0, 14, 42);
+scene.background = new THREE.Color(0x0b0b0c);
+// faint aerial haze toward the bright far window → depth
+scene.fog = new THREE.Fog(0xdfe0e2, 16, 60);
 
-const camera = new THREE.PerspectiveCamera(47, 1, 0.05, 200);
-camera.position.set(0.25, 1.8, 5.1);
+/* ───────────────── room dims (metres, floor centred at origin) ───────────────── */
+const W = 12, D = 8, H = 3.2;          // width(x) · depth(z) · height(y)
+const hw = W/2, hd = D/2;              // far wall at z=-hd has the window
+const TILE = 1.6;                      // terrazzo tile size in metres
+
+/* ───────────────── camera ───────────────── */
+const camera = new THREE.PerspectiveCamera(46, 1, 0.05, 200);
+camera.position.set(1.2, 1.55, 3.4);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 pmrem.compileEquirectangularShader();
 
+/* ───────────────── texture loading ───────────────── */
 const texLoader = new THREE.TextureLoader();
-const repeat = 75;
-
-function loadTexture(filePath, srgb) {
-  const texture = texLoader.load(filePath);
-  texture.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  texture.anisotropy = maxAnisotropy;
-  texture.repeat.set(repeat, repeat);
-  return texture;
+function loadTex(p, srgb, repX, repY) {
+  const t = texLoader.load(p);
+  t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.anisotropy = MAXA;
+  t.repeat.set(repX, repY);
+  return t;
 }
 
+/* ───────────────── floor (the hero) ───────────────── */
+const fW = W + 2, fD = D + 2;          // tuck a little under the walls
+const rx = fW / TILE, ry = fD / TILE;
 const floorMat = new THREE.MeshPhysicalMaterial({
-  map: loadTexture(TEX + 'diffuse.jpg', true),
-  normalMap: loadTexture(TEX + 'normal.jpg', false),
-  roughnessMap: loadTexture(TEX + 'roughness.jpg', false),
+  map:          loadTex(TEX + 'diffuse.jpg',  true,  rx, ry),
+  normalMap:    loadTex(TEX + 'normal.jpg',   false, rx, ry),
+  roughnessMap: loadTex(TEX + 'roughness.jpg',false, rx, ry),
   roughness: 1.0,
   metalness: 0.0,
-  normalScale: new THREE.Vector2(0.6, 0.6),
+  normalScale: new THREE.Vector2(0.55, 0.55),
   clearcoat: 1.0,
-  clearcoatRoughness: 0.12,
-  envMapIntensity: 1.22,
+  clearcoatRoughness: 0.10,            // satin default; finish control adjusts
+  envMapIntensity: 1.15,
 });
-
-const floor = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), floorMat);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(fW, fD), floorMat);
 floor.rotation.x = -Math.PI / 2;
+floor.receiveShadow = true;
 scene.add(floor);
 
-const wallMat = new THREE.MeshStandardMaterial({ color: 0xd9d2c8, roughness: 0.98, metalness: 0.0 });
-const sideWallMat = wallMat.clone();
-const pedestalMat = new THREE.MeshStandardMaterial({ color: 0xede7df, roughness: 0.82, metalness: 0.0 });
-
-const backWall = new THREE.Mesh(new THREE.PlaneGeometry(80, 28), wallMat);
-backWall.position.set(0, 10.5, -16);
-scene.add(backWall);
-
-const sideWall = new THREE.Mesh(new THREE.PlaneGeometry(34, 28), sideWallMat);
-sideWall.rotation.y = Math.PI / 2;
-sideWall.position.set(-11, 10.5, -1);
-scene.add(sideWall);
-
-const pedestal = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.24, 1.5), pedestalMat);
-pedestal.position.set(2.1, 0.12, -2.35);
-scene.add(pedestal);
-
-const sampleBlock = new THREE.Mesh(new THREE.BoxGeometry(1.05, 0.09, 0.82), pedestalMat.clone());
-sampleBlock.position.set(-1.45, 0.045, -1.15);
-scene.add(sampleBlock);
-
-const skimLight = new THREE.DirectionalLight(0xffffff, 0.46);
-skimLight.position.set(-4, 7, 6);
-scene.add(skimLight);
-
-const fillLight = new THREE.HemisphereLight(0xf4efe9, 0x6d6760, 0.55);
-scene.add(fillLight);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.08;
-controls.target.set(0, 0.28, -1.9);
-controls.minDistance = 1.15;
-controls.maxDistance = 10;
-controls.minPolarAngle = Math.PI * 0.29;
-controls.maxPolarAngle = Math.PI * 0.495;
-controls.enablePan = false;
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.24;
-controls.update();
-
-const targetCameraPos = new THREE.Vector3().copy(camera.position);
-const targetFocus = new THREE.Vector3().copy(controls.target);
-let targetFov = camera.fov;
-let currentScene = 'gallery';
-let currentShot = 'wide';
-let currentFinish = 'satin';
-let resumeAutorotateAt = 0;
-
-controls.addEventListener('start', () => {
-  controls.autoRotate = false;
-  resumeAutorotateAt = performance.now() + 4200;
-});
-controls.addEventListener('end', () => {
-  resumeAutorotateAt = performance.now() + 2200;
-});
-
-new RGBELoader().load(HDRI, (hdr) => {
-  hdr.mapping = THREE.EquirectangularReflectionMapping;
-  scene.environment = pmrem.fromEquirectangular(hdr).texture;
-  scene.background = hdr;
-  scene.backgroundBlurriness = 0.18;
-  document.getElementById('boot').classList.add('gone');
-}, undefined, () => {
-  document.getElementById('boot').classList.add('gone');
-});
-setTimeout(() => document.getElementById('boot').classList.add('gone'), 3200);
-
-function setButtonState(selector, value, attr) {
-  document.querySelectorAll(selector).forEach((button) => {
-    button.classList.toggle('on', button.dataset[attr] === value);
-  });
-}
-
-function applyScene(name) {
-  currentScene = SCENES[name] ? name : 'gallery';
-  const data = SCENES[currentScene];
-  ui.sceneTag.textContent = data.tag;
-  ui.sceneTitle.textContent = data.title;
-  ui.sceneLead.textContent = data.lead;
-  ui.metricSystem.textContent = data.system;
-  ui.metricBuild.textContent = data.build;
-  ui.metricChip.textContent = data.chip;
-  ui.dScene.textContent = data.scene;
-  ui.dUse.textContent = data.use;
-  ui.dNote.textContent = data.note;
-  wallMat.color.setHex(data.wall);
-  sideWallMat.color.setHex(data.side);
-  pedestalMat.color.setHex(data.pedestal);
-  sampleBlock.material.color.setHex(data.pedestal);
-  scene.fog.color.setHex(data.fog);
-  scene.backgroundBlurriness = data.bgBlur;
-  renderer.toneMappingExposure = data.exposure;
-  floorMat.envMapIntensity = data.env;
-  ui.dFeel.textContent = FINISHES[currentFinish].feel;
-  setButtonState('#sceneCtl button', currentScene, 'scene');
-}
-
-function applyShot(name) {
-  currentShot = SHOTS[name] ? name : 'wide';
-  const data = SHOTS[currentShot];
-  targetCameraPos.set(...data.pos);
-  targetFocus.set(...data.target);
-  targetFov = data.fov;
-  ui.dShot.textContent = data.label;
-  setButtonState('#shotCtl button', currentShot, 'shot');
-}
-
-function applyFinish(name) {
-  currentFinish = FINISHES[name] ? name : 'satin';
-  const data = FINISHES[currentFinish];
-  floorMat.clearcoatRoughness = data.roughness;
-  floorMat.needsUpdate = true;
-  ui.metricFinish.textContent = data.metric;
-  ui.dFeel.textContent = data.feel;
-  setButtonState('#finishCtl button', currentFinish, 'f');
-}
-
-document.querySelectorAll('#sceneCtl button').forEach((button) => {
-  button.addEventListener('click', () => {
-    applyScene(button.dataset.scene);
-    applyShot(currentShot);
-    controls.autoRotate = false;
-    resumeAutorotateAt = performance.now() + 2800;
-  });
-});
-
-document.querySelectorAll('#shotCtl button').forEach((button) => {
-  button.addEventListener('click', () => {
-    applyShot(button.dataset.shot);
-    controls.autoRotate = false;
-    resumeAutorotateAt = performance.now() + 2800;
-  });
-});
-
-document.querySelectorAll('#finishCtl button').forEach((button) => {
-  button.addEventListener('click', () => {
-    applyFinish(button.dataset.f);
-    controls.autoRotate = false;
-    resumeAutorotateAt = performance.now() + 1800;
-  });
-});
-
-window.addEventListener('keydown', (event) => {
-  const key = event.key.toLowerCase();
-  if (key === 'q') applyScene('gallery');
-  if (key === 'w') applyScene('residential');
-  if (key === 'e') applyScene('night');
-  if (key === 'a') applyShot('wide');
-  if (key === 's') applyShot('grazing');
-  if (key === 'd') applyShot('macro');
-  if (key === '1') applyFinish('satin');
-  if (key === '2') applyFinish('polished');
-  if (key === '3') applyFinish('matte');
-});
-
-function resize() {
-  const width = app.clientWidth;
-  const height = app.clientHeight;
-  renderer.setSize(width, height, false);
-  camera.aspect = width / Math.max(1, height);
-  camera.updateProjectionMatrix();
-}
-
-new ResizeObserver(resize).observe(app);
-resize();
-applyScene('gallery');
-applyShot('wide');
-applyFinish('satin');
-
-window.__room = {
-  scene,
-  camera,
-  renderer,
-  floorMat,
-  controls,
-  applyScene,
-  applyShot,
-  applyFinish,
+/* ───────────────── material helpers ───────────────── */
+const matWall = (col) => new THREE.MeshStandardMaterial({ color: col, roughness: 0.94, metalness: 0.0 });
+const box = (w,h,d, mat, x,y,z, cast=true, recv=true) => {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+  m.position.set(x,y,z); m.castShadow = cast; m.receiveShadow = recv;
+  scene.add(m); return m;
 };
 
-function loop(now) {
-  if (resumeAutorotateAt && now > resumeAutorotateAt && currentShot === 'wide') {
-    controls.autoRotate = true;
-  }
-  camera.position.lerp(targetCameraPos, 0.052);
-  controls.target.lerp(targetFocus, 0.072);
-  camera.fov += (targetFov - camera.fov) * 0.06;
+/* ───────────────── shell: walls + ceiling ───────────────── */
+const wallMat = matWall(C.concrete);
+// left / right
+box(0.2, H, D, wallMat, -hw, H/2, 0, false, true);
+box(0.2, H, D, wallMat,  hw, H/2, 0, false, true);
+// front (behind camera)
+box(W, H, 0.2, wallMat, 0, H/2,  hd, false, true);
+// ceiling
+box(W, 0.2, D, matWall(C.ceiling), 0, H + 0.1, 0, false, true);
+
+/* far wall built AROUND a big window band (y 0.95 → 2.55) */
+const winB = 0.95, winT = 2.55, jamb = 0.5;
+box(W, winB, 0.2, wallMat, 0, winB/2,          -hd);                 // sill strip
+box(W, H - winT, 0.2, wallMat, 0, winT + (H-winT)/2, -hd);           // head strip
+box(jamb, winT-winB, 0.2, wallMat, -hw + jamb/2, (winB+winT)/2, -hd);// left jamb
+box(jamb, winT-winB, 0.2, wallMat,  hw - jamb/2, (winB+winT)/2, -hd);// right jamb
+
+/* bright daylight backdrop behind the window → this is what the floor reflects */
+const dayMat = new THREE.MeshBasicMaterial({ color: C.daylight, fog: false });
+const day = new THREE.Mesh(new THREE.PlaneGeometry(W*1.4, H*1.6), dayMat);
+day.position.set(0, H*0.55, -hd - 0.5);
+scene.add(day);
+// thin mullions across the window (two verticals) for a designed look + reflection rhythm
+const mullMat = matWall(0xcfcabf);
+box(0.06, winT-winB, 0.06, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02);
+box(0.06, winT-winB, 0.06, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02);
+
+/* ceiling light strips (emissive) → linear reflections on the floor */
+const stripMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e8, emissiveIntensity: 1.4, roughness: 1, fog:false });
+for (const sx of [-3.2, 0, 3.2]) box(0.14, 0.04, D*0.66, stripMat, sx, H - 0.02, -0.3, false, false);
+
+/* ───────────────── furniture (minimal gallery set, metric) ───────────────── */
+// low bench against the right wall
+const benchMat = new THREE.MeshStandardMaterial({ color: C.carbon, roughness: 0.82, metalness: 0.04 });
+box(0.55, 0.42, 2.6, benchMat, hw - 0.55, 0.21, -0.2);
+box(0.5, 0.06, 2.5, new THREE.MeshStandardMaterial({ color: C.graphite, roughness: 0.6 }), hw - 0.55, 0.45, -0.2); // seat pad
+
+// oak coffee-table slab + legs, centre-front
+const oakMat = new THREE.MeshStandardMaterial({ color: C.oak, roughness: 0.55, metalness: 0.0 });
+const legMat = new THREE.MeshStandardMaterial({ color: C.carbon, roughness: 0.5, metalness: 0.2 });
+box(1.25, 0.07, 0.62, oakMat, 0.1, 0.42, 1.35);
+for (const [lx,lz] of [[-0.5,-0.24],[0.5,-0.24],[-0.5,0.24],[0.5,0.24]]) {
+  const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.022,0.022,0.40,16), legMat);
+  leg.position.set(0.1+lx, 0.20, 1.35+lz); leg.castShadow=true; leg.receiveShadow=true; scene.add(leg);
+}
+
+// focal piece: brushed-metal sphere on a graphite plinth (reflects the room)
+const plinth = box(0.5, 0.42, 0.5, new THREE.MeshStandardMaterial({ color: C.graphite, roughness: 0.85 }), -0.4, 0.21, -1.5);
+const orb = new THREE.Mesh(new THREE.SphereGeometry(0.27, 48, 48),
+  new THREE.MeshStandardMaterial({ color: 0xbfc1c4, metalness: 0.95, roughness: 0.22 }));
+orb.position.set(-0.4, 0.42 + 0.27, -1.5); orb.castShadow = true; scene.add(orb);
+
+// Signal-accent art panel on the left wall (the single brand accent)
+const artMat = new THREE.MeshStandardMaterial({ color: C.signal, roughness: 0.7, emissive: C.signal, emissiveIntensity: 0.06 });
+box(0.05, 1.35, 1.9, artMat, -hw + 0.13, 1.65, -0.4);
+box(0.07, 1.5, 2.05, new THREE.MeshStandardMaterial({ color: 0xf3f0ea, roughness: 0.8 }), -hw + 0.10, 1.65, -0.4, true, false); // mat/frame behind
+
+// arc floor lamp, left-front (warm point light + tall reflection)
+const lampMet = new THREE.MeshStandardMaterial({ color: 0x20201e, roughness: 0.4, metalness: 0.6 });
+const lampBase = new THREE.Mesh(new THREE.CylinderGeometry(0.17,0.19,0.05,32), lampMet);
+lampBase.position.set(-3.4,0.025,1.7); lampBase.castShadow=true; lampBase.receiveShadow=true; scene.add(lampBase);
+const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.022,0.026,2.15,20), lampMet);
+pole.position.set(-3.4,1.1,1.7); pole.castShadow=true; scene.add(pole);
+const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,1.0,16), lampMet);
+arm.position.set(-3.05,2.12,1.55); arm.rotation.z = Math.PI*0.42; arm.rotation.y = -0.3; arm.castShadow=true; scene.add(arm);
+const shade = new THREE.Mesh(new THREE.ConeGeometry(0.16,0.22,28,1,true),
+  new THREE.MeshStandardMaterial({ color: 0x2a2a28, roughness:0.6, metalness:0.3, side: THREE.DoubleSide, emissive:0xffce8a, emissiveIntensity:0.5 }));
+shade.position.set(-2.7,2.02,1.42); shade.rotation.x = Math.PI; scene.add(shade);
+const lampLight = new THREE.PointLight(0xffd9a0, 6.0, 7, 2.0);
+lampLight.position.set(-2.7,1.92,1.42); scene.add(lampLight);
+
+/* ───────────────── lighting ───────────────── */
+scene.add(new THREE.HemisphereLight(0xfff6ec, 0x1c1c1e, 0.55));
+const sun = new THREE.DirectionalLight(0xfff1df, 2.3);
+sun.position.set(-2.5, 6.5, -10);          // outside, behind the far window, high
+sun.target.position.set(0.5, 0.2, 1);
+sun.castShadow = true;
+sun.shadow.mapSize.set(isMobile ? 1024 : 2048, isMobile ? 1024 : 2048);
+sun.shadow.camera.near = 1; sun.shadow.camera.far = 30;
+sun.shadow.camera.left = -9; sun.shadow.camera.right = 9;
+sun.shadow.camera.top = 9; sun.shadow.camera.bottom = -9;
+sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02;
+scene.add(sun); scene.add(sun.target);
+// soft fill from camera side so foreground isn't muddy
+const fill = new THREE.DirectionalLight(0xeaf0ff, 0.35);
+fill.position.set(3, 4, 8); scene.add(fill);
+
+/* ───────────────── floor reflections (CubeCamera baked once) ───────────────── */
+const cubeRes = isMobile ? 256 : 512;
+const cubeRT = new THREE.WebGLCubeRenderTarget(cubeRes, { type: THREE.HalfFloatType });
+const cubeCam = new THREE.CubeCamera(0.1, 100, cubeRT);
+cubeCam.position.set(0, 0.5, 0.5);
+function bakeFloorReflection() {
+  floor.visible = false;                 // don't reflect the floor into itself
+  cubeCam.update(renderer, scene);
+  floor.visible = true;
+  floorMat.envMap = cubeRT.texture;      // floor reflects the room; others use HDRI
+  floorMat.envMapIntensity = 1.0;
+  floorMat.needsUpdate = true;
+}
+
+/* ───────────────── controls ───────────────── */
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.075;
+controls.target.set(0.2, 0.55, -1.2);
+controls.minDistance = 1.3;
+controls.maxDistance = 6.5;
+controls.minPolarAngle = Math.PI * 0.26;
+controls.maxPolarAngle = Math.PI * 0.495;   // never under the floor
+controls.enablePan = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.35;             // gentle showroom turntable
+controls.update();
+controls.addEventListener('start', () => { controls.autoRotate = false; });
+
+/* ───────────────── view presets (quick lerp) ───────────────── */
+const VIEWS = {
+  hall:   { p:[1.2,1.55,3.4],  t:[0.2,0.55,-1.2] },
+  window: { p:[0.4,1.35,2.4],  t:[0.0,1.4,-hd]   },
+  detail: { p:[0.25,0.6,1.35], t:[0.1,0.02,0.2]  },
+};
+let tween = null;
+function goView(name){
+  const v = VIEWS[name]; if(!v) return;
+  controls.autoRotate = false;
+  tween = { t0: 0, dur: 46,
+    p0: camera.position.clone(), p1: new THREE.Vector3(...v.p),
+    g0: controls.target.clone(), g1: new THREE.Vector3(...v.t) };
+}
+document.querySelectorAll('#viewCtl .chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#viewCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); goView(b.dataset.v);
+}));
+
+/* ───────────────── finish control → clearcoat sheen ───────────────── */
+const FIN = { matte: 0.55, satin: 0.12, polished: 0.025 };
+document.querySelectorAll('#finishCtl button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#finishCtl button').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  floorMat.clearcoatRoughness = FIN[b.dataset.f] ?? 0.12;
+  floorMat.needsUpdate = true;
+}));
+
+/* ───────────────── HDRI env, then bake & reveal ───────────────── */
+function reveal(){ document.getElementById('boot').classList.add('gone'); }
+new RGBELoader().load(HDRI, (hdr) => {
+  hdr.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = pmrem.fromEquirectangular(hdr).texture;   // fill/spec for walls & furniture
+  hdr.dispose();
+  bakeFloorReflection();
+  reveal();
+}, undefined, () => { bakeFloorReflection(); reveal(); });
+
+/* ───────────────── resize + loop ───────────────── */
+function resize() {
+  const w = app.clientWidth, h = app.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / Math.max(1, h);
   camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(app);
+resize();
+
+window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView };
+
+(function loop() {
+  if (tween) {
+    tween.t0++;
+    const k = tween.t0 / tween.dur, e = k<1 ? (1 - Math.pow(1-k, 3)) : 1;   // easeOutCubic
+    camera.position.lerpVectors(tween.p0, tween.p1, e);
+    controls.target.lerpVectors(tween.g0, tween.g1, e);
+    if (k >= 1) tween = null;
+  }
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(loop);
-}
-
-requestAnimationFrame(loop);
+})();
 </script>
 </body>
 </html>
