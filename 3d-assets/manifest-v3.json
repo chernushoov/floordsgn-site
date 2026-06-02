@@ -271,7 +271,7 @@
     },
     {
       "slug": "terrazzo-epoxy",
-      "label_ru": "Терраццо · эпоксидное (тёмное)",
+      "label_ru": "Терраццо · эпоксидное",
       "group": "decorative",
       "tag": "TE",
       "code": "TE",
@@ -291,12 +291,26 @@
       "tile": 5,
       "controls": [
         "color",
-        "aggregates",
         "gloss"
       ],
+      "default_state": {
+        "color": "ral7047",
+        "gloss": "mid"
+      },
+      "reference": {
+        "system": "Epoxy Terrazzo · светло-серый / белый заполнитель",
+        "matrixHex": "#cfd1cc",
+        "matrix": "Светло-серый · направление RAL 7047",
+        "aggregate": "Белый мрамор / кварц",
+        "size": "1—3 мм (целевой · подтверждается образцом)",
+        "density": "Средняя",
+        "finish": "Матовый / сатин",
+        "thickness": "8—12 мм",
+        "note": "3D-превью — визуальная симуляция. Финальный цвет, распределение крошки и фактура подтверждаются физическим образцом."
+      },
       "spec": {
-        "type": "Эпокси-терраццо · EM-10 (тёмное)",
-        "thk": "12—18 мм",
+        "type": "Эпокси-терраццо · EM-10",
+        "thk": "8—18 мм",
         "base": "Sikafloor Terrazzo EM-10",
         "cure": "7—10 дней",
         "warr": "10 лет",
@@ -310,12 +324,13 @@
       ],
       "buildup": {
         "topcoat": "Sikafloor-264 · 0.5 мм (глянцевый лак)",
-        "body": "Sikafloor Terrazzo EM-10 · 12—18 мм · цветная крошка 4—18 мм",
+        "body": "Sikafloor Terrazzo EM-10 · 8—18 мм · мрамор/кварц, размер крошки на выбор",
         "primer": "Sikafloor-156 · 0.15 мм",
         "substrate": "Бетон C25/30 · ≥ 25 МПа · ≤ 4% RH"
       },
       "glb_plate": "plates/terrazzo-epoxy.glb",
       "roughness_override": 0.35,
+      "normal_scale": 0.3,
       "pbr": {
         "diffuse": "textures/terrazzo-epoxy/diffuse.jpg",
         "normal": "textures/terrazzo-epoxy/normal.png",
@@ -962,6 +977,11 @@
           "id": "graphite",
           "name": "Графит",
           "hex": "#3b3c40"
+        },
+        {
+          "id": "ral7047",
+          "name": "RAL 7047",
+          "hex": "#cfd1cc"
         },
         {
           "id": "ral7035",

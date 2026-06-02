@@ -134,7 +134,13 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 .refcard .rc-status.needs{color:var(--accent);border-color:var(--accent)}
 .refcard .rc-status.approved{color:#3a7d44;border-color:#3a7d44}
 .refcard .rc-row{display:flex;align-items:center;gap:8px;margin-top:9px;color:var(--ink-3);font-size:11.5px}
+.refcard .rc-row b{color:var(--ink);font-weight:500;letter-spacing:-.005em}
 .refcard .rc-sw{width:16px;height:16px;border:1px solid var(--line-2);display:inline-block;flex:0 0 auto}
+.refcard .rc-spec{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid var(--line);font-size:11.5px}
+.refcard .rc-spec:last-of-type{border-bottom:0}
+.refcard .rc-k{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4);flex:0 0 auto;min-width:78px}
+.refcard .rc-v{color:var(--ink-2);text-align:right;margin-left:auto;letter-spacing:-.005em}
+.refcard .rc-note{margin:10px 0 0;font-size:10px;line-height:1.5;color:var(--ink-4);border-top:1px solid var(--line);padding-top:8px}
 .ctrl button{font-family:var(--sans);font-size:12.5px;letter-spacing:-.005em;background:#fff;border:1px solid var(--line);color:var(--ink-3);padding:7px 10px;cursor:pointer;transition:.15s;border-radius:0}
 .ctrl button:hover{border-color:var(--ink-3);color:var(--ink)}
 .ctrl button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -454,8 +460,10 @@ new RGBELoader()
     hdr.dispose();
   }, undefined, () => { /* HDRI optional — RoomEnvironment fallback already in place */ });
 
-const key = new THREE.DirectionalLight(0xfff4dd, 0.8);  key.position.set(0.6, 0.9, 0.4);  scene.add(key);
-const fill = new THREE.DirectionalLight(0xc9d4e0, 0.25); fill.position.set(-0.5, 0.5, -0.3); scene.add(fill);
+// Near-neutral key (was 0xfff4dd warm) so the floor's true colour isn't yellow-shifted —
+// honest material colour matters for a sample-confirmation tool. Faint warmth only.
+const key = new THREE.DirectionalLight(0xfff8f2, 0.82);  key.position.set(0.6, 0.9, 0.4);  scene.add(key);
+const fill = new THREE.DirectionalLight(0xdfe6ec, 0.24); fill.position.set(-0.5, 0.5, -0.3); scene.add(fill);
 
 const shadowTex = (() => {
   const c = document.createElement('canvas');
@@ -810,8 +818,13 @@ function buildBodyPhotoMaterial(def, variantId) {
 
 function buildPbrMaterial(def) {
   if (def.procedural) {
+    // A material can carry BOTH a procedural fallback colour AND a real diffuse photo.
+    // When a photo exists, the photo IS the surface — tinting it with the fallback colour
+    // double-darkens the real material (terrazzo read near-black). So keep the base white
+    // and let the photo drive colour; the fallback colour is only for the photo-less case.
+    const hasPhoto = !!(def.pbr && def.pbr.diffuse);
     const base = {
-      color: new THREE.Color(def.procedural.color),
+      color: new THREE.Color(hasPhoto ? 0xffffff : def.procedural.color),
       roughness: def.roughness_override ?? def.procedural.roughness ?? 0.9,
       metalness: 0,   // floors are never metallic (research: metalness=0 always)
     };
@@ -880,7 +893,9 @@ const ORIG_POS = new Map();
 function setView(view) {
   if (view === 'solid')  { explodeTarget = 0; controls.enabled = true; }
   if (view === 'layers') { explodeTarget = 1; controls.enabled = true; }
-  if (view === 'top')    { explodeTarget = 0; controls.enabled = false; camera.position.set(0.001, 0.85, 0.001); controls.target.set(0,0,0); }
+  // Образец / Sample = client-facing material-truth macro: pull in close (real chip scale)
+  // with a whisper of tilt so the polished bevel catches light and reads as a physical sample.
+  if (view === 'top')    { explodeTarget = 0; controls.enabled = false; camera.position.set(0.05, 0.40, 0.12); controls.target.set(0, -0.004, 0); }
   if (view === 'reset')  { explodeTarget = 0; controls.enabled = true; camera.position.set(0.55, 0.42, 0.55); controls.target.set(0,0,0); }
   // RESET is an ACTION, not a mode — after it runs the scene is in 'solid'. Highlight the
   // actual resulting mode so the button state never desyncs from the scene (audit fix).
@@ -1191,8 +1206,11 @@ function selectMaterial(slug) {
   renderBadges(def);
   renderRefCard(def);
   renderDesigns(def);
-  const restoreState = (pendingRestore && pendingRestore.slug === def.slug) ? pendingRestore.state : null;
-  if (restoreState) pendingRestore = null;
+  // A shared-config link wins; otherwise a material's default_state pre-selects + APPLIES its
+  // showcase configuration on load (e.g. the flagship loads as light-grey RAL 7047 / satin).
+  const fromShare = (pendingRestore && pendingRestore.slug === def.slug);
+  const restoreState = fromShare ? pendingRestore.state : (def.default_state || null);
+  if (fromShare) pendingRestore = null;
   renderControls(def, restoreState);
   renderBuildup(def);
   renderCallouts(def);
@@ -1232,11 +1250,19 @@ const orderState = {};
 window.__cfg = {
   get scene() { return scene; },
   get renderer() { return renderer; },
+  get camera() { return camera; },
+  get controls() { return controls; },
   get topcoatMesh() { return topcoatMesh; },
   get bodyMesh() { return bodyMesh; },
   get manifest() { return manifest; },
   get activeSlug() { return activeSlug; },
   orderState,
+  // QA-only camera framing: place camera + retarget without touching production controls.
+  setCam(px, py, pz, tx = 0, ty = 0, tz = 0) {
+    camera.position.set(px, py, pz);
+    controls.target.set(tx, ty, tz);
+    controls.update();
+  },
   selectMaterial, setView,
   // Programmatically apply a control option by id (mirrors a button click).
   applyControl(slug, cid, optId) {
@@ -1264,10 +1290,27 @@ function renderRefCard(def) {
     approved_real_sample: 'Подтверждён физическим образцом',
   }[st] || st;
   const cls = st === 'approved_real_sample' ? 'approved' : 'needs';
-  const matrix = def.swatch || (def.procedural && def.procedural.color) || '#999999';
+  // Matrix swatch tracks the live colour pick when present, else the reference default.
+  const ref = def.reference;
+  const pickedHex = (orderState[def.slug] || {}).colorHex;
+  const matrixHex = pickedHex || (ref && ref.matrixHex) || def.swatch || (def.procedural && def.procedural.color) || '#999999';
+  // Flagship / spec'd materials render a full material-reference card (honest, sample-confirmed).
+  if (ref) {
+    const row = (k, v) => v ? `<div class="rc-spec"><span class="rc-k">${k}</span><span class="rc-v">${v}</span></div>` : '';
+    el.innerHTML = `<span class="rc-status ${cls}">● ${label}</span>
+      <div class="rc-row"><span class="rc-sw" style="background:${matrixHex}"></span> <b>${ref.system || def.label_ru}</b></div>
+      ${row('Матрица', ref.matrix)}
+      ${row('Заполнитель', ref.aggregate)}
+      ${row('Размер', ref.size)}
+      ${row('Плотность', ref.density)}
+      ${row('Финиш', ref.finish)}
+      ${row('Толщина', ref.thickness)}
+      ${ref.note ? `<p class="rc-note">${ref.note}</p>` : ''}`;
+    return;
+  }
   const sys = (def.systemType || '').replace(/_/g, ' ');
   el.innerHTML = `<span class="rc-status ${cls}">● ${label}</span>
-    <div class="rc-row"><span class="rc-sw" style="background:${matrix}"></span> Матрица <b>${matrix}</b>${sys ? ' · ' + sys : ''}</div>`;
+    <div class="rc-row"><span class="rc-sw" style="background:${matrixHex}"></span> Матрица <b>${matrixHex}</b>${sys ? ' · ' + sys : ''}</div>`;
 }
 
 /* Design/sample gallery — one swatch per REAL owner photo (def.designs). Clicking swaps the
@@ -1497,6 +1540,7 @@ function applyControlEffect(def, cid, opt) {
       mat.color.set(opt.hex);
       mat.needsUpdate = true;
     }
+    renderRefCard(def); // keep the matrix swatch in sync with the live colour pick
   }
   // Chips color: swap the body diffuse texture (real photo of terrazzo crumb).
   if (cid === 'chips_color' && opt.body_variant && bodyMesh) {
@@ -1539,11 +1583,15 @@ async function refreshCompositeMap(def) {
       const tile = def.tile || 1;
 
       // Normal map — tangent-space relief, lights the chips. Tiled like the diffuse.
+      // Polished/ground terrazzo is FLAT (chips flush with the matrix), so relief must be
+      // subtle — heavy normals read as rough porous asphalt. Per-material `normal_scale`
+      // lets the flagship stay polished while rougher systems keep their default 0.85.
       if (def.pbr && def.pbr.normal) {
         const nm = loadTex(def.pbr.normal); // linear, NoColorSpace by default
         nm.repeat.set(tile, tile);
         mat.normalMap = nm;
-        if (mat.normalScale) mat.normalScale.set(0.85, 0.85);
+        const nsc = def.normal_scale ?? 0.85;
+        if (mat.normalScale) mat.normalScale.set(nsc, nsc);
       } else {
         mat.normalMap = null;
       }
