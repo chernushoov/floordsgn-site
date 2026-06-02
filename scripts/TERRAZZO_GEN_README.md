@@ -25,10 +25,19 @@ matrix**. So the generator:
 
 ## Usage
 ```
+# from a preset
 python3 scripts/terrazzo-gen.py OUTDIR --preset light-grey-white --size 2048 --seed 7
+# REPRODUCE any reference photo (extract its palette, regenerate seamless)
+python3 scripts/terrazzo-gen.py OUTDIR --from-photo path/to/terrazzo.jpg --seed 4
 ```
-Presets: `light-grey-white` (flagship RAL 7047 / white marble), `dark-charcoal`.
-Add a preset = one dict entry (matrix hex, palette + weights, chip-size mm, coverage, roughness).
+Presets: `light-grey-white` (flagship RAL 7047 / white marble), `dark-charcoal`, `warm-greige`,
+`graphite-white`. Add a preset = one dict entry (matrix hex, palette + weights, chip-size mm,
+coverage, roughness).
+
+`--from-photo` quantises the photo, takes the dominant colour as the binder and the rest as
+weighted chips — so it reproduces the *look* of any terrazzo reference as a seamless tile.
+(Limitation: matrix detection picks the most-frequent tone, which on a light, chip-dense photo
+can read a touch dark — use a preset when you need an exact binder colour.)
 
 ## Wire into configurator-v3 (no manifest edit needed for testing)
 ```

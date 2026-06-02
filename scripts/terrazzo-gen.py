@@ -53,6 +53,25 @@ def make_rng(seed): return np.random.default_rng(seed)
 def hex_rgb(h):
     h = h.lstrip("#"); return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
+def extract_preset_from_photo(path, k=9):
+    """REPRODUCE any reference: quantise a terrazzo photo to a palette and build a preset.
+    Most-frequent colour = binder/matrix; the rest = chips weighted by their area share."""
+    im = Image.open(path).convert("RGB").resize((320, 320))
+    q = im.quantize(colors=k, method=Image.MEDIANCUT)
+    pal = q.getpalette()[:k * 3]
+    idx = np.asarray(q)
+    counts = np.bincount(idx.ravel(), minlength=k).astype(float)
+    cols = [(pal[i * 3], pal[i * 3 + 1], pal[i * 3 + 2]) for i in range(k)]
+    order = list(np.argsort(counts)[::-1])
+    mi = order[0]                                   # dominant colour = matrix/binder
+    matrix = "#%02x%02x%02x" % cols[mi]
+    total = counts.sum()
+    palette = [("#%02x%02x%02x" % cols[i], float(counts[i]))
+               for i in order[1:] if counts[i] > total * 0.012]
+    return {"matrix": matrix, "palette": palette or [("#ffffff", 1.0)],
+            "min_mm": 1.0, "max_mm": 6.5, "alpha": 2.0, "coverage": 0.70,
+            "matrix_rough": 0.5, "chip_rough": 0.18}
+
 def chip_poly(rng, cx, cy, r):
     """Angular crushed-stone shard: 4-7 vertices, strong radius jitter, no near-circle."""
     n = int(rng.integers(4, 8))
@@ -68,8 +87,7 @@ def jitter_color(rng, rgb, amt=16):
     v = int(rng.integers(-amt, amt + 1))
     return tuple(int(max(0, min(255, c + v))) for c in rgb)
 
-def gen(outdir, preset, size, seed):
-    P = PRESETS[preset]
+def gen(outdir, P, size, seed, label):
     rng = make_rng(seed)
     W = size                                  # SS=1: draw at final res -> HARD ~1px edges (the fix)
     mm_to_px = W / 150.0                       # texture represents ~150 mm of floor
@@ -151,7 +169,7 @@ def gen(outdir, preset, size, seed):
     Image.fromarray((ao * 255).astype(np.uint8), "L").save(os.path.join(outdir, "ao.png"))
 
     cov = float(np.asarray(mask, np.uint8).mean() / 255.0)
-    meta = {"preset": preset, "size": size, "seed": seed, "coverage_measured": round(cov, 3), "chips": guard}
+    meta = {"preset": label, "matrix": P["matrix"], "size": size, "seed": seed, "coverage_measured": round(cov, 3), "chips": guard}
     with open(os.path.join(outdir, "gen.json"), "w") as f: json.dump(meta, f, indent=1)
     print("terrazzo-gen:", outdir, meta)
 
@@ -159,7 +177,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("outdir")
     ap.add_argument("--preset", default="light-grey-white")
+    ap.add_argument("--from-photo", default=None, help="reproduce a reference terrazzo photo (extract palette)")
     ap.add_argument("--size", type=int, default=2048)
     ap.add_argument("--seed", type=int, default=7)
     a = ap.parse_args()
-    gen(a.outdir, a.preset, a.size, a.seed)
+    if a.from_photo:
+        P, label = extract_preset_from_photo(a.from_photo), "from-photo:" + os.path.basename(a.from_photo)
+    else:
+        P, label = PRESETS[a.preset], a.preset
+    gen(a.outdir, P, a.size, a.seed, label)
