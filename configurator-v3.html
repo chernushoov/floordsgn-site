@@ -958,7 +958,7 @@ function buildProceduralPlate() {
 
   const W = 0.30, D = 0.30;
   // Slab heights — exaggerated for visibility in explode view.
-  const tcH = 0.006;   // topcoat
+  const tcH = 0.0016;  // topcoat — a sealer is microns/tenths-of-mm thin: keep it a hairline film
   const bdH = 0.012;   // body system
   const msH = 0.0015;  // fibreglass mesh (hairline)
   const prH = 0.003;   // primer
@@ -976,7 +976,7 @@ function buildProceduralPlate() {
   const ySubstrate = yTop - tcH - bdH - msH - prH - subH * 0.5;
 
   const topcoat = new THREE.Mesh(
-    bevelSlab(W * tcS, D * tcS, tcH, 0.0018),
+    bevelSlab(W * tcS, D * tcS, tcH, 0.0005),
     new THREE.MeshStandardMaterial({ name: 'VAR_topcoat', color: 0xcccccc, roughness: 0.5 })
   );
   topcoat.name = 'topcoat';
