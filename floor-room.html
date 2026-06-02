@@ -43,6 +43,11 @@
 <div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>
 
 <div class="bar">
+  <div class="row" id="roomCtl">
+    <span class="lbl" style="align-self:center">комната</span>
+    <button class="chip on" data-rm="living">Гостиная</button>
+    <button class="chip" data-rm="bedroom">Спальня</button>
+  </div>
   <div class="row" id="floorCtl">
     <span class="lbl" style="align-self:center">терраццо</span>
     <button class="chip on" data-fl="light">Светлое</button>
@@ -221,6 +226,32 @@ const MAT = {
 };
 const RB = (w,h,d,r=0.04)=> new RoundedBoxGeometry(w,h,d,4,r);
 
+/* shared greenery helpers (used by several room kits) */
+function buildFicus(px,pz){
+  const g=new THREE.Group(); const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=true; g.add(m); };
+  add(new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.24,0.42,28), new THREE.MeshStandardMaterial({color:0xada494,roughness:0.85})), 0,0.21,0);
+  for(let i=0;i<5;i++){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.7,10), MAT.walnut); t.position.set((i-2)*0.04,1.1,0); t.rotation.z=(i-2)*0.05; t.castShadow=true; g.add(t); }
+  const leaf=new THREE.MeshStandardMaterial({color:0x3c5a34,roughness:0.8,side:THREE.DoubleSide});
+  for(let i=0;i<22;i++){ const a=i*2.4, r=0.35+((i*13)%5)*0.06, y=1.5+((i*7)%6)*0.12;
+    const cl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.18+((i*11)%4)*0.03,0), leaf);
+    cl.position.set(Math.cos(a)*r,y,Math.sin(a)*r); cl.castShadow=true; g.add(cl); }
+  g.position.set(px,0,pz); roomKit.add(g);
+}
+function buildSnake(px,pz){
+  const g=new THREE.Group();
+  const pot=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.12,0.32,28), new THREE.MeshStandardMaterial({color:0x9a8a78,roughness:0.9}));
+  pot.position.y=0.16; pot.castShadow=pot.receiveShadow=true; g.add(pot);
+  const bD=new THREE.MeshStandardMaterial({color:0x33502f,roughness:0.72,side:THREE.DoubleSide});
+  const bL=new THREE.MeshStandardMaterial({color:0x4a6b3a,roughness:0.72,side:THREE.DoubleSide});
+  for(let i=0;i<9;i++){ const a=(i/9)*Math.PI*2, h=0.6+((i*37)%5)*0.09, ln=0.10+((i*53)%4)*0.05;
+    const bl=new THREE.Mesh(new THREE.BoxGeometry(0.06,h,0.013),(i%3===0)?bL:bD);
+    bl.position.set(Math.cos(a)*0.05,0.32+h/2*Math.cos(ln),Math.sin(a)*0.05);
+    bl.rotation.set(Math.sin(a)*ln,-a,-Math.cos(a)*ln); bl.castShadow=true; g.add(bl); }
+  g.position.set(px,0,pz); roomKit.add(g);
+}
+
+/* ════════ ROOM KIT: LIVING ROOM (Гостиная) ════════ */
+function buildLiving(){
 /* sofa — 3-seat, right side, facing into the room (-x) */
 (function(){
   const L=2.9, Dp=0.95;
@@ -279,32 +310,50 @@ const shade = new THREE.Mesh(new THREE.ConeGeometry(0.16,0.22,28,1,true),
 shade.position.set(-3.5,2.02,1.12); shade.rotation.x = Math.PI; roomKit.add(shade);
 const lampLight = new THREE.PointLight(0xffce96, 6.0, 7, 2.0); lampLight.position.set(-3.5,1.9,1.12); roomKit.add(lampLight);
 
-/* tall potted tree (ficus) — back-left corner, gives height + organic life */
-(function(){
-  const g=new THREE.Group();
-  const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=true; g.add(m); };
-  add(new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.24,0.42,28), new THREE.MeshStandardMaterial({color:0xada494,roughness:0.85})), 0,0.21,0); // planter
-  for(let i=0;i<5;i++){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.7,10), MAT.walnut); t.position.set((i-2)*0.04, 1.1, 0); t.rotation.z=(i-2)*0.05; t.castShadow=true; g.add(t); } // trunks
-  const leaf=new THREE.MeshStandardMaterial({color:0x3c5a34,roughness:0.8,side:THREE.DoubleSide});
-  for(let i=0;i<22;i++){ const a=i*2.4, r=0.35+((i*13)%5)*0.06, y=1.5+((i*7)%6)*0.12;
-    const cl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.18+((i*11)%4)*0.03,0), leaf);
-    cl.position.set(Math.cos(a)*r, y, Math.sin(a)*r); cl.castShadow=true; g.add(cl); }
-  g.position.set(-4.4,0,-3.0); roomKit.add(g);
-})();
+  buildFicus(-4.4,-3.0);   // tall tree, back-left
+  buildSnake(4.5,2.5);     // snake plant, right-front
+}
 
-/* low snake plant — right-front corner accent */
-(function(){
-  const g=new THREE.Group();
-  const pot=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.12,0.32,28), new THREE.MeshStandardMaterial({color:0x9a8a78,roughness:0.9}));
-  pot.position.y=0.16; pot.castShadow=pot.receiveShadow=true; g.add(pot);
-  const bD=new THREE.MeshStandardMaterial({color:0x33502f,roughness:0.72,side:THREE.DoubleSide});
-  const bL=new THREE.MeshStandardMaterial({color:0x4a6b3a,roughness:0.72,side:THREE.DoubleSide});
-  for(let i=0;i<9;i++){ const a=(i/9)*Math.PI*2, h=0.6+((i*37)%5)*0.09, ln=0.10+((i*53)%4)*0.05;
-    const bl=new THREE.Mesh(new THREE.BoxGeometry(0.06,h,0.013),(i%3===0)?bL:bD);
-    bl.position.set(Math.cos(a)*0.05,0.32+h/2*Math.cos(ln),Math.sin(a)*0.05);
-    bl.rotation.set(Math.sin(a)*ln,-a,-Math.cos(a)*ln); bl.castShadow=true; g.add(bl); }
-  g.position.set(4.5,0,2.5); roomKit.add(g);
-})();
+/* ════════ ROOM KIT: BEDROOM (Спальня) ════════ */
+function buildBedroom(){
+  const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; roomKit.add(m); return m; };
+  const white=new THREE.MeshStandardMaterial({color:0xece7dc,roughness:0.96});
+  const duvet=new THREE.MeshStandardMaterial({color:0xf2eee4,roughness:0.97});
+  const bx=0.2, bz=-2.2, bw=1.95, bl=2.15;
+  add(new THREE.Mesh(RB(bw,0.26,bl,0.03), MAT.walnut), bx, 0.13, bz);                  // platform
+  add(new THREE.Mesh(RB(bw-0.12,0.22,bl-0.12,0.05), white), bx, 0.37, bz);             // mattress
+  add(new THREE.Mesh(RB(bw-0.06,0.13,bl*0.6,0.06), duvet), bx, 0.50, bz+0.34);         // folded duvet
+  add(new THREE.Mesh(RB(bw,0.95,0.14,0.04), MAT.linen), bx, 0.62, bz-bl/2-0.03);       // headboard
+  for(const s of [-1,1]) add(new THREE.Mesh(RB(0.52,0.30,0.36,0.07), white), bx+s*0.46, 0.62, bz-bl/2+0.45); // pillows
+  for(const s of [-1,1]){                                                              // nightstands + lamps
+    add(new THREE.Mesh(RB(0.5,0.45,0.42,0.03), MAT.oak), bx+s*1.32, 0.225, bz-bl/2+0.22);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.06,0.2,16), MAT.metal), bx+s*1.32, 0.55, bz-bl/2+0.22);
+    const sh=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.15,0.2,20,1,true),
+      new THREE.MeshStandardMaterial({color:0xf3ece0,roughness:0.6,emissive:0xffe2b0,emissiveIntensity:0.6,side:THREE.DoubleSide}));
+    sh.position.set(bx+s*1.32,0.74,bz-bl/2+0.22); roomKit.add(sh);
+    const pl=new THREE.PointLight(0xffd49a,2.2,4.5,2); pl.position.set(bx+s*1.32,0.82,bz-bl/2+0.22); roomKit.add(pl);
+  }
+  add(new THREE.Mesh(RB(1.5,0.40,0.5,0.05), MAT.linenD), bx, 0.20, bz+bl/2+0.55);      // bench at foot
+  add(new THREE.Mesh(RB(0.42,0.22,0.16,0.05), MAT.signal), bx-0.4, 0.50, bz+bl/2+0.55); // ONE signal lumbar cushion
+  add(new THREE.Mesh(RB(0.55,2.2,2.4,0.02), MAT.walnut), hw-0.32, 1.12, 0.8);          // wardrobe, right wall
+  (function(){ const g=new THREE.Group(); const a=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);}; // reading chair
+    a(new THREE.Mesh(RB(0.72,0.16,0.72,0.05),MAT.linen),0,0.40,0);
+    a(new THREE.Mesh(RB(0.72,0.50,0.15,0.05),MAT.linen),0,0.62,-0.30);
+    for(const s of [-1,1]) for(const z of [-0.27,0.3]) a(new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.4,12),MAT.metal),s*0.3,0.2,z);
+    g.position.set(-3.0,0,1.7); g.rotation.y=0.6; roomKit.add(g); })();
+  buildFicus(-4.4,-2.8);                                                               // tall plant
+  add(new THREE.Mesh(RB(0.06,1.1,1.6,0.01), MAT.walnut), -hw+0.10, 1.75, -0.2);        // framed art, left wall
+  add(new THREE.Mesh(RB(0.04,0.9,1.4,0.005), MAT.paper),  -hw+0.135, 1.75, -0.2);
+}
+
+/* ════════ room registry + switcher (floor + tour stay; only the kit swaps) ════════ */
+const ROOMS = { living: buildLiving, bedroom: buildBedroom };
+function clearKit(){
+  for(let i=roomKit.children.length-1;i>=0;i--){ const c=roomKit.children[i]; roomKit.remove(c);
+    c.traverse && c.traverse(o=>{ o.geometry && o.geometry.dispose(); }); if(c.geometry) c.geometry.dispose(); }
+}
+function setRoom(type){ clearKit(); (ROOMS[type]||buildLiving)(); if(floorMat.envMap) bakeFloorReflection(); }
+setRoom('living');
 
 /* ───────────────── lighting — "golden hour" catalog mood ───────────────── */
 scene.add(new THREE.HemisphereLight(0xf3ead6, 0x241c14, 0.40));   // warm sky / deep warm ground bounce
@@ -388,6 +437,10 @@ function advanceTour(){
   if (k>=1){ tour.i=(tour.i+1)%TOUR.length; tour.t=0; }
 }
 tourBtn.addEventListener('click', () => { tour ? stopTour() : startTour(); });
+document.querySelectorAll('#roomCtl .chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#roomCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); setRoom(b.dataset.rm);
+}));
 document.querySelectorAll('#floorCtl .chip').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#floorCtl .chip').forEach(x => x.classList.remove('on'));
   b.classList.add('on'); setFloor(b.dataset.fl);
