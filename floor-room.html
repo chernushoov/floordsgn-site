@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Floor.DSGN — floor room showroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon:#151515;
+    --graphite:#2d2d2d;
+    --steel:#72716d;
+    --signal:#c86b3c;
+    --concrete:#f3f0ea;
+    --paper:rgba(243,240,234,.1);
+    --line:rgba(243,240,234,.22);
+    --line-strong:rgba(243,240,234,.42);
+    --text:#f3f0ea;
+    --muted:rgba(243,240,234,.72);
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --sans:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+    --display:'Cormorant Garamond',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--carbon);overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(200,107,60,.12), transparent 28%),
+      radial-gradient(circle at 82% 80%, rgba(255,255,255,.06), transparent 26%),
+      linear-gradient(180deg, rgba(8,8,8,.12), rgba(8,8,8,.55));
+    z-index:1;
+  }
+  #app{position:fixed;inset:0;z-index:0}
+  canvas{display:block;width:100%!important;height:100%!important;touch-action:none}
+
+  .frame{
+    position:fixed;
+    inset:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+    border:1px solid rgba(243,240,234,.12);
+    pointer-events:none;
+    z-index:2;
+  }
+
+  .story,
+  .dossier,
+  .dock,
+  .tip,
+  .boot{
+    position:fixed;
+    z-index:5;
+  }
+
+  .story,
+  .dossier,
+  .dock,
+  .tip{
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+
+  .story{
+    top:max(18px,env(safe-area-inset-top));
+    left:max(18px,env(safe-area-inset-left));
+    width:min(420px,calc(100vw - 36px));
+    padding:22px 22px 20px;
+    background:linear-gradient(180deg, rgba(21,21,21,.58), rgba(21,21,21,.22));
+    border:1px solid var(--line);
+  }
+  .story__eyebrow,
+  .dossier__eyebrow,
+  .tip{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .story__eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .story__dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--signal);
+    flex:0 0 auto;
+  }
+  .story__title{
+    margin-top:16px;
+    font-family:var(--display);
+    font-size:clamp(46px,7vw,76px);
+    line-height:.9;
+    color:var(--text);
+    max-width:7ch;
+  }
+  .story__lede{
+    margin-top:16px;
+    max-width:34ch;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+  .story__metrics{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px 20px;
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px solid rgba(243,240,234,.12);
+  }
+  .story__metric span,
+  .dossier__row span{
+    display:block;
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:rgba(243,240,234,.56);
+  }
+  .story__metric strong,
+  .dossier__row strong{
+    display:block;
+    margin-top:6px;
+    font-size:13px;
+    line-height:1.45;
+    font-weight:600;
+    color:var(--text);
+  }
+  .story__cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+    pointer-events:auto;
+  }
+  .story__btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    min-height:42px;
+    padding:0 16px;
+    border-radius:980px;
+    border:1px solid var(--line-strong);
+    color:var(--text);
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    transition:background .24s ease,border-color .24s ease,color .24s ease,transform .24s ease;
+  }
+  .story__btn:hover{transform:translateY(-1px)}
+  .story__btn--signal{
+    background:var(--signal);
+    border-color:var(--signal);
+    color:var(--concrete);
+  }
+
+  .dossier{
+    top:max(18px,env(safe-area-inset-top));
+    right:max(18px,env(safe-area-inset-right));
+    width:min(320px,calc(100vw - 36px));
+    padding:18px 18px 16px;
+    background:linear-gradient(180deg, rgba(21,21,21,.44), rgba(21,21,21,.18));
+    border:1px solid rgba(243,240,234,.15);
+  }
+  .dossier__eyebrow{margin-bottom:14px}
+  .dossier__grid{
+    display:grid;
+    gap:12px;
+  }
+  .dossier__row{
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(243,240,234,.08);
+  }
+  .dossier__row:last-child{
+    padding-bottom:0;
+    border-bottom:0;
+  }
+  .dossier__note{
+    margin-top:16px;
+    font-size:12px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+
+  .tip{
+    left:max(18px,env(safe-area-inset-left));
+    bottom:max(18px,env(safe-area-inset-bottom));
+    padding:10px 12px;
+    background:rgba(21,21,21,.34);
+    border:1px solid rgba(243,240,234,.1);
+    pointer-events:none;
+  }
+
+  .dock{
+    left:50%;
+    bottom:max(18px,env(safe-area-inset-bottom));
+    transform:translateX(-50%);
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    pointer-events:auto;
+  }
+  .dock__group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:10px;
+    background:rgba(21,21,21,.4);
+    border:1px solid rgba(243,240,234,.14);
+    min-width:180px;
+  }
+  .dock__label{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:rgba(243,240,234,.56);
+  }
+  .dock__row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .dock button{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--text);
+    background:rgba(243,240,234,.06);
+    border:1px solid rgba(243,240,234,.16);
+    padding:10px 12px;
+    min-height:40px;
+    cursor:pointer;
+    transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
+  }
+  .dock button:hover{transform:translateY(-1px)}
+  .dock button.on{
+    background:var(--concrete);
+    color:var(--carbon);
+    border-color:var(--concrete);
+  }
+
+  .boot{
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--carbon);
+    color:var(--text);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    transition:opacity .6s ease;
+  }
+  .boot.gone{opacity:0;pointer-events:none}
+
+  @media (max-width: 980px){
+    html,body{overflow:auto}
+    #app{position:fixed;inset:0}
+    .story{
+      width:auto;
+      right:max(18px,env(safe-area-inset-right));
+      padding:18px 18px 16px;
+    }
+    .story__title{
+      max-width:none;
+      font-size:clamp(34px,13vw,58px);
+    }
+    .story__lede{max-width:none}
+    .dossier{
+      top:auto;
+      right:max(18px,env(safe-area-inset-right));
+      left:max(18px,env(safe-area-inset-left));
+      bottom:164px;
+      width:auto;
+    }
+    .dock{
+      left:max(18px,env(safe-area-inset-left));
+      right:max(18px,env(safe-area-inset-right));
+      bottom:max(18px,env(safe-area-inset-bottom));
+      transform:none;
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .dock__group{min-width:0}
+    .tip{
+      left:auto;
+      right:max(18px,env(safe-area-inset-right));
+      bottom:calc(max(18px,env(safe-area-inset-bottom)) + 224px);
+      max-width:min(260px,70vw);
+    }
+  }
+
+  @media (max-width: 640px){
+    .story{
+      padding:16px 16px 14px;
+    }
+    .story__title{
+      font-size:clamp(28px,10.6vw,48px);
+      line-height:.92;
+    }
+    .story__lede{
+      font-size:12px;
+      line-height:1.5;
+      max-width:none;
+    }
+    .story__metrics{
+      display:none;
+    }
+    .story__cta{
+      margin-top:16px;
+    }
+    .dossier,
+    .tip{
+      display:none;
+    }
+    .dock{
+      gap:8px;
+    }
+    .dock__group{
+      padding:8px;
+    }
+    .dock button{
+      min-height:38px;
+      padding:9px 10px;
+      font-size:9px;
+    }
+  }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<div class="frame" aria-hidden="true"></div>
+
+<section class="story">
+  <p class="story__eyebrow"><span class="story__dot" aria-hidden="true"></span><span id="sceneTag">Floor.DSGN · room study · terrazzo</span></p>
+  <h1 class="story__title" id="sceneTitle">Floor as the room’s first material.</h1>
+  <p class="story__lede" id="sceneLead">Не просто текстура на плоскости, а быстрый интерьерный read: отражение, масштаб чипа, поведение кромки и уровень блеска до физического sample-kit.</p>
+  <div class="story__metrics">
+    <div class="story__metric"><span>System</span><strong id="metricSystem">Epoxy terrazzo / Venetian chip</strong></div>
+    <div class="story__metric"><span>Build-up</span><strong id="metricBuild">8–10 mm decorative topping</strong></div>
+    <div class="story__metric"><span>Chip scale</span><strong id="metricChip">16–22 mm aggregate</strong></div>
+    <div class="story__metric"><span>Finish</span><strong id="metricFinish">Satin / soft reflection</strong></div>
+  </div>
+  <div class="story__cta">
+    <a class="story__btn story__btn--signal" href="configurator.html">Open configurator</a>
+    <a class="story__btn" href="floors/terrazzo.html">System dossier</a>
+  </div>
+</section>
+
+<aside class="dossier">
+  <p class="dossier__eyebrow">Visual brief / material read</p>
+  <div class="dossier__grid">
+    <div class="dossier__row"><span>Scene</span><strong id="dScene">Gallery lobby</strong></div>
+    <div class="dossier__row"><span>Use case</span><strong id="dUse">Reception, boutique retail, quiet hospitality</strong></div>
+    <div class="dossier__row"><span>Surface feel</span><strong id="dFeel">Controlled gloss with visible depth in the chips</strong></div>
+    <div class="dossier__row"><span>Camera read</span><strong id="dShot">Low grazing shot to judge reflection and grain scale</strong></div>
+  </div>
+  <p class="dossier__note" id="dNote">3D is a visual simulation. Final tone, aggregate and sheen are fixed only after physical sample approval and the selected Sika-compatible build-up.</p>
+</aside>
+
+<p class="tip">Drag to orbit. Keys: Q / W / E scenes, A / S / D shots, 1 / 2 / 3 finishes.</p>
+
+<section class="dock" aria-label="Room controls">
+  <div class="dock__group">
+    <div class="dock__label">Scene</div>
+    <div class="dock__row" id="sceneCtl">
+      <button data-scene="gallery" class="on">Gallery</button>
+      <button data-scene="residential">Residential</button>
+      <button data-scene="night">Night</button>
+    </div>
+  </div>
+  <div class="dock__group">
+    <div class="dock__label">Camera</div>
+    <div class="dock__row" id="shotCtl">
+      <button data-shot="wide" class="on">Wide</button>
+      <button data-shot="grazing">Grazing</button>
+      <button data-shot="macro">Macro</button>
+    </div>
+  </div>
+  <div class="dock__group">
+    <div class="dock__label">Finish</div>
+    <div class="dock__row" id="finishCtl">
+      <button data-f="satin" class="on">Satin</button>
+      <button data-f="polished">Polished</button>
+      <button data-f="matte">Matte</button>
+    </div>
+  </div>
+</section>
+
+<div class="boot" id="boot">Loading room study…</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+const TEX = '3d-assets/textures-v4/terrazzo-venetian/';
+const HDRI = '3d-assets/textures-v4/_hdri/blocky_photo_studio.hdr';
+const app = document.getElementById('app');
+
+const ui = {
+  sceneTag: document.getElementById('sceneTag'),
+  sceneTitle: document.getElementById('sceneTitle'),
+  sceneLead: document.getElementById('sceneLead'),
+  metricSystem: document.getElementById('metricSystem'),
+  metricBuild: document.getElementById('metricBuild'),
+  metricChip: document.getElementById('metricChip'),
+  metricFinish: document.getElementById('metricFinish'),
+  dScene: document.getElementById('dScene'),
+  dUse: document.getElementById('dUse'),
+  dFeel: document.getElementById('dFeel'),
+  dShot: document.getElementById('dShot'),
+  dNote: document.getElementById('dNote'),
+};
+
+const SCENES = {
+  gallery: {
+    tag: 'Floor.DSGN · showroom cut · terrazzo',
+    title: 'Epoxy terrazzo that already feels installed.',
+    lead: 'Быстрый интерьерный кадр для оценки масштаба крошки, блика и спокойствия фона до того, как команда открывает полный конфигуратор.',
+    scene: 'Gallery lobby',
+    use: 'Reception, boutique retail, quiet hospitality',
+    feel: 'Balanced gloss with a calm wall wash and deep aggregate contrast',
+    note: 'Лучший режим для первого разговора с дизайнером: видно и блеск, и массу материала, но сцена не превращается в “визуализацию ради визуализации”.',
+    system: 'Epoxy terrazzo / Venetian chip',
+    build: '8–10 mm decorative topping',
+    chip: '16–22 mm aggregate',
+    wall: 0xd9d2c8,
+    side: 0xcbc2b6,
+    pedestal: 0xede7df,
+    fog: 0xcfc8c0,
+    bgBlur: 0.18,
+    exposure: 1.04,
+    env: 1.22,
+  },
+  residential: {
+    tag: 'Floor.DSGN · warm interior study',
+    title: 'A quieter residential read with softer light.',
+    lead: 'Режим, где материал выглядит ближе к частному интерьеру: меньше салонного контраста, больше ощущения тактильности и спокойного света.',
+    scene: 'Residential suite',
+    use: 'Private home, kitchen-dining, boutique apartment',
+    feel: 'Softer contrast, warmer walls, less mirror and more body',
+    note: 'Полезно, когда нужно убедить клиента, что декоративный пол может быть не холодным и не “коммерческим”, а очень тихим по атмосфере.',
+    system: 'Decorative resin terrazzo / warm read',
+    build: '6–8 mm topping + satin sealer logic',
+    chip: '14–18 mm aggregate',
+    wall: 0xe3ddd5,
+    side: 0xd5cdc2,
+    pedestal: 0xf3eee7,
+    fog: 0xd9d3cb,
+    bgBlur: 0.22,
+    exposure: 0.96,
+    env: 1.05,
+  },
+  night: {
+    tag: 'Floor.DSGN · contrast study · after hours',
+    title: 'Night mode to judge reflection under harder contrast.',
+    lead: 'Здесь видно, где пол остаётся благородным, а где уже начинает спорить с интерьером. Хороший режим для ресторанов, шоурумов и лобби.',
+    scene: 'Night hospitality',
+    use: 'Restaurant, bar foyer, late-hour retail, premium lobby',
+    feel: 'Harder black mirror moments with controlled edge glow',
+    note: 'Это не “красивый фильтр”, а проверка: насколько пол держит рисунок и глубину под вечерним светом и острым отражением.',
+    system: 'High-contrast terrazzo / polished study',
+    build: '8–10 mm decorative topping',
+    chip: '16–22 mm aggregate',
+    wall: 0x6d6660,
+    side: 0x595450,
+    pedestal: 0x93897f,
+    fog: 0x7a726a,
+    bgBlur: 0.12,
+    exposure: 0.78,
+    env: 1.48,
+  },
+};
+
+const SHOTS = {
+  wide: {
+    label: 'Wide room read',
+    pos: [0.25, 1.8, 5.1],
+    target: [0, 0.28, -1.9],
+    fov: 47,
+  },
+  grazing: {
+    label: 'Low grazing check',
+    pos: [-1.15, 1.28, 3.25],
+    target: [-0.2, 0.12, -1.5],
+    fov: 42,
+  },
+  macro: {
+    label: 'Near-field aggregate check',
+    pos: [0.82, 0.74, 1.8],
+    target: [0.25, 0.02, -0.45],
+    fov: 33,
+  },
+};
+
+const FINISHES = {
+  satin: {
+    roughness: 0.12,
+    metric: 'Satin / soft reflection',
+    feel: 'Soft reflection with enough diffusion for daily use',
+  },
+  polished: {
+    roughness: 0.03,
+    metric: 'Polished / high clarity',
+    feel: 'Cleaner reflection and stronger contrast in the chips',
+  },
+  matte: {
+    roughness: 0.58,
+    metric: 'Matte / low glare',
+    feel: 'Low glare with flatter reading and quieter reflection',
+  },
+};
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 2 : 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.04;
+renderer.shadowMap.enabled = false;
+app.appendChild(renderer.domElement);
+const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0xcfc8c0, 14, 42);
+
+const camera = new THREE.PerspectiveCamera(47, 1, 0.05, 200);
+camera.position.set(0.25, 1.8, 5.1);
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+
+const texLoader = new THREE.TextureLoader();
+const repeat = 75;
+
+function loadTexture(filePath, srgb) {
+  const texture = texLoader.load(filePath);
+  texture.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  texture.anisotropy = maxAnisotropy;
+  texture.repeat.set(repeat, repeat);
+  return texture;
+}
+
+const floorMat = new THREE.MeshPhysicalMaterial({
+  map: loadTexture(TEX + 'diffuse.jpg', true),
+  normalMap: loadTexture(TEX + 'normal.jpg', false),
+  roughnessMap: loadTexture(TEX + 'roughness.jpg', false),
+  roughness: 1.0,
+  metalness: 0.0,
+  normalScale: new THREE.Vector2(0.6, 0.6),
+  clearcoat: 1.0,
+  clearcoatRoughness: 0.12,
+  envMapIntensity: 1.22,
+});
+
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), floorMat);
+floor.rotation.x = -Math.PI / 2;
+scene.add(floor);
+
+const wallMat = new THREE.MeshStandardMaterial({ color: 0xd9d2c8, roughness: 0.98, metalness: 0.0 });
+const sideWallMat = wallMat.clone();
+const pedestalMat = new THREE.MeshStandardMaterial({ color: 0xede7df, roughness: 0.82, metalness: 0.0 });
+
+const backWall = new THREE.Mesh(new THREE.PlaneGeometry(80, 28), wallMat);
+backWall.position.set(0, 10.5, -16);
+scene.add(backWall);
+
+const sideWall = new THREE.Mesh(new THREE.PlaneGeometry(34, 28), sideWallMat);
+sideWall.rotation.y = Math.PI / 2;
+sideWall.position.set(-11, 10.5, -1);
+scene.add(sideWall);
+
+const pedestal = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.24, 1.5), pedestalMat);
+pedestal.position.set(2.1, 0.12, -2.35);
+scene.add(pedestal);
+
+const sampleBlock = new THREE.Mesh(new THREE.BoxGeometry(1.05, 0.09, 0.82), pedestalMat.clone());
+sampleBlock.position.set(-1.45, 0.045, -1.15);
+scene.add(sampleBlock);
+
+const skimLight = new THREE.DirectionalLight(0xffffff, 0.46);
+skimLight.position.set(-4, 7, 6);
+scene.add(skimLight);
+
+const fillLight = new THREE.HemisphereLight(0xf4efe9, 0x6d6760, 0.55);
+scene.add(fillLight);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0.28, -1.9);
+controls.minDistance = 1.15;
+controls.maxDistance = 10;
+controls.minPolarAngle = Math.PI * 0.29;
+controls.maxPolarAngle = Math.PI * 0.495;
+controls.enablePan = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.24;
+controls.update();
+
+const targetCameraPos = new THREE.Vector3().copy(camera.position);
+const targetFocus = new THREE.Vector3().copy(controls.target);
+let targetFov = camera.fov;
+let currentScene = 'gallery';
+let currentShot = 'wide';
+let currentFinish = 'satin';
+let resumeAutorotateAt = 0;
+
+controls.addEventListener('start', () => {
+  controls.autoRotate = false;
+  resumeAutorotateAt = performance.now() + 4200;
+});
+controls.addEventListener('end', () => {
+  resumeAutorotateAt = performance.now() + 2200;
+});
+
+new RGBELoader().load(HDRI, (hdr) => {
+  hdr.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = pmrem.fromEquirectangular(hdr).texture;
+  scene.background = hdr;
+  scene.backgroundBlurriness = 0.18;
+  document.getElementById('boot').classList.add('gone');
+}, undefined, () => {
+  document.getElementById('boot').classList.add('gone');
+});
+setTimeout(() => document.getElementById('boot').classList.add('gone'), 3200);
+
+function setButtonState(selector, value, attr) {
+  document.querySelectorAll(selector).forEach((button) => {
+    button.classList.toggle('on', button.dataset[attr] === value);
+  });
+}
+
+function applyScene(name) {
+  currentScene = SCENES[name] ? name : 'gallery';
+  const data = SCENES[currentScene];
+  ui.sceneTag.textContent = data.tag;
+  ui.sceneTitle.textContent = data.title;
+  ui.sceneLead.textContent = data.lead;
+  ui.metricSystem.textContent = data.system;
+  ui.metricBuild.textContent = data.build;
+  ui.metricChip.textContent = data.chip;
+  ui.dScene.textContent = data.scene;
+  ui.dUse.textContent = data.use;
+  ui.dNote.textContent = data.note;
+  wallMat.color.setHex(data.wall);
+  sideWallMat.color.setHex(data.side);
+  pedestalMat.color.setHex(data.pedestal);
+  sampleBlock.material.color.setHex(data.pedestal);
+  scene.fog.color.setHex(data.fog);
+  scene.backgroundBlurriness = data.bgBlur;
+  renderer.toneMappingExposure = data.exposure;
+  floorMat.envMapIntensity = data.env;
+  ui.dFeel.textContent = FINISHES[currentFinish].feel;
+  setButtonState('#sceneCtl button', currentScene, 'scene');
+}
+
+function applyShot(name) {
+  currentShot = SHOTS[name] ? name : 'wide';
+  const data = SHOTS[currentShot];
+  targetCameraPos.set(...data.pos);
+  targetFocus.set(...data.target);
+  targetFov = data.fov;
+  ui.dShot.textContent = data.label;
+  setButtonState('#shotCtl button', currentShot, 'shot');
+}
+
+function applyFinish(name) {
+  currentFinish = FINISHES[name] ? name : 'satin';
+  const data = FINISHES[currentFinish];
+  floorMat.clearcoatRoughness = data.roughness;
+  floorMat.needsUpdate = true;
+  ui.metricFinish.textContent = data.metric;
+  ui.dFeel.textContent = data.feel;
+  setButtonState('#finishCtl button', currentFinish, 'f');
+}
+
+document.querySelectorAll('#sceneCtl button').forEach((button) => {
+  button.addEventListener('click', () => {
+    applyScene(button.dataset.scene);
+    applyShot(currentShot);
+    controls.autoRotate = false;
+    resumeAutorotateAt = performance.now() + 2800;
+  });
+});
+
+document.querySelectorAll('#shotCtl button').forEach((button) => {
+  button.addEventListener('click', () => {
+    applyShot(button.dataset.shot);
+    controls.autoRotate = false;
+    resumeAutorotateAt = performance.now() + 2800;
+  });
+});
+
+document.querySelectorAll('#finishCtl button').forEach((button) => {
+  button.addEventListener('click', () => {
+    applyFinish(button.dataset.f);
+    controls.autoRotate = false;
+    resumeAutorotateAt = performance.now() + 1800;
+  });
+});
+
+window.addEventListener('keydown', (event) => {
+  const key = event.key.toLowerCase();
+  if (key === 'q') applyScene('gallery');
+  if (key === 'w') applyScene('residential');
+  if (key === 'e') applyScene('night');
+  if (key === 'a') applyShot('wide');
+  if (key === 's') applyShot('grazing');
+  if (key === 'd') applyShot('macro');
+  if (key === '1') applyFinish('satin');
+  if (key === '2') applyFinish('polished');
+  if (key === '3') applyFinish('matte');
+});
+
+function resize() {
+  const width = app.clientWidth;
+  const height = app.clientHeight;
+  renderer.setSize(width, height, false);
+  camera.aspect = width / Math.max(1, height);
+  camera.updateProjectionMatrix();
+}
+
+new ResizeObserver(resize).observe(app);
+resize();
+applyScene('gallery');
+applyShot('wide');
+applyFinish('satin');
+
+window.__room = {
+  scene,
+  camera,
+  renderer,
+  floorMat,
+  controls,
+  applyScene,
+  applyShot,
+  applyFinish,
+};
+
+function loop(now) {
+  if (resumeAutorotateAt && now > resumeAutorotateAt && currentShot === 'wide') {
+    controls.autoRotate = true;
+  }
+  camera.position.lerp(targetCameraPos, 0.052);
+  controls.target.lerp(targetFocus, 0.072);
+  camera.fov += (targetFov - camera.fov) * 0.06;
+  camera.updateProjectionMatrix();
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
