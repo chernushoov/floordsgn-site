@@ -156,10 +156,10 @@ body{ font-family:var(--sans); }
 /* ── mobile ── */
 @media (max-width:880px){
   :root{ --hdr:52px; }
-  .st-panel{ top:auto; bottom:0; right:0; left:0; width:100%; max-width:100%; height:72vh; border-left:0; border-top:1px solid var(--line); border-radius:18px 18px 0 0; transform:translateY(0); }
+  .st-panel{ top:auto; bottom:0; right:0; left:0; width:100%; max-width:100%; height:54vh; border-left:0; border-top:1px solid var(--line); border-radius:18px 18px 0 0; transform:translateY(0); }
   .st-panel.hidden{ transform:translateY(calc(100% - 0px)); }
   .st-panel-toggle{ display:flex; }
-  .bar{ right:18px; left:18px; bottom:calc(72vh + 12px) !important; }
+  .bar{ right:18px; left:18px; bottom:calc(54vh + 12px) !important; }
   .st-tiles{ grid-template-columns:repeat(2,1fr); }
   .st-chooser h2{ font-size:25px; }
   .hud.br{ display:none !important; }
