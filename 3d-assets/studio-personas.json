@@ -193,7 +193,7 @@
       "compareDefault": false,
       "suitabilityGate": true,
       "calc": "downtime",
-      "defaults": { "room": "living", "light": "noon", "finish": "satin" },
+      "defaults": { "room": "kitchen", "light": "noon", "finish": "satin" },
       "cta": {
         "primary": { "type": "whatsapp", "label": { "ru": "WhatsApp: для кухни ресторана", "en": "WhatsApp: restaurant kitchen" },
           "wa": { "ru": "Здравствуйте! Пол для кухни ресторана:", "en": "Hi! Floor for a restaurant kitchen:" } },

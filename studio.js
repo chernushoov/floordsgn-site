@@ -6,6 +6,7 @@
   'use strict';
   const WA = '972559661459';
   const MAIL = 'floors.dsgn@gmail.com';
+  const ASSET_V = '20260603-8';   // bump with studio.js ?v= → busts the 1yr-immutable /3d-assets JSON cache
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const el = (tag, attrs = {}, html) => { const n = document.createElement(tag);
@@ -648,9 +649,9 @@
   async function boot(){
     try {
       [DATA, MAN, DESIGNS] = await Promise.all([
-        fetch('3d-assets/studio-personas.json').then(r => r.json()),
-        fetch('3d-assets/manifest.json').then(r => r.json()),
-        fetch('3d-assets/textures-v4/_designs/index.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+        fetch('3d-assets/studio-personas.json?v=' + ASSET_V).then(r => r.json()),
+        fetch('3d-assets/manifest.json?v=' + ASSET_V).then(r => r.json()),
+        fetch('3d-assets/textures-v4/_designs/index.json?v=' + ASSET_V).then(r => r.ok ? r.json() : {}).catch(() => ({}))
       ]);
     } catch(e){ console.error('Studio data load failed', e); return; }
 
