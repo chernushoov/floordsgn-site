@@ -207,7 +207,8 @@
     const acts = el('div', { class:'st-acts' });
     const bSave = el('button', { class:'st-act' }, L === 'ru' ? '+ Сохранить' : '+ Save'); bSave.onclick = boardSave;
     const bCmp = el('button', { class:'st-act' }, L === 'ru' ? 'Сравнить' : 'Compare'); bCmp.onclick = compareOpen;
-    acts.append(bSave, bCmp); scroll.append(acts);
+    const bFrame = el('button', { class:'st-act', title: L === 'ru' ? 'Скачать кадр PNG' : 'Download frame PNG' }, L === 'ru' ? 'Кадр' : 'Frame'); bFrame.onclick = downloadFrame;
+    acts.append(bSave, bCmp, bFrame); scroll.append(acts);
     scroll.append(buildMaterials(p));
 
     // suitability gate (restaurant: microcement not for kitchens)
@@ -523,6 +524,10 @@
 
   /* ═══════════ snapshot / board / compare / print (M3) ═══════════ */
   function snapshot(){ try { const c = window.__room && window.__room.renderer && window.__room.renderer.domElement; return c ? c.toDataURL('image/jpeg', 0.6) : ''; } catch(e){ return ''; } }
+  function downloadFrame(){   // save the current 3D view as a PNG (full canvas resolution)
+    const c = window.__room && window.__room.renderer && window.__room.renderer.domElement; if (!c) return;
+    try { const a = el('a', { href: c.toDataURL('image/png'), download: 'floordsgn-' + curFloor() + '-' + STATE.room + '.png' }); document.body.append(a); a.click(); a.remove(); track('frame', { m: curFloor(), room: STATE.room }); toast(L === 'ru' ? 'Кадр сохранён' : 'Frame saved'); } catch(e){}
+  }
 
   function boardGet(){ try { return JSON.parse(localStorage.getItem('floordsgn_board') || '[]'); } catch(e){ return []; } }
   function boardSet(a){ localStorage.setItem('floordsgn_board', JSON.stringify(a.slice(-12))); updateBoardCount(); }
