@@ -38,12 +38,8 @@
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
-# actively-iterated Studio overlay — always revalidate so deploys show immediately
-/studio.js
-  Cache-Control: public, max-age=0, must-revalidate
-/studio.css
-  Cache-Control: public, max-age=0, must-revalidate
-
+# Studio overlay is cache-busted via ?v= on the studio.css/js refs in floor-room.html
+# (bump that token each deploy) — so /*.js can keep a long cache with one clean header.
 /*.css
   Cache-Control: public, max-age=86400, must-revalidate
 
