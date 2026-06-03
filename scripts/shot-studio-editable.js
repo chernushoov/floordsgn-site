@@ -161,7 +161,33 @@ const boot=async(pg,url)=>{await pg.goto(url,{waitUntil:'networkidle',timeout:30
     ok('tf re-applied after room switch away+back', back && back.moved && Math.abs(back.ry-0.26)<0.05, back);
     await c3.close();
   }
-  // ───────────────── PHASE 3 — styles (added when P3 lands) ─────────────────
+  // ───────────────── PHASE 3 — interior styles ─────────────────
+  if(want(3)){
+    const {ctx,pg}=await mkpage('(p3)');await boot(pg,`http://127.0.0.1:${port}/floor-room.html`);
+    const SIGNAL=0xc86b3c;
+    ok('default style is warm', await pg.evaluate(()=>window.__room.getStyle()==='warm'));
+    ok('default MAT.signal is C.signal', await pg.evaluate(s=>window.__room.matHex('signal')===s, SIGNAL));
+    const warmOak=await pg.evaluate(()=>window.__room.matHex('oak'));
+    const loft=await pg.evaluate(()=>{ window.__room.setStyle('loft'); return { style:window.__room.getStyle(), oak:window.__room.matHex('oak'), walnut:window.__room.matHex('walnut'), signal:window.__room.matHex('signal') }; });
+    ok('setStyle(loft) sets style', loft.style==='loft');
+    ok('setStyle(loft) re-skins woods (oak changed)', loft.oak!==warmOak, {warmOak,loftOak:loft.oak});
+    ok('setStyle keeps signal locked at C.signal', loft.signal===SIGNAL, {signal:loft.signal});
+    const backOak=await pg.evaluate(()=>{ window.__room.setStyle('warm'); return window.__room.matHex('oak'); });
+    ok('setStyle(warm) restores exact showcase oak', backOak===warmOak, {warmOak,backOak});
+    // exactly one bake per style apply (coalesced)
+    const sb0=await pg.evaluate(()=>window.__room.getBakes());
+    await pg.evaluate(()=>window.__room.setStyle('scandi'));
+    await pg.evaluate(()=>new Promise(r=>{let n=0;(function f(){ if(++n>5) return r(); requestAnimationFrame(f); })();}));
+    const sb1=await pg.evaluate(()=>window.__room.getBakes());
+    ok('style apply triggers exactly one bake', sb1===sb0+1, {sb0,sb1});
+    await ctx.close();
+    // deep-link st=loft round-trips
+    const {ctx:c2,pg:p2}=await mkpage('(p3-dl)');await boot(p2,`http://127.0.0.1:${port}/floor-room.html?avatar=designer&st=loft`);
+    const dl=await p2.evaluate(()=>({style:window.__room.getStyle(),signal:window.__room.matHex('signal')}));
+    ok('deep-link st=loft applies on boot', dl.style==='loft', dl);
+    ok('deep-link style keeps signal locked', dl.signal===SIGNAL, dl);
+    await c2.close();
+  }
   // ───────────────── PHASE 4 — walls (added when P4 lands) ─────────────────
 
   await browser.close();srv.close();

@@ -18,7 +18,7 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{} };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{}, style:'warm' };
   /* tf deep-link: per-room furniture transforms, only moved pieces. "name,x,z,ry" joined by ";". */
   const encTf = (arr) => (arr || []).map(m => [m.name, m.x, m.z, +(+m.ry || 0).toFixed(3)].join(',')).join(';');
   const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); return a.length >= 4 ? { name:a[0], x:+a[1], z:+a[2], ry:+a[3] } : null; }).filter(Boolean);
@@ -326,6 +326,16 @@
     tr.onchange = () => { writeURL(); track('suntime', { t:STATE.sun }); };
     tod.append(el('span', { class:'st-tod-l' }, L === 'ru' ? 'Утро' : 'AM'), tr, el('span', { class:'st-tod-l' }, L === 'ru' ? 'Вечер' : 'PM'));
     wrap.append(tod);
+    // interior style — re-skins woods/upholstery/metal (materials only); the signal accent stays locked
+    if (window.__room && window.__room.setStyle){
+      wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Стиль интерьера' : 'Interior style'));
+      const STYLE_OPTS = [{ id:'warm', ru:'Тёплый', en:'Warm' },{ id:'scandi', ru:'Сканди', en:'Scandi' },{ id:'loft', ru:'Лофт', en:'Loft' },{ id:'minimal', ru:'Минимал', en:'Minimal' },{ id:'modern', ru:'Модерн', en:'Modern' }];
+      const styRow = el('div', { class:'st-pillrow' });
+      STYLE_OPTS.forEach(o => { const b = el('button', { class:'st-pill' + (STATE.style === o.id ? ' on' : '') }, L === 'ru' ? o.ru : o.en);
+        b.onclick = () => { const r = window.__room; if (r && r.setStyle) r.setStyle(o.id); STATE.style = o.id; $$('.st-pill', styRow).forEach(x => x.classList.remove('on')); b.classList.add('on'); track('style', { style:o.id }); writeURL(); };
+        styRow.append(b); });
+      wrap.append(styRow);
+    }
     // human-scale figure toggle
     const figRow = el('div', { class:'st-pillrow', style:'margin-top:6px' });
     const fig = el('button', { class:'st-pill' + (STATE.figure ? ' on' : '') }, L === 'ru' ? 'Фигура для масштаба' : 'Scale figure');
@@ -513,6 +523,7 @@
     if (STATE.ctl.design && STATE.ctl.design !== 'orig') u.searchParams.set('d', STATE.ctl.design);
     if (STATE.sun !== 0.4) u.searchParams.set('sun', String(STATE.sun));
     { const tf = STATE.tf[STATE.room]; if (tf && tf.length) u.searchParams.set('tf', encTf(tf)); }
+    if (STATE.style && STATE.style !== 'warm') u.searchParams.set('st', STATE.style);
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -530,6 +541,7 @@
     if (q.get('d')) STATE.ctl.design = q.get('d');
     if (q.get('sun') != null){ const s = parseFloat(q.get('sun')); if (!isNaN(s)) STATE.sun = Math.max(0, Math.min(1, s)); }
     if (q.get('tf')) STATE.tf[STATE.room] = decTf(q.get('tf'));   // for the deep-linked room
+    if (q.get('st')) STATE.style = q.get('st');
   }
   async function share(){
     const url = shareURL();
@@ -753,6 +765,7 @@
     // which applyPersona resets to the persona default)
     if (urlFloor) setFloor(urlFloor);
     if (urlRoom) setRoom(urlRoom);
+    if (STATE.style && STATE.style !== 'warm' && window.__room && window.__room.setStyle) window.__room.setStyle(STATE.style);   // style after room, before floor/light/tf
     if (urlFinish) setFinish(urlFinish);
     if (urlView) setView(urlView);
     if (urlLight && window.__room && window.__room.setLighting){ window.__room.setLighting(urlLight); STATE.light = urlLight; }

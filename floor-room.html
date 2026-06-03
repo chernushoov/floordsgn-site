@@ -268,6 +268,31 @@ const MAT = {
   paper:  new THREE.MeshStandardMaterial({ color: 0xe9e3d6, roughness: 0.9 }),
   stone:  new THREE.MeshStandardMaterial({ color: 0xb3a791, roughness: 0.7 }),
 };
+
+/* ───────────────── interior styles (Phase 3) — materials/colours only ─────────────────
+   setStyle(key) mutates the shared MAT.* in place (color/roughness/metalness), so every piece
+   (current and rebuilt) re-skins live and the style survives clearKit + furniture moves. The ONE
+   brand accent (MAT.signal) is always C.signal. `warm` reproduces the showcase exactly → I1. */
+const STYLES = {
+  warm:    { linen:{color:0xc7bca8,roughness:0.97}, linenD:{color:0xb3a78f,roughness:0.97}, oak:{color:0x7a5a3a,roughness:0.45}, walnut:{color:0x46321f,roughness:0.4}, metal:{color:0x191917,roughness:0.32,metalness:0.75}, paper:{color:0xe9e3d6,roughness:0.9}, stone:{color:0xb3a791,roughness:0.7} },
+  scandi:  { linen:{color:0xdcd6ca,roughness:0.95}, linenD:{color:0xc7bfac,roughness:0.95}, oak:{color:0xb8966a,roughness:0.5}, walnut:{color:0x9c7d57,roughness:0.5}, metal:{color:0x8f8e88,roughness:0.45,metalness:0.45}, paper:{color:0xf0ece2,roughness:0.9}, stone:{color:0xccc6b8,roughness:0.7} },
+  loft:    { linen:{color:0x9b9285,roughness:0.95}, linenD:{color:0x847b6d,roughness:0.95}, oak:{color:0x5e4632,roughness:0.45}, walnut:{color:0x33241a,roughness:0.4}, metal:{color:0x222220,roughness:0.3,metalness:0.85}, paper:{color:0xd8cfbe,roughness:0.9}, stone:{color:0x9a8f7c,roughness:0.65} },
+  minimal: { linen:{color:0xcfcdc4,roughness:0.96}, linenD:{color:0xb8b6ac,roughness:0.96}, oak:{color:0x8f8474,roughness:0.5}, walnut:{color:0x3a3a37,roughness:0.45}, metal:{color:0x1a1a18,roughness:0.35,metalness:0.7}, paper:{color:0xeeece4,roughness:0.92}, stone:{color:0xbdb9ad,roughness:0.72} },
+  modern:  { linen:{color:0xd0c8b9,roughness:0.96}, linenD:{color:0xb6ad9b,roughness:0.96}, oak:{color:0x6f5238,roughness:0.42}, walnut:{color:0x3c2a1c,roughness:0.38}, metal:{color:0x2a2a28,roughness:0.28,metalness:0.85}, paper:{color:0xeae4d6,roughness:0.9}, stone:{color:0xb1a690,roughness:0.68} },
+};
+const _STYLE_KEYS = ['linen','linenD','oak','walnut','metal','paper','stone'];
+let _style = 'warm';
+function setStyle(key){
+  const s = STYLES[key] || STYLES.warm;
+  for(const k of _STYLE_KEYS){ const m=MAT[k], d=s[k]; if(!m||!d) continue;
+    m.color.setHex(d.color); m.roughness = d.roughness; m.metalness = (d.metalness!=null ? d.metalness : 0); m.needsUpdate = true; }
+  MAT.signal.color.setHex(C.signal); MAT.signal.needsUpdate = true;   // lock the single accent (I5)
+  _style = (key in STYLES) ? key : 'warm';
+  requestBake();
+  return _style;
+}
+function getStyle(){ return _style; }
+function matHex(k){ return MAT[k] ? MAT[k].color.getHex() : null; }   // QA reader
 const RB = (w,h,d,r=0.04)=> new RoundedBoxGeometry(w,h,d,4,r);
 
 /* shared greenery helpers (used by several room kits) */
@@ -879,7 +904,7 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
                   setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms,
                   clampCamera, getBound: ()=>({ x:ROOM_BOUND.x, z:ROOM_BOUND.z, yMin:ROOM_BOUND.yMin, yMax:ROOM_BOUND.yMax }),
                   setEditMode, getMovables, setTransforms, resetTransforms, onEdit, getEditMode:()=>_editMode,
-                  screenOf, lampInfo, getBakes:()=>_bakes };
+                  setStyle, getStyle, matHex, screenOf, lampInfo, getBakes:()=>_bakes };
 
 (function loop(){
   if (tour){
