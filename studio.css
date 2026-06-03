@@ -254,3 +254,15 @@ body{ font-family:var(--sans); }
   #stPrint, #stPrint * { visibility:visible !important; }
   #stPrint{ display:block !important; position:absolute; left:0; top:0; width:100%; padding:26px; }
 }
+
+/* ── furniture edit (Phase 2): floating toolbar on the selected piece (engine-owned DOM) ── */
+#roomEditBar{ position:fixed; z-index:60; display:flex; gap:4px; padding:5px;
+  background:var(--concrete); border:1px solid var(--line); border-radius:980px;
+  box-shadow:0 10px 30px rgba(0,0,0,.22); transform:translateX(-50%); }
+#roomEditBar button{ font-family:var(--sans); font-size:13px; font-weight:600; color:var(--carbon);
+  background:#fff; border:1px solid var(--line); border-radius:980px; min-width:34px; height:32px;
+  padding:0 11px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:.14s; -webkit-tap-highlight-color:transparent; }
+#roomEditBar button:hover{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
+#roomEditBar button[data-a="reset"],#roomEditBar button[data-a="close"]{ font-size:11px; color:var(--steel); }
+.room-editing canvas{ cursor:grab; }
+.st-hint{ font-size:11px; line-height:1.4; color:var(--steel); margin:6px 2px 2px; }

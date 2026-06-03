@@ -18,7 +18,11 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{} };
+  /* tf deep-link: per-room furniture transforms, only moved pieces. "name,x,z,ry" joined by ";". */
+  const encTf = (arr) => (arr || []).map(m => [m.name, m.x, m.z, +(+m.ry || 0).toFixed(3)].join(',')).join(';');
+  const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); return a.length >= 4 ? { name:a[0], x:+a[1], z:+a[2], ry:+a[3] } : null; }).filter(Boolean);
+  const applyTf = (rm) => { const r = window.__room; const arr = STATE.tf[rm || STATE.room]; if (r && r.setTransforms && arr && arr.length) r.setTransforms(arr); };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
@@ -334,6 +338,19 @@
       figRow.append(cs);
     }
     wrap.append(figRow);
+    // arrange — move & rotate furniture (engine edit mode; toolbar appears on the selected piece)
+    if (window.__room && window.__room.setEditMode){
+      wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Расстановка' : 'Arrange'));
+      const er = el('div', { class:'st-pillrow' });
+      const eb = el('button', { class:'st-pill' + (STATE.edit ? ' on' : '') }, L === 'ru' ? 'Двигать мебель' : 'Move furniture');
+      eb.onclick = () => { STATE.edit = !STATE.edit; const r = window.__room; if (r && r.setEditMode) r.setEditMode(STATE.edit); eb.classList.toggle('on', STATE.edit); track('edit', { on:STATE.edit }); };
+      er.append(eb);
+      const rb = el('button', { class:'st-pill' }, L === 'ru' ? 'Сбросить расстановку' : 'Reset layout');
+      rb.onclick = () => { const r = window.__room; if (r && r.resetTransforms) r.resetTransforms(); STATE.tf[STATE.room] = []; writeURL(); track('edit_reset'); };
+      er.append(rb);
+      wrap.append(er);
+      wrap.append(el('div', { class:'st-hint' }, L === 'ru' ? 'Включите и коснитесь предмета: тяните по полу, поворот — кнопками.' : 'Toggle on, tap a piece: drag on the floor, rotate with the buttons.'));
+    }
     const rs = buildRoomSize(); if (rs) wrap.append(rs);
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
@@ -495,6 +512,7 @@
     if (STATE.dims) u.searchParams.set('dims', STATE.dims.w + 'x' + STATE.dims.d + 'x' + STATE.dims.h);
     if (STATE.ctl.design && STATE.ctl.design !== 'orig') u.searchParams.set('d', STATE.ctl.design);
     if (STATE.sun !== 0.4) u.searchParams.set('sun', String(STATE.sun));
+    { const tf = STATE.tf[STATE.room]; if (tf && tf.length) u.searchParams.set('tf', encTf(tf)); }
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -511,6 +529,7 @@
     const dm = q.get('dims'); if (dm){ const a = dm.split('x').map(Number); if (a.length === 3 && a.every(n => n > 0)) STATE.dims = { w:a[0], d:a[1], h:a[2] }; }
     if (q.get('d')) STATE.ctl.design = q.get('d');
     if (q.get('sun') != null){ const s = parseFloat(q.get('sun')); if (!isNaN(s)) STATE.sun = Math.max(0, Math.min(1, s)); }
+    if (q.get('tf')) STATE.tf[STATE.room] = decTf(q.get('tf'));   // for the deep-linked room
   }
   async function share(){
     const url = shareURL();
@@ -715,7 +734,7 @@
 
     // sync STATE from engine on user clicks
     $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { if (comparing) return; STATE.m = curFloor(); if (!booting){ applyColor('orig'); STATE.ctl.design = 'orig'; } const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); captureArtRepeat(); if (STATE.realChip) applyChipScale(); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
-    $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; if (!booting){ STATE.dims = null; renderPanel(); } writeURL(); }));
+    $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; if (!booting){ STATE.dims = null; renderPanel(); } applyTf(STATE.room); writeURL(); }));   // engine rebuilt the kit (listener ran first) → restore this room's arrangement
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
 
@@ -742,6 +761,10 @@
     if (STATE.dims && window.__room && window.__room.setRoomDims){ window.__room.setRoomDims(STATE.dims.w, STATE.dims.d, STATE.dims.h); STATE.figure = true; }
     if (STATE.ctl.design && STATE.ctl.design !== 'orig'){ const v = designsFor(curFloor()).find(x => x.id === STATE.ctl.design); if (v) applyDesign(v); }
     if (q.get('sun') != null && window.__room && window.__room.setSunTime) window.__room.setSunTime(STATE.sun);
+
+    // furniture edit: snapshot moved pieces on every drag/rotate settle (engine fires onEdit)
+    if (window.__room && window.__room.onEdit) window.__room.onEdit(mv => { STATE.tf[STATE.room] = (mv || []).filter(m => m.moved); writeURL(); });
+    applyTf(STATE.room);   // transforms LAST in boot, after setRoom/dims (re-applied on later room switches)
 
     setLang(L); // paints chrome text + panel
     setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change
