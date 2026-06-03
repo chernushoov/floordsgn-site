@@ -579,12 +579,14 @@
     const base = el('img', { class:'st-ba-img', src: srcB, alt: nameB, draggable:'false' });
     const top = el('div', { class:'st-ba-top' });
     top.append(el('img', { class:'st-ba-img', src: srcA, alt: nameA, draggable:'false' }));
-    const handle = el('div', { class:'st-ba-handle', role:'slider', 'aria-label': L === 'ru' ? 'Перетащите, чтобы сравнить' : 'Drag to compare' });
+    const handle = el('div', { class:'st-ba-handle' });
+    ba.setAttribute('role', 'slider'); ba.setAttribute('tabindex', '0'); ba.setAttribute('aria-label', (L === 'ru' ? 'Сравнение: ' : 'Compare: ') + nameA + ' / ' + nameB); ba.setAttribute('aria-valuemin', '0'); ba.setAttribute('aria-valuemax', '100');
     ba.append(base, top, handle, el('span', { class:'st-ba-lab st-ba-lab-l' }, nameA), el('span', { class:'st-ba-lab st-ba-lab-r' }, nameB));
     let split = 50;
-    const apply = () => { top.style.clipPath = 'inset(0 ' + (100 - split) + '% 0 0)'; handle.style.left = split + '%'; };
+    const apply = () => { top.style.clipPath = 'inset(0 ' + (100 - split) + '% 0 0)'; handle.style.left = split + '%'; ba.setAttribute('aria-valuenow', Math.round(split)); };
     const at = (x) => { const r = ba.getBoundingClientRect(); split = Math.max(0, Math.min(100, ((x - r.left) / r.width) * 100)); apply(); };
     ba.addEventListener('pointerdown', e => { e.preventDefault(); at(e.clientX); const mv = ev => at(ev.clientX); const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); }; window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); });
+    ba.addEventListener('keydown', e => { if (e.key === 'ArrowLeft'){ split = Math.max(0, split - 4); apply(); e.preventDefault(); } else if (e.key === 'ArrowRight'){ split = Math.min(100, split + 4); apply(); e.preventDefault(); } });
     apply();
     return ba;
   }
@@ -593,40 +595,46 @@
     track('compare', {});
     const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
     $('#stCmpTitle').textContent = L === 'ru' ? 'Сравнение систем' : 'Compare systems';
-    // engine floors (have real 3D) for the visual A/B — first two distinct
-    const ef = [], sf = {};
+    const ef = [], sf = {};   // engine floors (have real 3D)
     p.floors.forEach(fl => { if (REAL_TILE[fl] !== undefined && !sf[fl]){ sf[fl] = 1; ef.push(fl); } });
-    const ab = ef.slice(0, 2);
-    let vis = null;
-    if (ab.length === 2){
-      vis = el('div', { class:'st-cmp-vis' });
-      vis.append(el('div', { class:'st-cmp-spin' }, L === 'ru' ? 'Готовим визуальное сравнение…' : 'Rendering visual compare…'));
-      wrap.append(vis);
+    let cmpA = ef[0], cmpB = ef[1] || ef[0];
+    const lbl = fl => tx(DATA.floorLabels[fl] || { ru:fl });
+    const shots = {};   // cache per floor for this session
+
+    if (ef.length >= 2){
+      const selRow = el('div', { class:'st-cmp-sel' });
+      const mkSel = (val, set) => { const s = el('select', { class:'st-cmp-pick', 'aria-label': L === 'ru' ? 'Пол для сравнения' : 'Floor to compare' });
+        ef.forEach(fl => { const o = el('option', { value:fl }, lbl(fl)); if (fl === val) o.selected = true; s.append(o); });
+        s.onchange = () => { set(s.value); paint(); }; return s; };
+      selRow.append(mkSel(cmpA, v => cmpA = v), el('span', { class:'st-cmp-vs' }, L === 'ru' ? 'и' : 'vs'), mkSel(cmpB, v => cmpB = v));
+      wrap.append(selRow);
     }
+    const vis = el('div', { class:'st-cmp-vis' });
+    if (ef.length >= 2) vis.append(el('div', { class:'st-cmp-spin' }, L === 'ru' ? 'Готовим визуальное сравнение…' : 'Rendering visual compare…'));
+    wrap.append(vis);
     wrap.append(buildCmpTable(p));        // spec table is instant
     $('#stCmpModal').classList.add('show');
 
-    if (ab.length === 2){
-      comparing = true;                   // mute the floor-change listener while we cycle floors
+    async function shotFor(fl){ if (shots[fl]) return shots[fl]; const s = await renderFloorShot(fl); if (s) shots[fl] = s; return s; }
+    async function paint(){
+      if (ef.length < 2) return;
+      comparing = true;
       const orig = curFloor(), origColor = STATE.ctl.color, origReal = STATE.realChip;
+      vis.innerHTML = ''; vis.append(el('div', { class:'st-cmp-spin' }, L === 'ru' ? 'Готовим…' : 'Rendering…'));
       try {
-        STATE.realChip = false;           // fair A/B: both at art scale
-        const shotA = await renderFloorShot(ab[0]);
-        const shotB = await renderFloorShot(ab[1]);
-        setFloor(orig); await texReady();  // restore the user's exact floor + look
-        STATE.realChip = origReal; applyColor(origColor);
-        captureArtRepeat(); if (origReal) applyChipScale();
+        STATE.realChip = false;            // fair A/B: both at art scale
+        const a = await shotFor(cmpA), b = await shotFor(cmpB);
+        setFloor(orig); await texReady();   // restore the user's exact floor + look
+        STATE.realChip = origReal; applyColor(origColor); captureArtRepeat(); if (origReal) applyChipScale();
         const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(orig)); if (r && r.bake) r.bake();
-        if (vis){ vis.innerHTML = '';
-          const nameA = tx(DATA.floorLabels[ab[0]] || { ru:ab[0] }), nameB = tx(DATA.floorLabels[ab[1]] || { ru:ab[1] });
-          if (shotA && shotB){ vis.append(buildBASlider(shotA, nameA, shotB, nameB));
-            vis.append(el('div', { class:'st-ba-hint' }, L === 'ru' ? 'Перетащите разделитель, чтобы сравнить' : 'Drag the divider to compare')); }
-          else { [[ab[0], shotA], [ab[1], shotB]].forEach(([fl, src]) => { const cell = el('div', { class:'st-cmp-cell' }); if (src) cell.append(el('img', { src, alt: tx(DATA.floorLabels[fl] || { ru:fl }) })); cell.append(el('div', { class:'st-cmp-cap' }, tx(DATA.floorLabels[fl] || { ru:fl }))); vis.append(cell); }); }
-        }
-      } catch(e){ if (vis) vis.innerHTML = ''; }
-      await new Promise(r => setTimeout(r, 60));   // let the restore click's 30ms listener fire (skipped) before re-arming
+        vis.innerHTML = '';
+        if (a && b){ vis.append(buildBASlider(a, lbl(cmpA), b, lbl(cmpB)));
+          vis.append(el('div', { class:'st-ba-hint' }, L === 'ru' ? 'Перетащите разделитель, чтобы сравнить' : 'Drag the divider to compare')); }
+      } catch(e){ vis.innerHTML = ''; }
+      await new Promise(r => setTimeout(r, 60));
       comparing = false;
     }
+    if (ef.length >= 2) paint();
   }
 
   function boardPrint(){
@@ -666,6 +674,17 @@
     return m;
   }
 
+  /* one-time onboarding hint (returning / deep-linked users; first-timers get the chooser) */
+  function maybeOnboard(){
+    try { if (localStorage.getItem('floordsgn_onboard')) return; } catch(e){}
+    const box = el('div', { class:'st-onboard' });
+    box.append(el('span', {}, L === 'ru' ? 'Выберите материал, комнату и свет — получите расчёт и образец.' : 'Pick a material, room and light — get a quote and a sample.'));
+    const close = () => { box.classList.remove('show'); setTimeout(() => box.remove(), 300); try { localStorage.setItem('floordsgn_onboard', '1'); } catch(e){} };
+    const x = el('button', { class:'st-onboard-x', 'aria-label': L === 'ru' ? 'Закрыть' : 'Close' }, '×'); x.onclick = close;
+    box.append(x); document.body.append(box); requestAnimationFrame(() => box.classList.add('show'));
+    setTimeout(close, 9000);
+  }
+
   /* ═══════════ boot ═══════════ */
   async function boot(){
     try {
@@ -697,6 +716,7 @@
     if (fromURL){ applyPersona(fromURL); }
     else if (stored){ applyPersona(stored); }
     else { applyPersona('explore'); setTimeout(openChooser, 700); }
+    if (fromURL || stored) setTimeout(maybeOnboard, 1400);   // first-timers get the chooser instead
 
     // apply deep-linked floor/room/finish/view from the URL directly (not STATE,
     // which applyPersona resets to the persona default)

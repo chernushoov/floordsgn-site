@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css?v=20260603-11"/>
+<link rel="stylesheet" href="studio.css?v=20260603-12"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -388,6 +388,8 @@ function buildKitchen(){
     const pl=new THREE.PointLight(0xffce96,3.0,6,2); pl.position.set(px,1.86,0.4); roomKit.add(pl);
   }
   const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.12,24,16,0,Math.PI*2,0,Math.PI*0.5),MAT.stone); bowl.rotation.x=Math.PI; sr(bowl,0.7,0.96,0.4);
+  sr(new THREE.Mesh(RB(0.62,2.1,0.6,0.02), cab), hw2-0.33, 1.05, -hd2+0.42);          // tall larder cabinet, back-right
+  sr(new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.06,0.26,18), MAT.metal), 0.95, 1.06, 0.4);  // kettle accent on the island
   buildSnake(-hw2+0.5,hd2-0.6); buildFicus(-hw2+0.6,-hd2+0.7);
 }
 
@@ -416,7 +418,13 @@ function buildBath(){
     const pl=new THREE.PointLight(0xffe2b0,1.6,3.5,2); pl.position.set(-1.0+s*0.85,1.72,-hd2+0.45); roomKit.add(pl); }
   sr(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,0.34,28),MAT.signal),-hw2+0.6,0.17,hd2-0.6);   // ONE signal accent: round pouf
   sr(new THREE.Mesh(RB(0.4,0.08,0.28,0.03),new THREE.MeshStandardMaterial({color:0xeee9df,roughness:0.95})),0.6,0.72,0.5);  // folded towel on tub rim
-  buildSnake(hw2-0.5,-hd2+0.6);
+  (function(){ const g=new THREE.Group(); const a=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};   // towel ladder
+    const md=new THREE.MeshStandardMaterial({color:0x2a2a28,roughness:0.4,metalness:0.6});
+    for(const s of [-1,1]) a(new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,1.5,10),md),s*0.22,0.75,0);
+    for(const ry of [0.5,0.85,1.2]){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.011,0.011,0.44,10),md); t.rotation.z=Math.PI/2; a(t,0,ry,0); }
+    a(new THREE.Mesh(RB(0.34,0.5,0.04,0.02),new THREE.MeshStandardMaterial({color:0xe7ddcf,roughness:0.95})),0,0.98,0.05);
+    g.position.set(hw2-0.3,0,-hd2+0.9); g.rotation.y=-0.25; roomKit.add(g); })();
+  buildSnake(hw2-0.5,hd2-0.6);
 }
 
 /* ════════ room registry + switcher (floor + tour stay; only the kit swaps) ════════ */
@@ -428,11 +436,23 @@ function clearKit(){
 /* each room TYPE has its own real size — selecting a room changes the space, not just the
    furniture (living = full showcase; bedroom/kitchen medium; bath small). */
 const ROOM_DIMS = { living:{w:W,d:D,h:H}, bedroom:{w:7,d:5.5,h:3.0}, kitchen:{w:7,d:5,h:3.0}, bath:{w:5,d:3.8,h:2.8} };
+/* per-room opening framing — each room frames its hero (bed/island/tub), not a generic angle */
+const ROOM_VIEW = {
+  living:  { p:[-2.6,1.9,3.5],   t:[1.4,0.5,-0.7] },
+  bedroom: { p:[-1.7,1.55,2.25], t:[0.1,0.55,-1.0] },
+  kitchen: { p:[-1.7,1.5,2.1],   t:[0.5,0.7,0.05] },
+  bath:    { p:[-1.05,1.3,1.45], t:[0.45,0.55,0.25] },
+};
+function frameRoom(type){
+  const v = ROOM_VIEW[type] || ROOM_VIEW.living; stopTour();
+  tween = { t0:0, dur:50, p0:camera.position.clone(), p1:new THREE.Vector3(...v.p), g0:controls.target.clone(), g1:new THREE.Vector3(...v.t) };
+}
 function setRoom(type){
   const dm = ROOM_DIMS[type] || ROOM_DIMS.living;
   curW = dm.w; curD = dm.d; curH = dm.h;            // set BEFORE building (kits read curW/curD)
   clearKit(); (ROOMS[type]||buildLiving)();
   applyRoomShell(dm.w, dm.d, dm.h, true);            // size the shell to the room; keep the furniture
+  frameRoom(type);                                   // open framed on this room's hero
 }
 buildLiving();   // initial kit — room is already the default 12×8 showcase; full setRoom() runs on later clicks
 
@@ -718,6 +738,6 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js?v=20260603-11"></script>
+<script type="module" src="studio.js?v=20260603-12"></script>
 </body>
 </html>
