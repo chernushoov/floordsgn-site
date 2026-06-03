@@ -18,12 +18,21 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{}, style:'warm', walls:{ left:'micro', right:'micro', back:'micro', window:'micro' } };
-  /* walls deep-link: only non-default walls, "wall:mat" joined by ",". micro = default. */
   const WALL_SIDES = ['left','right','back','window'];
-  const encWalls = () => WALL_SIDES.filter(k => STATE.walls[k] && STATE.walls[k] !== 'micro').map(k => k + ':' + STATE.walls[k]).join(',');
-  const decWalls = (s) => String(s).split(',').forEach(p => { const a = p.split(':'); if (a[0] && a[1] && WALL_SIDES.indexOf(a[0]) >= 0) STATE.walls[a[0]] = a[1]; });
-  const applyWalls = () => { const r = window.__room; if (!r || !r.setWall) return; WALL_SIDES.forEach(k => { if (STATE.walls[k] && STATE.walls[k] !== 'micro') r.setWall(k, STATE.walls[k]); }); };   // re-apply non-default after a shell rebuild (fixes per-room repeat)
+  const wallDef = () => ({ m:'microcement', c:null, d:null });   // material / colour id / design id
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{}, style:'warm', walls:{ left:wallDef(), right:wallDef(), back:wallDef(), window:wallDef() } };
+  /* walls deep-link: only non-default walls — "wall:material:colourId:designId" joined by ",".
+     microcement + no colour + no design = default (omitted). */
+  const wallIsDef = (w) => w.m === 'microcement' && !w.c && !w.d;
+  const encWalls = () => WALL_SIDES.filter(k => !wallIsDef(STATE.walls[k])).map(k => [k, STATE.walls[k].m, STATE.walls[k].c || '', STATE.walls[k].d || ''].join(':')).join(',');
+  const decWalls = (s) => String(s).split(',').forEach(p => { const a = p.split(':'); if (a[0] && WALL_SIDES.indexOf(a[0]) >= 0) STATE.walls[a[0]] = { m:a[1] || 'microcement', c:a[2] || null, d:a[3] || null }; });
+  const wallDesigns = (mat) => { const r = window.__room; const k = r && r.getWallDesignKey ? r.getWallDesignKey(mat) : null; return (k && DESIGNS && DESIGNS[k]) || []; };
+  const applyWalls = () => { const r = window.__room; if (!r || !r.setWall) return;
+    WALL_SIDES.forEach(k => { const w = STATE.walls[k]; if (wallIsDef(w)) return;
+      r.setWall(k, w.m);
+      if (w.c){ const o = colorOpts().find(x => x.id === w.c); if (o && o.hex) r.setWallColor(k, o.hex); }
+      if (w.d){ const v = wallDesigns(w.m).find(x => x.id === w.d); if (v) r.setWallDesign(k, '3d-assets/' + v.file); }
+    }); };   // re-apply after a shell rebuild (fixes per-room repeat); material→colour→design order
   /* tf deep-link: per-room furniture transforms, only moved pieces. "name,x,z,ry" joined by ";". */
   const encTf = (arr) => (arr || []).map(m => [m.name, m.x, m.z, +(+m.ry || 0).toFixed(3)].join(',')).join(';');
   const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); return a.length >= 4 ? { name:a[0], x:+a[1], z:+a[2], ry:+a[3] } : null; }).filter(Boolean);
@@ -367,24 +376,52 @@
       wrap.append(el('div', { class:'st-hint' }, L === 'ru' ? 'Включите и коснитесь предмета: тяните по полу, поворот — кнопками.' : 'Toggle on, tap a piece: drag on the floor, rotate with the buttons.'));
     }
     const rs = buildRoomSize(); if (rs) wrap.append(rs);
-    // walls — per-wall finish (micro / comfort / concrete / terrazzo); pick a wall (or all) then a finish
+    // walls — material (микроцемент / бетон / резина) + palette + design, per wall or all (mirrors the floor)
     if (window.__room && window.__room.setWall){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Стены' : 'Walls'));
       let wallTarget = 'all';
       const WALL_SEL = [{ id:'all', ru:'Все', en:'All' },{ id:'left', ru:'Левая', en:'Left' },{ id:'right', ru:'Правая', en:'Right' },{ id:'back', ru:'Задняя', en:'Back' },{ id:'window', ru:'Окно', en:'Window' }];
+      const WALL_MATS_UI = [{ id:'microcement', ru:'Микроцемент', en:'Microcement' },{ id:'concrete', ru:'Бетон', en:'Concrete' },{ id:'rubber', ru:'Резина', en:'Rubber' }];
+      const curWall = () => STATE.walls[wallTarget === 'all' ? 'back' : wallTarget];
+      const targets = () => wallTarget === 'all' ? WALL_SIDES : [wallTarget];
       const selRow = el('div', { class:'st-pillrow' });
       WALL_SEL.forEach((o, i) => { const b = el('button', { class:'st-pill st-wallsel' + (i === 0 ? ' on' : '') }, L === 'ru' ? o.ru : o.en);
-        b.onclick = () => { wallTarget = o.id; $$('.st-wallsel', selRow).forEach(x => x.classList.remove('on')); b.classList.add('on'); };
+        b.onclick = () => { wallTarget = o.id; $$('.st-wallsel', selRow).forEach(x => x.classList.remove('on')); b.classList.add('on'); renderWalls(); };
         selRow.append(b); });
       wrap.append(selRow);
-      const WALL_MAT_OPTS = [{ id:'micro', ru:'Микроцемент', en:'Micro', hex:'#968d7e' },{ id:'comfort', ru:'Комфорт', en:'Comfort', hex:'#d8cdbb' },{ id:'concrete', ru:'Бетон', en:'Concrete', hex:'#9a958c' },{ id:'terrazzo', ru:'Терраццо', en:'Terrazzo', hex:'#cfc7b8' }];
-      const swRow = el('div', { class:'st-swatches' });
-      WALL_MAT_OPTS.forEach(o => { const sw = el('button', { class:'st-swatch', title:(L === 'ru' ? o.ru : o.en), 'aria-label':(L === 'ru' ? o.ru : o.en) }); sw.style.background = o.hex;
-        sw.onclick = () => { const r = window.__room; if (r && r.setWall) r.setWall(wallTarget, o.id);
-          if (wallTarget === 'all'){ WALL_SIDES.forEach(wk => STATE.walls[wk] = o.id); } else { STATE.walls[wallTarget] = o.id; }
-          track('wall', { wall:wallTarget, mat:o.id }); writeURL(); };
-        swRow.append(sw); });
-      wrap.append(swRow);
+      const wbox = el('div'); wrap.append(wbox);
+      function renderWalls(){
+        wbox.innerHTML = ''; const r = window.__room; const cw = curWall();
+        // material
+        const mr = el('div', { class:'st-pillrow' });
+        WALL_MATS_UI.forEach(o => { const b = el('button', { class:'st-pill' + (cw.m === o.id ? ' on' : '') }, L === 'ru' ? o.ru : o.en);
+          b.onclick = () => { targets().forEach(wk => { r.setWall(wk, o.id); if (STATE.walls[wk].c){ const co = colorOpts().find(x => x.id === STATE.walls[wk].c); if (co && co.hex) r.setWallColor(wk, co.hex); } STATE.walls[wk] = { m:o.id, c:STATE.walls[wk].c, d:null }; }); track('wall_mat', { wall:wallTarget, mat:o.id }); writeURL(); renderWalls(); };
+          mr.append(b); });
+        wbox.append(mr);
+        // colour palette
+        wbox.append(el('div', { class:'st-mini-h' }, L === 'ru' ? 'Цвет' : 'Colour'));
+        const cg = el('div', { class:'st-swatches' });
+        colorOpts().forEach(o => { const sw = el('button', { class:'st-swatch' + ((cw.c || 'orig') === o.id ? ' on' : '') + (o.hex ? '' : ' st-swatch-orig'), title: tx(o.name), 'aria-label': tx(o.name) });
+          if (o.hex) sw.style.background = o.hex;
+          sw.onclick = () => { targets().forEach(wk => { r.setWallColor(wk, o.hex || 'orig'); STATE.walls[wk].c = o.hex ? o.id : null; }); track('wall_color', { wall:wallTarget, c:o.id }); writeURL(); renderWalls(); };
+          cg.append(sw); });
+        wbox.append(cg);
+        // design variants for the current material (microtopping / decorative-concrete / rubber patterns)
+        const dz = wallDesigns(cw.m);
+        if (dz.length){
+          wbox.append(el('div', { class:'st-mini-h' }, L === 'ru' ? 'Дизайн' : 'Pattern'));
+          const dg = el('div', { class:'st-swatches' });
+          const so = el('button', { class:'st-swatch st-swatch-orig' + (!cw.d ? ' on' : ''), title: L === 'ru' ? 'Оригинал' : 'Original', 'aria-label': L === 'ru' ? 'Оригинал' : 'Original' });
+          so.onclick = () => { targets().forEach(wk => { r.setWallDesign(wk, 'orig'); STATE.walls[wk].d = null; }); writeURL(); renderWalls(); };
+          dg.append(so);
+          dz.forEach(v => { const sw = el('button', { class:'st-swatch' + (cw.d === v.id ? ' on' : ''), title: v.name, 'aria-label': v.name });
+            if (v.hex) sw.style.background = v.hex;
+            sw.onclick = () => { targets().forEach(wk => { r.setWallDesign(wk, '3d-assets/' + v.file); STATE.walls[wk].d = v.id; }); track('wall_design', { wall:wallTarget, d:v.id }); writeURL(); renderWalls(); };
+            dg.append(sw); });
+          wbox.append(dg);
+        }
+      }
+      renderWalls();
     }
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){

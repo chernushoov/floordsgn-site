@@ -266,3 +266,6 @@ body{ font-family:var(--sans); }
 #roomEditBar button[data-a="reset"],#roomEditBar button[data-a="close"]{ font-size:11px; color:var(--steel); }
 .room-editing canvas{ cursor:grab; }
 .st-hint{ font-size:11px; line-height:1.4; color:var(--steel); margin:6px 2px 2px; }
+
+/* wall sub-section labels (Цвет / Дизайн inside the Walls picker) */
+.st-mini-h{ font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); margin:10px 0 5px; }

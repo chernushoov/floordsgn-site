@@ -188,34 +188,46 @@ const boot=async(pg,url)=>{await pg.goto(url,{waitUntil:'networkidle',timeout:30
     ok('deep-link style keeps signal locked', dl.signal===SIGNAL, dl);
     await c2.close();
   }
-  // ───────────────── PHASE 4 — per-wall materials ─────────────────
+  // ───────────────── PHASE 4 — per-wall materials (microcement/concrete/rubber + palette + design) ─────────────────
   if(want(4)){
     const {ctx,pg}=await mkpage('(p4)');await boot(pg,`http://127.0.0.1:${port}/floor-room.html`);
+    const pollWall=async(wk,re,ms=4000)=>{const t0=Date.now();let s='';while(Date.now()-t0<ms){s=(await pg.evaluate(k=>{const w=window.__room.wallSrc(k);return (w&&w.src)||'';},wk))||'';if(re.test(s))return s;await pg.waitForTimeout(150);}return s;};
     const w0=await pg.evaluate(()=>window.__room.getWalls());
-    ok('default walls all micro', ['left','right','back','window'].every(k=>w0[k]==='micro'), w0);
-    ok('default micro wall has no diffuse map (concrete color)', await pg.evaluate(()=>{const w=window.__room.wallSrc('window');return w.src===null;}));
-    // swap ONLY the window wall → decorative-concrete
+    ok('default walls all microcement', ['left','right','back','window'].every(k=>w0[k].mat==='microcement'), {sample:w0.window});
+    ok('default microcement wall has no diffuse (concrete colour)', await pg.evaluate(()=>{const w=window.__room.wallSrc('window');return w.src===null && w.color===0x968d7e;}));
+    // swap ONLY the window wall → concrete (mirrored photoscan)
     const sb0=await pg.evaluate(()=>window.__room.getBakes());
     await pg.evaluate(()=>window.__room.setWall('window','concrete'));
-    await pg.evaluate(()=>new Promise(r=>{let n=0;(function f(){ if(++n>5) return r(); requestAnimationFrame(f); })();}));
+    await pollWall('window',/decorative-concrete\/diffuse/);
     const after=await pg.evaluate(()=>({walls:window.__room.getWalls(),win:window.__room.wallSrc('window'),left:window.__room.wallSrc('left')}));
     const sb1=await pg.evaluate(()=>window.__room.getBakes());
-    ok('window wall now concrete', after.walls.window==='concrete', after.walls);
-    ok('window map is decorative-concrete photoscan', /decorative-concrete\/diffuse/.test(after.win.src||''), {src:(after.win.src||'').slice(-46)});
-    ok('window wall tinted white for photoscan', after.win.color===0xffffff, {color:after.win.color});
-    ok('other walls unchanged (left still micro, no diffuse)', after.walls.left==='micro' && after.left.src===null, after.walls);
+    ok('window wall now concrete', after.walls.window.mat==='concrete', {window:after.walls.window});
+    ok('window map is decorative-concrete photoscan, scaled (repeat>4)', /decorative-concrete\/diffuse/.test(after.win.src||'') && after.win.repeat>4, {src:(after.win.src||'').slice(-40),repeat:after.win.repeat});
+    const terr=await pg.evaluate(()=>{window.__room.setWall('back','terrazzo');return window.__room.getWalls().back.mat;});
+    ok('terrazzo is rejected (falls back to microcement — no chips on walls)', terr==='microcement', {terr});
+    ok('other walls unchanged (left microcement, no diffuse)', after.walls.left.mat==='microcement' && after.left.src===null, {left:after.walls.left});
     ok('exactly one bake on wall swap', sb1===sb0+1, {sb0,sb1});
+    // ── palette: tint the window wall ──
+    await pg.evaluate(()=>window.__room.setWallColor('window','#3b3c40'));
+    await pg.waitForTimeout(200);
+    ok('wall colour palette tints the wall', await pg.evaluate(()=>window.__room.wallSrc('window').color)===0x3b3c40);
+    // ── design: swap the window wall pattern (board-form) ──
+    await pg.evaluate(()=>window.__room.setWallDesign('window','3d-assets/textures-v4/_designs/decorative-concrete/boardform-horizontal.jpg'));
+    const dsrc=await pollWall('window',/_designs\/decorative-concrete\/boardform/);
+    ok('wall design variant swaps the diffuse (board-form)', /_designs\/decorative-concrete\/boardform/.test(dsrc), {tail:dsrc.slice(-46)});
     // ── custom-dims room inherits the wall material instances ──
     await pg.evaluate(()=>window.__room.setRoomDims(6,4,2.8));
     await pg.waitForTimeout(900);
-    const inh=await pg.evaluate(()=>window.__room.wallSrc('window'));
-    ok('custom-dims room inherits window=concrete', after.walls.window==='concrete' && /decorative-concrete/.test(inh.src||''), {src:(inh.src||'').slice(-40)});
+    const inh=await pg.evaluate(()=>window.__room.getWalls().window.mat);
+    ok('custom-dims room inherits window=concrete', inh==='concrete', {inh});
     await ctx.close();
-    // ── deep-link walls= round-trips ──
-    const {ctx:c2,pg:p2}=await mkpage('(p4-dl)');await boot(p2,`http://127.0.0.1:${port}/floor-room.html?avatar=designer&walls=window:concrete,left:terrazzo`);
-    const dl=await p2.evaluate(()=>({walls:window.__room.getWalls(),win:window.__room.wallSrc('window'),left:window.__room.wallSrc('left'),back:window.__room.wallSrc('back')}));
-    ok('deep-link walls applies window=concrete + left=terrazzo', dl.walls.window==='concrete' && dl.walls.left==='terrazzo', dl.walls);
-    ok('deep-link other walls stay micro', dl.walls.back==='micro' && dl.back.src===null, dl.walls);
+    // ── deep-link walls= (material:colour:design) round-trips ──
+    const {ctx:c2,pg:p2}=await mkpage('(p4-dl)');await boot(p2,`http://127.0.0.1:${port}/floor-room.html?avatar=designer&walls=window:concrete:graphite:,left:rubber::`);
+    await p2.waitForTimeout(1200);
+    const dl=await p2.evaluate(()=>({walls:window.__room.getWalls(),win:window.__room.wallSrc('window')}));
+    ok('deep-link walls: window=concrete+graphite, left=rubber', dl.walls.window.mat==='concrete' && dl.walls.window.color===0x3b3c40 && dl.walls.left.mat==='rubber', dl.walls);
+    ok('deep-link applied graphite tint to window', dl.win.color===0x3b3c40, {color:dl.win.color});
+    ok('deep-link other walls stay microcement', dl.walls.back.mat==='microcement', dl.walls);
     await c2.close();
   }
   // ───────────────── PHASE 5 — detail pass (per-style floor envMapIntensity; I1-gated) ─────────────────
