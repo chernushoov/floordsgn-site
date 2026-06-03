@@ -17,7 +17,7 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, ctl:{ color:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, ctl:{ color:'orig' } };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
@@ -293,6 +293,7 @@
       figRow.append(cs);
     }
     wrap.append(figRow);
+    const rs = buildRoomSize(); if (rs) wrap.append(rs);
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
@@ -304,6 +305,38 @@
       wrap.append(cg);
     }
     return wrap;
+  }
+
+  /* parametric room size — drives engine setRoomDims (default 12×8×3.2 path untouched) */
+  function buildRoomSize(){
+    const r = window.__room; if (!r || !r.setRoomDims) return null;
+    const def = r.DIM_DEFAULT || { w:12, d:8, h:3.2 };
+    const cur = STATE.dims || (r.getDims ? r.getDims() : def);
+    const wrap = el('div');
+    wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Размер комнаты, м' : 'Room size, m'));
+    const mk = (id, v) => el('input', { id, type:'number', step:'0.5', min:'2', max:'13', value:String(v), inputmode:'decimal', 'aria-label':id });
+    const iw = mk('stDimW', cur.w), idp = mk('stDimD', cur.d), ih = mk('stDimH', cur.h);
+    const row = el('div', { class:'st-dims' });
+    row.append(iw, el('span', { class:'st-dimx' }, '×'), idp, el('span', { class:'st-dimx' }, '×'), ih);
+    wrap.append(row);
+    const acts = el('div', { class:'st-pillrow', style:'margin-top:8px' });
+    const apply = el('button', { class:'st-pill on' }, L === 'ru' ? 'Применить' : 'Apply');
+    apply.onclick = () => setDims(+iw.value, +idp.value, +ih.value);
+    const reset = el('button', { class:'st-pill' }, L === 'ru' ? 'Сбросить' : 'Reset');
+    reset.onclick = () => setDims(def.w, def.d, def.h, true);
+    acts.append(apply, reset); wrap.append(acts);
+    wrap.append(el('div', { class:'st-dimhint' }, L === 'ru' ? 'Стены, сетка маяков и свет подстроятся под ваши размеры.' : 'Walls, divider grid and light adapt to your room.'));
+    return wrap;
+  }
+  function setDims(w, d, h, isReset){
+    const r = window.__room; if (!r || !r.setRoomDims) return;
+    r.setRoomDims(w, d, h);
+    const g = r.getDims ? r.getDims() : { w, d, h };
+    const def = r.DIM_DEFAULT || { w:12, d:8, h:3.2 };
+    const isDef = !!isReset || (g.w === def.w && g.d === def.d && g.h === def.h);
+    STATE.dims = isDef ? null : g;
+    if (!isDef) STATE.figure = true;   // custom room auto-shows the 1.7 m figure for scale
+    track('roomdims', STATE.dims || { reset:true }); writeURL(); renderPanel();
   }
 
   function buildPains(p){
@@ -394,6 +427,7 @@
     u.searchParams.set('light', STATE.light);
     if (STATE.ctl && STATE.ctl.color && STATE.ctl.color !== 'orig') u.searchParams.set('c', STATE.ctl.color);
     if (STATE.realChip) u.searchParams.set('cs', '1');
+    if (STATE.dims) u.searchParams.set('dims', STATE.dims.w + 'x' + STATE.dims.d + 'x' + STATE.dims.h);
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -407,6 +441,7 @@
     if (q.get('light')) STATE.light = q.get('light');
     if (q.get('c')) STATE.ctl.color = q.get('c');
     if (q.get('cs')) STATE.realChip = true;
+    const dm = q.get('dims'); if (dm){ const a = dm.split('x').map(Number); if (a.length === 3 && a.every(n => n > 0)) STATE.dims = { w:a[0], d:a[1], h:a[2] }; }
   }
   async function share(){
     const url = shareURL();
@@ -576,6 +611,7 @@
     if (urlLight && window.__room && window.__room.setLighting){ window.__room.setLighting(urlLight); STATE.light = urlLight; }
     if (urlColor) applyColor(urlColor);
     if (q.get('cs')){ STATE.realChip = true; captureArtRepeat(); applyChipScale(); }
+    if (STATE.dims && window.__room && window.__room.setRoomDims){ window.__room.setRoomDims(STATE.dims.w, STATE.dims.d, STATE.dims.h); STATE.figure = true; }
 
     setLang(L); // paints chrome text + panel
     setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change

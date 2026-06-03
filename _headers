@@ -38,6 +38,12 @@
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
+# actively-iterated Studio overlay — always revalidate so deploys show immediately
+/studio.js
+  Cache-Control: public, max-age=0, must-revalidate
+/studio.css
+  Cache-Control: public, max-age=0, must-revalidate
+
 /*.css
   Cache-Control: public, max-age=86400, must-revalidate
 

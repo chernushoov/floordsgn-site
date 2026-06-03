@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css"/>
+<link rel="stylesheet" href="studio.css?v=20260603-2"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -122,9 +122,10 @@ scene.background = new THREE.Color(0x0b0b0c);
 scene.fog = new THREE.Fog(0xdadbdd, 18, 64);   // faint aerial depth toward the window
 
 /* ───────────────── room dims (metres) ───────────────── */
-const W = 12, D = 8, H = 3.2;
+const W = 12, D = 8, H = 3.2;          // default showcase dims (furniture + views are tuned to these)
 const hw = W/2, hd = D/2;
 const TILE = 1.6;
+let curW = W, curD = D, curH = H;      // live dims — equal to defaults until setRoomDims() is called
 
 /* ───────────────── camera ───────────────── */
 const camera = new THREE.PerspectiveCamera(46, 1, 0.05, 200);
@@ -216,6 +217,10 @@ box(W-2*jamb, 0.07, 0.07, mullMat, 0, (winB+winT)/2, -hd+0.02, false, false);   
 /* ceiling light strips (emissive) → linear reflections */
 const stripMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff2e2, emissiveIntensity: 1.5, roughness: 1, fog:false });
 for (const sx of [-3.2, 0, 3.2]) box(0.14, 0.04, D*0.66, stripMat, sx, H-0.02, -0.3, false, false);
+
+/* capture the default showcase shell (everything in the scene so far except the floor)
+   so setRoomDims() can hide it when a custom room size is applied */
+const defShell = scene.children.filter(o => o.isMesh && o !== floor);
 
 /* ───────────────── styled living-room kit — frames the floor, never hides it ─────────────────
    Grouped under `roomKit` so a future room-type selector (bedroom/kitchen/bath…) can swap kits. */
@@ -550,23 +555,62 @@ function scaleFigure(show){
 /* decorative divider strips (latunь "маяки"/саргели) — a control-joint grid sized
    to the room, cells <= 3 m so the poured floor doesn't crack and reads premium.
    On for terrazzo/epoxy/concrete; OFF for seamless microcement & comfort (PU). */
-let _dividers = null;
+let _dividers = null, _dividersOn = false;
 function buildDividers(){
   const g = new THREE.Group();
   const mat = new THREE.MeshStandardMaterial({ color:0xb08d57, metalness:0.7, roughness:0.32 });  // brass
   const w = 0.014, h = 0.006, y = 0.004;
-  const nx = Math.ceil(W/3), nz = Math.ceil(D/3);                  // cells <= 3 m, proportional to room
-  for (let i=1;i<nx;i++){ const x = -W/2 + i*(W/nx); const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,D), mat); m.position.set(x,y,0); m.receiveShadow=true; g.add(m); }
-  for (let j=1;j<nz;j++){ const z = -D/2 + j*(D/nz); const m = new THREE.Mesh(new THREE.BoxGeometry(W,h,w), mat); m.position.set(0,y,z); m.receiveShadow=true; g.add(m); }
+  const nx = Math.ceil(curW/3), nz = Math.ceil(curD/3);            // cells <= 3 m, proportional to live room
+  for (let i=1;i<nx;i++){ const x = -curW/2 + i*(curW/nx); const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,curD), mat); m.position.set(x,y,0); m.receiveShadow=true; g.add(m); }
+  for (let j=1;j<nz;j++){ const z = -curD/2 + j*(curD/nz); const m = new THREE.Mesh(new THREE.BoxGeometry(curW,h,w), mat); m.position.set(0,y,z); m.receiveShadow=true; g.add(m); }
   scene.add(g); return g;
 }
 function setDividers(on){
+  _dividersOn = !!on;
   if (on && !_dividers) _dividers = buildDividers();
   if (_dividers) _dividers.visible = !!on;
   bakeFloorReflection();
 }
+/* ── parametric room size (additive — the default 12×8×3.2 path is untouched) ──
+   Moves walls/ceiling/window/joints/clamp/shadow to the user's dimensions and hides the
+   showcase shell + furniture. The floor PLANE and its texture are left intact so chip
+   scale and tiling stay correct; dims are clamped to keep the floor covering the room. */
+let _customShell = null;
+function _disposeGroup(g){ g.traverse(o => { o.geometry && o.geometry.dispose(); }); }
+function buildCustomShell(w, d, h){
+  const g = new THREE.Group();
+  const hw2 = w/2, hd2 = d/2;
+  const cb = (W_,H_,D_,mat,x,y,z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(W_,H_,D_), mat); m.position.set(x,y,z); m.receiveShadow = true; g.add(m); return m; };
+  cb(0.2, h, d, wallMat, -hw2, h/2, 0);
+  cb(0.2, h, d, wallMat,  hw2, h/2, 0);
+  cb(w, h, 0.2, wallMat, 0, h/2, hd2);                                  // wall behind the camera
+  cb(w, 0.2, d, new THREE.MeshStandardMaterial({ color:C.ceiling, roughness:0.98 }), 0, h+0.1, 0);
+  const wB = Math.min(0.95, h*0.30), wT = Math.min(h-0.3, 2.55), jb = Math.min(0.5, w*0.12);
+  cb(w, wB, 0.2, wallMat, 0, wB/2, -hd2);                               // far wall around a window band
+  cb(w, h-wT, 0.2, wallMat, 0, wT+(h-wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMat, -hw2+jb/2, (wB+wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMat,  hw2-jb/2, (wB+wT)/2, -hd2);
+  const sm = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xfff2e2, emissiveIntensity:1.5, roughness:1, fog:false });
+  for (const sx of [-w*0.27, 0, w*0.27]){ const m = new THREE.Mesh(new THREE.BoxGeometry(0.14,0.04,d*0.66), sm); m.position.set(sx, h-0.02, -0.3); g.add(m); }
+  scene.add(g); return g;
+}
+function setRoomDims(w, d, h){
+  w = Math.max(3, Math.min(13, +w||W)); d = Math.max(2.5, Math.min(9, +d||D)); h = Math.max(2.2, Math.min(4, +h||H));
+  curW = w; curD = d; curH = h;
+  const isDef = (w===W && d===D && h===H);
+  defShell.forEach(m => m.visible = isDef);                             // showcase shell only at default size
+  roomKit.visible = isDef;                                             // hide hand-placed furniture for custom rooms
+  if (_customShell){ scene.remove(_customShell); _disposeGroup(_customShell); _customShell = null; }
+  if (!isDef){ _customShell = buildCustomShell(w, d, h); scaleFigure(true); if (_figure) _figure.position.set(Math.min(1.9, w/2-0.6), 0, Math.min(0.7, d/2-0.6)); }
+  if (_dividers){ scene.remove(_dividers); _disposeGroup(_dividers); _dividers = null; }   // rebuild grid for the new footprint
+  if (_dividersOn){ _dividers = buildDividers(); _dividers.visible = true; }
+  ROOM_BOUND.x = Math.max(0.6, w/2-0.35); ROOM_BOUND.z = Math.max(0.6, d/2-0.35); ROOM_BOUND.yMax = h-0.3;
+  const sc = Math.max(w, d)/2 + 1; sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
+  bakeFloorReflection();
+}
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
-                  setLighting, scaleFigure, setDividers, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setLighting, scaleFigure, setDividers, setRoomDims, getDims: ()=>({ w:curW, d:curD, h:curH }),
+                  DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tour){
@@ -586,6 +630,6 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js"></script>
+<script type="module" src="studio.js?v=20260603-2"></script>
 </body>
 </html>

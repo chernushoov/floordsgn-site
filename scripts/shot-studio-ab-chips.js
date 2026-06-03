@@ -67,6 +67,18 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   const floorAfterCmp=await pg.evaluate(()=>(document.querySelector('#floorCtl .chip.on[data-fl]')||{}).dataset.fl);
   ok('floor restored after compare', floorBeforeCmp===floorAfterCmp, {floorBeforeCmp, floorAfterCmp});
 
+  // ── parametric room size ──
+  ok('room-size control present', await pg.evaluate(()=>!!document.querySelector('#stDimW')));
+  await pg.evaluate(()=>{const w=document.querySelector('#stDimW'),d=document.querySelector('#stDimD'),h=document.querySelector('#stDimH');if(w&&d&&h){w.value='5';d.value='4';h.value='2.8';const ap=Array.from(document.querySelectorAll('.st-pill')).find(b=>/примен|apply/i.test(b.textContent));if(ap)ap.click();}});
+  await pg.waitForTimeout(1400);
+  const rd=await pg.evaluate(()=>window.__room.getDims());
+  ok('room resize applies 5x4x2.8', Math.abs(rd.w-5)<0.6&&Math.abs(rd.d-4)<0.6&&Math.abs(rd.h-2.8)<0.4, rd);
+  await pg.screenshot({path:path.join(OUT,'room-5x4.png')});
+  await pg.evaluate(()=>{const r=Array.from(document.querySelectorAll('.st-pill')).find(b=>/сброс|reset/i.test(b.textContent));if(r)r.click();});
+  await pg.waitForTimeout(1100);
+  const rdd=await pg.evaluate(()=>window.__room.getDims());
+  ok('room reset to default 12x8', Math.abs(rdd.w-12)<0.1&&Math.abs(rdd.d-8)<0.1, rdd);
+
   await ctx.close();
 
   // ── deep-link cs=1 ──
@@ -74,11 +86,12 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   const pg2=await ctx2.newPage();
   pg2.on('pageerror',e=>out.errs.push('pageerror(dl): '+e.message));
   pg2.on('console',m=>{if(m.type()==='error')out.errs.push('console(dl): '+m.text());});
-  await pg2.goto(`http://127.0.0.1:${port}/floor-room.html?avatar=designer&m=cement&cs=1`,{waitUntil:'networkidle',timeout:30000});
-  await pg2.waitForTimeout(4500);
-  const dl=await pg2.evaluate(()=>({real:window.__studio&&window.__studio.STATE.realChip, rep:(window.__room.floorMat.map.repeat.x)}));
-  ok('deep-link cs=1 sets realChip', dl.real===true, dl);
+  await pg2.goto(`http://127.0.0.1:${port}/floor-room.html?avatar=designer&m=cement&cs=1&dims=6x4x2.8`,{waitUntil:'networkidle',timeout:30000});
+  await pg2.waitForTimeout(4800);
+  const dl=await pg2.evaluate(()=>({real:window.__studio&&window.__studio.STATE.realChip, rep:(window.__room.floorMat.map.repeat.x), dims:window.__room.getDims()}));
+  ok('deep-link cs=1 sets realChip', dl.real===true, {real:dl.real});
   ok('deep-link cs=1 applies life-size repeat', dl.rep>15, {rep:+dl.rep.toFixed(2)});
+  ok('deep-link dims=6x4x2.8 applies', Math.abs(dl.dims.w-6)<0.6&&Math.abs(dl.dims.d-4)<0.6, dl.dims);
   await pg2.screenshot({path:path.join(OUT,'deeplink-cs.png')});
   await ctx2.close();
 
