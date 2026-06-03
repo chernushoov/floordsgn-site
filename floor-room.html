@@ -130,7 +130,7 @@ const TILE = 1.6;
 let curW = W, curD = D, curH = H;      // live dims — equal to defaults until setRoomDims() is called
 
 /* ───────────────── camera ───────────────── */
-const camera = new THREE.PerspectiveCamera(46, 1, 0.05, 200);
+const camera = new THREE.PerspectiveCamera(46, 1, 0.05, 200);   // near 0.05 kept: raising it clips the close floor-macro ("detail") view (I1)
 camera.position.set(-2.6, 1.9, 3.5);   // opens on the hero "Обзор" framing
 
 const pmrem = new THREE.PMREMGenerator(renderer);
@@ -488,11 +488,16 @@ controls.target.set(1.4, 0.5, -0.7);   // centre of the lounge grouping
 controls.minDistance = 1.3; controls.maxDistance = 9.0;
 /* keep the camera INSIDE the room — zooming out is fine, but never let it punch
    through a wall (that made the picture vanish "as if stuck in the wall"). */
-const ROOM_BOUND = { x: hw - 0.35, z: hd - 0.35, yMin: 0.45, yMax: H - 0.3 };
+const ROOM_BOUND = { x: hw - 0.45, z: hd - 0.45, yMin: 0.45, yMax: H - 0.3 };   // 0.45 margin: near-plane corners never cross a wall when zoomed in
 function clampCamera(){
-  camera.position.x = Math.min(ROOM_BOUND.x, Math.max(-ROOM_BOUND.x, camera.position.x));
-  camera.position.z = Math.min(ROOM_BOUND.z, Math.max(-ROOM_BOUND.z, camera.position.z));
-  camera.position.y = Math.min(ROOM_BOUND.yMax, Math.max(ROOM_BOUND.yMin, camera.position.y));
+  // Damped clamp (lerp 0.5 toward the clamped position) instead of a hard snap —
+  // kills the "stuck in the wall" jitter while still keeping the camera inside the room.
+  const cx = Math.min(ROOM_BOUND.x, Math.max(-ROOM_BOUND.x, camera.position.x));
+  const cz = Math.min(ROOM_BOUND.z, Math.max(-ROOM_BOUND.z, camera.position.z));
+  const cy = Math.min(ROOM_BOUND.yMax, Math.max(ROOM_BOUND.yMin, camera.position.y));
+  camera.position.x += (cx - camera.position.x) * 0.5;
+  camera.position.z += (cz - camera.position.z) * 0.5;
+  camera.position.y += (cy - camera.position.y) * 0.5;
 }
 controls.minPolarAngle = Math.PI*0.26; controls.maxPolarAngle = Math.PI*0.495;
 controls.enablePan = false; controls.autoRotate = true; controls.autoRotateSpeed = 0.32;
@@ -709,7 +714,8 @@ function applyRoomShell(w, d, h, furnished){
   if (!isDef) _customShell = buildCustomShell(w, d, h);
   if (_dividers){ scene.remove(_dividers); _disposeGroup(_dividers); _dividers = null; }   // rebuild grid for the new footprint
   if (_dividersOn){ _dividers = buildDividers(); _dividers.visible = true; }
-  ROOM_BOUND.x = Math.max(0.6, w/2-0.35); ROOM_BOUND.z = Math.max(0.6, d/2-0.35); ROOM_BOUND.yMax = h-0.3;
+  ROOM_BOUND.x = Math.max(0.6, w/2-0.45); ROOM_BOUND.z = Math.max(0.6, d/2-0.45); ROOM_BOUND.yMax = h-0.3;
+  controls.maxDistance = isDef ? 9.0 : Math.max(3.0, Math.min(9.0, 0.55*Math.hypot(w, d)));   // per-room zoom radius; default keeps exactly 9.0
   const sc = isDef ? 9 : (Math.max(w, d)/2 + 1.5); sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
   _customRoom = !isDef; _refreshLightLevels();   // diffuse the light for the smaller room (full showcase untouched)
   bakeFloorReflection();
@@ -730,7 +736,8 @@ function setSunTime(t){
 }
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
                   setLighting, scaleFigure, setDividers, setRoomDims, getDims: ()=>({ w:curW, d:curD, h:curH }),
-                  setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms,
+                  clampCamera, getBound: ()=>({ x:ROOM_BOUND.x, z:ROOM_BOUND.z, yMin:ROOM_BOUND.yMin, yMax:ROOM_BOUND.yMax }) };
 
 (function loop(){
   if (tour){
