@@ -35,7 +35,7 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   await pg.waitForTimeout(500);
   const realRep=await pg.evaluate(repeatX);
   ok('life-size increases repeat', realRep>artRep, {artRep, realRep});
-  ok('life-size ~ 14/0.7 (≈20)', Math.abs(realRep-20)<3, {realRep});
+  ok('life-size dossier scale (≈41)', Math.abs(realRep-41)<6, {realRep});
   // toggle OFF → restored to art repeat
   await pg.evaluate(()=>{const p=Array.from(document.querySelectorAll('.st-pill')).find(b=>/чип|chip/i.test(b.textContent));if(p)p.click();});
   await pg.waitForTimeout(400);

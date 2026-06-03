@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css?v=20260603-12"/>
+<link rel="stylesheet" href="studio.css?v=20260603-13"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -533,8 +533,10 @@ function advanceTour(){
   const A = TOUR[tour.i], B = TOUR[(tour.i+1)%TOUR.length];
   tour.t++; const k = Math.min(1, tour.t/tour.dur);
   const e = k<0.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;   // easeInOutQuad
-  camera.position.set(A.p[0]+(B.p[0]-A.p[0])*e, A.p[1]+(B.p[1]-A.p[1])*e, A.p[2]+(B.p[2]-A.p[2])*e);
-  controls.target.set(A.t[0]+(B.t[0]-A.t[0])*e, A.t[1]+(B.t[1]-A.t[1])*e, A.t[2]+(B.t[2]-A.t[2])*e);
+  const sx = curW/W, sy = curH/H, sz = curD/D;        // scale waypoints to the live room (living ratio=1 → unchanged)
+  const L = (a,b)=>a+(b-a)*e;
+  camera.position.set(L(A.p[0],B.p[0])*sx, L(A.p[1],B.p[1])*sy, L(A.p[2],B.p[2])*sz);
+  controls.target.set(L(A.t[0],B.t[0])*sx, L(A.t[1],B.t[1])*sy, L(A.t[2],B.t[2])*sz);
   if (k>=1){ tour.i=(tour.i+1)%TOUR.length; tour.t=0; }
 }
 tourBtn.addEventListener('click', () => { tour ? stopTour() : startTour(); });
@@ -716,9 +718,19 @@ function setRoomDims(w, d, h){   // manual "Размер комнаты" → emp
   applyRoomShell(w, d, h, false);
   scaleFigure(true); if (_figure) _figure.position.set(Math.min(1.9, curW/2-0.6), 0, Math.min(0.7, curD/2-0.6));
 }
+/* live time-of-day — arcs the sun (shadow direction) + shifts warmth; no re-bake (sun is a
+   live light, not in the baked env map). Brightness/HDRI stay with the preset/soften system. */
+let _sunTime = 0.4;
+const _sunM = new THREE.Color(0xffc081), _sunN = new THREE.Color(0xfff2df), _sunE = new THREE.Color(0xff9846);
+function setSunTime(t){
+  _sunTime = Math.max(0, Math.min(1, +t));
+  const u = _sunTime;
+  sun.position.set(-6 + 12*u, 3.2 + 5.8*Math.sin(Math.PI*u), -10);
+  sun.color.copy(u < 0.5 ? _sunM.clone().lerp(_sunN, u*2) : _sunN.clone().lerp(_sunE, (u-0.5)*2));
+}
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
                   setLighting, scaleFigure, setDividers, setRoomDims, getDims: ()=>({ w:curW, d:curD, h:curH }),
-                  DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tour){
@@ -738,6 +750,6 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js?v=20260603-12"></script>
+<script type="module" src="studio.js?v=20260603-13"></script>
 </body>
 </html>

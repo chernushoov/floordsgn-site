@@ -18,7 +18,7 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, ctl:{ color:'orig', design:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' } };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
@@ -49,7 +49,7 @@
      to show aggregate at life size (cement/multi anchored to dossier physical_mm_per_tile).
      We cache the engine's own repeat per floor and restore it verbatim when toggled OFF. */
   const FLOOR_PLANE = 14;   // engine fW = W(12)+2
-  const REAL_TILE = { light:0.75, venetian:0.8, graphite:0.55, cement:0.7, multi:0.75, comfort:1.1, micro:1.1 };
+  const REAL_TILE = { light:0.45, venetian:0.5, graphite:0.4, cement:0.34, multi:0.24, comfort:1.1, micro:1.1 };   // m of real floor per texture repeat — life-size, from dossier physical_mm_per_tile (cement ~330mm, multi ~220mm)
   const hasChips = (fl) => !['micro', 'comfort'].includes(fl);   // seamless floors have no aggregate
   const _repCache = {};
   const floorMaps = () => { const m = window.__room && window.__room.floorMat; return m ? [m.map, m.normalMap, m.roughnessMap] : []; };
@@ -315,6 +315,13 @@
       b.onclick = () => { const r = window.__room; if (r && r.setLighting) r.setLighting(o.id); STATE.light = o.id; $$('.st-pill', lr).forEach(x => x.classList.remove('on')); b.classList.add('on'); track('light', { light:o.id }); writeURL(); };
       lr.append(b); });
     wrap.append(lr);
+    // live time-of-day slider (arcs the sun: morning → noon → evening)
+    const tod = el('div', { class:'st-tod' });
+    const tr = el('input', { type:'range', min:'0', max:'1', step:'0.02', value:String(STATE.sun), class:'st-tod-range', 'aria-label': L === 'ru' ? 'Время дня' : 'Time of day' });
+    tr.oninput = () => { const r = window.__room; if (r && r.setSunTime) r.setSunTime(+tr.value); STATE.sun = +tr.value; };
+    tr.onchange = () => { writeURL(); track('suntime', { t:STATE.sun }); };
+    tod.append(el('span', { class:'st-tod-l' }, L === 'ru' ? 'Утро' : 'AM'), tr, el('span', { class:'st-tod-l' }, L === 'ru' ? 'Вечер' : 'PM'));
+    wrap.append(tod);
     // human-scale figure toggle
     const figRow = el('div', { class:'st-pillrow', style:'margin-top:6px' });
     const fig = el('button', { class:'st-pill' + (STATE.figure ? ' on' : '') }, L === 'ru' ? 'Фигура для масштаба' : 'Scale figure');
@@ -487,6 +494,7 @@
     if (STATE.realChip) u.searchParams.set('cs', '1');
     if (STATE.dims) u.searchParams.set('dims', STATE.dims.w + 'x' + STATE.dims.d + 'x' + STATE.dims.h);
     if (STATE.ctl.design && STATE.ctl.design !== 'orig') u.searchParams.set('d', STATE.ctl.design);
+    if (STATE.sun !== 0.4) u.searchParams.set('sun', String(STATE.sun));
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -502,6 +510,7 @@
     if (q.get('cs')) STATE.realChip = true;
     const dm = q.get('dims'); if (dm){ const a = dm.split('x').map(Number); if (a.length === 3 && a.every(n => n > 0)) STATE.dims = { w:a[0], d:a[1], h:a[2] }; }
     if (q.get('d')) STATE.ctl.design = q.get('d');
+    if (q.get('sun') != null){ const s = parseFloat(q.get('sun')); if (!isNaN(s)) STATE.sun = Math.max(0, Math.min(1, s)); }
   }
   async function share(){
     const url = shareURL();
@@ -629,6 +638,9 @@
         const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(orig)); if (r && r.bake) r.bake();
         vis.innerHTML = '';
         if (a && b){ vis.append(buildBASlider(a, lbl(cmpA), b, lbl(cmpB)));
+          const specRow = el('div', { class:'st-ba-specs' });
+          [cmpA, cmpB].forEach(fl => { const m = manFor(fl); const s = (m && m.spec) ? [m.spec.type, m.spec.thk].filter(Boolean).join(' · ') : ''; specRow.append(el('div', { class:'st-ba-spec' }, s)); });
+          vis.append(specRow);
           vis.append(el('div', { class:'st-ba-hint' }, L === 'ru' ? 'Перетащите разделитель, чтобы сравнить' : 'Drag the divider to compare')); }
       } catch(e){ vis.innerHTML = ''; }
       await new Promise(r => setTimeout(r, 60));
@@ -729,6 +741,7 @@
     if (q.get('cs')){ STATE.realChip = true; captureArtRepeat(); applyChipScale(); }
     if (STATE.dims && window.__room && window.__room.setRoomDims){ window.__room.setRoomDims(STATE.dims.w, STATE.dims.d, STATE.dims.h); STATE.figure = true; }
     if (STATE.ctl.design && STATE.ctl.design !== 'orig'){ const v = designsFor(curFloor()).find(x => x.id === STATE.ctl.design); if (v) applyDesign(v); }
+    if (q.get('sun') != null && window.__room && window.__room.setSunTime) window.__room.setSunTime(STATE.sun);
 
     setLang(L); // paints chrome text + panel
     setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change
