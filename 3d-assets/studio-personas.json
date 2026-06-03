@@ -168,7 +168,7 @@
       "compareDefault": false,
       "suitabilityGate": false,
       "calc": "simple",
-      "defaults": { "room": "detail", "light": "noon", "finish": "polished" },
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "polished" },
       "cta": {
         "primary": { "type": "print", "label": { "ru": "Скачать spec / TDS (PDF)", "en": "Download spec / TDS (PDF)" } },
         "secondary": { "type": "whatsapp", "label": { "ru": "Связаться с поставщиком", "en": "Contact supplier" },
@@ -222,7 +222,7 @@
       "compareDefault": true,
       "suitabilityGate": false,
       "calc": "industrial",
-      "defaults": { "room": "detail", "light": "hard", "finish": "matte" },
+      "defaults": { "room": "living", "view": "detail", "light": "hard", "finish": "matte" },
       "cta": {
         "primary": { "type": "whatsapp", "label": { "ru": "Запросить выезд инженера", "en": "Request engineer visit" },
           "wa": { "ru": "Здравствуйте! Промышленный пол, прошу выезд инженера:", "en": "Hi! Industrial floor, requesting an engineer visit:" } },
@@ -247,7 +247,7 @@
       "compareDefault": false,
       "suitabilityGate": false,
       "calc": "simple",
-      "defaults": { "room": "living", "light": "evening", "finish": "satin" },
+      "defaults": { "room": "bedroom", "view": "hall", "light": "evening", "finish": "satin" },
       "cta": {
         "primary": { "type": "whatsapp", "label": { "ru": "Заказать консультацию", "en": "Book a consultation" },
           "wa": { "ru": "Здравствуйте! Пол для дома, прошу консультацию:", "en": "Hi! Floor for a home, requesting a consultation:" } },
@@ -273,7 +273,7 @@
       "compareDefault": true,
       "suitabilityGate": false,
       "calc": "simple",
-      "defaults": { "room": "detail", "light": "noon", "finish": "polished" },
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "polished" },
       "cta": {
         "primary": { "type": "print", "label": { "ru": "Скачать spec PDF", "en": "Download spec PDF" } },
         "secondary": { "type": "whatsapp", "label": { "ru": "WhatsApp", "en": "WhatsApp" },

@@ -106,7 +106,7 @@ const C = {
 
 /* ───────────────── renderer ───────────────── */
 const app = document.getElementById('app');
-const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
 const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;

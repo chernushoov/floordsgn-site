@@ -162,12 +162,35 @@ body{ font-family:var(--sans); }
   .hud.br{ display:none !important; }
 }
 
+/* M3 — actions / board / compare */
+.st-acts{ display:flex; gap:8px; margin-bottom:14px; }
+.st-act{ font-family:var(--sans); font-size:11px; letter-spacing:.03em; color:var(--carbon); background:#fff; border:1px solid var(--line); border-radius:980px; padding:8px 14px; cursor:pointer; transition:.15s; }
+.st-act:hover{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
+.st-modal-card{ max-width:880px; }
+.st-empty{ color:var(--steel); font-size:13px; padding:24px 4px; }
+.st-bgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.st-bcard{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.st-bcard img{ width:100%; height:96px; object-fit:cover; display:block; background:#ddd; }
+.st-bcard-n{ font-size:12px; font-weight:600; color:var(--carbon); padding:9px 10px 6px; }
+.st-bcard-row{ display:flex; gap:6px; padding:0 10px 10px; }
+.st-bcard-open{ flex:1; font-size:11px; font-weight:600; letter-spacing:.04em; color:#fff; background:var(--carbon); border:0; border-radius:980px; padding:7px; cursor:pointer; }
+.st-bcard-del{ width:30px; font-size:15px; color:var(--steel); background:transparent; border:1px solid var(--line); border-radius:980px; cursor:pointer; }
+.st-cmpwrap{ overflow-x:auto; }
+.st-cmp{ width:100%; border-collapse:collapse; font-size:12px; }
+.st-cmp th{ font-family:var(--sans); font-weight:600; font-size:11px; text-align:left; color:var(--carbon); padding:8px; border-bottom:2px solid var(--carbon); vertical-align:bottom; }
+.st-cmp td{ padding:7px 8px; border-bottom:1px solid var(--line); color:var(--carbon); vertical-align:top; }
+.st-cmp td.rk{ color:var(--steel); white-space:nowrap; }
+@media (max-width:880px){ .st-bgrid{ grid-template-columns:repeat(2,1fr); } }
+
 /* ── print: brand-clean one-pager (architect/pro TDS/spec) ── */
+.st-print{ display:none; }
+.st-print-brand{ font-family:var(--disp); font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--signal); }
+.st-print-mat{ font-family:var(--disp); font-size:32px; color:var(--carbon); margin:2px 0 14px; }
+.st-print-img{ width:100%; max-height:300px; object-fit:cover; border-radius:8px; margin-bottom:16px; }
+.st-print-url{ font-size:10px; color:var(--steel); margin-top:16px; word-break:break-all; }
 @media print{
-  .st-header,.st-panel-toggle,.bar,.hud,.st-chooser,.st-toast,#boot,.st-cta,.st-share{ display:none !important; }
   body{ background:#fff !important; }
-  #app{ position:static !important; height:auto !important; }
-  .st-panel{ position:static !important; transform:none !important; width:100% !important; height:auto !important; background:#fff !important; border:0 !important; }
-  .st-print-head{ display:block !important; }
+  body * { visibility:hidden !important; }
+  #stPrint, #stPrint * { visibility:visible !important; }
+  #stPrint{ display:block !important; position:absolute; left:0; top:0; width:100%; padding:26px; }
 }
-.st-print-head{ display:none; }

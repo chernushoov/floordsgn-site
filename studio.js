@@ -64,6 +64,7 @@
       el('a', { class:'st-brand', href:'index.html' }, '<b>Floor.DSGN</b><span class="st-studio">Studio</span>'),
       el('div', { class:'st-spacer' }),
       (() => { const b = el('button', { class:'st-hbtn st-persona-pill', id:'stPersonaBtn' }, '<span class="dot"></span><span id="stPersonaName"></span>'); b.onclick = openChooser; return b; })(),
+      (() => { const b = el('button', { class:'st-hbtn', id:'stBoardBtn' }, '<span class="bl"></span> <span class="cnt"></span>'); b.onclick = boardOpen; return b; })(),
       (() => { const b = el('button', { class:'st-hbtn st-share', id:'stShare' }); b.onclick = share; return b; })(),
       (() => { const w = el('div', { class:'st-lang' });
         ['ru','en'].forEach(lg => { const b = el('button', { 'data-lg':lg }, lg.toUpperCase()); b.onclick = () => setLang(lg); w.append(b); }); return w; })()
@@ -79,6 +80,11 @@
     const skip = el('button', { class:'st-chooser-skip', id:'stChooserSkip' }); skip.onclick = () => { applyPersona('explore'); closeChooser(); };
     card.append(skip);
     chooser.append(card); document.body.append(chooser);
+
+    // board + compare modals + print host (M3)
+    document.body.append(modalEl('stBoardModal', 'stBoardTitle', 'stBoardGrid', 'st-bgrid'));
+    document.body.append(modalEl('stCmpModal', 'stCmpTitle', 'stCmpWrap', 'st-cmpwrap'));
+    document.body.append(el('div', { class:'st-print', id:'stPrint' }));
 
     // panel
     const panel = el('div', { class:'st-panel', id:'stPanel' });
@@ -121,7 +127,7 @@
 
     // defaults (only if current isn't already in persona's set)
     if (!p.floors.includes(curFloor())) setFloor(p.floors[0]);
-    if (p.defaults){ if (p.defaults.room) setRoom(p.defaults.room); if (p.defaults.finish) setFinish(p.defaults.finish); }
+    if (p.defaults){ if (p.defaults.room) setRoom(p.defaults.room); if (p.defaults.finish) setFinish(p.defaults.finish); if (p.defaults.view) setView(p.defaults.view); }
     const room = window.__room;
     if (room && room.setLighting && p.defaults && p.defaults.light){ room.setLighting(p.defaults.light); STATE.light = p.defaults.light; }
     applyColor('orig');
@@ -143,6 +149,10 @@
     // material name + tag
     scroll.append(el('div', { class:'st-mat-name' }, tx(DATA.floorLabels[fl] || { ru:fl })));
     scroll.append(el('div', { class:'st-mat-tag' }, tx(p.tagline)));
+    const acts = el('div', { class:'st-acts' });
+    const bSave = el('button', { class:'st-act' }, L === 'ru' ? '+ Сохранить' : '+ Save'); bSave.onclick = boardSave;
+    const bCmp = el('button', { class:'st-act' }, L === 'ru' ? 'Сравнить' : 'Compare'); bCmp.onclick = compareOpen;
+    acts.append(bSave, bCmp); scroll.append(acts);
 
     // suitability gate (restaurant: microcement not for kitchens)
     if (p.suitabilityGate && p.suitability){
@@ -306,7 +316,7 @@
     if (p.cta.secondary) box.append(ctaEl(p.cta.secondary, 'st-cta-secondary'));
   }
   function ctaEl(c, cls){
-    if (c.type === 'print'){ const b = el('button', { class:cls }, tx(c.label)); b.onclick = () => window.print(); return b; }
+    if (c.type === 'print'){ const b = el('button', { class:cls }, tx(c.label)); b.onclick = doPrint; return b; }
     if (c.type === 'mailto'){ const a = el('a', { class:cls, href:`mailto:${MAIL}` }, tx(c.label)); return a; }
     // whatsapp
     const a = el('a', { class:cls, target:'_blank', rel:'noopener' }, tx(c.label));
@@ -356,9 +366,75 @@
   function renderAll(){
     $$('.st-lang button').forEach(b => b.classList.toggle('on', b.dataset.lg === L));
     $('#stShare').textContent = t('share');
+    const bl = $('#stBoardBtn .bl'); if (bl) bl.textContent = L === 'ru' ? 'Доска' : 'Board';
+    updateBoardCount();
     const p = persona(); $('#stPersonaName').textContent = tx(p.name);
     if ($('#stChooser').classList.contains('show')) renderChooser();
     renderPanel(); renderCta();
+  }
+
+  /* ═══════════ snapshot / board / compare / print (M3) ═══════════ */
+  function snapshot(){ try { const c = window.__room && window.__room.renderer && window.__room.renderer.domElement; return c ? c.toDataURL('image/jpeg', 0.6) : ''; } catch(e){ return ''; } }
+
+  function boardGet(){ try { return JSON.parse(localStorage.getItem('floordsgn_board') || '[]'); } catch(e){ return []; } }
+  function boardSet(a){ localStorage.setItem('floordsgn_board', JSON.stringify(a.slice(-12))); updateBoardCount(); }
+  function boardSave(){ const fl = curFloor(); const arr = boardGet();
+    arr.push({ url: shareURL(), name: tx(DATA.floorLabels[fl] || { ru:fl }), thumb: snapshot(), ts: 0 });
+    boardSet(arr); toast(L === 'ru' ? 'Добавлено в доску' : 'Added to board'); }
+  function updateBoardCount(){ const b = $('#stBoardBtn .cnt'); if (b){ const n = boardGet().length; b.textContent = n ? '(' + n + ')' : ''; } }
+  function boardOpen(){
+    const arr = boardGet(); const grid = $('#stBoardGrid'); grid.innerHTML = '';
+    $('#stBoardTitle').textContent = L === 'ru' ? 'Моя доска' : 'My board';
+    if (!arr.length) grid.append(el('div', { class:'st-empty' }, L === 'ru' ? 'Пусто. Жмите «+ Сохранить», чтобы собрать подборку.' : 'Empty. Hit "+ Save" to collect picks.'));
+    arr.slice().reverse().forEach((it, ri) => { const i = arr.length - 1 - ri;
+      const card = el('div', { class:'st-bcard' });
+      if (it.thumb) card.append(el('img', { src: it.thumb, alt: it.name }));
+      card.append(el('div', { class:'st-bcard-n' }, it.name));
+      const row = el('div', { class:'st-bcard-row' });
+      const open = el('button', { class:'st-bcard-open' }, L === 'ru' ? 'Открыть' : 'Open'); open.onclick = () => { location.href = it.url; };
+      const del = el('button', { class:'st-bcard-del' }, '×'); del.onclick = () => { const a = boardGet(); a.splice(i, 1); boardSet(a); boardOpen(); };
+      row.append(open, del); card.append(row); grid.append(card); });
+    $('#stBoardModal').classList.add('show');
+  }
+
+  function compareOpen(){
+    const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
+    $('#stCmpTitle').textContent = L === 'ru' ? 'Сравнение систем' : 'Compare systems';
+    const slugs = [], seen = {};
+    p.floors.forEach(fl => { const ms = DATA.floorMap[fl]; if (ms && !seen[ms]){ seen[ms] = 1; slugs.push(ms); } });
+    (p.specCards || []).forEach(s => { if (!seen[s]){ seen[s] = 1; slugs.push(s); } });
+    const pick = slugs.slice(0, 4);
+    const rows = [['type','Тип','Type'],['thk','Толщина','Thickness'],['base','Основа','Base'],['cure','Готовность','Cure'],['warr','Гарантия','Warranty'],['load','Применение','Use']];
+    const tbl = el('table', { class:'st-cmp' });
+    const head = el('tr'); head.append(el('th', {}, ''));
+    pick.forEach(s => { const m = manBySlug(s); head.append(el('th', {}, m ? (L === 'ru' ? m.label_ru : (DATA.manifestLabelsEn[s] || m.label_ru)) : s)); });
+    tbl.append(head);
+    rows.forEach(([k, ru, en]) => { const tr = el('tr'); tr.append(el('td', { class:'rk' }, L === 'ru' ? ru : en));
+      pick.forEach(s => { const m = manBySlug(s); tr.append(el('td', {}, (m && m.spec && m.spec[k]) || '—')); }); tbl.append(tr); });
+    const brow = el('tr'); brow.append(el('td', { class:'rk' }, L === 'ru' ? 'Бейджи' : 'Badges'));
+    pick.forEach(s => { const m = manBySlug(s); brow.append(el('td', {}, ((m && m.badges) || []).join(' · '))); }); tbl.append(brow);
+    wrap.append(tbl); $('#stCmpModal').classList.add('show');
+  }
+
+  function doPrint(){
+    const host = $('#stPrint'); host.innerHTML = '';
+    const fl = curFloor(); const mat = manFor(fl);
+    host.append(el('div', { class:'st-print-brand' }, 'Floor.DSGN Studio'));
+    host.append(el('div', { class:'st-print-mat' }, tx(DATA.floorLabels[fl] || { ru:fl })));
+    const img = snapshot(); if (img) host.append(el('img', { class:'st-print-img', src: img }));
+    const spec = buildSpec(mat, persona()); if (spec) host.append(spec);
+    host.append(el('div', { class:'st-print-url' }, shareURL()));
+    setTimeout(() => window.print(), 80);
+  }
+
+  function modalEl(id, titleId, bodyId, bodyClass){
+    const m = el('div', { class:'st-chooser', id });
+    const card = el('div', { class:'st-chooser-card st-modal-card' });
+    card.append(el('h2', { id:titleId }), el('div', { class:bodyClass, id:bodyId }));
+    const close = el('button', { class:'st-chooser-skip' }, L === 'ru' ? 'Закрыть' : 'Close'); close.onclick = () => m.classList.remove('show');
+    card.append(close); m.append(card);
+    m.onclick = (e) => { if (e.target === m) m.classList.remove('show'); };
+    return m;
   }
 
   /* ═══════════ boot ═══════════ */
