@@ -52,13 +52,16 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   await pg.waitForTimeout(900);
   const floorBeforeCmp=await pg.evaluate(()=>(document.querySelector('#floorCtl .chip.on[data-fl]')||{}).dataset.fl);
   await pg.evaluate(()=>{const b=Array.from(document.querySelectorAll('.st-act')).find(x=>/сравн|compare/i.test(x.textContent));if(b)b.click();});
-  // poll for two rendered cells
-  let cells=0, dataUrls=0;
+  // poll for two rendered images in the before/after slider
+  let imgs=0, dataUrls=0;
   for(let i=0;i<40;i++){await pg.waitForTimeout(250);
-    const r=await pg.evaluate(()=>{const imgs=Array.from(document.querySelectorAll('.st-cmp-vis .st-cmp-cell img'));return{cells:imgs.length,data:imgs.filter(im=>/^data:image/.test(im.src)).length};});
-    cells=r.cells;dataUrls=r.data;if(dataUrls>=2)break;}
-  ok('compare renders 2 visual cells', cells===2, {cells});
-  ok('both cells are data-URL renders', dataUrls===2, {dataUrls});
+    const r=await pg.evaluate(()=>{const im=Array.from(document.querySelectorAll('.st-cmp-vis .st-ba-img'));return{n:im.length,data:im.filter(x=>/^data:image/.test(x.src)).length};});
+    imgs=r.n;dataUrls=r.data;if(dataUrls>=2)break;}
+  ok('compare renders before/after slider (2 imgs)', imgs===2, {imgs});
+  ok('both slider imgs are data-URL renders', dataUrls===2, {dataUrls});
+  ok('slider handle present', await pg.evaluate(()=>!!document.querySelector('.st-ba-handle')));
+  const moved=await pg.evaluate(()=>{const ba=document.querySelector('.st-ba');if(!ba)return null;const r=ba.getBoundingClientRect();ba.dispatchEvent(new PointerEvent('pointerdown',{clientX:r.left+r.width*0.3,bubbles:true}));const h=document.querySelector('.st-ba-handle');return h.style.left;});
+  ok('slider drag moves handle off 50%', moved && moved!=='50%', {left:moved});
   ok('compare spec table present', await pg.evaluate(()=>!!document.querySelector('#stCmpModal .st-cmp')));
   await pg.screenshot({path:path.join(OUT,'ab-compare.png')});
   // close + verify floor restored

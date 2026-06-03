@@ -539,6 +539,22 @@
     return tbl;
   }
 
+  /* before/after wipe slider — drag to compare two floors in the same camera/room/light */
+  function buildBASlider(srcA, nameA, srcB, nameB){
+    const ba = el('div', { class:'st-ba' });
+    const base = el('img', { class:'st-ba-img', src: srcB, alt: nameB, draggable:'false' });
+    const top = el('div', { class:'st-ba-top' });
+    top.append(el('img', { class:'st-ba-img', src: srcA, alt: nameA, draggable:'false' }));
+    const handle = el('div', { class:'st-ba-handle', role:'slider', 'aria-label': L === 'ru' ? 'Перетащите, чтобы сравнить' : 'Drag to compare' });
+    ba.append(base, top, handle, el('span', { class:'st-ba-lab st-ba-lab-l' }, nameA), el('span', { class:'st-ba-lab st-ba-lab-r' }, nameB));
+    let split = 50;
+    const apply = () => { top.style.clipPath = 'inset(0 ' + (100 - split) + '% 0 0)'; handle.style.left = split + '%'; };
+    const at = (x) => { const r = ba.getBoundingClientRect(); split = Math.max(0, Math.min(100, ((x - r.left) / r.width) * 100)); apply(); };
+    ba.addEventListener('pointerdown', e => { e.preventDefault(); at(e.clientX); const mv = ev => at(ev.clientX); const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); }; window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); });
+    apply();
+    return ba;
+  }
+
   async function compareOpen(){
     track('compare', {});
     const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
@@ -568,12 +584,10 @@
         captureArtRepeat(); if (origReal) applyChipScale();
         const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(orig)); if (r && r.bake) r.bake();
         if (vis){ vis.innerHTML = '';
-          [[ab[0], shotA], [ab[1], shotB]].forEach(([fl, src]) => {
-            const cell = el('div', { class:'st-cmp-cell' });
-            if (src) cell.append(el('img', { src, alt: tx(DATA.floorLabels[fl] || { ru:fl }) }));
-            cell.append(el('div', { class:'st-cmp-cap' }, tx(DATA.floorLabels[fl] || { ru:fl })));
-            vis.append(cell);
-          });
+          const nameA = tx(DATA.floorLabels[ab[0]] || { ru:ab[0] }), nameB = tx(DATA.floorLabels[ab[1]] || { ru:ab[1] });
+          if (shotA && shotB){ vis.append(buildBASlider(shotA, nameA, shotB, nameB));
+            vis.append(el('div', { class:'st-ba-hint' }, L === 'ru' ? 'Перетащите разделитель, чтобы сравнить' : 'Drag the divider to compare')); }
+          else { [[ab[0], shotA], [ab[1], shotB]].forEach(([fl, src]) => { const cell = el('div', { class:'st-cmp-cell' }); if (src) cell.append(el('img', { src, alt: tx(DATA.floorLabels[fl] || { ru:fl }) })); cell.append(el('div', { class:'st-cmp-cap' }, tx(DATA.floorLabels[fl] || { ru:fl }))); vis.append(cell); }); }
         }
       } catch(e){ if (vis) vis.innerHTML = ''; }
       await new Promise(r => setTimeout(r, 60));   // let the restore click's 30ms listener fire (skipped) before re-arming
