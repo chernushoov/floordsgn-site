@@ -81,6 +81,7 @@
     card.append(tiles);
     const skip = el('button', { class:'st-chooser-skip', id:'stChooserSkip' }); skip.onclick = () => { applyPersona('explore'); closeChooser(); };
     card.append(skip);
+    card.append(el('div', { class:'st-chooser-links', id:'stChooserLinks' }));
     chooser.append(card); document.body.append(chooser);
 
     // board + compare modals + print host (M3)
@@ -92,7 +93,7 @@
     const panel = el('div', { class:'st-panel', id:'stPanel' });
     panel.append(el('div', { class:'st-panel-scroll', id:'stScroll' }), el('div', { class:'st-cta', id:'stCta' }));
     document.body.append(panel);
-    const toggle = el('button', { class:'st-panel-toggle', id:'stToggle' }, '☰'); // hidden on desktop via CSS
+    const toggle = el('button', { class:'st-panel-toggle', id:'stToggle', 'aria-label':'Панель / Panel' }, '☰'); // hidden on desktop via CSS
     toggle.onclick = () => panel.classList.toggle('hidden');
     document.body.append(toggle);
 
@@ -111,6 +112,16 @@
       tile.onclick = () => { applyPersona(p.id); closeChooser(); };
       tiles.append(tile);
     });
+    const lk = $('#stChooserLinks'); if (lk){ lk.innerHTML = '';
+      const waPartner = (txt) => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt);
+      const items = [
+        [L === 'ru' ? 'Все системы' : 'All systems', 'https://floordsgn.com/floors'],
+        [L === 'ru' ? 'Поставщикам' : 'For suppliers', waPartner(L === 'ru' ? 'Партнёрство поставщика' : 'Supplier partnership')],
+        [L === 'ru' ? 'Подрядчикам' : 'For contractors', waPartner(L === 'ru' ? 'Партнёрство подрядчика' : 'Contractor partnership')],
+        [L === 'ru' ? 'На сайт' : 'Website', 'https://floordsgn.com']
+      ];
+      items.forEach(([lab, href]) => lk.append(el('a', { href, target:'_blank', rel:'noopener' }, lab)));
+    }
   }
   function openChooser(){ renderChooser(); $('#stChooser').classList.add('show'); }
   function closeChooser(){ $('#stChooser').classList.remove('show'); }
@@ -256,7 +267,7 @@
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
       const cg = el('div', { class:'st-swatches' });
-      colorOpts().forEach(o => { const sw = el('button', { class:'st-swatch' + (STATE.ctl.color === o.id ? ' on' : ''), title: tx(o.name) });
+      colorOpts().forEach(o => { const sw = el('button', { class:'st-swatch' + (STATE.ctl.color === o.id ? ' on' : ''), title: tx(o.name), 'aria-label': tx(o.name) });
         if (o.hex) sw.style.background = o.hex; else sw.classList.add('st-swatch-orig');
         sw.onclick = () => { applyColor(o.id); $$('.st-swatch', cg).forEach(x => x.classList.remove('on')); sw.classList.add('on'); writeURL(); };
         cg.append(sw); });
@@ -403,7 +414,7 @@
       card.append(el('div', { class:'st-bcard-n' }, it.name));
       const row = el('div', { class:'st-bcard-row' });
       const open = el('button', { class:'st-bcard-open' }, L === 'ru' ? 'Открыть' : 'Open'); open.onclick = () => { location.href = it.url; };
-      const del = el('button', { class:'st-bcard-del' }, '×'); del.onclick = () => { const a = boardGet(); a.splice(i, 1); boardSet(a); boardOpen(); };
+      const del = el('button', { class:'st-bcard-del', 'aria-label':'Удалить / Remove' }, '×'); del.onclick = () => { const a = boardGet(); a.splice(i, 1); boardSet(a); boardOpen(); };
       row.append(open, del); card.append(row); grid.append(card); });
     $('#stBoardModal').classList.add('show');
   }

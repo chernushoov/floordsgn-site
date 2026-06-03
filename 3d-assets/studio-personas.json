@@ -282,6 +282,56 @@
       "pains": [
         { "q": { "ru": "Нужны все технические данные сразу", "en": "Need all technical data at once" }, "a": { "ru": "Спека, слои, бейджи, сравнение — всё открыто", "en": "Spec, layers, badges, compare — all open" } }
       ]
+    },
+    {
+      "id": "safety",
+      "name": { "ru": "Безопасность / охрана труда", "en": "Safety / compliance officer" },
+      "tagline": { "ru": "Скольжение, огонь, гигиена, стандарты — на виду", "en": "Slip, fire, hygiene, standards — up front" },
+      "icon": "shield",
+      "floors": ["cement", "micro", "graphite", "comfort", "multi", "light"],
+      "specCards": ["pu-cement", "mma", "epoxy", "rubber"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "view": "detail", "light": "hard", "finish": "matte" },
+      "cta": {
+        "primary": { "type": "print", "label": { "ru": "Скачать спеку / сертификаты", "en": "Download spec / certificates" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "Запросить сертификаты", "en": "Request certificates" },
+          "wa": { "ru": "Здравствуйте! Нужны сертификаты и классы (скольжение/огонь/гигиена):", "en": "Hi! Need certificates and ratings (slip/fire/hygiene):" } }
+      },
+      "pains": [
+        { "q": { "ru": "Какой класс скольжения?", "en": "What's the slip rating?" }, "a": { "ru": "R-класс (DIN 51130) указан у каждой системы в бейджах", "en": "R-class (DIN 51130) shown per system in the badges" } },
+        { "q": { "ru": "Соответствует гигиене / HACCP?", "en": "Hygiene / HACCP compliant?" }, "a": { "ru": "Food-safe / HACCP помечены явно", "en": "Food-safe / HACCP flagged explicitly" } },
+        { "q": { "ru": "Где исходные стандарты?", "en": "Where are the source standards?" }, "a": { "ru": "EN / DIN / ISO рядом с показателями в спеке", "en": "EN / DIN / ISO next to the figures in the spec" } }
+      ]
+    },
+    {
+      "id": "developer",
+      "name": { "ru": "Девелопер / управление активами", "en": "Developer / asset manager" },
+      "tagline": { "ru": "Один стандарт на портфель, расчёт по объектам", "en": "One standard across the portfolio, per-asset estimate" },
+      "icon": "building",
+      "floors": ["graphite", "cement", "comfort", "micro", "light"],
+      "specCards": ["epoxy", "pu-cement", "mma"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "industrial",
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "matte" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Расчёт по портфелю", "en": "Portfolio estimate" },
+          "wa": { "ru": "Здравствуйте! Нужен расчёт пола на несколько объектов:", "en": "Hi! Need a floor estimate across several assets:" } },
+        "secondary": { "type": "print", "label": { "ru": "Скачать спеку (PDF)", "en": "Download spec (PDF)" } }
+      },
+      "pains": [
+        { "q": { "ru": "Нужен расчёт на несколько объектов", "en": "Need an estimate across several assets" }, "a": { "ru": "Калькулятор по площади даёт вилку на каждый объект", "en": "The area calculator gives a band per asset" } },
+        { "q": { "ru": "Хочу один стандарт на весь портфель", "en": "Want one standard across the whole portfolio" }, "a": { "ru": "Сравнение систем + единая спека для тиражирования", "en": "System compare + one spec to standardise on" } },
+        { "q": { "ru": "Что с эксплуатацией и обслуживанием?", "en": "What about operation & maintenance?" }, "a": { "ru": "Гарантия и срок службы — в спеке каждой системы", "en": "Warranty and lifespan — in each system's spec" } }
+      ]
     }
   ]
 }

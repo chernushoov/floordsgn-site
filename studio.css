@@ -43,6 +43,9 @@ body{ font-family:var(--sans); }
 .st-tile .nm{ font-weight:600; font-size:14px; color:var(--carbon); margin-bottom:3px; }
 .st-tile .tg{ font-size:11.5px; line-height:1.35; color:var(--steel); }
 .st-chooser-skip{ display:block; margin:18px auto 0; font-family:var(--sans); font-size:12px; letter-spacing:.04em; color:var(--steel); background:none; border:0; cursor:pointer; text-decoration:underline; }
+.st-chooser-links{ display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:center; margin-top:16px; padding-top:14px; border-top:1px solid var(--line); }
+.st-chooser-links a{ font-family:var(--sans); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--steel); text-decoration:none; }
+.st-chooser-links a:hover{ color:var(--carbon); }
 
 /* ── right info panel (desktop) / bottom sheet (mobile) ── */
 .st-panel{
