@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css?v=20260603-9"/>
+<link rel="stylesheet" href="studio.css?v=20260603-10"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -330,10 +330,11 @@ const lampLight = new THREE.PointLight(0xffce96, 6.0, 7, 2.0); lampLight.positio
 
 /* ════════ ROOM KIT: BEDROOM (Спальня) ════════ */
 function buildBedroom(){
+  const hw2=curW/2, hd2=curD/2;
   const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; roomKit.add(m); return m; };
   const white=new THREE.MeshStandardMaterial({color:0xece7dc,roughness:0.96});
   const duvet=new THREE.MeshStandardMaterial({color:0xf2eee4,roughness:0.97});
-  const bx=0.2, bz=-2.2, bw=1.95, bl=2.15;
+  const bx=0.1, bz=-hd2+1.25, bw=1.95, bl=2.15;                                        // bed head near the back wall
   add(new THREE.Mesh(RB(bw,0.26,bl,0.03), MAT.walnut), bx, 0.13, bz);                  // platform
   add(new THREE.Mesh(RB(bw-0.12,0.22,bl-0.12,0.05), white), bx, 0.37, bz);             // mattress
   add(new THREE.Mesh(RB(bw-0.06,0.13,bl*0.6,0.06), duvet), bx, 0.50, bz+0.34);         // folded duvet
@@ -349,19 +350,15 @@ function buildBedroom(){
   }
   add(new THREE.Mesh(RB(1.5,0.40,0.5,0.05), MAT.linenD), bx, 0.20, bz+bl/2+0.55);      // bench at foot
   add(new THREE.Mesh(RB(0.42,0.22,0.16,0.05), MAT.signal), bx-0.4, 0.50, bz+bl/2+0.55); // ONE signal lumbar cushion
-  add(new THREE.Mesh(RB(0.55,2.2,2.4,0.02), MAT.walnut), hw-0.32, 1.12, 0.8);          // wardrobe, right wall
-  (function(){ const g=new THREE.Group(); const a=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);}; // reading chair
-    a(new THREE.Mesh(RB(0.72,0.16,0.72,0.05),MAT.linen),0,0.40,0);
-    a(new THREE.Mesh(RB(0.72,0.50,0.15,0.05),MAT.linen),0,0.62,-0.30);
-    for(const s of [-1,1]) for(const z of [-0.27,0.3]) a(new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.4,12),MAT.metal),s*0.3,0.2,z);
-    g.position.set(-3.0,0,1.7); g.rotation.y=0.6; roomKit.add(g); })();
-  buildFicus(-4.4,-2.8);                                                               // tall plant
-  add(new THREE.Mesh(RB(0.06,1.1,1.6,0.01), MAT.walnut), -hw+0.10, 1.75, -0.2);        // framed art, left wall
-  add(new THREE.Mesh(RB(0.04,0.9,1.4,0.005), MAT.paper),  -hw+0.135, 1.75, -0.2);
+  add(new THREE.Mesh(RB(0.5,2.0,1.9,0.02), MAT.walnut), hw2-0.30, 1.02, 0.3);          // wardrobe, right wall
+  buildFicus(-hw2+0.6,-hd2+0.7);                                                       // tall plant, back-left corner
+  add(new THREE.Mesh(RB(0.06,1.1,1.4,0.01), MAT.walnut), -hw2+0.10, 1.6, 0.3);         // framed art, left wall
+  add(new THREE.Mesh(RB(0.04,0.9,1.2,0.005), MAT.paper),  -hw2+0.135, 1.6, 0.3);
 }
 
 /* ════════ ROOM KIT: KITCHEN (Кухня) ════════ */
 function buildKitchen(){
+  const hw2=curW/2, hd2=curD/2;
   const top = new THREE.MeshStandardMaterial({ color:0xddd6c8, roughness:0.5 });   // light stone worktop
   const cab = MAT.walnut;
   /* island — centre-right */
@@ -379,9 +376,10 @@ function buildKitchen(){
     g.position.set(-0.3, 0, 0.4 + i*0.62); roomKit.add(g); }
   /* back counter run under the window */
   (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
-    add(new THREE.Mesh(RB(4.4,0.86,0.6,0.02), cab), 0,0.43,0);
-    add(new THREE.Mesh(RB(4.6,0.08,0.7,0.02), top), 0,0.90,0);
-    g.position.set(0.6,0,-hd+0.42); roomKit.add(g); })();
+    const cw=Math.min(4.4, curW-1.4);
+    add(new THREE.Mesh(RB(cw,0.86,0.6,0.02), cab), 0,0.43,0);
+    add(new THREE.Mesh(RB(cw+0.2,0.08,0.7,0.02), top), 0,0.90,0);
+    g.position.set(0,0,-hd2+0.42); roomKit.add(g); })();
   /* two warm pendant lamps over the island */
   for(const px of [0.5, 1.5]){
     { const cord=new THREE.Mesh(new THREE.CylinderGeometry(0.006,0.006,1.0,8),MAT.metal); cord.position.set(px,2.5,0.4); roomKit.add(cord); }
@@ -390,34 +388,35 @@ function buildKitchen(){
     const pl=new THREE.PointLight(0xffce96,3.0,6,2); pl.position.set(px,1.86,0.4); roomKit.add(pl);
   }
   const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.12,24,16,0,Math.PI*2,0,Math.PI*0.5),MAT.stone); bowl.rotation.x=Math.PI; sr(bowl,0.7,0.96,0.4);
-  buildSnake(-3.8,2.6); buildFicus(-4.3,-2.6);
+  buildSnake(-hw2+0.5,hd2-0.6); buildFicus(-hw2+0.6,-hd2+0.7);
 }
 
 /* ════════ ROOM KIT: BATHROOM (Ванная) ════════ */
 function buildBath(){
+  const hw2=curW/2, hd2=curD/2;
   const porcelain=new THREE.MeshPhysicalMaterial({ color:0xf3f0ea, roughness:0.22, clearcoat:0.6, clearcoatRoughness:0.2 });
   const stoneTop=new THREE.MeshStandardMaterial({ color:0xd8d2c6, roughness:0.5 });
-  /* freestanding tub — hero, centre-right */
+  /* freestanding rectangular tub — hero, centre */
   (function(){ const g=new THREE.Group(); const add=(m,x,y,z,c)=>{m.position.set(x,y,z);m.castShadow=c!==false;m.receiveShadow=true;g.add(m);};
-    const o=new THREE.Mesh(new THREE.CapsuleGeometry(0.5,1.0,12,24),porcelain); o.rotation.z=Math.PI/2; o.scale.set(1,1,0.62); add(o,0,0.46,0);
-    const inr=new THREE.Mesh(new THREE.CapsuleGeometry(0.4,0.9,10,20),new THREE.MeshStandardMaterial({color:0xe7e2d8,roughness:0.4})); inr.rotation.z=Math.PI/2; inr.scale.set(1,1,0.6); add(inr,0,0.6,0,false);
-    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.42,12),MAT.metal); fa.rotation.x=0.4; add(fa,0.82,0.5,0);
-    g.position.set(1.1,0,0.7); roomKit.add(g); })();                              // centred tub = visible hero
+    add(new THREE.Mesh(RB(1.7,0.6,0.8,0.18),porcelain),0,0.42,0);                                          // tub body
+    add(new THREE.Mesh(RB(1.42,0.06,0.54,0.1),new THREE.MeshStandardMaterial({color:0xdfe6e6,roughness:0.2})),0,0.69,0,false); // recessed water surface
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.42,12),MAT.metal); fa.rotation.x=0.4; add(fa,0.74,0.5,0);
+    g.position.set(0.6,0,0.5); roomKit.add(g); })();                              // centred tub = visible hero
   /* vanity at the far wall: cabinet + stone top + basin + faucet */
   (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
-    add(new THREE.Mesh(RB(1.8,0.8,0.55,0.02),MAT.walnut),0,0.4,0);
-    add(new THREE.Mesh(RB(1.95,0.07,0.62,0.02),stoneTop),0,0.84,0);
-    add(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.16,0.13,28),porcelain),0.45,0.92,0);
-    add(new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.28,12),MAT.metal),0.45,1.04,-0.13);
-    g.position.set(-1.4,0,-hd+0.34); roomKit.add(g); })();
-  /* large mirror over the vanity + two warm sconces */
-  sr(new THREE.Mesh(RB(0.05,1.3,1.6,0.02),MAT.metal),-1.4,1.7,-hd+0.09);
-  const mir=new THREE.Mesh(RB(0.02,1.15,1.45,0.01), new THREE.MeshStandardMaterial({color:0xa9b2b6,roughness:0.06,metalness:0.95})); mir.position.set(-1.4,1.7,-hd+0.12); mir.receiveShadow=false; roomKit.add(mir);
-  for(const s of [-1,1]){ const b=new THREE.Mesh(new THREE.SphereGeometry(0.06,16,12),new THREE.MeshStandardMaterial({color:0xfff0d8,emissive:0xffe0a8,emissiveIntensity:0.85,roughness:0.5})); b.position.set(-1.4+s*0.95,1.78,-hd+0.34); roomKit.add(b);
-    const pl=new THREE.PointLight(0xffe2b0,1.8,4,2); pl.position.set(-1.4+s*0.95,1.78,-hd+0.5); roomKit.add(pl); }
-  sr(new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,0.36,28),MAT.signal),hw-3.7,0.18,2.3);   // ONE signal accent: round pouf
-  sr(new THREE.Mesh(RB(0.4,0.08,0.3,0.03),new THREE.MeshStandardMaterial({color:0xeee9df,roughness:0.95})),1.1,0.95,0.7);  // folded towel on tub
-  buildFicus(-4.2,-2.4); buildSnake(4.4,-2.6);
+    add(new THREE.Mesh(RB(1.6,0.8,0.5,0.02),MAT.walnut),0,0.4,0);
+    add(new THREE.Mesh(RB(1.75,0.07,0.57,0.02),stoneTop),0,0.84,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.16,0.13,28),porcelain),0.4,0.92,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.28,12),MAT.metal),0.4,1.04,-0.12);
+    g.position.set(-1.0,0,-hd2+0.32); roomKit.add(g); })();
+  /* mirror over the vanity + two warm sconces */
+  sr(new THREE.Mesh(RB(0.05,1.25,1.5,0.02),MAT.metal),-1.0,1.65,-hd2+0.07);
+  const mir=new THREE.Mesh(RB(0.02,1.1,1.35,0.01), new THREE.MeshStandardMaterial({color:0xa9b2b6,roughness:0.06,metalness:0.95})); mir.position.set(-1.0,1.65,-hd2+0.10); mir.receiveShadow=false; roomKit.add(mir);
+  for(const s of [-1,1]){ const b=new THREE.Mesh(new THREE.SphereGeometry(0.06,16,12),new THREE.MeshStandardMaterial({color:0xfff0d8,emissive:0xffe0a8,emissiveIntensity:0.85,roughness:0.5})); b.position.set(-1.0+s*0.85,1.72,-hd2+0.3); roomKit.add(b);
+    const pl=new THREE.PointLight(0xffe2b0,1.6,3.5,2); pl.position.set(-1.0+s*0.85,1.72,-hd2+0.45); roomKit.add(pl); }
+  sr(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,0.34,28),MAT.signal),-hw2+0.6,0.17,hd2-0.6);   // ONE signal accent: round pouf
+  sr(new THREE.Mesh(RB(0.4,0.08,0.28,0.03),new THREE.MeshStandardMaterial({color:0xeee9df,roughness:0.95})),0.6,0.72,0.5);  // folded towel on tub rim
+  buildSnake(hw2-0.5,-hd2+0.6);
 }
 
 /* ════════ room registry + switcher (floor + tour stay; only the kit swaps) ════════ */
@@ -426,8 +425,16 @@ function clearKit(){
   for(let i=roomKit.children.length-1;i>=0;i--){ const c=roomKit.children[i]; roomKit.remove(c);
     c.traverse && c.traverse(o=>{ o.geometry && o.geometry.dispose(); }); if(c.geometry) c.geometry.dispose(); }
 }
-function setRoom(type){ clearKit(); (ROOMS[type]||buildLiving)(); if(floorMat.envMap) bakeFloorReflection(); }
-setRoom('living');
+/* each room TYPE has its own real size — selecting a room changes the space, not just the
+   furniture (living = full showcase; bedroom/kitchen medium; bath small). */
+const ROOM_DIMS = { living:{w:W,d:D,h:H}, bedroom:{w:7,d:5.5,h:3.0}, kitchen:{w:7,d:5,h:3.0}, bath:{w:5,d:3.8,h:2.8} };
+function setRoom(type){
+  const dm = ROOM_DIMS[type] || ROOM_DIMS.living;
+  curW = dm.w; curD = dm.d; curH = dm.h;            // set BEFORE building (kits read curW/curD)
+  clearKit(); (ROOMS[type]||buildLiving)();
+  applyRoomShell(dm.w, dm.d, dm.h, true);            // size the shell to the room; keep the furniture
+}
+buildLiving();   // initial kit — room is already the default 12×8 showcase; full setRoom() runs on later clicks
 
 /* ───────────────── lighting — "golden hour" catalog mood ───────────────── */
 scene.add(new THREE.HemisphereLight(0xf3ead6, 0x241c14, 0.40));   // warm sky / deep warm ground bounce
@@ -670,20 +677,24 @@ function buildCustomShell(w, d, h){
   for (const sx of [-w*0.27, 0, w*0.27]){ const m = new THREE.Mesh(new THREE.BoxGeometry(0.14,0.04,d*0.66), sm); m.position.set(sx, h-0.02, -0.3); g.add(m); }
   scene.add(g); return g;
 }
-function setRoomDims(w, d, h){
+function applyRoomShell(w, d, h, furnished){
   w = Math.max(3, Math.min(13, +w||W)); d = Math.max(2.5, Math.min(9, +d||D)); h = Math.max(2.2, Math.min(4, +h||H));
   curW = w; curD = d; curH = h;
   const isDef = (w===W && d===D && h===H);
-  defShell.forEach(m => m.visible = isDef);                             // showcase shell only at default size
-  roomKit.visible = isDef;                                             // hide hand-placed furniture for custom rooms
+  defShell.forEach(m => m.visible = isDef);                             // detailed showcase shell only at full size
+  roomKit.visible = !!furnished;                                       // room-type kits stay; manual dims = empty
   if (_customShell){ scene.remove(_customShell); _disposeGroup(_customShell); _customShell = null; }
-  if (!isDef){ _customShell = buildCustomShell(w, d, h); scaleFigure(true); if (_figure) _figure.position.set(Math.min(1.9, w/2-0.6), 0, Math.min(0.7, d/2-0.6)); }
+  if (!isDef) _customShell = buildCustomShell(w, d, h);
   if (_dividers){ scene.remove(_dividers); _disposeGroup(_dividers); _dividers = null; }   // rebuild grid for the new footprint
   if (_dividersOn){ _dividers = buildDividers(); _dividers.visible = true; }
   ROOM_BOUND.x = Math.max(0.6, w/2-0.35); ROOM_BOUND.z = Math.max(0.6, d/2-0.35); ROOM_BOUND.yMax = h-0.3;
-  const sc = isDef ? 9 : (Math.max(w, d)/2 + 1); sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
-  _customRoom = !isDef; _refreshLightLevels();   // diffuse the light for the small room (default untouched)
+  const sc = isDef ? 9 : (Math.max(w, d)/2 + 1.5); sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
+  _customRoom = !isDef; _refreshLightLevels();   // diffuse the light for the smaller room (full showcase untouched)
   bakeFloorReflection();
+}
+function setRoomDims(w, d, h){   // manual "Размер комнаты" → empty room at exact size + scale figure
+  applyRoomShell(w, d, h, false);
+  scaleFigure(true); if (_figure) _figure.position.set(Math.min(1.9, curW/2-0.6), 0, Math.min(0.7, curD/2-0.6));
 }
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
                   setLighting, scaleFigure, setDividers, setRoomDims, getDims: ()=>({ w:curW, d:curD, h:curH }),
@@ -707,6 +718,6 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js?v=20260603-9"></script>
+<script type="module" src="studio.js?v=20260603-10"></script>
 </body>
 </html>
