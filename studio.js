@@ -18,7 +18,12 @@
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{}, style:'warm' };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, sun:0.4, ctl:{ color:'orig', design:'orig' }, edit:false, tf:{}, style:'warm', walls:{ left:'micro', right:'micro', back:'micro', window:'micro' } };
+  /* walls deep-link: only non-default walls, "wall:mat" joined by ",". micro = default. */
+  const WALL_SIDES = ['left','right','back','window'];
+  const encWalls = () => WALL_SIDES.filter(k => STATE.walls[k] && STATE.walls[k] !== 'micro').map(k => k + ':' + STATE.walls[k]).join(',');
+  const decWalls = (s) => String(s).split(',').forEach(p => { const a = p.split(':'); if (a[0] && a[1] && WALL_SIDES.indexOf(a[0]) >= 0) STATE.walls[a[0]] = a[1]; });
+  const applyWalls = () => { const r = window.__room; if (!r || !r.setWall) return; WALL_SIDES.forEach(k => { if (STATE.walls[k] && STATE.walls[k] !== 'micro') r.setWall(k, STATE.walls[k]); }); };   // re-apply non-default after a shell rebuild (fixes per-room repeat)
   /* tf deep-link: per-room furniture transforms, only moved pieces. "name,x,z,ry" joined by ";". */
   const encTf = (arr) => (arr || []).map(m => [m.name, m.x, m.z, +(+m.ry || 0).toFixed(3)].join(',')).join(';');
   const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); return a.length >= 4 ? { name:a[0], x:+a[1], z:+a[2], ry:+a[3] } : null; }).filter(Boolean);
@@ -362,6 +367,25 @@
       wrap.append(el('div', { class:'st-hint' }, L === 'ru' ? 'Включите и коснитесь предмета: тяните по полу, поворот — кнопками.' : 'Toggle on, tap a piece: drag on the floor, rotate with the buttons.'));
     }
     const rs = buildRoomSize(); if (rs) wrap.append(rs);
+    // walls — per-wall finish (micro / comfort / concrete / terrazzo); pick a wall (or all) then a finish
+    if (window.__room && window.__room.setWall){
+      wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Стены' : 'Walls'));
+      let wallTarget = 'all';
+      const WALL_SEL = [{ id:'all', ru:'Все', en:'All' },{ id:'left', ru:'Левая', en:'Left' },{ id:'right', ru:'Правая', en:'Right' },{ id:'back', ru:'Задняя', en:'Back' },{ id:'window', ru:'Окно', en:'Window' }];
+      const selRow = el('div', { class:'st-pillrow' });
+      WALL_SEL.forEach((o, i) => { const b = el('button', { class:'st-pill st-wallsel' + (i === 0 ? ' on' : '') }, L === 'ru' ? o.ru : o.en);
+        b.onclick = () => { wallTarget = o.id; $$('.st-wallsel', selRow).forEach(x => x.classList.remove('on')); b.classList.add('on'); };
+        selRow.append(b); });
+      wrap.append(selRow);
+      const WALL_MAT_OPTS = [{ id:'micro', ru:'Микроцемент', en:'Micro', hex:'#968d7e' },{ id:'comfort', ru:'Комфорт', en:'Comfort', hex:'#d8cdbb' },{ id:'concrete', ru:'Бетон', en:'Concrete', hex:'#9a958c' },{ id:'terrazzo', ru:'Терраццо', en:'Terrazzo', hex:'#cfc7b8' }];
+      const swRow = el('div', { class:'st-swatches' });
+      WALL_MAT_OPTS.forEach(o => { const sw = el('button', { class:'st-swatch', title:(L === 'ru' ? o.ru : o.en), 'aria-label':(L === 'ru' ? o.ru : o.en) }); sw.style.background = o.hex;
+        sw.onclick = () => { const r = window.__room; if (r && r.setWall) r.setWall(wallTarget, o.id);
+          if (wallTarget === 'all'){ WALL_SIDES.forEach(wk => STATE.walls[wk] = o.id); } else { STATE.walls[wallTarget] = o.id; }
+          track('wall', { wall:wallTarget, mat:o.id }); writeURL(); };
+        swRow.append(sw); });
+      wrap.append(swRow);
+    }
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
@@ -524,6 +548,7 @@
     if (STATE.sun !== 0.4) u.searchParams.set('sun', String(STATE.sun));
     { const tf = STATE.tf[STATE.room]; if (tf && tf.length) u.searchParams.set('tf', encTf(tf)); }
     if (STATE.style && STATE.style !== 'warm') u.searchParams.set('st', STATE.style);
+    { const wl = encWalls(); if (wl) u.searchParams.set('walls', wl); }
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -542,6 +567,7 @@
     if (q.get('sun') != null){ const s = parseFloat(q.get('sun')); if (!isNaN(s)) STATE.sun = Math.max(0, Math.min(1, s)); }
     if (q.get('tf')) STATE.tf[STATE.room] = decTf(q.get('tf'));   // for the deep-linked room
     if (q.get('st')) STATE.style = q.get('st');
+    if (q.get('walls')) decWalls(q.get('walls'));
   }
   async function share(){
     const url = shareURL();
@@ -746,7 +772,7 @@
 
     // sync STATE from engine on user clicks
     $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { if (comparing) return; STATE.m = curFloor(); if (!booting){ applyColor('orig'); STATE.ctl.design = 'orig'; } const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); captureArtRepeat(); if (STATE.realChip) applyChipScale(); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
-    $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; if (!booting){ STATE.dims = null; renderPanel(); } applyTf(STATE.room); writeURL(); }));   // engine rebuilt the kit (listener ran first) → restore this room's arrangement
+    $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; if (!booting){ STATE.dims = null; renderPanel(); } applyWalls(); applyTf(STATE.room); writeURL(); }));   // engine rebuilt the shell+kit (listener ran first) → re-apply walls (repeat) + this room's arrangement
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
 
@@ -765,6 +791,7 @@
     // which applyPersona resets to the persona default)
     if (urlFloor) setFloor(urlFloor);
     if (urlRoom) setRoom(urlRoom);
+    applyWalls();   // walls after room (per boot order), before style
     if (STATE.style && STATE.style !== 'warm' && window.__room && window.__room.setStyle) window.__room.setStyle(STATE.style);   // style after room, before floor/light/tf
     if (urlFinish) setFinish(urlFinish);
     if (urlView) setView(urlView);

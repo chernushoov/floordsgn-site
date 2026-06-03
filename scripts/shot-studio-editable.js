@@ -188,7 +188,36 @@ const boot=async(pg,url)=>{await pg.goto(url,{waitUntil:'networkidle',timeout:30
     ok('deep-link style keeps signal locked', dl.signal===SIGNAL, dl);
     await c2.close();
   }
-  // ───────────────── PHASE 4 — walls (added when P4 lands) ─────────────────
+  // ───────────────── PHASE 4 — per-wall materials ─────────────────
+  if(want(4)){
+    const {ctx,pg}=await mkpage('(p4)');await boot(pg,`http://127.0.0.1:${port}/floor-room.html`);
+    const w0=await pg.evaluate(()=>window.__room.getWalls());
+    ok('default walls all micro', ['left','right','back','window'].every(k=>w0[k]==='micro'), w0);
+    ok('default micro wall has no diffuse map (concrete color)', await pg.evaluate(()=>{const w=window.__room.wallSrc('window');return w.src===null;}));
+    // swap ONLY the window wall → decorative-concrete
+    const sb0=await pg.evaluate(()=>window.__room.getBakes());
+    await pg.evaluate(()=>window.__room.setWall('window','concrete'));
+    await pg.evaluate(()=>new Promise(r=>{let n=0;(function f(){ if(++n>5) return r(); requestAnimationFrame(f); })();}));
+    const after=await pg.evaluate(()=>({walls:window.__room.getWalls(),win:window.__room.wallSrc('window'),left:window.__room.wallSrc('left')}));
+    const sb1=await pg.evaluate(()=>window.__room.getBakes());
+    ok('window wall now concrete', after.walls.window==='concrete', after.walls);
+    ok('window map is decorative-concrete photoscan', /decorative-concrete\/diffuse/.test(after.win.src||''), {src:(after.win.src||'').slice(-46)});
+    ok('window wall tinted white for photoscan', after.win.color===0xffffff, {color:after.win.color});
+    ok('other walls unchanged (left still micro, no diffuse)', after.walls.left==='micro' && after.left.src===null, after.walls);
+    ok('exactly one bake on wall swap', sb1===sb0+1, {sb0,sb1});
+    // ── custom-dims room inherits the wall material instances ──
+    await pg.evaluate(()=>window.__room.setRoomDims(6,4,2.8));
+    await pg.waitForTimeout(900);
+    const inh=await pg.evaluate(()=>window.__room.wallSrc('window'));
+    ok('custom-dims room inherits window=concrete', after.walls.window==='concrete' && /decorative-concrete/.test(inh.src||''), {src:(inh.src||'').slice(-40)});
+    await ctx.close();
+    // ── deep-link walls= round-trips ──
+    const {ctx:c2,pg:p2}=await mkpage('(p4-dl)');await boot(p2,`http://127.0.0.1:${port}/floor-room.html?avatar=designer&walls=window:concrete,left:terrazzo`);
+    const dl=await p2.evaluate(()=>({walls:window.__room.getWalls(),win:window.__room.wallSrc('window'),left:window.__room.wallSrc('left'),back:window.__room.wallSrc('back')}));
+    ok('deep-link walls applies window=concrete + left=terrazzo', dl.walls.window==='concrete' && dl.walls.left==='terrazzo', dl.walls);
+    ok('deep-link other walls stay micro', dl.walls.back==='micro' && dl.back.src===null, dl.walls);
+    await c2.close();
+  }
 
   await browser.close();srv.close();
   const failed=out.checks.filter(c=>!c.pass);

@@ -187,24 +187,64 @@ const rbox = (w,h,d, mat, x,y,z, r=0.02, cast=true, recv=true) => {
   m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=recv; scene.add(m); return m;
 };
 
-/* ───────────────── shell: textured walls + ceiling ───────────────── */
-const wallMat = new THREE.MeshStandardMaterial({
+/* ───────────────── shell: textured walls + ceiling ─────────────────
+   Per-wall materials (Phase 4): the single wall material is split into 4 independent instances
+   (left/right/back/window). Each starts EXACTLY like the original shared wallMat (concrete colour
+   + micro normal/roughness at repeat 6×3, ns 0.22) → default showcase byte-identical (I1). The
+   window wall's 4 pieces share the one 'window' material; the ceiling is excluded. */
+function _wallTex(p){ return loadTex(p, false, 6, 3); }
+function makeWallMat(wall){ const m = new THREE.MeshStandardMaterial({
   color: C.concrete, roughness: 0.97, metalness: 0.0,
-  normalMap: loadTex(WALLT + 'normal.png', false, 6, 3),
-  normalScale: new THREE.Vector2(0.22, 0.22),
-  roughnessMap: loadTex(WALLT + 'roughness.png', false, 6, 3),
-});
-box(0.2, H, D, wallMat, -hw, H/2, 0, false, true);
-box(0.2, H, D, wallMat,  hw, H/2, 0, false, true);
-box(W, H, 0.2, wallMat, 0, H/2, hd, false, true);
+  normalMap: _wallTex(WALLT + 'normal.png'), normalScale: new THREE.Vector2(0.22, 0.22),
+  roughnessMap: _wallTex(WALLT + 'roughness.png') }); m.userData = { wall }; return m; }
+const wallMatL = makeWallMat('left'), wallMatR = makeWallMat('right'), wallMatB = makeWallMat('back'), wallMatW = makeWallMat('window');
+const WALL_MATS = { left:wallMatL, right:wallMatR, back:wallMatB, window:wallMatW };
+const _wallState = { left:'micro', right:'micro', back:'micro', window:'micro' };
+/* WALLS registry mirrors FLOORS. micro restores the default concrete wall (no diffuse map); the
+   others are wall-capable photoscans (white tint). All dirs have diffuse.jpg + normal/roughness.png. */
+const WALLS = {
+  micro:    { path: WALLT,                                        ns: 0.22, diffuse:false, label:'Микроцемент' },
+  comfort:  { path: '3d-assets/textures-v4/comfortfloor/',        tile: 2.2, ns: 0.22, diffuse:true, label:'Комфорт' },
+  concrete: { path: '3d-assets/textures-v4/decorative-concrete/', tile: 2.4, ns: 0.35, diffuse:true, label:'Декоративный бетон' },
+  terrazzo: { path: '3d-assets/textures-v4/terrazzo-cement/',     tile: 1.8, ns: 0.40, diffuse:true, label:'Терраццо' },
+};
+function setWall(wallKey, matKey){
+  const w = WALLS[matKey] || WALLS.micro;
+  const keys = (wallKey === 'all') ? ['left','right','back','window'] : [wallKey];
+  for(const wk of keys){ const m = WALL_MATS[wk]; if(!m) continue;
+    const old = [m.map, m.normalMap, m.roughnessMap];
+    if(w.diffuse === false){                                    // micro = the original concrete wall (no diffuse map)
+      m.map = null;
+      m.normalMap = _wallTex(w.path + 'normal.png');
+      m.roughnessMap = _wallTex(w.path + 'roughness.png');
+      m.color.setHex(C.concrete);
+    } else {                                                    // photoscan: diffuse + white tint, physical tiling per wall size
+      const horiz = (wk==='left'||wk==='right') ? curD : curW;
+      const rx = Math.max(1, horiz / w.tile), ry = Math.max(1, curH / w.tile);
+      m.map = loadTex(w.path + 'diffuse.jpg', true, rx, ry);
+      m.normalMap = loadTex(w.path + 'normal.png', false, rx, ry);
+      m.roughnessMap = loadTex(w.path + 'roughness.png', false, rx, ry);
+      m.color.setHex(0xffffff);
+    }
+    m.normalScale.set(w.ns, w.ns); m.needsUpdate = true;
+    old.forEach(t => t && t.dispose());
+    _wallState[wk] = (matKey in WALLS) ? matKey : 'micro';
+  }
+  requestBake();
+}
+function getWalls(){ return { left:_wallState.left, right:_wallState.right, back:_wallState.back, window:_wallState.window }; }
+function wallSrc(wk){ const m=WALL_MATS[wk]; return m ? { mat:_wallState[wk], src:(m.map&&m.map.image&&m.map.image.src)||null, color:m.color.getHex() } : null; }   // QA reader
+box(0.2, H, D, wallMatL, -hw, H/2, 0, false, true);
+box(0.2, H, D, wallMatR,  hw, H/2, 0, false, true);
+box(W, H, 0.2, wallMatB, 0, H/2, hd, false, true);
 box(W, 0.2, D, new THREE.MeshStandardMaterial({ color: C.ceiling, roughness: 0.98 }), 0, H + 0.1, 0, false, true);
 
-/* far wall around a big window band (y 0.95 → 2.55) */
+/* far wall around a big window band (y 0.95 → 2.55) — all 4 pieces share the 'window' material */
 const winB = 0.95, winT = 2.55, jamb = 0.5;
-box(W, winB, 0.2, wallMat, 0, winB/2, -hd);
-box(W, H-winT, 0.2, wallMat, 0, winT + (H-winT)/2, -hd);
-box(jamb, winT-winB, 0.2, wallMat, -hw + jamb/2, (winB+winT)/2, -hd);
-box(jamb, winT-winB, 0.2, wallMat,  hw - jamb/2, (winB+winT)/2, -hd);
+box(W, winB, 0.2, wallMatW, 0, winB/2, -hd);
+box(W, H-winT, 0.2, wallMatW, 0, winT + (H-winT)/2, -hd);
+box(jamb, winT-winB, 0.2, wallMatW, -hw + jamb/2, (winB+winT)/2, -hd);
+box(jamb, winT-winB, 0.2, wallMatW,  hw - jamb/2, (winB+winT)/2, -hd);
 
 /* daylight = the soft HDRI backdrop showing THROUGH the window (set on HDRI load) —
    reads more real than a flat bright plane. Here we just build the window frame. */
@@ -765,15 +805,15 @@ function buildCustomShell(w, d, h){
   const g = new THREE.Group();
   const hw2 = w/2, hd2 = d/2;
   const cb = (W_,H_,D_,mat,x,y,z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(W_,H_,D_), mat); m.position.set(x,y,z); m.receiveShadow = true; g.add(m); return m; };
-  cb(0.2, h, d, wallMat, -hw2, h/2, 0);
-  cb(0.2, h, d, wallMat,  hw2, h/2, 0);
-  cb(w, h, 0.2, wallMat, 0, h/2, hd2);                                  // wall behind the camera
+  cb(0.2, h, d, wallMatL, -hw2, h/2, 0);                                // shares the 4 per-wall materials → custom rooms inherit setWall finishes
+  cb(0.2, h, d, wallMatR,  hw2, h/2, 0);
+  cb(w, h, 0.2, wallMatB, 0, h/2, hd2);                                 // wall behind the camera
   cb(w, 0.2, d, new THREE.MeshStandardMaterial({ color:C.ceiling, roughness:0.98 }), 0, h+0.1, 0);
   const wB = Math.min(0.95, h*0.30), wT = Math.min(h-0.3, 2.55), jb = Math.min(0.5, w*0.12);
-  cb(w, wB, 0.2, wallMat, 0, wB/2, -hd2);                               // far wall around a window band
-  cb(w, h-wT, 0.2, wallMat, 0, wT+(h-wT)/2, -hd2);
-  cb(jb, wT-wB, 0.2, wallMat, -hw2+jb/2, (wB+wT)/2, -hd2);
-  cb(jb, wT-wB, 0.2, wallMat,  hw2-jb/2, (wB+wT)/2, -hd2);
+  cb(w, wB, 0.2, wallMatW, 0, wB/2, -hd2);                              // far wall around a window band
+  cb(w, h-wT, 0.2, wallMatW, 0, wT+(h-wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMatW, -hw2+jb/2, (wB+wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMatW,  hw2-jb/2, (wB+wT)/2, -hd2);
   const sm = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xfff2e2, emissiveIntensity:0.5, roughness:1, fog:false });  // dim → no hard beam on the glossy floor
   for (const sx of [-w*0.27, 0, w*0.27]){ const m = new THREE.Mesh(new THREE.BoxGeometry(0.14,0.04,d*0.66), sm); m.position.set(sx, h-0.02, -0.3); g.add(m); }
   scene.add(g); return g;
@@ -904,7 +944,7 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
                   setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms,
                   clampCamera, getBound: ()=>({ x:ROOM_BOUND.x, z:ROOM_BOUND.z, yMin:ROOM_BOUND.yMin, yMax:ROOM_BOUND.yMax }),
                   setEditMode, getMovables, setTransforms, resetTransforms, onEdit, getEditMode:()=>_editMode,
-                  setStyle, getStyle, matHex, screenOf, lampInfo, getBakes:()=>_bakes };
+                  setStyle, getStyle, matHex, setWall, getWalls, wallSrc, screenOf, lampInfo, getBakes:()=>_bakes };
 
 (function loop(){
   if (tour){
