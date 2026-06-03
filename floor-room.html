@@ -518,11 +518,11 @@ const _rgbe = new RGBELoader(); let _envHdr = null;
 let _customRoom = false, _curCfg = LIGHTING.golden;
 function _refreshLightLevels(){
   const cfg = _curCfg;
-  renderer.toneMappingExposure = cfg.exp * (_customRoom ? 0.90 : 1);
-  sun.intensity = cfg.sun[1] * (_customRoom ? 0.66 : 1);
+  renderer.toneMappingExposure = cfg.exp * (_customRoom ? 0.88 : 1);
+  sun.intensity = cfg.sun[1] * (_customRoom ? 0.5 : 1);
   scene.backgroundBlurriness = Math.min(0.7, cfg.blur + (_customRoom ? 0.12 : 0));
-  sun.shadow.radius = _customRoom ? 9 : 4;
-  if (bloomPass){ bloomPass.strength = BLOOM_BASE * (_customRoom ? 0.4 : 1); bloomPass.threshold = _customRoom ? 0.96 : 0.9; }   // kill the sun-glare bloom in a small room
+  sun.shadow.radius = _customRoom ? 10 : 4;
+  if (bloomPass){ bloomPass.strength = BLOOM_BASE * (_customRoom ? 0.3 : 1); bloomPass.threshold = _customRoom ? 0.97 : 0.9; }   // kill the sun-glare bloom in a small room
 }
 function _applyLighting(hdr, cfg){
   hdr.mapping = THREE.EquirectangularReflectionMapping;
