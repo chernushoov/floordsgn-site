@@ -50,6 +50,7 @@
   const curFloor  = () => { const on = $('#floorCtl .chip.on[data-fl]'); return on ? on.dataset.fl : STATE.m; };
 
   const persona = () => DATA.personas.find(p => p.id === STATE.avatar) || DATA.personas[0];
+  const needsDividers = (fl) => !['micro', 'comfort'].includes(fl);   // seamless floors get no strips
   const manFor  = (floorSlug) => { const ms = DATA.floorMap[floorSlug]; return MAN.materials.find(x => x.slug === ms) || null; };
   const manBySlug = (slug) => MAN.materials.find(x => x.slug === slug) || null;
 
@@ -144,6 +145,7 @@
     const room = window.__room;
     if (room && room.setLighting && p.defaults && p.defaults.light){ room.setLighting(p.defaults.light); STATE.light = p.defaults.light; }
     if (room && room.scaleFigure) room.scaleFigure(STATE.figure);
+    if (room && room.setDividers) room.setDividers(needsDividers(curFloor()));
     applyColor('orig');
     track('persona', {});
 
@@ -476,7 +478,7 @@
     readURL();
 
     // sync STATE from engine on user clicks
-    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
+    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
     $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; writeURL(); }));
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));

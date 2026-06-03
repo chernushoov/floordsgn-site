@@ -547,8 +547,26 @@ function scaleFigure(show){
   }
   if (_figure) _figure.visible = !!show;
 }
+/* decorative divider strips (latunь "маяки"/саргели) — a control-joint grid sized
+   to the room, cells <= 3 m so the poured floor doesn't crack and reads premium.
+   On for terrazzo/epoxy/concrete; OFF for seamless microcement & comfort (PU). */
+let _dividers = null;
+function buildDividers(){
+  const g = new THREE.Group();
+  const mat = new THREE.MeshStandardMaterial({ color:0xb08d57, metalness:0.7, roughness:0.32 });  // brass
+  const w = 0.014, h = 0.006, y = 0.004;
+  const nx = Math.ceil(W/3), nz = Math.ceil(D/3);                  // cells <= 3 m, proportional to room
+  for (let i=1;i<nx;i++){ const x = -W/2 + i*(W/nx); const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,D), mat); m.position.set(x,y,0); m.receiveShadow=true; g.add(m); }
+  for (let j=1;j<nz;j++){ const z = -D/2 + j*(D/nz); const m = new THREE.Mesh(new THREE.BoxGeometry(W,h,w), mat); m.position.set(0,y,z); m.receiveShadow=true; g.add(m); }
+  scene.add(g); return g;
+}
+function setDividers(on){
+  if (on && !_dividers) _dividers = buildDividers();
+  if (_dividers) _dividers.visible = !!on;
+  bakeFloorReflection();
+}
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
-                  setLighting, scaleFigure, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setLighting, scaleFigure, setDividers, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tour){
