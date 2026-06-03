@@ -218,6 +218,21 @@ const boot=async(pg,url)=>{await pg.goto(url,{waitUntil:'networkidle',timeout:30
     ok('deep-link other walls stay micro', dl.walls.back==='micro' && dl.back.src===null, dl.walls);
     await c2.close();
   }
+  // ───────────────── PHASE 5 — detail pass (per-style floor envMapIntensity; I1-gated) ─────────────────
+  if(want(5)){
+    const {ctx,pg}=await mkpage('(p5)');await boot(pg,`http://127.0.0.1:${port}/floor-room.html`);
+    const flush=()=>pg.evaluate(()=>new Promise(r=>{let n=0;(function f(){ if(++n>5) return r(); requestAnimationFrame(f); })();}));
+    await flush();
+    const envDefault=await pg.evaluate(()=>window.__room.floorMat.envMapIntensity);
+    ok('P5 default floor envMapIntensity is exactly 1.0 (I1)', Math.abs(envDefault-1.0)<1e-6, {envDefault});
+    await pg.evaluate(()=>window.__room.setStyle('loft')); await flush();
+    const envLoft=await pg.evaluate(()=>window.__room.floorMat.envMapIntensity);
+    ok('P5 loft tunes floor reflection (env>1)', envLoft>1.05, {envLoft});
+    await pg.evaluate(()=>window.__room.setStyle('warm')); await flush();
+    const envWarm=await pg.evaluate(()=>window.__room.floorMat.envMapIntensity);
+    ok('P5 warm restores env to exactly 1.0', Math.abs(envWarm-1.0)<1e-6, {envWarm});
+    await ctx.close();
+  }
 
   await browser.close();srv.close();
   const failed=out.checks.filter(c=>!c.pass);
