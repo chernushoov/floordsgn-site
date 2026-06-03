@@ -533,8 +533,22 @@ function resize(){
 }
 new ResizeObserver(resize).observe(app); resize();
 
+/* human-scale figure (1.7 m) — judge true scale; built once, toggled */
+let _figure = null;
+function scaleFigure(show){
+  if (show && !_figure){
+    _figure = new THREE.Group();
+    const m = new THREE.MeshStandardMaterial({ color:0x7f858c, roughness:0.9, metalness:0.0 });
+    const legs = new THREE.Mesh(new THREE.CapsuleGeometry(0.11,0.62,6,12), m); legs.position.y=0.42;
+    const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.16,0.5,6,12), m); body.position.y=1.06;
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.115,20,16), m); head.position.y=1.55;
+    [legs,body,head].forEach(o=>{ o.castShadow=true; o.receiveShadow=true; _figure.add(o); });
+    _figure.position.set(1.9, 0, 0.7); scene.add(_figure);
+  }
+  if (_figure) _figure.visible = !!show;
+}
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
-                  setLighting, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setLighting, scaleFigure, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tour){

@@ -16,7 +16,9 @@
   let booting = true;                      // suppress floor-change colour reset during deep-link boot
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', ctl:{ color:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, ctl:{ color:'orig' } };
+  const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
+  const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
   const tx = (o) => o ? (o[L] || o.ru || '') : '';
   const LIGHT_OPTS = [
@@ -130,7 +132,9 @@
     if (p.defaults){ if (p.defaults.room) setRoom(p.defaults.room); if (p.defaults.finish) setFinish(p.defaults.finish); if (p.defaults.view) setView(p.defaults.view); }
     const room = window.__room;
     if (room && room.setLighting && p.defaults && p.defaults.light){ room.setLighting(p.defaults.light); STATE.light = p.defaults.light; }
+    if (room && room.scaleFigure) room.scaleFigure(STATE.figure);
     applyColor('orig');
+    track('persona', {});
 
     $('#stPersonaName').textContent = tx(p.name);
     STATE.m = curFloor();
@@ -240,9 +244,14 @@
     wrap.append(el('div', { class:'st-sect-h' }, t('light')));
     const lr = el('div', { class:'st-pillrow' });
     LIGHT_OPTS.forEach(o => { const b = el('button', { class:'st-pill' + (STATE.light === o.id ? ' on' : '') }, o[L] || o.ru);
-      b.onclick = () => { const r = window.__room; if (r && r.setLighting) r.setLighting(o.id); STATE.light = o.id; $$('.st-pill', lr).forEach(x => x.classList.remove('on')); b.classList.add('on'); writeURL(); };
+      b.onclick = () => { const r = window.__room; if (r && r.setLighting) r.setLighting(o.id); STATE.light = o.id; $$('.st-pill', lr).forEach(x => x.classList.remove('on')); b.classList.add('on'); track('light', { light:o.id }); writeURL(); };
       lr.append(b); });
     wrap.append(lr);
+    // human-scale figure toggle
+    const figRow = el('div', { class:'st-pillrow', style:'margin-top:6px' });
+    const fig = el('button', { class:'st-pill' + (STATE.figure ? ' on' : '') }, L === 'ru' ? 'Фигура для масштаба' : 'Scale figure');
+    fig.onclick = () => { STATE.figure = !STATE.figure; const r = window.__room; if (r && r.scaleFigure) r.scaleFigure(STATE.figure); fig.classList.toggle('on', STATE.figure); track('figure', { on:STATE.figure }); };
+    figRow.append(fig); wrap.append(figRow);
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
@@ -307,6 +316,7 @@
     }
     out.innerHTML = `<div class="lbl">${t('calc_result')}</div><div class="big">${fmt(loT)} – ${fmt(hiT)}</div>` + (extra ? `<div class="extra">${extra}</div>` : '');
     out.classList.add('show');
+    track('calc', { kpi:'calculator-completed' });
   }
 
   /* ═══════════ CTA (lead) ═══════════ */
@@ -316,11 +326,12 @@
     if (p.cta.secondary) box.append(ctaEl(p.cta.secondary, 'st-cta-secondary'));
   }
   function ctaEl(c, cls){
-    if (c.type === 'print'){ const b = el('button', { class:cls }, tx(c.label)); b.onclick = doPrint; return b; }
-    if (c.type === 'mailto'){ const a = el('a', { class:cls, href:`mailto:${MAIL}` }, tx(c.label)); return a; }
+    if (c.type === 'print'){ const b = el('button', { class:cls }, tx(c.label)); b.onclick = () => { track('lead', { channel:'print' }); doPrint(); }; return b; }
+    if (c.type === 'mailto'){ const a = el('a', { class:cls, href:`mailto:${MAIL}` }, tx(c.label)); a.addEventListener('click', () => { track('lead', { channel:'mailto' }); postLead('mailto'); }); return a; }
     // whatsapp
     const a = el('a', { class:cls, target:'_blank', rel:'noopener' }, tx(c.label));
     a.href = waURL(c); a.dataset.role = 'wa';
+    a.addEventListener('click', () => { track('lead', { channel:'whatsapp' }); postLead('whatsapp'); });
     return a;
   }
   function waURL(c){
@@ -380,7 +391,7 @@
   function boardSet(a){ localStorage.setItem('floordsgn_board', JSON.stringify(a.slice(-12))); updateBoardCount(); }
   function boardSave(){ const fl = curFloor(); const arr = boardGet();
     arr.push({ url: shareURL(), name: tx(DATA.floorLabels[fl] || { ru:fl }), thumb: snapshot(), ts: 0 });
-    boardSet(arr); toast(L === 'ru' ? 'Добавлено в доску' : 'Added to board'); }
+    boardSet(arr); toast(L === 'ru' ? 'Добавлено в доску' : 'Added to board'); track('save', {}); }
   function updateBoardCount(){ const b = $('#stBoardBtn .cnt'); if (b){ const n = boardGet().length; b.textContent = n ? '(' + n + ')' : ''; } }
   function boardOpen(){
     const arr = boardGet(); const grid = $('#stBoardGrid'); grid.innerHTML = '';
@@ -398,6 +409,7 @@
   }
 
   function compareOpen(){
+    track('compare', {});
     const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
     $('#stCmpTitle').textContent = L === 'ru' ? 'Сравнение систем' : 'Compare systems';
     const slugs = [], seen = {};
@@ -453,7 +465,7 @@
     readURL();
 
     // sync STATE from engine on user clicks
-    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); renderPanel(); renderCta(); writeURL(); }, 30)));
+    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
     $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; writeURL(); }));
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
