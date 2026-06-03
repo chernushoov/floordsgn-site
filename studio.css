@@ -209,6 +209,11 @@ body{ font-family:var(--sans); }
 .st-dimx{ color:var(--steel); font-size:13px; flex:0 0 auto; }
 .st-dimhint{ font-family:var(--sans); font-size:10.5px; line-height:1.35; color:var(--steel); margin-top:7px; }
 .st-dimcalc{ font-family:var(--sans); font-size:12px; font-weight:600; color:var(--carbon); margin-top:8px; padding:8px 11px; background:#fff; border:1px solid var(--line); border-left:2px solid var(--signal); border-radius:8px; }
+/* in-panel material picker */
+.st-matrow{ display:flex; flex-wrap:wrap; gap:6px; }
+.st-matchip{ font-family:var(--sans); font-size:11.5px; font-weight:500; color:var(--carbon); background:#fff; border:1px solid var(--line); border-radius:980px; padding:7px 13px; cursor:pointer; transition:.14s; white-space:nowrap; }
+.st-matchip:hover{ border-color:var(--carbon); }
+.st-matchip.on{ background:var(--carbon); color:#fff; border-color:var(--carbon); }
 @media (max-width:880px){ .st-bgrid{ grid-template-columns:repeat(2,1fr); } }
 
 /* ── print: brand-clean one-pager (architect/pro TDS/spec) ── */

@@ -208,6 +208,7 @@
     const bSave = el('button', { class:'st-act' }, L === 'ru' ? '+ Сохранить' : '+ Save'); bSave.onclick = boardSave;
     const bCmp = el('button', { class:'st-act' }, L === 'ru' ? 'Сравнить' : 'Compare'); bCmp.onclick = compareOpen;
     acts.append(bSave, bCmp); scroll.append(acts);
+    scroll.append(buildMaterials(p));
 
     // suitability gate (restaurant: microcement not for kitchens)
     if (p.suitabilityGate && p.suitability){
@@ -287,6 +288,21 @@
     const sp = (DATA.salesPage && DATA.salesPage[slug]) || 'floors.html';
     card.append(el('a', { href: sp }, (L === 'ru' ? 'Спека и применение →' : 'Spec & uses →')));
     return card;
+  }
+
+  /* labeled in-panel material picker — the persona's curated floors, brand-styled
+     (the top engine chips are cryptic); drives the engine via the existing floor chips */
+  function buildMaterials(p){
+    const wrap = el('div');
+    wrap.append(el('div', { class:'st-sect-h' }, t('material')));
+    const row = el('div', { class:'st-matrow' });
+    (p.floors || []).forEach(fl => {
+      const b = el('button', { class:'st-matchip' + (curFloor() === fl ? ' on' : '') }, tx(DATA.floorLabels[fl] || { ru:fl }));
+      b.onclick = () => { if (curFloor() !== fl) setFloor(fl); };
+      row.append(b);
+    });
+    wrap.append(row);
+    return wrap;
   }
 
   function buildScene(p){
