@@ -497,15 +497,33 @@ function setupComposer(){
 }
 setupComposer();
 
-/* ───────────────── HDRI env, then bake & reveal ───────────────── */
+/* ───────────────── HDRI env + lighting scenarios, then bake & reveal ───────────────── */
 function reveal(){ document.getElementById('boot').classList.add('gone'); }
-new RGBELoader().load(HDRI, (hdr) => {
+const HDRI_DIR = '3d-assets/textures-v4/_hdri/';
+const LIGHTING = {
+  golden:  { hdr:'blocky_photo_studio.hdr', exp:0.92, blur:0.38, sun:[0xffdcab,2.8] },  // warm daylight (default)
+  noon:    { hdr:'studio_small_08.hdr',     exp:1.02, blur:0.30, sun:[0xfff4e6,2.4] },  // neutral noon
+  evening: { hdr:'brown_photostudio_02.hdr',exp:0.86, blur:0.44, sun:[0xffb474,2.3] },  // warm evening
+  hard:    { hdr:'cyclorama_hard_light.hdr',exp:0.98, blur:0.34, sun:[0xf2f5ff,3.4] },  // hard/industrial
+};
+const _rgbe = new RGBELoader(); let _envHdr = null;
+function _applyLighting(hdr, cfg){
   hdr.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = pmrem.fromEquirectangular(hdr).texture;
-  scene.background = hdr;                  // soft daylight visible through the window
-  scene.backgroundBlurriness = 0.38;       // (don't dispose hdr — it's the backdrop now)
-  bakeFloorReflection(); reveal();
-}, undefined, () => { bakeFloorReflection(); reveal(); });
+  scene.background = hdr; scene.backgroundBlurriness = cfg.blur;
+  renderer.toneMappingExposure = cfg.exp;
+  sun.color.setHex(cfg.sun[0]); sun.intensity = cfg.sun[1];
+  if (_envHdr && _envHdr !== hdr) _envHdr.dispose(); _envHdr = hdr;
+  bakeFloorReflection();
+}
+function setLighting(key){
+  const cfg = LIGHTING[key] || LIGHTING.golden;
+  _rgbe.load(HDRI_DIR + cfg.hdr, (hdr) => _applyLighting(hdr, cfg),
+    undefined, () => { renderer.toneMappingExposure = cfg.exp; bakeFloorReflection(); });
+}
+_rgbe.load(HDRI_DIR + LIGHTING.golden.hdr,
+  (hdr) => { _applyLighting(hdr, LIGHTING.golden); reveal(); },
+  undefined, () => { bakeFloorReflection(); reveal(); });
 
 /* ───────────────── resize + loop ───────────────── */
 function resize(){
@@ -516,7 +534,7 @@ function resize(){
 new ResizeObserver(resize).observe(app); resize();
 
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
-                  composer, sun, grade: ()=>gradePass && gradePass.uniforms };
+                  setLighting, composer, sun, grade: ()=>gradePass && gradePass.uniforms };
 
 (function loop(){
   if (tour){

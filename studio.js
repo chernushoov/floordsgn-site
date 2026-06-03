@@ -13,11 +13,31 @@
     if (html != null) n.innerHTML = html; return n; };
 
   let DATA = null, MAN = null;            // personas.json, manifest.json
+  let booting = true;                      // suppress floor-change colour reset during deep-link boot
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden' };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', ctl:{ color:'orig' } };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
   const tx = (o) => o ? (o[L] || o.ru || '') : '';
+  const LIGHT_OPTS = [
+    { id:'golden',  ru:'Тёплый',   en:'Warm' },
+    { id:'noon',    ru:'День',     en:'Noon' },
+    { id:'evening', ru:'Вечер',    en:'Evening' },
+    { id:'hard',    ru:'Контраст', en:'Hard' }
+  ];
+  const COLOR_EN = { neutral:'Neutral', warm:'Warm', cool:'Cool', graphite:'Graphite' };
+  const colorOpts = () => {
+    const base = [{ id:'orig', name:{ ru:'Оригинал', en:'Original' }, hex:null }];
+    const co = (MAN.control_options && MAN.control_options.color && MAN.control_options.color.options) || [];
+    return base.concat(co.map(o => ({ id:o.id, name:{ ru:o.name, en:(COLOR_EN[o.id] || o.name) }, hex:o.hex })));
+  };
+  const applyColor = (id) => {
+    STATE.ctl.color = id;
+    const room = window.__room; if (!room || !room.floorMat) return;
+    const o = colorOpts().find(x => x.id === id);
+    room.floorMat.color.set(o && o.hex ? o.hex : 0xffffff);
+    room.floorMat.needsUpdate = true;
+  };
 
   /* ---------- engine seam: drive via existing chips ---------- */
   const clickChip = (sel) => { const b = $(sel); if (b) b.click(); };
@@ -102,6 +122,9 @@
     // defaults (only if current isn't already in persona's set)
     if (!p.floors.includes(curFloor())) setFloor(p.floors[0]);
     if (p.defaults){ if (p.defaults.room) setRoom(p.defaults.room); if (p.defaults.finish) setFinish(p.defaults.finish); }
+    const room = window.__room;
+    if (room && room.setLighting && p.defaults && p.defaults.light){ room.setLighting(p.defaults.light); STATE.light = p.defaults.light; }
+    applyColor('orig');
 
     $('#stPersonaName').textContent = tx(p.name);
     STATE.m = curFloor();
@@ -126,6 +149,8 @@
       const gate = el('div', { class:'st-gate' + (p.suitability.blocked.includes(fl) ? ' show' : '') }, tx(p.suitability.msg));
       scroll.append(gate);
     }
+
+    scroll.append(buildScene(p));   // lighting + colour
 
     const specBlock = buildSpec(mat, p);
     // info hierarchy: architect/pro/restaurant/warehouse → spec TOP; designer/private/explore → pains first, spec under accordion
@@ -197,6 +222,28 @@
     const sp = (DATA.salesPage && DATA.salesPage[slug]) || 'floors.html';
     card.append(el('a', { href: sp }, (L === 'ru' ? 'Спека и применение →' : 'Spec & uses →')));
     return card;
+  }
+
+  function buildScene(p){
+    const wrap = el('div');
+    // lighting scenarios
+    wrap.append(el('div', { class:'st-sect-h' }, t('light')));
+    const lr = el('div', { class:'st-pillrow' });
+    LIGHT_OPTS.forEach(o => { const b = el('button', { class:'st-pill' + (STATE.light === o.id ? ' on' : '') }, o[L] || o.ru);
+      b.onclick = () => { const r = window.__room; if (r && r.setLighting) r.setLighting(o.id); STATE.light = o.id; $$('.st-pill', lr).forEach(x => x.classList.remove('on')); b.classList.add('on'); writeURL(); };
+      lr.append(b); });
+    wrap.append(lr);
+    // colour / RAL (skip for warehouse — industrial)
+    if (p.id !== 'warehouse'){
+      wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
+      const cg = el('div', { class:'st-swatches' });
+      colorOpts().forEach(o => { const sw = el('button', { class:'st-swatch' + (STATE.ctl.color === o.id ? ' on' : ''), title: tx(o.name) });
+        if (o.hex) sw.style.background = o.hex; else sw.classList.add('st-swatch-orig');
+        sw.onclick = () => { applyColor(o.id); $$('.st-swatch', cg).forEach(x => x.classList.remove('on')); sw.classList.add('on'); writeURL(); };
+        cg.append(sw); });
+      wrap.append(cg);
+    }
+    return wrap;
   }
 
   function buildPains(p){
@@ -282,6 +329,8 @@
     u.searchParams.set('room', STATE.room);
     u.searchParams.set('finish', STATE.finish);
     u.searchParams.set('view', STATE.view);
+    u.searchParams.set('light', STATE.light);
+    if (STATE.ctl && STATE.ctl.color && STATE.ctl.color !== 'orig') u.searchParams.set('c', STATE.ctl.color);
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -292,6 +341,8 @@
     if (q.get('room')) STATE.room = q.get('room');
     if (q.get('finish')) STATE.finish = q.get('finish');
     if (q.get('view')) STATE.view = q.get('view');
+    if (q.get('light')) STATE.light = q.get('light');
+    if (q.get('c')) STATE.ctl.color = q.get('c');
   }
   async function share(){
     const url = shareURL();
@@ -326,14 +377,14 @@
     readURL();
 
     // sync STATE from engine on user clicks
-    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); renderPanel(); renderCta(); writeURL(); }, 30)));
+    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); renderPanel(); renderCta(); writeURL(); }, 30)));
     $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; writeURL(); }));
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
 
     // apply persona: from URL, else stored, else show chooser (default explore underneath)
     const q = new URLSearchParams(location.search);
-    const urlFloor = q.get('m'), urlRoom = q.get('room'), urlFinish = q.get('finish'), urlView = q.get('view');
+    const urlFloor = q.get('m'), urlRoom = q.get('room'), urlFinish = q.get('finish'), urlView = q.get('view'), urlLight = q.get('light'), urlColor = q.get('c');
     const stored = localStorage.getItem('floordsgn_avatar');
     const fromURL = q.get('avatar');
     document.documentElement.lang = L;
@@ -347,8 +398,11 @@
     if (urlRoom) setRoom(urlRoom);
     if (urlFinish) setFinish(urlFinish);
     if (urlView) setView(urlView);
+    if (urlLight && window.__room && window.__room.setLighting){ window.__room.setLighting(urlLight); STATE.light = urlLight; }
+    if (urlColor) applyColor(urlColor);
 
     setLang(L); // paints chrome text + panel
+    setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change
     window.__studio = { applyPersona, setLang, STATE, openChooser }; // QA hook
   }
 
