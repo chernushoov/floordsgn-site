@@ -79,6 +79,17 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   const rdd=await pg.evaluate(()=>window.__room.getDims());
   ok('room reset to default 12x8', Math.abs(rdd.w-12)<0.1&&Math.abs(rdd.d-8)<0.1, rdd);
 
+  // ── design variants ──
+  await pg.evaluate(()=>{const c=document.querySelector('#floorCtl .chip[data-fl="cement"]');if(c)c.click();});
+  await pg.waitForTimeout(1000);
+  ok('design section present on cement', await pg.evaluate(()=>{const hs=Array.from(document.querySelectorAll('.st-sect-h'));return !!hs.find(h=>/дизайн|pattern/i.test(h.textContent));}));
+  await pg.evaluate(()=>{const hs=Array.from(document.querySelectorAll('.st-sect-h'));const dh=hs.find(h=>/дизайн|pattern/i.test(h.textContent));if(dh){const grp=dh.nextElementSibling;const sw=grp&&grp.querySelectorAll('.st-swatch')[1];if(sw)sw.click();}});
+  await pg.waitForTimeout(1600);
+  const dsrc=await pg.evaluate(()=>{const im=window.__room.floorMat.map.image;return (im&&im.src)||'';});
+  ok('design swap loads _designs texture', /_designs/.test(dsrc), {tail:dsrc.slice(-46)});
+  await pg.screenshot({path:path.join(OUT,'design-swap.png')});
+  ok('design absent on seamless venetian', await pg.evaluate(()=>{const c=document.querySelector('#floorCtl .chip[data-fl="venetian"]');if(c)c.click();return new Promise(r=>setTimeout(()=>{const hs=Array.from(document.querySelectorAll('.st-sect-h'));r(!hs.find(h=>/дизайн|pattern/i.test(h.textContent)));},900));}));
+
   await ctx.close();
 
   // ── deep-link cs=1 ──

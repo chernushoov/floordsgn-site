@@ -12,12 +12,12 @@
     for (const k in attrs){ if (k === 'class') n.className = attrs[k]; else if (k === 'html') n.innerHTML = attrs[k]; else n.setAttribute(k, attrs[k]); }
     if (html != null) n.innerHTML = html; return n; };
 
-  let DATA = null, MAN = null;            // personas.json, manifest.json
+  let DATA = null, MAN = null, DESIGNS = {};   // personas.json, manifest.json, _designs/index.json
   let booting = true;                      // suppress floor-change colour reset during deep-link boot
   let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, ctl:{ color:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, dims:null, ctl:{ color:'orig', design:'orig' } };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
@@ -60,6 +60,20 @@
     else { rep = _repCache[fl]; if (rep == null) return; }   // nothing captured → leave engine value
     floorMaps().forEach(m => { if (m){ m.repeat.set(rep, rep); m.needsUpdate = true; } });
     r.floorMat.needsUpdate = true; if (r.bake) r.bake();
+  }
+
+  /* ---------- design variants (different real-floor patterns of one material) ----------
+     Swaps ONLY the diffuse image on the live floor texture (keeps normal/roughness/repeat),
+     so it stays studio-side and the engine file is untouched. Same-origin image → the canvas
+     stays un-tainted, so snapshot/compare/print keep working. */
+  const DESIGN_MAP = { cement:'terrazzo-cement', multi:'terrazzo-multi', graphite:'terrazzo-epoxy', micro:'microtopping' };
+  const designsFor = (fl) => { const k = DESIGN_MAP[fl]; return (DESIGNS && DESIGNS[k]) || []; };
+  function applyDesign(variant){
+    const r = window.__room; const map = r && r.floorMat && r.floorMat.map; if (!map) return;
+    const img = new Image();
+    img.onload = () => { map.image = img; map.needsUpdate = true; r.floorMat.needsUpdate = true; if (r.bake) r.bake(); };
+    img.src = '3d-assets/' + variant.file;
+    STATE.ctl.design = variant.id;
   }
 
   /* ---------- engine seam: drive via existing chips ---------- */
@@ -304,6 +318,21 @@
         cg.append(sw); });
       wrap.append(cg);
     }
+    // design variants (real-floor patterns) — shown when the current floor has them
+    const dz = designsFor(curFloor());
+    if (dz.length){
+      wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Дизайн' : 'Pattern'));
+      const dg = el('div', { class:'st-swatches' });
+      const origOn = (!STATE.ctl.design || STATE.ctl.design === 'orig');
+      const so = el('button', { class:'st-swatch st-swatch-orig' + (origOn ? ' on' : ''), title: L === 'ru' ? 'Оригинал' : 'Original', 'aria-label': L === 'ru' ? 'Оригинал' : 'Original' });
+      so.onclick = () => { STATE.ctl.design = 'orig'; setFloor(curFloor()); };   // full reload → floor listener re-renders panel
+      dg.append(so);
+      dz.forEach(v => { const sw = el('button', { class:'st-swatch' + (STATE.ctl.design === v.id ? ' on' : ''), title: v.name, 'aria-label': v.name });
+        if (v.hex) sw.style.background = v.hex;
+        sw.onclick = () => { applyDesign(v); $$('.st-swatch', dg).forEach(x => x.classList.remove('on')); sw.classList.add('on'); track('design', { d:v.id }); writeURL(); };
+        dg.append(sw); });
+      wrap.append(dg);
+    }
     return wrap;
   }
 
@@ -428,6 +457,7 @@
     if (STATE.ctl && STATE.ctl.color && STATE.ctl.color !== 'orig') u.searchParams.set('c', STATE.ctl.color);
     if (STATE.realChip) u.searchParams.set('cs', '1');
     if (STATE.dims) u.searchParams.set('dims', STATE.dims.w + 'x' + STATE.dims.d + 'x' + STATE.dims.h);
+    if (STATE.ctl.design && STATE.ctl.design !== 'orig') u.searchParams.set('d', STATE.ctl.design);
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -442,6 +472,7 @@
     if (q.get('c')) STATE.ctl.color = q.get('c');
     if (q.get('cs')) STATE.realChip = true;
     const dm = q.get('dims'); if (dm){ const a = dm.split('x').map(Number); if (a.length === 3 && a.every(n => n > 0)) STATE.dims = { w:a[0], d:a[1], h:a[2] }; }
+    if (q.get('d')) STATE.ctl.design = q.get('d');
   }
   async function share(){
     const url = shareURL();
@@ -574,9 +605,10 @@
   /* ═══════════ boot ═══════════ */
   async function boot(){
     try {
-      [DATA, MAN] = await Promise.all([
+      [DATA, MAN, DESIGNS] = await Promise.all([
         fetch('3d-assets/studio-personas.json').then(r => r.json()),
-        fetch('3d-assets/manifest.json').then(r => r.json())
+        fetch('3d-assets/manifest.json').then(r => r.json()),
+        fetch('3d-assets/textures-v4/_designs/index.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
       ]);
     } catch(e){ console.error('Studio data load failed', e); return; }
 
@@ -587,7 +619,7 @@
     readURL();
 
     // sync STATE from engine on user clicks
-    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { if (comparing) return; STATE.m = curFloor(); if (!booting) applyColor('orig'); const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); captureArtRepeat(); if (STATE.realChip) applyChipScale(); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
+    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { if (comparing) return; STATE.m = curFloor(); if (!booting){ applyColor('orig'); STATE.ctl.design = 'orig'; } const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); captureArtRepeat(); if (STATE.realChip) applyChipScale(); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
     $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; writeURL(); }));
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
@@ -612,6 +644,7 @@
     if (urlColor) applyColor(urlColor);
     if (q.get('cs')){ STATE.realChip = true; captureArtRepeat(); applyChipScale(); }
     if (STATE.dims && window.__room && window.__room.setRoomDims){ window.__room.setRoomDims(STATE.dims.w, STATE.dims.d, STATE.dims.h); STATE.figure = true; }
+    if (STATE.ctl.design && STATE.ctl.design !== 'orig'){ const v = designsFor(curFloor()).find(x => x.id === STATE.ctl.design); if (v) applyDesign(v); }
 
     setLang(L); // paints chrome text + panel
     setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change
