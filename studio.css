@@ -183,6 +183,13 @@ body{ font-family:var(--sans); }
 .st-cmp th{ font-family:var(--sans); font-weight:600; font-size:11px; text-align:left; color:var(--carbon); padding:8px; border-bottom:2px solid var(--carbon); vertical-align:bottom; }
 .st-cmp td{ padding:7px 8px; border-bottom:1px solid var(--line); color:var(--carbon); vertical-align:top; }
 .st-cmp td.rk{ color:var(--steel); white-space:nowrap; }
+/* visual A/B — two live floor renders above the spec table */
+.st-cmp-vis{ display:flex; gap:12px; margin:0 0 18px; }
+.st-cmp-cell{ flex:1 1 0; min-width:0; }
+.st-cmp-cell img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; display:block; background:#1a1a1b; }
+.st-cmp-cap{ font-family:var(--sans); font-weight:600; font-size:12px; line-height:1.3; color:var(--carbon); margin-top:7px; text-align:center; }
+.st-cmp-spin{ flex:1; padding:40px 0; text-align:center; color:var(--steel); font-family:var(--sans); font-size:13px; }
+@media (max-width:560px){ .st-cmp-vis{ flex-direction:column; } }
 @media (max-width:880px){ .st-bgrid{ grid-template-columns:repeat(2,1fr); } }
 
 /* ── print: brand-clean one-pager (architect/pro TDS/spec) ── */

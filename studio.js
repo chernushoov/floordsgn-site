@@ -14,9 +14,10 @@
 
   let DATA = null, MAN = null;            // personas.json, manifest.json
   let booting = true;                      // suppress floor-change colour reset during deep-link boot
+  let comparing = false;                   // suppress floor-change side-effects during visual A/B capture
   let L = localStorage.getItem('floordsgn_lang') || 'ru';
   if (L !== 'ru' && L !== 'en') L = 'ru';
-  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, ctl:{ color:'orig' } };
+  const STATE = { avatar:'explore', m:'micro', room:'living', finish:'satin', view:'hall', light:'golden', figure:false, realChip:false, ctl:{ color:'orig' } };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
   const t = (k) => (DATA && DATA.ui[L] && DATA.ui[L][k]) || k;
@@ -40,6 +41,26 @@
     room.floorMat.color.set(o && o.hex ? o.hex : 0xffffff);
     room.floorMat.needsUpdate = true;
   };
+
+  /* ---------- life-size chip scale (real-mm) — studio-side, engine file untouched ----------
+     Engine sets floorMat repeat = fW/tile (fW = room W+2 = 14 m) with an art-directed `tile`
+     per floor. Real installed chips read ~half that, so this optional mode ~doubles the repeat
+     to show aggregate at life size (cement/multi anchored to dossier physical_mm_per_tile).
+     We cache the engine's own repeat per floor and restore it verbatim when toggled OFF. */
+  const FLOOR_PLANE = 14;   // engine fW = W(12)+2
+  const REAL_TILE = { light:0.75, venetian:0.8, graphite:0.55, cement:0.7, multi:0.75, comfort:1.1, micro:1.1 };
+  const hasChips = (fl) => !['micro', 'comfort'].includes(fl);   // seamless floors have no aggregate
+  const _repCache = {};
+  const floorMaps = () => { const m = window.__room && window.__room.floorMat; return m ? [m.map, m.normalMap, m.roughnessMap] : []; };
+  function captureArtRepeat(){ const ms = floorMaps(); if (ms[0]) _repCache[curFloor()] = ms[0].repeat.x; }
+  function applyChipScale(){
+    const r = window.__room; if (!r || !r.floorMat) return;
+    const fl = curFloor(); let rep;
+    if (STATE.realChip) rep = FLOOR_PLANE / (REAL_TILE[fl] || 0.75);
+    else { rep = _repCache[fl]; if (rep == null) return; }   // nothing captured → leave engine value
+    floorMaps().forEach(m => { if (m){ m.repeat.set(rep, rep); m.needsUpdate = true; } });
+    r.floorMat.needsUpdate = true; if (r.bake) r.bake();
+  }
 
   /* ---------- engine seam: drive via existing chips ---------- */
   const clickChip = (sel) => { const b = $(sel); if (b) b.click(); };
@@ -264,7 +285,14 @@
     const figRow = el('div', { class:'st-pillrow', style:'margin-top:6px' });
     const fig = el('button', { class:'st-pill' + (STATE.figure ? ' on' : '') }, L === 'ru' ? 'Фигура для масштаба' : 'Scale figure');
     fig.onclick = () => { STATE.figure = !STATE.figure; const r = window.__room; if (r && r.scaleFigure) r.scaleFigure(STATE.figure); fig.classList.toggle('on', STATE.figure); track('figure', { on:STATE.figure }); };
-    figRow.append(fig); wrap.append(figRow);
+    figRow.append(fig);
+    // life-size aggregate scale — only meaningful where the floor has chips
+    if (hasChips(curFloor())){
+      const cs = el('button', { class:'st-pill' + (STATE.realChip ? ' on' : ''), title: L === 'ru' ? 'Чипы в реальном размере' : 'Aggregate at true size' }, L === 'ru' ? 'Реальный размер чипа' : 'Life-size chips');
+      cs.onclick = () => { STATE.realChip = !STATE.realChip; if (STATE.realChip) captureArtRepeat(); applyChipScale(); cs.classList.toggle('on', STATE.realChip); track('chipscale', { on:STATE.realChip }); writeURL(); };
+      figRow.append(cs);
+    }
+    wrap.append(figRow);
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
@@ -365,6 +393,7 @@
     u.searchParams.set('view', STATE.view);
     u.searchParams.set('light', STATE.light);
     if (STATE.ctl && STATE.ctl.color && STATE.ctl.color !== 'orig') u.searchParams.set('c', STATE.ctl.color);
+    if (STATE.realChip) u.searchParams.set('cs', '1');
     return u.toString();
   }
   function writeURL(){ try { history.replaceState(null, '', shareURL()); } catch(e){} }
@@ -377,6 +406,7 @@
     if (q.get('view')) STATE.view = q.get('view');
     if (q.get('light')) STATE.light = q.get('light');
     if (q.get('c')) STATE.ctl.color = q.get('c');
+    if (q.get('cs')) STATE.realChip = true;
   }
   async function share(){
     const url = shareURL();
@@ -421,10 +451,12 @@
     $('#stBoardModal').classList.add('show');
   }
 
-  function compareOpen(){
-    track('compare', {});
-    const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
-    $('#stCmpTitle').textContent = L === 'ru' ? 'Сравнение систем' : 'Compare systems';
+  /* render helpers for visual A/B — single engine, so capture floors sequentially */
+  function rafWait(n){ n = n || 2; return new Promise(res => { let i = 0; const tick = () => { if (++i >= n) res(); else requestAnimationFrame(tick); }; requestAnimationFrame(tick); }); }
+  function texReady(){ return new Promise(res => { let n = 0; const chk = () => { const ms = floorMaps(); const im = ms[0] && ms[0].image; const ok = im && im.complete !== false && (im.naturalWidth === undefined || im.naturalWidth > 0); if (ok || ++n > 45) res(); else setTimeout(chk, 30); }; chk(); }); }
+  async function renderFloorShot(slug){ setFloor(slug); await texReady(); const r = window.__room; if (r && r.bake) r.bake(); await rafWait(3); return snapshot(); }
+
+  function buildCmpTable(p){
     const slugs = [], seen = {};
     p.floors.forEach(fl => { const ms = DATA.floorMap[fl]; if (ms && !seen[ms]){ seen[ms] = 1; slugs.push(ms); } });
     (p.specCards || []).forEach(s => { if (!seen[s]){ seen[s] = 1; slugs.push(s); } });
@@ -438,7 +470,49 @@
       pick.forEach(s => { const m = manBySlug(s); tr.append(el('td', {}, (m && m.spec && m.spec[k]) || '—')); }); tbl.append(tr); });
     const brow = el('tr'); brow.append(el('td', { class:'rk' }, L === 'ru' ? 'Бейджи' : 'Badges'));
     pick.forEach(s => { const m = manBySlug(s); brow.append(el('td', {}, ((m && m.badges) || []).join(' · '))); }); tbl.append(brow);
-    wrap.append(tbl); $('#stCmpModal').classList.add('show');
+    return tbl;
+  }
+
+  async function compareOpen(){
+    track('compare', {});
+    const p = persona(); const wrap = $('#stCmpWrap'); wrap.innerHTML = '';
+    $('#stCmpTitle').textContent = L === 'ru' ? 'Сравнение систем' : 'Compare systems';
+    // engine floors (have real 3D) for the visual A/B — first two distinct
+    const ef = [], sf = {};
+    p.floors.forEach(fl => { if (REAL_TILE[fl] !== undefined && !sf[fl]){ sf[fl] = 1; ef.push(fl); } });
+    const ab = ef.slice(0, 2);
+    let vis = null;
+    if (ab.length === 2){
+      vis = el('div', { class:'st-cmp-vis' });
+      vis.append(el('div', { class:'st-cmp-spin' }, L === 'ru' ? 'Готовим визуальное сравнение…' : 'Rendering visual compare…'));
+      wrap.append(vis);
+    }
+    wrap.append(buildCmpTable(p));        // spec table is instant
+    $('#stCmpModal').classList.add('show');
+
+    if (ab.length === 2){
+      comparing = true;                   // mute the floor-change listener while we cycle floors
+      const orig = curFloor(), origColor = STATE.ctl.color, origReal = STATE.realChip;
+      try {
+        STATE.realChip = false;           // fair A/B: both at art scale
+        const shotA = await renderFloorShot(ab[0]);
+        const shotB = await renderFloorShot(ab[1]);
+        setFloor(orig); await texReady();  // restore the user's exact floor + look
+        STATE.realChip = origReal; applyColor(origColor);
+        captureArtRepeat(); if (origReal) applyChipScale();
+        const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(orig)); if (r && r.bake) r.bake();
+        if (vis){ vis.innerHTML = '';
+          [[ab[0], shotA], [ab[1], shotB]].forEach(([fl, src]) => {
+            const cell = el('div', { class:'st-cmp-cell' });
+            if (src) cell.append(el('img', { src, alt: tx(DATA.floorLabels[fl] || { ru:fl }) }));
+            cell.append(el('div', { class:'st-cmp-cap' }, tx(DATA.floorLabels[fl] || { ru:fl })));
+            vis.append(cell);
+          });
+        }
+      } catch(e){ if (vis) vis.innerHTML = ''; }
+      await new Promise(r => setTimeout(r, 60));   // let the restore click's 30ms listener fire (skipped) before re-arming
+      comparing = false;
+    }
   }
 
   function doPrint(){
@@ -478,7 +552,7 @@
     readURL();
 
     // sync STATE from engine on user clicks
-    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { STATE.m = curFloor(); if (!booting) applyColor('orig'); const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
+    $$('#floorCtl .chip[data-fl]').forEach(c => c.addEventListener('click', () => setTimeout(() => { if (comparing) return; STATE.m = curFloor(); if (!booting) applyColor('orig'); const r = window.__room; if (r && r.setDividers) r.setDividers(needsDividers(STATE.m)); captureArtRepeat(); if (STATE.realChip) applyChipScale(); renderPanel(); renderCta(); writeURL(); track('floor', { m:STATE.m }); }, 30)));
     $$('#roomCtl .chip[data-rm]').forEach(c => c.addEventListener('click', () => { STATE.room = c.dataset.rm; writeURL(); }));
     $$('#finishCtl button[data-f]').forEach(c => c.addEventListener('click', () => { STATE.finish = c.dataset.f; writeURL(); }));
     $$('#viewCtl .chip[data-v]').forEach(c => c.addEventListener('click', () => { STATE.view = c.dataset.v; writeURL(); }));
@@ -501,6 +575,7 @@
     if (urlView) setView(urlView);
     if (urlLight && window.__room && window.__room.setLighting){ window.__room.setLighting(urlLight); STATE.light = urlLight; }
     if (urlColor) applyColor(urlColor);
+    if (q.get('cs')){ STATE.realChip = true; captureArtRepeat(); applyChipScale(); }
 
     setLang(L); // paints chrome text + panel
     setTimeout(() => { booting = false; }, 300); // deep-link applied; resume colour-reset on floor change
