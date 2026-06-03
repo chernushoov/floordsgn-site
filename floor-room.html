@@ -54,6 +54,8 @@
     <span class="lbl" style="align-self:center">комната</span>
     <button class="chip on" data-rm="living">Гостиная</button>
     <button class="chip" data-rm="bedroom">Спальня</button>
+    <button class="chip" data-rm="kitchen">Кухня</button>
+    <button class="chip" data-rm="bath">Ванная</button>
   </div>
   <div class="row" id="floorCtl">
     <span class="lbl" style="align-self:center">терраццо</span>
@@ -358,8 +360,68 @@ function buildBedroom(){
   add(new THREE.Mesh(RB(0.04,0.9,1.4,0.005), MAT.paper),  -hw+0.135, 1.75, -0.2);
 }
 
+/* ════════ ROOM KIT: KITCHEN (Кухня) ════════ */
+function buildKitchen(){
+  const top = new THREE.MeshStandardMaterial({ color:0xddd6c8, roughness:0.5 });   // light stone worktop
+  const cab = MAT.walnut;
+  /* island — centre-right */
+  (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; g.add(m); };
+    add(new THREE.Mesh(RB(1.9,0.86,1.0,0.02), cab), 0, 0.43, 0);                  // base cabinet
+    add(new THREE.Mesh(RB(2.06,0.08,1.16,0.02), top), 0, 0.90, 0);               // worktop + overhang
+    add(new THREE.Mesh(RB(0.52,0.035,0.34,0.01), MAT.metal), 0.42, 0.93, 0);     // sink inset
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.018,0.018,0.3,12), MAT.metal); fa.position.set(0.42,1.07,-0.18); fa.rotation.x=0.5; add(fa,0.42,1.07,-0.18);
+    g.position.set(1.0, 0, 0.4); roomKit.add(g);                                  // centred so the island reads as the hero
+  })();
+  /* 3 counter stools at the island front; centre seat = the ONE signal accent */
+  for(let i=-1;i<=1;i++){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,0.08,24), i===0?MAT.signal:MAT.linen), 0,0.64,0);
+    for(const a of [0,1,2,3]){ const lx=Math.cos(a*Math.PI/2)*0.13, lz=Math.sin(a*Math.PI/2)*0.13; add(new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.012,0.6,10),MAT.metal),lx,0.31,lz); }
+    g.position.set(-0.3, 0, 0.4 + i*0.62); roomKit.add(g); }
+  /* back counter run under the window */
+  (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(RB(4.4,0.86,0.6,0.02), cab), 0,0.43,0);
+    add(new THREE.Mesh(RB(4.6,0.08,0.7,0.02), top), 0,0.90,0);
+    g.position.set(0.6,0,-hd+0.42); roomKit.add(g); })();
+  /* two warm pendant lamps over the island */
+  for(const px of [0.5, 1.5]){
+    { const cord=new THREE.Mesh(new THREE.CylinderGeometry(0.006,0.006,1.0,8),MAT.metal); cord.position.set(px,2.5,0.4); roomKit.add(cord); }
+    const sh=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.2,28,1,true), new THREE.MeshStandardMaterial({color:0x2a2a28,roughness:0.6,metalness:0.4,side:THREE.DoubleSide,emissive:0xffce8a,emissiveIntensity:0.5}));
+    sh.position.set(px,1.96,0.4); roomKit.add(sh);
+    const pl=new THREE.PointLight(0xffce96,3.0,6,2); pl.position.set(px,1.86,0.4); roomKit.add(pl);
+  }
+  const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.12,24,16,0,Math.PI*2,0,Math.PI*0.5),MAT.stone); bowl.rotation.x=Math.PI; sr(bowl,0.7,0.96,0.4);
+  buildSnake(-3.8,2.6); buildFicus(-4.3,-2.6);
+}
+
+/* ════════ ROOM KIT: BATHROOM (Ванная) ════════ */
+function buildBath(){
+  const porcelain=new THREE.MeshPhysicalMaterial({ color:0xf3f0ea, roughness:0.22, clearcoat:0.6, clearcoatRoughness:0.2 });
+  const stoneTop=new THREE.MeshStandardMaterial({ color:0xd8d2c6, roughness:0.5 });
+  /* freestanding tub — hero, centre-right */
+  (function(){ const g=new THREE.Group(); const add=(m,x,y,z,c)=>{m.position.set(x,y,z);m.castShadow=c!==false;m.receiveShadow=true;g.add(m);};
+    const o=new THREE.Mesh(new THREE.CapsuleGeometry(0.5,1.0,12,24),porcelain); o.rotation.z=Math.PI/2; o.scale.set(1,1,0.62); add(o,0,0.46,0);
+    const inr=new THREE.Mesh(new THREE.CapsuleGeometry(0.4,0.9,10,20),new THREE.MeshStandardMaterial({color:0xe7e2d8,roughness:0.4})); inr.rotation.z=Math.PI/2; inr.scale.set(1,1,0.6); add(inr,0,0.6,0,false);
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.42,12),MAT.metal); fa.rotation.x=0.4; add(fa,0.82,0.5,0);
+    g.position.set(1.1,0,0.7); roomKit.add(g); })();                              // centred tub = visible hero
+  /* vanity at the far wall: cabinet + stone top + basin + faucet */
+  (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(RB(1.8,0.8,0.55,0.02),MAT.walnut),0,0.4,0);
+    add(new THREE.Mesh(RB(1.95,0.07,0.62,0.02),stoneTop),0,0.84,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.16,0.13,28),porcelain),0.45,0.92,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.28,12),MAT.metal),0.45,1.04,-0.13);
+    g.position.set(-1.4,0,-hd+0.34); roomKit.add(g); })();
+  /* large mirror over the vanity + two warm sconces */
+  sr(new THREE.Mesh(RB(0.05,1.3,1.6,0.02),MAT.metal),-1.4,1.7,-hd+0.09);
+  const mir=new THREE.Mesh(RB(0.02,1.15,1.45,0.01), new THREE.MeshStandardMaterial({color:0xa9b2b6,roughness:0.06,metalness:0.95})); mir.position.set(-1.4,1.7,-hd+0.12); mir.receiveShadow=false; roomKit.add(mir);
+  for(const s of [-1,1]){ const b=new THREE.Mesh(new THREE.SphereGeometry(0.06,16,12),new THREE.MeshStandardMaterial({color:0xfff0d8,emissive:0xffe0a8,emissiveIntensity:0.85,roughness:0.5})); b.position.set(-1.4+s*0.95,1.78,-hd+0.34); roomKit.add(b);
+    const pl=new THREE.PointLight(0xffe2b0,1.8,4,2); pl.position.set(-1.4+s*0.95,1.78,-hd+0.5); roomKit.add(pl); }
+  sr(new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,0.36,28),MAT.signal),hw-3.7,0.18,2.3);   // ONE signal accent: round pouf
+  sr(new THREE.Mesh(RB(0.4,0.08,0.3,0.03),new THREE.MeshStandardMaterial({color:0xeee9df,roughness:0.95})),1.1,0.95,0.7);  // folded towel on tub
+  buildFicus(-4.2,-2.4); buildSnake(4.4,-2.6);
+}
+
 /* ════════ room registry + switcher (floor + tour stay; only the kit swaps) ════════ */
-const ROOMS = { living: buildLiving, bedroom: buildBedroom };
+const ROOMS = { living: buildLiving, bedroom: buildBedroom, kitchen: buildKitchen, bath: buildBath };
 function clearKit(){
   for(let i=roomKit.children.length-1;i>=0;i--){ const c=roomKit.children[i]; roomKit.remove(c);
     c.traverse && c.traverse(o=>{ o.geometry && o.geometry.dispose(); }); if(c.geometry) c.geometry.dispose(); }
