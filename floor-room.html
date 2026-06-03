@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css?v=20260603-15"/>
+<link rel="stylesheet" href="studio.css?v=20260603-16"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -178,8 +178,9 @@ const floor = new THREE.Mesh(new THREE.PlaneGeometry(fW, fD), floorMat);
 floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; scene.add(floor);
 
 /* ───────────────── helpers ───────────────── */
+function _uv2(geo){ const uv = geo.attributes.uv; if(uv && !geo.attributes.uv1) geo.setAttribute('uv1', uv); if(uv && !geo.attributes.uv2) geo.setAttribute('uv2', uv); return geo; }   // second UV set for aoMap (r158 channel 1 = uv1); harmless if no aoMap
 const box = (w,h,d, mat, x,y,z, cast=true, recv=true) => {
-  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+  const m = new THREE.Mesh(_uv2(new THREE.BoxGeometry(w,h,d)), mat);
   m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=recv; scene.add(m); return m;
 };
 const rbox = (w,h,d, mat, x,y,z, r=0.02, cast=true, recv=true) => {
@@ -207,9 +208,9 @@ const _wallDesign = { left:null, right:null, back:null, window:null };   // _des
    default (no diffuse, warm-concrete colour, micro normal at 6×3 → I1); concrete/rubber are MIRRORED
    photoscans at a physical wall scale (no seams). Each maps to its _designs variant set. */
 const WALLS = {
-  microcement: { path: WALLT,                                        tile: 1.6, ns: 0.22, diffuse:false, design:'microtopping',        label:'Микроцемент' },
-  concrete:    { path: '3d-assets/textures-v4/decorative-concrete/', tile: 1.3, ns: 0.30, diffuse:true,  design:'decorative-concrete', label:'Бетон' },
-  rubber:      { path: '3d-assets/textures-v4/rubber/',              tile: 1.5, ns: 0.40, diffuse:true,  design:'rubber',              label:'Резина' },
+  microcement: { path: WALLT,                                        tile: 1.6, ns: 0.22,              diffuse:false, design:'microtopping',        label:'Микроцемент' },
+  concrete:    { path: '3d-assets/textures-v4/decorative-concrete/', tile: 1.3, ns: 0.55, rough: 0.90, ao: 0.7, diffuse:true, design:'decorative-concrete', label:'Бетон' },   // stronger relief so form-lines survive tinting; slight sheen; baked AO
+  rubber:      { path: '3d-assets/textures-v4/rubber/',              tile: 1.5, ns: 0.55, rough: 0.78, ao: 0.6, diffuse:true, design:'rubber',              label:'Резина' },   // rubber sheen (lower roughness) so it reads ≠ concrete
 };
 function _wallKeys(wallKey){ return (wallKey === 'all') ? ['left','right','back','window'] : (WALL_MATS[wallKey] ? [wallKey] : []); }
 function _wallRepeat(wk, tile){ const horiz = (wk==='left'||wk==='right') ? curD : curW; return [Math.max(1, horiz/tile), Math.max(1, curH/tile)]; }
@@ -217,9 +218,9 @@ function _wallBaseColor(wk){ return _wallColor[wk] != null ? _wallColor[wk] : ((
 function setWall(wallKey, matKey){
   const w = WALLS[matKey] || WALLS.microcement;
   for(const wk of _wallKeys(wallKey)){ const m = WALL_MATS[wk]; if(!m) continue;
-    const old = [m.map, m.normalMap, m.roughnessMap];
+    const old = [m.map, m.normalMap, m.roughnessMap, m.aoMap];
     if(w.diffuse === false){                                  // microcement = clean wall, no diffuse (= the showcase default)
-      m.map = null;
+      m.map = null; m.aoMap = null;
       m.normalMap = _wallTex(WALLT + 'normal.png');           // micro normal at 6×3
       m.roughnessMap = _wallTex(WALLT + 'roughness.png');
     } else {                                                  // concrete / rubber = mirrored photoscan at physical wall scale
@@ -227,10 +228,14 @@ function setWall(wallKey, matKey){
       m.map = loadTex(w.path + 'diffuse.jpg', true, rx, ry, true);    // mirrored wrap = no seams
       m.normalMap = loadTex(w.path + 'normal.png', false, rx, ry, true);
       m.roughnessMap = loadTex(w.path + 'roughness.png', false, rx, ry, true);
+      m.aoMap = loadTex(w.path + 'ao.png', false, rx, ry, true);      // baked AO (the shipped ao.png) → real surface/junction self-shadow
+      m.aoMapIntensity = (w.ao != null) ? w.ao : 0.6;
     }
     _wallState[wk] = (matKey in WALLS) ? matKey : 'microcement';
     _wallDesign[wk] = null;                                   // material change clears the design variant
-    m.color.setHex(_wallBaseColor(wk)); m.normalScale.set(w.ns, w.ns); m.needsUpdate = true;
+    m.color.setHex(_wallBaseColor(wk)); m.normalScale.set(w.ns, w.ns);
+    m.roughness = (w.rough != null) ? w.rough : 0.97;        // per-material sheen; microcement keeps 0.97 (I1)
+    m.needsUpdate = true;
     old.forEach(t => t && t.dispose());
   }
   requestBake();
@@ -612,12 +617,9 @@ function bakeFloorReflection(){
 }
 /* requestBake (I4): coalesce rapid style/wall/move/rotate edits into ONE bake on the next idle
    frame — never bake per-frame or mid-drag (a bake is a full cube render). */
-let _bakeQueued = false;
-function requestBake(){
-  if(_bakeQueued) return;
-  _bakeQueued = true;
-  requestAnimationFrame(()=>{ _bakeQueued = false; bakeFloorReflection(); });
-}
+let _bakeDirty = false;
+function requestBake(){ _bakeDirty = true; }   // consumed by the render loop (H2) — survives backgrounded tabs (loop resumes → bakes)
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden && _bakeDirty){ _bakeDirty = false; bakeFloorReflection(); } });
 
 /* ───────────────── controls ───────────────── */
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -828,7 +830,7 @@ function _disposeGroup(g){ g.traverse(o => { o.geometry && o.geometry.dispose();
 function buildCustomShell(w, d, h){
   const g = new THREE.Group();
   const hw2 = w/2, hd2 = d/2;
-  const cb = (W_,H_,D_,mat,x,y,z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(W_,H_,D_), mat); m.position.set(x,y,z); m.receiveShadow = true; g.add(m); return m; };
+  const cb = (W_,H_,D_,mat,x,y,z) => { const m = new THREE.Mesh(_uv2(new THREE.BoxGeometry(W_,H_,D_)), mat); m.position.set(x,y,z); m.receiveShadow = true; g.add(m); return m; };
   cb(0.2, h, d, wallMatL, -hw2, h/2, 0);                                // shares the 4 per-wall materials → custom rooms inherit setWall finishes
   cb(0.2, h, d, wallMatR,  hw2, h/2, 0);
   cb(w, h, 0.2, wallMatB, 0, h/2, hd2);                                 // wall behind the camera
@@ -938,7 +940,7 @@ _editBar.addEventListener('click',(ev)=>{ const b=ev.target.closest('button'); i
   _selected.updateMatrixWorld(true); if(_boxHelper)_boxHelper.update(); _positionBar(); requestBake(); _fireEdit(); });
 
 function setEditMode(on){ on=!!on;
-  if(on && !_editMode){ _prevAuto=controls.autoRotate; controls.autoRotate=false; }
+  if(on && !_editMode){ _prevAuto=controls.autoRotate; controls.autoRotate=false; stopTour(); tween=null; }   // M5: freeze any tour/tween so the camera can't fly while dragging a piece
   else if(!on && _editMode){ if(_prevAuto!=null) controls.autoRotate=_prevAuto; _deselect(); controls.enabled=true; }
   _editMode=on; document.body.classList.toggle('room-editing',on); return _editMode; }
 function getMovables(){ return MOVABLES.map(g=>{ const hp=_homePos(g);
@@ -946,8 +948,8 @@ function getMovables(){ return MOVABLES.map(g=>{ const hp=_homePos(g);
   return { name:g.userData.name, kind:g.userData.kind, x:+g.position.x.toFixed(3), z:+g.position.z.toFixed(3), ry:+g.rotation.y.toFixed(4), moved }; }); }
 function setTransforms(arr){ if(!Array.isArray(arr)) return;
   arr.forEach(t=>{ if(!t||!t.name) return; const g=MOVABLES.find(m=>m.userData.name===t.name); if(!g) return;
-    if(typeof t.ry==='number') g.rotation.y=t.ry;
-    const c=_clampXZ(g, typeof t.x==='number'?t.x:g.position.x, typeof t.z==='number'?t.z:g.position.z);
+    if(Number.isFinite(t.ry)) g.rotation.y=t.ry;                                        // M6: Number.isFinite — typeof NaN==='number' would NaN-poison the transform
+    const c=_clampXZ(g, Number.isFinite(t.x)?t.x:g.position.x, Number.isFinite(t.z)?t.z:g.position.z);
     g.position.x=c.x; g.position.z=c.z; g.updateMatrixWorld(true); });
   if(_boxHelper&&_selected) _boxHelper.update(); requestBake(); }
 function resetTransforms(){ MOVABLES.forEach(g=>{ g.userData.homeMatrix.decompose(g.position,g.quaternion,g.scale); g.updateMatrixWorld(true); });
@@ -981,13 +983,14 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
       if (k>=1) tween = null;
     }
     controls.update();
+    if (!tween) clampCamera();   // H1: clamp only settled user orbit — never fight an authored tween/tour path (was the camera "revert" on presets/custom rooms)
   }
-  clampCamera();
+  if (_bakeDirty){ _bakeDirty = false; bakeFloorReflection(); }   // H2: bake consumed from the loop → never lost to a dropped rAF (no permanent reflection-freeze)
   if (gradePass) gradePass.uniforms.uTime.value = performance.now()*0.001;
   if (useComposer && composer) composer.render(); else renderer.render(scene, camera);
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js?v=20260603-15"></script>
+<script type="module" src="studio.js?v=20260603-16"></script>
 </body>
 </html>

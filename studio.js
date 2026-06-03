@@ -35,7 +35,7 @@
     }); };   // re-apply after a shell rebuild (fixes per-room repeat); material→colour→design order
   /* tf deep-link: per-room furniture transforms, only moved pieces. "name,x,z,ry" joined by ";". */
   const encTf = (arr) => (arr || []).map(m => [m.name, m.x, m.z, +(+m.ry || 0).toFixed(3)].join(',')).join(';');
-  const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); return a.length >= 4 ? { name:a[0], x:+a[1], z:+a[2], ry:+a[3] } : null; }).filter(Boolean);
+  const decTf = (s) => String(s).split(';').map(p => { const a = p.split(','); if (a.length < 4 || !a[0]) return null; const x=+a[1], z=+a[2], ry=+a[3]; return (Number.isFinite(x) && Number.isFinite(z) && Number.isFinite(ry)) ? { name:a[0], x, z, ry } : null; }).filter(Boolean);   // M6: drop malformed/NaN tf tokens (NaN would teleport furniture to oblivion)
   const applyTf = (rm) => { const r = window.__room; const arr = STATE.tf[rm || STATE.room]; if (r && r.setTransforms && arr && arr.length) r.setTransforms(arr); };
   const track = (event, data) => { try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event:'studio_' + event, avatar:STATE.avatar }, data || {})); } catch(e){} };
   const postLead = (channel) => { try { fetch('/lead', { method:'POST', headers:{ 'content-type':'application/json' }, body: JSON.stringify({ persona:STATE.avatar, material:curFloor(), room:STATE.room, light:STATE.light, url:shareURL(), channel, ts:0 }) }).catch(() => {}); } catch(e){} };
@@ -88,9 +88,16 @@
   const DESIGN_MAP = { cement:'terrazzo-cement', multi:'terrazzo-multi', graphite:'terrazzo-epoxy', micro:'microtopping' };
   const designsFor = (fl) => { const k = DESIGN_MAP[fl]; return (DESIGNS && DESIGNS[k]) || []; };
   function applyDesign(variant){
-    const r = window.__room; const map = r && r.floorMat && r.floorMat.map; if (!map) return;
+    const r = window.__room; if (!(r && r.floorMat && r.floorMat.map)) return;
+    const fl0 = curFloor();
     const img = new Image();
-    img.onload = () => { map.image = img; map.needsUpdate = true; r.floorMat.needsUpdate = true; if (r.bake) r.bake(); };
+    img.onload = () => {
+      // H3: re-read the LIVE map inside onload and bail if the floor/design changed since the click —
+      // otherwise a slow design image can land on a texture setFloor already disposed (corrupt bake).
+      if (curFloor() !== fl0 || STATE.ctl.design !== variant.id) return;
+      const map = r.floorMat.map; if (!map) return;
+      map.image = img; map.needsUpdate = true; r.floorMat.needsUpdate = true; if (r.bake) r.bake();
+    };
     img.src = '3d-assets/' + variant.file;
     STATE.ctl.design = variant.id;
   }
@@ -504,6 +511,7 @@
     const isDef = !!isReset || (g.w === def.w && g.d === def.d && g.h === def.h);
     STATE.dims = isDef ? null : g;
     if (!isDef) STATE.figure = true;   // custom room auto-shows the 1.7 m figure for scale
+    applyTf(STATE.room); applyWalls();   // M3: shell rebuilt at new dims → re-apply arrangement + recompute wall texture repeat for the new footprint
     track('roomdims', STATE.dims || { reset:true }); writeURL(); renderPanel();
   }
 
