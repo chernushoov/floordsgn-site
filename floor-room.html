@@ -512,12 +512,23 @@ const LIGHTING = {
   hard:    { hdr:'cyclorama_hard_light.hdr',exp:0.98, blur:0.34, sun:[0xf2f5ff,3.4] },  // hard/industrial
 };
 const _rgbe = new RGBELoader(); let _envHdr = null;
+/* a small room concentrates the sun + ceiling strips into a hard bright beam — when a custom
+   size is active we diffuse it: lower key sun, slightly lower exposure, softer penumbra, a touch
+   more sky blur. Default showcase = factors 1 → byte-identical to the tuned golden hour. */
+let _customRoom = false, _curCfg = LIGHTING.golden;
+function _refreshLightLevels(){
+  const cfg = _curCfg;
+  renderer.toneMappingExposure = cfg.exp * (_customRoom ? 0.90 : 1);
+  sun.intensity = cfg.sun[1] * (_customRoom ? 0.66 : 1);
+  scene.backgroundBlurriness = Math.min(0.7, cfg.blur + (_customRoom ? 0.12 : 0));
+  sun.shadow.radius = _customRoom ? 9 : 4;
+}
 function _applyLighting(hdr, cfg){
   hdr.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = pmrem.fromEquirectangular(hdr).texture;
-  scene.background = hdr; scene.backgroundBlurriness = cfg.blur;
-  renderer.toneMappingExposure = cfg.exp;
-  sun.color.setHex(cfg.sun[0]); sun.intensity = cfg.sun[1];
+  scene.background = hdr;
+  sun.color.setHex(cfg.sun[0]);
+  _curCfg = cfg; _refreshLightLevels();
   if (_envHdr && _envHdr !== hdr) _envHdr.dispose(); _envHdr = hdr;
   bakeFloorReflection();
 }
@@ -558,8 +569,10 @@ function scaleFigure(show){
 let _dividers = null, _dividersOn = false;
 function buildDividers(){
   const g = new THREE.Group();
-  const mat = new THREE.MeshStandardMaterial({ color:0xb08d57, metalness:0.7, roughness:0.32 });  // brass
-  const w = 0.014, h = 0.006, y = 0.004;
+  // brass strips ground FLUSH with the terrazzo (one level) and sealed under the same glossy
+  // topcoat — barely proud of the floor (no raised "layer"), clearcoat matching the floor.
+  const mat = new THREE.MeshPhysicalMaterial({ color:0xb08d57, metalness:0.85, roughness:0.35, clearcoat:1.0, clearcoatRoughness:0.10, envMapIntensity:1.0 });
+  const w = 0.012, h = 0.0015, y = 0.001;   // ~1.5 mm proud → reads as a flush inlay, not a raised bar
   const nx = Math.ceil(curW/3), nz = Math.ceil(curD/3);            // cells <= 3 m, proportional to live room
   for (let i=1;i<nx;i++){ const x = -curW/2 + i*(curW/nx); const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,curD), mat); m.position.set(x,y,0); m.receiveShadow=true; g.add(m); }
   for (let j=1;j<nz;j++){ const z = -curD/2 + j*(curD/nz); const m = new THREE.Mesh(new THREE.BoxGeometry(curW,h,w), mat); m.position.set(0,y,z); m.receiveShadow=true; g.add(m); }
@@ -590,7 +603,7 @@ function buildCustomShell(w, d, h){
   cb(w, h-wT, 0.2, wallMat, 0, wT+(h-wT)/2, -hd2);
   cb(jb, wT-wB, 0.2, wallMat, -hw2+jb/2, (wB+wT)/2, -hd2);
   cb(jb, wT-wB, 0.2, wallMat,  hw2-jb/2, (wB+wT)/2, -hd2);
-  const sm = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xfff2e2, emissiveIntensity:1.5, roughness:1, fog:false });
+  const sm = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xfff2e2, emissiveIntensity:0.5, roughness:1, fog:false });  // dim → no hard beam on the glossy floor
   for (const sx of [-w*0.27, 0, w*0.27]){ const m = new THREE.Mesh(new THREE.BoxGeometry(0.14,0.04,d*0.66), sm); m.position.set(sx, h-0.02, -0.3); g.add(m); }
   scene.add(g); return g;
 }
@@ -605,7 +618,8 @@ function setRoomDims(w, d, h){
   if (_dividers){ scene.remove(_dividers); _disposeGroup(_dividers); _dividers = null; }   // rebuild grid for the new footprint
   if (_dividersOn){ _dividers = buildDividers(); _dividers.visible = true; }
   ROOM_BOUND.x = Math.max(0.6, w/2-0.35); ROOM_BOUND.z = Math.max(0.6, d/2-0.35); ROOM_BOUND.yMax = h-0.3;
-  const sc = Math.max(w, d)/2 + 1; sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
+  const sc = isDef ? 9 : (Math.max(w, d)/2 + 1); sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
+  _customRoom = !isDef; _refreshLightLevels();   // diffuse the light for the small room (default untouched)
   bakeFloorReflection();
 }
 window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
