@@ -77,6 +77,7 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   const rd=await pg.evaluate(()=>window.__room.getDims());
   ok('room resize applies 5x4x2.8', Math.abs(rd.w-5)<0.6&&Math.abs(rd.d-4)<0.6&&Math.abs(rd.h-2.8)<0.4, rd);
   await pg.screenshot({path:path.join(OUT,'room-5x4.png')});
+  ok('area readout shows m²', await pg.evaluate(()=>{const e=document.querySelector('.st-dimcalc');return !!e&&/20/.test(e.textContent);}));
   await pg.evaluate(()=>{const r=Array.from(document.querySelectorAll('.st-pill')).find(b=>/сброс|reset/i.test(b.textContent));if(r)r.click();});
   await pg.waitForTimeout(1100);
   const rdd=await pg.evaluate(()=>window.__room.getDims());
@@ -92,6 +93,15 @@ const ok=(name,cond,extra)=>out.checks.push({name,pass:!!cond,...(extra||{})});
   ok('design swap loads _designs texture', /_designs/.test(dsrc), {tail:dsrc.slice(-46)});
   await pg.screenshot({path:path.join(OUT,'design-swap.png')});
   ok('design absent on seamless venetian', await pg.evaluate(()=>{const c=document.querySelector('#floorCtl .chip[data-fl="venetian"]');if(c)c.click();return new Promise(r=>setTimeout(()=>{const hs=Array.from(document.querySelectorAll('.st-sect-h'));r(!hs.find(h=>/дизайн|pattern/i.test(h.textContent)));},900));}));
+
+  // ── board PDF export ──
+  await pg.evaluate(()=>{ try{localStorage.setItem('floordsgn_board',JSON.stringify([{url:location.href,name:'Пол A',thumb:'',ts:0},{url:location.href,name:'Пол B',thumb:'',ts:0}]));}catch(e){} window.print=()=>{}; });
+  await pg.evaluate(()=>{const b=document.querySelector('#stBoardBtn');if(b)b.click();});
+  await pg.waitForTimeout(500);
+  ok('board print button visible w/ picks', await pg.evaluate(()=>{const p=document.querySelector('#stBoardPrint');return !!p&&p.style.display!=='none';}));
+  await pg.evaluate(()=>{const p=document.querySelector('#stBoardPrint');if(p)p.click();});
+  await pg.waitForTimeout(300);
+  ok('board print fills grid (>=2 cells)', await pg.evaluate(()=>document.querySelectorAll('#stPrint .st-print-grid .st-print-cell').length>=2));
 
   await ctx.close();
 

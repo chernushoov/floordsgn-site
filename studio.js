@@ -122,6 +122,8 @@
 
     // board + compare modals + print host (M3)
     document.body.append(modalEl('stBoardModal', 'stBoardTitle', 'stBoardGrid', 'st-bgrid'));
+    (() => { const grid = document.getElementById('stBoardGrid'); if (!grid) return;
+      const pb = el('button', { class:'st-act', id:'stBoardPrint', style:'margin:14px auto 0;display:none' }); pb.onclick = boardPrint; grid.after(pb); })();
     document.body.append(modalEl('stCmpModal', 'stCmpTitle', 'stCmpWrap', 'st-cmpwrap'));
     document.body.append(el('div', { class:'st-print', id:'stPrint' }));
 
@@ -355,6 +357,14 @@
     reset.onclick = () => setDims(def.w, def.d, def.h, true);
     acts.append(apply, reset); wrap.append(acts);
     wrap.append(el('div', { class:'st-dimhint' }, L === 'ru' ? 'Стены, сетка маяков и свет подстроятся под ваши размеры.' : 'Walls, divider grid and light adapt to your room.'));
+    if (STATE.dims){
+      const a = STATE.dims.w * STATE.dims.d;
+      const nx = Math.ceil(STATE.dims.w / 3), nz = Math.ceil(STATE.dims.d / 3);
+      const lin = (nx - 1) * STATE.dims.d + (nz - 1) * STATE.dims.w;
+      const parts = [(L === 'ru' ? 'Площадь ' : 'Area ') + a.toFixed(1) + ' м²'];
+      if (needsDividers(curFloor()) && lin > 0) parts.push((L === 'ru' ? 'маяки ~' : 'dividers ~') + lin.toFixed(0) + (L === 'ru' ? ' пог.м' : ' lin.m'));
+      wrap.append(el('div', { class:'st-dimcalc' }, parts.join('  ·  ')));
+    }
     return wrap;
   }
   function setDims(w, d, h, isReset){
@@ -385,7 +395,8 @@
     const selField = (id, label, opts) => { const f = el('div', { class:'st-field' }); f.append(el('label', {}, label));
       const s = el('select', { id }); opts.forEach(([v, lab]) => s.append(el('option', { value:v }, lab))); f.append(s); return f; };
 
-    box.append(field('stArea', t('calc_area'), 'number', 60, '60'));
+    const defArea = STATE.dims ? Math.max(1, Math.round(STATE.dims.w * STATE.dims.d)) : 60;
+    box.append(field('stArea', t('calc_area'), 'number', defArea, String(defArea)));
     if (p.calc === 'downtime'){
       box.append(field('stRate', t('calc_days'), 'number', 12000, '12000'));
     } else if (p.calc === 'industrial'){
@@ -514,6 +525,7 @@
       const open = el('button', { class:'st-bcard-open' }, L === 'ru' ? 'Открыть' : 'Open'); open.onclick = () => { location.href = it.url; };
       const del = el('button', { class:'st-bcard-del', 'aria-label':'Удалить / Remove' }, '×'); del.onclick = () => { const a = boardGet(); a.splice(i, 1); boardSet(a); boardOpen(); };
       row.append(open, del); card.append(row); grid.append(card); });
+    const pb = $('#stBoardPrint'); if (pb){ pb.style.display = arr.length ? 'block' : 'none'; pb.textContent = L === 'ru' ? 'Скачать подборку PDF' : 'Download selection PDF'; }
     $('#stBoardModal').classList.add('show');
   }
 
@@ -595,6 +607,22 @@
     }
   }
 
+  function boardPrint(){
+    const arr = boardGet(); if (!arr.length) return;
+    const host = $('#stPrint'); host.innerHTML = '';
+    host.append(el('div', { class:'st-print-brand' }, 'Floor.DSGN Studio'));
+    host.append(el('div', { class:'st-print-mat' }, L === 'ru' ? 'Подборка полов' : 'Floor selection'));
+    const grid = el('div', { class:'st-print-grid' });
+    arr.forEach(it => { const c = el('div', { class:'st-print-cell' });
+      if (it.thumb) c.append(el('img', { class:'st-print-cellimg', src: it.thumb, alt: it.name || '' }));
+      c.append(el('div', { class:'st-print-celln' }, it.name || ''));
+      c.append(el('div', { class:'st-print-cellu' }, it.url || ''));
+      grid.append(c); });
+    host.append(grid);
+    host.append(el('div', { class:'st-print-url' }, 'floordsgn.com · ' + (L === 'ru' ? 'подбор пола в 3D' : '3D floor studio')));
+    track('boardprint', { n: arr.length });
+    setTimeout(() => window.print(), 90);
+  }
   function doPrint(){
     const host = $('#stPrint'); host.innerHTML = '';
     const fl = curFloor(); const mat = manFor(fl);

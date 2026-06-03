@@ -159,7 +159,11 @@ body{ font-family:var(--sans); }
   .st-panel{ top:auto; bottom:0; right:0; left:0; width:100%; max-width:100%; height:54vh; border-left:0; border-top:1px solid var(--line); border-radius:18px 18px 0 0; transform:translateY(0); }
   .st-panel.hidden{ transform:translateY(calc(100% - 0px)); }
   .st-panel-toggle{ display:flex; }
-  .bar{ right:18px; left:18px; bottom:calc(54vh + 12px) !important; }
+  /* controls pinned to the TOP as compact single scrollable rows → the 3D floor gets the middle */
+  .bar{ top:calc(var(--hdr) + 6px) !important; bottom:auto !important; left:8px !important; right:8px !important; transform:none !important; gap:5px; align-items:stretch; }
+  .bar .row{ flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .bar .row::-webkit-scrollbar{ display:none; }
+  .bar .row .chip, .bar .seg button{ flex:0 0 auto; }
   .st-tiles{ grid-template-columns:repeat(2,1fr); }
   .st-chooser h2{ font-size:25px; }
   .hud.br{ display:none !important; }
@@ -204,6 +208,7 @@ body{ font-family:var(--sans); }
 .st-dims input{ width:100%; min-width:0; font-family:var(--sans); font-size:13px; color:var(--carbon); background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 6px; text-align:center; }
 .st-dimx{ color:var(--steel); font-size:13px; flex:0 0 auto; }
 .st-dimhint{ font-family:var(--sans); font-size:10.5px; line-height:1.35; color:var(--steel); margin-top:7px; }
+.st-dimcalc{ font-family:var(--sans); font-size:12px; font-weight:600; color:var(--carbon); margin-top:8px; padding:8px 11px; background:#fff; border:1px solid var(--line); border-left:2px solid var(--signal); border-radius:8px; }
 @media (max-width:880px){ .st-bgrid{ grid-template-columns:repeat(2,1fr); } }
 
 /* ── print: brand-clean one-pager (architect/pro TDS/spec) ── */
@@ -212,6 +217,11 @@ body{ font-family:var(--sans); }
 .st-print-mat{ font-family:var(--disp); font-size:32px; color:var(--carbon); margin:2px 0 14px; }
 .st-print-img{ width:100%; max-height:300px; object-fit:cover; border-radius:8px; margin-bottom:16px; }
 .st-print-url{ font-size:10px; color:var(--steel); margin-top:16px; word-break:break-all; }
+.st-print-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:8px; }
+.st-print-cell{ break-inside:avoid; page-break-inside:avoid; }
+.st-print-cellimg{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:8px; }
+.st-print-celln{ font-family:var(--disp); font-size:19px; color:var(--carbon); margin-top:6px; }
+.st-print-cellu{ font-size:9px; color:var(--steel); word-break:break-all; }
 @media print{
   body{ background:#fff !important; }
   body * { visibility:hidden !important; }
