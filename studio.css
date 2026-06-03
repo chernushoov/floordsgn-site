@@ -149,6 +149,9 @@ body{ font-family:var(--sans); }
 .bar .chip, .bar .seg button{ font-family:var(--sans) !important; color:var(--carbon) !important; background:rgba(243,240,234,.86) !important; border-color:var(--line) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-radius:980px !important; }
 .bar .seg{ border-radius:980px !important; border-color:var(--line) !important; background:rgba(243,240,234,.86) !important; }
 .bar .chip.on, .bar .seg button.on{ background:var(--carbon) !important; color:#fff !important; border-color:var(--carbon) !important; }
+/* bottom-left bar = navigation only (комната + камера). Material + finish live in the right
+   panel now (no duplication) — studio still drives these hidden chips via .click(). */
+#floorCtl, #finishCtl{ display:none !important; }
 
 /* keep the engine HUD (.hud.tl title / .hud.br disclaimer) clear of the header */
 .hud.tl{ top:calc(var(--hdr) + 12px) !important; }

@@ -235,7 +235,8 @@
       scroll.append(gate);
     }
 
-    scroll.append(buildScene(p));   // lighting + colour
+    scroll.append(buildFloorOpts(p));   // floor Цвет/RAL + Дизайн + Покрытие — right under Материал
+    scroll.append(buildScene(p));       // light / style / walls / arrange / size
 
     const specBlock = buildSpec(mat, p);
     // info hierarchy: architect/pro/restaurant/warehouse → spec TOP; designer/private/explore → pains first, spec under accordion
@@ -423,6 +424,13 @@
       }
       renderWalls();
     }
+    return wrap;   // floor Цвет/RAL + Дизайн + Покрытие moved up to buildFloorOpts (right under Материал)
+  }
+
+  /* floor surface options — colour / RAL + design pattern + finish. Placed right under the
+     Материал picker so the floor's own controls aren't buried below the Стены section. */
+  function buildFloorOpts(p){
+    const wrap = el('div');
     // colour / RAL (skip for warehouse — industrial)
     if (p.id !== 'warehouse'){
       wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Цвет / RAL' : 'Colour / RAL'));
@@ -448,6 +456,14 @@
         dg.append(sw); });
       wrap.append(dg);
     }
+    // finish — surface sheen (drives the engine #finishCtl: satin / polished / matte), moved off the bottom bar
+    wrap.append(el('div', { class:'st-sect-h' }, L === 'ru' ? 'Покрытие' : 'Finish'));
+    const FINISH_OPTS = [{ id:'satin', ru:'Сатин', en:'Satin' },{ id:'polished', ru:'Полировка', en:'Polished' },{ id:'matte', ru:'Мат', en:'Matte' }];
+    const fr = el('div', { class:'st-pillrow' });
+    FINISH_OPTS.forEach(o => { const b = el('button', { class:'st-pill' + (STATE.finish === o.id ? ' on' : '') }, L === 'ru' ? o.ru : o.en);
+      b.onclick = () => { setFinish(o.id); STATE.finish = o.id; $$('.st-pill', fr).forEach(x => x.classList.remove('on')); b.classList.add('on'); track('finish', { f:o.id }); writeURL(); };
+      fr.append(b); });
+    wrap.append(fr);
     return wrap;
   }
 
