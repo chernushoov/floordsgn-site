@@ -6,7 +6,7 @@
   'use strict';
   const WA = '972559661459';
   const MAIL = 'floors.dsgn@gmail.com';
-  const ASSET_V = '20260603-8';   // bump with studio.js ?v= → busts the 1yr-immutable /3d-assets JSON cache
+  const ASSET_V = '20260604-1';   // bump with studio.js ?v= → busts the 1yr-immutable /3d-assets JSON cache
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const el = (tag, attrs = {}, html) => { const n = document.createElement(tag);

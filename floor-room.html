@@ -36,7 +36,7 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
 </style>
-<link rel="stylesheet" href="studio.css?v=20260603-16"/>
+<link rel="stylesheet" href="studio.css?v=20260604-1"/>
 <script type="importmap">
 { "imports": {
   "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
@@ -369,10 +369,11 @@ function buildFicus(px,pz){
   const g=new THREE.Group(); const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=true; g.add(m); };
   add(new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.24,0.42,28), new THREE.MeshStandardMaterial({color:0xada494,roughness:0.85})), 0,0.21,0);
   for(let i=0;i<5;i++){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.7,10), MAT.walnut); t.position.set((i-2)*0.04,1.1,0); t.rotation.z=(i-2)*0.05; t.castShadow=true; g.add(t); }
-  const leaf=new THREE.MeshStandardMaterial({color:0x3c5a34,roughness:0.8,side:THREE.DoubleSide});
+  const leafD=new THREE.MeshStandardMaterial({color:0x3c5a34,roughness:0.68,side:THREE.DoubleSide});
+  const leafL=new THREE.MeshStandardMaterial({color:0x52733f,roughness:0.66,side:THREE.DoubleSide});
   for(let i=0;i<22;i++){ const a=i*2.4, r=0.35+((i*13)%5)*0.06, y=1.5+((i*7)%6)*0.12;
-    const cl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.18+((i*11)%4)*0.03,0), leaf);
-    cl.position.set(Math.cos(a)*r,y,Math.sin(a)*r); cl.castShadow=true; g.add(cl); }
+    const cl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.18+((i*11)%4)*0.03,1), (i%3===0)?leafL:leafD);   // detail-1 + two-tone + flattened → organic foliage, not faceted blobs
+    cl.scale.y=0.82; cl.position.set(Math.cos(a)*r,y,Math.sin(a)*r); cl.rotation.set(a*0.3,a,0); cl.castShadow=true; g.add(cl); }
   g.position.set(px,0,pz); roomKit.add(g); return g;
 }
 function buildSnake(px,pz){
@@ -648,7 +649,7 @@ controls.addEventListener('start', () => { controls.autoRotate = false; stopTour
 const VIEWS = {
   hall:   { p:[-2.6,1.9,3.5],  t:[1.4,0.5,-0.7] },   // hero: chair-table-sofa across the floor
   window: { p:[0.4,1.35,2.4],  t:[0.0,1.2,-hd]   },   // console + vase + daylight
-  detail: { p:[0.25,0.6,1.35], t:[0.1,0.02,0.2]  },   // floor macro
+  detail: { p:[-1.1,0.62,0.6], t:[-0.5,0.02,-0.9] },   // floor macro over OPEN floor, raked by window light (was obstructed by the coffee table)
 };
 let tween = null;
 function goView(name){
@@ -719,14 +720,14 @@ const GradeShader = {
       gl_FragColor = vec4(col, 1.0);
     }`
 };
-let composer=null, gradePass=null, bloomPass=null, useComposer=false; const BLOOM_BASE = isMobile ? 0.18 : 0.24;
+let composer=null, gradePass=null, bloomPass=null, useComposer=false; const BLOOM_BASE = isMobile ? 0.16 : 0.20;
 function setupComposer(){
   try{
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
     if(!isMobile){
       const ssao = new SSAOPass(scene, camera, app.clientWidth, app.clientHeight);
-      ssao.kernelRadius = 0.5; ssao.minDistance = 0.0015; ssao.maxDistance = 0.05;
+      ssao.kernelRadius = 1.1; ssao.minDistance = 0.0006; ssao.maxDistance = 0.03;   // wider+softer contact AO: real shadow at wall/floor junctions & under furniture (was tight crevice-only → flat corners)
       composer.addPass(ssao);
       // (no depth-of-field — owner wants every object crisp, not softened)
     }
@@ -758,7 +759,7 @@ function _refreshLightLevels(){
   sun.intensity = cfg.sun[1] * (_customRoom ? 0.5 : 1);
   scene.backgroundBlurriness = Math.min(0.7, cfg.blur + (_customRoom ? 0.12 : 0));
   sun.shadow.radius = _customRoom ? 10 : 4;
-  if (bloomPass){ bloomPass.strength = BLOOM_BASE * (_customRoom ? 0.3 : 1); bloomPass.threshold = _customRoom ? 0.97 : 0.9; }   // kill the sun-glare bloom in a small room
+  if (bloomPass){ bloomPass.strength = BLOOM_BASE * (_customRoom ? 0.3 : 1); bloomPass.threshold = _customRoom ? 0.97 : 0.92; }   // higher default threshold trims the blown floor-specular hotspot, keeps glow on emissive sources
 }
 function _applyLighting(hdr, cfg){
   hdr.mapping = THREE.EquirectangularReflectionMapping;
@@ -991,6 +992,6 @@ window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorRe
   requestAnimationFrame(loop);
 })();
 </script>
-<script type="module" src="studio.js?v=20260603-16"></script>
+<script type="module" src="studio.js?v=20260604-1"></script>
 </body>
 </html>
