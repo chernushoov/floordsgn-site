@@ -10,6 +10,7 @@ const translations = {
         nav_projects: "Projects",
         nav_about: "About Us",
         nav_blog: "Blog",
+        nav_library: "Library",
         nav_contact: "Contact Us",
 
         // Hero
@@ -1850,6 +1851,7 @@ const translations = {
         nav_projects: "Проекты",
         nav_about: "О нас",
         nav_blog: "Блог",
+        nav_library: "Библиотека",
         nav_contact: "Контакты",
 
         // Hero
