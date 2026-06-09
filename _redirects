@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# Studio entry: the old /studio.html "floor system selector" now routes to the
+# restored floor-room Studio. Server-side 301 here is authoritative; the client
+# redirect inside studio.html (meta-refresh + location.replace, carries query/hash)
+# stays as a fallback. Per NARYAD 03 R8.
+/studio.html   /floor-room.html   301
+/studio        /floor-room.html   301

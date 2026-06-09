@@ -234,6 +234,10 @@
     const bCmp = el('button', { class:'st-act' }, L === 'ru' ? 'Сравнить' : 'Compare'); bCmp.onclick = compareOpen;
     const bFrame = el('button', { class:'st-act', title: L === 'ru' ? 'Скачать кадр PNG' : 'Download frame PNG' }, L === 'ru' ? 'Кадр' : 'Frame'); bFrame.onclick = downloadFrame;
     acts.append(bSave, bCmp, bFrame); scroll.append(acts);
+    // 3D layer-breakdown lives on its OWN page (configurator), reached by this card-link —
+    // never embedded in the Studio scene (the embedded merge was the 07.06 collapse).
+    const b3d = el('a', { class:'st-3dlink', href:`configurator.html?system=${encodeURIComponent(fl)}&material=${encodeURIComponent(fl)}&from=studio` }, (L === 'ru' ? 'Разобрать систему по слоям в 3D →' : 'See the system layers in 3D →'));
+    scroll.append(b3d);
     scroll.append(buildMaterials(p));
 
     // suitability gate (restaurant: microcement not for kitchens)
@@ -845,7 +849,9 @@
     document.documentElement.lang = L;
     if (fromURL){ applyPersona(fromURL); }
     else if (stored){ applyPersona(stored); }
-    else { applyPersona('explore'); setTimeout(openChooser, 700); }
+    // On phones/tablets (≤1024) the persona chooser must NOT auto-wall the tool —
+    // show the working Studio (explore) immediately; the header persona pill stays the opt-in.
+    else { applyPersona('explore'); if (!matchMedia('(max-width:1024px)').matches) setTimeout(openChooser, 700); else setTimeout(maybeOnboard, 1400); }
     if (fromURL || stored) setTimeout(maybeOnboard, 1400);   // first-timers get the chooser instead
 
     // apply deep-linked floor/room/finish/view from the URL directly (not STATE,
