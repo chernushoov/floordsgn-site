@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects
+# Legacy /materials/* taxonomy consolidated into canonical /floors/* (SITEMAP.md §3).
+# Explicit per-system 301s first, then a safety catch-all. Catch-all MUST stay last.
+/materials/concrete      /floors/concrete       301
+/materials/epoxy         /floors/epoxy          301
+/materials/microtopping  /floors/microtopping   301
+/materials/mma           /floors/mma            301
+/materials/pu-cement     /floors/pu-cement      301
+/materials/restoration   /floors/restoration    301
+/materials/rubber        /floors/rubber         301
+/materials/terrazzo      /floors/terrazzo       301
+/materials/*             /floors/:splat         301
