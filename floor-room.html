@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>FloorDSGN Studio — подбор пола в 3D</title>
+<meta name="description" content="FloorDSGN Studio — выберите декоративный пол вживую в 3D: терраццо, микроцемент, эпокси. Спецификация, расчёт, образец — для дизайнеров, архитекторов и всех."/>
+<meta property="og:title" content="FloorDSGN Studio — подбор пола в 3D"/>
+<meta property="og:description" content="Реальный пол в вашей комнате, в любом свете. Спека, калькулятор, заявка — каждому своё."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:-apple-system,BlinkMacSystemFont,'Montserrat',sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#0b0b0c;overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  #app{position:fixed;inset:0}
+  canvas{display:block;width:100%!important;height:100%!important;touch-action:none}
+  .hud{position:fixed;z-index:5;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none}
+  .tl{top:max(14px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left))}
+  .tl .t{font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .tl .s{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.82;margin-top:3px}
+  .br{bottom:max(74px,calc(env(safe-area-inset-bottom) + 60px));right:max(16px,env(safe-area-inset-right));text-align:right;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.66;line-height:1.5}
+  .bar{position:fixed;z-index:6;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;gap:7px;align-items:center}
+  .row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+  .seg{display:flex;gap:0;border:1px solid rgba(255,255,255,.26);border-radius:0;overflow:hidden;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);background:rgba(18,18,20,.34)}
+  .seg button,.chip{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:transparent;border:0;padding:9px 13px;cursor:pointer;min-height:40px;transition:background .15s,color .15s;white-space:nowrap}
+  .seg button + button{border-left:1px solid rgba(255,255,255,.18)}
+  .seg button.on{background:#fff;color:#111}
+  .chip{border:1px solid rgba(255,255,255,.26);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);background:rgba(18,18,20,.34)}
+  .chip.on{background:#fff;color:#111;border-color:#fff}
+  .lbl{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.5;margin-bottom:-2px}
+  .boot{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0b0b0c;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;transition:opacity .7s}
+  .boot.gone{opacity:0;pointer-events:none}
+  .boot .ring{width:26px;height:26px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
+</style>
+<link rel="stylesheet" href="studio.css?v=20260604-1"/>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<div class="hud tl"><div class="t" id="ftitle">Floor.DSGN · Терраццо</div><div class="s">пол в интерьере · превью</div></div>
+<div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>
+
+<div class="bar">
+  <div class="row" id="roomCtl">
+    <span class="lbl" style="align-self:center">комната</span>
+    <button class="chip on" data-rm="living">Гостиная</button>
+    <button class="chip" data-rm="bedroom">Спальня</button>
+    <button class="chip" data-rm="kitchen">Кухня</button>
+    <button class="chip" data-rm="bath">Ванная</button>
+  </div>
+  <div class="row" id="floorCtl">
+    <span class="lbl" style="align-self:center">терраццо</span>
+    <button class="chip on" data-fl="light">Светлое</button>
+    <button class="chip" data-fl="venetian">Венеция</button>
+    <button class="chip" data-fl="graphite">Графит</button>
+    <button class="chip" data-fl="cement">Бетон</button>
+    <button class="chip" data-fl="comfort">Комфорт</button>
+    <button class="chip" data-fl="micro">Микроцемент</button>
+    <button class="chip" data-fl="multi">Мультиколор</button>
+  </div>
+  <div class="row" id="viewCtl">
+    <span class="lbl" style="align-self:center">вид</span>
+    <button class="chip on" data-v="hall">Обзор</button>
+    <button class="chip" data-v="window">Окно</button>
+    <button class="chip" data-v="detail">Деталь</button>
+    <button class="chip" id="tourBtn">Тур</button>
+  </div>
+  <div class="seg" id="finishCtl">
+    <button data-f="satin" class="on">Сатин</button>
+    <button data-f="polished">Полировка</button>
+    <button data-f="matte">Мат</button>
+  </div>
+</div>
+
+<div class="boot" id="boot"><div class="ring"></div><div>Сборка сцены…</div></div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js';
+import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
+
+/* ───────────────── assets ───────────────── */
+const WALLT = '3d-assets/textures-v4/microtopping/';
+const HDRI = '3d-assets/textures-v4/_hdri/blocky_photo_studio.hdr';
+
+/* ───────────────── palette (Industrial Proof) ───────────────── */
+const C = {
+  concrete: 0x968d7e, ceiling: 0xbcb6aa, graphite: 0x2c2c2c, carbon: 0x171717,
+  signal: 0xc86b3c, oak: 0x7a5a3a,
+};
+
+/* ───────────────── renderer ───────────────── */
+const app = document.getElementById('app');
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
+const isMobile = matchMedia('(max-width:900px)').matches || ('ontouchstart' in window);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.92;   // lower key → real shadows, photographic mood
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+app.appendChild(renderer.domElement);
+const MAXA = renderer.capabilities.getMaxAnisotropy();
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0b0c);
+scene.fog = new THREE.Fog(0xdadbdd, 18, 64);   // faint aerial depth toward the window
+
+/* ───────────────── room dims (metres) ───────────────── */
+const W = 12, D = 8, H = 3.2;          // default showcase dims (furniture + views are tuned to these)
+const hw = W/2, hd = D/2;
+const TILE = 1.6;
+let curW = W, curD = D, curH = H;      // live dims — equal to defaults until setRoomDims() is called
+
+/* ───────────────── camera ───────────────── */
+const camera = new THREE.PerspectiveCamera(46, 1, 0.05, 200);   // near 0.05 kept: raising it clips the close floor-macro ("detail") view (I1)
+camera.position.set(-2.6, 1.9, 3.5);   // opens on the hero "Обзор" framing
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+
+/* ───────────────── texture loader ───────────────── */
+const texLoader = new THREE.TextureLoader();
+function loadTex(p, srgb, repX, repY, mirror) {
+  const t = texLoader.load(p);
+  t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+  // mirrored wrap = edges always match → seamless even for non-tileable photoscans
+  t.wrapS = t.wrapT = mirror ? THREE.MirroredRepeatWrapping : THREE.RepeatWrapping;
+  t.anisotropy = MAXA; t.repeat.set(repX, repY);
+  return t;
+}
+
+/* ───────────────── floor (hero) — switchable terrazzo ───────────────── */
+const fW = W + 2, fD = D + 2;
+const FLOORS = {
+  light:    { path: '3d-assets/textures-v4/terrazzo-acg-flat/', ext: 'jpg', tile: 1.5, ns: 0.5, label: 'Светлое терраццо' },  // flat-fielded photoscan — no macro-luminance grid
+  venetian: { path: '3d-assets/textures-v4/terrazzo-venetian/', ext: 'jpg', tile: 1.6, ns: 0.5, label: 'Венецианское терраццо' },  // bold, colourful
+  graphite: { path: '3d-assets/textures-v4/terrazzo-epoxy/',    ext: 'png', tile: 1.1, ns: 0.7, mirror: true, label: 'Графитовое эпокси-терраццо' },  // dark charcoal matrix, white/grey chips
+  cement:   { path: '3d-assets/textures-v4/terrazzo-cement/',   ext: 'png', tile: 1.4, ns: 0.6, mirror: true, label: 'Цементное терраццо' },  // warm light-grey cement terrazzo
+  comfort:  { path: '3d-assets/textures-v4/comfortfloor/',      ext: 'png', tile: 2.2, ns: 0.25, label: 'Комфорт-пол (кремовый)' },   // warm seamless poured polyurethane
+  micro:    { path: '3d-assets/textures-v4/microtopping/',      ext: 'png', tile: 2.2, ns: 0.25, label: 'Микроцемент (серый)' },     // troweled fine cement, no chips
+  multi:    { path: '3d-assets/textures-v4/terrazzo-multi/',    ext: 'png', tile: 1.5, ns: 0.5, label: 'Мультиколор терраццо' },     // white matrix, multicolour confetti chips
+};
+const floorMat = new THREE.MeshPhysicalMaterial({
+  roughness: 1.0, metalness: 0.0, normalScale: new THREE.Vector2(0.5, 0.5),
+  clearcoat: 1.0, clearcoatRoughness: 0.10, envMapIntensity: 1.1,
+});
+function setFloor(key){
+  const f = FLOORS[key]; if(!f) return;
+  const rxx = fW/f.tile, ryy = fD/f.tile;
+  const old = [floorMat.map, floorMat.normalMap, floorMat.roughnessMap];
+  floorMat.map          = loadTex(f.path+'diffuse.jpg',       true,  rxx, ryy, f.mirror);
+  floorMat.normalMap    = loadTex(f.path+'normal.'+f.ext,     false, rxx, ryy, f.mirror);
+  floorMat.roughnessMap = loadTex(f.path+'roughness.'+f.ext,  false, rxx, ryy, f.mirror);
+  floorMat.normalScale.set(f.ns, f.ns); floorMat.needsUpdate = true;
+  const ft = document.getElementById('ftitle'); if (ft && f.label) ft.textContent = 'Floor.DSGN · ' + f.label;
+  old.forEach(t => t && t.dispose());
+}
+setFloor('light');
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(fW, fD), floorMat);
+floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; scene.add(floor);
+
+/* ───────────────── helpers ───────────────── */
+function _uv2(geo){ const uv = geo.attributes.uv; if(uv && !geo.attributes.uv1) geo.setAttribute('uv1', uv); if(uv && !geo.attributes.uv2) geo.setAttribute('uv2', uv); return geo; }   // second UV set for aoMap (r158 channel 1 = uv1); harmless if no aoMap
+const box = (w,h,d, mat, x,y,z, cast=true, recv=true) => {
+  const m = new THREE.Mesh(_uv2(new THREE.BoxGeometry(w,h,d)), mat);
+  m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=recv; scene.add(m); return m;
+};
+const rbox = (w,h,d, mat, x,y,z, r=0.02, cast=true, recv=true) => {
+  const m = new THREE.Mesh(new RoundedBoxGeometry(w,h,d,4,r), mat);
+  m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=recv; scene.add(m); return m;
+};
+
+/* ───────────────── shell: textured walls + ceiling ─────────────────
+   Per-wall materials (Phase 4): the single wall material is split into 4 independent instances
+   (left/right/back/window). Each starts EXACTLY like the original shared wallMat (concrete colour
+   + micro normal/roughness at repeat 6×3, ns 0.22) → default showcase byte-identical (I1). The
+   window wall's 4 pieces share the one 'window' material; the ceiling is excluded. */
+function _wallTex(p){ return loadTex(p, false, 6, 3); }
+function makeWallMat(wall){ const m = new THREE.MeshStandardMaterial({
+  color: C.concrete, roughness: 0.97, metalness: 0.0,
+  normalMap: _wallTex(WALLT + 'normal.png'), normalScale: new THREE.Vector2(0.22, 0.22),
+  roughnessMap: _wallTex(WALLT + 'roughness.png') }); m.userData = { wall }; return m; }
+const wallMatL = makeWallMat('left'), wallMatR = makeWallMat('right'), wallMatB = makeWallMat('back'), wallMatW = makeWallMat('window');
+const WALL_MATS = { left:wallMatL, right:wallMatR, back:wallMatB, window:wallMatW };
+const _wallState  = { left:'microcement', right:'microcement', back:'microcement', window:'microcement' };
+const _wallColor  = { left:null, right:null, back:null, window:null };   // palette tint (null = material default)
+const _wallDesign = { left:null, right:null, back:null, window:null };   // _designs diffuse src (null = base material)
+/* WALLS = wall-appropriate finishes (microcement / concrete / rubber) with the SAME palette+design
+   UX as the floor — NO terrazzo (floor-scale chips read wrong on a wall). microcement is the clean
+   default (no diffuse, warm-concrete colour, micro normal at 6×3 → I1); concrete/rubber are MIRRORED
+   photoscans at a physical wall scale (no seams). Each maps to its _designs variant set. */
+const WALLS = {
+  microcement: { path: WALLT,                                        tile: 1.6, ns: 0.22,              diffuse:false, design:'microtopping',        label:'Микроцемент' },
+  concrete:    { path: '3d-assets/textures-v4/decorative-concrete/', tile: 1.3, ns: 0.55, rough: 0.90, ao: 0.7, diffuse:true, design:'decorative-concrete', label:'Бетон' },   // stronger relief so form-lines survive tinting; slight sheen; baked AO
+  rubber:      { path: '3d-assets/textures-v4/rubber/',              tile: 1.5, ns: 0.55, rough: 0.78, ao: 0.6, diffuse:true, design:'rubber',              label:'Резина' },   // rubber sheen (lower roughness) so it reads ≠ concrete
+};
+function _wallKeys(wallKey){ return (wallKey === 'all') ? ['left','right','back','window'] : (WALL_MATS[wallKey] ? [wallKey] : []); }
+function _wallRepeat(wk, tile){ const horiz = (wk==='left'||wk==='right') ? curD : curW; return [Math.max(1, horiz/tile), Math.max(1, curH/tile)]; }
+function _wallBaseColor(wk){ return _wallColor[wk] != null ? _wallColor[wk] : ((WALLS[_wallState[wk]]||WALLS.microcement).diffuse ? 0xffffff : C.concrete); }
+function setWall(wallKey, matKey){
+  const w = WALLS[matKey] || WALLS.microcement;
+  for(const wk of _wallKeys(wallKey)){ const m = WALL_MATS[wk]; if(!m) continue;
+    const old = [m.map, m.normalMap, m.roughnessMap, m.aoMap];
+    if(w.diffuse === false){                                  // microcement = clean wall, no diffuse (= the showcase default)
+      m.map = null; m.aoMap = null;
+      m.normalMap = _wallTex(WALLT + 'normal.png');           // micro normal at 6×3
+      m.roughnessMap = _wallTex(WALLT + 'roughness.png');
+    } else {                                                  // concrete / rubber = mirrored photoscan at physical wall scale
+      const [rx, ry] = _wallRepeat(wk, w.tile);
+      m.map = loadTex(w.path + 'diffuse.jpg', true, rx, ry, true);    // mirrored wrap = no seams
+      m.normalMap = loadTex(w.path + 'normal.png', false, rx, ry, true);
+      m.roughnessMap = loadTex(w.path + 'roughness.png', false, rx, ry, true);
+      m.aoMap = loadTex(w.path + 'ao.png', false, rx, ry, true);      // baked AO (the shipped ao.png) → real surface/junction self-shadow
+      m.aoMapIntensity = (w.ao != null) ? w.ao : 0.6;
+    }
+    _wallState[wk] = (matKey in WALLS) ? matKey : 'microcement';
+    _wallDesign[wk] = null;                                   // material change clears the design variant
+    m.color.setHex(_wallBaseColor(wk)); m.normalScale.set(w.ns, w.ns);
+    m.roughness = (w.rough != null) ? w.rough : 0.97;        // per-material sheen; microcement keeps 0.97 (I1)
+    m.needsUpdate = true;
+    old.forEach(t => t && t.dispose());
+  }
+  requestBake();
+}
+function setWallColor(wallKey, hex){                          // palette tint (hex number/string, or null/'orig' = material default)
+  for(const wk of _wallKeys(wallKey)){ const m = WALL_MATS[wk]; if(!m) continue;
+    _wallColor[wk] = (hex == null || hex === 'orig') ? null : (typeof hex === 'string' ? parseInt(hex.replace('#',''),16) : hex);
+    m.color.setHex(_wallBaseColor(wk)); m.needsUpdate = true; }
+  requestBake();
+}
+function setWallDesign(wallKey, src){                         // swap ONLY the diffuse to a _designs image (mirror of the floor's applyDesign)
+  for(const wk of _wallKeys(wallKey)){ const m = WALL_MATS[wk]; if(!m) continue;
+    if(!src || src === 'orig'){ _wallDesign[wk] = null; setWall(wk, _wallState[wk]); continue; }
+    _wallDesign[wk] = src;
+    const [rx, ry] = _wallRepeat(wk, (WALLS[_wallState[wk]] || WALLS.microcement).tile);
+    const img = new Image();
+    img.onload = () => { const t = new THREE.Texture(img); t.colorSpace = THREE.SRGBColorSpace;
+      t.wrapS = t.wrapT = THREE.MirroredRepeatWrapping; t.anisotropy = MAXA; t.repeat.set(rx, ry); t.needsUpdate = true;
+      const oldm = m.map; m.map = t; m.color.setHex(_wallBaseColor(wk)); m.needsUpdate = true; oldm && oldm.dispose(); requestBake(); };
+    img.src = src;
+  }
+}
+function getWalls(){ const o = {}; for(const wk of ['left','right','back','window']) o[wk] = { mat:_wallState[wk], color:_wallColor[wk], design:_wallDesign[wk] }; return o; }
+function getWallDesignKey(matKey){ return (WALLS[matKey] || WALLS.microcement).design; }
+function wallSrc(wk){ const m=WALL_MATS[wk]; return m ? { mat:_wallState[wk], src:(m.map&&m.map.image&&m.map.image.src)||null, color:m.color.getHex(), design:_wallDesign[wk], repeat:(m.map?+m.map.repeat.x.toFixed(2):null) } : null; }   // QA reader
+box(0.2, H, D, wallMatL, -hw, H/2, 0, false, true);
+box(0.2, H, D, wallMatR,  hw, H/2, 0, false, true);
+box(W, H, 0.2, wallMatB, 0, H/2, hd, false, true);
+box(W, 0.2, D, new THREE.MeshStandardMaterial({ color: C.ceiling, roughness: 0.98 }), 0, H + 0.1, 0, false, true);
+
+/* far wall around a big window band (y 0.95 → 2.55) — all 4 pieces share the 'window' material */
+const winB = 0.95, winT = 2.55, jamb = 0.5;
+box(W, winB, 0.2, wallMatW, 0, winB/2, -hd);
+box(W, H-winT, 0.2, wallMatW, 0, winT + (H-winT)/2, -hd);
+box(jamb, winT-winB, 0.2, wallMatW, -hw + jamb/2, (winB+winT)/2, -hd);
+box(jamb, winT-winB, 0.2, wallMatW,  hw - jamb/2, (winB+winT)/2, -hd);
+
+/* daylight = the soft HDRI backdrop showing THROUGH the window (set on HDRI load) —
+   reads more real than a flat bright plane. Here we just build the window frame. */
+const mullMat = new THREE.MeshStandardMaterial({ color: 0xb0aa9e, roughness: 0.85 });
+/* cast=false: the thin frame is decorative only. If it casts, the sun projects a
+   hard window-pane grid onto the floor that reads as tile seams — wrong message for
+   a SEAMLESS poured terrazzo. Daylight still enters as one soft window-shaped wash. */
+box(0.07, winT-winB, 0.07, mullMat, -W*0.17, (winB+winT)/2, -hd+0.02, false, false);
+box(0.07, winT-winB, 0.07, mullMat,  W*0.17, (winB+winT)/2, -hd+0.02, false, false);
+box(W-2*jamb, 0.07, 0.07, mullMat, 0, (winB+winT)/2, -hd+0.02, false, false);   // transom
+
+/* ceiling light strips (emissive) → linear reflections */
+const stripMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff2e2, emissiveIntensity: 1.5, roughness: 1, fog:false });
+for (const sx of [-3.2, 0, 3.2]) box(0.14, 0.04, D*0.66, stripMat, sx, H-0.02, -0.3, false, false);
+
+/* capture the default showcase shell (everything in the scene so far except the floor)
+   so setRoomDims() can hide it when a custom room size is applied */
+const defShell = scene.children.filter(o => o.isMesh && o !== floor);
+
+/* ───────────────── styled living-room kit — frames the floor, never hides it ─────────────────
+   Grouped under `roomKit` so a future room-type selector (bedroom/kitchen/bath…) can swap kits. */
+const roomKit = new THREE.Group(); scene.add(roomKit);
+const sr = (m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; roomKit.add(m); return m; };
+
+/* ───────────────── movable furniture (Phase 2) ─────────────────
+   mov(name,kind,...objs): groups already-built roomKit pieces (+ their light) into one Group
+   whose pivot is the footprint centre (XZ centroid, min-Y). roomKit is at the origin, so a
+   child's local position equals its world position — re-parenting with a compensated local
+   keeps every visual byte-identical (I1) while making the cluster pick/move/rotate as a unit. */
+const MOVABLES = [];
+const _movBox = new THREE.Box3();
+function mov(name, kind, ...objs){
+  objs = objs.filter(Boolean);
+  if(!objs.length) return null;
+  _movBox.makeEmpty();
+  objs.forEach(o => { if(o.isLight) return; o.updateMatrixWorld(true); _movBox.expandByObject(o); });
+  let cx=0, cy=0, cz=0;
+  if(!_movBox.isEmpty()){ cx=(_movBox.min.x+_movBox.max.x)/2; cz=(_movBox.min.z+_movBox.max.z)/2; cy=_movBox.min.y; }
+  const g = new THREE.Group();
+  g.position.set(cx, cy, cz);
+  g.userData = { movable:true, name, kind };
+  roomKit.add(g);
+  objs.forEach(o => { o.position.x-=cx; o.position.y-=cy; o.position.z-=cz; g.add(o); });   // .add re-parents
+  g.updateMatrixWorld(true);
+  g.userData.homeMatrix = g.matrix.clone();
+  // home half-extents (XZ) for wall-clamping; recomputed live while dragging a rotated piece
+  _movBox.makeEmpty(); objs.forEach(o=>{ if(!o.isLight) _movBox.expandByObject(o); });
+  g.userData.halfX = _movBox.isEmpty()?0.3:(_movBox.max.x-_movBox.min.x)/2;
+  g.userData.halfZ = _movBox.isEmpty()?0.3:(_movBox.max.z-_movBox.min.z)/2;
+  MOVABLES.push(g);
+  return g;
+}
+
+const MAT = {
+  linen:  new THREE.MeshStandardMaterial({ color: 0xc7bca8, roughness: 0.97 }),  // upholstery
+  linenD: new THREE.MeshStandardMaterial({ color: 0xb3a78f, roughness: 0.97 }),  // cushions (deeper)
+  signal: new THREE.MeshStandardMaterial({ color: C.signal, roughness: 0.85 }),  // single brand accent
+  oak:    new THREE.MeshStandardMaterial({ color: C.oak, roughness: 0.45 }),
+  walnut: new THREE.MeshStandardMaterial({ color: 0x46321f, roughness: 0.4 }),
+  metal:  new THREE.MeshStandardMaterial({ color: 0x191917, roughness: 0.32, metalness: 0.75 }),
+  paper:  new THREE.MeshStandardMaterial({ color: 0xe9e3d6, roughness: 0.9 }),
+  stone:  new THREE.MeshStandardMaterial({ color: 0xb3a791, roughness: 0.7 }),
+};
+
+/* ───────────────── interior styles (Phase 3) — materials/colours only ─────────────────
+   setStyle(key) mutates the shared MAT.* in place (color/roughness/metalness), so every piece
+   (current and rebuilt) re-skins live and the style survives clearKit + furniture moves. The ONE
+   brand accent (MAT.signal) is always C.signal. `warm` reproduces the showcase exactly → I1. */
+const STYLES = {
+  warm:    { linen:{color:0xc7bca8,roughness:0.97}, linenD:{color:0xb3a78f,roughness:0.97}, oak:{color:0x7a5a3a,roughness:0.45}, walnut:{color:0x46321f,roughness:0.4}, metal:{color:0x191917,roughness:0.32,metalness:0.75}, paper:{color:0xe9e3d6,roughness:0.9}, stone:{color:0xb3a791,roughness:0.7} },
+  scandi:  { env:0.92, linen:{color:0xdcd6ca,roughness:0.95}, linenD:{color:0xc7bfac,roughness:0.95}, oak:{color:0xb8966a,roughness:0.5}, walnut:{color:0x9c7d57,roughness:0.5}, metal:{color:0x8f8e88,roughness:0.45,metalness:0.45}, paper:{color:0xf0ece2,roughness:0.9}, stone:{color:0xccc6b8,roughness:0.7} },
+  loft:    { env:1.18, linen:{color:0x9b9285,roughness:0.95}, linenD:{color:0x847b6d,roughness:0.95}, oak:{color:0x5e4632,roughness:0.45}, walnut:{color:0x33241a,roughness:0.4}, metal:{color:0x222220,roughness:0.3,metalness:0.85}, paper:{color:0xd8cfbe,roughness:0.9}, stone:{color:0x9a8f7c,roughness:0.65} },
+  minimal: { env:1.05, linen:{color:0xcfcdc4,roughness:0.96}, linenD:{color:0xb8b6ac,roughness:0.96}, oak:{color:0x8f8474,roughness:0.5}, walnut:{color:0x3a3a37,roughness:0.45}, metal:{color:0x1a1a18,roughness:0.35,metalness:0.7}, paper:{color:0xeeece4,roughness:0.92}, stone:{color:0xbdb9ad,roughness:0.72} },
+  modern:  { env:1.20, linen:{color:0xd0c8b9,roughness:0.96}, linenD:{color:0xb6ad9b,roughness:0.96}, oak:{color:0x6f5238,roughness:0.42}, walnut:{color:0x3c2a1c,roughness:0.38}, metal:{color:0x2a2a28,roughness:0.28,metalness:0.85}, paper:{color:0xeae4d6,roughness:0.9}, stone:{color:0xb1a690,roughness:0.68} },
+};
+const _STYLE_KEYS = ['linen','linenD','oak','walnut','metal','paper','stone'];
+let _style = 'warm';
+let _envMul = 1.0;   // P5: per-style floor-reflection mood; warm/default stays exactly 1.0 (I1)
+function setStyle(key){
+  const s = STYLES[key] || STYLES.warm;
+  for(const k of _STYLE_KEYS){ const m=MAT[k], d=s[k]; if(!m||!d) continue;
+    m.color.setHex(d.color); m.roughness = d.roughness; m.metalness = (d.metalness!=null ? d.metalness : 0); m.needsUpdate = true; }
+  MAT.signal.color.setHex(C.signal); MAT.signal.needsUpdate = true;   // lock the single accent (I5)
+  _envMul = (s.env != null) ? s.env : 1.0;                            // P5: subtle floor-reflection mood per style
+  _style = (key in STYLES) ? key : 'warm';
+  requestBake();
+  return _style;
+}
+function getStyle(){ return _style; }
+function matHex(k){ return MAT[k] ? MAT[k].color.getHex() : null; }   // QA reader
+const RB = (w,h,d,r=0.04)=> new RoundedBoxGeometry(w,h,d,4,r);
+
+/* shared greenery helpers (used by several room kits) */
+function buildFicus(px,pz){
+  const g=new THREE.Group(); const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=true; g.add(m); };
+  add(new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.24,0.42,28), new THREE.MeshStandardMaterial({color:0xada494,roughness:0.85})), 0,0.21,0);
+  for(let i=0;i<5;i++){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.7,10), MAT.walnut); t.position.set((i-2)*0.04,1.1,0); t.rotation.z=(i-2)*0.05; t.castShadow=true; g.add(t); }
+  const leafD=new THREE.MeshStandardMaterial({color:0x3c5a34,roughness:0.68,side:THREE.DoubleSide});
+  const leafL=new THREE.MeshStandardMaterial({color:0x52733f,roughness:0.66,side:THREE.DoubleSide});
+  for(let i=0;i<22;i++){ const a=i*2.4, r=0.35+((i*13)%5)*0.06, y=1.5+((i*7)%6)*0.12;
+    const cl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.18+((i*11)%4)*0.03,1), (i%3===0)?leafL:leafD);   // detail-1 + two-tone + flattened → organic foliage, not faceted blobs
+    cl.scale.y=0.82; cl.position.set(Math.cos(a)*r,y,Math.sin(a)*r); cl.rotation.set(a*0.3,a,0); cl.castShadow=true; g.add(cl); }
+  g.position.set(px,0,pz); roomKit.add(g); return g;
+}
+function buildSnake(px,pz){
+  const g=new THREE.Group();
+  const pot=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.12,0.32,28), new THREE.MeshStandardMaterial({color:0x9a8a78,roughness:0.9}));
+  pot.position.y=0.16; pot.castShadow=pot.receiveShadow=true; g.add(pot);
+  const bD=new THREE.MeshStandardMaterial({color:0x33502f,roughness:0.72,side:THREE.DoubleSide});
+  const bL=new THREE.MeshStandardMaterial({color:0x4a6b3a,roughness:0.72,side:THREE.DoubleSide});
+  for(let i=0;i<9;i++){ const a=(i/9)*Math.PI*2, h=0.6+((i*37)%5)*0.09, ln=0.10+((i*53)%4)*0.05;
+    const bl=new THREE.Mesh(new THREE.BoxGeometry(0.06,h,0.013),(i%3===0)?bL:bD);
+    bl.position.set(Math.cos(a)*0.05,0.32+h/2*Math.cos(ln),Math.sin(a)*0.05);
+    bl.rotation.set(Math.sin(a)*ln,-a,-Math.cos(a)*ln); bl.castShadow=true; g.add(bl); }
+  g.position.set(px,0,pz); roomKit.add(g); return g;
+}
+
+/* ════════ ROOM KIT: LIVING ROOM (Гостиная) ════════ */
+function buildLiving(){
+/* sofa — 3-seat, right side, facing into the room (-x) */
+mov('sofa','seating', (function(){
+  const L=2.9, Dp=0.95;
+  const g=new THREE.Group();
+  const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; g.add(m); };
+  add(new THREE.Mesh(RB(Dp,0.34,L,0.05), MAT.linen), 0, 0.30, 0);                       // base
+  add(new THREE.Mesh(RB(0.20,0.52,L,0.05), MAT.linen), Dp/2-0.10, 0.55, 0);             // back rail
+  for(const s of [-1,1]) add(new THREE.Mesh(RB(Dp,0.44,0.22,0.05), MAT.linen), 0, 0.42, s*(L/2-0.11)); // arms
+  for(let i=-1;i<=1;i++) add(new THREE.Mesh(RB(Dp-0.24,0.16,L/3-0.06,0.04), MAT.linenD), -0.06, 0.50, i*(L/3)); // seat cushions
+  for(let i=-1;i<=1;i++) add(new THREE.Mesh(RB(0.16,0.34,L/3-0.08,0.04), MAT.linenD), Dp/2-0.21, 0.70, i*(L/3)); // back cushions
+  add(new THREE.Mesh(RB(0.16,0.30,0.34,0.06), MAT.signal), Dp/2-0.30, 0.66, -L/3);      // ONE signal throw pillow
+  for(const sx of [-1,1]) for(const sz of [-1,1]) add(new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.22,12), MAT.metal), sx*(Dp/2-0.13), 0.11, sz*(L/2-0.20)); // legs
+  g.position.set(hw-0.75, 0, -0.2); roomKit.add(g); return g;
+})());
+
+/* lounge chair — left, angled toward the grouping */
+mov('chair','seating', (function(){
+  const g=new THREE.Group();
+  const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; g.add(m); };
+  add(new THREE.Mesh(RB(0.78,0.18,0.78,0.05), MAT.linen), 0, 0.40, 0);            // seat
+  add(new THREE.Mesh(RB(0.78,0.55,0.16,0.05), MAT.linen), 0, 0.66, -0.33);        // back
+  for(const s of [-1,1]) add(new THREE.Mesh(RB(0.14,0.30,0.7,0.04), MAT.linen), s*0.34, 0.52, 0.02); // arms
+  add(new THREE.Mesh(RB(0.66,0.14,0.66,0.05), MAT.linenD), 0, 0.50, 0.03);        // seat cushion
+  for(const sx of [-1,1]) for(const sz of [-1,1]) add(new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.3,12), MAT.metal), sx*0.3, 0.16, sz*0.3); // legs
+  g.position.set(-2.5, 0, 1.7); g.rotation.y = 0.7; roomKit.add(g); return g;
+})());
+
+/* coffee table (oak) + styled props, centre-front anchor */
+{ const ctTop=sr(new THREE.Mesh(RB(1.25,0.07,0.62,0.02), MAT.oak), 0.1, 0.42, 1.2);
+  const ctLegs=[[-0.5,-0.24],[0.5,-0.24],[-0.5,0.24],[0.5,0.24]].map(([lx,lz])=>
+    sr(new THREE.Mesh(new THREE.CylinderGeometry(0.022,0.022,0.40,16), MAT.metal), 0.1+lx, 0.20, 1.2+lz));
+  const ctBook1=sr(new THREE.Mesh(RB(0.34,0.04,0.26,0.01), MAT.paper), -0.05, 0.475, 1.18);
+  const ctBook2=sr(new THREE.Mesh(RB(0.30,0.035,0.24,0.01), MAT.walnut), -0.04, 0.512, 1.20);
+  const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.11,24,16,0,Math.PI*2,0,Math.PI*0.55), MAT.stone);
+  bowl.rotation.x=Math.PI; sr(bowl, 0.4, 0.50, 1.25);
+  mov('coffeeTable','table', ctTop, ...ctLegs, ctBook1, ctBook2, bowl); }
+
+/* console under the window + ceramic vase */
+{ const cons=sr(new THREE.Mesh(RB(2.4,0.62,0.42,0.03), MAT.walnut), -0.8, 0.33, -hd+0.32);
+  const vaseProfile = [[0,0],[0.085,0],[0.10,0.03],[0.135,0.14],[0.155,0.24],[0.135,0.33],[0.10,0.40],[0.085,0.45],[0.095,0.47]]
+    .map(p => new THREE.Vector2(p[0], p[1]));
+  const vase=sr(new THREE.Mesh(new THREE.LatheGeometry(vaseProfile, 48),
+    new THREE.MeshPhysicalMaterial({ color: 0xe7e0d3, roughness: 0.5, clearcoat: 0.25, clearcoatRoughness: 0.5 })), -1.45, 0.64, -hd+0.34);
+  mov('console','storage', cons, vase); }
+
+/* framed art on the left wall (neutral — the floor + the signal pillow carry the eye); wall-mounted = static */
+sr(new THREE.Mesh(RB(0.06,1.25,1.7,0.01), MAT.walnut), -hw+0.10, 1.7, -0.6);
+sr(new THREE.Mesh(RB(0.04,1.05,1.5,0.005), MAT.paper),  -hw+0.135, 1.7, -0.6);
+
+/* arc floor lamp, left-back — warm pool of light + tall reflection in the floor (light moves with the shade) */
+{ const lampBase=sr(new THREE.Mesh(new THREE.CylinderGeometry(0.17,0.19,0.05,32), MAT.metal), -4.2,0.025,1.4);
+  const lampPole=sr(new THREE.Mesh(new THREE.CylinderGeometry(0.022,0.026,2.15,20), MAT.metal), -4.2,1.1,1.4);
+  const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,1.0,16), MAT.metal);
+  arm.position.set(-3.85,2.12,1.25); arm.rotation.z = Math.PI*0.42; arm.rotation.y = -0.3; arm.castShadow=true; roomKit.add(arm);
+  const shade = new THREE.Mesh(new THREE.ConeGeometry(0.16,0.22,28,1,true),
+    new THREE.MeshStandardMaterial({ color: 0x2a2a28, roughness:0.6, metalness:0.3, side: THREE.DoubleSide, emissive:0xffce8a, emissiveIntensity:0.35 }));
+  shade.position.set(-3.5,2.02,1.12); shade.rotation.x = Math.PI; roomKit.add(shade);
+  const lampLight = new THREE.PointLight(0xffce96, 6.0, 7, 2.0); lampLight.position.set(-3.5,1.9,1.12); roomKit.add(lampLight);
+  mov('floorLamp','lamp', lampBase, lampPole, arm, shade, lampLight); }
+
+  mov('ficus','plant', buildFicus(-4.4,-3.0));   // tall tree, back-left
+  mov('snake','plant', buildSnake(4.5,2.5));     // snake plant, right-front
+}
+
+/* ════════ ROOM KIT: BEDROOM (Спальня) ════════ */
+function buildBedroom(){
+  const hw2=curW/2, hd2=curD/2;
+  const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; roomKit.add(m); return m; };
+  const white=new THREE.MeshStandardMaterial({color:0xece7dc,roughness:0.96});
+  const duvet=new THREE.MeshStandardMaterial({color:0xf2eee4,roughness:0.97});
+  const bx=0.1, bz=-hd2+1.25, bw=1.95, bl=2.15;                                        // bed head near the back wall
+  mov('bed','bed',
+    add(new THREE.Mesh(RB(bw,0.26,bl,0.03), MAT.walnut), bx, 0.13, bz),                // platform
+    add(new THREE.Mesh(RB(bw-0.12,0.22,bl-0.12,0.05), white), bx, 0.37, bz),           // mattress
+    add(new THREE.Mesh(RB(bw-0.06,0.13,bl*0.6,0.06), duvet), bx, 0.50, bz+0.34),       // folded duvet
+    add(new THREE.Mesh(RB(bw,0.95,0.14,0.04), MAT.linen), bx, 0.62, bz-bl/2-0.03),     // headboard
+    add(new THREE.Mesh(RB(0.52,0.30,0.36,0.07), white), bx-0.46, 0.62, bz-bl/2+0.45),  // pillow L
+    add(new THREE.Mesh(RB(0.52,0.30,0.36,0.07), white), bx+0.46, 0.62, bz-bl/2+0.45)); // pillow R
+  for(const s of [-1,1]){                                                              // nightstands + lamps (light moves with the shade)
+    const ns=add(new THREE.Mesh(RB(0.5,0.45,0.42,0.03), MAT.oak), bx+s*1.32, 0.225, bz-bl/2+0.22);
+    const stem=add(new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.06,0.2,16), MAT.metal), bx+s*1.32, 0.55, bz-bl/2+0.22);
+    const sh=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.15,0.2,20,1,true),
+      new THREE.MeshStandardMaterial({color:0xf3ece0,roughness:0.6,emissive:0xffe2b0,emissiveIntensity:0.6,side:THREE.DoubleSide}));
+    sh.position.set(bx+s*1.32,0.74,bz-bl/2+0.22); roomKit.add(sh);
+    const pl=new THREE.PointLight(0xffd49a,2.2,4.5,2); pl.position.set(bx+s*1.32,0.82,bz-bl/2+0.22); roomKit.add(pl);
+    mov(s<0?'nightstandL':'nightstandR','lamp', ns, stem, sh, pl);
+  }
+  mov('bench','seating',
+    add(new THREE.Mesh(RB(1.5,0.40,0.5,0.05), MAT.linenD), bx, 0.20, bz+bl/2+0.55),     // bench at foot
+    add(new THREE.Mesh(RB(0.42,0.22,0.16,0.05), MAT.signal), bx-0.4, 0.50, bz+bl/2+0.55)); // ONE signal lumbar cushion (moves with bench)
+  mov('wardrobe','storage', add(new THREE.Mesh(RB(0.5,2.0,1.9,0.02), MAT.walnut), hw2-0.30, 1.02, 0.3));  // wardrobe, right wall
+  mov('ficus','plant', buildFicus(-hw2+0.6,-hd2+0.7));                                 // tall plant, back-left corner
+  add(new THREE.Mesh(RB(0.06,1.1,1.4,0.01), MAT.walnut), -hw2+0.10, 1.6, 0.3);         // framed art, left wall (wall-mounted = static)
+  add(new THREE.Mesh(RB(0.04,0.9,1.2,0.005), MAT.paper),  -hw2+0.135, 1.6, 0.3);
+}
+
+/* ════════ ROOM KIT: KITCHEN (Кухня) ════════ */
+function buildKitchen(){
+  const hw2=curW/2, hd2=curD/2;
+  const top = new THREE.MeshStandardMaterial({ color:0xddd6c8, roughness:0.5 });   // light stone worktop
+  const cab = MAT.walnut;
+  /* island — centre-right */
+  mov('island','counter', (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{ m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; g.add(m); };
+    add(new THREE.Mesh(RB(1.9,0.86,1.0,0.02), cab), 0, 0.43, 0);                  // base cabinet
+    add(new THREE.Mesh(RB(2.06,0.08,1.16,0.02), top), 0, 0.90, 0);               // worktop + overhang
+    add(new THREE.Mesh(RB(0.52,0.035,0.34,0.01), MAT.metal), 0.42, 0.93, 0);     // sink inset
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.018,0.018,0.3,12), MAT.metal); fa.position.set(0.42,1.07,-0.18); fa.rotation.x=0.5; add(fa,0.42,1.07,-0.18);
+    g.position.set(1.0, 0, 0.4); roomKit.add(g); return g;                        // centred so the island reads as the hero
+  })());
+  /* 3 counter stools at the island front; centre seat = the ONE signal accent */
+  for(let i=-1;i<=1;i++){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,0.08,24), i===0?MAT.signal:MAT.linen), 0,0.64,0);
+    for(const a of [0,1,2,3]){ const lx=Math.cos(a*Math.PI/2)*0.13, lz=Math.sin(a*Math.PI/2)*0.13; add(new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.012,0.6,10),MAT.metal),lx,0.31,lz); }
+    g.position.set(-0.3, 0, 0.4 + i*0.62); roomKit.add(g); mov('stool'+(i+1),'seating', g); }
+  /* back counter run under the window */
+  mov('backCounter','counter', (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    const cw=Math.min(4.4, curW-1.4);
+    add(new THREE.Mesh(RB(cw,0.86,0.6,0.02), cab), 0,0.43,0);
+    add(new THREE.Mesh(RB(cw+0.2,0.08,0.7,0.02), top), 0,0.90,0);
+    g.position.set(0,0,-hd2+0.42); roomKit.add(g); return g; })());
+  /* two warm pendant lamps over the island (each light moves with its shade) */
+  for(const px of [0.5, 1.5]){
+    const cord=new THREE.Mesh(new THREE.CylinderGeometry(0.006,0.006,1.0,8),MAT.metal); cord.position.set(px,2.5,0.4); roomKit.add(cord);
+    const sh=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.2,28,1,true), new THREE.MeshStandardMaterial({color:0x2a2a28,roughness:0.6,metalness:0.4,side:THREE.DoubleSide,emissive:0xffce8a,emissiveIntensity:0.5}));
+    sh.position.set(px,1.96,0.4); roomKit.add(sh);
+    const pl=new THREE.PointLight(0xffce96,3.0,6,2); pl.position.set(px,1.86,0.4); roomKit.add(pl);
+    mov('pendant'+(px<1?'L':'R'),'lamp', cord, sh, pl);
+  }
+  const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.12,24,16,0,Math.PI*2,0,Math.PI*0.5),MAT.stone); bowl.rotation.x=Math.PI; sr(bowl,0.7,0.96,0.4);
+  mov('larder','storage', sr(new THREE.Mesh(RB(0.62,2.1,0.6,0.02), cab), hw2-0.33, 1.05, -hd2+0.42));  // tall larder cabinet, back-right
+  sr(new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.06,0.26,18), MAT.metal), 0.95, 1.06, 0.4);  // kettle accent on the island
+  mov('snake','plant', buildSnake(-hw2+0.5,hd2-0.6)); mov('ficus','plant', buildFicus(-hw2+0.6,-hd2+0.7));
+}
+
+/* ════════ ROOM KIT: BATHROOM (Ванная) ════════ */
+function buildBath(){
+  const hw2=curW/2, hd2=curD/2;
+  const porcelain=new THREE.MeshPhysicalMaterial({ color:0xf3f0ea, roughness:0.22, clearcoat:0.6, clearcoatRoughness:0.2 });
+  const stoneTop=new THREE.MeshStandardMaterial({ color:0xd8d2c6, roughness:0.5 });
+  /* freestanding rectangular tub — hero, centre */
+  mov('tub','bath', (function(){ const g=new THREE.Group(); const add=(m,x,y,z,c)=>{m.position.set(x,y,z);m.castShadow=c!==false;m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(RB(1.7,0.6,0.8,0.18),porcelain),0,0.42,0);                                          // tub body
+    add(new THREE.Mesh(RB(1.42,0.06,0.54,0.1),new THREE.MeshStandardMaterial({color:0xdfe6e6,roughness:0.2})),0,0.69,0,false); // recessed water surface
+    const fa=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.42,12),MAT.metal); fa.rotation.x=0.4; add(fa,0.74,0.5,0);
+    g.position.set(0.6,0,0.5); roomKit.add(g); return g; })());                   // centred tub = visible hero
+  /* vanity at the far wall: cabinet + stone top + basin + faucet */
+  mov('vanity','bath', (function(){ const g=new THREE.Group(); const add=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};
+    add(new THREE.Mesh(RB(1.6,0.8,0.5,0.02),MAT.walnut),0,0.4,0);
+    add(new THREE.Mesh(RB(1.75,0.07,0.57,0.02),stoneTop),0,0.84,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.16,0.13,28),porcelain),0.4,0.92,0);
+    add(new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.28,12),MAT.metal),0.4,1.04,-0.12);
+    g.position.set(-1.0,0,-hd2+0.32); roomKit.add(g); return g; })());
+  /* mirror over the vanity + two warm sconces */
+  sr(new THREE.Mesh(RB(0.05,1.25,1.5,0.02),MAT.metal),-1.0,1.65,-hd2+0.07);
+  const mir=new THREE.Mesh(RB(0.02,1.1,1.35,0.01), new THREE.MeshStandardMaterial({color:0xa9b2b6,roughness:0.06,metalness:0.95})); mir.position.set(-1.0,1.65,-hd2+0.10); mir.receiveShadow=false; roomKit.add(mir);
+  for(const s of [-1,1]){ const b=new THREE.Mesh(new THREE.SphereGeometry(0.06,16,12),new THREE.MeshStandardMaterial({color:0xfff0d8,emissive:0xffe0a8,emissiveIntensity:0.85,roughness:0.5})); b.position.set(-1.0+s*0.85,1.72,-hd2+0.3); roomKit.add(b);
+    const pl=new THREE.PointLight(0xffe2b0,1.6,3.5,2); pl.position.set(-1.0+s*0.85,1.72,-hd2+0.45); roomKit.add(pl); }
+  mov('pouf','seating', sr(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,0.34,28),MAT.signal),-hw2+0.6,0.17,hd2-0.6));   // ONE signal accent: round pouf
+  sr(new THREE.Mesh(RB(0.4,0.08,0.28,0.03),new THREE.MeshStandardMaterial({color:0xeee9df,roughness:0.95})),0.6,0.72,0.5);  // folded towel on tub rim (small prop = static)
+  mov('towelLadder','decor', (function(){ const g=new THREE.Group(); const a=(m,x,y,z)=>{m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;g.add(m);};   // towel ladder
+    const md=new THREE.MeshStandardMaterial({color:0x2a2a28,roughness:0.4,metalness:0.6});
+    for(const s of [-1,1]) a(new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,1.5,10),md),s*0.22,0.75,0);
+    for(const ry of [0.5,0.85,1.2]){ const t=new THREE.Mesh(new THREE.CylinderGeometry(0.011,0.011,0.44,10),md); t.rotation.z=Math.PI/2; a(t,0,ry,0); }
+    a(new THREE.Mesh(RB(0.34,0.5,0.04,0.02),new THREE.MeshStandardMaterial({color:0xe7ddcf,roughness:0.95})),0,0.98,0.05);
+    g.position.set(hw2-0.3,0,-hd2+0.9); g.rotation.y=-0.25; roomKit.add(g); return g; })());
+  mov('snake','plant', buildSnake(hw2-0.5,hd2-0.6));
+}
+
+/* ════════ room registry + switcher (floor + tour stay; only the kit swaps) ════════ */
+const ROOMS = { living: buildLiving, bedroom: buildBedroom, kitchen: buildKitchen, bath: buildBath };
+function clearKit(){
+  if(typeof _deselect==='function') _deselect();        // drop any edit selection before the kit is gone
+  MOVABLES.length = 0;                                   // movables are roomKit children — rebuilt by the next builder
+  for(let i=roomKit.children.length-1;i>=0;i--){ const c=roomKit.children[i]; roomKit.remove(c);
+    c.traverse && c.traverse(o=>{ o.geometry && o.geometry.dispose(); }); if(c.geometry) c.geometry.dispose(); }
+}
+/* each room TYPE has its own real size — selecting a room changes the space, not just the
+   furniture (living = full showcase; bedroom/kitchen medium; bath small). */
+const ROOM_DIMS = { living:{w:W,d:D,h:H}, bedroom:{w:7,d:5.5,h:3.0}, kitchen:{w:7,d:5,h:3.0}, bath:{w:5,d:3.8,h:2.8} };
+/* per-room opening framing — each room frames its hero (bed/island/tub), not a generic angle */
+const ROOM_VIEW = {
+  living:  { p:[-2.6,1.9,3.5],   t:[1.4,0.5,-0.7] },
+  bedroom: { p:[-1.7,1.55,2.25], t:[0.1,0.55,-1.0] },
+  kitchen: { p:[-1.7,1.5,2.1],   t:[0.5,0.7,0.05] },
+  bath:    { p:[-1.05,1.3,1.45], t:[0.45,0.55,0.25] },
+};
+function frameRoom(type){
+  const v = ROOM_VIEW[type] || ROOM_VIEW.living; stopTour();
+  tween = { t0:0, dur:50, p0:camera.position.clone(), p1:new THREE.Vector3(...v.p), g0:controls.target.clone(), g1:new THREE.Vector3(...v.t) };
+}
+function setRoom(type){
+  const dm = ROOM_DIMS[type] || ROOM_DIMS.living;
+  curW = dm.w; curD = dm.d; curH = dm.h;            // set BEFORE building (kits read curW/curD)
+  clearKit(); (ROOMS[type]||buildLiving)();
+  applyRoomShell(dm.w, dm.d, dm.h, true);            // size the shell to the room; keep the furniture
+  frameRoom(type);                                   // open framed on this room's hero
+}
+buildLiving();   // initial kit — room is already the default 12×8 showcase; full setRoom() runs on later clicks
+
+/* ───────────────── lighting — "golden hour" catalog mood ───────────────── */
+scene.add(new THREE.HemisphereLight(0xf3ead6, 0x241c14, 0.40));   // warm sky / deep warm ground bounce
+const sun = new THREE.DirectionalLight(0xffdcab, 2.8);            // low warm daylight raking through the window
+sun.position.set(-3.2, 5.0, -10); sun.target.position.set(0.8, 0.15, 1.5);
+sun.castShadow = true;
+sun.shadow.mapSize.set(isMobile?1024:2048, isMobile?1024:2048);
+sun.shadow.camera.near = 1; sun.shadow.camera.far = 30;
+sun.shadow.camera.left=-9; sun.shadow.camera.right=9; sun.shadow.camera.top=9; sun.shadow.camera.bottom=-9;
+sun.shadow.bias=-0.0004; sun.shadow.normalBias=0.02;
+sun.shadow.radius = 4;   // softer penumbra → less "CG", more photographic
+scene.add(sun); scene.add(sun.target);
+/* cool counter-fill from the camera side → dimension against the warm key (no muddy flatness) */
+const fill = new THREE.DirectionalLight(0xbcd0ff, 0.35); fill.position.set(4, 3.5, 9); scene.add(fill);
+/* soft warm overhead bounce over the seating group */
+const seatFill = new THREE.PointLight(0xffe6c4, 2.2, 9, 2.0); seatFill.position.set(1.5, 2.7, 0.6); scene.add(seatFill);
+
+/* ───────────────── floor reflections (CubeCamera, baked once) ───────────────── */
+const cubeRes = isMobile ? 256 : 512;
+const cubeRT = new THREE.WebGLCubeRenderTarget(cubeRes, { type: THREE.HalfFloatType });
+const cubeCam = new THREE.CubeCamera(0.1, 100, cubeRT); cubeCam.position.set(0, 0.5, 0.5);
+let _bakes = 0;
+function bakeFloorReflection(){
+  _bakes++;
+  floor.visible = false; cubeCam.update(renderer, scene); floor.visible = true;
+  floorMat.envMap = cubeRT.texture; floorMat.envMapIntensity = _envMul; floorMat.needsUpdate = true;
+}
+/* requestBake (I4): coalesce rapid style/wall/move/rotate edits into ONE bake on the next idle
+   frame — never bake per-frame or mid-drag (a bake is a full cube render). */
+let _bakeDirty = false;
+function requestBake(){ _bakeDirty = true; }   // consumed by the render loop (H2) — survives backgrounded tabs (loop resumes → bakes)
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden && _bakeDirty){ _bakeDirty = false; bakeFloorReflection(); } });
+
+/* ───────────────── controls ───────────────── */
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.075;
+controls.target.set(1.4, 0.5, -0.7);   // centre of the lounge grouping
+controls.minDistance = 1.3; controls.maxDistance = 9.0;
+/* keep the camera INSIDE the room — zooming out is fine, but never let it punch
+   through a wall (that made the picture vanish "as if stuck in the wall"). */
+const ROOM_BOUND = { x: hw - 0.45, z: hd - 0.45, yMin: 0.45, yMax: H - 0.3 };   // 0.45 margin: near-plane corners never cross a wall when zoomed in
+function clampCamera(){
+  // Damped clamp (lerp 0.5 toward the clamped position) instead of a hard snap —
+  // kills the "stuck in the wall" jitter while still keeping the camera inside the room.
+  const cx = Math.min(ROOM_BOUND.x, Math.max(-ROOM_BOUND.x, camera.position.x));
+  const cz = Math.min(ROOM_BOUND.z, Math.max(-ROOM_BOUND.z, camera.position.z));
+  const cy = Math.min(ROOM_BOUND.yMax, Math.max(ROOM_BOUND.yMin, camera.position.y));
+  camera.position.x += (cx - camera.position.x) * 0.5;
+  camera.position.z += (cz - camera.position.z) * 0.5;
+  camera.position.y += (cy - camera.position.y) * 0.5;
+}
+controls.minPolarAngle = Math.PI*0.26; controls.maxPolarAngle = Math.PI*0.495;
+controls.enablePan = false; controls.autoRotate = true; controls.autoRotateSpeed = 0.32;
+controls.update();
+controls.addEventListener('start', () => { controls.autoRotate = false; stopTour(); });
+
+/* ───────────────── view presets ───────────────── */
+const VIEWS = {
+  hall:   { p:[-2.6,1.9,3.5],  t:[1.4,0.5,-0.7] },   // hero: chair-table-sofa across the floor
+  window: { p:[0.4,1.35,2.4],  t:[0.0,1.2,-hd]   },   // console + vase + daylight
+  detail: { p:[-1.1,0.62,0.6], t:[-0.5,0.02,-0.9] },   // floor macro over OPEN floor, raked by window light (was obstructed by the coffee table)
+};
+let tween = null;
+function goView(name){
+  const v = VIEWS[name]; if(!v) return;
+  controls.autoRotate = false; stopTour();
+  tween = { t0:0, dur:46, p0:camera.position.clone(), p1:new THREE.Vector3(...v.p),
+            g0:controls.target.clone(), g1:new THREE.Vector3(...v.t) };
+}
+document.querySelectorAll('#viewCtl .chip[data-v]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#viewCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); goView(b.dataset.v);
+}));
+
+/* ───────────────── room tour — cinematic auto-flythrough ───────────────── */
+const TOUR = [
+  { p:[-2.6,1.9,3.5],  t:[1.4,0.5,-0.7]  },   // hero wide
+  { p:[-0.8,1.25,1.4], t:[-1.1,0.9,-3.5] },   // glide toward console + window
+  { p:[2.6,0.62,2.7],  t:[-0.6,0.15,-0.8]},   // low graze across the floor (reflections)
+  { p:[2.2,1.25,1.7],  t:[4.9,0.6,-0.3]  },   // turn to the sofa
+  { p:[-3.1,2.7,2.9],  t:[0.4,0.15,-0.9] },   // rise to overview — floor fills frame
+];
+let tour = null;
+const tourBtn = document.getElementById('tourBtn');
+function startTour(){ tour = { i:0, t:0, dur:160 }; tween=null; controls.autoRotate=false; tourBtn.classList.add('on'); tourBtn.textContent='Стоп'; }
+function stopTour(){ if(!tour) return; tour=null; tourBtn.classList.remove('on'); tourBtn.textContent='Тур'; }
+function advanceTour(){
+  const A = TOUR[tour.i], B = TOUR[(tour.i+1)%TOUR.length];
+  tour.t++; const k = Math.min(1, tour.t/tour.dur);
+  const e = k<0.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;   // easeInOutQuad
+  const sx = curW/W, sy = curH/H, sz = curD/D;        // scale waypoints to the live room (living ratio=1 → unchanged)
+  const L = (a,b)=>a+(b-a)*e;
+  camera.position.set(L(A.p[0],B.p[0])*sx, L(A.p[1],B.p[1])*sy, L(A.p[2],B.p[2])*sz);
+  controls.target.set(L(A.t[0],B.t[0])*sx, L(A.t[1],B.t[1])*sy, L(A.t[2],B.t[2])*sz);
+  if (k>=1){ tour.i=(tour.i+1)%TOUR.length; tour.t=0; }
+}
+tourBtn.addEventListener('click', () => { tour ? stopTour() : startTour(); });
+document.querySelectorAll('#roomCtl .chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#roomCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); setRoom(b.dataset.rm);
+}));
+document.querySelectorAll('#floorCtl .chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#floorCtl .chip').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); setFloor(b.dataset.fl);
+}));
+
+/* ───────────────── finish control → clearcoat sheen ───────────────── */
+const FIN = { matte: 0.55, satin: 0.12, polished: 0.025 };
+document.querySelectorAll('#finishCtl button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#finishCtl button').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  floorMat.clearcoatRoughness = FIN[b.dataset.f] ?? 0.12; floorMat.needsUpdate = true;
+}));
+
+/* ───────────────── filmic post-processing ───────────────── */
+const GradeShader = {
+  uniforms: { tDiffuse:{value:null}, uTime:{value:0}, uVignette:{value:1.0}, uGrain:{value:0.022}, uCA:{value:0.0} },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+  fragmentShader: `
+    uniform sampler2D tDiffuse; uniform float uTime,uVignette,uGrain,uCA; varying vec2 vUv;
+    float rand(vec2 c){ return fract(sin(dot(c, vec2(12.9898,78.233)))*43758.5453); }
+    void main(){
+      vec2 uv=vUv, d=uv-0.5; float r=length(d);
+      vec2 off = d * uCA * r * 2.0;
+      vec3 col = vec3(texture2D(tDiffuse, uv+off).r, texture2D(tDiffuse, uv).g, texture2D(tDiffuse, uv-off).b);
+      float vig = 1.0 - smoothstep(0.28, 0.92, r*uVignette);
+      col *= mix(0.58, 1.0, vig);
+      col += (rand(uv*(uTime*0.6+1.0))-0.5) * uGrain;
+      gl_FragColor = vec4(col, 1.0);
+    }`
+};
+let composer=null, gradePass=null, bloomPass=null, useComposer=false; const BLOOM_BASE = isMobile ? 0.16 : 0.20;
+function setupComposer(){
+  try{
+    composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    if(!isMobile){
+      const ssao = new SSAOPass(scene, camera, app.clientWidth, app.clientHeight);
+      ssao.kernelRadius = 1.1; ssao.minDistance = 0.0006; ssao.maxDistance = 0.03;   // wider+softer contact AO: real shadow at wall/floor junctions & under furniture (was tight crevice-only → flat corners)
+      composer.addPass(ssao);
+      // (no depth-of-field — owner wants every object crisp, not softened)
+    }
+    bloomPass = new UnrealBloomPass(new THREE.Vector2(app.clientWidth, app.clientHeight), BLOOM_BASE, 0.55, 0.9); composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
+    gradePass = new ShaderPass(GradeShader); composer.addPass(gradePass);
+    useComposer = true;
+  } catch(e){ console.error('composer setup failed → direct render', e); useComposer = false; }
+}
+setupComposer();
+
+/* ───────────────── HDRI env + lighting scenarios, then bake & reveal ───────────────── */
+function reveal(){ document.getElementById('boot').classList.add('gone'); }
+const HDRI_DIR = '3d-assets/textures-v4/_hdri/';
+const LIGHTING = {
+  golden:  { hdr:'blocky_photo_studio.hdr', exp:0.92, blur:0.38, sun:[0xffdcab,2.8] },  // warm daylight (default)
+  noon:    { hdr:'studio_small_08.hdr',     exp:1.02, blur:0.30, sun:[0xfff4e6,2.4] },  // neutral noon
+  evening: { hdr:'brown_photostudio_02.hdr',exp:0.86, blur:0.44, sun:[0xffb474,2.3] },  // warm evening
+  hard:    { hdr:'cyclorama_hard_light.hdr',exp:0.98, blur:0.34, sun:[0xf2f5ff,3.4] },  // hard/industrial
+};
+const _rgbe = new RGBELoader(); let _envHdr = null;
+/* a small room concentrates the sun + ceiling strips into a hard bright beam — when a custom
+   size is active we diffuse it: lower key sun, slightly lower exposure, softer penumbra, a touch
+   more sky blur. Default showcase = factors 1 → byte-identical to the tuned golden hour. */
+let _customRoom = false, _curCfg = LIGHTING.golden;
+function _refreshLightLevels(){
+  const cfg = _curCfg;
+  renderer.toneMappingExposure = cfg.exp * (_customRoom ? 0.88 : 1);
+  sun.intensity = cfg.sun[1] * (_customRoom ? 0.5 : 1);
+  scene.backgroundBlurriness = Math.min(0.7, cfg.blur + (_customRoom ? 0.12 : 0));
+  sun.shadow.radius = _customRoom ? 10 : 4;
+  if (bloomPass){ bloomPass.strength = BLOOM_BASE * (_customRoom ? 0.3 : 1); bloomPass.threshold = _customRoom ? 0.97 : 0.92; }   // higher default threshold trims the blown floor-specular hotspot, keeps glow on emissive sources
+}
+function _applyLighting(hdr, cfg){
+  hdr.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = pmrem.fromEquirectangular(hdr).texture;
+  scene.background = hdr;
+  sun.color.setHex(cfg.sun[0]);
+  _curCfg = cfg; _refreshLightLevels();
+  if (_envHdr && _envHdr !== hdr) _envHdr.dispose(); _envHdr = hdr;
+  bakeFloorReflection();
+}
+function setLighting(key){
+  const cfg = LIGHTING[key] || LIGHTING.golden;
+  _rgbe.load(HDRI_DIR + cfg.hdr, (hdr) => _applyLighting(hdr, cfg),
+    undefined, () => { renderer.toneMappingExposure = cfg.exp; bakeFloorReflection(); });
+}
+_rgbe.load(HDRI_DIR + LIGHTING.golden.hdr,
+  (hdr) => { _applyLighting(hdr, LIGHTING.golden); reveal(); },
+  undefined, () => { bakeFloorReflection(); reveal(); });
+
+/* ───────────────── resize + loop ───────────────── */
+function resize(){
+  const w = app.clientWidth, h = app.clientHeight;
+  renderer.setSize(w,h,false); camera.aspect = w/Math.max(1,h); camera.updateProjectionMatrix();
+  if(composer) composer.setSize(w,h);
+}
+new ResizeObserver(resize).observe(app); resize();
+
+/* human-scale figure (1.7 m) — judge true scale; built once, toggled */
+let _figure = null;
+function scaleFigure(show){
+  if (show && !_figure){
+    _figure = new THREE.Group();
+    const m = new THREE.MeshStandardMaterial({ color:0x7f858c, roughness:0.9, metalness:0.0 });
+    const legs = new THREE.Mesh(new THREE.CapsuleGeometry(0.11,0.62,6,12), m); legs.position.y=0.42;
+    const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.16,0.5,6,12), m); body.position.y=1.06;
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.115,20,16), m); head.position.y=1.55;
+    [legs,body,head].forEach(o=>{ o.castShadow=true; o.receiveShadow=true; _figure.add(o); });
+    _figure.position.set(1.9, 0, 0.7); scene.add(_figure);
+  }
+  if (_figure) _figure.visible = !!show;
+}
+/* decorative divider strips (latunь "маяки"/саргели) — a control-joint grid sized
+   to the room, cells <= 3 m so the poured floor doesn't crack and reads premium.
+   On for terrazzo/epoxy/concrete; OFF for seamless microcement & comfort (PU). */
+let _dividers = null, _dividersOn = false;
+function buildDividers(){
+  const g = new THREE.Group();
+  // brass strips ground FLUSH with the terrazzo (one level) and sealed under the same glossy
+  // topcoat — barely proud of the floor (no raised "layer"), clearcoat matching the floor.
+  const mat = new THREE.MeshPhysicalMaterial({ color:0xb08d57, metalness:0.85, roughness:0.35, clearcoat:1.0, clearcoatRoughness:0.10, envMapIntensity:1.0 });
+  const w = 0.012, h = 0.0015, y = 0.001;   // ~1.5 mm proud → reads as a flush inlay, not a raised bar
+  const nx = Math.ceil(curW/3), nz = Math.ceil(curD/3);            // cells <= 3 m, proportional to live room
+  for (let i=1;i<nx;i++){ const x = -curW/2 + i*(curW/nx); const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,curD), mat); m.position.set(x,y,0); m.receiveShadow=true; g.add(m); }
+  for (let j=1;j<nz;j++){ const z = -curD/2 + j*(curD/nz); const m = new THREE.Mesh(new THREE.BoxGeometry(curW,h,w), mat); m.position.set(0,y,z); m.receiveShadow=true; g.add(m); }
+  scene.add(g); return g;
+}
+function setDividers(on){
+  _dividersOn = !!on;
+  if (on && !_dividers) _dividers = buildDividers();
+  if (_dividers) _dividers.visible = !!on;
+  bakeFloorReflection();
+}
+/* ── parametric room size (additive — the default 12×8×3.2 path is untouched) ──
+   Moves walls/ceiling/window/joints/clamp/shadow to the user's dimensions and hides the
+   showcase shell + furniture. The floor PLANE and its texture are left intact so chip
+   scale and tiling stay correct; dims are clamped to keep the floor covering the room. */
+let _customShell = null;
+function _disposeGroup(g){ g.traverse(o => { o.geometry && o.geometry.dispose(); }); }
+function buildCustomShell(w, d, h){
+  const g = new THREE.Group();
+  const hw2 = w/2, hd2 = d/2;
+  const cb = (W_,H_,D_,mat,x,y,z) => { const m = new THREE.Mesh(_uv2(new THREE.BoxGeometry(W_,H_,D_)), mat); m.position.set(x,y,z); m.receiveShadow = true; g.add(m); return m; };
+  cb(0.2, h, d, wallMatL, -hw2, h/2, 0);                                // shares the 4 per-wall materials → custom rooms inherit setWall finishes
+  cb(0.2, h, d, wallMatR,  hw2, h/2, 0);
+  cb(w, h, 0.2, wallMatB, 0, h/2, hd2);                                 // wall behind the camera
+  cb(w, 0.2, d, new THREE.MeshStandardMaterial({ color:C.ceiling, roughness:0.98 }), 0, h+0.1, 0);
+  const wB = Math.min(0.95, h*0.30), wT = Math.min(h-0.3, 2.55), jb = Math.min(0.5, w*0.12);
+  cb(w, wB, 0.2, wallMatW, 0, wB/2, -hd2);                              // far wall around a window band
+  cb(w, h-wT, 0.2, wallMatW, 0, wT+(h-wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMatW, -hw2+jb/2, (wB+wT)/2, -hd2);
+  cb(jb, wT-wB, 0.2, wallMatW,  hw2-jb/2, (wB+wT)/2, -hd2);
+  const sm = new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xfff2e2, emissiveIntensity:0.5, roughness:1, fog:false });  // dim → no hard beam on the glossy floor
+  for (const sx of [-w*0.27, 0, w*0.27]){ const m = new THREE.Mesh(new THREE.BoxGeometry(0.14,0.04,d*0.66), sm); m.position.set(sx, h-0.02, -0.3); g.add(m); }
+  scene.add(g); return g;
+}
+function applyRoomShell(w, d, h, furnished){
+  w = Math.max(3, Math.min(13, +w||W)); d = Math.max(2.5, Math.min(9, +d||D)); h = Math.max(2.2, Math.min(4, +h||H));
+  curW = w; curD = d; curH = h;
+  const isDef = (w===W && d===D && h===H);
+  defShell.forEach(m => m.visible = isDef);                             // detailed showcase shell only at full size
+  roomKit.visible = !!furnished;                                       // room-type kits stay; manual dims = empty
+  if (_customShell){ scene.remove(_customShell); _disposeGroup(_customShell); _customShell = null; }
+  if (!isDef) _customShell = buildCustomShell(w, d, h);
+  if (_dividers){ scene.remove(_dividers); _disposeGroup(_dividers); _dividers = null; }   // rebuild grid for the new footprint
+  if (_dividersOn){ _dividers = buildDividers(); _dividers.visible = true; }
+  ROOM_BOUND.x = Math.max(0.6, w/2-0.45); ROOM_BOUND.z = Math.max(0.6, d/2-0.45); ROOM_BOUND.yMax = h-0.3;
+  controls.maxDistance = isDef ? 9.0 : Math.max(3.0, Math.min(9.0, 0.55*Math.hypot(w, d)));   // per-room zoom radius; default keeps exactly 9.0
+  const sc = isDef ? 9 : (Math.max(w, d)/2 + 1.5); sun.shadow.camera.left=-sc; sun.shadow.camera.right=sc; sun.shadow.camera.top=sc; sun.shadow.camera.bottom=-sc; sun.shadow.camera.updateProjectionMatrix();
+  _customRoom = !isDef; _refreshLightLevels();   // diffuse the light for the smaller room (full showcase untouched)
+  bakeFloorReflection();
+}
+function setRoomDims(w, d, h){   // manual "Размер комнаты" → empty room at exact size + scale figure
+  applyRoomShell(w, d, h, false);
+  scaleFigure(true); if (_figure) _figure.position.set(Math.min(1.9, curW/2-0.6), 0, Math.min(0.7, curD/2-0.6));
+}
+/* live time-of-day — arcs the sun (shadow direction) + shifts warmth; no re-bake (sun is a
+   live light, not in the baked env map). Brightness/HDRI stay with the preset/soften system. */
+let _sunTime = 0.4;
+const _sunM = new THREE.Color(0xffc081), _sunN = new THREE.Color(0xfff2df), _sunE = new THREE.Color(0xff9846);
+function setSunTime(t){
+  _sunTime = Math.max(0, Math.min(1, +t));
+  const u = _sunTime;
+  sun.position.set(-6 + 12*u, 3.2 + 5.8*Math.sin(Math.PI*u), -10);
+  sun.color.copy(u < 0.5 ? _sunM.clone().lerp(_sunN, u*2) : _sunN.clone().lerp(_sunE, (u-0.5)*2));
+}
+/* ───────────────── edit mode: pick · drag · rotate movable furniture (Phase 2) ─────────────────
+   Custom raycaster + Pointer Events (no gizmo). OFF == today's behaviour (orbit + autoRotate);
+   nothing here runs unless setEditMode(true) is called, so the default boot is untouched (I1). */
+let _editMode=false, _selected=null, _grab=null, _boxHelper=null, _editCb=null, _prevAuto=null;
+const _ray=new THREE.Raycaster(), _ndc=new THREE.Vector2();
+const _dragPlane=new THREE.Plane(new THREE.Vector3(0,1,0), 0);   // y=0 floor
+const _hitPt=new THREE.Vector3(), _grabOff=new THREE.Vector3(), _tmpV=new THREE.Vector3();
+const ROT_STEP=Math.PI/12;                                       // ±15°
+
+// engine-owned floating toolbar (hidden until a piece is selected → no effect on default boot)
+const _editBar=document.createElement('div');
+_editBar.id='roomEditBar'; _editBar.style.display='none';
+_editBar.innerHTML='<button type="button" data-a="rl" aria-label="Повернуть на −15°">◁</button>'
+  +'<button type="button" data-a="rr" aria-label="Повернуть на +15°">▷</button>'
+  +'<button type="button" data-a="reset" aria-label="Сбросить элемент">Сброс</button>'
+  +'<button type="button" data-a="close" aria-label="Снять выделение">×</button>';
+document.body.appendChild(_editBar);
+
+function _homePos(g){ return _tmpV.setFromMatrixPosition(g.userData.homeMatrix); }
+function _liveHalf(g){ _movBox.setFromObject(g); return { x:(_movBox.max.x-_movBox.min.x)/2, z:(_movBox.max.z-_movBox.min.z)/2 }; }
+function _clampXZ(g,x,z){ const h=_liveHalf(g); const lx=Math.max(0.05,curW/2-h.x), lz=Math.max(0.05,curD/2-h.z);
+  return { x:Math.min(lx,Math.max(-lx,x)), z:Math.min(lz,Math.max(-lz,z)) }; }
+function _ndcFrom(ev){ const r=renderer.domElement.getBoundingClientRect();
+  _ndc.x=((ev.clientX-r.left)/r.width)*2-1; _ndc.y=-((ev.clientY-r.top)/r.height)*2+1; }
+function _pick(ev){ _ndcFrom(ev); _ray.setFromCamera(_ndc,camera);
+  const hits=_ray.intersectObjects(MOVABLES,true); if(!hits.length) return null;
+  let o=hits[0].object; while(o && !(o.userData&&o.userData.movable)) o=o.parent; return o||null; }
+function _positionBar(){ if(!_selected) return; _selected.updateMatrixWorld(true);
+  _tmpV.setFromMatrixPosition(_selected.matrixWorld); _tmpV.y+=0.1; _tmpV.project(camera);
+  const r=renderer.domElement.getBoundingClientRect();
+  _editBar.style.left=(r.left+(_tmpV.x*0.5+0.5)*r.width)+'px';
+  _editBar.style.top =(r.top +(-_tmpV.y*0.5+0.5)*r.height-46)+'px'; }
+function _select(g){ _deselect(); _selected=g;
+  _boxHelper=new THREE.BoxHelper(g, new THREE.Color(C.signal)); _boxHelper.material.depthTest=false; _boxHelper.material.transparent=true; scene.add(_boxHelper);
+  _editBar.style.display='flex'; _positionBar(); }
+function _deselect(){ if(_boxHelper){ scene.remove(_boxHelper); _boxHelper.geometry.dispose(); _boxHelper=null; } _selected=null; if(_editBar) _editBar.style.display='none'; }
+function _fireEdit(){ if(_editCb){ try{ _editCb(getMovables()); }catch(e){} } }
+
+function _down(ev){ if(!_editMode) return; const g=_pick(ev); if(!g){ _deselect(); return; }
+  _select(g);
+  _ndcFrom(ev); _ray.setFromCamera(_ndc,camera);
+  if(_ray.ray.intersectPlane(_dragPlane,_hitPt)) _grabOff.set(g.position.x-_hitPt.x,0,g.position.z-_hitPt.z); else _grabOff.set(0,0,0);
+  _grab=g; controls.enabled=false;
+  try{ renderer.domElement.setPointerCapture(ev.pointerId); }catch(e){} }
+function _moveDrag(ev){ if(!_editMode||!_grab) return;
+  _ndcFrom(ev); _ray.setFromCamera(_ndc,camera);
+  if(!_ray.ray.intersectPlane(_dragPlane,_hitPt)) return;
+  const c=_clampXZ(_grab,_hitPt.x+_grabOff.x,_hitPt.z+_grabOff.z);
+  _grab.position.x=c.x; _grab.position.z=c.z;                       // move only (no bake mid-drag, I4)
+  if(_boxHelper) _boxHelper.update(); _positionBar(); }
+function _up(ev){ if(!_grab) return; _grab=null; controls.enabled=true; requestBake(); _fireEdit(); }   // bake once on settle
+
+renderer.domElement.addEventListener('pointerdown',_down);
+window.addEventListener('pointermove',_moveDrag);
+window.addEventListener('pointerup',_up);
+window.addEventListener('pointercancel',_up);
+_editBar.addEventListener('click',(ev)=>{ const b=ev.target.closest('button'); if(!b||!_selected) return; const a=b.dataset.a;
+  if(a==='close'){ _deselect(); return; }
+  if(a==='rl') _selected.rotation.y+=ROT_STEP;
+  else if(a==='rr') _selected.rotation.y-=ROT_STEP;
+  else if(a==='reset'){ _selected.userData.homeMatrix.decompose(_selected.position,_selected.quaternion,_selected.scale); }
+  // keep a rotated piece inside the walls
+  const c=_clampXZ(_selected,_selected.position.x,_selected.position.z); _selected.position.x=c.x; _selected.position.z=c.z;
+  _selected.updateMatrixWorld(true); if(_boxHelper)_boxHelper.update(); _positionBar(); requestBake(); _fireEdit(); });
+
+function setEditMode(on){ on=!!on;
+  if(on && !_editMode){ _prevAuto=controls.autoRotate; controls.autoRotate=false; stopTour(); tween=null; }   // M5: freeze any tour/tween so the camera can't fly while dragging a piece
+  else if(!on && _editMode){ if(_prevAuto!=null) controls.autoRotate=_prevAuto; _deselect(); controls.enabled=true; }
+  _editMode=on; document.body.classList.toggle('room-editing',on); return _editMode; }
+function getMovables(){ return MOVABLES.map(g=>{ const hp=_homePos(g);
+  const moved=Math.abs(g.position.x-hp.x)>1e-3||Math.abs(g.position.z-hp.z)>1e-3||Math.abs(g.rotation.y)>1e-3;
+  return { name:g.userData.name, kind:g.userData.kind, x:+g.position.x.toFixed(3), z:+g.position.z.toFixed(3), ry:+g.rotation.y.toFixed(4), moved }; }); }
+function setTransforms(arr){ if(!Array.isArray(arr)) return;
+  arr.forEach(t=>{ if(!t||!t.name) return; const g=MOVABLES.find(m=>m.userData.name===t.name); if(!g) return;
+    if(Number.isFinite(t.ry)) g.rotation.y=t.ry;                                        // M6: Number.isFinite — typeof NaN==='number' would NaN-poison the transform
+    const c=_clampXZ(g, Number.isFinite(t.x)?t.x:g.position.x, Number.isFinite(t.z)?t.z:g.position.z);
+    g.position.x=c.x; g.position.z=c.z; g.updateMatrixWorld(true); });
+  if(_boxHelper&&_selected) _boxHelper.update(); requestBake(); }
+function resetTransforms(){ MOVABLES.forEach(g=>{ g.userData.homeMatrix.decompose(g.position,g.quaternion,g.scale); g.updateMatrixWorld(true); });
+  if(_boxHelper&&_selected) _boxHelper.update(); requestBake(); _fireEdit(); }
+function onEdit(cb){ _editCb=cb; }
+/* QA/util helpers */
+function screenOf(name){ const g=MOVABLES.find(m=>m.userData.name===name); if(!g) return null;
+  g.updateMatrixWorld(true); _tmpV.setFromMatrixPosition(g.matrixWorld); _tmpV.y+=0.4; _tmpV.project(camera);
+  const r=renderer.domElement.getBoundingClientRect();
+  return { x:r.left+(_tmpV.x*0.5+0.5)*r.width, y:r.top+(-_tmpV.y*0.5+0.5)*r.height }; }
+function lampInfo(name){ const g=MOVABLES.find(m=>m.userData.name===name); if(!g) return null;
+  let light=null; g.traverse(o=>{ if(o.isLight) light=o; }); if(!light) return { hasLight:false };
+  light.updateMatrixWorld(true); _tmpV.setFromMatrixPosition(light.matrixWorld);
+  return { hasLight:true, lx:+_tmpV.x.toFixed(3), lz:+_tmpV.z.toFixed(3) }; }
+
+window.__room = { scene, camera, renderer, floorMat, controls, bake: bakeFloorReflection, goView,
+                  setLighting, scaleFigure, setDividers, setRoomDims, getDims: ()=>({ w:curW, d:curD, h:curH }),
+                  setSunTime, getSunTime: ()=>_sunTime, DIM_DEFAULT: { w:W, d:D, h:H }, composer, sun, grade: ()=>gradePass && gradePass.uniforms,
+                  clampCamera, getBound: ()=>({ x:ROOM_BOUND.x, z:ROOM_BOUND.z, yMin:ROOM_BOUND.yMin, yMax:ROOM_BOUND.yMax }),
+                  setEditMode, getMovables, setTransforms, resetTransforms, onEdit, getEditMode:()=>_editMode,
+                  setStyle, getStyle, matHex, setWall, setWallColor, setWallDesign, getWalls, getWallDesignKey, wallSrc, screenOf, lampInfo, getBakes:()=>_bakes };
+
+(function loop(){
+  if (tour){
+    advanceTour(); camera.lookAt(controls.target);
+  } else {
+    if (tween){
+      tween.t0++; const k = tween.t0/tween.dur, e = k<1 ? (1-Math.pow(1-k,3)) : 1;
+      camera.position.lerpVectors(tween.p0, tween.p1, e);
+      controls.target.lerpVectors(tween.g0, tween.g1, e);
+      if (k>=1) tween = null;
+    }
+    controls.update();
+    if (!tween) clampCamera();   // H1: clamp only settled user orbit — never fight an authored tween/tour path (was the camera "revert" on presets/custom rooms)
+  }
+  if (_bakeDirty){ _bakeDirty = false; bakeFloorReflection(); }   // H2: bake consumed from the loop → never lost to a dropped rAF (no permanent reflection-freeze)
+  if (gradePass) gradePass.uniforms.uTime.value = performance.now()*0.001;
+  if (useComposer && composer) composer.render(); else renderer.render(scene, camera);
+  requestAnimationFrame(loop);
+})();
+</script>
+<script type="module" src="studio.js?v=20260604-1"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+{
+  "version": 1,
+  "generated": "2026-06-03",
+  "note": "FloorDSGN Studio behavior table. Derived from docs/macbook-handoff/avatars.json platformBehaviorRules + painPoints/objections/trustTriggers. Data, not code — copy/rules change here.",
+
+  "floorMap": {
+    "light": "terrazzo-cement",
+    "venetian": "terrazzo-multi",
+    "graphite": "terrazzo-epoxy",
+    "cement": "terrazzo-cement",
+    "comfort": "comfortfloor",
+    "micro": "microtopping",
+    "multi": "terrazzo-multi"
+  },
+
+  "floorLabels": {
+    "light":    { "ru": "Светлое терраццо",     "en": "Light terrazzo" },
+    "venetian": { "ru": "Венецианское терраццо", "en": "Venetian terrazzo" },
+    "graphite": { "ru": "Графитовое эпокси",     "en": "Graphite epoxy terrazzo" },
+    "cement":   { "ru": "Цементное терраццо",    "en": "Cement terrazzo" },
+    "comfort":  { "ru": "Комфорт-пол",           "en": "Comfort floor" },
+    "micro":    { "ru": "Микроцемент",           "en": "Microcement" },
+    "multi":    { "ru": "Мультиколор терраццо",  "en": "Multicolour terrazzo" }
+  },
+
+  "manifestLabelsEn": {
+    "terrazzo-cement": "Cement terrazzo",
+    "terrazzo-multi": "Multicolour terrazzo",
+    "terrazzo-epoxy": "Epoxy terrazzo",
+    "microtopping": "Microcement / microtopping",
+    "decorative-concrete": "Decorative concrete",
+    "comfortfloor": "Comfort floor (PU)",
+    "epoxy": "Epoxy self-levelling",
+    "pu-cement": "PU-Cement",
+    "mma": "MMA fast-cure",
+    "rubber": "Poured rubber (EPDM)"
+  },
+
+  "salesPage": {
+    "epoxy": "https://floordsgn.com/floors/epoxy",
+    "pu-cement": "https://floordsgn.com/floors/pu-cement",
+    "mma": "https://floordsgn.com/floors/mma",
+    "terrazzo-cement": "https://floordsgn.com/floors/terrazzo",
+    "terrazzo-epoxy": "https://floordsgn.com/floors/terrazzo",
+    "terrazzo-multi": "https://floordsgn.com/floors/terrazzo",
+    "microtopping": "https://floordsgn.com/floors/microtopping",
+    "decorative-concrete": "https://floordsgn.com/floors/concrete",
+    "comfortfloor": "https://floordsgn.com/floors",
+    "rubber": "https://floordsgn.com/floors/rubber"
+  },
+
+  "ui": {
+    "ru": {
+      "chooser_title": "Кто вы? Подстроим студию под вас",
+      "chooser_skip": "Просто посмотреть",
+      "chooser_hint": "Можно поменять в любой момент",
+      "spec_title": "Спецификация",
+      "spec_toggle": "Тех. данные",
+      "buildup_title": "Пирог системы",
+      "pains_title": "Закрываем ваши вопросы",
+      "calc_title": "Калькулятор",
+      "calc_area": "Площадь, м²",
+      "calc_run": "Рассчитать",
+      "calc_result": "Ориентировочно",
+      "calc_note": "Вилка по материалу и работе. Точная смета — после выезда.",
+      "calc_days": "₪ за день простоя",
+      "calc_downtime": "Простой",
+      "calc_load": "Нагрузка (погрузчик, т)",
+      "calc_oldfloor": "Снять старый пол",
+      "calc_night": "Ночные работы",
+      "share": "Поделиться",
+      "share_done": "Ссылка скопирована",
+      "view_in_room": "Смотреть в комнате",
+      "spec_only": "Системы без 3D — спека и выезд инженера",
+      "yes": "Да", "no": "Нет",
+      "material": "Материал", "room": "Комната", "light": "Свет", "finish": "Финиш"
+    },
+    "en": {
+      "chooser_title": "Who are you? We'll tune the studio for you",
+      "chooser_skip": "Just looking",
+      "chooser_hint": "You can change this anytime",
+      "spec_title": "Specification",
+      "spec_toggle": "Tech data",
+      "buildup_title": "System build-up",
+      "pains_title": "We answer your questions",
+      "calc_title": "Calculator",
+      "calc_area": "Area, m²",
+      "calc_run": "Estimate",
+      "calc_result": "Approx.",
+      "calc_note": "Material + labour band. Exact quote after a site visit.",
+      "calc_days": "₪ per closed day",
+      "calc_downtime": "Downtime",
+      "calc_load": "Load (forklift, t)",
+      "calc_oldfloor": "Remove old floor",
+      "calc_night": "Night work",
+      "share": "Share",
+      "share_done": "Link copied",
+      "view_in_room": "View in room",
+      "spec_only": "Systems without 3D — spec & engineer visit",
+      "yes": "Yes", "no": "No",
+      "material": "Material", "room": "Room", "light": "Light", "finish": "Finish"
+    }
+  },
+
+  "personas": [
+    {
+      "id": "explore",
+      "name": { "ru": "Просто выбрать пол", "en": "Just exploring" },
+      "tagline": { "ru": "Посмотрите вживую и сузьте выбор за минуту", "en": "See it live and narrow it down in a minute" },
+      "icon": "compass",
+      "floors": ["micro", "cement", "light", "multi", "venetian", "graphite", "comfort"],
+      "specCards": [],
+      "specPosition": "accordion",
+      "verification": false,
+      "careProminent": false,
+      "compareDefault": false,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "light": "golden", "finish": "satin" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Подобрать пол", "en": "Get my floor" },
+          "wa": { "ru": "Здравствуйте! Помогите выбрать пол.", "en": "Hi! Help me choose a floor." } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "Спросить в WhatsApp", "en": "Ask on WhatsApp" },
+          "wa": { "ru": "Здравствуйте! Вопрос по полам.", "en": "Hi! A question about floors." } }
+      },
+      "pains": [
+        { "q": { "ru": "Рендеры в интернете не убеждают", "en": "Online renders don't convince" }, "a": { "ru": "Здесь реальное бесшовное 3D в реальном масштабе — как на объекте", "en": "Real seamless 3D at true scale — like on site" } },
+        { "q": { "ru": "Непонятна цена", "en": "Price is unclear" }, "a": { "ru": "Калькулятор даёт вилку по вашей площади сразу", "en": "The calculator gives a band for your area instantly" } },
+        { "q": { "ru": "Сложные термины", "en": "Confusing jargon" }, "a": { "ru": "Объясняем простым языком: что это и где применяют", "en": "Plain language: what it is and where it's used" } }
+      ]
+    },
+    {
+      "id": "designer",
+      "name": { "ru": "Дизайнер интерьеров", "en": "Interior designer" },
+      "tagline": { "ru": "Покажите клиенту вживую, в его цвете", "en": "Show your client live, in their colour" },
+      "icon": "palette",
+      "floors": ["micro", "cement", "light", "multi", "venetian", "graphite"],
+      "specCards": [],
+      "specPosition": "accordion",
+      "verification": false,
+      "careProminent": false,
+      "compareDefault": false,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "light": "golden", "finish": "satin" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Заказать sample kit", "en": "Order a sample kit" },
+          "wa": { "ru": "Здравствуйте! Я дизайнер. Прошу sample kit:", "en": "Hi! I'm a designer. Requesting a sample kit:" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "WhatsApp подрядчику", "en": "WhatsApp the contractor" },
+          "wa": { "ru": "Здравствуйте! Дизайнерский проект, нужен подрядчик:", "en": "Hi! Designer project, need a contractor:" } }
+      },
+      "pains": [
+        { "q": { "ru": "Стоковые рендеры не убеждают клиента", "en": "Stock renders don't convince the client" }, "a": { "ru": "Реальное бесшовное 3D + ваш цвет в один клик — показываете клиенту прямо со ссылки", "en": "Real seamless 3D + your colour in one click — share a live link with the client" } },
+        { "q": { "ru": "Подрядчики говорят «примерно столько»", "en": "Contractors say 'roughly this much'" }, "a": { "ru": "Прозрачная вилка ₪/м² в калькуляторе", "en": "Transparent ₪/m² band in the calculator" } },
+        { "q": { "ru": "Не понимаю разницу микротопинг / эпокси-террацо", "en": "Don't get microtopping vs epoxy terrazzo" }, "a": { "ru": "Спека и пояснение по каждой системе", "en": "Spec and a plain explainer for each system" } }
+      ]
+    },
+    {
+      "id": "architect",
+      "name": { "ru": "Архитектор", "en": "Architect" },
+      "tagline": { "ru": "Всё для проектной документации — TDS, слои, стандарты", "en": "Everything for the spec sheet — TDS, layers, standards" },
+      "icon": "compass-pen",
+      "floors": ["graphite", "cement", "micro", "multi", "light"],
+      "specCards": ["epoxy", "pu-cement", "mma"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": false,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "polished" },
+      "cta": {
+        "primary": { "type": "print", "label": { "ru": "Скачать spec / TDS (PDF)", "en": "Download spec / TDS (PDF)" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "Связаться с поставщиком", "en": "Contact supplier" },
+          "wa": { "ru": "Здравствуйте! Архитектор, нужна спека/TDS:", "en": "Hi! Architect, need the spec/TDS:" } }
+      },
+      "pains": [
+        { "q": { "ru": "Красиво на сайте, а TDS не дают", "en": "Pretty site, but no TDS" }, "a": { "ru": "Спека и слои на виду; TDS — в один клик в печать/PDF", "en": "Spec & layers up front; TDS one click to print/PDF" } },
+        { "q": { "ru": "Подрядчик «упрощает» — теряется гарантия", "en": "Contractor 'simplifies', warranty is lost" }, "a": { "ru": "Слоистая структура и материалы зафиксированы в спеке", "en": "Layered build-up and materials are locked in the spec" } },
+        { "q": { "ru": "Нет данных по влажности / швам", "en": "No data on moisture / joints" }, "a": { "ru": "Основание, лимиты и деформационные швы — в спеке", "en": "Substrate, limits and movement joints — in the spec" } }
+      ]
+    },
+    {
+      "id": "restaurant",
+      "name": { "ru": "Ресторан / кафе", "en": "Restaurant / café" },
+      "tagline": { "ru": "Пройдёт Минздрав, не скользит, минимум простоя", "en": "Passes inspection, anti-slip, minimal downtime" },
+      "icon": "chef",
+      "floors": ["cement", "comfort", "micro", "multi", "light"],
+      "specCards": ["pu-cement", "mma"],
+      "specPosition": "top",
+      "verification": false,
+      "careProminent": false,
+      "compareDefault": false,
+      "suitabilityGate": true,
+      "calc": "downtime",
+      "defaults": { "room": "kitchen", "light": "noon", "finish": "satin" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "WhatsApp: для кухни ресторана", "en": "WhatsApp: restaurant kitchen" },
+          "wa": { "ru": "Здравствуйте! Пол для кухни ресторана:", "en": "Hi! Floor for a restaurant kitchen:" } },
+        "secondary": { "type": "print", "label": { "ru": "Скачать спецификацию", "en": "Download spec" } }
+      },
+      "pains": [
+        { "q": { "ru": "Горели на дешёвом эпокси — пузыри через 3 мес", "en": "Burned on cheap epoxy — bubbles in 3 months" }, "a": { "ru": "PU-Cement для кухонь: R11/R12, без пузырей, гарантия письменно", "en": "PU-Cement for kitchens: R11/R12, no bubbles, written warranty" } },
+        { "q": { "ru": "А Минздрав примет?", "en": "Will it pass health inspection?" }, "a": { "ru": "HACCP / food-safe указано явно у системы", "en": "HACCP / food-safe stated explicitly per system" } },
+        { "q": { "ru": "Сколько дней кухня будет закрыта?", "en": "How many days is the kitchen closed?" }, "a": { "ru": "Калькулятор простоя считает дни и потери", "en": "The downtime calculator shows days and losses" } }
+      ],
+      "suitability": {
+        "blocked": ["micro"],
+        "msg": { "ru": "Микроцемент НЕ для кухонь (гигиена + скольжение). Для кухни — PU-Cement или MMA.", "en": "Microcement is NOT for kitchens (hygiene + slip). For kitchens — PU-Cement or MMA." }
+      }
+    },
+    {
+      "id": "warehouse",
+      "name": { "ru": "Склад / производство", "en": "Warehouse / factory" },
+      "tagline": { "ru": "Нагрузка, смета с разбивкой, работа по ночам", "en": "Load capacity, itemised quote, night work" },
+      "icon": "forklift",
+      "floors": ["graphite", "comfort", "cement"],
+      "specCards": ["epoxy", "pu-cement", "mma"],
+      "specPosition": "top",
+      "verification": false,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "industrial",
+      "defaults": { "room": "living", "view": "detail", "light": "hard", "finish": "matte" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Запросить выезд инженера", "en": "Request engineer visit" },
+          "wa": { "ru": "Здравствуйте! Промышленный пол, прошу выезд инженера:", "en": "Hi! Industrial floor, requesting an engineer visit:" } },
+        "secondary": { "type": "print", "label": { "ru": "Скачать смету (PDF)", "en": "Download quote (PDF)" } }
+      },
+      "pains": [
+        { "q": { "ru": "Цены «от и до» без понимания, что входит", "en": "Prices 'from–to' with no breakdown" }, "a": { "ru": "Калькулятор: площадь + нагрузка + старый пол + ночные → смета-вилка", "en": "Calculator: area + load + old floor + night → quote band" } },
+        { "q": { "ru": "Выдержит ли ричтрак 3 т?", "en": "Will it hold a 3-ton reach truck?" }, "a": { "ru": "Нагрузочная способность и толщина — в спеке системы", "en": "Load capacity and thickness — in the system spec" } },
+        { "q": { "ru": "Старый эпокси удалять? Сколько это?", "en": "Remove old epoxy? How much?" }, "a": { "ru": "Учитываем подготовку основания в расчёте", "en": "Substrate prep is included in the estimate" } }
+      ]
+    },
+    {
+      "id": "private",
+      "name": { "ru": "Частный дом / вилла", "en": "Private home / villa" },
+      "tagline": { "ru": "Красиво, понятно, без жаргона", "en": "Beautiful, clear, no jargon" },
+      "icon": "home",
+      "floors": ["micro", "cement", "light", "comfort"],
+      "specCards": [],
+      "specPosition": "accordion",
+      "verification": false,
+      "careProminent": true,
+      "compareDefault": false,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "bedroom", "view": "hall", "light": "evening", "finish": "satin" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Заказать консультацию", "en": "Book a consultation" },
+          "wa": { "ru": "Здравствуйте! Пол для дома, прошу консультацию:", "en": "Hi! Floor for a home, requesting a consultation:" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "Спросить в WhatsApp", "en": "Ask on WhatsApp" },
+          "wa": { "ru": "Здравствуйте! Вопрос по полу для дома:", "en": "Hi! A question about a home floor:" } }
+      },
+      "pains": [
+        { "q": { "ru": "Тону в технических терминах", "en": "Lost in technical terms" }, "a": { "ru": "Простой язык, без индустриального жаргона", "en": "Plain language, no industrial jargon" } },
+        { "q": { "ru": "Боюсь, что через год пойдут трещины", "en": "Afraid of cracks in a year" }, "a": { "ru": "Гарантия и уход — честно и понятно", "en": "Warranty and care — honest and clear" } },
+        { "q": { "ru": "Как мыть? С детьми и собакой можно?", "en": "How to clean? OK with kids and a dog?" }, "a": { "ru": "Раздел «Уход и эксплуатация» — на виду", "en": "A prominent 'Care & use' section" } }
+      ]
+    },
+    {
+      "id": "pro",
+      "name": { "ru": "Pro · все системы", "en": "Pro · all systems" },
+      "tagline": { "ru": "Все данные открыты сразу", "en": "All data open at once" },
+      "icon": "grid",
+      "floors": ["micro", "cement", "light", "multi", "venetian", "graphite", "comfort"],
+      "specCards": ["epoxy", "pu-cement", "mma", "rubber", "decorative-concrete"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "polished" },
+      "cta": {
+        "primary": { "type": "print", "label": { "ru": "Скачать spec PDF", "en": "Download spec PDF" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "WhatsApp", "en": "WhatsApp" },
+          "wa": { "ru": "Здравствуйте! Технический запрос по системе:", "en": "Hi! Technical request about a system:" } }
+      },
+      "pains": [
+        { "q": { "ru": "Нужны все технические данные сразу", "en": "Need all technical data at once" }, "a": { "ru": "Спека, слои, бейджи, сравнение — всё открыто", "en": "Spec, layers, badges, compare — all open" } }
+      ]
+    },
+    {
+      "id": "safety",
+      "name": { "ru": "Безопасность / охрана труда", "en": "Safety / compliance officer" },
+      "tagline": { "ru": "Скольжение, огонь, гигиена, стандарты — на виду", "en": "Slip, fire, hygiene, standards — up front" },
+      "icon": "shield",
+      "floors": ["cement", "micro", "graphite", "comfort", "multi", "light"],
+      "specCards": ["pu-cement", "mma", "epoxy", "rubber"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "simple",
+      "defaults": { "room": "living", "view": "detail", "light": "hard", "finish": "matte" },
+      "cta": {
+        "primary": { "type": "print", "label": { "ru": "Скачать спеку / сертификаты", "en": "Download spec / certificates" } },
+        "secondary": { "type": "whatsapp", "label": { "ru": "Запросить сертификаты", "en": "Request certificates" },
+          "wa": { "ru": "Здравствуйте! Нужны сертификаты и классы (скольжение/огонь/гигиена):", "en": "Hi! Need certificates and ratings (slip/fire/hygiene):" } }
+      },
+      "pains": [
+        { "q": { "ru": "Какой класс скольжения?", "en": "What's the slip rating?" }, "a": { "ru": "R-класс (DIN 51130) указан у каждой системы в бейджах", "en": "R-class (DIN 51130) shown per system in the badges" } },
+        { "q": { "ru": "Соответствует гигиене / HACCP?", "en": "Hygiene / HACCP compliant?" }, "a": { "ru": "Food-safe / HACCP помечены явно", "en": "Food-safe / HACCP flagged explicitly" } },
+        { "q": { "ru": "Где исходные стандарты?", "en": "Where are the source standards?" }, "a": { "ru": "EN / DIN / ISO рядом с показателями в спеке", "en": "EN / DIN / ISO next to the figures in the spec" } }
+      ]
+    },
+    {
+      "id": "developer",
+      "name": { "ru": "Девелопер / управление активами", "en": "Developer / asset manager" },
+      "tagline": { "ru": "Один стандарт на портфель, расчёт по объектам", "en": "One standard across the portfolio, per-asset estimate" },
+      "icon": "building",
+      "floors": ["graphite", "cement", "comfort", "micro", "light"],
+      "specCards": ["epoxy", "pu-cement", "mma"],
+      "specPosition": "top",
+      "verification": true,
+      "careProminent": false,
+      "compareDefault": true,
+      "suitabilityGate": false,
+      "calc": "industrial",
+      "defaults": { "room": "living", "view": "detail", "light": "noon", "finish": "matte" },
+      "cta": {
+        "primary": { "type": "whatsapp", "label": { "ru": "Расчёт по портфелю", "en": "Portfolio estimate" },
+          "wa": { "ru": "Здравствуйте! Нужен расчёт пола на несколько объектов:", "en": "Hi! Need a floor estimate across several assets:" } },
+        "secondary": { "type": "print", "label": { "ru": "Скачать спеку (PDF)", "en": "Download spec (PDF)" } }
+      },
+      "pains": [
+        { "q": { "ru": "Нужен расчёт на несколько объектов", "en": "Need an estimate across several assets" }, "a": { "ru": "Калькулятор по площади даёт вилку на каждый объект", "en": "The area calculator gives a band per asset" } },
+        { "q": { "ru": "Хочу один стандарт на весь портфель", "en": "Want one standard across the whole portfolio" }, "a": { "ru": "Сравнение систем + единая спека для тиражирования", "en": "System compare + one spec to standardise on" } },
+        { "q": { "ru": "Что с эксплуатацией и обслуживанием?", "en": "What about operation & maintenance?" }, "a": { "ru": "Гарантия и срок службы — в спеке каждой системы", "en": "Warranty and lifespan — in each system's spec" } }
+      ]
+    }
+  ]
+}

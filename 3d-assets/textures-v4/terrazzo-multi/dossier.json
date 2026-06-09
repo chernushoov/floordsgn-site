@@ -1,0 +1,69 @@
+{
+  "slug": "terrazzo-multi",
+  "label": "Terrazzo · multicolour (white matrix, multicolour confetti chips)",
+  "generated": "2026-06-01",
+  "pipeline": "texture-production-pilot v4",
+  "source": {
+    "primary": "/Users/agentmachine/Desktop/текстуры /текстуры террацо/dna-terrazzo-white-colours-32x37-253275.jpg",
+    "candidates_considered": [
+      "/Users/agentmachine/Desktop/текстуры /текстуры террацо/dna-terrazzo-white-colours-32x37-253275.jpg"
+    ],
+    "selection_reason": "Owner-curated white terrazzo product tile (DNA Terrazzo White Colours 32x37) with multicoloured confetti chips (blue, ochre, terracotta, grey) on a warm off-white matrix — exactly the multicolour-terrazzo look this slug represents. It is a hexagon product render on a white background, so the crop was taken strictly INSIDE the terrazzo field.",
+    "native_resolution": "485x560",
+    "crop_region": { "left": 78, "top": 140, "width": 330, "height": 330 },
+    "crop_reason": "330px square fully INSIDE the hexagon body — no hex edges, no white page background. Centred on the densest, most even confetti-chip distribution.",
+    "rejected_set": "No other multicolour-white terrazzo in the curated террацо folder; the graphite/black variants belong to terrazzo-epoxy, and the cement-concrete macros are grey (terrazzo-cement / decorative-concrete)."
+  },
+  "material_truth": {
+    "fillers": "Multicolour aggregate confetti — crushed marble + recycled-glass + pigmented chips (~3-10 mm): cobalt/petrol blue, ochre/amber, terracotta, warm-grey and charcoal flecks. Fine quartz fill in the matrix.",
+    "matrix": "Warm off-white cement/resin matrix (near-white, slightly cream).",
+    "finish": "Ground + sealed, satin (not high-gloss). Smooth surface relief with shallow chip edges.",
+    "manufacturer_recipe": "Decorative terrazzo body (e.g. Sika Sikafloor Terrazzo CS-31 white-pigmented or epoxy-terrazzo Decodur EP-Terrazzo) with a custom multicolour glass/marble broadcast on a white matrix; lithium-silicate or PU satin seal."
+  },
+  "colour": {
+    "delit_matrix_hex": "#ebe9e3",
+    "delit_matrix_rgb": [235, 233, 227],
+    "delit_overall_mean_hex": "#eae8e3",
+    "note": "Near-white warm matrix dominates (stdev ~16). Matrix hex ≈ overall mean because chips are sparse against the white field. Markedly warmer/creamier than a pure #ffffff."
+  },
+  "scale": {
+    "physical_mm_per_tile": "~210-230 mm represented by the 2048px master (chips read ~3-10 mm at this crop; source tile is a 32x37 cm product and the 330px crop spans roughly the central ~22 cm).",
+    "recommended_manifest_tile": 4,
+    "tile_note": "Manifest 'tile' is an integer repeat across the plate. 4 keeps the confetti chips at a realistic small read on a ~600-900 mm plate and helps mask the small-source repeat. Do NOT drop to 1 (chips would look oversized and the repeat would be obvious)."
+  },
+  "gloss": {
+    "roughness_scalar": 0.4,
+    "roughness_map_mean": 0.363,
+    "note": "Satin ground+sealed terrazzo. roughness.png mean 0.363 (chipsSmooth=true → bright chips read smoother, white matrix mid-rough). 0.38-0.42 reads as satin; lower if a glossier seal is wanted."
+  },
+  "outputs": {
+    "diffuse.jpg": { "res": "2048x2048", "q": 90, "space": "sRGB" },
+    "normal.png": { "res": "1024x1024", "space": "linear", "strength": "gen-pbr bump 6.5 (per-chip relief + matrix grain); R range 0-254" },
+    "roughness.png": { "res": "512x512", "mean": 0.363 },
+    "ao.png": { "res": "512x512", "mean": 0.846 }
+  },
+  "processing": {
+    "decode": "sips/sharp JPG -> extract 330px square inside hexagon -> lanczos3 upscale to 2048 (UPSCALED ~6.2x from a 330px crop).",
+    "delight": "sharp divide-by-heavy-blur (sigma scaled to ~112px) re-multiplied by per-channel means -> lighting-neutral albedo. Source was an evenly-lit product render, so only a mild flatten was needed.",
+    "seamless": "Half-offset (quadrant-swap) wrap so the centre seam moves to the borders, then feathered cross-fade heal across the central cross blending with a 180°-rotated copy of the offset (NOT a blur — a blur smear is visible on a near-white field). Validated by 2x2 tiling.",
+    "pbr": "scripts/gen-pbr-maps.js terrazzo-multi --root=3d-assets/textures-v4 (bump 6.5, baseRough 0.6, chipsSmooth true, ao 1.3)."
+  },
+  "caveats": [
+    "UPSCALED ~6.2x from a 330px source crop to 2048px — fine matrix grain is soft at 1:1; acceptable at render/normal viewing distance but this is the softest of the four masters.",
+    "Because the usable source region is small, the 2x2 tile shows a faint small-scale repeat of the chip pattern (no hard seam line). Higher manifest tile (4) keeps it subtle.",
+    "An object/background crop-out was not needed (product render on white) — but the hexagon edges and white page were excluded by the inside-crop.",
+    "Matrix is warm off-white (#ebe9e3), not pure white — true to the curated product image."
+  ],
+  "previews_scratch": {
+    "tile_2x2": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-multi/preview_2x2.jpg"
+  },
+  "recommended_manifest": {
+    "tile": 4,
+    "roughness_override": 0.4,
+    "swatch_suggestion": "#ebe9e3",
+    "procedural_color_suggestion": "#ebe9e3",
+    "palette_hex": ["#ebe9e3", "#eae8e3", "#2f5d80", "#b58a4a", "#b5613c", "#7a766c", "#1d1d1f"],
+    "palette_note": "matrix warm-white, overall mean, blue chip, amber chip, terracotta chip, grey chip, charcoal fleck",
+    "note": "Repoint pbr.* to textures-v4/terrazzo-multi/* to use this new set. (Orchestrator applies — do not edit manifest here.)"
+  }
+}

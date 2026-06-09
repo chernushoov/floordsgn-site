@@ -1,0 +1,69 @@
+{
+  "slug": "terrazzo-epoxy",
+  "label": "Terrazzo · epoxy (dark charcoal matrix, white/grey marble chips + pores)",
+  "generated": "2026-06-01",
+  "pipeline": "texture-production-pilot v4",
+  "source": {
+    "primary": "/Users/agentmachine/Desktop/текстуры /текстуры террацо/macrophotography-terrazzo-slab-texture.jpg",
+    "candidates_considered": [
+      "/Users/agentmachine/Desktop/текстуры /текстуры террацо/macrophotography-terrazzo-slab-texture.jpg"
+    ],
+    "selection_reason": "Owner-curated macro of a DARK charcoal terrazzo slab — black/anthracite matrix with white and grey marble chips plus characteristic vesicular pores. Already flat and face-on at very high resolution (7168x4096). Exactly the dark epoxy-terrazzo look this slug represents.",
+    "native_resolution": "7168x4096",
+    "crop_region": { "left": 1500, "top": 300, "width": 3500, "height": 3500 },
+    "crop_reason": "3500px square from the central-left flat area, avoiding the slightly brighter top-right corner so the de-light has the least gradient to remove. Even chip + pore distribution, no edges.",
+    "rejected_set": "The white/multicolour DNA tile is terrazzo-multi; the grey cement-concrete macros are terrazzo-cement / decorative-concrete."
+  },
+  "material_truth": {
+    "fillers": "White + grey marble/natural-stone chips (~4-15 mm) set in a dark matrix, with abundant small vesicular pores (air voids characteristic of cast terrazzo). One sparse warm fleck visible.",
+    "matrix": "Charcoal/anthracite matrix (near-black cement or pigmented epoxy).",
+    "finish": "Ground + sealed, satin-to-semi-polished. Visible micro-relief from pores and chip edges.",
+    "manufacturer_recipe": "Epoxy-terrazzo (e.g. Decodur EP-Terrazzo / Sikafloor epoxy-terrazzo) with charcoal-pigmented binder and white/grey marble broadcast 4-15 mm, ground and PU-sealed to satin; or a dark cement terrazzo (Sikafloor Terrazzo CS-31, charcoal pigment)."
+  },
+  "colour": {
+    "delit_matrix_hex": "#464647",
+    "delit_matrix_rgb": [70, 70, 71],
+    "delit_overall_mean_hex": "#414142",
+    "note": "High-contrast surface (stdev ~41) — bright marble chips over a dark matrix. The 'matrix' hex is sampled from the heavily-blurred median (kills chips) and reads as a dark neutral charcoal; overall mean #414142 sits a touch darker because pores/black matrix dominate area."
+  },
+  "scale": {
+    "physical_mm_per_tile": "~150-200 mm represented by the 2048px master (macro shot; chips read ~4-15 mm at this crop).",
+    "recommended_manifest_tile": 5,
+    "tile_note": "Manifest 'tile' is an integer repeat. 5 keeps the chips at a realistic 4-15 mm read on a ~600-900 mm plate. Do NOT drop below 3 (chips would look oversized)."
+  },
+  "gloss": {
+    "roughness_scalar": 0.35,
+    "roughness_map_mean": 0.601,
+    "note": "Semi-polished dark terrazzo. roughness.png mean is 0.601 because gen-pbr's chipsSmooth formula maps the large dark-matrix area to higher roughness; the bright chips correctly read smoother. For a polished epoxy-terrazzo look, recommend a roughness_override scalar ~0.30-0.38 (the map still provides the chip/matrix contrast). Use ~0.35."
+  },
+  "outputs": {
+    "diffuse.jpg": { "res": "2048x2048", "q": 90, "space": "sRGB" },
+    "normal.png": { "res": "1024x1024", "space": "linear", "strength": "gen-pbr bump 5.0 (per-chip + pore relief); R range 0-254" },
+    "roughness.png": { "res": "512x512", "mean": 0.601 },
+    "ao.png": { "res": "512x512", "mean": 0.836 }
+  },
+  "processing": {
+    "decode": "sharp JPG -> extract 3500px square -> lanczos3 DOWNSCALE to 2048 (sharp, no upscaling).",
+    "delight": "sharp divide-by-heavy-blur (sigma scaled to ~144px) re-multiplied by per-channel means -> removed the mild corner gradient, lighting-neutral albedo.",
+    "seamless": "Half-offset (quadrant-swap) wrap + feathered cross-fade heal blending with a 180°-rotated copy of the offset. The high-frequency chip+pore field hides the wrap completely. Validated by 2x2 tiling (no seam, no obvious repeat).",
+    "pbr": "scripts/gen-pbr-maps.js terrazzo-epoxy --root=3d-assets/textures-v4 (bump 5.0, baseRough 0.4, chipsSmooth true, ao 1.2)."
+  },
+  "caveats": [
+    "Not upscaled — downscaled from a 3500px crop; this is the sharpest of the four masters.",
+    "One faint warm speck (a sensor/dust mote in the source macro) sits near the centre-right; negligible at render scale.",
+    "roughness.png mean (0.601) reads rougher than a polished terrazzo; prefer the recommended roughness_override scalar (~0.35) over the raw map mean if a semi-polished sheen is desired.",
+    "Dark matrix means the configurator colour control should be used cautiously — tinting a near-black albedo has limited range."
+  ],
+  "previews_scratch": {
+    "tile_2x2": "/Users/agentmachine/floordsgn-tex-scratch/terrazzo-epoxy/preview_2x2.jpg"
+  },
+  "recommended_manifest": {
+    "tile": 5,
+    "roughness_override": 0.35,
+    "swatch_suggestion": "#464647",
+    "procedural_color_suggestion": "#464647",
+    "palette_hex": ["#464647", "#414142", "#e8e6e1", "#b9b8b4", "#1a1a1b", "#8a8782"],
+    "palette_note": "matrix charcoal, overall mean, white marble chip, light-grey chip, near-black pore, mid-grey chip",
+    "note": "Repoint pbr.* to textures-v4/terrazzo-epoxy/* to use this new set. New slug folder — was not present before. (Orchestrator applies — do not edit manifest here.)"
+  }
+}
