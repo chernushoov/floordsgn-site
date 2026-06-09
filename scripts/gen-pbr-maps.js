@@ -13,7 +13,10 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..', '3d-assets', 'textures');
+const ROOT_ARG = (process.argv.find(a => a.startsWith('--root=')) || '').split('=')[1];
+const ROOT = ROOT_ARG
+  ? path.resolve(__dirname, '..', ROOT_ARG)
+  : path.resolve(__dirname, '..', '3d-assets', 'textures');
 const N_RES = 1024;   // normal map resolution
 const RA_RES = 512;   // roughness + AO resolution (low-freq → smaller is fine)
 

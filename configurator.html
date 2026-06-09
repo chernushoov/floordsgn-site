@@ -934,6 +934,27 @@ async function init() {
   const res = await fetch(ASSET_ROOT + 'manifest.json');
   manifest = await res.json();
 
+  /* textures-v2 sandbox: when `?textures=v2` is set, swap diffuse paths for the
+     5 materials with broken/missing textures. Etalon textures/ stays intact. */
+  if (new URLSearchParams(location.search).get('textures') === 'v2') {
+    /* Per-slug roughness_override matches real-world finish — without this, the
+       per-pixel roughnessMap from gen-pbr-maps reads too glossy on mma/comfortfloor
+       and hides the diffuse under mirror-like reflection. */
+    const V2 = {
+      epoxy:        { rough: 0.40 },   // self-leveling industrial epoxy — semi-gloss
+      microtopping: { rough: 0.85 },   // matte hand-trowel micro-cement
+      mma:          { rough: 0.70 },   // signal-yellow safety paint — satin
+      'pu-cement':  { rough: 0.80 },   // food-grade pu-cement — matte non-slip
+      comfortfloor: { rough: 0.70 },   // elastic PU healthcare — satin
+    };
+    for (const m of manifest.materials) {
+      const v2 = V2[m.slug];
+      if (!v2) continue;
+      m.pbr = { diffuse: `textures-v2/${m.slug}/diffuse.jpg`, normal: `textures-v2/${m.slug}/normal.png`, ao: `textures-v2/${m.slug}/ao.png` };
+      m.roughness_override = v2.rough;
+    }
+  }
+
   const grpD = document.getElementById('grpDecorative');
   const grpI = document.getElementById('grpIndustrial');
   const prevEl = (() => { const e = document.createElement('div'); e.className = 'matprev'; document.body.appendChild(e); return e; })();
@@ -1036,6 +1057,13 @@ async function init() {
   const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
   selectMaterial(manifest.materials[defaultIdx].slug);
   bootEl.classList.add('gone');
+
+  /* `?debug=1` exposes module-private refs for the audit harness. No-op in prod URL. */
+  if (new URLSearchParams(location.search).has('debug')) {
+    Object.defineProperty(window, '__cfg', {
+      get: () => ({ scene, topcoatMesh, bodyMesh, plateRoot, activeSlug, manifest, orderState })
+    });
+  }
 }
 
 const transition = { active: false, t: 0, dur: 0.45, from: null, to: null };
@@ -1259,7 +1287,10 @@ function applyControlEffect(def, cid, opt) {
   if (cid === 'color' && opt.hex && !photoMode) {
     const c = new THREE.Color(opt.hex);
     const lum = 0.2126*c.r + 0.7152*c.g + 0.0722*c.b;
-    const lerpAmount = 0.55 + (1 - lum) * 0.25;
+    /* Old formula (0.55-0.80) crushed dark colors to indistinguishable off-whites:
+       graphite and ral7016 both resolved to ~#e7e7e7. New range 0.30-0.50 keeps
+       the texture visible while preserving the user's pick as a recognisable tint. */
+    const lerpAmount = 0.30 + (1 - lum) * 0.20;
     c.lerp(new THREE.Color('#ffffff'), lerpAmount);
     mat.color.copy(c);
   }
@@ -1354,11 +1385,13 @@ document.getElementById('ctaOrder').addEventListener('click', () => {
   //   config_url: full configurator URL so lead-form can include link to the user's exact assembly
   //   fd_state: opaque state JSON for the audit trail in Netlify Forms submission
   // Mapping slugs: configurator uses 'terrazzo-cement', quote uses 'terrazzo' etc.
+  /* Map configurator slugs to /quote calculator material IDs (see enhance.js LABELS).
+     Closest-chemistry fallback for slugs /quote doesn't handle natively: comfortfloor → purcem. */
   const slugMap = {
     'terrazzo-cement': 'terrazzo', 'terrazzo-multi': 'terrazzo', 'terrazzo-epoxy': 'terrazzo',
     'microtopping': 'micro', 'decorative-concrete': 'concrete',
-    'pu-cement': 'pucement', 'epoxy': 'epoxy', 'mma': 'mma',
-    'rubber': 'epoxy', 'comfortfloor': 'epoxy'
+    'pu-cement': 'purcem', 'epoxy': 'epoxy', 'mma': 'mma',
+    'rubber': 'rubber', 'comfortfloor': 'purcem'
   };
   const quoteMat = slugMap[activeSlug] || 'epoxy';
   const params = new URLSearchParams({
