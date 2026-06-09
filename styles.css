@@ -896,11 +896,15 @@ img {
 
 /* ==================== FOOTER ==================== */
 .footer {
-    background: var(--black);
+    background: var(--carbon);
     color: var(--white);
     padding: 80px 0 40px;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
+/* Footer logo lockup — matches the header (original tile-mark + wordmark, white) */
+.footer-logo-lockup { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.footer-mark { height: 38px; width: auto; display: block; }
+.footer-wordmark { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0.005em; color: #fff; }
 
 .footer-grid {
     display: grid;
