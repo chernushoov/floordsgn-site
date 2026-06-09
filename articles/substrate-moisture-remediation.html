@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substrate Moisture Remediation: When ASTM F2170 Fails | Floor.DSGN</title>
+    <meta name="description" content="When ASTM F2170 in-situ RH testing returns above-threshold readings, the floor specification has three paths: wait for natural drying, apply moisture-mitigation primer, or specify a vapor-tolerant system. This guide walks the decision and the four remediation methods.">
+    <meta name="keywords" content="substrate moisture remediation, ASTM F2170 high reading, moisture mitigation primer, Sikafloor EpoCem moisture, vapor barrier flooring, concrete slab drying time Israel">
+    <meta property="og:title" content="Substrate Moisture Remediation — When F2170 Fails">
+    <meta property="og:description" content="When in-situ RH exceeds the coating threshold, three paths: wait, mitigate, or switch system. Decision matrix + remediation methods.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://floordsgn.com/articles/substrate-moisture-remediation.html">
+    <meta property="og:image" content="https://floordsgn.com/images/concrete-decorative/old-grey.jpeg">
+    <link rel="canonical" href="https://floordsgn.com/articles/substrate-moisture-remediation.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23151515' width='100' height='100' rx='20'/><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='50' font-weight='bold' fill='white'>F</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260523a">
+    <link rel="stylesheet" href="../chrome-fix.css?v=20260523a">
+    <style>
+        .threshold-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:14px; }
+        .threshold-table th, .threshold-table td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--grey-border, #e5e3df); vertical-align:top; }
+        .threshold-table thead th { background:var(--carbon, #151515); color:#fff; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; }
+        .threshold-table tbody th { background:var(--concrete, #f3f0ea); font-weight:600; font-size:13px; color:var(--steel, #72716D); }
+        .threshold-table .signal-cell { color:var(--signal, #C86B3C); font-weight:700; }
+        .method-card { background:var(--concrete, #f3f0ea); padding:20px 24px; margin:20px 0; border-left:3px solid var(--steel, #72716D); border-radius:2px; }
+        .method-card.signal { border-left-color:var(--signal, #C86B3C); }
+        .method-card h3 { margin:0 0 8px; font-size:18px; }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Substrate Moisture Remediation","datePublished":"2026-05-28","publisher":{"@type":"Organization","name":"Floor.DSGN"}}</script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="header__nav header__nav--left">
+            <a href="../floors.html" data-i18n="nav_floors">Floors</a>
+            <a href="../projects.html" data-i18n="nav_projects">Projects</a>
+            <a href="../blog.html" data-i18n="nav_blog">Blog</a>
+        </nav>
+        <a href="../index.html" class="header__logo">
+            <img src="../images/logo/White1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+            <img src="../images/logo/Black1_tr.png" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+        </a>
+        <nav class="header__nav header__nav--right">
+            <a href="../about.html" data-i18n="nav_about">About</a>
+            <a href="../contact.html" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="header__lang">
+            <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../index.html" data-i18n="nav_home">Home</a></li><li><a href="../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../about.html" data-i18n="nav_about">About Us</a></li><li><a href="../blog.html" data-i18n="nav_blog">Blog</a></li><li><a href="../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
+
+    <article class="article-page" data-lang-block="en">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Back to Blog</a>
+                <span class="article-category">Substrate Preparation</span>
+                <h1>Substrate Moisture Remediation: When F2170 Fails</h1>
+                <p class="article-meta">May 2026 · 8 min read</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/old-grey.jpeg" alt="Concrete substrate moisture testing" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">The ASTM F2170 in-situ RH probe reads above the coating's specified threshold. Now what? This is the most common project-blocking moment in IL flooring spec, especially on coastal projects and ground-floor installations over slab-on-grade. The project has three paths: wait for natural drying (slow), apply a moisture-mitigation primer (fast but with limits), or switch to a vapor-tolerant floor system (changes the whole spec). This guide walks the decision matrix and the four practical remediation methods.</p>
+
+                    <h2>Reading the F2170 result first</h2>
+                    <p>Per ASTM F2170-19a, the probe is set at <strong>40% of slab depth</strong> for slabs drying from one side (slab-on-grade with vapor retarder below), or <strong>20% depth</strong> for slabs drying from both sides (suspended / elevated). Sample rate: 3 probes for the first ~93 m² (1,000 sq ft), plus 1 per additional 93 m². Holes must equilibrate sealed for a minimum 24h before reading (the 2019a revision; older 2011 standard required 72h).</p>
+
+                    <p>Common coating thresholds:</p>
+
+                    <table class="threshold-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Typical F2170 RH limit</th>
+                                <th>What happens above threshold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Epoxy SL (100%-solids)</strong></td><td class="signal-cell">≤ 75% RH</td><td>Delamination from osmotic pressure within 12-24 months</td></tr>
+                            <tr><td><strong>PU-cement</strong></td><td>≤ 85% RH</td><td>More tolerant; verify exact limit per manufacturer TDS</td></tr>
+                            <tr><td><strong>Microcement (cement-polymer)</strong></td><td>≤ 75-80% RH</td><td>Efflorescence, hairline cracks, sealer hydrolysis</td></tr>
+                            <tr><td><strong>Vinyl flooring (adhesive)</strong></td><td>≤ 75% RH</td><td>Adhesive failure, bubbling under sheet vinyl</td></tr>
+                            <tr><td><strong>Sikafloor EpoCem (vapor-tolerant primer)</strong></td><td>Tolerates up to ~98% RH</td><td>Engineered for the high-RH envelope — see below</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>The three-path decision</h2>
+
+                    <div class="method-card">
+                        <h3>Path 1 — Wait for natural drying</h3>
+                        <p>Concrete dries at approximately <strong>1 mm per day</strong> under ideal conditions (20°C, 50% RH ambient, no vapor barrier below). A 150 mm slab with one-sided drying takes roughly 100-150 days of ambient cure before reaching the typical 75% RH threshold. Coastal IL summers (high humidity) extend this; winter slows it further. Drying time is the cheapest remediation but the longest.</p>
+                        <p><strong>When to specify this:</strong> Greenfield construction with no schedule pressure. Renovation projects with patient owners.</p>
+                        <p><strong>When this doesn't work:</strong> Renovation of existing slabs (the moisture source is below the slab, not drying out). Coastal IL projects where ambient RH alone keeps the slab above threshold. Schedule-driven hospitality or commercial projects.</p>
+                    </div>
+
+                    <div class="method-card signal">
+                        <h3>Path 2 — Moisture-mitigation primer (the practical answer)</h3>
+                        <p>The most common professional remediation in IL practice. Apply an epoxy-cement hybrid primer that tolerates higher substrate moisture and acts as a vapor barrier. Reference product: <strong>Sika EpoCem</strong> (other manufacturers offer equivalents: Ardex MC RAPID, MasterEmaco P 5000). Applied at 1.5-3 mm thickness, EpoCem accepts substrate F2170 readings up to ~98% RH while presenting a properly low-moisture surface to the finish floor coating.</p>
+                        <p><strong>How it works:</strong> The epoxy fraction acts as a vapor-barrier film; the cementitious fraction maintains compatible coefficient of thermal expansion with the substrate. Combined, the layer absorbs the moisture differential between the wet substrate and the dry-required floor coating.</p>
+                        <p><strong>When to specify this:</strong> Schedule-driven projects where natural drying is unavailable. Coastal IL retrofits. Ground-floor commercial spaces where ambient RH keeps the slab at threshold limit.</p>
+                        <p><strong>When this doesn't work:</strong> Above 98% RH (free water, not just high RH). Visibly damp substrate. Active hydrostatic pressure (water rising through cracks). EpoCem manages vapor, not liquid water.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Path 3 — Switch to a vapor-tolerant floor system</h3>
+                        <p>If neither waiting nor priming closes the spec, switch the finish floor system to one engineered for high substrate moisture. PU-cement systems (Sikafloor PurCem, Ucrete, Flowfresh) typically tolerate up to 85% RH at the substrate; some vapor-permeable systems tolerate higher. The cost trade-off: PU-cement is 30-50% more expensive than epoxy SL at the line item, but eliminates the moisture mitigation cost.</p>
+                        <p><strong>When to specify this:</strong> Industrial projects where PU-cement is already on the table for thermal or chemical reasons. Cost analysis showing PU-cement + no mitigation is cheaper than epoxy SL + EpoCem mitigation.</p>
+                    </div>
+
+                    <h2>The four remediation methods in detail</h2>
+
+                    <h3>Method 1 — Surface penetrant moisture vapor reducer</h3>
+                    <p>Liquid penetrating reactive silicate solutions that react with calcium hydroxide in the cement matrix, reducing the slab's capillary porosity and slowing moisture migration. Marketed as "moisture vapor reducers" or "vapor mitigation systems." Effective in reducing F2170 readings by ~5-10 percentage points. Used when the substrate is close to threshold but not catastrophically high.</p>
+                    <p><strong>When to use:</strong> F2170 reading 78-85% RH (just above the 75% epoxy threshold). Cost-conscious projects where EpoCem at 3mm is over-spec.</p>
+
+                    <h3>Method 2 — EpoCem barrier coating (the workhorse)</h3>
+                    <p>1.5-3mm epoxy-cement hybrid coating applied directly over the high-moisture substrate. Acts as both vapor barrier and surface-renormalisation layer. The most common IL solution for ground-floor coastal projects requiring epoxy SL or microcement finish over a sub-threshold slab.</p>
+                    <p><strong>When to use:</strong> F2170 reading 80-95% RH. Schedule-driven projects. When finish system is already specified and cannot change.</p>
+
+                    <h3>Method 3 — Two-component PU primer</h3>
+                    <p>Liquid PU primer specifically formulated as a moisture-tolerant intermediate layer. Sika and Mapei both offer these in their resin floor primer ranges. Thinner than EpoCem (0.3-0.6 mm typical), lower cost, but lower moisture envelope.</p>
+                    <p><strong>When to use:</strong> F2170 reading 77-82% RH. When EpoCem build-up height is incompatible with door clearance or substrate level.</p>
+
+                    <h3>Method 4 — Engineered membrane system</h3>
+                    <p>Sheet membrane (similar to roofing membrane chemistry) installed mechanically between substrate and floor system. Used in extreme conditions or where the project demands belt-and-braces moisture defence. Significantly higher cost and labour than the above.</p>
+                    <p><strong>When to use:</strong> F2170 readings above 95% RH. Hydrostatic pressure suspected. High-stakes liability projects (pharmaceutical, premium hospitality) where moisture failure cannot be tolerated.</p>
+
+                    <h2>The IL coastal context — why this matters more here</h2>
+                    <p>Coastal IL projects (Tel Aviv, Herzliya, Netanya, Haifa, Ashdod) face elevated baseline ambient RH year-round. A slab installed in winter has had less drying time than a slab installed in mid-summer; ground-floor installations face below-slab moisture migration from coastal high water tables; legacy 1970s-80s apartments often have inadequate vapor barriers below the slab. The result: substrate F2170 readings on coastal IL retrofit projects are routinely 78-88% RH, above the standard epoxy SL threshold but below the EpoCem upper limit.</p>
+                    <p>For most coastal IL retrofit projects: budget for EpoCem (Method 2) in the floor scope from day one. Substrate moisture verification with F2170 is mandatory. If the reading comes back in the 78-95% RH band, the project executes the planned remediation. If the reading is in the 75-78% band, the project saves the EpoCem cost. Either way, the spec is prepared.</p>
+
+                    <h2>What to demand from the installer</h2>
+                    <p>The substrate moisture verification documentation should be in the warranty file. Specifically:</p>
+                    <ul>
+                        <li>Photographs of each F2170 probe in place with the timestamp visible</li>
+                        <li>Reading log per probe with location identification on the floor plan</li>
+                        <li>Sealed equilibration time documented (≥ 24h per ASTM F2170-19a)</li>
+                        <li>If readings exceeded threshold: remediation method specification, application date, cure time before subsequent layers</li>
+                        <li>Final readings after remediation (where applicable) confirming below-threshold status</li>
+                    </ul>
+                    <p>Without this documentation, any future moisture-related delamination claim is unenforceable.</p>
+
+                    <h2>Final read</h2>
+                    <p>F2170 above threshold is not a project failure — it is a remediation moment. Path 1 (wait) is cheapest but slowest. Path 2 (EpoCem) is the IL coastal workhorse. Path 3 (system switch) is correct when PU-cement is already justified by other parameters. The four remediation methods cover the spectrum from light (penetrant moisture reducer) to heavy (engineered membrane). Specify the right method for your reading, document the work, and the floor holds for the manufacturer's warranty period regardless of how wet the substrate was at install.</p>
+
+                    <p>Related: <a href="./substrate-moisture-testing.html">F2170 + F1869 moisture testing methods</a> · <a href="./substrate-repair-before-coating.html">Six categories of pre-coating repair</a> · <a href="./substrate-coastal-chloride-prep.html">Coastal chloride preparation (parallel coastal IL concern)</a> · <a href="./substrate-icri-csp-guide.html">ICRI CSP profile guide</a>.</p>
+
+                    <h2>Sources</h2>
+                    <ul>
+                        <li>ASTM F2170-19a — Standard Test Method for Determining Relative Humidity in Concrete Floor Slabs Using in situ Probes.</li>
+                        <li>ASTM F1869 — Standard Test Method for Measuring Moisture Vapor Emission Rate of Concrete Subfloor Using Anhydrous Calcium Chloride.</li>
+                        <li><a href="https://www.sika.com" target="_blank" rel="noopener">Sika EpoCem product range (moisture-mitigation primer)</a></li>
+                        <li>Ardex MC RAPID + MasterEmaco P 5000 — competing moisture-mitigation products.</li>
+                        <li>Concrete Polishing Council (CPC) substrate moisture guidance.</li>
+                        <li>IFTI moisture testing reference (https://ifti.com/astm-f2170-vs-f1869-which-moisture-test-fits-your-project/).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="en">
+        <div class="container">
+            <h2>F2170 Came Back Above Threshold?</h2>
+            <p>Send us the project, the reading, and the proposed finish system. We confirm which remediation path closes the spec without breaking the schedule or budget.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Get Remediation Plan</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-page" data-lang-block="ru" style="display:none">
+        <div class="article-hero">
+            <div class="container">
+                <a href="../blog.html" class="back-link">Назад в блог</a>
+                <span class="article-category">Подготовка основания</span>
+                <h1>Substrate moisture remediation: когда F2170 fails</h1>
+                <p class="article-meta">Май 2026 · 8 минут</p>
+                <div class="article-hero-wrapper">
+                    <img src="../images/concrete-decorative/old-grey.jpeg" alt="Бетон substrate moisture testing" class="article-hero-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <div class="container">
+                <div class="article-body">
+                    <p class="lead">ASTM F2170 in-situ RH probe reads выше coating threshold. Что теперь? Это самый частый project-blocking момент в IL flooring spec, особенно на coastal проектах и ground-floor installations над slab-on-grade. Проект имеет три пути: wait for natural drying (медленно), apply moisture-mitigation primer (быстро но с limits), switch to vapor-tolerant floor system (меняет всю спеку). Этот guide проходит decision matrix и четыре practical remediation methods.</p>
+
+                    <h2>Reading F2170 result first</h2>
+                    <p>По ASTM F2170-19a probe set на <strong>40% slab depth</strong> для slabs drying from one side (slab-on-grade с vapor retarder), или <strong>20% depth</strong> для slabs drying from both sides. Sample rate: 3 probes за first ~93 м² (1,000 sq ft) + 1 per additional 93 м². Holes должны equilibrate sealed минимум 24h до reading.</p>
+
+                    <table class="threshold-table">
+                        <thead>
+                            <tr>
+                                <th>Система</th>
+                                <th>Типичный F2170 RH limit</th>
+                                <th>Что happens above threshold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Эпокси SL (100%-solids)</strong></td><td class="signal-cell">≤ 75% RH</td><td>Delamination от osmotic pressure за 12-24 месяца</td></tr>
+                            <tr><td><strong>PU-cement</strong></td><td>≤ 85% RH</td><td>More tolerant; verify exact limit per manufacturer TDS</td></tr>
+                            <tr><td><strong>Микроцемент (цемент-полимер)</strong></td><td>≤ 75-80% RH</td><td>Efflorescence, hairline cracks, sealer hydrolysis</td></tr>
+                            <tr><td><strong>Vinyl flooring (adhesive)</strong></td><td>≤ 75% RH</td><td>Adhesive failure, bubbling под sheet vinyl</td></tr>
+                            <tr><td><strong>Sikafloor EpoCem (vapor-tolerant primer)</strong></td><td>Tolerates up to ~98% RH</td><td>Engineered для high-RH envelope</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Three-path решение</h2>
+
+                    <div class="method-card">
+                        <h3>Путь 1 — Wait for natural drying</h3>
+                        <p>Бетон высыхает приблизительно <strong>1 мм per day</strong> под ideal conditions (20°C, 50% RH ambient, no vapor barrier ниже). 150 мм slab с one-sided drying занимает roughly 100-150 days ambient cure для достижения типичного 75% RH threshold. Coastal IL summers (high humidity) extend это; зима slows further. Drying time — самая cheap remediation but the longest.</p>
+                        <p><strong>Когда specify:</strong> Greenfield construction без schedule pressure. Renovation projects с patient owners.</p>
+                        <p><strong>Когда это не работает:</strong> Renovation existing slabs. Coastal IL projects где ambient RH alone keeps slab above threshold. Schedule-driven hospitality.</p>
+                    </div>
+
+                    <div class="method-card signal">
+                        <h3>Путь 2 — Moisture-mitigation primer (practical ответ)</h3>
+                        <p>Наиболее частая professional remediation в IL practice. Apply epoxy-cement hybrid primer, который tolerates higher substrate moisture и acts as vapor barrier. Reference: <strong>Sika EpoCem</strong> (other manufacturers: Ardex MC RAPID, MasterEmaco P 5000). Applied at 1.5-3 мм, EpoCem accepts substrate F2170 readings up to ~98% RH while presenting properly low-moisture surface к finish floor coating.</p>
+                        <p><strong>Как работает:</strong> Эпокси-фракция acts как vapor-barrier film; цементная fraction maintains compatible coefficient thermal expansion с substrate.</p>
+                        <p><strong>Когда specify:</strong> Schedule-driven projects где natural drying unavailable. Coastal IL retrofits.</p>
+                        <p><strong>Когда не работает:</strong> Above 98% RH (free water). Visibly damp substrate. Active hydrostatic pressure.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Путь 3 — Switch to vapor-tolerant floor system</h3>
+                        <p>Если ни waiting ни priming не closes spec, switch finish floor system to engineered для high substrate moisture. PU-cement systems (Sikafloor PurCem, Ucrete, Flowfresh) tolerate up to 85% RH. Cost trade-off: PU-cement 30-50% дороже epoxy SL на line item, но eliminates moisture mitigation cost.</p>
+                    </div>
+
+                    <h2>Четыре remediation методов детально</h2>
+
+                    <h3>Метод 1 — Surface penetrant moisture vapor reducer</h3>
+                    <p>Liquid penetrating reactive silicate solutions reacting с calcium hydroxide. Effective в reducing F2170 readings на ~5-10 percentage points. Used когда substrate close to threshold but not catastrophically high.</p>
+                    <p><strong>When to use:</strong> F2170 reading 78-85% RH. Cost-conscious projects где EpoCem at 3mm over-spec.</p>
+
+                    <h3>Метод 2 — EpoCem barrier coating (workhorse)</h3>
+                    <p>1.5-3mm epoxy-cement hybrid coating applied directly over high-moisture substrate. Самое common IL solution для ground-floor coastal projects.</p>
+                    <p><strong>When to use:</strong> F2170 reading 80-95% RH. Schedule-driven projects. Когда finish system already specified.</p>
+
+                    <h3>Метод 3 — Two-component PU primer</h3>
+                    <p>Liquid PU primer specifically formulated как moisture-tolerant intermediate layer. Sika и Mapei оба offer. Thinner чем EpoCem (0.3-0.6 мм typical), lower cost, but lower moisture envelope.</p>
+                    <p><strong>When to use:</strong> F2170 reading 77-82% RH. Когда EpoCem build-up height incompatible с door clearance.</p>
+
+                    <h3>Метод 4 — Engineered membrane system</h3>
+                    <p>Sheet membrane installed mechanically between substrate и floor system. Significantly higher cost and labour than above.</p>
+                    <p><strong>When to use:</strong> F2170 readings above 95% RH. Hydrostatic pressure suspected. High-stakes liability projects.</p>
+
+                    <h2>IL coastal context — почему это matters более here</h2>
+                    <p>Coastal IL projects (Тель-Авив, Герцлия, Натания, Хайфа, Ашдод) face elevated baseline ambient RH year-round. Substrate F2170 readings на coastal IL retrofit projects routinely 78-88% RH — выше standard epoxy SL threshold но ниже EpoCem upper limit.</p>
+                    <p>Для большинства coastal IL retrofit projects: budget для EpoCem (Метод 2) в floor scope с day one. Substrate moisture verification с F2170 mandatory.</p>
+
+                    <h2>Что demand от installer</h2>
+                    <ul>
+                        <li>Photographs каждого F2170 probe in place с timestamp</li>
+                        <li>Reading log per probe с location identification на floor plan</li>
+                        <li>Sealed equilibration time documented (≥ 24h per ASTM F2170-19a)</li>
+                        <li>Если readings exceeded threshold: remediation method specification, application date, cure time</li>
+                        <li>Final readings after remediation (где применимо)</li>
+                    </ul>
+
+                    <h2>Финальный вывод</h2>
+                    <p>F2170 above threshold — не project failure, это remediation moment. Путь 1 (wait) cheapest but slowest. Путь 2 (EpoCem) — IL coastal workhorse. Путь 3 (system switch) correct когда PU-cement уже justified другими parameters. Четыре remediation methods cover spectrum от light (penetrant) до heavy (engineered membrane). Specify правильный method для своего reading, document работу, и пол держится manufacturer's warranty period независимо от того насколько wet substrate был at install.</p>
+
+                    <p>Связано: <a href="./substrate-moisture-testing.html">F2170 + F1869 moisture testing</a> · <a href="./substrate-repair-before-coating.html">6 категорий pre-coating repair</a> · <a href="./substrate-coastal-chloride-prep.html">Coastal chloride preparation</a> · <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a>.</p>
+
+                    <h2>Источники</h2>
+                    <ul>
+                        <li>ASTM F2170-19a — In-situ RH testing.</li>
+                        <li>ASTM F1869 — CaCl₂ MVER testing.</li>
+                        <li><a href="https://www.sika.com" target="_blank" rel="noopener">Sika EpoCem product range</a></li>
+                        <li>Ardex MC RAPID + MasterEmaco P 5000 — competing moisture-mitigation.</li>
+                        <li>Concrete Polishing Council (CPC) substrate moisture guidance.</li>
+                        <li>IFTI moisture testing reference.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="cta-section" data-lang-block="ru" style="display:none">
+        <div class="container">
+            <h2>F2170 came back above threshold?</h2>
+            <p>Пришли проект, reading и proposed finish system. Подтверждаем какой remediation path closes spec без breaking schedule или budget.</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="btn btn-outline-white">Получить remediation план</a>
+                <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
