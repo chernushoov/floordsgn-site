@@ -8,6 +8,10 @@
 /articles/floor-knowledge-index.html    /library.html   301
 /articles/floor-knowledge-index         /library.html   301
 
+# Studio entry — old selector retired, routes to the restored floor-room Studio (NARYAD 03 R8).
+/studio.html                            /floor-room.html   301
+/studio                                 /floor-room.html   301
+
 /materials/concrete      /floors/concrete       301
 /materials/epoxy         /floors/epoxy          301
 /materials/microtopping  /floors/microtopping   301
