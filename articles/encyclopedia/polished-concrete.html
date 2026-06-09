@@ -52,12 +52,15 @@
     </button>
 </header>
 <!-- partials:header:end -->
+<!--lib:crumb:start-->
+<nav class="lan lan-crumb" aria-label="breadcrumb"><a href="/library.html">Library</a><span>/</span><a href="/library.html">Encyclopedia</a><span>/</span><b>Polished Concrete: Mechanical Polishing System and Spec</b></nav>
+<!--lib:crumb:end-->
     <div class="mobile-menu" id="mobileMenu"><ul><li><a href="../../index.html" data-i18n="nav_home">Home</a></li><li><a href="../../floors.html" data-i18n="nav_floors">Floors</a></li><li><a href="../../tools.html" data-i18n="nav_tools">Tools</a></li><li><a href="../../projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="../../about.html" data-i18n="nav_about">About Us</a></li><li><a href="/library.html" data-i18n="nav_library">Library</a></li><li><a href="../../contact.html" data-i18n="nav_contact">Contact Us</a></li></ul></div>
 
     <article class="article-page" data-lang-block="en">
         <div class="article-hero">
             <div class="container">
-                <a href="../../blog.html" class="back-link">Back to Blog</a>
+                <a class="back-link" href="/library.html">Back to Library</a>
                 <span class="article-category">Encyclopedia · Polished Concrete</span>
                 <h1>Polished Concrete — Mechanical Polishing System</h1>
                 <p class="article-meta">May 2026 · 9 min read</p>
@@ -221,7 +224,7 @@
     <article class="article-page" data-lang-block="ru" style="display:none">
         <div class="article-hero">
             <div class="container">
-                <a href="../../blog.html" class="back-link">Назад в блог</a>
+                <a class="back-link" href="/library.html">Back to Library</a>
                 <span class="article-category">Энциклопедия · Полированный бетон</span>
                 <h1>Полированный бетон — система механической полировки</h1>
                 <p class="article-meta">Май 2026 · 9 минут</p>
@@ -359,5 +362,33 @@
     </section>
 
     <script src="../../script.js"></script>
+<!--lib:foot:start-->
+<style id="lib-art-css">
+.lan{font-family:'Montserrat',sans-serif}
+.lan-crumb{max-width:1100px;margin:0 auto;padding:16px 24px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:500 12.5px/1.4 'Montserrat',sans-serif;color:var(--steel)}
+.lan-crumb a{color:var(--steel);text-decoration:none}.lan-crumb a:hover{color:var(--carbon)}
+.lan-crumb b{color:var(--carbon);font-weight:600}.lan-crumb span{color:#c9c5bc}
+.lan-foot{max-width:1100px;margin:48px auto 0;padding:0 24px}
+.lan-next{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1px solid var(--signal);border-radius:14px;text-decoration:none;color:var(--carbon);margin:0 0 30px;background:#fff}
+.lan-next:hover{box-shadow:0 10px 26px rgba(200,107,60,.16)}
+.lan-next__k{font:600 11px/1 'Montserrat';letter-spacing:.08em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.lan-next__t{font:600 15px/1.3 'Montserrat';color:var(--carbon)}.lan-next__a{margin-left:auto;color:var(--signal);font-size:20px}
+.lan-h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;line-height:1.05;margin:0 0 18px;color:var(--carbon)}
+.lan-rel{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 44px}
+.lan-card{display:flex;flex-direction:column;background:#fff;border:1px solid #e4e1d9;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:.18s}
+.lan-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(21,21,21,.09)}
+.lan-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--concrete)}
+.lan-card__b{padding:13px 14px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.lan-card__t{font:600 14px/1.3 'Montserrat';color:var(--carbon)}
+.lan-card__m{font:500 11.5px/1 'Montserrat';color:var(--steel);margin-top:auto}
+.lan-cta{background:var(--concrete);border:1px solid #e4e1d9;border-radius:18px;padding:34px;text-align:center;margin:0 0 50px}
+.lan-cta__h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.08;margin:0 0 16px;color:var(--carbon)}
+.lan-cta__btn{display:inline-flex;align-items:center;gap:9px;background:var(--carbon);color:#fff;text-decoration:none;padding:14px 28px;border-radius:980px;font:600 14px/1 'Montserrat'}
+.lan-cta__btn:hover{background:var(--signal)}
+@media(max-width:860px){.lan-rel{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.lan-rel{grid-template-columns:1fr}}
+</style>
+<section class="lan lan-foot"><h2 class="lan-h">Related articles</h2><div class="lan-rel"><a class="lan-card" href="/articles/floor-terminology-glossary.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Floor Terminology Glossary: A-Z Definitions for Resin, Decorative, and Industrial Floors</div><div class="lan-card__m">11 min</div></div></a><a class="lan-card" href="/articles/resources/standards-glossary.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Flooring Standards Glossary — ICRI CSP, FeRFA Type, EN 13813, ASTM</div><div class="lan-card__m">11 min</div></div></a><a class="lan-card" href="/articles/encyclopedia/microcement-binder-chemistry.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Microcement Binder Chemistry: Four Families Compared</div><div class="lan-card__m">16 min</div></div></a><a class="lan-card" href="/articles/encyclopedia/microcement-decision-tree.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Microcement Decision Tree: Six Questions to Your Brand and SKU</div><div class="lan-card__m">9 min</div></div></a><a class="lan-card" href="/articles/encyclopedia/microcement-wet-rooms.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Microcement in Wet Rooms: Bathroom and Shower Spec Sequence</div><div class="lan-card__m">12 min</div></div></a><a class="lan-card" href="/articles/encyclopedia/microcement-known-issues.html"><img src="images/terrazzo/interrior-222945.jpg" alt="" loading="lazy"><div class="lan-card__b"><div class="lan-card__t">Microcement Known Issues: Nine Failure Modes Explained</div><div class="lan-card__m">16 min</div></div></a></div><div class="lan-cta"><h2 class="lan-cta__h">A curated reading path for your project in 48h</h2><a class="lan-cta__btn" href="/contact.html#intent=reading-path&source=library&persona=Designer">Get the set<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></section>
+<!--lib:foot:end-->
 </body>
 </html>
