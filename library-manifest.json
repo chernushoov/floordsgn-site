@@ -1,0 +1,1687 @@
+{
+ "generated": "build-library-manifest",
+ "count": 106,
+ "pillars": {
+  "1": {
+   "key": "decision",
+   "en": "Decision & Selection",
+   "ru": "Выбор системы",
+   "cover": "images/terrazzo/interrior-222943.jpg"
+  },
+  "2": {
+   "key": "tender",
+   "en": "Tender & Documentation",
+   "ru": "Тендер и документация",
+   "cover": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg"
+  },
+  "3": {
+   "key": "standards",
+   "en": "Standards & Compliance",
+   "ru": "Стандарты и нормы",
+   "cover": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg"
+  },
+  "4": {
+   "key": "substrate",
+   "en": "Substrate & Install",
+   "ru": "Основание и монтаж",
+   "cover": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg"
+  },
+  "5": {
+   "key": "usecase",
+   "en": "Use-Case Specs",
+   "ru": "По объектам",
+   "cover": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg"
+  },
+  "6": {
+   "key": "comparisons",
+   "en": "Comparisons",
+   "ru": "Сравнения",
+   "cover": "images/terrazzo/interrior-222944.jpg"
+  },
+  "7": {
+   "key": "encyclopedia",
+   "en": "Encyclopedia",
+   "ru": "Энциклопедия",
+   "cover": "images/terrazzo/interrior-222945.jpg"
+  },
+  "8": {
+   "key": "brands",
+   "en": "Brands & Channel",
+   "ru": "Бренды и каналы",
+   "cover": "images/terrazzo/interrior-266999.jpg"
+  }
+ },
+ "readingPaths": {
+  "Owner": [
+   "role-targeted-floor-faq",
+   "floor-system-selection-by-use-case",
+   "floor-procurement-timeline",
+   "10-most-expensive-floor-mistakes-il"
+  ],
+  "Designer": [
+   "comparisons/microtopping-vs-polished-concrete",
+   "comparisons/epoxy-terrazzo-vs-cement-terrazzo",
+   "brands/index",
+   "floor-tender-boq-template",
+   "architect-pretender-checklist"
+  ],
+  "Contractor": [
+   "floor-procurement-timeline",
+   "substrate-icri-csp-guide",
+   "substrate-moisture-remediation",
+   "substrate-mechanical-prep",
+   "floor-handover-inspection-checklist",
+   "floor-warranty-types-explained"
+  ],
+  "Builder": [
+   "floor-compliance-verification-checklist",
+   "israeli-floor-standards-explained",
+   "use-case-hospital-floor-spec",
+   "use-case-commercial-kitchen-floor-spec",
+   "use-case-brewery-floor-spec",
+   "floor-tender-boq-template"
+  ]
+ },
+ "articles": [
+  {
+   "id": "floor-use-cases",
+   "slug": "floor-use-cases",
+   "url": "/articles/floor-use-cases.html",
+   "lang": "en",
+   "title": "15 Israeli Use Cases: Recommended Floor Systems and Alternatives",
+   "gist": "Penthouse, coastal villa, office, kitchen, food production, cold storage, pharma, hospital, gym, showroom, port warehouse, bathroom, retail fit-out —…",
+   "readMin": 22,
+   "photo": "images/og-preview.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "2026-trends",
+   "slug": "2026-trends",
+   "url": "/articles/2026-trends.html",
+   "lang": "en",
+   "title": "2026 Industrial Flooring Trends",
+   "gist": "Explore 2026 industrial and commercial flooring trends: sustainability, biophilic design, smart floors, and performance innovations shaping the industry.",
+   "readMin": 8,
+   "photo": "images/og-preview.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "floor-decision-tree-5q",
+   "slug": "floor-decision-tree-5q",
+   "url": "/articles/floor-decision-tree-5q.html",
+   "lang": "en",
+   "title": "5 Questions to Choose Your Floor",
+   "gist": "Five questions in the right order narrow any floor specification to the right system. Use case, traffic, wet exposure, thermal range, aesthetic priority.…",
+   "readMin": 8,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-anti-patterns",
+   "slug": "floor-anti-patterns",
+   "url": "/articles/floor-anti-patterns.html",
+   "lang": "en",
+   "title": "Five Expensive Mis-Specifications: What NOT to Do",
+   "gist": "The five most common floor-system spec errors in Israeli projects and the audit failures, lawsuits, or re-coats they cause. Why epoxy fails in food, why…",
+   "readMin": 15,
+   "photo": "images/og-preview.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-decision-tree",
+   "slug": "floor-decision-tree",
+   "url": "/articles/floor-decision-tree.html",
+   "lang": "en",
+   "title": "Five Questions to Your Floor: Decision Tree (Text Version)",
+   "gist": "Five questions in order narrow any seamless-floor specification to one or two products. Use case, substrate-and-downtime, load class,…",
+   "readMin": 11,
+   "photo": "images/og-preview.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-procurement-timeline",
+   "slug": "floor-procurement-timeline",
+   "url": "/articles/floor-procurement-timeline.html",
+   "lang": "en",
+   "title": "Floor Procurement Timeline: From Brief to Handover (8 Phases)",
+   "gist": "An 8-phase procurement timeline for resin floor projects: brief → system selection → tender → applicator selection → substrate prep → install → cure +…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner",
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-restoration-vs-replace-decision",
+   "slug": "floor-restoration-vs-replace-decision",
+   "url": "/articles/floor-restoration-vs-replace-decision.html",
+   "lang": "en",
+   "title": "Floor Restoration vs Replacement: The Year 5+ Decision Framework",
+   "gist": "The decision framework for restoration vs full replacement of an existing floor system at year 5 to year 25. Assessment protocol, repair-or-replace decision…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-system-selection-by-use-case",
+   "slug": "floor-system-selection-by-use-case",
+   "url": "/articles/floor-system-selection-by-use-case.html",
+   "lang": "en",
+   "title": "Floor System Selection by Use Case: Decision Tree (Industrial / Hospitality / Residential / Sport)",
+   "gist": "Decision tree for selecting a floor system class by use case. Industrial, hospitality, residential, public, sport, and lab use cases mapped to the correct…",
+   "readMin": 12,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-frequently-asked-questions",
+   "slug": "floor-frequently-asked-questions",
+   "url": "/articles/floor-frequently-asked-questions.html",
+   "lang": "en",
+   "title": "Floor.DSGN Frequently Asked Questions — Top 30 Floor Questions Answered",
+   "gist": "The 30 most common questions asked about floor systems in Israel — system selection, cost, downtime, warranty, certification, restoration, environmental…",
+   "readMin": 13,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-decision-guide",
+   "slug": "floor-decision-guide",
+   "url": "/articles/floor-decision-guide.html",
+   "lang": "en",
+   "title": "How to Choose a Floor System: 11 Criteria in Priority Order",
+   "gist": "The eleven engineering, economic, and regulatory criteria for picking the right floor system. Substrate, use case, loads, downtime, aesthetics, slip class,…",
+   "readMin": 21,
+   "photo": "images/og-preview.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "how-to-evaluate-a-floor-installer",
+   "slug": "how-to-evaluate-a-floor-installer",
+   "url": "/articles/how-to-evaluate-a-floor-installer.html",
+   "lang": "en",
+   "title": "How to Evaluate a Floor Installer: Procurement Guide",
+   "gist": "Floor installer quality drives 60% of post-install outcomes. This procurement guide walks the eight questions you should ask before hiring an applicator —…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "role-targeted-floor-faq",
+   "slug": "role-targeted-floor-faq",
+   "url": "/articles/role-targeted-floor-faq.html",
+   "lang": "en",
+   "title": "Role-Targeted Floor FAQ — Designer / Architect / Restaurant / Warehouse / Private",
+   "gist": "Floor system FAQ organised by your role: interior designer, architect, restaurant owner, warehouse manager, private client. Top four objections per role…",
+   "readMin": 23,
+   "photo": "images/terrazzo/interrior-222943.jpg",
+   "pillar": 1,
+   "personas": [
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "10-most-expensive-floor-mistakes-il",
+   "slug": "10-most-expensive-floor-mistakes-il",
+   "url": "/articles/10-most-expensive-floor-mistakes-il.html",
+   "lang": "en",
+   "title": "10 Most Expensive Floor Mistakes in Israel: Real Cost Analysis",
+   "gist": "The ten most expensive floor procurement mistakes encountered in Israeli projects, with anonymised case-study costs from real failures: substrate prep…",
+   "readMin": 12,
+   "photo": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder",
+    "Owner"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-handover-inspection-checklist",
+   "slug": "floor-handover-inspection-checklist",
+   "url": "/articles/floor-handover-inspection-checklist.html",
+   "lang": "en",
+   "title": "Floor Handover Inspection Checklist — What to Verify Before Final Payment",
+   "gist": "Floor handover inspection checklist for owners: visual, dimensional, documentation, performance, and snag-list verification before releasing final payment.…",
+   "readMin": 10,
+   "photo": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder",
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-tender-boq-template",
+   "slug": "floor-tender-boq-template",
+   "url": "/articles/floor-tender-boq-template.html",
+   "lang": "en",
+   "title": "Floor Tender BOQ Template: Industrial Resin Floor Bill of Quantities",
+   "gist": "A working bill of quantities template for an industrial resin floor tender. Eleven line items covering substrate prep, primer, body coat, broadcast…",
+   "readMin": 11,
+   "photo": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-warranty-types-explained",
+   "slug": "floor-warranty-types-explained",
+   "url": "/articles/floor-warranty-types-explained.html",
+   "lang": "en",
+   "title": "Floor Warranty Types Explained: Manufacturer vs Applicator vs Owner Liability",
+   "gist": "Three warranties run in parallel on every floor project. Manufacturer warrants the product. Certified applicator warrants the installation. Owner carries…",
+   "readMin": 13,
+   "photo": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder",
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "how-to-read-a-floor-tds",
+   "slug": "how-to-read-a-floor-tds",
+   "url": "/articles/how-to-read-a-floor-tds.html",
+   "lang": "en",
+   "title": "How to Read a Floor TDS: Manufacturer Spec Sheet Decoder",
+   "gist": "Every floor specification decision should reference the manufacturer's TDS. This guide decodes the ten sections of a typical TDS — composition, mixing…",
+   "readMin": 10,
+   "photo": "images/rubber/epoxy-resin-floor-preparation-first-layer-inside-building.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "architect-pretender-checklist",
+   "slug": "architect-pretender-checklist",
+   "url": "/articles/architect-pretender-checklist.html",
+   "lang": "ru",
+   "title": "Чеклист для архитектора: что должно быть в тендере на пол",
+   "gist": "40-пунктовый pre-tender checklist для архитектора: подложка, нагрузки, R-class, химостойкость, downtime, гарантия, прибрежные хлориды, HACCP, спецификация.…",
+   "readMin": 8,
+   "photo": "images/og-preview.jpg",
+   "pillar": 2,
+   "personas": [
+    "Designer",
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "adhesion-pull-off-test-guide",
+   "slug": "adhesion-pull-off-test-guide",
+   "url": "/articles/adhesion-pull-off-test-guide.html",
+   "lang": "en",
+   "title": "Adhesion Pull-Off Test Guide — EN 1542 + ASTM D7234 for Resin Floors",
+   "gist": "Adhesion pull-off testing protocol for resin floor projects. EN 1542 and ASTM D7234 methodology, threshold values, failure-mode interpretation (cohesive vs…",
+   "readMin": 11,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-accessibility-il-1004-explained",
+   "slug": "floor-accessibility-il-1004-explained",
+   "url": "/articles/floor-accessibility-il-1004-explained.html",
+   "lang": "en",
+   "title": "Floor Accessibility ת״י 1004: IL Building Accessibility Floor-Surface Specification",
+   "gist": "IL building accessibility standard ת״י 1004 floor-surface specification: slip resistance threshold, level transition limits, tactile warning detail, colour…",
+   "readMin": 12,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-compliance-verification-checklist",
+   "slug": "floor-compliance-verification-checklist",
+   "url": "/articles/floor-compliance-verification-checklist.html",
+   "lang": "en",
+   "title": "Floor Compliance Verification Checklist: Fire + Slip + Hygiene + ESD",
+   "gist": "Floor compliance verification checklist for safety, fire, hygiene, and ESD certifications. The eight certifications every IL tender-grade floor spec should…",
+   "readMin": 11,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-slip-class-DIN-51130-explained",
+   "slug": "floor-slip-class-DIN-51130-explained",
+   "url": "/articles/floor-slip-class-DIN-51130-explained.html",
+   "lang": "en",
+   "title": "Floor Slip Class Explained — DIN 51130 R-Class + DIN 51097 + EN 16165 PTV",
+   "gist": "Floor slip resistance classifications explained: DIN 51130 R-class (R9 to R13) for oil-wet workplaces, DIN 51097 A/B/C for barefoot wet areas, EN 16165 PTV…",
+   "readMin": 10,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "israeli-floor-standards-explained",
+   "slug": "israeli-floor-standards-explained",
+   "url": "/articles/israeli-floor-standards-explained.html",
+   "lang": "en",
+   "title": "Israeli Floor Standards Explained — ת״י 1923 + ת״י 5566 + ת״י 466 + ת״י 1004",
+   "gist": "Israeli national standards for floor systems: ת״י 1923 slip resistance, ת״י 5566 sport floor, ת״י 466 fire reaction, ת״י 1004 building accessibility floor…",
+   "readMin": 11,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "sport-hall-floor-compliance",
+   "slug": "sport-hall-floor-compliance",
+   "url": "/articles/sport-hall-floor-compliance.html",
+   "lang": "en",
+   "title": "Sport Hall Floor Compliance — EN 14904 + ת״י 5566 Specification",
+   "gist": "Sport hall floor compliance specification: EN 14904 shock absorption + ball-bounce + friction + ת״י 5566 Israeli inheritance + Ministry of Education tender…",
+   "readMin": 12,
+   "photo": "images/microtopping/kitchen-with-sink-window-with-view-mountains-outside.jpg",
+   "pillar": 3,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "substrate-coastal-chloride-prep",
+   "slug": "substrate-coastal-chloride-prep",
+   "url": "/articles/substrate-coastal-chloride-prep.html",
+   "lang": "en",
+   "title": "Coastal Concrete Preparation: Chlorides, Carbonation, Rebar Corrosion",
+   "gist": "Israeli coastal projects face chloride-driven concrete degradation invisible from the surface. EN 14629 chloride testing, Sika FerroGard migrating…",
+   "readMin": 10,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "concrete-crack-repair",
+   "slug": "concrete-crack-repair",
+   "url": "/articles/concrete-crack-repair.html",
+   "lang": "ru",
+   "title": "Concrete Crack Repair Methods",
+   "gist": "Complete guide to concrete crack repair before coating application: crack types, repair methods, and when to use each technique.",
+   "readMin": 9,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "substrate-repair-before-coating",
+   "slug": "substrate-repair-before-coating",
+   "url": "/articles/substrate-repair-before-coating.html",
+   "lang": "en",
+   "title": "Concrete Repair Before Coating: Cracks, Spalls, Hollow Areas",
+   "gist": "Six categories of substrate damage that must be repaired before resin or microcement application. Crack injection (Sikadur-52, SikaFix HH), spall patching…",
+   "readMin": 11,
+   "photo": "images/encyclopedia/enc-04-concrete-repair.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "expansion-joints-resin-floors",
+   "slug": "expansion-joints-resin-floors",
+   "url": "/articles/expansion-joints-resin-floors.html",
+   "lang": "en",
+   "title": "Expansion Joints in Resin Floors: Substrate Joint Replication + Sealant Detail",
+   "gist": "Expansion joints in resin floor design — why substrate joints must be replicated, sealant chemistry per system family, perimeter joint requirements, joint…",
+   "readMin": 11,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-care-by-system-type",
+   "slug": "floor-care-by-system-type",
+   "url": "/articles/floor-care-by-system-type.html",
+   "lang": "en",
+   "title": "Floor Care by System Type: Microtopping, Polished Concrete, Epoxy, PU-Cement, Terrazzo",
+   "gist": "Daily, weekly, monthly, and annual floor care for each system type. Microtopping needs neutral-pH and annual reseal; polished concrete needs lithium…",
+   "readMin": 9,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-finishes-for-underfloor-heating",
+   "slug": "floor-finishes-for-underfloor-heating",
+   "url": "/articles/floor-finishes-for-underfloor-heating.html",
+   "lang": "en",
+   "title": "Floor Finishes for Underfloor Heating: Compatibility by System Type",
+   "gist": "Underfloor heating compatibility for resin and decorative floor systems: microtopping, epoxy SL, PU-cement, polished concrete, terrazzo. Thermal…",
+   "readMin": 11,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "substrate-icri-csp-guide",
+   "slug": "substrate-icri-csp-guide",
+   "url": "/articles/substrate-icri-csp-guide.html",
+   "lang": "en",
+   "title": "ICRI CSP 1–10: Which Concrete Surface Profile for Which Coating",
+   "gist": "The ICRI 310.2R-2013 surface profile standard decides whether your epoxy or polyurethane floor system is warrantied or void. CSP 1 to CSP 10 explained —…",
+   "readMin": 14,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "icri-csp-surface-profile-guide",
+   "slug": "icri-csp-surface-profile-guide",
+   "url": "/articles/icri-csp-surface-profile-guide.html",
+   "lang": "en",
+   "title": "ICRI CSP Surface Profile Guide — CSP 1–10 Substrate Preparation for Resin Floors",
+   "gist": "ICRI Concrete Surface Profile (CSP 1-10) guide for resin floor substrate preparation. The 10-step profile scale, method-to-CSP mapping (grinding, shot…",
+   "readMin": 10,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "industrial-cleaning",
+   "slug": "industrial-cleaning",
+   "url": "/articles/industrial-cleaning.html",
+   "lang": "en",
+   "title": "Industrial Floor Cleaning Protocols",
+   "gist": "Complete guide to industrial floor cleaning: correct chemicals and methods for epoxy, polyurethane, terrazzo, and concrete floors.",
+   "readMin": 6,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "substrate-mechanical-prep",
+   "slug": "substrate-mechanical-prep",
+   "url": "/articles/substrate-mechanical-prep.html",
+   "lang": "en",
+   "title": "Mechanical Substrate Preparation: Shot Blast, Diamond Grind, Scarification",
+   "gist": "The six mechanical methods that decide whether your epoxy or polyurethane floor will hold for 15 years or fail in 18 months. Shot blasting, captive…",
+   "readMin": 15,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "substrate-pull-off-test",
+   "slug": "substrate-pull-off-test",
+   "url": "/articles/substrate-pull-off-test.html",
+   "lang": "en",
+   "title": "Pull-Off Adhesion Test: ASTM D7234 and EN 1542 for Floor Coatings",
+   "gist": "The pull-off test is the only quantitative way to prove your prepared concrete will hold a coating. ASTM D7234 and EN 1542 procedures, acceptance limits per…",
+   "readMin": 13,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "self-leveling-screeds",
+   "slug": "self-leveling-screeds",
+   "url": "/articles/self-leveling-screeds.html",
+   "lang": "ru",
+   "title": "Self-Leveling Screeds: Deep Dive",
+   "gist": "Complete technical guide to self-leveling screeds: binder types, application methods, achieving perfect flatness, and common problems solved.",
+   "readMin": 8,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "substrate-defects-handbook",
+   "slug": "substrate-defects-handbook",
+   "url": "/articles/substrate-defects-handbook.html",
+   "lang": "en",
+   "title": "Six Concrete Defects That Kill Floor Coatings — and How to Handle Them",
+   "gist": "Laitance, curing residue, oil, hollow areas, efflorescence, exposed rebar — the six concrete defects that destroy coating adhesion if you don't catch them…",
+   "readMin": 15,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "substrate-moisture-remediation",
+   "slug": "substrate-moisture-remediation",
+   "url": "/articles/substrate-moisture-remediation.html",
+   "lang": "en",
+   "title": "Substrate Moisture Remediation: When ASTM F2170 Fails",
+   "gist": "When ASTM F2170 in-situ RH testing returns above-threshold readings, the floor specification has three paths: wait for natural drying, apply…",
+   "readMin": 11,
+   "photo": "images/rubber/construction-worker-applying-grey-epoxy-resin-industrial-hall.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "substrate-moisture-testing",
+   "slug": "substrate-moisture-testing",
+   "url": "/articles/substrate-moisture-testing.html",
+   "lang": "en",
+   "title": "Substrate Moisture Testing: Methods and Limits",
+   "gist": "Learn why 90% of coating failures trace back to moisture. Complete guide to concrete moisture testing methods, acceptable limits, and mitigation strategies.",
+   "readMin": 8,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "when-to-recoat",
+   "slug": "when-to-recoat",
+   "url": "/articles/when-to-recoat.html",
+   "lang": "ru",
+   "title": "When to Recoat Your Floor",
+   "gist": "Signs your industrial floor needs attention: wear indicators, testing methods, and decision criteria for recoating vs replacement.",
+   "readMin": 8,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "warm-floor-compatibility",
+   "slug": "warm-floor-compatibility",
+   "url": "/articles/warm-floor-compatibility.html",
+   "lang": "ru",
+   "title": "Тёплый пол под эпокси, терраццо, микротопинг — совместимость",
+   "gist": "Тёплый пол водяной и электрический под бесшовные полы Floor.DSGN: эпокси, терраццо, микротопинг, бетон. Что совместимо, какие ограничения по температуре,…",
+   "readMin": 5,
+   "photo": "images/og-preview.jpg",
+   "pillar": 4,
+   "personas": [
+    "Contractor"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "antimicrobial-hygiene-floor-systems",
+   "slug": "antimicrobial-hygiene-floor-systems",
+   "url": "/articles/antimicrobial-hygiene-floor-systems.html",
+   "lang": "en",
+   "title": "Antimicrobial Hygiene Floor Systems: ISO 22196 + EN 14041 Specification",
+   "gist": "Antimicrobial and hygiene-grade floor specification for healthcare, food production, and HACCP environments: ISO 22196 testing methodology, antimicrobial…",
+   "readMin": 12,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "use-case-brewery-floor-spec",
+   "slug": "use-case-brewery-floor-spec",
+   "url": "/articles/use-case-brewery-floor-spec.html",
+   "lang": "en",
+   "title": "Brewery Floor Specification: Use Case Deep Dive",
+   "gist": "Brewery floor specification is one of the most demanding floor environments in industrial flooring. Hot wash-down at 95°C, organic acid spills, foot…",
+   "readMin": 10,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "case-study-tel-aviv-boutique-hotel-renovation",
+   "slug": "case-study-tel-aviv-boutique-hotel-renovation",
+   "url": "/articles/case-study-tel-aviv-boutique-hotel-renovation.html",
+   "lang": "en",
+   "title": "Case Study: Tel Aviv Boutique Hotel Floor Renovation",
+   "gist": "Case study format demonstration — Tel Aviv boutique hotel floor renovation across lobby, corridors, bathrooms, and back-of-house. Multi-system spec…",
+   "readMin": 12,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "use-case-commercial-kitchen-floor-spec",
+   "slug": "use-case-commercial-kitchen-floor-spec",
+   "url": "/articles/use-case-commercial-kitchen-floor-spec.html",
+   "lang": "en",
+   "title": "Commercial Kitchen Floor Specification",
+   "gist": "Commercial kitchen floor specification — slip-fall liability, hot oil spills, daily wash-down, HACCP audit. Safety vinyl (Altro Stronghold) vs PU-cement vs…",
+   "readMin": 9,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "esd-static-dissipative-floor-systems",
+   "slug": "esd-static-dissipative-floor-systems",
+   "url": "/articles/esd-static-dissipative-floor-systems.html",
+   "lang": "en",
+   "title": "ESD + Static Dissipative Floor Systems: IEC 61340-5-1 Specification",
+   "gist": "ESD and static dissipative floor specification for electronics manufacturing, operating theatres, fuel handling, and explosive atmospheres: IEC 61340-5-1…",
+   "readMin": 11,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-coastal-salt-air-environment",
+   "slug": "floor-systems-coastal-salt-air-environment",
+   "url": "/articles/floor-systems-coastal-salt-air-environment.html",
+   "lang": "en",
+   "title": "Floor Systems for Coastal + Salt-Air Environment: IL Mediterranean Spec",
+   "gist": "Floor system selection for IL Mediterranean coastal environment: chloride attack on concrete substrate, UV degradation, salt-spray corrosion, hot-humid…",
+   "readMin": 12,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-for-cold-stores-freezers",
+   "slug": "floor-systems-for-cold-stores-freezers",
+   "url": "/articles/floor-systems-for-cold-stores-freezers.html",
+   "lang": "en",
+   "title": "Floor Systems for Cold Stores, Freezers, and Blast Chillers",
+   "gist": "Floor system selection for cold storage facilities: chilled (+2 to +8°C), frozen (-18 to -25°C), deep-frozen (-40°C), blast chiller cycling, and floor…",
+   "readMin": 11,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-dance-fitness-studios",
+   "slug": "floor-systems-dance-fitness-studios",
+   "url": "/articles/floor-systems-dance-fitness-studios.html",
+   "lang": "en",
+   "title": "Floor Systems for Dance Studios + Fitness Facilities",
+   "gist": "Floor system selection for dance studios, fitness facilities, yoga studios, Pilates studios, martial arts dojos, CrossFit boxes. Shock absorption, slip…",
+   "readMin": 11,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-high-humidity-environments",
+   "slug": "floor-systems-high-humidity-environments",
+   "url": "/articles/floor-systems-high-humidity-environments.html",
+   "lang": "en",
+   "title": "Floor Systems for High-Humidity Environments — Brewery, Pool, Food Process",
+   "gist": "Floor system selection for high-humidity indoor environments: brewery, indoor pool hall, food processing, laundry, greenhouse, sauna anteroom. Substrate…",
+   "readMin": 13,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-outdoor-terrace-pool-deck",
+   "slug": "floor-systems-outdoor-terrace-pool-deck",
+   "url": "/articles/floor-systems-outdoor-terrace-pool-deck.html",
+   "lang": "en",
+   "title": "Floor Systems for Outdoor Terrace + Pool Deck — IL Climate Specification",
+   "gist": "Floor system selection for outdoor terraces, pool decks, and rooftop floors in Israeli Mediterranean climate: UV stability, thermal expansion, freeze-thaw…",
+   "readMin": 13,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "floor-systems-retail-flagship",
+   "slug": "floor-systems-retail-flagship",
+   "url": "/articles/floor-systems-retail-flagship.html",
+   "lang": "en",
+   "title": "Floor Systems for Retail Flagship Stores",
+   "gist": "Floor system selection for retail flagship stores in Israel: brand-aesthetic visual continuity, traffic flow load class, fit-out cycle compatibility,…",
+   "readMin": 11,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "use-case-hospital-floor-spec",
+   "slug": "use-case-hospital-floor-spec",
+   "url": "/articles/use-case-hospital-floor-spec.html",
+   "lang": "en",
+   "title": "Hospital Floor Specification: Wards, Operating Theatres, Labs",
+   "gist": "Hospital floor specification across patient wards, operating theatres, wet clinical zones, labs. Safety vinyl (Altro), pharmaceutical-grade resin, ESD…",
+   "readMin": 11,
+   "photo": "images/terrazzo/1671671129_kalix-club-p-tekstura-terratstso-krasivo-29.jpg",
+   "pillar": 5,
+   "personas": [
+    "Builder"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/altro-vs-polyflor",
+   "slug": "altro-vs-polyflor",
+   "url": "/articles/comparisons/altro-vs-polyflor.html",
+   "lang": "en",
+   "title": "Altro vs Polyflor: UK Safety Vinyl Head-to-Head",
+   "gist": "Altro Stronghold 30 vs Polyflor Polysafe Apex 55 — the two UK safety vinyl brands compared. Lifetime PTV warranty vs Polysafe range depth. Where Altro's…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/concrete-densifier-lithium-vs-sodium-vs-potassium",
+   "slug": "concrete-densifier-lithium-vs-sodium-vs-potassium",
+   "url": "/articles/comparisons/concrete-densifier-lithium-vs-sodium-vs-potassium.html",
+   "lang": "en",
+   "title": "Concrete Densifier: Lithium vs Sodium vs Potassium Silicate",
+   "gist": "Concrete densifier choice drives the visual character and durability of polished concrete. Lithium silicate (Prosoco Consolideck LS premium), sodium…",
+   "readMin": 8,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/epoxy-sl-vs-pu-cement-vs-mma",
+   "slug": "epoxy-sl-vs-pu-cement-vs-mma",
+   "url": "/articles/comparisons/epoxy-sl-vs-pu-cement-vs-mma.html",
+   "lang": "en",
+   "title": "Epoxy SL vs PU-Cement vs MMA: Choosing the Resin Family",
+   "gist": "Three resin floor families compared at the system level: epoxy self-levelling (Type 5), PU-cement (Type 6-8), MMA fast-cure (Type 3-5). When to spec which,…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/epoxy-terrazzo-vs-cement-terrazzo",
+   "slug": "epoxy-terrazzo-vs-cement-terrazzo",
+   "url": "/articles/comparisons/epoxy-terrazzo-vs-cement-terrazzo.html",
+   "lang": "en",
+   "title": "Epoxy Terrazzo vs Cement Terrazzo: The Heritage-or-Modern Decision",
+   "gist": "Epoxy terrazzo vs cement terrazzo for premium decorative floors: chemistry, aggregate range, thickness, installation cycle, restoration intervals, aesthetic…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "epoxy-vs-polyurethane",
+   "slug": "epoxy-vs-polyurethane",
+   "url": "/articles/epoxy-vs-polyurethane.html",
+   "lang": "en",
+   "title": "Epoxy vs. Polyurethane: Complete Technical Comparison",
+   "gist": "Comprehensive analysis of epoxy vs polyurethane flooring: chemical resistance, mechanical properties, UV stability, and lifecycle costs for industrial…",
+   "readMin": 7,
+   "photo": "images/og-preview.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "comparisons/microcement-brands-7way",
+   "slug": "microcement-brands-7way",
+   "url": "/articles/comparisons/microcement-brands-7way.html",
+   "lang": "en",
+   "title": "Microcement Brands 7-Way Comparison: Topciment, Mortex, Sika, Marmorino, Pavistamp, Ideal Work, Smartcret",
+   "gist": "The seven microcement brands a serious IL specifier actually evaluates: Topciment (ES), Mortex (BE), Sika DecoDur, Marmorino (IT), Pavistamp (ES), Ideal…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/microcement-vs-tile-vs-lvt",
+   "slug": "microcement-vs-tile-vs-lvt",
+   "url": "/articles/comparisons/microcement-vs-tile-vs-lvt.html",
+   "lang": "en",
+   "title": "Microcement vs Tile vs LVT: Residential Bathroom and Kitchen Comparison",
+   "gist": "The three competing finishes for residential bathroom and kitchen: microcement (seamless modern), ceramic/porcelain tile (traditional), LVT/SPC luxury…",
+   "readMin": 12,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "microtopping-vs-epoxy",
+   "slug": "microtopping-vs-epoxy",
+   "url": "/articles/microtopping-vs-epoxy.html",
+   "lang": "en",
+   "title": "Microtopping vs Epoxy Flooring: Which Is Right for Your Space?",
+   "gist": "Comprehensive comparison of microtopping and epoxy flooring systems. Discover which solution fits your residential, commercial, or industrial project in Israel.",
+   "readMin": 9,
+   "photo": "images/og-preview.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "comparisons/microtopping-vs-polished-concrete",
+   "slug": "microtopping-vs-polished-concrete",
+   "url": "/articles/comparisons/microtopping-vs-polished-concrete.html",
+   "lang": "en",
+   "title": "Microtopping vs Polished Concrete: The Decorative-Residential Decision",
+   "gist": "Microtopping vs polished concrete for premium residential, retail, and hospitality floors: design flexibility, substrate compatibility, lifecycle…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/pu-cement-vs-epoxy-kitchen",
+   "slug": "pu-cement-vs-epoxy-kitchen",
+   "url": "/articles/comparisons/pu-cement-vs-epoxy-kitchen.html",
+   "lang": "en",
+   "title": "PU-Cement vs Epoxy for Commercial Kitchens: The Decision Guide",
+   "gist": "PU-cement vs epoxy SL for commercial kitchen specification: hot wash-down survival, anti-slip class, HACCP certification, downtime cycle, installed cost per…",
+   "readMin": 9,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/resin-floor-vs-tile",
+   "slug": "resin-floor-vs-tile",
+   "url": "/articles/comparisons/resin-floor-vs-tile.html",
+   "lang": "en",
+   "title": "Resin Floor vs Tile: The Modern Replacement Decision",
+   "gist": "Resin floor (microtopping, epoxy, PU-cement) vs ceramic / porcelain tile for residential, commercial, and industrial floors: hygiene, joint failure,…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/sika-vs-mapei-vs-mastertop",
+   "slug": "sika-vs-mapei-vs-mastertop",
+   "url": "/articles/comparisons/sika-vs-mapei-vs-mastertop.html",
+   "lang": "en",
+   "title": "Sika vs Mapei vs Master Builders: Industrial Floor Big-3 Compared",
+   "gist": "The three industrial-floor brands that win European tenders: Sika, Mapei (with Flowcrete acquisition), and Master Builders Solutions (with Ucrete). Honest…",
+   "readMin": 13,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "comparisons/purcem-vs-ucrete-vs-flowfresh",
+   "slug": "purcem-vs-ucrete-vs-flowfresh",
+   "url": "/articles/comparisons/purcem-vs-ucrete-vs-flowfresh.html",
+   "lang": "en",
+   "title": "Sikafloor PurCem vs Ucrete vs Flowfresh: Engineer's PU-Cement Comparison",
+   "gist": "The three reference PU-cement systems for heavy industrial floors: Sikafloor PurCem HM-20, Ucrete UD200, Flowcrete Flowfresh HF. Side-by-side on thickness,…",
+   "readMin": 12,
+   "photo": "images/terrazzo/interrior-222944.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "terrazzo-vs-microtopping",
+   "slug": "terrazzo-vs-microtopping",
+   "url": "/articles/terrazzo-vs-microtopping.html",
+   "lang": "en",
+   "title": "Terrazzo vs. Microtopping Analysis",
+   "gist": "Technical comparison of terrazzo and microtopping flooring systems. Understand the differences in composition, durability, cost, and applications.",
+   "readMin": 6,
+   "photo": "images/og-preview.jpg",
+   "pillar": 6,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "floor-terminology-glossary",
+   "slug": "floor-terminology-glossary",
+   "url": "/articles/floor-terminology-glossary.html",
+   "lang": "en",
+   "title": "Floor Terminology Glossary: A-Z Definitions for Resin, Decorative, and Industrial Floors",
+   "gist": "Complete A-Z glossary of floor terminology — ICRI CSP, R-class, MMA, PU-cement, EN 13501-1, ASTM F2170, pull-off test, EMICODE, broadcast, primer, sealer,…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "resources/standards-glossary",
+   "slug": "standards-glossary",
+   "url": "/articles/resources/standards-glossary.html",
+   "lang": "en",
+   "title": "Flooring Standards Glossary — ICRI CSP, FeRFA Type, EN 13813, ASTM",
+   "gist": "Plain-language definitions of the standards short codes used in floor specifications: ICRI CSP 1-10, FeRFA Type 1-8, EN 13813 binder classes, ACI 302, ASTM…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/microcement-binder-chemistry",
+   "slug": "microcement-binder-chemistry",
+   "url": "/articles/encyclopedia/microcement-binder-chemistry.html",
+   "lang": "en",
+   "title": "Microcement Binder Chemistry: Four Families Compared",
+   "gist": "Microcement is a marketing umbrella over four chemically distinct binder systems. Cement-polymer, lime-cement hybrid, pure lime, and epoxy…",
+   "readMin": 16,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/microcement-decision-tree",
+   "slug": "microcement-decision-tree",
+   "url": "/articles/encyclopedia/microcement-decision-tree.html",
+   "lang": "en",
+   "title": "Microcement Decision Tree: Six Questions to Your Brand and SKU",
+   "gist": "Six questions in order narrow microcement specification to one brand and one SKU. Wet exposure, traffic, design language, budget, applicator pool, schedule…",
+   "readMin": 9,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/microcement-wet-rooms",
+   "slug": "microcement-wet-rooms",
+   "url": "/articles/encyclopedia/microcement-wet-rooms.html",
+   "lang": "en",
+   "title": "Microcement in Wet Rooms: Bathroom and Shower Spec Sequence",
+   "gist": "The full specification sequence for microcement in IL bathroom and shower work — substrate, tanking, decoupling, mesh, base coat, finish coat, PU sealer…",
+   "readMin": 12,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/microcement-known-issues",
+   "slug": "microcement-known-issues",
+   "url": "/articles/encyclopedia/microcement-known-issues.html",
+   "lang": "en",
+   "title": "Microcement Known Issues: Nine Failure Modes Explained",
+   "gist": "Hairline cracks, colour drift, sealer milkiness, efflorescence, peel in showers — the nine documented failure modes of microcement, what causes each one,…",
+   "readMin": 16,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/mma",
+   "slug": "mma",
+   "url": "/articles/encyclopedia/mma.html",
+   "lang": "en",
+   "title": "MMA Fast-Cure Floor — Methyl Methacrylate Encyclopedia",
+   "gist": "MMA (methyl methacrylate) fast-cure resin floor: 1-2 hour cure to walking traffic, -10°C to +120°C operating range, kitchen-grade R11+ slip, food production…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "mma-fast-cure",
+   "slug": "mma-fast-cure",
+   "url": "/articles/mma-fast-cure.html",
+   "lang": "en",
+   "title": "MMA: When 2-Hour Cure Is Critical",
+   "gist": "Methyl Methacrylate (MMA) flooring systems: when fast-cure is the only solution. Applications, benefits, and technical specifications for rapid-return…",
+   "readMin": 7,
+   "photo": "images/og-preview.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "encyclopedia/polished-concrete",
+   "slug": "polished-concrete",
+   "url": "/articles/encyclopedia/polished-concrete.html",
+   "lang": "en",
+   "title": "Polished Concrete: Mechanical Polishing System and Spec",
+   "gist": "Polished concrete is the slab itself, mechanically processed to a high-gloss finish through progressive diamond grinding. CSP-controlled cutting, densifier…",
+   "readMin": 12,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/poured-pu-rubber-sport",
+   "slug": "poured-pu-rubber-sport",
+   "url": "/articles/encyclopedia/poured-pu-rubber-sport.html",
+   "lang": "en",
+   "title": "Poured-PU Rubber Sports Floors: EN 14904 Specification",
+   "gist": "Poured-in-place PU rubber floors for indoor sports halls, athletic tracks, and playgrounds. EN 14904 Point/Area/Combined elastic classes, EN 1177 playground…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/pu-cement",
+   "slug": "pu-cement",
+   "url": "/articles/encyclopedia/pu-cement.html",
+   "lang": "ru",
+   "title": "PU-cement · Sikafloor PurCem",
+   "gist": "PU-cement 4–9 мм, Sikafloor PurCem: пищевое производство, морозильники, термошок −40…+120°C, до 95% RH. Buildup, substrate, HACCP, цена ₪380–650/м².",
+   "readMin": 5,
+   "photo": "3d-assets/previews/pu-cement_hero_14.webp",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "sustainable-flooring-cradle-to-cradle",
+   "slug": "sustainable-flooring-cradle-to-cradle",
+   "url": "/articles/sustainable-flooring-cradle-to-cradle.html",
+   "lang": "en",
+   "title": "Sustainable Flooring: Cradle-to-Cradle + EPD + Embodied Carbon",
+   "gist": "Sustainable flooring specification: Cradle-to-Cradle Products Innovation Institute certification (Bronze / Silver / Gold / Platinum), EPD (Environmental…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-222945.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "terrazzo-modern-interiors",
+   "slug": "terrazzo-modern-interiors",
+   "url": "/articles/terrazzo-modern-interiors.html",
+   "lang": "en",
+   "title": "Terrazzo in Modern Interiors: A Timeless Material Reimagined",
+   "gist": "Discover how terrazzo is transforming modern interiors in Israel. From residential living rooms to commercial spaces, explore design possibilities,…",
+   "readMin": 21,
+   "photo": "images/og-preview.jpg",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": true
+  },
+  {
+   "id": "encyclopedia/microtopping",
+   "slug": "microtopping",
+   "url": "/articles/encyclopedia/microtopping.html",
+   "lang": "ru",
+   "title": "Микротопинг · Sikafloor-470",
+   "gist": "Микротопинг 2–3 мм, Sikafloor-470: тонкое декоративное покрытие. Можно на стены. Цвет, sealer renewal, substrate prep, цена ₪500–900/м². Сравнение с террацо…",
+   "readMin": 5,
+   "photo": "3d-assets/previews/microtopping_hero_04.webp",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/terrazzo",
+   "slug": "terrazzo",
+   "url": "/articles/encyclopedia/terrazzo.html",
+   "lang": "ru",
+   "title": "Терраццо · CS-31 + EM-10",
+   "gist": "Терраццо 12–18 мм: венецианское, палладиана, минеральное CS-31, эпокси-террацо EM-10. Заполнители, толщины, cure 10–14 дней, цены ₪1000–2400/м².…",
+   "readMin": 5,
+   "photo": "3d-assets/previews/terrazzo-cement_hero_00.webp",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "encyclopedia/epoxy-sl",
+   "slug": "epoxy-sl",
+   "url": "/articles/encyclopedia/epoxy-sl.html",
+   "lang": "ru",
+   "title": "Эпокси SL · Sikafloor-263 SL",
+   "gist": "Эпокси self-leveling 3–5 мм. Sikafloor-263 SL: где применять, чем отличается от микротопинга / PU-cement / MMA, buildup, substrate prep, timeline, цена…",
+   "readMin": 5,
+   "photo": "3d-assets/previews/epoxy_hero_16.webp",
+   "pillar": 7,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/altro",
+   "slug": "altro",
+   "url": "/articles/brands/altro.html",
+   "lang": "en",
+   "title": "Altro: UK Safety Vinyl with Lifetime PTV Warranty",
+   "gist": "Altro — the UK safety vinyl brand with the unique lifetime PTV warranty claim. Altro Stronghold 30, Aquarius, XpressLay, Suprema II for healthcare kitchens,…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/ardex-pandomo",
+   "slug": "ardex-pandomo",
+   "url": "/articles/brands/ardex-pandomo.html",
+   "lang": "en",
+   "title": "Ardex Pandomo: German Designer Cementitious Floor — Confirmed IL Channel",
+   "gist": "Ardex Pandomo — German designer cementitious floor brand. Pandomo K2, K2 Loft, W1 wall, Floor Plus polished. Confirmed Israeli distributor Harel v'Idan in…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/bsw-berleburger",
+   "slug": "bsw-berleburger",
+   "url": "/articles/brands/bsw-berleburger.html",
+   "lang": "en",
+   "title": "BSW Berleburger / Regupol: Playground and Sport Floor Specialist",
+   "gist": "BSW Berleburger — German playground and sport floor specialist. Regupol brand for playground tiles (25–100mm) and poured systems (40–110mm). DIN EN…",
+   "readMin": 6,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/conica",
+   "slug": "conica",
+   "url": "/articles/brands/conica.html",
+   "lang": "en",
+   "title": "Conica: Swiss Sports Floor and Athletics Track Specialist",
+   "gist": "Conica — Swiss poured-PU sports floor manufacturer. CONIPUR HG indoor multi-sport halls, CONIPUR SP outdoor athletics, World Athletics-certified tracks.…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/flowcrete-flowfresh",
+   "slug": "flowcrete-flowfresh",
+   "url": "/articles/brands/flowcrete-flowfresh.html",
+   "lang": "en",
+   "title": "Flowcrete Flowfresh: Polygiene Antimicrobial PU-Cement Floor",
+   "gist": "Flowcrete Flowfresh — the PU-cement floor with Polygiene silver-ion antimicrobial locked into the matrix. Brand history under Mapei, the antimicrobial…",
+   "readMin": 8,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/forbo",
+   "slug": "forbo",
+   "url": "/articles/brands/forbo.html",
+   "lang": "en",
+   "title": "Forbo Flooring Systems: Marmoleum + Sarlon — Dubai-Routed IL Channel",
+   "gist": "Forbo Flooring Systems — Swiss linoleum and vinyl manufacturer with Hebrew site presence but no named IL importer. Marmoleum natural linoleum, Sarlon…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/ideal-work",
+   "slug": "ideal-work",
+   "url": "/articles/brands/ideal-work.html",
+   "lang": "en",
+   "title": "Ideal Work: Italian Microtopping and Lixio Continuous Flooring",
+   "gist": "Ideal Work — the Italian decorative concrete brand that owns the Microtopping registered trademark and the Lixio continuous flooring system. Brand history,…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/keim",
+   "slug": "keim",
+   "url": "/articles/brands/keim.html",
+   "lang": "en",
+   "title": "Keim: 140-Year-Old German Silicate Paint and Mineral Coatings",
+   "gist": "Keim — the German silicate mineral paint brand since 1878. Façades, walls, restoration. Adjacent to floor specification because the mineral coating…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/mapei-mapefloor",
+   "slug": "mapei-mapefloor",
+   "url": "/articles/brands/mapei-mapefloor.html",
+   "lang": "en",
+   "title": "Mapei Mapefloor: Italian Resin Floor Range + Bioblock Antimicrobial",
+   "gist": "Mapei Mapefloor — Italian industrial resin floors with the Bioblock silver-ion antimicrobial differentiator. Mapefloor I 302 SL, PU 410, CPU/HD, Comfort.…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/marmorino",
+   "slug": "marmorino",
+   "url": "/articles/brands/marmorino.html",
+   "lang": "en",
+   "title": "Marmorino: Venetian Lime + Marble Wall Finish",
+   "gist": "Marmorino — the Venetian lime-and-marble wall finish, polishable to mirror, pure-lime carbonation chemistry. Brand profile across Stucco Italiano, Vasari,…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/mc-bauchemie",
+   "slug": "mc-bauchemie",
+   "url": "/articles/brands/mc-bauchemie.html",
+   "lang": "en",
+   "title": "MC-Bauchemie: German Industrial Resin Floor — Confirmed IL Channel via A.Z Marketing",
+   "gist": "MC-Bauchemie — German industrial resin floor manufacturer. MC-DUR 1320 VK, MC-DUR PowerCoat, MC-DUR TopSpeed SC ranges. Confirmed Israeli distributor A.Z…",
+   "readMin": 5,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/mortex",
+   "slug": "mortex",
+   "url": "/articles/brands/mortex.html",
+   "lang": "en",
+   "title": "Mortex by Beal: Belgian Mass-Waterproof Microcement",
+   "gist": "Mortex by Beal International — the cement-lime-polymer hybrid microcement, waterproof in the mass. The default specification for IL bathroom and shower work…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/pavistamp",
+   "slug": "pavistamp",
+   "url": "/articles/brands/pavistamp.html",
+   "lang": "en",
+   "title": "Pavistamp PAVICEM: Spanish Stamped + Microcement Specialist",
+   "gist": "Pavistamp — Spanish manufacturer of stamped concrete (since 1990) and PAVICEM microcement. The brand that bridges traditional stamping with thin decorative…",
+   "readMin": 6,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/polyflor",
+   "slug": "polyflor",
+   "url": "/articles/brands/polyflor.html",
+   "lang": "en",
+   "title": "Polyflor: UK Safety Vinyl + Polysafe Range",
+   "gist": "Polyflor — British safety-vinyl manufacturer and the credible head-to-head alternative to Altro. Polysafe Apex 55, Polysafe Standard, full safety category…",
+   "readMin": 6,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/polytan",
+   "slug": "polytan",
+   "url": "/articles/brands/polytan.html",
+   "lang": "en",
+   "title": "Polytan: German Sports Floor and IAAF Athletics Track Specialist",
+   "gist": "Polytan — German poured-PU sports floor specialist. Rekortan PUR indoor sports halls, PolyPlay outdoor athletics tracks. IAAF World Championships venue…",
+   "readMin": 6,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/senso",
+   "slug": "senso",
+   "url": "/articles/brands/senso.html",
+   "lang": "en",
+   "title": "Senso: Recyclable Bioresin Seamless Floor",
+   "gist": "Senso is the Dutch bioresin seamless floor brand — Cradle-to-Cradle certified, fully recyclable, plant-derived resin alternative to conventional epoxy and…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/sika-flooring",
+   "slug": "sika-flooring",
+   "url": "/articles/brands/sika-flooring.html",
+   "lang": "en",
+   "title": "Sika Flooring: Full Brand Profile — PurCem, 263 SL, Comfortfloor, DecoDur",
+   "gist": "Sika is the IL flooring default. Sikafloor PurCem (PU-cement), 263 SL (epoxy), Comfortfloor (residential PU), DecoDur (decorative), 403/404 MMA. Full…",
+   "readMin": 9,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/smartcret",
+   "slug": "smartcret",
+   "url": "/articles/brands/smartcret.html",
+   "lang": "en",
+   "title": "Smartcret: Spanish DIY Microcement Kits and Professional Lines",
+   "gist": "Smartcret is the Spanish microcement brand that opens the DIY-kit category — ready-to-use micrcement at the price-floor of the seven-brand landscape. Honest…",
+   "readMin": 8,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/stonhard",
+   "slug": "stonhard",
+   "url": "/articles/brands/stonhard.html",
+   "lang": "en",
+   "title": "Stonhard: Single-Source Warranty Resin Floor System",
+   "gist": "Stonhard — US manufacturer with the unique single-source warranty model: material + installation + warranty all from one company. Stonclad UT (PU-cement),…",
+   "readMin": 7,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/tadelakt",
+   "slug": "tadelakt",
+   "url": "/articles/brands/tadelakt.html",
+   "lang": "en",
+   "title": "Tadelakt: Moroccan Saponified Lime — Hammam-Authentic Waterproof Plaster",
+   "gist": "Tadelakt — the Moroccan lime-and-olive-soap plaster technique. Saponification waterproofs the surface through calcium-stearate plug formation.…",
+   "readMin": 11,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/tarkett",
+   "slug": "tarkett",
+   "url": "/articles/brands/tarkett.html",
+   "lang": "en",
+   "title": "Tarkett: French Commercial Vinyl Floor — Confirmed IL Channel via B-Tech",
+   "gist": "Tarkett — French commercial vinyl floor manufacturer. iQ Granit homogeneous vinyl, Acczent heterogeneous, Starfloor Click LVT. Confirmed Israeli distributor…",
+   "readMin": 6,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/topciment",
+   "slug": "topciment",
+   "url": "/articles/brands/topciment.html",
+   "lang": "en",
+   "title": "Topciment: Spanish Microcement Reference Brand",
+   "gist": "Topciment — the Spanish microcement reference brand. Sttandard, Evoluttion, Atlanttic Aquaciment (pool-grade), Microfino, Marmolife, Industtrial. 52…",
+   "readMin": 10,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  },
+  {
+   "id": "brands/ucrete",
+   "slug": "ucrete",
+   "url": "/articles/brands/ucrete.html",
+   "lang": "en",
+   "title": "Ucrete UD200: The Gold-Standard PU-Cement Floor",
+   "gist": "Ucrete UD200 — the heavy-industrial PU-cement floor that other brands measure against. 9 mm trowelled, 200°C peak thermal, 12-hour foot traffic cure. Brand…",
+   "readMin": 9,
+   "photo": "images/terrazzo/interrior-266999.jpg",
+   "pillar": 8,
+   "personas": [
+    "Designer"
+   ],
+   "blogDup": false
+  }
+ ]
+}

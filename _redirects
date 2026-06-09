@@ -1,6 +1,13 @@
 # Cloudflare Pages redirects
 # Legacy /materials/* taxonomy consolidated into canonical /floors/* (SITEMAP.md §3).
 # Explicit per-system 301s first, then a safety catch-all. Catch-all MUST stay last.
+
+# Knowledge Library — blog + the old wall-of-links index consolidated into /library (LIBRARY_ARCHITECTURE §2).
+/blog.html                              /library.html   301
+/blog                                   /library.html   301
+/articles/floor-knowledge-index.html    /library.html   301
+/articles/floor-knowledge-index         /library.html   301
+
 /materials/concrete      /floors/concrete       301
 /materials/epoxy         /floors/epoxy          301
 /materials/microtopping  /floors/microtopping   301

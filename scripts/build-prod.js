@@ -11,6 +11,11 @@ const { minify: minifyHtml } = require('html-minifier-terser');
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 
+// LIB-HE-GATE (NARYAD 04): Hebrew (/he/) is held OUT of the prod artifact until a
+// native-review polish pass. The files stay in the repo. The prod build never emits
+// /he/ unless this flag is explicitly set, so HE can never leak to prod by accident.
+const INCLUDE_HE = process.env.INCLUDE_HE === '1';
+
 const ASSET_DIRS = [
   'images', 'fonts', 'css', 'js', '3d-assets', 'articles',
   'encyclopedia', 'en', 'floors', 'verticals', 'content',
@@ -203,6 +208,16 @@ async function walkDir(srcDir, dstDir) {
     if (!fs.existsSync(src)) continue;
     await walkDir(src, dst);
     console.log(`[dir]  ${d}/`);
+  }
+
+  // 2b. LIB-HE-GATE — Hebrew stays out of the prod artifact until native review.
+  //     `he` is deliberately absent from ASSET_DIRS; this block is the explicit,
+  //     greppable gate (and the only sanctioned way to build HE, via INCLUDE_HE=1).
+  if (INCLUDE_HE) {
+    await walkDir(path.join(ROOT, 'he'), path.join(DIST, 'he'));
+    console.log('[he-gate] he/ INCLUDED (INCLUDE_HE=1)');
+  } else if (fs.existsSync(path.join(ROOT, 'he'))) {
+    console.log('[he-gate] he/ EXCLUDED from prod build — HE held for native review (set INCLUDE_HE=1 to build)');
   }
 
   // 3. Copy a few specific top-level files that should NOT be minified
