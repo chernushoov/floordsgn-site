@@ -1078,6 +1078,19 @@ async function init() {
 
   const defaultIdx = manifest.materials.length > 1 ? 1 : 0;
   selectMaterial(manifest.materials[defaultIdx].slug);
+
+  // Studio → configurator continuity: opened with ?system / ?material → pre-select that
+  // system (maps Studio floor slugs to configurator material slugs). No param → the default
+  // above stands, behaviour unchanged. Additive; mirrors the ?textures/?plates/?debug reads.
+  try {
+    const _p = new URLSearchParams(location.search);
+    const _want = _p.get('system') || _p.get('material');
+    if (_want) {
+      const _MAP = { light: 'terrazzo-multi', multi: 'terrazzo-multi', graphite: 'terrazzo-epoxy', micro: 'microtopping', comfort: 'comfortfloor', concrete: 'decorative-concrete' };
+      const _slug = _MAP[_want] || _want;
+      if (manifest.materials.some(m => m.slug === _slug)) selectMaterial(_slug);
+    }
+  } catch (e) {}
   bootEl.classList.add('gone');
 
   /* `?debug=1` exposes module-private refs for the audit harness. No-op in prod URL. */

@@ -237,6 +237,8 @@
     // 3D layer-breakdown lives on its OWN page (configurator), reached by this card-link —
     // never embedded in the Studio scene (the embedded merge was the 07.06 collapse).
     const b3d = el('a', { class:'st-3dlink', href:`configurator.html?system=${encodeURIComponent(fl)}&material=${encodeURIComponent(fl)}&from=studio` }, (L === 'ru' ? 'Разобрать систему по слоям в 3D →' : 'See the system layers in 3D →'));
+    // carry the CURRENT floor selection into the configurator at click-time (not just render-time)
+    b3d.addEventListener('click', () => { const f = curFloor(); b3d.href = `configurator.html?system=${encodeURIComponent(f)}&material=${encodeURIComponent(f)}&from=studio`; });
     scroll.append(b3d);
     scroll.append(buildMaterials(p));
 
