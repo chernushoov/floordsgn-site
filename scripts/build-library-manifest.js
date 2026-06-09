@@ -120,6 +120,9 @@ for (const abs of files.sort()){
   photo = (photo||'').replace(/^https?:\/\/[^/]+\//,'').replace(/^\.?\//,'').replace(/^\.\.\//,'');
   const pillar = pillarOf(rel);
   const personas = personasOf(id, slug, pillar);
+  // Card thumbnails must exist + be light/deployable (<3MB; CF caps files at 25MiB).
+  // Reject missing/oversized hero images → fall back to the pillar cover.
+  try { const abs = path.join(ROOT, photo); if (!photo || !fs.existsSync(abs) || fs.statSync(abs).size > 3 * 1024 * 1024) photo = ''; } catch (e) { photo = ''; }
   if (!photo) photo = PILLARS[pillar] ? PILLARS[pillar].cover : 'images/terrazzo/interrior-222943.jpg';
   if (!pillar) flags.push(`UNMAPPED-PILLAR  ${rel}`);
   if (!personas.length) flags.push(`NO-PERSONA  ${rel}`);

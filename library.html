@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженерная библиотека полов — Floor.DSGN</title>
+    <meta name="description" content="Инженерная библиотека Floor.DSGN: выбор системы, тендер и BOQ, стандарты Израиля, основание и монтаж, сравнения, бренды, энциклопедия. Вход по роли и по теме.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://floordsgn.com/library.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Инженерная библиотека полов — Floor.DSGN">
+    <meta property="og:description" content="112 инженерных статей: BOQ, стандарты, ICRI CSP, сравнения брендов, энциклопедия. Вход по роли и по теме.">
+    <meta property="og:image" content="https://floordsgn.com/images/terrazzo/interrior-222943.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260521a">
+    <link rel="stylesheet" href="chrome-fix.css?v=20260521a">
+    <style>
+      /* ── Knowledge Library (LIBRARY_ARCHITECTURE) — brand: DESIGN.md ───────── */
+      .lib{--surface-2:#F5F5F7;--line:#e4e1d9;color:var(--carbon);background:var(--surface-2);
+        font-family:'Montserrat',sans-serif}
+      .lib *{box-sizing:border-box}
+      .lib__wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+      /* HERO */
+      .lib-hero{background:var(--concrete);padding:84px 0 40px;border-bottom:1px solid var(--line)}
+      .lib-hero__eyebrow{display:inline-flex;align-items:center;gap:9px;font:600 12px/1 'Montserrat',sans-serif;
+        letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin:0 0 18px}
+      .lib-hero__eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--signal);display:block}
+      .lib-hero__h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,68px);
+        line-height:1.02;letter-spacing:-.01em;margin:0 0 16px;color:var(--carbon)}
+      .lib-hero__sub{font-size:17px;line-height:1.55;color:var(--steel);max-width:620px;margin:0 0 28px}
+      .lib-search{position:relative;max-width:560px}
+      .lib-search input{width:100%;padding:16px 18px 16px 50px;border:1px solid var(--line);border-radius:980px;
+        background:#fff;font:400 16px/1 'Montserrat',sans-serif;color:var(--carbon);outline:none;transition:.18s}
+      .lib-search input:focus{border-color:var(--carbon)}
+      .lib-search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:19px;height:19px;stroke:var(--steel)}
+
+      /* SECTION SHELL */
+      .lib-sec{padding:54px 0}
+      .lib-sec__head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 26px;flex-wrap:wrap}
+      .lib-sec__title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);
+        line-height:1.05;margin:0;color:var(--carbon)}
+      .lib-sec__count{font:600 13px/1 'Montserrat',sans-serif;color:var(--steel);letter-spacing:.04em}
+
+      /* ROLE CARDS (4) */
+      .lib-roles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+      .lib-role{display:flex;flex-direction:column;gap:12px;padding:26px 22px;background:#fff;border:1px solid var(--line);
+        border-radius:18px;cursor:pointer;text-align:left;transition:.18s;color:inherit;font:inherit}
+      .lib-role:hover,.lib-role.on{border-color:var(--carbon);transform:translateY(-3px);box-shadow:0 14px 34px rgba(21,21,21,.08)}
+      .lib-role.on{border-color:var(--signal)}
+      .lib-role__icon{width:30px;height:30px;stroke:var(--signal);stroke-width:1.5;fill:none}
+      .lib-role__name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;line-height:1.05;color:var(--carbon)}
+      .lib-role__sub{font-size:13px;line-height:1.45;color:var(--steel);flex:1}
+      .lib-role__count{font:600 12px/1 'Montserrat',sans-serif;letter-spacing:.05em;color:var(--carbon)}
+
+      /* FILTER BAR */
+      .lib-filters{position:sticky;top:0;z-index:20;background:rgba(245,245,247,.92);-webkit-backdrop-filter:blur(8px);
+        backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
+      .lib-filters__row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+      .lib-chip{padding:8px 15px;border:1px solid var(--line);border-radius:980px;background:#fff;cursor:pointer;
+        font:500 12.5px/1 'Montserrat',sans-serif;color:var(--steel);transition:.16s;white-space:nowrap}
+      .lib-chip:hover{border-color:var(--carbon);color:var(--carbon)}
+      .lib-chip.on{background:var(--carbon);border-color:var(--carbon);color:#fff}
+      .lib-chip--clear{margin-left:auto;border-style:dashed;color:var(--signal);border-color:var(--signal)}
+      .lib-chip--clear:hover{background:var(--signal);color:#fff}
+
+      /* READING PATH strip (shown when a role is active) */
+      .lib-path{display:none;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 0;padding:16px 18px;
+        background:#fff;border:1px solid var(--line);border-radius:14px}
+      .lib-path.on{display:flex}
+      .lib-path__lbl{font:600 12px/1 'Montserrat',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+      .lib-path a{display:inline-flex;align-items:center;gap:7px;font:500 13px/1.2 'Montserrat',sans-serif;color:var(--carbon);
+        text-decoration:none;padding:7px 12px;border:1px solid var(--line);border-radius:980px;transition:.16s}
+      .lib-path a:hover{border-color:var(--carbon)}
+      .lib-path a b{color:var(--signal);font-weight:700}
+      .lib-path__arrow{color:var(--steel)}
+
+      /* PILLAR sections */
+      .lib-pillar{margin:0 0 14px}
+      .lib-pillar__cover{display:flex;align-items:flex-end;gap:18px;min-height:150px;border-radius:18px;overflow:hidden;
+        position:relative;padding:22px;margin:0 0 22px;background:var(--graphite)}
+      .lib-pillar__cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+      .lib-pillar__cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,21,21,.1),rgba(21,21,21,.78))}
+      .lib-pillar__coverbody{position:relative;z-index:2;display:flex;align-items:center;gap:14px}
+      .lib-pillar__icon{width:26px;height:26px;stroke:#fff;stroke-width:1.5;fill:none;flex:0 0 auto}
+      .lib-pillar__name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3vw,34px);color:#fff;line-height:1}
+      .lib-pillar__n{font:600 12px/1 'Montserrat',sans-serif;color:rgba(255,255,255,.82);letter-spacing:.05em}
+
+      /* CARD GRID */
+      .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+      .lib-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;
+        overflow:hidden;text-decoration:none;color:inherit;transition:.18s}
+      .lib-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(21,21,21,.1);border-color:#d8d4cb}
+      .lib-card__imgwrap{aspect-ratio:16/10;overflow:hidden;background:var(--concrete)}
+      .lib-card__img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}
+      .lib-card:hover .lib-card__img{transform:scale(1.04)}
+      .lib-card__body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+      .lib-card__badges{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+      .lib-badge{font:600 10.5px/1 'Montserrat',sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:980px}
+      .lib-badge--pillar{color:var(--signal);border:1px solid var(--signal)}
+      .lib-badge--persona{color:var(--steel);border:1px solid var(--line)}
+      .lib-badge--lang{margin-left:auto;color:var(--steel);border:1px solid var(--line)}
+      .lib-card__title{font:600 16.5px/1.28 'Montserrat',sans-serif;color:var(--carbon);margin:2px 0 0}
+      .lib-card__gist{font-size:13.5px;line-height:1.5;color:var(--steel);flex:1}
+      .lib-card__meta{display:flex;align-items:center;gap:7px;font:500 12px/1 'Montserrat',sans-serif;color:var(--steel)}
+      .lib-card__meta svg{width:14px;height:14px;stroke:var(--steel);fill:none;stroke-width:1.6}
+
+      /* СВЕЖЕЕ feed */
+      .lib-feed{background:var(--concrete);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+      /* CTA */
+      .lib-cta{background:var(--carbon);color:#fff;text-align:center;padding:64px 24px}
+      .lib-cta__h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0 0 12px}
+      .lib-cta__p{font-size:16px;line-height:1.55;color:rgba(255,255,255,.74);max-width:520px;margin:0 auto 26px}
+      .lib-cta__btn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#fff;text-decoration:none;
+        padding:15px 30px;border-radius:980px;font:600 15px/1 'Montserrat',sans-serif;transition:.18s}
+      .lib-cta__btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,107,60,.4)}
+
+      .lib-empty{display:none;text-align:center;color:var(--steel);padding:50px 0;font-size:15px}
+
+      @media(max-width:1024px){.lib-roles{grid-template-columns:repeat(2,1fr)}.lib-grid{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:640px){.lib-roles{grid-template-columns:1fr}.lib-grid{grid-template-columns:1fr}.lib-hero{padding:64px 0 32px}}
+    </style>
+</head>
+<body class="lib">
+
+    <!-- partials:header:start (generated by scripts/build-partials.js — edit partials/header.html, not here) -->
+<header class="header" id="mainHeader">
+    <nav class="header__nav header__nav--left">
+        <a href="/floors.html" data-i18n="nav_floors">Floors</a>
+        <a href="/projects.html" data-i18n="nav_projects">Projects</a>
+        <a href="/library.html" data-i18n="nav_library">Library</a>
+    </nav>
+    <a href="/" class="header__logo">
+        <img src="/images/logo/logo-horizontal-white.svg" alt="Floor.DSGN" class="header__logo-img header__logo-white">
+        <img src="/images/logo/logo-horizontal.svg" alt="Floor.DSGN" class="header__logo-img header__logo-black">
+    </a>
+    <nav class="header__nav header__nav--right">
+        <a href="/about.html" data-i18n="nav_about">About</a>
+        <a href="/contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="header__lang">
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+<!-- partials:header:end -->
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="/" data-i18n="nav_home">Home</a></li>
+            <li><a href="/floors.html" data-i18n="nav_floors">Floors</a></li>
+            <li><a href="/projects.html" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="/library.html" data-i18n="nav_library">Library</a></li>
+            <li><a href="/about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="/contact.html" data-i18n="nav_contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section class="lib-hero">
+        <div class="lib__wrap">
+          <p class="lib-hero__eyebrow"><i></i><span data-lk="eyebrow">Floor.DSGN · Knowledge Library</span></p>
+          <h1 class="lib-hero__h1" data-lk="h1">Инженерная библиотека полов</h1>
+          <p class="lib-hero__sub" data-lk="sub">Один источник правды по промышленным и дизайнерским полам Израиля: выбор системы, тендер и BOQ, стандарты, основание, сравнения, бренды, энциклопедия. Вход по роли или по теме.</p>
+          <div class="lib-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="libSearch" type="search" autocomplete="off" data-lk-ph="search" placeholder="Поиск по библиотеке — система, стандарт, бренд…">
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE ENTRY -->
+      <section class="lib-sec lib__wrap" id="libRolesSec">
+        <div class="lib-sec__head">
+          <h2 class="lib-sec__title" data-lk="roles_title">С чего начать — по роли</h2>
+          <span class="lib-sec__count" data-lk="roles_hint">4 маршрута чтения</span>
+        </div>
+        <div class="lib-roles" id="libRoles"></div>
+        <div class="lib-path" id="libPath"><span class="lib-path__lbl" data-lk="path_lbl">Маршрут</span><span id="libPathItems"></span></div>
+      </section>
+
+      <!-- FILTER BAR -->
+      <div class="lib-filters">
+        <div class="lib__wrap">
+          <div class="lib-filters__row" id="libPillarChips"></div>
+        </div>
+      </div>
+
+      <!-- PILLAR SECTIONS -->
+      <section class="lib-sec lib__wrap">
+        <div class="lib-sec__head">
+          <h2 class="lib-sec__title" data-lk="topic_title">По теме — 8 разделов</h2>
+          <span class="lib-sec__count"><span id="libVisibleCount">0</span> <span data-lk="articles_word">статей</span></span>
+        </div>
+        <div id="libPillars"></div>
+        <p class="lib-empty" id="libEmpty" data-lk="empty">Ничего не найдено — сбросьте фильтры.</p>
+      </section>
+
+      <!-- СВЕЖЕЕ -->
+      <section class="lib-sec lib-feed" id="libFeedSec">
+        <div class="lib__wrap">
+          <div class="lib-sec__head">
+            <h2 class="lib-sec__title" data-lk="recent_title">Свежее</h2>
+            <span class="lib-sec__count" data-lk="recent_hint">Из блога</span>
+          </div>
+          <div class="lib-grid" id="libFeed"></div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="lib-cta">
+        <h2 class="lib-cta__h" data-lk="cta_h">Соберём маршрут под ваш проект за 48 часов</h2>
+        <p class="lib-cta__p" data-lk="cta_p">Расскажите задачу — пришлём подобранную подборку статей, спеку и образцы под ваш объект и роль.</p>
+        <a class="lib-cta__btn" id="libCtaBtn" href="/contact.html#intent=reading-path&source=library">
+          <span data-lk="cta_btn">Получить маршрут</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </section>
+    </main>
+
+    <!-- partials:footer:start (generated by scripts/build-partials.js — edit partials/footer.html, not here) -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><img src="/images/logo/logo-horizontal-white.svg" alt="Floor.DSGN" class="footer-logo"><p data-i18n="footer_tagline">Engineering-grade floor systems across Israel.</p></div>
+            <div class="footer-column"><h4 data-i18n="footer_systems">Floor Systems</h4><ul><li><a href="/floors/epoxy.html" data-i18n="floors_nav_epoxy">Epoxy</a></li><li><a href="/floors/mma.html" data-i18n="floors_nav_mma">MMA</a></li><li><a href="/floors/pu-cement.html" data-i18n="floors_nav_pu_cement">PU-Cement</a></li><li><a href="/floors/microtopping.html" data-i18n="floors_nav_microtopping">Microtopping</a></li><li><a href="/floors/terrazzo.html" data-i18n="floors_nav_terrazzo">Terrazzo</a></li><li><a href="/floors/concrete.html" data-i18n="floors_nav_concrete">Concrete</a></li></ul></div>
+            <div class="footer-column"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="/projects.html" data-i18n="nav_projects">Projects</a></li><li><a href="/about.html" data-i18n="nav_about">About Us</a></li><li><a href="/library.html" data-i18n="nav_library">Library</a></li><li><a href="/contact.html" data-i18n="nav_contact">Contact</a></li></ul></div>
+            <div class="footer-column"><h4 data-i18n="footer_contact">Contact</h4><ul><li><a href="mailto:floors.dsgn@gmail.com">floors.dsgn@gmail.com</a></li><li><a href="tel:+972559661459">+972 55 966 1459</a></li><li data-i18n="footer_location">Israel, Tel Aviv</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p data-i18n="footer_copyright">&copy; 2026 Floor.DSGN. All rights reserved.</p></div>
+    </div>
+</footer>
+<!-- partials:footer:end -->
+
+    <script src="script.js"></script>
+    <script src="translations.js?v=20260521a" defer></script>
+    <script src="library.js?v=1" defer></script>
+</body>
+</html>
