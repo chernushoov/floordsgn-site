@@ -12,6 +12,7 @@ const translations = {
         nav_blog: "Blog",
         nav_library: "Library",
         nav_contact: "Contact Us",
+        nav_contact_cta: "Get a quote",
 
         // Hero
         hero_overline: "Premium Flooring Studio • Israel",
@@ -1853,6 +1854,7 @@ const translations = {
         nav_blog: "Блог",
         nav_library: "Библиотека",
         nav_contact: "Контакты",
+        nav_contact_cta: "Запросить смету",
 
         // Hero
         hero_overline: "Премиум студия напольных покрытий • Израиль",
