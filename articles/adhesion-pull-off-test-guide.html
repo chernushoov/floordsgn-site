@@ -209,12 +209,12 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
-                <span class="article-category">Test Reference</span>
-                <h1>Гид по pull-off тесту адгезии</h1>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
+                <span class="article-category">Справочник по испытаниям</span>
+                <h1>Испытание адгезии методом отрыва: руководство</h1>
                 <p class="article-meta">Май 2026 · 6 мин чтения</p>
                 <div class="article-hero-wrapper">
-                    <img src="../images/concrete-decorative/beton.jpg" alt="Гид по pull-off тесту" class="article-hero-image">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Руководство по испытанию адгезии методом отрыва" class="article-hero-image">
                 </div>
             </div>
         </div>
@@ -222,67 +222,109 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Pull-off тест — единственный field-тест который выдаёт одно число которое можно вписать в contract clause. Adhesion strength resin к substrate в мегапаскалях, с documented failure mode. Pass / fail на определённом threshold. Каждый tender-grade resin пол в Израиле либо имеет pull-off report приложенный к completion certificate, либо реально не имеет enforceable warranty.</p>
+                    <p class="lead">Испытание методом отрыва — единственное полевое испытание, которое выдаёт одно число, пригодное для записи в пункт договора. Прочность сцепления смоляного покрытия с основанием, измеренная в мегапаскалях, с документально зафиксированным характером разрушения. Прошёл / не прошёл при заданном пороговом значении. Каждый смоляной пол тендерного уровня в Израиле либо имеет протокол испытания на отрыв, приложенный к акту сдачи, либо фактически не имеет гарантии, которую можно обеспечить юридически. Эта страница разбирает оба стандарта (европейский гармонизированный EN 1542 и американский ASTM D7234), пороговые значения по классам систем, три характера разрушения и значение каждого из них, а также то, как читать протокол испытания, не предполагая, что лаборатория понимала, что именно испытывала.</p>
 
-                    <p><em>Полный EN-вариант выше с подробным описанием EN 1542 + ASTM D7234, threshold-таблицей, failure-mode grid (A/B/C), grid-location selection, и tender language. Краткая RU-сводка:</em></p>
-
-                    <h2>Два стандарта</h2>
-                    <ul>
-                        <li><strong>EN 1542</strong> — европейский гармонизированный стандарт для concrete substrate pull-off. 50 мм dolly, гидравлический puller, MPa результат + failure mode (A/B/C). Primary IL public-sector tender standard.</li>
-                        <li><strong>ASTM D7234</strong> — американский стандарт для coatings on concrete. Procedurally equivalent для resin полов. Interchangeable с EN 1542 для tender purposes.</li>
-                    </ul>
-
-                    <h2>Threshold values по system class</h2>
-                    <ul>
-                        <li><strong>Heavy-duty эпокси quartz (industrial):</strong> ≥ 1.5 МПа, mode C cohesive.</li>
-                        <li><strong>PU-cement 6–9 мм:</strong> ≥ 1.5 МПа, mode C cohesive.</li>
-                        <li><strong>Эпокси SL 2–3 мм (light industrial):</strong> ≥ 1.0 МПа, mode C cohesive.</li>
-                        <li><strong>Микротопинг decorative:</strong> ≥ 0.8 МПа, mode C preferred.</li>
-                        <li><strong>MMA fast-cure:</strong> ≥ 1.5 МПа, mode C cohesive.</li>
-                        <li><strong>Polished concrete:</strong> N/A (densifier reactive, не applicable).</li>
-                        <li><strong>Overlay test (pre-overlay):</strong> existing coating ≥ 1.0 МПа cohesive, иначе mechanical removal required.</li>
-                    </ul>
-
-                    <h2>Failure modes — A / B / C</h2>
-                    <ul>
-                        <li><strong>Mode A — Adhesive failure substrate–resin interface.</strong> Resin отделилась от substrate чисто. <strong>Bad sign.</strong> Bond слабее substrate cohesion — substrate prep failure, contamination, moisture. Reject report с Mode A dominance.</li>
-                        <li><strong>Mode B — Adhesive failure dolly–resin interface.</strong> Dolly отделилась от resin без resin material. <strong>Test invalid.</strong> Re-test required.</li>
-                        <li><strong>Mode C — Cohesive failure в substrate.</strong> Resin утащила piece of substrate concrete. <strong>Good sign.</strong> Resin-substrate bond сильнее substrate's internal cohesion. Mode C с adequate MPa — contractual goal.</li>
-                    </ul>
-
-                    <h2>Grid location selection</h2>
-                    <ul>
-                        <li><strong>≤ 500 м²:</strong> 3 locations minimum (centre traffic + perimeter + corner stress).</li>
-                        <li><strong>500–2 000 м²:</strong> 6 locations (3 baseline + 3 distributed).</li>
-                        <li><strong>2 000–10 000 м²:</strong> 1 location per 250 м², named grid reference.</li>
-                        <li><strong>Critical-use zones:</strong> +1 per critical zone (kitchen wash-down, ESD, chemical-spill).</li>
-                    </ul>
-
-                    <h2>Шесть обязательных полей в отчёте</h2>
-                    <ol>
-                        <li>Location ID + grid reference + sketch coordinate.</li>
-                        <li>Test date + cure duration resin до теста.</li>
-                        <li>Apparatus + standard cited (EN 1542 / ASTM D7234, dolly diameter, calibration date).</li>
-                        <li>Peak load MPa + result digital photo.</li>
-                        <li>Failure mode letter (A / B / C) с photo.</li>
-                        <li>Lab signature + ISO 17025 certification.</li>
-                    </ol>
-
-                    <h2>Tender language clause</h2>
-                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
-                        "Pull-off test per EN 1542 или ASTM D7234 на <strong>[N]</strong> locations, distributed across project area с named grid references. Test conducted minimum 7 days after final resin cure. Threshold: minimum <strong>[1.5 / 1.0 / 0.8] МПа</strong> с failure mode C (cohesive substrate failure). Report to include: location grid + GPS, test date + cure duration, apparatus + standard cited, peak load MPa, failure mode letter (A / B / C) с photo per location, lab signature + ISO 17025 certification status. Reports failing threshold trigger re-pour at applicator cost. Final 10% payment release contingent on pull-off report acceptance."
+                    <div class="test-card signal">
+                        <span class="test-tag">Метод 1 из 2 — европейский</span>
+                        <h2>EN 1542 — отрыв от бетонного основания</h2>
+                        <p>Европейский гармонизированный стандарт на прочность сцепления смоляных систем, нанесённых на бетонное основание, методом отрыва. Изначально издан как EN 1542:1999, действующая редакция принята в составе семейства EN 1504 для материалов ремонта бетона. Применяется как основной стандарт в тендерах государственного сектора по всему ЕС и в Израиле.</p>
+                        <p><strong>Оборудование:</strong> гидравлический или ручной адгезиметр с калиброванным датчиком усилия. Штамп из нержавеющей стали диаметром 50 мм приклеивается к поверхности пола конструкционным эпоксидным клеем (как правило, Sikadur-30 или эквивалент). Усилие отрыва, делённое на площадь штампа, даёт напряжение в МПа.</p>
+                        <p><strong>Порядок проведения:</strong> штамп приклеивается к полностью отверждённой поверхности пола (как правило, не ранее 7-го дня). Вокруг штампа выполняется кольцевой надрез сквозь слой смолы до основания. Отрыв ведётся с постоянной скоростью до разрушения. Фиксируются пиковое усилие и характер разрушения.</p>
+                        <p><strong>Оформление результатов:</strong> результат выражается в МПа с буквой характера разрушения (A / B / C). При испытании более 3 точек указываются среднее по точкам и стандартное отклонение.</p>
                     </div>
 
-                    <h2>Финальная мысль</h2>
-                    <p>Pull-off тестирование — единственный contractually-defensible quality check в resin floor procurement. Один отчёт, 3+ locations, threshold МПа с failure mode C — это пакет. Без него applicator может argue любой substrate-related failure в owner-scope; с ним warranty triangle держит. Связано: <a href="floor-tender-boq-template.html">BOQ template</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">compliance verification</a> · <a href="substrate-moisture-remediation.html">substrate moisture remediation</a>.</p>
+                    <div class="test-card signal">
+                        <span class="test-tag">Метод 2 из 2 — американский</span>
+                        <h2>ASTM D7234 — прочность отрыва покрытий</h2>
+                        <p>Американский стандарт на прочность отрыва покрытий по бетону. По процедуре эквивалентен EN 1542 для смоляных полов, с небольшими различиями в геометрии штампа (обычно 50 мм или 20 мм), требованиях к глубине кольцевого надреза и порядке оформления. Широко применяется в тендерах на промышленные полы, где эталоном служит техническая спецификация североамериканского производителя.</p>
+                        <p><strong>Оборудование:</strong> гидравлический адгезиметр; типы штампов определены стандартом ASTM D7234 (для напольных покрытий чаще всего тип IV). Предпочтительна самоцентрирующаяся оснастка, исключающая внецентренное нагружение.</p>
+                        <p><strong>Порядок проведения:</strong> подготовка поверхности (зачистка шлифованием), приклеивание штампа конструкционным эпоксидным клеем, выдержка на отверждение, кольцевой надрез, отрыв с постоянной скоростью.</p>
+                        <p><strong>Сопоставимость:</strong> результаты по EN 1542 и ASTM D7234 для целей спецификации смоляных полов, как правило, взаимозаменяемы. Оба дают значения в МПа; оба фиксируют характер разрушения. Договор, ссылающийся на один из них, является приемлемым доказательством по другому, если оборудование и методика испытания совпадают.</p>
+                    </div>
+
+                    <h2>Пороговые значения по классам систем</h2>
+                    <p>Пороговое значение отделяет «прошёл» от «не прошёл» — и порог зависит от типа системы. У тяжёлой промышленной системы требования к сцеплению иные, чем у тонкого декоративного микротопинга.</p>
+                    <table class="threshold-table">
+                        <thead>
+                            <tr><th>Класс системы</th><th>Порог</th><th>Требуемый характер разрушения</th><th>Примечания</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Тяжёлый эпоксидно-кварцевый пол (промышленный)</td><td>≥ 1.5 МПа</td><td>Когезионное по основанию (C)</td><td>Опубликовано Sika; опубликовано Mapei; стандарт госсектора Израиля</td></tr>
+                            <tr><td>Полиуретан-цемент 6–9 мм (кухня / промышленность)</td><td>≥ 1.5 МПа</td><td>Когезионное по основанию (C)</td><td>Проверка целостности системы; основание должно быть прочным</td></tr>
+                            <tr><td>Эпоксидный наливной 2–3 мм (лёгкая промышленность)</td><td>≥ 1.0 МПа</td><td>Когезионное по основанию (C)</td><td>Сниженный порог для тонких систем; предел по качеству основания</td></tr>
+                            <tr><td>Декоративный микротопинг</td><td>≥ 0.8 МПа</td><td>Желательно когезионное по основанию (C)</td><td>У декоративных микросистем изначально ниже требования к сцеплению</td></tr>
+                            <tr><td>Полированный бетон с упрочнителем</td><td>Не применимо (упрочнитель реакционный)</td><td>—</td><td>Отрыв неприменим; упрочнитель является частью плиты</td></tr>
+                            <tr><td>ММА быстрого отверждения (промышленный)</td><td>≥ 1.5 МПа</td><td>Когезионное по основанию (C)</td><td>Тот же порог, что у полиуретан-цемента; ММА — промышленный класс</td></tr>
+                            <tr><td>Нанесение поверх существующего покрытия (испытание до укладки)</td><td>≥ 1.0 МПа по существующему</td><td>Когезионное в существующем покрытии</td><td>Если существующее покрытие &lt; 1.0 МПа, перед укладкой требуется механическое удаление</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Расшифровка характера разрушения (A / B / C)</h2>
+                    <p>Самый важный показатель в протоколе испытания на отрыв — буква характера разрушения. Значение в МПа говорит об усилии; характер разрушения говорит о том, где система на самом деле разрушилась.</p>
+                    <div class="failure-grid">
+                        <div class="failure-mode">
+                            <span class="fm-letter">A</span>
+                            <p class="fm-name">Адгезионное разрушение по границе «основание — смола»</p>
+                            <p class="fm-meaning">Смола отделилась от основания начисто. На стороне основания осталось смоляное покрытие; на стороне смолы — основание. <strong>Плохой признак.</strong> Сцепление слабее когезии основания. Указывает на ошибку подготовки основания, загрязнение или проблему с влажностью. Любой протокол, где преобладает разрушение типа A, следует отклонить.</p>
+                        </div>
+                        <div class="failure-mode">
+                            <span class="fm-letter">B</span>
+                            <p class="fm-name">Адгезионное разрушение по границе «штамп — смола»</p>
+                            <p class="fm-meaning">Штамп отделился от смолы, не захватив смолу с собой. <strong>Испытание недействительно.</strong> Клеевое соединение штампа конструкционным эпоксидным составом оказалось слабее сцепления смолы с основанием — испытание фактически не нагрузило соединение со стороны основания. Требуется повторное испытание.</p>
+                        </div>
+                        <div class="failure-mode">
+                            <span class="fm-letter">C</span>
+                            <p class="fm-name">Когезионное разрушение в основании</p>
+                            <p class="fm-meaning">Смола вырвала с собой кусок бетонного основания. <strong>Хороший признак.</strong> Сцепление смолы с основанием прочнее внутренней когезии основания. Записанное значение в МПа фактически является пределом прочности основания на растяжение — сцепление смолы как минимум не слабее. Разрушение типа C с достаточным значением МПа — цель по договору.</p>
+                        </div>
+                    </div>
+
+                    <h2>Выбор точек испытательной сетки</h2>
+                    <p>Единичное испытание на отрыв в одной точке статистически бессмысленно. Минимальная достоверная сетка — три точки на небольшом объекте, с увеличением по площади.</p>
+                    <ul>
+                        <li><strong>Объект ≤ 500 м²:</strong> минимум 3 точки. Распределить по одной: в центре высокой проходимости, на периметре низкой проходимости, в углу высокой нагрузки (поворот погрузчика, порог дверного проёма, подход к трапу).</li>
+                        <li><strong>Объект 500–2 000 м²:</strong> минимум 6 точек. 3 базовые точки + 3 распределённые по границам смены типа основания или по швам захваток разных дней заливки.</li>
+                        <li><strong>Объект 2 000–10 000 м²:</strong> минимум 1 точка на 250 м². Распределить по площади объекта с именованной привязкой к сетке (например, «Ячейка B7», «Центр пролёта 4»).</li>
+                        <li><strong>Зоны критического назначения:</strong> добавить 1 точку на каждую критическую зону — зона мойки на кухне, операционная с контролем статического электричества (ESD), зона возможного разлива химикатов.</li>
+                    </ul>
+                    <p>Каждая точка должна быть поименована в протоколе с привязкой к сетке и координатой по GPS или эскизу. Анонимные протоколы вида «Точка 1 / 2 / 3» не поддаются аудиту.</p>
+
+                    <h2>Как читать протокол испытания на отрыв</h2>
+                    <p>Полезный протокол испытания на отрыв содержит шесть полей на каждую точку. Если хотя бы одно поле отсутствует — запросите исправленный протокол: без всех шести испытание не имеет договорной силы.</p>
+                    <ol>
+                        <li><strong>Идентификатор точки + привязка к сетке + координата по эскизу.</strong> Позволяет проверить, какое именно место на полу было испытано.</li>
+                        <li><strong>Дата испытания + срок отверждения смолы до испытания.</strong> Слишком ранний отрыв не учитывает набор прочности сцепления при отверждении. Отраслевая норма по умолчанию: отверждение не менее 7 дней.</li>
+                        <li><strong>Оборудование + указанный стандарт.</strong> EN 1542 или ASTM D7234, диаметр штампа, производитель оборудования + дата поверки.</li>
+                        <li><strong>Пиковая нагрузка в МПа + цифровое фото результата.</strong> Фото позволяет независимо проверить характер разрушения.</li>
+                        <li><strong>Буква характера разрушения (A / B / C) с фото.</strong> Трактовка — на авторе протокола; фото — в протоколе.</li>
+                        <li><strong>Подпись лаборатории + статус её аккредитации.</strong> Желательна аккредитация по ISO 17025; обязательны название лаборатории + инициалы техника.</li>
+                    </ol>
+
+                    <h2>Типичные дефекты протоколов</h2>
+                    <ul>
+                        <li><strong>«Среднее МПа = X» без разбивки по точкам.</strong> В среднем прячется выброс. Отклонить — запросить значения по каждой точке + стандартное отклонение.</li>
+                        <li><strong>Поле характера разрушения помечено «ОК» или «хорошо» вместо A / B / C.</strong> Лаборатория не следовала порядку оформления по стандарту. Требуется повторное испытание.</li>
+                        <li><strong>Нет фотографий.</strong> Единственный способ проверить трактовку характера разрушения — фото. Требуется фото для каждой точки.</li>
+                        <li><strong>Дата испытания раньше окончания срока отверждения смолы.</strong> Преждевременный отрыв занижает истинную прочность сцепления. Отклонить и провести повторное испытание не ранее чем через 7 дней.</li>
+                        <li><strong>Не указано число дней отверждения смолы.</strong> Без этого нельзя проверить, отражает ли отрыв фактическое сцепление или переходное сцепление на промежуточной стадии отверждения.</li>
+                    </ul>
+
+                    <h2>Формулировка требования об отрыве для тендера</h2>
+                    <p>Готовый пункт для вставки в тендер — для строки 10 ведомости объёмов работ (контрольные образцы + испытание на отрыв).</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
+                        «Испытание на отрыв по EN 1542 или ASTM D7234 в <strong>[N]</strong> точках, распределённых по площади объекта с именованными привязками к сетке. Испытание проводится не ранее чем через 7 дней после окончательного отверждения смолы. Порог: не менее <strong>[1.5 / 1.0 / 0.8] МПа</strong> при характере разрушения C (когезионное разрушение основания). Протокол должен включать: привязку точек к сетке + GPS, дату испытания + срок отверждения, оборудование + указанный стандарт, пиковую нагрузку в МПа, букву характера разрушения (A / B / C) с фото по каждой точке, подпись лаборатории + статус аккредитации по ISO 17025. Протоколы, не достигшие порога, влекут повторную заливку за счёт подрядчика. Перечисление финальных 10% оплаты обусловлено принятием протокола испытания на отрыв представителем заказчика.»
+                    </div>
+
+                    <h2>Итог</h2>
+                    <p>Испытание на отрыв — самая защищённая в договорном смысле проверка качества при закупке смоляных полов. Один протокол, три точки и более, пороговое значение в МПа при характере разрушения C — вот и весь пакет. Без него подрядчик может списать любое связанное с основанием разрушение на зону ответственности заказчика; с ним треугольник гарантии держится. Укажите это требование в ведомости объёмов работ до выхода тендера, а не после монтажа. Связанные материалы: <a href="floor-tender-boq-template.html">шаблон ведомости объёмов работ для тендера</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">проверка соответствия</a> · <a href="substrate-moisture-remediation.html">устранение влажности основания</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>EN 1542:1999 — Products and systems for the protection and repair of concrete structures.</li>
-                        <li>ASTM D7234 — Standard Test Method for Pull-Off Adhesion Strength of Coatings on Concrete.</li>
+                        <li>EN 1542:1999 — Products and systems for the protection and repair of concrete structures. Test methods. Measurement of bond strength by pull-off.</li>
+                        <li>ASTM D7234 — Standard Test Method for Pull-Off Adhesion Strength of Coatings on Concrete Using Portable Pull-Off Adhesion Testers.</li>
                         <li>ICRI 320.1R — Guideline for adhesion testing of concrete coatings.</li>
-                        <li>Sikafloor system pull-off test protocols.</li>
-                        <li>Mapei Mapefloor pull-off test protocols.</li>
+                        <li>Протоколы испытаний на отрыв для систем Sikafloor.</li>
+                        <li>Протоколы испытаний на отрыв для систем Mapei Mapefloor.</li>
                         <li>ISO 17025 — General requirements for the competence of testing and calibration laboratories.</li>
                     </ul>
                 </div>
@@ -291,11 +333,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужен IL lab shortlist для pull-off теста?</h2>
-                <p>Поддерживаем current shortlist ISO 17025 IL labs для pull-off testing per EN 1542 / ASTM D7234.</p>
+                <h2>Нужна рекомендация лаборатории для испытания на отрыв на вашем объекте?</h2>
+                <p>Мы ведём актуальный короткий список аккредитованных по ISO 17025 израильских лабораторий, которые проводят испытания на отрыв по EN 1542 / ASTM D7234. Сообщите место расположения объекта — и мы организуем нужное знакомство.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Запросить lab shortlist</a>
-                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">BOQ template</a>
+                    <a href="../contact.html" class="btn btn-primary">Запросить короткий список лабораторий</a>
+                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">Посмотреть шаблон ведомости объёмов работ</a>
                 </div>
             </div>
         </div>

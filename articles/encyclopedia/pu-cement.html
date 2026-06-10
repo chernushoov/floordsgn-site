@@ -362,6 +362,8 @@
       })();
     </script>
     <script src="../../translations.js?v=20260523a"></script>
+    <script>/* RU-only энциклопедия: EN-тела пока нет — рендерим RU и прячем мёртвый EN-тоггл, не меняя глобальный язык-преф пользователя */
+    window.addEventListener('load',function(){var p=null;try{p=localStorage.getItem('floordsgn_lang');}catch(e){}if(window.setLanguage)setLanguage('ru');try{if(p&&p!=='ru')localStorage.setItem('floordsgn_lang',p);}catch(e){}document.querySelectorAll('.lang-btn[data-lang="en"]').forEach(function(b){b.style.display='none';});});</script>
     <script src="../../enhance.js?v=20260522a" defer></script>
 </body>
 </html>
