@@ -147,3 +147,28 @@ Architect · Builder · Contractor · Owner. Engineering voice for all; depth sc
 3. **Etalon commits — never revert/alter without explicit operator request:** `cc421cf` (hero3d), `076fdbc` (cfg-mobile), `23ed628` (audit-fix), `db80612` (sprint0).
 4. **One stack:** vanilla HTML/CSS/JS (PROJECT_PLAN canon). The `astro/` experiment is ARCHIVED, not the live stack.
 5. Sourcing: every spec/number cites a recognized source. No invented figures.
+
+---
+
+## 8. base-dark direction (operator, 2026-06-10) — pending design-wave application
+
+Operator chose the vibe of the old site (victoriameiri.wixsite.com/floordsgn): a deep, desaturated
+pine-green base instead of pure Carbon on dark surfaces. **Calibrated by rendering the old site:**
+
+```
+--base-dark:   #182420   /* deep pine-green — dark sections / footer / dark buttons (replaces Carbon there) */
+--base-dark-2: #151E1B   /* darker pine variant */
+```
+
+Rules (unchanged where not stated): exactly ONE Signal `#C86B3C` accent per page still holds; Carbon
+stays for text and #000-replacement; base-dark replaces Carbon **only on dark section backgrounds,
+the footer, and dark buttons**. Large rounded corners (~24–32px, token `--radius-photo: 28px`) on
+photo blocks/cards; buttons stay pill (980px). Section overlap/overhang (photo overhangs the green
+block — depth, not flush). Large airy Montserrat section/hero headings. System cards: vertical side
+label + "+" corner. Hero line: "DESIGN IN EVERY LAYER" / "Not just floors — surfaces that transform
+your world." Graft this onto the EXPERT-PORTAL funnel (home → system → 3D/Studio → library → /lead);
+do NOT revert to a "shop of services". **Do NOT** carry the old site's unverified "10+/99%/100+"
+stats or its clients/trust block (same fabricated-proof class the audit flagged).
+
+Tokens are defined in `styles.css`. Applying them onto surfaces + the section-overlap/vertical-label
+layout is the next design pass (needs visual review). Logo: BLOCKED — operator to confirm which logo.

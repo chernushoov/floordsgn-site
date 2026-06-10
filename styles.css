@@ -7893,3 +7893,13 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* fix/dark-green-foundation (NARYAD 06 FIX 12) — operator design direction 2026-06-10.
+   Calibrated base-dark from the old victoriameiri site (#182420 dominant, #151E1B secondary).
+   Defined here as tokens; applying them onto dark sections/footer/buttons is the next design
+   pass (needs operator visual review + the logo decision). ONE Signal accent rule still holds. */
+:root {
+  --base-dark: #182420;     /* deep pine-green — replaces Carbon on dark surfaces */
+  --base-dark-2: #151E1B;   /* darker pine variant */
+  --radius-photo: 28px;     /* large rounded corners on photo blocks/cards (~24–32px) */
+}
