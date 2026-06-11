@@ -39,8 +39,15 @@
 - Токены формализованы: `colors.base-dark` `#182420`, `colors.base-dark-2` `#151E1B` + компоненты `button-dark` / `section-dark` / `section-dark-deep`.
 - **Lint: 0 errors, 3 warnings** (no-primary + 2 contrast — все pre-existing/accepted).
 
+## Slice 2 — лого «с викса» + tool-chrome
+- **Лого RESOLVED.** «лого с викса» = тот же **FLOOR.DSGN tile-mosaic mark**, что уже в репо (`logo-mark-orig.png` + `-white`). Сверил crop старого Wix-хедера vs текущий mark — идентичны. Никакого нового ассета.
+- **Хедер главной → премиум.** Включён `header--hero` (инлайн-скрипт на `body.home`): прозрачный хедер с **белым лого** над зелёным hero → на скролле твердеет в pine-полосу (`--base-dark`, лого остаётся белым). Раньше был белый бар.
+- **Tool-chrome unify.** Минимальный бар (канонический лого + «← на сайт») добавлен на **Studio (`floor-room.html`)** — у неё не было «домой» — и на **Configurator**. Белый лого на тёмной Studio, чёрный на светлом Configurator. 3D-движки не тронуты (аддитивный оверлей).
+- **Configurator monospace → Montserrat.** `--mono` JetBrains Mono (это был 3-й шрифт = нарушение §2) → Montserrat, одной токен-строкой (19 использований).
+- Render-verify: home-header (desktop+mobile), Studio chrome, Configurator chrome — отрендерены и проверены. Lint DESIGN.md: 0 errors / 3 warnings.
+
 ## Осталось по наряду (следующие слайсы)
-Studio/Configurator tool-chrome unify (studio.html без «домой»), base-dark глобально (footer/прочие страницы), configurator monospace→Montserrat, listing H1 Cormorant-drift, mobile table overflow. Logo: BLOCKED (оператор выбирает).
+base-dark глобально (footer пока home-scoped; прочие тёмные страницы); **Configurator `--accent #0071e3` синий → Signal** (отдельное нарушение бренд-цвета); listing-page H1 Cormorant-drift; mobile table overflow; Studio persona-modal (onboarding-оверлей = нарушение §4, пре-существующий). Скролл-pine хедер: CSS на месте, в headless состояние скролла не снять — логика простая.
 
 ## Deliverables
-Ветка `fix/design-premium-pass` + этот FIXLOG. PR — без мёржа. Прод не тронут.
+Ветка `fix/design-premium-pass`, коммиты `b6af0a8` (главная) + slice 2 (лого/chrome). FIXLOG. Без мёржа, без прода. `landing.html` FROZEN, 3D-движки не тронуты.

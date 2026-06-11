@@ -25,7 +25,7 @@
   --ink:#1d1d1f;--ink-2:#2d2d2d;--ink-3:#6e6e73;--ink-4:#a0a0a4;
   --line:#d2d2d7;--line-2:#b8b8be;--accent:#0071e3;
   --sans:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Montserrat','Helvetica Neue',sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --mono:'Montserrat','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif; /* NARYAD 08: monospace→Montserrat (JetBrains Mono was a 3rd-font brand violation) */
   --serif:'Cormorant Garamond',Georgia,serif;
   --header-height:0px;
 }
@@ -269,6 +269,14 @@ html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sa
 </style>
 </head>
 <body>
+<style>/* NARYAD 08 — unified tool-chrome: canonical logo + back-to-site (matches Studio) */
+.tool-home{position:fixed;top:16px;left:18px;z-index:1000;display:flex;align-items:center;gap:12px;text-decoration:none}
+.tool-home__mark{height:26px;width:auto;display:block}
+.tool-home__back{font:600 11px/1 'Montserrat',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#6e6e73;border:1px solid #d2d2d7;border-radius:980px;padding:7px 13px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tool-home__back:hover{color:#1d1d1f;border-color:#1d1d1f}
+@media(max-width:560px){.tool-home__back{display:none}}
+</style>
+<a class="tool-home" href="/" aria-label="Floor.DSGN — на сайт"><img src="/images/logo/logo-mark-orig.png" alt="" class="tool-home__mark"><span class="tool-home__back">← на сайт</span></a>
 
 <section class="sec" id="block3d">
 

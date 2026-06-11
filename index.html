@@ -126,6 +126,7 @@
     </div>
 </header>
 <!-- partials:header:end -->
+<script>/* premium homepage: transparent white-logo header over the green hero (solidifies to pine on scroll via existing scroll handler) */(function(){var h=document.getElementById('mainHeader');if(h)h.classList.add('header--hero');})();</script>
 
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
@@ -186,6 +187,8 @@
          ====================================================================== -->
     <style id="hp-premium">
       body.home{background:var(--concrete);overflow-x:hidden}
+      /* homepage header: white tile-logo over green hero → solid pine bar once scrolled (logo stays white) */
+      body.home .header--hero.header--scrolled{background:var(--base-dark);-webkit-backdrop-filter:saturate(140%) blur(14px);backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid rgba(243,240,234,.08)}
       body.home [class^="hp-"],body.home [class*=" hp-"],body.home [class^="hp-"]::before,body.home [class^="hp-"]::after{box-sizing:border-box}
       .hp-eyebrow{max-width:100%}
       .hp-eyebrow{font:600 11px/1 'Montserrat',sans-serif;letter-spacing:.30em;text-transform:uppercase;color:var(--steel);margin:0 0 18px;display:inline-flex;gap:12px;align-items:center}

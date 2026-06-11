@@ -204,6 +204,16 @@ the system-card "+" turns Signal on hover, which is transient and allowed).
 (same fabricated-proof class the audit flagged — homepage now shows real systems + real work photos only).
 No emoji (the old `trust-section` emoji icons ✓⌬⌖⏳ were removed).
 
-**Still pending (next design slices):** apply base-dark globally (footer is home-scoped for now),
-Studio/Configurator tool-chrome unify (studio.html has no home link), configurator monospace→Montserrat,
-listing-page H1 Cormorant drift, mobile table overflow. Logo: BLOCKED — operator to confirm which logo.
+**Logo — RESOLVED (operator «лого с викса»):** canonical = the **FLOOR.DSGN tile-mosaic mark** (identical
+to the old Wix logo). Use `images/logo/logo-mark-orig.png` (+ `-white` variant) + Montserrat wordmark.
+White variant on dark surfaces (homepage hero header, Studio chrome); black on light (Configurator chrome).
+No CSS recoloring; pick variant by surface (per §3).
+
+**Tool-chrome — DONE:** unified minimal bar = canonical logo + «← на сайт» added to Studio
+(`floor-room.html` — it had no way home) and Configurator (`configurator.html`). Homepage header →
+`header--hero` (white logo over green hero, solidifies to pine `--base-dark` on scroll). Configurator
+`--mono` JetBrains Mono → **Montserrat** (it was a 3rd-font §2 violation; 19 usages, one token line).
+
+**Still pending (next slices):** base-dark globally (footer is home-scoped for now); Configurator
+`--accent #0071e3` blue → Signal (separate brand-color violation); listing-page H1 Cormorant drift;
+mobile table overflow; Studio persona-modal is an onboarding overlay (§4 violation, pre-existing).
