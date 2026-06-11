@@ -9,6 +9,8 @@ colors:
   concrete: "#F3F0EA"
   surface-2: "#F5F5F7"
   graphite: "#2D2D2D"
+  base-dark: "#182420"
+  base-dark-2: "#151E1B"
   on-signal: "#FFFFFF"
 typography:
   h1:
@@ -57,6 +59,20 @@ components:
     padding: 24px
   card-dark:
     backgroundColor: "{colors.graphite}"
+    textColor: "{colors.concrete}"
+    padding: 24px
+  button-dark:
+    backgroundColor: "{colors.base-dark}"
+    textColor: "{colors.concrete}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.pill}"
+    padding: 14px 32px
+  section-dark:
+    backgroundColor: "{colors.base-dark}"
+    textColor: "{colors.concrete}"
+    padding: 24px
+  section-dark-deep:
+    backgroundColor: "{colors.base-dark-2}"
     textColor: "{colors.concrete}"
     padding: 24px
   surface-alt:
@@ -150,25 +166,44 @@ Architect · Builder · Contractor · Owner. Engineering voice for all; depth sc
 
 ---
 
-## 8. base-dark direction (operator, 2026-06-10) — pending design-wave application
+## 8. Dark-green premium skin (NARYAD 08) — APPLIED to `index.html` (fix/design-premium-pass)
 
 Operator chose the vibe of the old site (victoriameiri.wixsite.com/floordsgn): a deep, desaturated
-pine-green base instead of pure Carbon on dark surfaces. **Calibrated by rendering the old site:**
+pine-green base instead of pure Carbon on dark surfaces. **Calibrated by rendering the old site**, now
+formal tokens (`colors.base-dark`, `colors.base-dark-2`; mirrored in `styles.css :root`):
 
 ```
 --base-dark:   #182420   /* deep pine-green — dark sections / footer / dark buttons (replaces Carbon there) */
---base-dark-2: #151E1B   /* darker pine variant */
+--base-dark-2: #151E1B   /* darker pine variant — Studio band, footer */
 ```
 
-Rules (unchanged where not stated): exactly ONE Signal `#C86B3C` accent per page still holds; Carbon
-stays for text and #000-replacement; base-dark replaces Carbon **only on dark section backgrounds,
-the footer, and dark buttons**. Large rounded corners (~24–32px, token `--radius-photo: 28px`) on
-photo blocks/cards; buttons stay pill (980px). Section overlap/overhang (photo overhangs the green
-block — depth, not flush). Large airy Montserrat section/hero headings. System cards: vertical side
-label + "+" corner. Hero line: "DESIGN IN EVERY LAYER" / "Not just floors — surfaces that transform
-your world." Graft this onto the EXPERT-PORTAL funnel (home → system → 3D/Studio → library → /lead);
-do NOT revert to a "shop of services". **Do NOT** carry the old site's unverified "10+/99%/100+"
-stats or its clients/trust block (same fabricated-proof class the audit flagged).
+**Where base-dark earns it:** dark section bands, footer, dark buttons. Carbon stays for text and as
+the #000-replacement. Exactly ONE Signal `#C86B3C` per page still holds (homepage = hero CTA only;
+the system-card "+" turns Signal on hover, which is transient and allowed).
 
-Tokens are defined in `styles.css`. Applying them onto surfaces + the section-overlap/vertical-label
-layout is the next design pass (needs visual review). Logo: BLOCKED — operator to confirm which logo.
+**Reusable component spec (homepage, prefix `hp-`):**
+
+- **Radius:** `--radius-photo` ≈ **28px** on hero/Studio photos, **24px** on cards, **20px** on proof
+  cells. Buttons stay pill (980px).
+- **Overlap / naplyv (the signature "expensive" move):** the hero photo sits in its own `hp-wrap` and is
+  pushed down with `transform: translateY(72px)` (48px ≤960, 36px ≤560) so it overhangs the green band
+  into the next section. The next section adds matching top padding to clear it. Depth, never flush-stacked.
+- **Big airy sans headings:** hero + section H2 use **Montserrat**, uppercase, large
+  (`clamp(30px,4.4vw,58px)` H2; hero `clamp(46px,9vw,124px)`, weight 300 with a 700 second word in a
+  muted pine-grey `#6f8a7d`). NB: this is a deliberate homepage exception to §2 (Cormorant) — Cormorant
+  remains the display font on article/listing/encyclopedia pages.
+- **System cards (`hp-syscard`):** photo + dark gradient + **vertical side label** (`writing-mode:
+  vertical-rl; rotate(180deg)`; RESIN / TERRAZZO / MICRO-TOPPING / CONCRETE) + **"+" corner** affordance
+  (Signal on hover) + name/meta bottom-left.
+- **Hero copy:** "DESIGN IN EVERY LAYER" / RU subline "Не просто полы — поверхности, которые меняют
+  пространство."
+- **IA = EXPERT-PORTAL funnel:** hero → choose system → 3D/Studio → library → proof → /lead. NOT a
+  "shop of services" (the old `process` / `clients` / "book a consultation" sections were removed).
+
+**Hard:** **Do NOT** carry the old site's unverified "10+/99%/100+" stats or its clients/trust block
+(same fabricated-proof class the audit flagged — homepage now shows real systems + real work photos only).
+No emoji (the old `trust-section` emoji icons ✓⌬⌖⏳ were removed).
+
+**Still pending (next design slices):** apply base-dark globally (footer is home-scoped for now),
+Studio/Configurator tool-chrome unify (studio.html has no home link), configurator monospace→Montserrat,
+listing-page H1 Cormorant drift, mobile table overflow. Logo: BLOCKED — operator to confirm which logo.
