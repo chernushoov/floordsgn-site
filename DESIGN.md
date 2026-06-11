@@ -9,8 +9,8 @@ colors:
   concrete: "#F3F0EA"
   surface-2: "#F5F5F7"
   graphite: "#2D2D2D"
-  base-dark: "#182420"
-  base-dark-2: "#151E1B"
+  base-dark: "#101510"
+  base-dark-2: "#0A0E0B"
   on-signal: "#FFFFFF"
 typography:
   h1:
@@ -173,8 +173,8 @@ pine-green base instead of pure Carbon on dark surfaces. **Calibrated by renderi
 formal tokens (`colors.base-dark`, `colors.base-dark-2`; mirrored in `styles.css :root`):
 
 ```
---base-dark:   #182420   /* deep pine-green — dark sections / footer / dark buttons (replaces Carbon there) */
---base-dark-2: #151E1B   /* darker pine variant — Studio band, footer */
+--base-dark:   #101510   /* deep pine-green — dark sections / footer / dark buttons (replaces Carbon there) */
+--base-dark-2: #0A0E0B   /* darker pine variant — Studio band, footer */
 ```
 
 **Where base-dark earns it:** dark section bands, footer, dark buttons. Carbon stays for text and as

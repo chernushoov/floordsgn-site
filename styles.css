@@ -151,10 +151,10 @@ img {
     top: 0;
     z-index: 1000;
     height: var(--header-h);
-    background: rgba(255,255,255,0.85);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.07);
+    background: var(--base-dark); /* NARYAD 08: one consistent pine header site-wide (white logo) */
+    -webkit-backdrop-filter: saturate(140%) blur(16px);
+    backdrop-filter: saturate(140%) blur(16px);
+    border-bottom: 1px solid rgba(243,240,234,0.08);
     transition: background .4s ease, border-color .4s ease;
 }
 .header__inner {
@@ -170,21 +170,22 @@ img {
 /* Logo lockup — original tile-mark + wordmark */
 .header__logo { display: flex; align-items: center; gap: 9px; flex: 0 0 auto; text-decoration: none; }
 .header__mark { height: 30px; width: auto; display: block; }
-.header__mark--white { display: none; }
-.header__wordmark { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; line-height: 1; letter-spacing: 0.005em; color: var(--carbon); white-space: nowrap; }
+.header__mark--black { display: none; }
+.header__mark--white { display: block; }
+.header__wordmark { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; line-height: 1; letter-spacing: 0.005em; color: #f3f0ea; white-space: nowrap; }
 /* Primary nav */
 .header__nav { display: flex; align-items: center; gap: clamp(15px, 2.2vw, 32px); }
-.header__nav a { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: var(--carbon); text-decoration: none; transition: opacity .25s; white-space: nowrap; }
+.header__nav a { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: rgba(243,240,234,0.9); text-decoration: none; transition: opacity .25s; white-space: nowrap; }
 .header__nav a:hover { opacity: 0.55; }
 .header__nav a.active { opacity: 0.45; }
 /* Right actions — language + one CTA */
 .header__actions { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
 .header__lang { display: flex; gap: 2px; }
-.header__cta { font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--carbon); border: 1px solid var(--carbon); border-radius: 980px; padding: 9px 18px; text-decoration: none; white-space: nowrap; transition: background .2s ease, color .2s ease; }
-.header__cta:hover { background: var(--carbon); color: #fff; }
+.header__cta { font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; color: #f3f0ea; border: 1px solid rgba(243,240,234,0.5); border-radius: 980px; padding: 9px 18px; text-decoration: none; white-space: nowrap; transition: background .2s ease, color .2s ease; }
+.header__cta:hover { background: var(--concrete); color: var(--base-dark); }
 /* Mobile hamburger */
 .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
-.mobile-menu-btn span { width: 22px; height: 2px; background: var(--carbon); border-radius: 2px; transition: all .3s; }
+.mobile-menu-btn span { width: 22px; height: 2px; background: #f3f0ea; border-radius: 2px; transition: all .3s; }
 /* Hero variant — transparent over a dark hero (opt-in via .header--hero) */
 .header--hero { position: fixed; left: 0; right: 0; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent; }
 .header--hero .header__wordmark { color: #fff; }
@@ -3307,6 +3308,10 @@ img {
     border-color: var(--black);
     color: var(--white);
 }
+/* NARYAD 08: lang toggle on the pine header (light-on-dark) */
+.header .lang-btn { color: rgba(243,240,234,0.7); border-color: rgba(243,240,234,0.28); }
+.header .lang-btn:hover { color: #fff; border-color: rgba(243,240,234,0.6); }
+.header .lang-btn.active { background: var(--concrete); border-color: var(--concrete); color: var(--base-dark); }
 
 @media (max-width: 768px) {
     .lang-switch {
@@ -7914,7 +7919,7 @@ img {
    Defined here as tokens; applying them onto dark sections/footer/buttons is the next design
    pass (needs operator visual review + the logo decision). ONE Signal accent rule still holds. */
 :root {
-  --base-dark: #182420;     /* deep pine-green — replaces Carbon on dark surfaces */
-  --base-dark-2: #151E1B;   /* darker pine variant */
+  --base-dark: #101510;     /* deep pine — near-black premium (darkened to match old-Wix darks) */
+  --base-dark-2: #0A0E0B;   /* darker pine variant — Studio band / footer */
   --radius-photo: 28px;     /* large rounded corners on photo blocks/cards (~24–32px) */
 }
