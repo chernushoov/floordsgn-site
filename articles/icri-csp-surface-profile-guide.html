@@ -223,9 +223,9 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
-                <span class="article-category">Substrate Reference</span>
-                <h1>ICRI CSP — гид по surface profile</h1>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
+                <span class="article-category">Справочник по основанию</span>
+                <h1>ICRI CSP: гид по профилю поверхности</h1>
                 <p class="article-meta">Май 2026 · 7 мин чтения</p>
                 <div class="article-hero-wrapper">
                     <img src="../images/concrete-decorative/beton.jpg" alt="ICRI CSP surface profile guide" class="article-hero-image">
@@ -236,76 +236,129 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Каждый resin пол который delaminated trace до одной из трёх substrate failures: wrong moisture state, wrong surface profile, wrong substrate strength. CSP — Concrete Surface Profile — вторая из трёх. Стандарт ICRI 310.2R-2013 определяет 10 profile levels (CSP 1–10) и маппит каждый к resin system class который должен получить. Under-profile = adhesion risk + early delamination. Over-profile = pinholing + over-consumption.</p>
+                    <p class="lead">Каждый смоляной (полимерный) пол, который отслоился, упирался в один из трёх дефектов основания: неверное влажностное состояние, неверный профиль поверхности или недостаточная прочность основания. CSP — профиль поверхности бетона (Concrete Surface Profile) — второй из этих трёх. Стандарт ICRI 310.2R-2013 определяет десять уровней профиля (от CSP 1 до CSP 10) и сопоставляет каждый из них с классом смоляной системы, который на этот профиль допустимо укладывать. Недостаточный профиль — это риск по адгезии и раннее отслоение. Избыточный профиль — это поры на поверхности и перерасход материала. Эта страница — практический справочник по CSP: десять уровней профиля, методы, которыми достигается каждый, целевой профиль под каждый класс систем и порядок проверки CSP на объекте до того, как грунт ляжет на основание.</p>
 
-                    <p><em>Полный EN-вариант выше с CSP 1–10 таблицей, method-cards, per-system target таблицей, site verification protocol, common mistakes, tender language. Краткая RU-сводка:</em></p>
+                    <h2>Шкала CSP 1–10</h2>
+                    <p>ICRI 310.2R-2013 стандартизировал шкалу, на которую ссылаются все крупные производители смоляных систем (Sika, Mapei, MC-Bauchemie, Master Builders) в требованиях к подготовке поверхности в своих технических картах (TDS). CSP 1 — почти гладкая поверхность (кислотное травление, без обнажения заполнителя). CSP 10 — тяжёлая гидродемонтажная обработка (амплитуда более 6 мм, обнажённый заполнитель). Эта шкала — одно число, которое закрывает договорный вопрос: заниженный CSP — это измеримый дефект.</p>
+                    <table class="csp-table">
+                        <thead>
+                            <tr><th>CSP</th><th>Описание</th><th>Подходящая система покрытия</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="csp-num">1</td><td>Кислотное травление, почти гладкая</td><td>Пропитки, тонкие плёнки &lt; 3 mil (проникающие составы, обеспыливатели)</td></tr>
+                            <tr><td class="csp-num">2</td><td>Лёгкое кислотное травление / лёгкая шлифовка</td><td>Тонкие плёнки, пропитки (3–6 mil)</td></tr>
+                            <tr><td class="csp-num">3</td><td>Лёгкая дробеструйная обработка / шлифовка</td><td>Толстослойные покрытия (4–10 mil) — типовая база эпоксидного грунта</td></tr>
+                            <tr><td class="csp-num">4</td><td>Лёгкое фрезерование / шлифовка</td><td>Тонкий полимерный наливной слой 10–40 mil</td></tr>
+                            <tr><td class="csp-num">5</td><td>Средняя дробеструйная обработка</td><td>Наливные самовыравнивающиеся слои, грунты под толстослойные системы</td></tr>
+                            <tr><td class="csp-num">6</td><td>Среднее фрезерование / средняя дробеструйная обработка</td><td>Полимерные наливные слои 40–100 mil (≈ 1–2,5 мм)</td></tr>
+                            <tr><td class="csp-num">7</td><td>Тяжёлая абразивно-струйная обработка / тяжёлое фрезерование / поверхностный замедлитель схватывания</td><td>Полимерные наливные слои / ремонт &gt; ¼″ (6 мм) — тяжёлые системы + ПУ-цемент</td></tr>
+                            <tr><td class="csp-num">8</td><td>Бучардирование (скабблинг) / тяжёлая абразивно-струйная обработка / гидроабразивная резка под высоким давлением</td><td>Ремонтные растворы, тяжёлые наливные слои</td></tr>
+                            <tr><td class="csp-num">9</td><td>Тяжёлое бучардирование / гидродемонтаж</td><td>Конструкционный ремонт, адгезионные (бонд-) наливные слои</td></tr>
+                            <tr><td class="csp-num">10</td><td>Гидродемонтаж / тяжёлая механическая обработка (амплитуда &gt; 6 мм)</td><td>Агрессивное удаление слоя (добавлено в редакции 2013 года)</td></tr>
+                        </tbody>
+                    </table>
 
-                    <h2>CSP 1–10 шкала (краткий обзор)</h2>
-                    <ul>
-                        <li><strong>CSP 1–3:</strong> Acid-etched или light grind. Sealers + thin films &lt; 3–10 mil.</li>
-                        <li><strong>CSP 4–5:</strong> Light scarification, medium shot blast. Self-levelling overlays + primers для thick systems.</li>
-                        <li><strong>CSP 6–7:</strong> Heavy shot blast, medium-heavy scarification. Polymer overlays 1–2.5 мм + heavy-duty + PU-cement.</li>
-                        <li><strong>CSP 8–10:</strong> Scabbling + hydro-demolition. Structural repair, bonded overlays.</li>
-                    </ul>
+                    <h2>Метод → достигаемый CSP</h2>
+                    <p>Профиль CSP задаётся методом, а не наоборот. Подрядчик, который заявляет CSP 5 после кислотного травления, на деле CSP 5 не обеспечивает. У каждого метода есть документально зафиксированный диапазон профиля, и выбор должен идти от целевого CSP к методу, а не наоборот.</p>
 
-                    <h2>Метод → CSP achieved</h2>
-                    <ul>
-                        <li><strong>Acid etching:</strong> CSP 1–3 (deprecated для tender-grade).</li>
-                        <li><strong>Diamond grinding:</strong> CSP 1–3 (декоративные thin systems + polished concrete prep).</li>
-                        <li><strong>Shot blast:</strong> CSP 2–7 (IL industrial-floor workhorse).</li>
-                        <li><strong>Scarification:</strong> CSP 4–7.</li>
-                        <li><strong>Needle scaler:</strong> CSP 4–6 (edges, columns).</li>
-                        <li><strong>Scabbling:</strong> CSP 7–9 (heavy mechanical impact).</li>
-                        <li><strong>Hydro-demolition (HPWJ):</strong> CSP 8–10 (700–2 000 bar, structural repair).</li>
-                    </ul>
-
-                    <h2>Per-system CSP target</h2>
-                    <ul>
-                        <li>Микротопинг 2–3 мм: CSP 2–3 (diamond grinding).</li>
-                        <li>Эпокси SL 2–3 мм: CSP 3–4 (light shot blast).</li>
-                        <li>Heavy-duty эпокси quartz 4–6 мм: CSP 4–5 (medium shot blast).</li>
-                        <li>PU-cement 6–9 мм kitchen: CSP 5–7 (heavy shot blast или scarification).</li>
-                        <li>PU-cement 9–12 мм heavy industrial: CSP 6–7 (heavy scarification или scabbling).</li>
-                        <li>MMA fast-cure 2–4 мм: CSP 3–5 (shot blast, finish в MMA window).</li>
-                        <li>Polished concrete: N/A (progressive grinding).</li>
-                        <li>Repair mortar overlay EN 1504-3: CSP 7–9 (scabbling или hydro-demolition).</li>
-                    </ul>
-
-                    <h2>Site verification protocol</h2>
-                    <ol>
-                        <li>Receive substrate после prep is complete. Прежде primer.</li>
-                        <li>Place ICRI chip против substrate в named grid locations (3 на 1 000 м² minimum).</li>
-                        <li>Compare sight + finger touch. Substrate profile должен match chip texture.</li>
-                        <li>Photograph chip против substrate — это твоё audit evidence.</li>
-                        <li>Если ниже target CSP — re-prep zone. Самая частая причина delamination.</li>
-                        <li>Если выше target CSP — log. Менее risky чем lower но wastes primer + может pinhole в microtopping.</li>
-                    </ol>
-
-                    <h2>Common CSP mistakes</h2>
-                    <ul>
-                        <li>Verbal "shot-blasted, profile good" без ICRI chip + photo — claim unenforceable.</li>
-                        <li>Acid etch заявлен как CSP 5 — невозможно. Либо метод changed либо CSP claim wrong.</li>
-                        <li>Heavy shot blast для thin декоративного микротопинга — pinholing через topcoat за 30 дней.</li>
-                        <li>Light grinding для heavy-duty PU-cement — fails pull-off + delaminates за 12 мес.</li>
-                        <li>Single CSP через project area со substrate type changes — old slab + new slab + repair patch требуют individual verification.</li>
-                    </ul>
-
-                    <h2>BOQ tender language</h2>
-                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
-                        "Substrate prepared to ICRI 310.2R-2013 CSP <strong>[3 / 5 / 7]</strong> ± 1 across project area. Method to be chosen by applicator from acceptable list: shot blast, scarification, diamond grinding. Verification by ICRI CSP rubber comparator chip at minimum 3 locations per 1 000 м², с photographic evidence per location attached to completion certificate. Substrate zones below target CSP to be re-prepped at applicator cost. Acid etching <strong>not accepted</strong> as primary preparation method для любой system above CSP 3."
+                    <div class="method-card">
+                        <h3>Кислотное травление</h3>
+                        <div class="method-range">CSP 1–3</div>
+                        <p>Промывка разбавленной соляной или фосфорной кислотой. Дёшево и исторически распространено, но сегодня в основном вышло из применения для полов тендерного уровня. Риски: остаточные хлориды, неравномерный профиль, затраты на утилизацию по экологии. Применять только под тонкоплёночные пропитки в жилом секторе, где за ними не следует гарантийная система.</p>
                     </div>
 
-                    <h2>Финальная мысль</h2>
-                    <p>CSP — один из 3 substrate gates (с moisture и substrate strength) которые решают будет ли resin floor 5 лет или 15. Шкала 1–10 documented, методы documented, per-system targets documented. Applicator's job — hit target; owner representative's job — verify с ICRI chips до primer. Связано: <a href="substrate-moisture-remediation.html">substrate moisture remediation</a> · <a href="adhesion-pull-off-test-guide.html">pull-off test guide</a> · <a href="floor-tender-boq-template.html">BOQ template</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a>.</p>
+                    <div class="method-card">
+                        <h3>Алмазная шлифовка</h3>
+                        <div class="method-range">CSP 1–3</div>
+                        <p>Ротационная планетарная головка с алмазными сегментами. Даёт самый гладкий профиль, идеальна под декоративные тонкослойные системы и подготовку под полированный бетон. Эпоксидные грунты Floor.DSGN обычно нацелены на CSP 2–3, и алмазная шлифовка обеспечивает их стабильно. В действующих зданиях обязателен пылеотсос.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Дробеструйная обработка</h3>
+                        <div class="method-range">CSP 2–7 (от лёгкой до тяжёлой)</div>
+                        <p>Стальная дробь выстреливается в основание с контролируемой скоростью; отскочившая дробь собирается пылесосом и используется повторно. Рабочая лошадка для промышленных полов в Израиле. Профиль регулируется размером дроби, скоростью выброса и скоростью прохода машины. Чистый сухой процесс, пригоден для действующих зданий при надлежащей локализации. Тяжёлая дробеструйная обработка (CSP 6–7) — под ПУ-цемент и тяжёлый эпоксидно-кварцевый пол.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Фрезерование</h3>
+                        <div class="method-range">CSP 4–7</div>
+                        <p>Ротационная фрезерная головка с твердосплавными ножевыми дисками. Агрессивный профиль под средние и тяжёлые полимерные наливные слои. Часто применяется, чтобы за один проход снять старое покрытие и создать новый профиль. Пыль и ударный шум — требует согласования при работе в действующем здании.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Игольчатый отбойник / лёгкий бучардировщик</h3>
+                        <div class="method-range">CSP 4–6</div>
+                        <p>Пневматический пучок игл ударяет по основанию. Ручной инструмент; применяется на кромках, колоннах, по периметру и в деталях, куда не достаёт машина. Агрессивно, но медленно — практично только для небольших участков. Сильный шум и вибрация.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Бучардирование (механическое)</h3>
+                        <div class="method-range">CSP 7–9</div>
+                        <p>Тяжёлый механический удар несколькими поршневыми бойками. Агрессивное удаление слоя и создание профиля за один проход. Применяется в зонах после гидрообработки, при глубоком ремонте и при требованиях к адгезии на конструкционном уровне. Шумно, пыльно, медленно — метод крайней меры.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <h3>Гидродемонтаж (HPWJ)</h3>
+                        <div class="method-range">CSP 8–10</div>
+                        <p>Гидроструйная обработка под высоким давлением 700–2 000 бар. Снимает неплотный бетон, создаёт агрессивный профиль, при необходимости обнажает арматуру для конструкционного ремонта. Стандарт для ремонта мостовых плит и паркингов; для проектов «только пол» применяется редко. Нужен специализированный подрядчик.</p>
+                    </div>
+
+                    <h2>Целевой CSP под каждую систему</h2>
+                    <p>У каждого класса смоляных систем есть документально зафиксированный целевой диапазон CSP. Попадайте в него. Ниже — риск отслоения; выше — перерасход грунта и поры на поверхности.</p>
+                    <table class="csp-table">
+                        <thead>
+                            <tr><th>Система</th><th>Целевой CSP</th><th>Типовой метод</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Декоративный микротопинг 2–3 мм</td><td class="csp-num">2–3</td><td>Алмазная шлифовка</td></tr>
+                            <tr><td>Эпоксидный наливной пол 2–3 мм (лёгкая промышленность)</td><td class="csp-num">3–4</td><td>Лёгкая дробеструйная обработка</td></tr>
+                            <tr><td>Тяжёлый эпоксидно-кварцевый пол 4–6 мм</td><td class="csp-num">4–5</td><td>Средняя дробеструйная обработка</td></tr>
+                            <tr><td>ПУ-цемент 6–9 мм (кухня)</td><td class="csp-num">5–7</td><td>Тяжёлая дробеструйная обработка или фрезерование</td></tr>
+                            <tr><td>ПУ-цемент 9–12 мм (тяжёлая промышленность)</td><td class="csp-num">6–7</td><td>Тяжёлое фрезерование или бучардирование</td></tr>
+                            <tr><td>ММА быстрого отверждения 2–4 мм</td><td class="csp-num">3–5</td><td>Дробеструйная обработка (закончить в пределах открытого времени ММА)</td></tr>
+                            <tr><td>Полированный бетон (упрочнитель + полировка)</td><td class="csp-num">—</td><td>Сначала агрессивная шлифовка, затем последовательно более мелкий абразив</td></tr>
+                            <tr><td>Ремонтный наливной раствор (EN 1504-3)</td><td class="csp-num">7–9</td><td>Бучардирование или гидродемонтаж</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Как проверить CSP на объекте</h2>
+                    <p>Проверка CSP ведётся физическими резиновыми эталонными пластинами-компараторами, а не «на глаз». Набор пластин выпускает ICRI; в Израиле стандартом служат пластины CSP от DeFelsko.</p>
+                    <ol>
+                        <li><strong>Принимайте основание после завершения подготовки.</strong> Пройдите по поверхности до нанесения грунта — как только грунт лёг, назад дороги нет.</li>
+                        <li><strong>Прикладывайте эталонную пластину ICRI к основанию в назначенных точках сетки.</strong> Минимум 3 точки на 1 000 м², в критических зонах больше.</li>
+                        <li><strong>Сравнивайте на глаз и на ощупь.</strong> Профиль основания должен совпадать с фактурой профиля пластины в каждой точке.</li>
+                        <li><strong>Сфотографируйте пластину, приложенную к основанию.</strong> Снимок — ваше доказательство для аудита; без него заявленный CSP непроверяем.</li>
+                        <li><strong>Если основание ниже целевого CSP — перерабатывайте эту зону.</strong> Не принимайте «и так сойдёт» — заниженный CSP — самая частая причина гарантийного отслоения.</li>
+                        <li><strong>Если основание выше целевого CSP — фиксируйте это.</strong> Завышенный профиль менее рискован, чем заниженный, но ведёт к перерасходу грунта; в ряде систем (микротопинг) избыточный профиль даёт видимые поры сквозь финишный слой.</li>
+                    </ol>
+
+                    <h2>Частые ошибки по CSP</h2>
+                    <ul>
+                        <li><strong>Устное «мы провели дробеструйку, профиль нормальный».</strong> Без эталонной пластины ICRI и фотографии заявление неисполнимо. Отклоняйте и требуйте проверки по пластине.</li>
+                        <li><strong>Кислотное травление выдают за CSP 5.</strong> Кислотным травлением CSP 5 не получить. Либо сменился метод (была дробеструйка), либо заявленный CSP неверен.</li>
+                        <li><strong>Тяжёлая дробеструйка под тонкий декоративный микротопинг.</strong> Избыточный профиль даёт поры сквозь финишный слой — видимый дефект за 30 дней.</li>
+                        <li><strong>Лёгкая шлифовка под тяжёлый ПУ-цемент.</strong> Заниженный профиль не проходит испытание на отрыв и отслаивается в течение 12 месяцев при термоциклировании.</li>
+                        <li><strong>Один CSP на всю площадь объекта при смене типа основания.</strong> Старая плита, новая плита и ремонтная заплатка требуют индивидуальной проверки CSP по каждой зоне.</li>
+                    </ul>
+
+                    <h2>CSP в смете (BOQ) — формулировка для тендера</h2>
+                    <p>Готово к прямой вставке в строку 1 сметы (механическая подготовка основания).</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
+                        «Основание подготовить по ICRI 310.2R-2013 до CSP <strong>[3 / 5 / 7]</strong> ± 1 по всей площади объекта. Метод выбирает подрядчик из допустимого списка: дробеструйная обработка, фрезерование, алмазная шлифовка. Проверка — резиновой эталонной пластиной-компаратором CSP по ICRI минимум в 3 точках на 1 000 м², с приложением фотодоказательства по каждой точке к акту сдачи-приёмки. Зоны основания ниже целевого CSP перерабатывает подрядчик за свой счёт. Кислотное травление <strong>не принимается</strong> как основной метод подготовки для любой системы выше CSP 3».
+                    </div>
+
+                    <h2>Итог</h2>
+                    <p>CSP — один из трёх контрольных рубежей по основанию (вместе с влажностью и прочностью основания), которые решают, прослужит ли смоляной пол пять лет или пятнадцать. Шкала 1–10 задокументирована, методы достижения каждого уровня задокументированы, целевые значения под каждую систему задокументированы. Задача подрядчика — попасть в цель; задача представителя заказчика — проверить эталонными пластинами ICRI до нанесения грунта. Указывайте CSP в тендере, а не после монтажа. Смотрите также: <a href="substrate-moisture-remediation.html">борьба с влажностью основания</a> · <a href="adhesion-pull-off-test-guide.html">гид по испытанию адгезии на отрыв</a> · <a href="floor-tender-boq-template.html">шаблон тендерной сметы (BOQ)</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>ICRI Technical Guideline No. 310.2R-2013.</li>
-                        <li>DeFelsko CSP rubber comparator chip set.</li>
-                        <li>Sika Sikafloor substrate preparation guidelines.</li>
-                        <li>Mapei Mapefloor substrate preparation guidelines.</li>
-                        <li>MC-Bauchemie MC-DUR substrate preparation specifications.</li>
-                        <li>Master Builders Solutions Ucrete + Mastertop preparation manuals.</li>
+                        <li>ICRI Technical Guideline No. 310.2R-2013 — Selecting and Specifying Concrete Surface Preparation.</li>
+                        <li>Набор резиновых эталонных пластин-компараторов CSP DeFelsko и референсные фотографии.</li>
+                        <li>Руководства по подготовке основания Sika Sikafloor.</li>
+                        <li>Руководства по подготовке основания Mapei Mapefloor.</li>
+                        <li>Спецификации по подготовке основания MC-Bauchemie MC-DUR.</li>
+                        <li>Руководства по подготовке Master Builders Solutions Ucrete + Mastertop.</li>
+                        <li>Полевая документация подрядчика Floor.DSGN в Израиле, 50+ проектов полов.</li>
                     </ul>
                 </div>
             </div>
@@ -313,11 +366,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужен CSP verification protocol для проекта?</h2>
-                <p>Можем отправить ICRI chip ordering link и single-page CSP-verification checklist matched к системе.</p>
+                <h2>Нужен протокол проверки CSP для вашего проекта?</h2>
+                <p>Пришлём ссылку для заказа эталонных пластин ICRI и одностраничный чек-лист проверки CSP, подобранный под вашу систему. Указывайте CSP на стадии тендера и проверяйте на объекте до нанесения грунта.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Запросить CSP protocol</a>
-                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">BOQ template</a>
+                    <a href="../contact.html" class="btn btn-primary">Запросить протокол CSP</a>
+                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">Шаблон сметы (BOQ)</a>
                 </div>
             </div>
         </div>

@@ -296,12 +296,12 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
                 <span class="article-category">Шаблон закупки</span>
-                <h1>Шаблон Tender BOQ для пола</h1>
+                <h1>Шаблон тендерной сметы (BOQ) на пол</h1>
                 <p class="article-meta">Май 2026 · 7 мин чтения</p>
                 <div class="article-hero-wrapper">
-                    <img src="../images/concrete-decorative/beton.jpg" alt="Шаблон tender BOQ" class="article-hero-image">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Шаблон тендерной сметы на пол" class="article-hero-image">
                 </div>
             </div>
         </div>
@@ -309,56 +309,195 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Каждый tender который выдал реально работающий пол имел одни и те же 11 line items. Большинство tenders которые выдали failed полы имели только 3–4 — обычно слепленных в одну "supply and install epoxy" line которая прятала prep, broadcast спеку, и joint detail. Эта страница — практический BOQ template для индустриального resin-пола procurement: 11 линий, каждая со spec language, единицей измерения, и verification check которая позволяет отклонить substandard submission.</p>
+                    <p class="lead">У каждого тендера, по которому в итоге получился действительно работающий пол, были одни и те же одиннадцать позиций сметы. У большинства тендеров, давших дефектный пол, было всего три-четыре позиции — как правило, слепленных в одну строку «поставка и устройство эпоксидного пола», которая прятала подготовку основания, спецификацию засыпки и узел деформационных швов. Эта страница — практический шаблон сметы (BOQ) для закупки промышленного смоляного (полимерного) пола: одиннадцать позиций, у каждой — формулировка спецификации, единица измерения и контрольная проверка, по которой можно отклонить некачественное предложение. Класс системы при необходимости заменяйте (ПУ-цемент, наливной эпоксидный пол, ММА), но структура позиций остаётся той же.</p>
 
-                    <p><em>Полный EN-вариант выше с 11 BOQ-карточками + summary таблицей + substitutions для других system classes. Краткий RU-обзор по line items:</em></p>
+                    <p>Рабочий пример: 800 м² эпоксидного пола особой стойкости с засыпкой кварцем на логистическом складе с нагрузкой от ричтрака 3 т. Подставьте свои проектные цифры и систему по необходимости.</p>
 
-                    <ol>
-                        <li><strong>Mechanical substrate preparation</strong> — shot-blast до ICRI CSP 3–5 + ASTM F2170 moisture log. ₪25–60/м². Reject без CSP chart + F2170 + фото.</li>
-                        <li><strong>Substrate repair (provisional)</strong> — EN 1504-3 R3/R4 mortar (Sika MonoTop). Provisional ₪80–200/м². Reject если price фиксированный, не provisional.</li>
-                        <li><strong>Primer coat</strong> — moisture-tolerant epoxy primer (Sikafloor-156). 0.3–0.4 кг/м². ₪18–35/м². Verify по SKU + lot + consumption rate.</li>
-                        <li><strong>Body coat self-levelling</strong> — 3.0–4.0 мм epoxy SL (Sikafloor MultiDur-EB-24). 5.0–6.0 кг/м². ₪75–140/м². Verify по толщине в 5 grid points/100 м².</li>
-                        <li><strong>Broadcast quartz aggregate</strong> — 0.4–0.8 мм, 4.0–5.0 кг/м² до refusal. ₪22–40/м². Verify по particle size + consumption + visual.</li>
-                        <li><strong>Sealer coat (aliphatic PU)</strong> — UV-stable. 0.4–0.5 кг/м². ₪35–65/м². Verify по SKU + UV-стойкости.</li>
-                        <li><strong>Anti-slip class verification</strong> — DIN 51130 R11 wet / R10 elsewhere. 3 independent test reports. ₪1 500–3 000. Reject self-certification.</li>
-                        <li><strong>Joint treatment</strong> — substrate joints replicated, 2-комп. polyurethane sealant (Sikaflex PRO 3). ₪35–80/lm. Reject submissions без perimeter joints.</li>
-                        <li><strong>Perimeter cove + column detail</strong> — integral 100 мм cove, 30 мм radius. ₪80–180/lm. Non-negotiable для HACCP / kitchen.</li>
-                        <li><strong>Control samples + pull-off test</strong> — 3 samples archive + 6 EN 1542 pull-off ≥ 1.5 МПа cohesive. ₪2 500–5 000. Reject если &lt;1.5 МПа.</li>
-                        <li><strong>Warranty registration + completion docs</strong> — manufacturer 10y + applicator 5y + substrate prep records + pull-off + completion certificate. Included.</li>
-                    </ol>
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 1 из 11 — Подготовка основания</span>
+                        <h3>Механическая подготовка основания</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">800 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪25–60</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> дробеструйная подготовка до профиля ICRI CSP 3–5 с журналом влажности основания по ASTM F2170 (заглублённый датчик в обозначенных точках, 3 на 1 000 м²), показывающим ≤75% относительной влажности на глубине. Непрочное основание и цементное молочко удалить механически. Существующие покрытия удалить полностью, кроме случаев явного проекта устройства поверх от производителя.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> отклонять без приложенной карты замеров ICRI CSP + журнала влажности по ASTM F2170 + фото подготовленного основания в обозначенных точках сетки. См. <a href="floor-system-selection-by-use-case.html">подбор системы</a> для спецификации основания по сценарию применения.</div>
+                    </div>
 
-                    <h2>Summary BOQ итого</h2>
-                    <p>Для 800 м² heavy-duty quartz broadcast epoxy на logistics warehouse substrate: total estimate range <strong>₪162 850–323 600</strong> = <strong>₪204–405/м²</strong>.</p>
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 2 из 11 — Основание</span>
+                        <h3>Ремонт и выравнивание основания</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">Ориентировочно 50 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м² + пог. м</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪80–200</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> Sika MonoTop R3 / R4 (или равноценный ремонтный состав класса R3 по EN 1504-3) для ремонта основания с прочностью сцепления ≥25 МПа. Объём ориентировочный — фактическое количество определяется по результатам обследования основания. Трещиноизолирующая мембрана (Sika Combiflex или аналог) поверх любой существующей трещины основания шириной &gt; 0,3 мм.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> в предложении эта позиция должна быть оценена как ориентировочная, а не фиксированная — состояние основания можно подтвердить только после механической подготовки по позиции 1. См. <a href="substrate-moisture-remediation.html">устранение влажности основания</a>.</div>
+                    </div>
 
-                    <h2>Что отклонять в submission</h2>
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 3 из 11 — Слой смолы 1</span>
+                        <h3>Грунтовочный слой</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">800 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪18–35</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> эпоксидный грунт с допуском по влажности до 4% CM влажности основания, расход 0,3–0,4 кг/м². Sikafloor-156 или аналог. Наносится в течение 24 часов после завершения подготовки по позиции 1, чтобы исключить повторное загрязнение.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> артикул (SKU) и номер партии в накладной + расчёт расхода по каждой замесанной порции. Отклонять, если артикул грунта заменён без согласования с производителем.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 4 из 11 — Слой смолы 2</span>
+                        <h3>Основной слой (наливной эпоксидный)</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">800 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м² при толщине</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪75–140</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> наливной эпоксидный основной слой толщиной 3,0–4,0 мм. Sikafloor MultiDur-EB-24 или аналог. Колеровка по RAL [указать]. Жизнеспособность ≥ 25 минут при 20 °C. Расход 5,0–6,0 кг/м².</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> замер толщины в 5 точках сетки на каждые 100 м² глубиномером. Артикул + партия + RAL в накладной + расход по каждому замесу.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 5 из 11 — Заполнитель</span>
+                        <h3>Засыпка кварцевого заполнителя</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">800 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪22–40</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> кварцевый заполнитель печной сушки, размер частиц 0,4–0,8 мм, засыпка 4,0–5,0 кг/м² до насыщения. Цвет нейтральный или колерованный по дизайн-замыслу. Несвязанный заполнитель удалить пылесосом после отверждения, перед нанесением финишного слоя.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> размер частиц заполнителя + спецификация поставщика при поставке. Расход по каждому замесу. Засыпка до насыщения подтверждается визуально + замером глубины.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 6 из 11 — Слой смолы 3</span>
+                        <h3>Пропиточный слой (алифатический полиуретан)</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">800 м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">м²</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/м²</span><span class="boq-meta-value">₪35–65</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> двухкомпонентная алифатическая полиуретановая пропитка (силер), расход 0,4–0,5 кг/м². УФ-стойкая для наружных или освещаемых дневным светом помещений. Матовая или сатиновая фактура по дизайн-замыслу. Наносится через 12 и более часов после удаления несвязанного заполнителя пылесосом.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> артикул + партия. Сертификат УФ-стойкости при наружной эксплуатации. Степень блеска на завершение работ (по желанию — блескомер 60°).</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 7 из 11 — Противоскольжение</span>
+                        <h3>Подтверждение класса сопротивления скольжению</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">3 контрольных участка</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">протокол испытаний</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪</span><span class="boq-meta-value">₪1 500–3 000 всего</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> класс R по DIN 51130, достигнутый как сплошная поверхность с засыпкой, — минимум R11 во влажных зонах, R10 в остальных. Протокол испытаний независимой лаборатории в 3 обозначенных точках после полного отверждения (обычно на 7-е сутки). Результат прикладывается к акту сдачи-приёмки.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> протокол независимых испытаний — не самосертификация подрядчика. См. <a href="floor-compliance-verification-checklist.html">проверку соответствия</a>, §2.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 8 из 11 — Швы</span>
+                        <h3>Обработка деформационных и нарезных швов</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">~150 пог. м (зависит от объекта)</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">пог. м</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/пог. м</span><span class="boq-meta-value">₪35–80</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> существующие швы основания воспроизводятся через готовый пол с точным шагом и шириной. Швы герметизируются двухкомпонентным полиуретановым герметиком (Sikaflex PRO 3 или аналог), уплотнительный шнур там, где глубина шва &gt; 12 мм. Периметральные швы пола у стен и колонн. Минимальная ширина деформационного шва — 8 мм.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> к предложению приложена схема швов. Артикул + партия герметика. Отклонять предложения, где нет периметральных швов, — это самая частая причина утраты гарантии.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 9 из 11 — Узел</span>
+                        <h3>Периметральный плинтус-галтель и узел колонн</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">~120 пог. м (зависит от объекта)</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">пог. м</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪/пог. м</span><span class="boq-meta-value">₪80–180</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> монолитная галтель-плинтус высотой 100 мм по всем стенам и у колонн, выполненная из того же смоляного состава, что и тело пола. Радиус галтели 30 мм. Обязательно для пищевого / гигиенического класса (HACCP) и рекомендуется для промышленных влажных зон.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> геометрия галтели проверяется глубиномером + шаблоном радиуса 30 мм на завершение работ. Обязательно для тендеров на кухни и пищевые производства — без вариантов.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 10 из 11 — Контроль качества</span>
+                        <h3>Контрольные образцы и испытание на отрыв</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">3 образца + 6 на отрыв</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">шт.</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪</span><span class="boq-meta-value">₪2 500–5 000 всего</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> 3 контрольных образца полного состава системы, хранящихся в лабораторном архиве. 6 испытаний на отрыв по EN 1542 / ASTM D7234 в обозначенных точках сетки после полного отверждения, минимум 1,5 МПа с когезионным разрушением по основанию. Результат независимой лаборатории прикладывается к акту сдачи-приёмки.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> протокол испытаний на отрыв со схемой точек + фото характера разрушения. Отклонять, если отрыв &lt; 1,5 МПа или преобладает адгезионное разрушение. См. <a href="floor-warranty-types-explained.html">типы гарантии</a> о назначении документации контроля качества.</div>
+                    </div>
+
+                    <div class="boq-line">
+                        <span class="boq-num">Позиция 11 из 11 — Документация</span>
+                        <h3>Регистрация гарантии и сдаточная документация</h3>
+                        <div class="boq-meta">
+                            <div class="boq-meta-item"><span class="boq-meta-label">Количество</span><span class="boq-meta-value">1 комплект</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Единица</span><span class="boq-meta-value">комплект документов</span></div>
+                            <div class="boq-meta-item"><span class="boq-meta-label">Типичная цена ₪</span><span class="boq-meta-value">включено в тендер</span></div>
+                        </div>
+                        <div class="boq-spec"><strong>Формулировка спецификации:</strong> гарантия производителя на материал (10 лет), зарегистрированная на адрес объекта с артикулом + партией + датой укладки. Гарантия подрядчика на работы (5 лет) за подписью руководителя компании-подрядчика. Записи о подготовке основания + результаты испытаний на отрыв + архив контрольных образцов. Акт сдачи-приёмки за подписью подрядчика и представителя заказчика.</div>
+                        <div class="boq-verify"><strong>Проверка:</strong> все пять документов в деле объекта до выплаты финальных 10% стоимости. См. <a href="floor-warranty-types-explained.html">типы гарантии на пол</a> для полного перечня документов.</div>
+                    </div>
+
+                    <h2>Итоговая таблица сметы (BOQ)</h2>
+                    <p>Для 800 м² эпоксидного пола особой стойкости с засыпкой кварцем на основании логистического склада. Итоги приведены типичными диапазонами; в финальном тендере значение сузится до конкретной величины по каждому подрядчику.</p>
+                    <table class="boq-summary-table">
+                        <thead>
+                            <tr><th>Поз.</th><th>Наименование</th><th>Ед.</th><th>Кол-во</th><th>Диапазон ₪</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Механическая подготовка основания</td><td>м²</td><td>800</td><td>20 000–48 000</td></tr>
+                            <tr><td>2</td><td>Ремонт основания (ориентировочно)</td><td>м²</td><td>50</td><td>4 000–10 000</td></tr>
+                            <tr><td>3</td><td>Грунтовочный слой</td><td>м²</td><td>800</td><td>14 400–28 000</td></tr>
+                            <tr><td>4</td><td>Основной наливной слой</td><td>м²</td><td>800</td><td>60 000–112 000</td></tr>
+                            <tr><td>5</td><td>Засыпка кварцевого заполнителя</td><td>м²</td><td>800</td><td>17 600–32 000</td></tr>
+                            <tr><td>6</td><td>Пропиточный слой, алифатический ПУ</td><td>м²</td><td>800</td><td>28 000–52 000</td></tr>
+                            <tr><td>7</td><td>Подтверждение класса противоскольжения</td><td>протокол</td><td>3</td><td>1 500–3 000</td></tr>
+                            <tr><td>8</td><td>Обработка швов</td><td>пог. м</td><td>150</td><td>5 250–12 000</td></tr>
+                            <tr><td>9</td><td>Узел периметральной галтели</td><td>пог. м</td><td>120</td><td>9 600–21 600</td></tr>
+                            <tr><td>10</td><td>Контрольные образцы + испытание на отрыв</td><td>компл.</td><td>1</td><td>2 500–5 000</td></tr>
+                            <tr><td>11</td><td>Гарантийная документация</td><td>компл.</td><td>1</td><td>включено</td></tr>
+                            <tr style="font-weight:600;background:#fafaf7"><td colspan="4">Итоговый оценочный диапазон</td><td>₪162 850–323 600</td></tr>
+                            <tr style="background:#fafaf7"><td colspan="4">Итого за м²</td><td>₪204–405</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Что отклонять в предложении</h2>
+                    <p>Пять частых признаков указывают, что предложение не сможет дать работающий пол, и его следует вернуть на доработку.</p>
                     <ul>
-                        <li><strong>Одна строка "supply and install эпокси at ₪X/м²".</strong> Прячет prep, broadcast, joints. Reject + запрашивай itemisation по 11-line структуре.</li>
-                        <li><strong>Substrate prep line missing или ниже ₪15/м².</strong> Implies surface-clean only — sets up delamination на 2-м году.</li>
-                        <li><strong>Pull-off test line missing.</strong> Нет QA до final payment.</li>
-                        <li><strong>Generic SKU "эпокси SL" без manufacturer + product.</strong> Allows substitution at applicator discretion.</li>
-                        <li><strong>Warranty term не specified или короче чем published manufacturer.</strong> Applicator hedge — make explicit.</li>
+                        <li><strong>Одна строка «поставка и устройство эпоксидного пола по ₪X/м²».</strong> Прячет подготовку основания, качество засыпки, узел швов. Отклонять и требовать разбивку по структуре из одиннадцати позиций.</li>
+                        <li><strong>Позиция подготовки основания отсутствует или ниже ₪15/м².</strong> Подразумевает только очистку поверхности, а не механическую подготовку. Закладывает отслоение на втором году.</li>
+                        <li><strong>Нет позиции испытания на отрыв.</strong> Отсутствует механизм контроля качества для проверки укладки до финальной оплаты.</li>
+                        <li><strong>Обезличенный артикул «наливной эпоксидный» без производителя и продукта.</strong> Допускает замену на усмотрение подрядчика. Указывайте конкретный артикул как минимум + критерий приёмки «равноценный или лучше».</li>
+                        <li><strong>Срок гарантии не указан или короче заявленного производителем.</strong> Признак подстраховки подрядчика — проясните, запросив разбивку гарантийных сроков.</li>
                     </ul>
 
-                    <h2>Substitution для других system classes</h2>
+                    <h2>Замена для других классов систем</h2>
                     <ul>
-                        <li><strong>PU-cement 6–9 мм кухня:</strong> Lines 4+5 → single PU-cement pour. Cove non-negotiable. +40–60% vs эпокси quartz.</li>
-                        <li><strong>MMA fast-cure:</strong> Lines 4+5+6 → MMA pour. Pot life короче. +30% vs PU-cement.</li>
-                        <li><strong>Microtopping 2–3 мм:</strong> Lines 5+8 omitted. Sealer критичен для stain. –60% vs heavy-duty эпокси.</li>
-                        <li><strong>Polished concrete:</strong> Lines 3–6 → densifier + diamond polish. Anti-slip via texture density.</li>
+                        <li><strong>ПУ-цемент 6–9 мм, кухня:</strong> позиции 4 и 5 сворачиваются в единую заливку системы ПУ-цемента. Грунт по позиции 3, как правило, интегральный. Пропитка по позиции 6 часто интегральная. Галтель по позиции 9 обязательна. Стоимость материала +40–60% относительно эпоксидного пола с кварцем.</li>
+                        <li><strong>ММА быстрого отверждения:</strong> позиции 4, 5 и 6 сворачиваются в заливку системы ММА. Грунт по позиции 3 специфичен для ММА. Жизнеспособность заметно короче — окна для заливки сжатые. Стоимость материала +30% относительно ПУ-цемента.</li>
+                        <li><strong>Декоративный микротопинг 2–3 мм:</strong> позиции 5 (засыпка) и 8 (шов как воспроизведённый по основанию) исключаются. Пропитка по позиции 6 критична для устойчивости к пятнам. Галтель по позиции 9 только в гигиенической зоне. Стоимость материала –60% относительно эпоксидного пола особой стойкости.</li>
+                        <li><strong>Полированный бетон:</strong> позиции 3–6 заменяются нанесением упрочнителя (силиката) + алмазным шлифованием. Противоскольжение по позиции 7 — за счёт плотности текстуры. Швы по позиции 8 нарезаются и интегрированы в плиту.</li>
                     </ul>
 
-                    <h2>Финальная мысль</h2>
-                    <p>11 линий, named SKU, named test method, named verification check. BOQ template — procurement-side enforcement механизм для warranty triangle: если линия omitted, warranty не может trigger. Используй как starting point и substitute system class как нужно. Связано: <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">compliance verification</a> · <a href="how-to-evaluate-a-floor-installer.html">как оценить installer</a> · <a href="floor-system-selection-by-use-case.html">selection по use case</a>.</p>
+                    <h2>Итог</h2>
+                    <p>Одиннадцать позиций, конкретный артикул, конкретный метод испытаний, конкретная контрольная проверка. Шаблон сметы (BOQ) — это механизм принуждения со стороны закупки для гарантийного треугольника: если позиция пропущена, гарантия не сработает. Используйте как отправную точку и заменяйте класс системы по необходимости; структура позиций неизменна для смоляных и цементных систем. См. также: <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">проверка соответствия</a> · <a href="how-to-evaluate-a-floor-installer.html">как оценить подрядчика по полам</a> · <a href="floor-system-selection-by-use-case.html">подбор системы по сценарию применения</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>Sikafloor system tender language (typical applicator submission format).</li>
-                        <li>Mapei Mapefloor system tender language.</li>
-                        <li>EN 1542 / ASTM D7234 pull-off testing standards.</li>
-                        <li>ICRI 310.2R substrate preparation method-to-CSP mapping.</li>
-                        <li>ASTM F2170 / F1869 substrate moisture testing standards.</li>
-                        <li>DIN 51130 R-class slip testing methodology.</li>
-                        <li>IL contractor BOQ samples compiled from 50+ tender submissions.</li>
+                        <li>Тендерные формулировки систем Sikafloor (типовой формат предложения подрядчика).</li>
+                        <li>Тендерные формулировки систем Mapei Mapefloor.</li>
+                        <li>Стандарты испытаний на отрыв EN 1542 / ASTM D7234.</li>
+                        <li>ICRI 310.2R — сопоставление методов подготовки основания с профилем CSP.</li>
+                        <li>Стандарты измерения влажности основания ASTM F2170 / F1869.</li>
+                        <li>Методика испытаний на сопротивление скольжению по классам R, DIN 51130.</li>
+                        <li>Образцы смет (BOQ) израильских подрядчиков, собранные из 50+ тендерных предложений.</li>
                     </ul>
                 </div>
             </div>
@@ -366,11 +505,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужен itemised BOQ для проекта?</h2>
-                <p>Скажи м² + system class + use case. В ответ — 11-line BOQ с named SKU + verification checks готовый для отправки applicator-ам.</p>
+                <h2>Нужна заполненная постатейная смета (BOQ) для вашего проекта?</h2>
+                <p>Сообщите площадь в м² + класс системы + сценарий применения. В ответ вышлем смету из одиннадцати позиций с конкретными артикулами и контрольными проверками, готовую к отправке подрядчикам.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Запросить filled BOQ</a>
-                    <a href="floor-system-selection-by-use-case.html" class="btn btn-secondary">Selection guide</a>
+                    <a href="../contact.html" class="btn btn-primary">Запросить заполненную смету</a>
+                    <a href="floor-system-selection-by-use-case.html" class="btn btn-secondary">Руководство по подбору</a>
                 </div>
             </div>
         </div>

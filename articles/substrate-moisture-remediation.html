@@ -192,12 +192,12 @@
     <article class="article-page" data-lang-block="ru" style="display:none">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
                 <span class="article-category">Подготовка основания</span>
-                <h1>Substrate moisture remediation: когда F2170 fails</h1>
-                <p class="article-meta">Май 2026 · 8 минут</p>
+                <h1>Устранение влажности основания: когда ASTM F2170 не проходит</h1>
+                <p class="article-meta">Май 2026 · 8 минут чтения</p>
                 <div class="article-hero-wrapper">
-                    <img src="../images/concrete-decorative/old-grey.jpeg" alt="Бетон substrate moisture testing" class="article-hero-image">
+                    <img src="../images/concrete-decorative/old-grey.jpeg" alt="Замер влажности бетонного основания" class="article-hero-image">
                 </div>
             </div>
         </div>
@@ -205,94 +205,98 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">ASTM F2170 in-situ RH probe reads выше coating threshold. Что теперь? Это самый частый project-blocking момент в IL flooring spec, особенно на coastal проектах и ground-floor installations над slab-on-grade. Проект имеет три пути: wait for natural drying (медленно), apply moisture-mitigation primer (быстро но с limits), switch to vapor-tolerant floor system (меняет всю спеку). Этот guide проходит decision matrix и четыре practical remediation methods.</p>
+                    <p class="lead">Внутренний зонд относительной влажности по ASTM F2170 показывает значение выше порога, заданного для покрытия. Что дальше? Это самый частый момент, блокирующий проект, в израильской практике подбора напольной системы — особенно на прибрежных объектах и на полах первого этажа по плите на грунте. У проекта три пути: ждать естественной просушки (медленно), нанести грунт-отсечку влаги (быстро, но с ограничениями) или перейти на паропроницаемую напольную систему (меняет всю спецификацию). В этой статье разбираем дерево решений и четыре практических метода устранения влаги.</p>
 
-                    <h2>Reading F2170 result first</h2>
-                    <p>По ASTM F2170-19a probe set на <strong>40% slab depth</strong> для slabs drying from one side (slab-on-grade с vapor retarder), или <strong>20% depth</strong> для slabs drying from both sides. Sample rate: 3 probes за first ~93 м² (1,000 sq ft) + 1 per additional 93 м². Holes должны equilibrate sealed минимум 24h до reading.</p>
+                    <h2>Сначала читаем результат F2170</h2>
+                    <p>По ASTM F2170-19a зонд устанавливают на <strong>40 % толщины плиты</strong> для плит, сохнущих с одной стороны (плита на грунте с пароотсекающей мембраной снизу), или на <strong>20 % толщины</strong> для плит, сохнущих с двух сторон (подвешенные / межэтажные). Норма выборки: 3 зонда на первые ~93 м² (1000 кв. футов) плюс по 1 на каждые дополнительные 93 м². Скважины должны выдерживаться герметично закрытыми минимум 24 ч перед снятием показаний (по редакции 2019a; прежний стандарт 2011 года требовал 72 ч).</p>
+
+                    <p>Типичные пороги по влажности для покрытий:</p>
 
                     <table class="threshold-table">
                         <thead>
                             <tr>
                                 <th>Система</th>
-                                <th>Типичный F2170 RH limit</th>
-                                <th>Что happens above threshold</th>
+                                <th>Типичный предел по F2170 (RH)</th>
+                                <th>Что происходит выше порога</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>Эпокси SL (100%-solids)</strong></td><td class="signal-cell">≤ 75% RH</td><td>Delamination от osmotic pressure за 12-24 месяца</td></tr>
-                            <tr><td><strong>PU-cement</strong></td><td>≤ 85% RH</td><td>More tolerant; verify exact limit per manufacturer TDS</td></tr>
-                            <tr><td><strong>Микроцемент (цемент-полимер)</strong></td><td>≤ 75-80% RH</td><td>Efflorescence, hairline cracks, sealer hydrolysis</td></tr>
-                            <tr><td><strong>Vinyl flooring (adhesive)</strong></td><td>≤ 75% RH</td><td>Adhesive failure, bubbling под sheet vinyl</td></tr>
-                            <tr><td><strong>Sikafloor EpoCem (vapor-tolerant primer)</strong></td><td>Tolerates up to ~98% RH</td><td>Engineered для high-RH envelope</td></tr>
+                            <tr><td><strong>Эпоксидный наливной пол (100 % сухой остаток)</strong></td><td class="signal-cell">≤ 75 % RH</td><td>Отслоение из-за осмотического давления в течение 12–24 месяцев</td></tr>
+                            <tr><td><strong>Полиуретан-цемент (ПУ-цемент)</strong></td><td>≤ 85 % RH</td><td>Более стоек; уточните точный предел по техкарте (TDS) производителя</td></tr>
+                            <tr><td><strong>Микроцемент (цемент-полимер)</strong></td><td>≤ 75–80 % RH</td><td>Высолы, волосяные трещины, гидролиз пропитки</td></tr>
+                            <tr><td><strong>Виниловое покрытие (на клею)</strong></td><td>≤ 75 % RH</td><td>Отказ клея, вздутия под рулонным винилом</td></tr>
+                            <tr><td><strong>Sikafloor EpoCem (паростойкий грунт)</strong></td><td>Выдерживает до ~98 % RH</td><td>Рассчитан на зону высокой влажности — см. ниже</td></tr>
                         </tbody>
                     </table>
 
-                    <h2>Three-path решение</h2>
+                    <h2>Решение из трёх путей</h2>
 
                     <div class="method-card">
-                        <h3>Путь 1 — Wait for natural drying</h3>
-                        <p>Бетон высыхает приблизительно <strong>1 мм per day</strong> под ideal conditions (20°C, 50% RH ambient, no vapor barrier ниже). 150 мм slab с one-sided drying занимает roughly 100-150 days ambient cure для достижения типичного 75% RH threshold. Coastal IL summers (high humidity) extend это; зима slows further. Drying time — самая cheap remediation but the longest.</p>
-                        <p><strong>Когда specify:</strong> Greenfield construction без schedule pressure. Renovation projects с patient owners.</p>
-                        <p><strong>Когда это не работает:</strong> Renovation existing slabs. Coastal IL projects где ambient RH alone keeps slab above threshold. Schedule-driven hospitality.</p>
+                        <h3>Путь 1 — Ждать естественной просушки</h3>
+                        <p>Бетон сохнет примерно на <strong>1 мм в сутки</strong> при идеальных условиях (20 °C, 50 % относительной влажности воздуха, без пароотсекающей мембраны снизу). Плита толщиной 150 мм при односторонней просушке набирает нужную влажность примерно за 100–150 суток выдержки, прежде чем выйдет на типичный порог 75 % RH. Прибрежное израильское лето с высокой влажностью растягивает этот срок; зима замедляет процесс ещё сильнее. Просушка — самый дешёвый способ устранения влаги, но и самый долгий.</p>
+                        <p><strong>Когда выбирать:</strong> новое строительство без давления сроков. Объекты реновации с заказчиком, готовым ждать.</p>
+                        <p><strong>Когда не работает:</strong> реновация по существующим плитам (источник влаги под плитой, а не выходит наружу). Прибрежные израильские объекты, где даже влажность воздуха держит плиту выше порога. Объекты гостиничного и коммерческого сегмента, где жёстко зажаты сроки.</p>
                     </div>
 
                     <div class="method-card signal">
-                        <h3>Путь 2 — Moisture-mitigation primer (practical ответ)</h3>
-                        <p>Наиболее частая professional remediation в IL practice. Apply epoxy-cement hybrid primer, который tolerates higher substrate moisture и acts as vapor barrier. Reference: <strong>Sika EpoCem</strong> (other manufacturers: Ardex MC RAPID, MasterEmaco P 5000). Applied at 1.5-3 мм, EpoCem accepts substrate F2170 readings up to ~98% RH while presenting properly low-moisture surface к finish floor coating.</p>
-                        <p><strong>Как работает:</strong> Эпокси-фракция acts как vapor-barrier film; цементная fraction maintains compatible coefficient thermal expansion с substrate.</p>
-                        <p><strong>Когда specify:</strong> Schedule-driven projects где natural drying unavailable. Coastal IL retrofits.</p>
-                        <p><strong>Когда не работает:</strong> Above 98% RH (free water). Visibly damp substrate. Active hydrostatic pressure.</p>
+                        <h3>Путь 2 — Грунт-отсечка влаги (практичный ответ)</h3>
+                        <p>Самый частый профессиональный приём в израильской практике. Наносится эпоксидно-цементный гибридный грунт, который терпит более высокую влажность основания и работает как пароотсечка. Эталонный продукт — <strong>Sika EpoCem</strong> (аналоги других производителей: Ardex MC RAPID, MasterEmaco P 5000). При нанесении слоем 1,5–3 мм EpoCem допускает показания основания по F2170 до ~98 % RH, при этом отдавая финишному покрытию поверхность с корректно низкой влажностью.</p>
+                        <p><strong>Как это работает:</strong> эпоксидная фракция образует пароотсекающую плёнку; цементная фракция сохраняет коэффициент теплового расширения, совместимый с основанием. Вместе слой принимает на себя перепад влажности между сырым основанием и финишным покрытием, которому нужна сухость.</p>
+                        <p><strong>Когда выбирать:</strong> объекты с жёсткими сроками, где на естественную просушку нет времени. Прибрежные израильские объекты реновации. Коммерческие помещения первого этажа, где влажность воздуха держит плиту на пределе.</p>
+                        <p><strong>Когда не работает:</strong> выше 98 % RH (свободная вода, а не просто высокая влажность). Визуально сырое основание. Активное гидростатическое давление (вода поднимается через трещины). EpoCem управляет паром, но не жидкой водой.</p>
                     </div>
 
                     <div class="method-card">
-                        <h3>Путь 3 — Switch to vapor-tolerant floor system</h3>
-                        <p>Если ни waiting ни priming не closes spec, switch finish floor system to engineered для high substrate moisture. PU-cement systems (Sikafloor PurCem, Ucrete, Flowfresh) tolerate up to 85% RH. Cost trade-off: PU-cement 30-50% дороже epoxy SL на line item, но eliminates moisture mitigation cost.</p>
+                        <h3>Путь 3 — Перейти на паропроницаемую напольную систему</h3>
+                        <p>Если ни выдержка, ни грунтование не закрывают спецификацию, финишную систему меняют на рассчитанную под высокую влажность основания. Системы на полиуретан-цементе (Sikafloor PurCem, Ucrete, Flowfresh) обычно терпят основание до 85 % RH; отдельные паропроницаемые системы выдерживают и больше. Компромисс по цене: ПУ-цемент в позиции сметы на 30–50 % дороже эпоксидного наливного пола, но снимает затраты на отсечку влаги.</p>
                     </div>
 
-                    <h2>Четыре remediation методов детально</h2>
+                    <h2>Четыре метода устранения влаги подробно</h2>
 
-                    <h3>Метод 1 — Surface penetrant moisture vapor reducer</h3>
-                    <p>Liquid penetrating reactive silicate solutions reacting с calcium hydroxide. Effective в reducing F2170 readings на ~5-10 percentage points. Used когда substrate close to threshold but not catastrophically high.</p>
-                    <p><strong>When to use:</strong> F2170 reading 78-85% RH. Cost-conscious projects где EpoCem at 3mm over-spec.</p>
+                    <h3>Метод 1 — Поверхностный проникающий снижатель паропроницаемости</h3>
+                    <p>Жидкие проникающие реактивные силикатные составы, которые вступают в реакцию с гидроксидом кальция в цементной матрице, уменьшая капиллярную пористость плиты и замедляя миграцию влаги. На рынке их называют «снижателями влаги» или «системами пароотсечки». Снижают показания F2170 примерно на 5–10 процентных пунктов. Применяют, когда основание близко к порогу, но не критически выше него.</p>
+                    <p><strong>Когда применять:</strong> показание F2170 78–85 % RH (чуть выше порога 75 % для эпоксидного пола). Бюджетные объекты, где EpoCem в 3 мм избыточен.</p>
 
-                    <h3>Метод 2 — EpoCem barrier coating (workhorse)</h3>
-                    <p>1.5-3mm epoxy-cement hybrid coating applied directly over high-moisture substrate. Самое common IL solution для ground-floor coastal projects.</p>
-                    <p><strong>When to use:</strong> F2170 reading 80-95% RH. Schedule-driven projects. Когда finish system already specified.</p>
+                    <h3>Метод 2 — Барьерное покрытие EpoCem (рабочая лошадка)</h3>
+                    <p>Эпоксидно-цементное гибридное покрытие толщиной 1,5–3 мм наносится прямо по влажному основанию. Работает одновременно как пароотсечка и как выравнивающий слой. Самое распространённое в Израиле решение для прибрежных объектов первого этажа, где требуется эпоксидный наливной пол или микроцемент по основанию за пределами допустимой влажности.</p>
+                    <p><strong>Когда применять:</strong> показание F2170 80–95 % RH. Объекты с жёсткими сроками. Когда финишная система уже задана и не может меняться.</p>
 
-                    <h3>Метод 3 — Two-component PU primer</h3>
-                    <p>Liquid PU primer specifically formulated как moisture-tolerant intermediate layer. Sika и Mapei оба offer. Thinner чем EpoCem (0.3-0.6 мм typical), lower cost, but lower moisture envelope.</p>
-                    <p><strong>When to use:</strong> F2170 reading 77-82% RH. Когда EpoCem build-up height incompatible с door clearance.</p>
+                    <h3>Метод 3 — Двухкомпонентный полиуретановый грунт</h3>
+                    <p>Жидкий полиуретановый грунт, специально составленный как влагостойкий промежуточный слой. И Sika, и Mapei предлагают такие в своих линейках грунтов для смоляных полов. Тоньше EpoCem (обычно 0,3–0,6 мм), дешевле, но с меньшим запасом по влажности.</p>
+                    <p><strong>Когда применять:</strong> показание F2170 77–82 % RH. Когда толщина набора EpoCem несовместима с зазором под дверью или с отметкой основания.</p>
 
-                    <h3>Метод 4 — Engineered membrane system</h3>
-                    <p>Sheet membrane installed mechanically between substrate и floor system. Significantly higher cost and labour than above.</p>
-                    <p><strong>When to use:</strong> F2170 readings above 95% RH. Hydrostatic pressure suspected. High-stakes liability projects.</p>
+                    <h3>Метод 4 — Инженерная мембранная система</h3>
+                    <p>Рулонная мембрана (по химии близкая к кровельной) монтируется механически между основанием и напольной системой. Применяется в экстремальных условиях или там, где объект требует двойной страховки от влаги. Существенно дороже и трудозатратнее перечисленного выше.</p>
+                    <p><strong>Когда применять:</strong> показания F2170 выше 95 % RH. Подозрение на гидростатическое давление. Объекты с высокой ценой ошибки (фармацевтика, премиальная гостиничная сфера), где отказ из-за влаги недопустим.</p>
 
-                    <h2>IL coastal context — почему это matters более here</h2>
-                    <p>Coastal IL projects (Тель-Авив, Герцлия, Натания, Хайфа, Ашдод) face elevated baseline ambient RH year-round. Substrate F2170 readings на coastal IL retrofit projects routinely 78-88% RH — выше standard epoxy SL threshold но ниже EpoCem upper limit.</p>
-                    <p>Для большинства coastal IL retrofit projects: budget для EpoCem (Метод 2) в floor scope с day one. Substrate moisture verification с F2170 mandatory.</p>
+                    <h2>Прибрежный израильский контекст — почему здесь это важнее</h2>
+                    <p>Прибрежные израильские объекты (Тель-Авив, Герцлия, Нетания, Хайфа, Ашдод) круглый год сталкиваются с повышенной базовой влажностью воздуха. Плита, залитая зимой, успела просохнуть меньше, чем залитая в разгар лета; полы первого этажа получают подъём влаги снизу из-за высокого уровня грунтовых вод у моря; в старых квартирах 1970–80-х годов нередко нет нормальной пароотсечки под плитой. Итог: на прибрежных израильских объектах реновации показания основания по F2170 регулярно держатся на 78–88 % RH — выше стандартного порога для эпоксидного наливного пола, но ниже верхнего предела EpoCem.</p>
+                    <p>Для большинства прибрежных израильских объектов реновации: закладывайте EpoCem (метод 2) в смету по полу с самого начала. Проверка влажности основания по F2170 — обязательна. Если показание возвращается в диапазоне 78–95 % RH, объект исполняет заранее заложенную отсечку. Если показание попадает в полосу 75–78 %, на EpoCem можно сэкономить. В любом случае спецификация готова.</p>
 
-                    <h2>Что demand от installer</h2>
+                    <h2>Что требовать от подрядчика</h2>
+                    <p>Документы по проверке влажности основания должны лежать в гарантийном деле. Конкретно:</p>
                     <ul>
-                        <li>Photographs каждого F2170 probe in place с timestamp</li>
-                        <li>Reading log per probe с location identification на floor plan</li>
-                        <li>Sealed equilibration time documented (≥ 24h per ASTM F2170-19a)</li>
-                        <li>Если readings exceeded threshold: remediation method specification, application date, cure time</li>
-                        <li>Final readings after remediation (где применимо)</li>
+                        <li>Фотографии каждого зонда F2170 на месте с видимой отметкой времени</li>
+                        <li>Журнал показаний по каждому зонду с привязкой места к плану пола</li>
+                        <li>Зафиксированное время герметичной выдержки (≥ 24 ч по ASTM F2170-19a)</li>
+                        <li>Если показания превысили порог: указание метода устранения, дата нанесения, время отверждения перед последующими слоями</li>
+                        <li>Итоговые показания после отсечки (где применимо), подтверждающие выход ниже порога</li>
                     </ul>
+                    <p>Без этих документов любая будущая претензия по отслоению из-за влаги останется недоказуемой.</p>
 
-                    <h2>Финальный вывод</h2>
-                    <p>F2170 above threshold — не project failure, это remediation moment. Путь 1 (wait) cheapest but slowest. Путь 2 (EpoCem) — IL coastal workhorse. Путь 3 (system switch) correct когда PU-cement уже justified другими parameters. Четыре remediation methods cover spectrum от light (penetrant) до heavy (engineered membrane). Specify правильный method для своего reading, document работу, и пол держится manufacturer's warranty period независимо от того насколько wet substrate был at install.</p>
+                    <h2>Итог</h2>
+                    <p>Показание F2170 выше порога — не провал проекта, а момент для устранения влаги. Путь 1 (выдержка) самый дешёвый, но самый долгий. Путь 2 (EpoCem) — рабочая лошадка прибрежного Израиля. Путь 3 (смена системы) уместен, когда ПУ-цемент уже оправдан другими параметрами. Четыре метода устранения влаги покрывают весь спектр — от лёгкого (проникающий снижатель) до тяжёлого (инженерная мембрана). Подберите верный метод под своё показание, задокументируйте работу — и пол отстоит гарантийный срок производителя, каким бы сырым ни было основание на момент монтажа.</p>
 
-                    <p>Связано: <a href="./substrate-moisture-testing.html">F2170 + F1869 moisture testing</a> · <a href="./substrate-repair-before-coating.html">6 категорий pre-coating repair</a> · <a href="./substrate-coastal-chloride-prep.html">Coastal chloride preparation</a> · <a href="./substrate-icri-csp-guide.html">ICRI CSP guide</a>.</p>
+                    <p>Связанные материалы: <a href="./substrate-moisture-testing.html">методы измерения влажности F2170 и F1869</a> · <a href="./substrate-repair-before-coating.html">шесть категорий ремонта до нанесения покрытия</a> · <a href="./substrate-coastal-chloride-prep.html">подготовка по хлоридам на побережье (смежная прибрежная тема)</a> · <a href="./substrate-icri-csp-guide.html">руководство по профилям ICRI CSP</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>ASTM F2170-19a — In-situ RH testing.</li>
-                        <li>ASTM F1869 — CaCl₂ MVER testing.</li>
-                        <li><a href="https://www.sika.com" target="_blank" rel="noopener">Sika EpoCem product range</a></li>
-                        <li>Ardex MC RAPID + MasterEmaco P 5000 — competing moisture-mitigation.</li>
-                        <li>Concrete Polishing Council (CPC) substrate moisture guidance.</li>
-                        <li>IFTI moisture testing reference.</li>
+                        <li>ASTM F2170-19a — стандартный метод определения относительной влажности в бетонных плитах пола внутренними зондами.</li>
+                        <li>ASTM F1869 — стандартный метод измерения скорости эмиссии паров влаги из бетонного основания безводным хлоридом кальция.</li>
+                        <li><a href="https://www.sika.com" target="_blank" rel="noopener">Линейка Sika EpoCem (грунт-отсечка влаги)</a></li>
+                        <li>Ardex MC RAPID и MasterEmaco P 5000 — конкурирующие продукты для отсечки влаги.</li>
+                        <li>Рекомендации Concrete Polishing Council (CPC) по влажности основания.</li>
+                        <li>Справочный материал IFTI по измерению влажности (https://ifti.com/astm-f2170-vs-f1869-which-moisture-test-fits-your-project/).</li>
                     </ul>
                 </div>
             </div>
@@ -301,10 +305,10 @@
 
     <section class="cta-section" data-lang-block="ru" style="display:none">
         <div class="container">
-            <h2>F2170 came back above threshold?</h2>
-            <p>Пришли проект, reading и proposed finish system. Подтверждаем какой remediation path closes spec без breaking schedule или budget.</p>
+            <h2>F2170 показал значение выше порога?</h2>
+            <p>Пришлите проект, показание и предполагаемую финишную систему. Подтвердим, какой путь устранения влаги закроет спецификацию, не ломая сроки и бюджет.</p>
             <div class="cta-buttons">
-                <a href="../contact.html" class="btn btn-outline-white">Получить remediation план</a>
+                <a href="../contact.html" class="btn btn-outline-white">Получить план устранения влаги</a>
                 <a href="tel:+972559661459" class="btn btn-outline-white">Позвонить</a>
             </div>
         </div>
