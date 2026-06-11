@@ -302,9 +302,9 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
-                <span class="article-category">Project Reference</span>
-                <h1>Floor Procurement Timeline</h1>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
+                <span class="article-category">Справочник по проекту</span>
+                <h1>График закупки и монтажа пола</h1>
                 <p class="article-meta">Май 2026 · 8 мин чтения</p>
                 <div class="article-hero-wrapper">
                     <img src="../images/concrete-decorative/beton.jpg" alt="Floor procurement timeline 8 phases" class="article-hero-image">
@@ -315,46 +315,206 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Каждый успешный floor-проект следует 8 фазам. Каждый failed — skipped одну из них. Brief + use case до системы. Система до бренда. Бренд до tender. Tender до applicator selection. Substrate sign-off до pour. Pour до cure verification. Verification до handover. Handover до final payment.</p>
+                    <p class="lead">Каждый удачный проект пола проходит одни и те же восемь фаз. Каждый проваленный — пропустил хотя бы одну из них. Сначала техническое задание и сценарий эксплуатации, потом система. Система раньше бренда. Бренд раньше тендера. Тендер раньше выбора подрядчика. Приёмка основания раньше заливки. Заливка раньше проверки отверждения. Проверка раньше сдачи. Сдача раньше финального платежа. На этой странице разобраны все восемь фаз: перечень документов на каждую фазу, контрольная точка, которая закрывает фазу, и типовое число недель от техзадания до сдачи для проекта на 200 м².</p>
 
-                    <p><em>Полная EN-версия выше с 8 phase cards, document checklist + phase gate каждой, total timeline, where projects typically slip. Краткая RU-сводка:</em></p>
+                    <div class="phase-card">
+                        <span class="phase-num">1</span>
+                        <span class="phase-tag">Фаза 1 из 8 — Техзадание</span>
+                        <h2>Техническое задание</h2>
+                        <div class="phase-duration">Типовая длительность: 1 неделя</div>
+                        <p>Зафиксируйте сценарий эксплуатации, ограничения по работе объекта, эстетический замысел и нормативную среду. Техзадание — это вход для подбора системы. Без него вы получите решения, предложенные подрядчиком под то, что он умеет монтировать, а не под то, что нужно проекту.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список техзадания</h4>
+                            <ul>
+                                <li>Описание сценария эксплуатации (промышленность / гостеприимство / жильё / общественные объекты / спорт)</li>
+                                <li>Площадь проекта (квадратные метры + разбивка по зонам)</li>
+                                <li>Ограничение по работе объекта (допустимый простой, требование «работать без остановки»)</li>
+                                <li>Нормативная среда (Минздрав, Минобразования, ת״י 1923 и т. д.)</li>
+                                <li>Эстетический замысел (декоративный / промышленный / историческое здание / современный)</li>
+                                <li>Бюджетные рамки (₪/м² + общий по проекту)</li>
+                                <li>Ограничение по срокам (целевая дата сдачи + неизменяемые контрольные точки)</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> техзадание подписано заказчиком / руководителем проекта. Сценарий эксплуатации, допустимый простой и нормативная среда — все указаны явно. Фаза 2 не может начаться без подписанного техзадания.</div>
+                    </div>
 
-                    <h2>8 фаз</h2>
-                    <ol>
-                        <li><strong>Brief (1 неделя)</strong> — use case + downtime + regulatory + aesthetic + budget + schedule. Phase gate: signed brief.</li>
-                        <li><strong>System Selection (1 неделя)</strong> — система класса по decision tree (см. <a href="floor-system-selection-by-use-case.html">selection</a>). Phase gate: signed system spec.</li>
-                        <li><strong>Tender Documentation (1–2 недели)</strong> — 11-line BOQ + substrate survey + joint plan + anti-slip zone plan (см. <a href="floor-tender-boq-template.html">BOQ template</a>). Sent to ≥ 3 applicators.</li>
-                        <li><strong>Applicator Selection (1 неделя)</strong> — 8-question evaluation (см. <a href="how-to-evaluate-a-floor-installer.html">evaluate installer</a>). Phase gate: signed letter + material order.</li>
-                        <li><strong>Substrate Prep + Sign-Off (1 неделя)</strong> — ICRI CSP + ASTM F2170 + repairs + photos. Phase gate: signed substrate sign-off — primer не applied без него.</li>
-                        <li><strong>System Installation (2–5 дней)</strong> — primer + body + broadcast + sealer per system spec. Layer-by-layer sign-off.</li>
-                        <li><strong>Cure + Verification (2 недели)</strong> — 7-day cure + pull-off test + slip-class test + certificates. Phase gate: all tests above threshold.</li>
-                        <li><strong>Handover + Final Payment (1 неделя)</strong> — 5-document handover (manufacturer warranty + applicator warranty + substrate prep records + test reports + completion certificate + maintenance protocol). Phase gate: signed handover + final 10% released.</li>
-                    </ol>
+                    <div class="phase-card">
+                        <span class="phase-num">2</span>
+                        <span class="phase-tag">Фаза 2 из 8 — Система</span>
+                        <h2>Подбор системы</h2>
+                        <div class="phase-duration">Типовая длительность: 1 неделя</div>
+                        <p>Подберите класс системы (полиуретан-цемент / эпоксидный наливной / ММА / микротопинг / полированный бетон / терраццо) под сценарий эксплуатации. Решение по системе предшествует решению по бренду: и Sika, и Mapei выпускают полиуретан-цемент, но именно полиуретан-цемент (независимо от бренда) выдерживает горячую мойку под давлением.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список подбора системы</h4>
+                            <ul>
+                                <li>Класс системы определён по дереву решений под сценарий эксплуатации (см. <a href="floor-system-selection-by-use-case.html">подбор по сценарию эксплуатации</a>)</li>
+                                <li>Толщинный класс системы подобран под класс нагрузки</li>
+                                <li>Целевое сопротивление скольжению определено по DIN 51130 / EN 16165 (см. <a href="floor-slip-class-DIN-51130-explained.html">класс скольжения простыми словами</a>)</li>
+                                <li>Требуемые сертификации определены под сценарий эксплуатации (см. <a href="floor-compliance-verification-checklist.html">проверка соответствия</a>)</li>
+                                <li>Системы-антипаттерны определены и исключены</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> зафиксированы единый класс системы + толщинный класс + R-класс + сертификации. Заказчик утвердил спецификацию системы.</div>
+                    </div>
 
-                    <h2>Total typical timeline</h2>
-                    <p>Для 200 м² resin floor проекта без substrate-defect surprises: <strong>9–11 недель</strong> total brief-to-handover. Larger проекты (500+ м²) extend Phases 5–7 proportionally; phases 1–4 остаются similar.</p>
+                    <div class="phase-card">
+                        <span class="phase-num">3</span>
+                        <span class="phase-tag">Фаза 3 из 8 — Тендер</span>
+                        <h2>Тендерная документация</h2>
+                        <div class="phase-duration">Типовая длительность: 1–2 недели</div>
+                        <p>Соберите смету (BOQ) по шаблону из одиннадцати строк. Укажите минимум артикул (с критерием «эквивалент или лучше» для госсектора Израиля). Приложите обследование основания, план швов, план противоскользящих зон. Разошлите 3–5 сертифицированным подрядчикам.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список тендерного пакета</h4>
+                            <ul>
+                                <li>Смета из 11 строк заполнена по шаблону (см. <a href="floor-tender-boq-template.html">шаблон сметы BOQ</a>)</li>
+                                <li>Обследование основания с фото в обозначенных точках сетки</li>
+                                <li>План швов с отмеченными периметральными швами (см. <a href="expansion-joints-resin-floors.html">деформационные швы</a>)</li>
+                                <li>План противоскользящих зон (R-класс по зонам)</li>
+                                <li>Срок подачи тендерных предложений (типично 14 дней)</li>
+                                <li>Критерии предварительного отбора подрядчиков (уровень сертификации, референс-проекты)</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> тендерный пакет собран и разослан ≥ 3 предварительно отобранным подрядчикам. Срок подачи предложений доведён до сведения участников.</div>
+                    </div>
 
-                    <h2>Где проекты обычно slip</h2>
+                    <div class="phase-card">
+                        <span class="phase-num">4</span>
+                        <span class="phase-tag">Фаза 4 из 8 — Выбор</span>
+                        <h2>Выбор подрядчика</h2>
+                        <div class="phase-duration">Типовая длительность: 1 неделя после тендера</div>
+                        <p>Оцените тендерные заявки по системе из восьми вопросов. Цена в шапке предложения — третий критерий решения, а не первый. Дисциплина подготовки основания и полнота плана швов лучше всего предсказывают успех проекта.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список выбора подрядчика</h4>
+                            <ul>
+                                <li>Проверена сертификация производителя под выбранный артикул (см. <a href="how-to-evaluate-a-floor-installer.html">как оценить подрядчика</a>)</li>
+                                <li>Проверка референсов — обзвон 3 объектов сопоставимого масштаба</li>
+                                <li>Подтверждена дисциплина подготовки основания (заявлена методика измерения CSP)</li>
+                                <li>План швов приложен к заявке и проверен</li>
+                                <li>В заявке есть обязательство по испытанию на отрыв</li>
+                                <li>Срок и объём гарантии подтверждены письменно</li>
+                                <li>Проверены страховка и покрытие ответственности</li>
+                                <li>Дисциплина соблюдения сроков (записи по прошлым проектам)</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> выбран единственный подрядчик, подписано письмо о присуждении. Заказ материала размещён. Согласован график подготовки основания.</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <span class="phase-num">5</span>
+                        <span class="phase-tag">Фаза 5 из 8 — Основание</span>
+                        <h2>Подготовка основания и приёмка</h2>
+                        <div class="phase-duration">Типовая длительность: 1 неделя (200 м²)</div>
+                        <p>Подрядчик готовит основание до целевого профиля ICRI CSP, проводит испытание на влажность, устраняет дефекты и предъявляет основание заказчику на приёмку до нанесения грунта. Эта фаза определяет 60% итогового срока службы пола.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список приёмки основания</h4>
+                            <ul>
+                                <li>Измерение профиля ICRI CSP в обозначенных точках (см. <a href="icri-csp-surface-profile-guide.html">руководство по ICRI CSP</a>)</li>
+                                <li>Результаты замера влажности по ASTM F2170 минимум в 3 точках (см. <a href="substrate-moisture-remediation.html">устранение влажности основания</a>)</li>
+                                <li>Ремонт основания задокументирован (места + материалы + время набора прочности)</li>
+                                <li>План швов перепроверен по фактическому основанию</li>
+                                <li>Фото в обозначенных точках сетки приложены к акту приёмки</li>
+                                <li>Подпись представителя заказчика до нанесения грунта</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> акт приёмки основания подписан подрядчиком и представителем заказчика. Грунт нельзя наносить без этой приёмки.</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <span class="phase-num">6</span>
+                        <span class="phase-tag">Фаза 6 из 8 — Монтаж</span>
+                        <h2>Монтаж системы</h2>
+                        <div class="phase-duration">Типовая длительность: 2–5 дней (полиуретан-цемент / эпоксидный кварц)</div>
+                        <p>Грунт + основной слой + засыпка заполнителя + финишная пропитка по спецификации системы. Здесь и проявляется дисциплина подрядчика. Представитель заказчика проводит осмотр на каждом этапе завершения слоя.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список журнала монтажа</h4>
+                            <ul>
+                                <li>Артикул + номер партии в накладной на каждый слой</li>
+                                <li>Жизнеспособность смеси + условия среды фиксируются на каждый замес</li>
+                                <li>Толщина слоя проверена щупом-глубиномером в обозначенных точках сетки</li>
+                                <li>Расход на замес в пределах спецификации производителя</li>
+                                <li>Нарезка швов + установка герметика по плану швов</li>
+                                <li>Завершение примыканий по периметру</li>
+                                <li>Ежедневная фотофиксация хода монтажа</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> каждый слой принят до нанесения следующего. Расход материала сверен со спецификацией; отклонения отмечаются в режиме реального времени.</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <span class="phase-num">7</span>
+                        <span class="phase-tag">Фаза 7 из 8 — Проверка</span>
+                        <h2>Отверждение и контрольные испытания</h2>
+                        <div class="phase-duration">Типовая длительность: 7 дней отверждения + 1 неделя проверки</div>
+                        <p>Система набирает прочность по спецификации производителя (как правило, минимум 7 дней до полноценного испытания на отрыв). Независимая лаборатория проводит испытание на отрыв и проверку класса скольжения в обозначенных точках сетки. Протоколы испытаний оформляются и прикладываются к сдаче.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список испытаний</h4>
+                            <ul>
+                                <li>Испытание на отрыв по EN 1542 / ASTM D7234 минимум в 6 точках (см. <a href="adhesion-pull-off-test-guide.html">руководство по испытанию на отрыв</a>)</li>
+                                <li>Испытание класса скольжения PTV по DIN 51130 / EN 16165 в обозначенных зонах</li>
+                                <li>Проверен сертификат пожарной реакции (выдаёт производитель)</li>
+                                <li>Антимикробный сертификат HACCP / ISO 22196, если применимо</li>
+                                <li>Подтверждён статус аккредитации лаборатории по ISO 17025</li>
+                                <li>Все протоколы испытаний с сеткой точек и фото характера разрушения</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> все результаты испытаний выше порога и приложены к акту сдачи. Зоны ниже порога влекут переделку за счёт подрядчика до сдачи.</div>
+                    </div>
+
+                    <div class="phase-card">
+                        <span class="phase-num">8</span>
+                        <span class="phase-tag">Фаза 8 из 8 — Сдача</span>
+                        <h2>Сдача и финальный платёж</h2>
+                        <div class="phase-duration">Типовая длительность: 1 неделя на документы</div>
+                        <p>Пакет сдачи из пяти документов передаётся заказчику. Финальные 10% платежа выплачиваются по факту сдачи. Запускается график обслуживания.</p>
+                        <div class="phase-checklist">
+                            <h4>Контрольный список пакета сдачи</h4>
+                            <ul>
+                                <li>Гарантийный сертификат на продукт от производителя (10 лет), зарегистрированный на адрес объекта (см. <a href="floor-warranty-types-explained.html">типы гарантии</a>)</li>
+                                <li>Гарантия подрядчика на монтаж (5–7 лет), подписанная руководителем компании</li>
+                                <li>Записи по подготовке основания (CSP + F2170 + фото)</li>
+                                <li>Протокол испытания на отрыв + протокол испытания класса скольжения</li>
+                                <li>Акт завершения с составом системы + артикулом + датами заливки</li>
+                                <li>Регламент обслуживания под тип системы (см. <a href="floor-care-by-system-type.html">уход по типу системы</a>)</li>
+                                <li>Финальные 10% платежа выплачены подрядчику</li>
+                            </ul>
+                        </div>
+                        <div class="phase-gate"><strong>Контрольная точка фазы:</strong> пакет сдачи подписан заказчиком и подрядчиком. Финальный платёж выплачен. График обслуживания запущен.</div>
+                    </div>
+
+                    <h2>Итоговый типовой график</h2>
+                    <p>Для проекта смоляного (полимерного) пола на 200 м² без сюрпризов с дефектами основания:</p>
                     <ul>
-                        <li><strong>Phase 1 brief skipped или under-developed.</strong> Drives downstream rework. Самая частая причина project failure.</li>
-                        <li><strong>Phase 3 tender package incomplete.</strong> Missing joint plan или anti-slip zone plan leads к applicator assumptions.</li>
-                        <li><strong>Phase 5 substrate sign-off rushed.</strong> Owner representative не присутствует at CSP/F2170 verification.</li>
-                        <li><strong>Phase 7 cure verification compressed.</strong> Pull-off test до full 7-day cure underestimates true bond.</li>
-                        <li><strong>Phase 8 final payment released без всех 5 документов.</strong> Owner loses contractual lever. Самая дорогая mistake at handover.</li>
+                        <li><strong>Фазы 1–3 (техзадание + подбор + тендер):</strong> 3–4 недели</li>
+                        <li><strong>Фаза 4 (выбор подрядчика):</strong> 1 неделя (после окна подачи тендерных предложений)</li>
+                        <li><strong>Фаза 5 (подготовка основания + приёмка):</strong> 1 неделя</li>
+                        <li><strong>Фаза 6 (монтаж):</strong> 3–5 дней</li>
+                        <li><strong>Фаза 7 (отверждение + проверка):</strong> 2 недели (7 дней отверждения + 1 неделя проверки)</li>
+                        <li><strong>Фаза 8 (сдача):</strong> 1 неделя на документы</li>
+                        <li><strong>Итого от техзадания до сдачи:</strong> типично 9–11 недель</li>
+                    </ul>
+                    <p>Более крупные проекты (500+ м²) удлиняют фазы 5–7 пропорционально; фазы 1–4 по длительности остаются примерно такими же.</p>
+
+                    <h2>Где проекты обычно срываются по срокам</h2>
+                    <ul>
+                        <li><strong>Фаза 1: техзадание пропущено или недоработано.</strong> Тянет за собой переделки на последующих этапах, когда подрядчики предлагают неподходящие решения. Самая частая причина провала проекта.</li>
+                        <li><strong>Фаза 3: тендерный пакет неполный.</strong> Отсутствие плана швов или плана противоскользящих зон ведёт к допущениям подрядчика, которые не совпадают с замыслом заказчика.</li>
+                        <li><strong>Фаза 5: приёмка основания проведена в спешке.</strong> Представитель заказчика не присутствует при проверке CSP/F2170; позже возникают споры о подготовке основания, когда появляется отслоение.</li>
+                        <li><strong>Фаза 7: проверка отверждения сжата по срокам.</strong> Испытание на отрыв проведено до полного 7-дневного отверждения; занижает истинную прочность сцепления и усложняет толкование договора.</li>
+                        <li><strong>Фаза 8: финальный платёж выплачен без всех 5 документов.</strong> Заказчик теряет договорной рычаг для гарантийной претензии. Самая дорогая ошибка на сдаче.</li>
                     </ul>
 
-                    <h2>Финальная мысль</h2>
-                    <p>8 фаз, 8 phase gates, 8 document checklists. Timeline documentable, predictable, largely independent от project size (только Phases 5–7 scale с area). Owners которые run проекты через этот framework deliver полы at lifecycle spec которую they paid for. Specify framework в project plan; refuse advance phases без signed gates. Связано: <a href="role-targeted-floor-faq.html">role FAQ</a> · <a href="floor-system-selection-by-use-case.html">selection</a> · <a href="floor-tender-boq-template.html">BOQ template</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">compliance</a> · <a href="how-to-evaluate-a-floor-installer.html">evaluate installer</a>.</p>
+                    <h2>Вывод</h2>
+                    <p>Восемь фаз, восемь контрольных точек, восемь перечней документов. График поддаётся документированию, предсказуем и почти не зависит от размера проекта (с площадью масштабируются только фазы 5–7). Заказчики, которые ведут проекты по этой схеме, получают полы того ресурса, за который заплатили. Заказчики, которые пропускают фазы, на втором году обнаруживают, что гарантийный документ так и не был зарегистрирован. Закрепите схему в плане проекта; не позволяйте переходить к следующей фазе без подписанной контрольной точки. Связанное: <a href="role-targeted-floor-faq.html">FAQ по ролям</a> · <a href="floor-system-selection-by-use-case.html">подбор по сценарию эксплуатации</a> · <a href="floor-tender-boq-template.html">шаблон сметы BOQ</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="floor-compliance-verification-checklist.html">проверка соответствия</a> · <a href="how-to-evaluate-a-floor-installer.html">как оценить подрядчика</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>Sikafloor project execution guidelines.</li>
-                        <li>Mapei Mapefloor project execution guidelines.</li>
-                        <li>EN 13813 — Synthetic resin screeds.</li>
-                        <li>ICRI 310.2R-2013 — Substrate preparation timing.</li>
-                        <li>ASTM F2170 — Substrate moisture measurement timing.</li>
-                        <li>Israeli Construction Authority guidance on multi-trade project sequencing.</li>
-                        <li>Floor.DSGN IL contractor project documentation — 40+ resin floor projects.</li>
+                        <li>Руководства Sikafloor по исполнению проектов.</li>
+                        <li>Руководства Mapei Mapefloor по исполнению проектов.</li>
+                        <li>EN 13813 — Стяжки из синтетических смол (требования к последовательности работ).</li>
+                        <li>ICRI 310.2R-2013 — Сроки подготовки основания в рамках последовательности работ.</li>
+                        <li>ASTM F2170 — Сроки измерения влажности основания.</li>
+                        <li>Рекомендации Управления строительства Израиля по согласованию очерёдности смежных работ.</li>
+                        <li>Проектная документация подрядчика Floor.DSGN по Израилю — 40+ проектов смоляных полов.</li>
                     </ul>
                 </div>
             </div>
@@ -362,11 +522,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужен custom project timeline для проекта?</h2>
-                <p>Скажи м² + system class + immovable handover date. Phase-by-phase plan с target + decision-gate dates — в течение 48 часов.</p>
+                <h2>Нужен индивидуальный график под ваш проект пола?</h2>
+                <p>Назовите площадь в м² + класс системы + неизменяемую дату сдачи. Мы пришлём пофазный план с целевыми датами и датами контрольных точек — в течение 48 часов.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Запросить custom timeline</a>
-                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">BOQ template</a>
+                    <a href="../contact.html" class="btn btn-primary">Получить индивидуальный график</a>
+                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">Смотреть шаблон сметы BOQ</a>
                 </div>
             </div>
         </div>

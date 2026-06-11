@@ -192,12 +192,12 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
-                <span class="article-category">Detail Reference</span>
-                <h1>Деформационные швы в resin-полах</h1>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
+                <span class="article-category">Справочник по узлам</span>
+                <h1>Деформационные швы в смоляных полах</h1>
                 <p class="article-meta">Май 2026 · 7 мин чтения</p>
                 <div class="article-hero-wrapper">
-                    <img src="../images/concrete-decorative/beton.jpg" alt="Деформационные швы в resin-полах" class="article-hero-image">
+                    <img src="../images/concrete-decorative/beton.jpg" alt="Деформационные швы в смоляных полах" class="article-hero-image">
                 </div>
             </div>
         </div>
@@ -205,61 +205,91 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Каждый resin floor inherits substrate joint design. У slab — saw-cut control joints. У slab — perimeter movement joints at walls + columns. У slab — expansion joints between pour bays. Когда resin layer игнорирует эти joints — pours прямо over без replication — substrate всё равно движется, и resin cracks вдоль buried joint line за 6–12 месяцев.</p>
+                    <p class="lead">Любой смоляной пол наследует схему швов основания. В плите нарезаны усадочные (контрольные) швы. По периметру — у стен и колонн — заложены деформационные швы. Между захватками бетонирования есть деформационные швы между картами. Когда смоляной слой игнорирует эти швы — заливается прямо поверх, без их повторения — основание всё равно движется, и смоляной слой трескается вдоль скрытой линии шва уже через 6–12 месяцев. Эта страница разбирает дисциплину проектирования швов, которая не даёт случиться такому разрушению: повторение швов основания, химия герметика под каждую систему, требования к периметральному узлу, документация плана швов и формулировки в смете, которые делают подрядчика ответственным за дисциплину швов.</p>
 
-                    <p><em>Полная EN-версия выше с 4 disciplines (substrate replication / sealant chemistry / joint geometry / perimeter), joint plan documentation, BOQ tender language, common mistakes, joint maintenance. Краткая RU-сводка:</em></p>
-
-                    <h2>4 discipline для рабочих швов</h2>
-                    <ol>
-                        <li><strong>Substrate joint replication.</strong> Applicator saws through resin to match каждый substrate joint — same spacing, same width, same depth. Без replication resin фатугирует и трескается вдоль buried joint line за 6–12 мес.</li>
-                        <li><strong>Sealant chemistry per system family.</strong> Эпокси / PU-cement → 2-комп. PU (Sikaflex PRO 3). MMA → MMA sealer или PU food-grade. Микротопинг → tinted sealant. Polished concrete / vinyl → PU.</li>
-                        <li><strong>Joint geometry.</strong> Min width 6 мм thin-film / 8 мм SL / 12 мм heavy-duty + PU-cement / 20 мм expansion. Depth через resin + 12 мм into substrate. Width:depth ratio 2:1. Closed-cell backer rod 25% oversized.</li>
-                        <li><strong>Perimeter joints — non-negotiable.</strong> Каждый wall, column, floor-drain, vertical penetration. 8–12 мм wide. Самая частая причина warranty-claim cracking когда skipped.</li>
-                    </ol>
-
-                    <h2>Sealant chemistry таблица</h2>
-                    <ul>
-                        <li><strong>Эпокси SL / quartz broadcast:</strong> 2-комп. PU (Sikaflex PRO 3). ±25% movement.</li>
-                        <li><strong>PU-cement (kitchen / heavy):</strong> 2-комп. PU food-grade (Sikadur-Combiflex). ±25%.</li>
-                        <li><strong>MMA fast-cure:</strong> MMA sealer или PU food-grade. ±20%.</li>
-                        <li><strong>Микротопинг decorative:</strong> Tinted sealant matching visual. ±15%.</li>
-                        <li><strong>Polished concrete:</strong> PU или polysulfide. ±25%.</li>
-                        <li><strong>Vinyl / Marmoleum:</strong> PVC-compatible PU. ±20%.</li>
-                    </ul>
-
-                    <h2>Joint plan documentation</h2>
-                    <ol>
-                        <li>Existing substrate joints surveyed (не из generic typical-detail) + фото каждой joint line.</li>
-                        <li>New resin-layer control joints (если pour bay превышает 36 м² для SL).</li>
-                        <li>Perimeter joints — walls, columns, floor drains, equipment plinths + photo locations.</li>
-                    </ol>
-                    <p>Joint plan подписан applicator-ом certified joint-detail designer (обычно technical sales engineer от manufacturer-а) и attached как appendix к tender BOQ.</p>
-
-                    <h2>BOQ tender language clause</h2>
-                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
-                        "Substrate joints replicated через finished resin floor at exact spacing + width per substrate survey. Joint plan attached as appendix A. Joints sealed 2-комп. PU sealant <strong>[Sikaflex PRO 3]</strong> over closed-cell backer rod at 25% compression, sealant depth-to-width ratio 2:1. Movement-joint width minimum 8 мм (12 мм heavy-duty + PU-cement). Perimeter joints at walls, columns, floor drains, equipment plinths — required around full periphery, no exceptions. Joint plan signed applicator's certified joint-detail designer. Substituting alternative sealant chemistry mid-project requires written manufacturer approval, иначе voids joint-detail warranty."
+                    <div class="joint-card">
+                        <span class="joint-tag">Дисциплина 1 из 4 — повторение швов основания</span>
+                        <h2>Почему швы основания обязательно повторять</h2>
+                        <p>Бетонная плита движется. Суточные перепады температуры, усадка при высыхании, эксплуатационные нагрузки, иногда сейсмические микросмещения. Нарезанные усадочные швы существуют для того, чтобы локализовать это движение по предсказуемым линиям, а не оставлять его на волю случайного растрескивания. Когда смоляной слой заливается сплошным полотном поверх нарезанного шва, шов всё равно работает конструктивно — но смоляной слой перекрывает его, как натянутая плёнка. После 6–12 месяцев циклического движения основания смола устаёт и трескается вдоль скрытой линии шва. Трещина внешне неотличима от конструктивного разрушения, но на деле это ошибка проектирования: шов не повторили.</p>
+                        <p>Повторение шва — операция механическая, а не опциональная. Подрядчик пропиливает смоляной слой по каждому шву основания — с тем же шагом, той же шириной и той же глубиной. Новый шов в смоляном слое затем заполняется полиуретановым или полисульфидным герметиком, подобранным под химию смолы. Герметик принимает на себя движение основания; смоляной слой остаётся сплошным между швами; пол отрабатывает свой расчётный срок.</p>
                     </div>
 
-                    <h2>Common mistakes</h2>
+                    <div class="joint-card">
+                        <span class="joint-tag">Дисциплина 2 из 4 — химия герметика</span>
+                        <h2>Химия герметика по семействам систем</h2>
+                        <p>Герметик внутри шва должен быть химически совместим со смоляным слоем, к которому он примыкает. Герметик неподходящей химии деградирует, отслаивается от кромки шва и создаёт путь влаге через шов в основание. Три типа химии герметика покрывают практически все сценарии смоляных полов.</p>
+                        <table class="j-table">
+                            <thead>
+                                <tr><th>Система пола</th><th>Герметик шва</th><th>Пример бренда</th><th>Подвижность %</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Эпоксидный наливной / кварцевая засыпка</td><td>Двухкомпонентный полиуретан</td><td>Sikaflex PRO 3, Sika Combiflex SG</td><td>±25%</td></tr>
+                                <tr><td>Полиуретан-цемент (кухня / тяжёлые нагрузки)</td><td>Двухкомпонентный полиуретан (пищевой)</td><td>Sikaflex PRO 3, Sikadur-Combiflex</td><td>±25%</td></tr>
+                                <tr><td>ММА быстрого отверждения</td><td>ММА-герметик или пищевой ПУ</td><td>Sikafloor Pronto sealer или Sikaflex PRO 3</td><td>±20%</td></tr>
+                                <tr><td>Декоративный микротопинг</td><td>Тонированный под микротопинг герметик (визуальное совпадение)</td><td>Topciment matching sealant</td><td>±15%</td></tr>
+                                <tr><td>Полированный бетон</td><td>Полиуретан или полисульфид</td><td>Sikaflex PRO 3</td><td>±25%</td></tr>
+                                <tr><td>Винил / Marmoleum</td><td>Полиуретан (совместимый с ПВХ)</td><td>Tarkett joint compound</td><td>±20%</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Выбор герметика фиксируется артикулом и партией в смете. Замена герметика на другую химию посреди проекта ради «того, что есть на складе» аннулирует гарантию на узел шва в большинстве соглашений с производителем.</p>
+                    </div>
+
+                    <div class="joint-card">
+                        <span class="joint-tag">Дисциплина 3 из 4 — геометрия шва</span>
+                        <h2>Ширина шва, глубина и уплотнительный шнур</h2>
+                        <p>Рабочий шов задаётся тремя числами: шириной, глубиной и степенью обжатия уплотнительного шнура.</p>
+                        <ul>
+                            <li><strong>Минимальная ширина шва:</strong> 6 мм для тонкослойных систем, 8 мм для наливных, 12 мм для тяжёлых нагрузок и полиуретан-цемента, 20 мм для деформационного шва (между плитами). В более узких швах герметик не отрабатывает движение и рвётся при сжатии.</li>
+                            <li><strong>Глубина шва:</strong> на всю толщину смоляного слоя плюс минимум 12 мм в основание. Неглубокие швы концентрируют движение в смоляном слое и трескаются.</li>
+                            <li><strong>Соотношение ширины к глубине:</strong> рабочая цель — 2:1. У шва шириной 10 мм глубина герметика должна быть 5 мм (то есть уплотнительный шнур заглублён до 5 мм от поверхности). В слишком глубоких швах герметик устаёт быстрее; в слишком мелких — не отрабатывает движение.</li>
+                            <li><strong>Уплотнительный шнур:</strong> шнур из закрытопористого полиэтиленового вспененного материала, на 25% толще шва, чтобы вжаться в него с обжатием. Подбирается так, чтобы упереться на нужной глубине герметика. Шнур предотвращает трёхстороннюю адгезию герметика (которая привела бы к разрыву при растяжении).</li>
+                            <li><strong>Антиадгезионная лента:</strong> нужна там, где уплотнительный шнур установить нельзя (очень мелкие швы). Лента по дну шва предотвращает трёхстороннюю адгезию.</li>
+                        </ul>
+                    </div>
+
+                    <div class="joint-card">
+                        <span class="joint-tag">Дисциплина 4 из 4 — периметр</span>
+                        <h2>Периметральные швы — без компромиссов</h2>
+                        <p>Каждая стена, каждая колонна, каждый трап, каждый вертикальный проход создаёт концентратор напряжений там, где смоляной слой встречается с другим материалом. Им нужны периметральные швы — обычно шириной 8–12 мм, заполненные тем же герметиком, что и швы поля, по всему периметру.</p>
+                        <p>Пропущенные периметральные швы — самая частая причина гарантийного растрескивания в израильских смоляных полах. Трещина появляется как линия, параллельная стене, примерно в 100–300 мм от неё, там, где естественное движение пола концентрирует напряжение у жёсткой кромки стены. Как только трещина появилась, ремонт требует нарезки нового шва по линии разрушения и повторной герметизации — обычно за счёт подрядчика, если периметральные швы были в исходном тендере, и за счёт заказчика, если их там не было.</p>
+                        <p>Стоимость периметрального шва: ₪80–180 за погонный метр в работе (герметик + уплотнительный шнур + труд). Для проекта 100 м² с 40 пог. м периметра это ₪3 200–7 200. Экономия на нём не даёт ничего — а гарантию убивает.</p>
+                    </div>
+
+                    <h2>Документация плана швов</h2>
+                    <p>Рабочий план швов — это чертёж, приложенный к тендерному предложению. Он показывает три категории линий:</p>
+                    <ol>
+                        <li><strong>Существующие швы основания, подлежащие повторению.</strong> Снятые с реальной плиты, а не выведенные из обобщённого типового узла. К каждой линии шва приложено фото.</li>
+                        <li><strong>Новые контрольные швы смоляного слоя.</strong> Там, где захватка заливки смоляного слоя иначе превысила бы ограничения по площади (обычно 36 м² на захватку для наливных систем), вводятся дополнительные швы.</li>
+                        <li><strong>Периметральные швы.</strong> Стены, колонны, трапы, фундаменты под оборудование. Каждое место обозначено с привязанным фото.</li>
+                    </ol>
+                    <p>План швов подписывает назначенный подрядчиком проектировщик узла шва (обычно технический инженер по продажам от производителя) и прикладывает как приложение к тендерной смете. Без него позицию сметы по обработке швов невозможно посчитать.</p>
+
+                    <h2>Формулировки для сметы по дисциплине швов</h2>
+                    <p>Готово вставить в позицию 8 сметы (обработка швов).</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:18px 22px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:14px; line-height:1.6;">
+                        «Швы основания повторены сквозь готовый смоляной пол с точным шагом и шириной по результатам обмера основания. План швов приложен как приложение A к настоящей тендерной смете. Швы заполнены двухкомпонентным полиуретановым герметиком <strong>[Sikaflex PRO 3]</strong> по закрытопористому уплотнительному шнуру с обжатием 25%, при соотношении глубины герметика к ширине 2:1. Минимальная ширина деформационного шва 8 мм (12 мм для тяжёлых нагрузок и систем полиуретан-цемента). Периметральные швы у стен, колонн, трапов, фундаментов под оборудование — обязательны по всему периметру, без исключений. План швов подписан сертифицированным подрядчиком проектировщиком узла шва. Замена герметика на другую химию посреди проекта требует письменного согласования с производителем, иначе аннулирует гарантию на узел шва.»
+                    </div>
+
+                    <h2>Частые ошибки по швам</h2>
                     <ul>
-                        <li>«Мы match substrate joints» verbal без joint plan — half the time applicator misses 2–3 joints.</li>
-                        <li>Sealant width 4–5 мм — too narrow, тонут за 6 мес под thermal cycle.</li>
-                        <li>Three-side adhesion (no backer rod) — fails in tension.</li>
-                        <li>Skipped perimeter joints — cracking 100–300 мм от стен за 18 мес.</li>
-                        <li>Sealant chemistry mismatch (PVC-incompatible PU на Marmoleum) — pulls away from shoulder.</li>
-                        <li>Joint depth shallower than resin layer — cracking at joint line.</li>
+                        <li><strong>«Мы повторим швы основания» — устное обещание без плана швов.</strong> В половине случаев подрядчик пропускает 2–3 шва; растрескивание появляется по этим линиям в течение 12 месяцев.</li>
+                        <li><strong>Ширина герметика 4–5 мм.</strong> Слишком узко; рвётся в течение 6 месяцев под температурным циклом.</li>
+                        <li><strong>Трёхсторонняя адгезия (без уплотнительного шнура).</strong> Герметик прилипает ко дну шва и к обеим стенкам; разрушается при растяжении, а не работает на сжатие-растяжение. Отказ менее чем за 12 месяцев.</li>
+                        <li><strong>Пропущенные периметральные швы.</strong> Растрескивание появляется в 100–300 мм от стен в течение 18 месяцев.</li>
+                        <li><strong>Несоответствие химии герметика.</strong> Несовместимый с ПВХ полиуретан на полу Marmoleum — герметик отслаивается от кромки шва; пищевые кислоты мигрируют в основание.</li>
+                        <li><strong>Глубина шва меньше толщины смоляного слоя.</strong> Основание движется; смоляной слой трескается по линии шва, потому что шов не дошёл до основания.</li>
                     </ul>
 
-                    <h2>Joint lifecycle</h2>
+                    <h2>Обслуживание швов и жизненный цикл</h2>
                     <ul>
-                        <li>Year 1: visual check каждого joint.</li>
-                        <li>Year 3: full survey + replace sealant в joints с oxidation/crazing/shoulder lift.</li>
-                        <li>Year 7–10: full joint resealing типично для industrial. Стоимость 30–50% оригинального line item.</li>
-                        <li>Document joint maintenance в facility records.</li>
+                        <li><strong>Осмотр на 1-м году:</strong> визуальная проверка адгезии герметика по каждому шву. Точечный ремонт там, где кромка шва показывает отслоение.</li>
+                        <li><strong>Осмотр на 3-м году:</strong> полное обследование состояния швов. Замена герметика в швах с признаками окисления, поверхностного растрескивания (сетки) или отслоения кромки.</li>
+                        <li><strong>7–10-й год:</strong> полная повторная герметизация швов — типична для промышленных условий. Стоимость: 30–50% от исходного монтажа линии шва.</li>
+                        <li><strong>Фиксируйте обслуживание швов в документации объекта.</strong> Состояние швов — самый частый предмет проверки по гарантийным претензиям на 5-м году и далее.</li>
                     </ul>
 
-                    <h2>Финальная мысль</h2>
-                    <p>Joint design — discipline разделяющая 5-year пол от 15-year пола. Substrate joints replicated, sealant chemistry matched, geometry at 2:1, perimeter joints everywhere. Joint plan signed + attached. BOQ line itemised. Связано: <a href="floor-tender-boq-template.html">BOQ template</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="adhesion-pull-off-test-guide.html">pull-off test</a> · <a href="floor-system-selection-by-use-case.html">selection</a>.</p>
+                    <h2>Главный вывод</h2>
+                    <p>Проектирование швов — это та дисциплина, которая отделяет пол на 5 лет от пола на 15 лет. Швы основания повторены сквозь смолу, химия герметика подобрана под систему, геометрия при соотношении глубины к ширине 2:1, периметральные швы везде. План швов подписан и приложен. Позиция сметы расписана с артикулом герметика. Как только вы прописываете это так, интерес подрядчика совпадает с долговечностью пола, а не со срезанием 5% со стоимости линии шва. Связанное: <a href="floor-tender-boq-template.html">шаблон тендерной сметы</a> · <a href="floor-warranty-types-explained.html">типы гарантии</a> · <a href="adhesion-pull-off-test-guide.html">руководство по испытанию на отрыв</a> · <a href="floor-system-selection-by-use-case.html">выбор по сценарию применения</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
@@ -276,11 +306,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужен joint plan reviewed до tender?</h2>
-                <p>Пришли substrate joint survey + proposed sealant chemistry. Review за completeness, perimeter coverage, chemistry compatibility — в течение 48 часов.</p>
+                <h2>Нужна проверка плана швов до тендера?</h2>
+                <p>Пришлите обмер швов основания и предлагаемую химию герметика. Проверим на полноту, охват периметра и совместимость химии — в течение 48 часов.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Прислать joint plan</a>
-                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">BOQ template</a>
+                    <a href="../contact.html" class="btn btn-primary">Прислать план швов</a>
+                    <a href="floor-tender-boq-template.html" class="btn btn-secondary">Шаблон сметы</a>
                 </div>
             </div>
         </div>

@@ -237,9 +237,9 @@
     <article class="article-page" data-lang-block="ru" style="display:none;">
         <div class="article-hero">
             <div class="container">
-                <a class="back-link" href="/library.html">Back to Library</a>
-                <span class="article-category">ESD Specification</span>
-                <h1>ESD + static dissipative floor systems</h1>
+                <a class="back-link" href="/library.html">Назад в библиотеку</a>
+                <span class="article-category">ESD-спецификация</span>
+                <h1>Антистатические и токорассеивающие напольные системы (ESD)</h1>
                 <p class="article-meta">Май 2026 · 7 мин чтения</p>
                 <div class="article-hero-wrapper">
                     <img src="../images/concrete-decorative/beton.jpg" alt="ESD static dissipative floor systems" class="article-hero-image">
@@ -250,111 +250,144 @@
         <div class="article-content">
             <div class="container">
                 <div class="article-body">
-                    <p class="lead">Electrostatic discharge может уничтожить sensitive electronic components, ignite explosive atmospheres, disrupt critical medical equipment. ESD floor systems control electrical resistance чтобы dissipate static charge через building-grounded path before discharge can occur.</p>
+                    <p class="lead">Электростатический разряд способен вывести из строя чувствительные электронные компоненты, воспламенить взрывоопасную атмосферу и нарушить работу критичного медицинского оборудования. Антистатические (ESD) напольные системы задают электрическое сопротивление пола так, чтобы статический заряд стекал по заземлённому через здание пути ещё до того, как произойдёт разряд. Производство электроники, операционные, зоны работы с топливом, фармацевтические чистые помещения и склады боеприпасов — все требуют антистатического пола по стандарту IEC 61340-5-1. На этой странице разобраны электрические требования, состав системы (токопроводящий грунт + ESD-несущий слой + заземлённые медные ленты), протокол приёмки и формулировки для тендера на объектах с контролем статики.</p>
 
-                    <p><em>Полная EN-версия выше с 4 elements (IEC 61340-5-1 standard / system buildup / building-ground connection / verification protocol) + use-case selection + IL channel + tender clause + common mistakes + cost. Краткая RU-сводка:</em></p>
-
-                    <h2>4 elements ESD flooring</h2>
-
-                    <h3>Element 1 — IEC 61340-5-1 standard</h3>
-                    <ul>
-                        <li><strong>Conductive:</strong> 1×10⁴ to &lt;1×10⁶ Ω. Explosive atmospheres, ammunition, propellant.</li>
-                        <li><strong>Dissipative:</strong> 1×10⁶ to &lt;1×10⁹ Ω. Electronics, semiconductor, operating theatres, server rooms.</li>
-                        <li><strong>Insulative:</strong> ≥ 1×10⁹ Ω. Standard floor — NOT ESD-controlled.</li>
-                    </ul>
-                    <p>IL electronics + semiconductor + military + operating theatre + EU GMP pharma: dissipative standard. Conductive для ammunition + propellant + explosive-atmosphere.</p>
-
-                    <h3>Element 2 — System buildup</h3>
-                    <ul>
-                        <li>Substrate: concrete prepared CSP 3-4.</li>
-                        <li>Copper strip network: adhesive-backed copper foil 25-50 мм в 4×4 м grid, connected to building grounding.</li>
-                        <li>Conductive primer: conductive эпокси primer (Sikafloor-220 W Conductive).</li>
-                        <li>ESD body coat: conductive эпокси SL (Sikafloor-381 AS, Mapefloor Antistatic) 2-3 мм с carbon/graphite additive.</li>
-                        <li>Topcoat (optional): conductive aliphatic PU.</li>
-                    </ul>
-                    <p>Total installed cost: ₪580-900/м² (vs ₪320-450 non-ESD эпокси SL).</p>
-
-                    <h3>Element 3 — Building-ground connection</h3>
-                    <ul>
-                        <li>Copper foil grid 4×4 м across substrate.</li>
-                        <li>Grounding points: каждое grid intersection connects wall-mounted terminal via 16 мм² copper.</li>
-                        <li>Earth resistance: floor surface to building grounding bus ≤ 10⁹ Ω (dissipative) или ≤ 10⁶ Ω (conductive).</li>
-                        <li>Equipotential bonding: floor grounding bonds to structural steel + equipment chassis + ESD wristband.</li>
-                        <li>Verification: ANSI/ESD STM7.1 measurement at named grid points.</li>
-                    </ul>
-
-                    <h3>Element 4 — Verification protocol</h3>
-                    <ul>
-                        <li>Initial install — surface resistance: ANSI/ESD STM7.1 two-electrode test, within range.</li>
-                        <li>Initial install — resistance to ground: one-electrode test, within target.</li>
-                        <li>Initial install — walking test (charge generation): ANSI/ESD STM97.2 voltage, ≤ 100 V peak.</li>
-                        <li>Annual re-test: same methodology, degradation acceptable ±0.5 log.</li>
-                        <li>After major cleaning chemistry change: verify insulating layer not deposited.</li>
-                    </ul>
-                    <p>Critical: cleaning chemistry matters. Standard cleaners deposit insulating layer. Manufacturer-approved ESD-compatible cleaner only.</p>
-
-                    <h2>Use-case selection</h2>
-                    <ul>
-                        <li><strong>Electronics manufacturing assembly:</strong> Dissipative 10⁶-10⁹ Ω (Sikafloor-381 AS).</li>
-                        <li><strong>Semiconductor cleanroom:</strong> Dissipative + EU GMP (Sikafloor 235 W ESD).</li>
-                        <li><strong>Operating theatre:</strong> Dissipative + antimicrobial (Sikafloor-381 AS + Polygiene).</li>
-                        <li><strong>Server room / data centre:</strong> Dissipative (standard ESD эпокси).</li>
-                        <li><strong>Pharma manufacturing:</strong> Dissipative + EU GMP.</li>
-                        <li><strong>Ammunition handling:</strong> Conductive 10⁴-10⁶ Ω (Sikafloor-262 AS).</li>
-                        <li><strong>Fuel handling / petrochemical:</strong> Conductive + chemical resistant.</li>
-                        <li><strong>Defence electronics:</strong> Dissipative + IL Ministry of Defence specs.</li>
-                    </ul>
-
-                    <h2>Бренд + IL channel</h2>
-                    <ul>
-                        <li>Sikafloor-262 AS Conductive — explosive-atmosphere zones.</li>
-                        <li>Sikafloor-381 AS Conductive — electronics + operating theatres.</li>
-                        <li>Sikafloor 235 W ESD — cleanroom-grade EU GMP.</li>
-                        <li>Mapei Mapefloor Antistatic — IL via Mapei.</li>
-                        <li>Flowcrete Flowstat — Mapei sister brand ESD.</li>
-                        <li>MC-Bauchemie MC-DUR ESD — IL via A.Z Marketing Ramle.</li>
-                    </ul>
-
-                    <h2>BOQ tender language clause</h2>
-                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
-                        "Floor system rated IEC 61340-5-1 <strong>[dissipative 10⁶-10⁹ Ω / conductive 10⁴-10⁶ Ω]</strong> per zone plan. Build-up: adhesive-backed copper foil grounding grid (4 м × 4 м) on substrate prior to primer, connected to building grounding bus via 16 мм² copper conductor с named grounding terminal locations. Conductive эпокси primer + ESD body coat at 2-3 мм. ANSI/ESD STM7.1 surface resistance verification at minimum 3 locations per 200 м² + ANSI/ESD STM97.2 walking test (&lt;100 V peak). Initial + annual re-test in maintenance contract. Cleaning chemistry shall be manufacturer-approved ESD-compatible only."
+                    <div class="esd-card">
+                        <span class="esd-tag">Элемент 1 из 4 — Стандарт</span>
+                        <h2>IEC 61340-5-1 — стандарт</h2>
+                        <p>Международный стандарт по контролю статического электричества для электронных изделий в производстве и при обращении с ними. Определяет три класса сопротивления — токопроводящий, токорассеивающий, изолирующий — с пороговыми значениями электрического сопротивления и методикой проверки.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>Класс</th><th>Диапазон сопротивления</th><th>Область применения</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="signal-cell">Токопроводящий</td><td>1 × 10⁴ до &lt; 1 × 10⁶ Ω</td><td>Максимальная скорость стекания заряда — взрывоопасные среды, работа с боеприпасами, производство порохов</td></tr>
+                                <tr><td class="signal-cell">Токорассеивающий</td><td>1 × 10⁶ до &lt; 1 × 10⁹ Ω</td><td>Контролируемое стекание заряда — производство электроники, изготовление полупроводников, операционные, серверные</td></tr>
+                                <tr><td>Изолирующий</td><td>≥ 1 × 10⁹ Ω</td><td>Обычный пол — без контроля статики</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Для израильского производства электроники, полупроводников, военной электроники, операционных и фармацевтики по EU GMP целевой класс — токорассеивающий. Токопроводящий применяется только для зон с боеприпасами, порохами и взрывоопасной атмосферой при работе с насыпными химикатами.</p>
                     </div>
 
-                    <h2>Common ESD mistakes</h2>
+                    <div class="esd-card">
+                        <span class="esd-tag">Элемент 2 из 4 — Состав системы</span>
+                        <h2>Состав системы</h2>
+                        <p>Антистатический пол — это трёхслойная система со встроенной сетью заземления. Состав напоминает обычный наливной эпоксидный пол, но в несущий слой вводится токопроводящая добавка из углеродного волокна или графитовых частиц, а по основанию укладывается сеть заземлённых медных лент.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>Слой</th><th>Назначение</th><th>Материал</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Основание</td><td>Несущая база</td><td>Бетонное основание, подготовленное до шероховатости CSP 3-4</td></tr>
+                                <tr><td>Сеть медных лент</td><td>Путь заземления через здание</td><td>Самоклеящиеся медные ленты с шагом сетки 4 × 4 м, подключённые к контуру заземления здания</td></tr>
+                                <tr><td>Токопроводящий грунт</td><td>Адгезия и боковая проводимость</td><td>Токопроводящий эпоксидный грунт (Sikafloor-220 W Conductive)</td></tr>
+                                <tr><td>ESD-несущий слой</td><td>Рассеивание статики</td><td>Токопроводящий наливной эпоксидный слой (Sikafloor-381 AS, Mapefloor Antistatic) толщиной 2-3 мм с углеродной или графитовой добавкой</td></tr>
+                                <tr><td>Финишный слой (опционально)</td><td>Износо- и химстойкость</td><td>Токопроводящий алифатический полиуретановый финиш</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Полная стоимость монтажа: ₪580-900 за м² (против ₪320-450 за обычный наливной эпоксидный пол без ESD). Надбавка покрывает работу по укладке медной сети заземления и специальные токопроводящие смоляные материалы.</p>
+                    </div>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">Элемент 3 из 4 — Заземление</span>
+                        <h2>Подключение к контуру заземления здания</h2>
+                        <p>Токопроводящий пол эффективен ровно настолько, насколько надёжна его связь с контуром заземления здания. Стратегия заземления:</p>
+                        <ul>
+                            <li><strong>Сетка из медной ленты:</strong> самоклеящиеся медные ленты (обычно шириной 25-50 мм) с шагом 4 × 4 м укладываются по всему основанию до нанесения грунта.</li>
+                            <li><strong>Точки заземления:</strong> каждое пересечение сетки подключается к настенной клемме заземления. Настенная клемма соединяется с контуром заземления здания медным проводником сечением 16 мм².</li>
+                            <li><strong>Сопротивление растеканию:</strong> сопротивление пути «от поверхности пола до шины заземления здания» должно быть ≤ 1 × 10⁹ Ω (цель для токорассеивающего класса) или ≤ 1 × 10⁶ Ω (цель для токопроводящего).</li>
+                            <li><strong>Уравнивание потенциалов:</strong> заземление пола объединяется с несущими стальными конструкциями здания, корпусами оборудования и точками подключения ESD-браслетов. Единая опорная плоскость уравнивания потенциалов.</li>
+                            <li><strong>Проверка:</strong> измерение по ANSI/ESD STM7.1 в заранее обозначенных точках сетки. Двухэлектродный замер сопротивления от поверхности пола до клеммы заземления.</li>
+                        </ul>
+                    </div>
+
+                    <div class="esd-card">
+                        <span class="esd-tag">Элемент 4 из 4 — Приёмка</span>
+                        <h2>Протокол приёмки</h2>
+                        <p>Характеристики ESD проверяются при монтаже и затем ежегодно. Дефекты проявляются неявно (дрейф сопротивления со временем), поэтому периодическая проверка обязательна, а не желательна.</p>
+                        <table class="e-table">
+                            <thead>
+                                <tr><th>Точка контроля</th><th>Метод</th><th>Критерий приёмки</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Монтаж — поверхностное сопротивление</td><td>Двухэлектродный замер по ANSI/ESD STM7.1</td><td>В пределах токорассеивающего диапазона 10⁶–10⁹ Ω</td></tr>
+                                <tr><td>Монтаж — сопротивление до заземления</td><td>Одноэлектродный замер до заземления по ANSI/ESD STM7.1</td><td>В пределах целевого диапазона</td></tr>
+                                <tr><td>Монтаж — тест хождением (генерация заряда)</td><td>Замер напряжения по ANSI/ESD STM97.2</td><td>≤ 100 V пикового заряда в токорассеивающей зоне</td></tr>
+                                <tr><td>Ежегодная повторная проверка — тот же набор</td><td>Та же методика</td><td>В пределах исходного диапазона; деградация допустима в пределах ±0,5 порядка</td></tr>
+                                <tr><td>После смены химии для уборки</td><td>Та же методика</td><td>Убедиться, что моющая химия не образовала изолирующий слой</td></tr>
+                            </tbody>
+                        </table>
+                        <p>Важно: химия для уборки имеет значение. Некоторые обычные моющие средства оставляют тонкий изолирующий слой, который со временем снижает поверхностную проводимость. Антистатический пол можно мыть только средствами, одобренными производителем. См. <a href="floor-care-by-system-type.html">уход за полом по типу системы</a>.</p>
+                    </div>
+
+                    <h2>Выбор по области применения</h2>
+                    <table class="e-table">
+                        <thead>
+                            <tr><th>Среда</th><th>Класс ESD</th><th>Целевое сопротивление</th><th>Пример системы</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Сборка в производстве электроники</td><td class="signal-cell">Токорассеивающий</td><td>10⁶–10⁹ Ω</td><td>Sikafloor-381 AS Conductive</td></tr>
+                            <tr><td>Чистое помещение производства полупроводников</td><td class="signal-cell">Токорассеивающий</td><td>10⁶–10⁹ Ω + сертификация чистого помещения по EU GMP</td><td>Sikafloor 235 W ESD + добавка EU GMP</td></tr>
+                            <tr><td>Операционная</td><td class="signal-cell">Токорассеивающий</td><td>10⁶–10⁹ Ω + антимикробная защита</td><td>Sikafloor-381 AS + Polygiene</td></tr>
+                            <tr><td>Серверная / дата-центр</td><td>Токорассеивающий</td><td>10⁶–10⁹ Ω</td><td>Стандартный антистатический эпоксидный пол</td></tr>
+                            <tr><td>Фармацевтическое производство</td><td>Токорассеивающий</td><td>10⁶–10⁹ Ω + EU GMP</td><td>Антистатический эпоксидный пол класса чистого помещения</td></tr>
+                            <tr><td>Работа с боеприпасами</td><td class="signal-cell">Токопроводящий</td><td>10⁴–10⁶ Ω</td><td>Sikafloor-262 AS Conductive</td></tr>
+                            <tr><td>Работа с топливом / нефтехимия</td><td class="signal-cell">Токопроводящий</td><td>10⁴–10⁶ Ω + химстойкость</td><td>Специальный токопроводящий полиуретан-цемент</td></tr>
+                            <tr><td>Оборонная электроника</td><td>Токорассеивающий</td><td>10⁶–10⁹ Ω + требования Министерства обороны Израиля</td><td>Sikafloor-381 AS</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Бренды и каналы поставки в Израиле для ESD-полов</h2>
                     <ul>
-                        <li>«ESD floor» без IEC 61340-5-1 verification — marketing claim без backing.</li>
-                        <li>Copper grounding grid skipped — conductive resin без grounding electrically meaningless.</li>
-                        <li>Topcoat applied over ESD body coat без verifying conductivity maintained.</li>
-                        <li>Standard cleaning chemistry — deposits insulating layer, degrades performance 6-12 мес.</li>
-                        <li>ESD verification skipped at install — no baseline data for annual re-test.</li>
-                        <li>Grounding terminal disconnect after furniture install — accessibility + verification required.</li>
+                        <li><strong>Sikafloor-262 AS Conductive:</strong> токопроводящий наливной эпоксидный пол для зон со взрывоопасной атмосферой. В Израиле — через Gilar.</li>
+                        <li><strong>Sikafloor-381 AS Conductive:</strong> токорассеивающий наливной эпоксидный пол для электроники и операционных. В Израиле — через Gilar.</li>
+                        <li><strong>Sikafloor 235 W ESD:</strong> токорассеивающий эпоксидный пол класса чистого помещения. Соответствует EU GMP.</li>
+                        <li><strong>Mapei Mapefloor Antistatic:</strong> токорассеивающий эпоксидный пол Mapei. В Израиле — через Mapei.</li>
+                        <li><strong>Flowcrete Flowstat:</strong> ESD-пол дочернего бренда Mapei.</li>
+                        <li><strong>MC-Bauchemie MC-DUR ESD:</strong> промышленный антистатический эпоксидный пол. В Израиле — через A.Z Marketing, Рамла (+972-8-9150190).</li>
                     </ul>
 
-                    <h2>Cost considerations</h2>
-                    <p>ESD-grade adds ~50-100% над non-ESD baseline:</p>
-                    <ul>
-                        <li>Copper grounding network: ₪80-150/м².</li>
-                        <li>Conductive resin materials: +30-50% над standard эпокси.</li>
-                        <li>Specialised labour: +20-40%.</li>
-                        <li>Initial verification: ₪5 000-12 000/project.</li>
-                        <li>Annual re-test + compatibility audit: ₪3 000-6 000/yr.</li>
-                    </ul>
-                    <p>800 м² semiconductor cleanroom: ESD adds ~₪200 000-350 000 над baseline эпокси SL. Small vs single ESD-related yield failure cost.</p>
+                    <h2>Формулировка для тендера на ESD-спецификацию</h2>
+                    <p>Готовый текст для вставки в смету (BOQ) по проектам электроники, медицинских ESD-зон и контролируемых сред.</p>
+                    <div style="background:var(--concrete, #f3f0ea); padding:14px 18px; margin:14px 0; border-left:3px solid var(--signal, #C86B3C); border-radius:2px; font-size:13px; line-height:1.6;">
+                        «Напольная система с классификацией по IEC 61340-5-1 <strong>[токорассеивающий 10⁶-10⁹ Ω / токопроводящий 10⁴-10⁶ Ω]</strong> согласно плану зон. Состав: самоклеящаяся сетка заземления из медной ленты (шаг 4 м × 4 м) по основанию до нанесения грунта, подключённая к шине заземления здания медным проводником 16 мм² с обозначенным расположением клемм заземления. Токопроводящий эпоксидный грунт + ESD-несущий слой толщиной 2-3 мм. Контроль поверхностного сопротивления по ANSI/ESD STM7.1 не менее чем в 3 точках на каждые 200 м² + тест хождением по ANSI/ESD STM97.2 с контролем заряда (&lt;100 V пик). Первичная проверка и ежегодная повторная проверка включены в договор обслуживания. Допускается только моющая химия, одобренная производителем и совместимая с ESD; образование изолирующего слоя аннулирует гарантию.»
+                    </div>
 
-                    <h2>Финальная мысль</h2>
-                    <p>ESD flooring — electrical system, не coating choice. Conductive resin — один component из 4-element system (substrate prep + copper grounding + conductive resin + ongoing verification). Removing any element compromises whole. ESD failure invisible until yield drop, server outage, surgical incident reveals it. Связано: <a href="floor-compliance-verification-checklist.html">compliance verification</a> §5 (ESD) · <a href="antimicrobial-hygiene-floor-systems.html">antimicrobial hygiene</a> · <a href="floor-system-selection-by-use-case.html">selection</a> · <a href="floor-care-by-system-type.html">care</a>.</p>
+                    <h2>Типичные ошибки в ESD-полах</h2>
+                    <ul>
+                        <li><strong>«ESD-пол» без проверки по IEC 61340-5-1.</strong> Рекламное утверждение без измеримого подтверждения. Отклоняйте предложения без протоколов испытаний по ANSI/ESD STM7.1.</li>
+                        <li><strong>Сетка заземления из меди пропущена или уложена частично.</strong> Токопроводящая смола без сети заземления электрически бессмысленна — заряд накапливается, а пути для его стекания нет.</li>
+                        <li><strong>Финишный слой нанесён поверх ESD-несущего слоя без проверки сохранения проводимости.</strong> Некоторые обычные полиуретановые финиши изолируют; характеристики ESD падают до брака.</li>
+                        <li><strong>Обычная химия для уборки на ESD-полу.</strong> Стандартные моющие средства оставляют изолирующий слой, который ухудшает характеристики за 6-12 месяцев. Требуется моющая химия, одобренная производителем.</li>
+                        <li><strong>Приёмочная проверка ESD пропущена при монтаже.</strong> Без исходного замера при монтаже нет данных для сравнения при ежегодной повторной проверке. Дрейф сопротивления невозможно оценить количественно.</li>
+                        <li><strong>Отсоединение клеммы заземления после расстановки мебели.</strong> Клеммы заземления должны оставаться доступными и иметь подтверждённое подключение после установки мебели. Типичный недосмотр при снабжении.</li>
+                    </ul>
+
+                    <h2>Бюджет</h2>
+                    <p>ESD-исполнение добавляет примерно 50-100% к стоимости аналогичной системы без ESD:</p>
+                    <ul>
+                        <li>Сеть заземления из меди с монтажом: ₪80-150 за м².</li>
+                        <li>Токопроводящие смоляные материалы (против обычного наливного эпоксидного пола): +30-50% к стоимости материалов.</li>
+                        <li>Работа специализированных укладчиков: +20-40% к стоимости работ.</li>
+                        <li>Первичные приёмочные испытания: ₪5 000-12 000 на проект.</li>
+                        <li>Ежегодная повторная проверка и аудит совместимости моющей химии: ₪3 000-6 000 в год.</li>
+                    </ul>
+                    <p>Для чистого помещения производства полупроводников площадью 800 м² ESD-исполнение добавляет около ₪200 000-350 000 к базовому наливному эпоксидному полу. Это немного по сравнению со стоимостью даже одного связанного с ESD сбоя выхода годных на современном полупроводниковом производстве.</p>
+
+                    <h2>Итог</h2>
+                    <p>ESD-пол — это электрическая система, а не просто выбор покрытия. Токопроводящая смола — лишь один компонент из четырёх в системе, которая включает подготовку основания, сеть заземления из меди, токопроводящую смолу и постоянную проверку с контролем совместимости моющей химии. Убрать любой элемент — значит подорвать всю систему, а отказ ESD остаётся незаметным до тех пор, пока его не обнаружат падение выхода годных, отказ серверной или инцидент в операционной. Прописывайте все четыре элемента в тендере, проверяйте при монтаже и ежегодно, требуйте моющую химию, одобренную производителем. Связанные материалы: <a href="floor-compliance-verification-checklist.html">чек-лист проверки соответствия</a> §5 (ESD) · <a href="antimicrobial-hygiene-floor-systems.html">антимикробные напольные системы</a> · <a href="floor-system-selection-by-use-case.html">выбор по области применения</a> · <a href="floor-care-by-system-type.html">уход по типу системы</a>.</p>
 
                     <h2>Источники</h2>
                     <ul>
-                        <li>IEC 61340-5-1:2016 — Protection of electronic devices.</li>
-                        <li>ANSI/ESD STM7.1 — Resistance measurement of floor materials.</li>
-                        <li>ANSI/ESD STM97.2 — Walking test for floor materials.</li>
-                        <li>Sikafloor-262 AS / 381 AS / 235 W ESD technical literature.</li>
-                        <li>Mapei Mapefloor Antistatic product data sheets.</li>
-                        <li>Flowcrete Flowstat product data sheets.</li>
-                        <li>MC-Bauchemie MC-DUR ESD technical data.</li>
-                        <li>EU GMP + ESD Association standards.</li>
-                        <li>Floor.DSGN IL contractor field documentation — 12+ ESD-controlled installations.</li>
+                        <li>IEC 61340-5-1:2016 — Защита электронных устройств от электростатических явлений. Общие требования.</li>
+                        <li>ANSI/ESD STM7.1 — Измерение сопротивления напольных материалов.</li>
+                        <li>ANSI/ESD STM97.2 — Тест хождением для напольных материалов.</li>
+                        <li>Техническая документация Sikafloor-262 AS / 381 AS / 235 W ESD.</li>
+                        <li>Технические листы продукции Mapei Mapefloor Antistatic.</li>
+                        <li>Технические листы продукции Flowcrete Flowstat.</li>
+                        <li>Технические данные MC-Bauchemie MC-DUR ESD.</li>
+                        <li>Стандарты EU GMP и ESD Association.</li>
+                        <li>Полевая документация подрядчика Floor.DSGN в Израиле — 12+ объектов с контролем статики.</li>
                     </ul>
                 </div>
             </div>
@@ -362,11 +395,11 @@
 
         <div class="article-cta">
             <div class="container">
-                <h2>Нужна ESD спека для cleanroom или electronics facility?</h2>
-                <p>Скажи facility type + zone classification + м². Full ESD specification с IEC 61340-5-1 class + grounding plan + verification protocol — в течение 48 часов.</p>
+                <h2>Нужна ESD-спецификация для чистого помещения или предприятия электроники?</h2>
+                <p>Сообщите тип объекта, классификацию зон и площадь в м². В ответ пришлём полную ESD-спецификацию: класс по IEC 61340-5-1 + план заземления + протокол приёмки — в течение 48 часов.</p>
                 <div class="cta-buttons">
-                    <a href="../contact.html" class="btn btn-primary">Запросить ESD спеку</a>
-                    <a href="floor-compliance-verification-checklist.html" class="btn btn-secondary">Compliance checklist</a>
+                    <a href="../contact.html" class="btn btn-primary">Запросить ESD-спецификацию</a>
+                    <a href="floor-compliance-verification-checklist.html" class="btn btn-secondary">Смотреть чек-лист соответствия</a>
                 </div>
             </div>
         </div>
