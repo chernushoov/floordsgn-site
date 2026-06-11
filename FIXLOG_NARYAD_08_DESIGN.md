@@ -52,8 +52,13 @@
 - **Mobile table/article overflow ИСПРАВЛЕН.** Корень: на статьях/сравнениях `.article-body` имел `min-width:auto` и схлопывался к ширине широкой таблицы (~451px) → весь контент клипался на телефоне. Фикс (styles.css, `@media ≤760`): `.article-content/.article-body{min-width:0;width:100%;box-sizing:border-box}` + content-таблицы `display:block;overflow-x:auto`. DOM-замер в 390px-iframe: `docScrollW=390`, `article-body=290` (было 451). Реальные телефоны (respect viewport-meta) рендерят верно; headless full-page скрин при `--window-size` клипает из-за viewport-meta-кваркa, но DOM-замер — авторитетен.
 - **listing-page H1 Cormorant.** Проверил library.html и др. — H1 уже Cormorant (дрейфа нет; «Montserrat» в library был body-шрифтом). Хоумпейдж big-sans hero — намеренное исключение (§8).
 
-## Осталось (следующие слайсы)
-base-dark на прочих тёмных страницах (не только footer/home); Studio persona-modal (onboarding-оверлей = нарушение §4, пре-существующий — снос трогает логику Studio); скролл-pine хедер главной (CSS на месте, в headless не снять состояние скролла).
+## Slice 4 — base-dark по порталу + Studio onboarding
+- **base-dark на прочих тёмных поверхностях** (styles.css): `.page-hero` (тёмный hero на всех внутренних страницах: about/floors/projects/contact…), `.cta-section` (тёмная CTA-полоса), `.trust-section` (`#1d1d1f`→pine), `.btn-primary` (тёмные кнопки Carbon→pine). Теперь весь портал в зелёном, не только footer/home. Проверено: about.html hero — pine-green «Инженерное совершенство». Менял только `background` (не токен `--black`), текст не тронут.
+- **Studio onboarding-wall убран (§4).** В studio.js на первом визите было `setTimeout(openChooser, 700)` — авто-стена persona-chooser. Заменил на чистый `applyPersona('explore')` (Studio грузится сразу, без стены) на всех вьюпортах; persona-pill остаётся opt-in. 3D-движок не тронут (studio.js — оверлей над движком, правка только в boot-ветке). Проверено: Studio открывается напрямую (панель материалов/цвета/света + «Подобрать пол»).
+- **Studio home-link.** Оказалось studio.js уже строит `st-brand` → `index.html` (был скрыт под модалкой при первом осмотре). Мою дублирующую `.studio-home` chrome из floor-room.html убрал — канонический «домой» даёт studio.js. Configurator chrome (tile-логотип + «← на сайт») оставлен как минимальный бар там.
+
+## Осталось (мелочь)
+Скролл-pine хедер главной — CSS на месте (`.header--hero.header--scrolled{background:base-dark}`), в headless состояние скролла не снять (iframe-scroll + virtual-time не рендерит) — проверить вживую. Encyclopedia/floors инлайн-тёмные блоки (если есть) — точечно при ревью.
 
 ## Deliverables
-Ветка `fix/design-premium-pass`: `e04cef8` (токены) → `b6af0a8` (главная) → `a13d8ce` (лого/chrome) → slice 3 (footer/accent/tables). FIXLOG. Без мёржа, без прода. `landing.html` FROZEN, 3D-движки не тронуты, эталоны не тронуты. lint DESIGN.md: 0 errors.
+Ветка `fix/design-premium-pass`: `e04cef8` → `b6af0a8` (главная) → `a13d8ce` (лого/chrome) → `fa6e6c2` (footer/accent/tables) → slice 4 (base-dark портал / Studio §4). FIXLOG. Без мёржа, без прода. `landing.html` FROZEN, 3D-движки не тронуты, эталоны не тронуты. lint DESIGN.md: 0 errors.

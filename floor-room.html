@@ -35,12 +35,6 @@
   .boot .ring{width:26px;height:26px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (max-width:560px){ .tl .t{font-size:14px} .seg button,.chip{padding:8px 10px;font-size:9px} }
-  /* NARYAD 08 — unified tool-chrome: canonical logo + back-to-site (Studio had no way home) */
-  .studio-home{position:fixed;top:max(14px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));z-index:9;display:flex;align-items:center;gap:12px;text-decoration:none}
-  .studio-home__mark{height:26px;width:auto;display:block;filter:drop-shadow(0 1px 6px rgba(0,0,0,.55))}
-  .studio-home__back{font:600 11px/1 'Montserrat',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:980px;padding:7px 13px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-  .studio-home__back:hover{background:rgba(255,255,255,.14);color:#fff}
-  .hud.tl{top:max(58px,calc(env(safe-area-inset-top) + 44px))}
 </style>
 <link rel="stylesheet" href="studio.css?v=20260604-1"/>
 <script type="importmap">
@@ -51,10 +45,6 @@
 </script>
 </head>
 <body>
-<a class="studio-home" href="/" aria-label="Floor.DSGN — на сайт">
-  <img src="/images/logo/logo-mark-orig-white.png" alt="" class="studio-home__mark">
-  <span class="studio-home__back">← на сайт</span>
-</a>
 <div id="app"></div>
 <div class="hud tl"><div class="t" id="ftitle">Floor.DSGN · Терраццо</div><div class="s">пол в интерьере · превью</div></div>
 <div class="hud br">3D — визуальная симуляция<br>финал — по физическому образцу</div>

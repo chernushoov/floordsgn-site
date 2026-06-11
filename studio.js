@@ -853,7 +853,7 @@
     else if (stored){ applyPersona(stored); }
     // On phones/tablets (≤1024) the persona chooser must NOT auto-wall the tool —
     // show the working Studio (explore) immediately; the header persona pill stays the opt-in.
-    else { applyPersona('explore'); if (!matchMedia('(max-width:1024px)').matches) setTimeout(openChooser, 700); else setTimeout(maybeOnboard, 1400); }
+    else { applyPersona('explore'); /* NARYAD 08 §4: no onboarding overlay — Studio loads in explore on every viewport; the header persona pill is the opt-in (auto-open removed). */ }
     if (fromURL || stored) setTimeout(maybeOnboard, 1400);   // first-timers get the chooser instead
 
     // apply deep-linked floor/room/finish/view from the URL directly (not STATE,
