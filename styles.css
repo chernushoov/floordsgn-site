@@ -896,10 +896,25 @@ img {
 
 /* ==================== FOOTER ==================== */
 .footer {
-    background: var(--carbon);
+    background: var(--base-dark); /* NARYAD 08: pine-green footer site-wide (was Carbon) */
     color: var(--white);
     padding: 80px 0 40px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* NARYAD 08 — mobile table overflow: content tables scroll instead of pushing the page wide
+   (article/comparison pages don't all load enhance.css; styles.css is loaded everywhere) */
+@media (max-width: 760px) {
+    /* let flex/grid content columns shrink below their intrinsic (table) width — root cause of
+       article-page horizontal overflow on phones (article-body had min-width:auto) */
+    .article-content, .article-body, .enc-art__body, main { min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; }
+    .article-body table, .article-content table, .enc-art table, .compare-table, .cmp-table, main table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 /* Footer logo lockup — matches the header (original tile-mark + wordmark, white) */
 .footer-logo-lockup { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }

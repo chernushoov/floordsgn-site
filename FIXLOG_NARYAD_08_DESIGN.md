@@ -46,8 +46,14 @@
 - **Configurator monospace → Montserrat.** `--mono` JetBrains Mono (это был 3-й шрифт = нарушение §2) → Montserrat, одной токен-строкой (19 использований).
 - Render-verify: home-header (desktop+mobile), Studio chrome, Configurator chrome — отрендерены и проверены. Lint DESIGN.md: 0 errors / 3 warnings.
 
-## Осталось по наряду (следующие слайсы)
-base-dark глобально (footer пока home-scoped; прочие тёмные страницы); **Configurator `--accent #0071e3` синий → Signal** (отдельное нарушение бренд-цвета); listing-page H1 Cormorant-drift; mobile table overflow; Studio persona-modal (onboarding-оверлей = нарушение §4, пре-существующий). Скролл-pine хедер: CSS на месте, в headless состояние скролла не снять — логика простая.
+## Slice 3 — carry-over polish
+- **Footer pine-green site-wide.** `.footer{background:var(--carbon)}` → `var(--base-dark)` в styles.css (было: только home-scoped). Теперь зелёный футер на всех 87+ страницах.
+- **Configurator `--accent` синий → Signal.** `#0071e3` (Apple-blue) → `#C86B3C`. Бренд-цвет восстановлен (точки/метки/selection).
+- **Mobile table/article overflow ИСПРАВЛЕН.** Корень: на статьях/сравнениях `.article-body` имел `min-width:auto` и схлопывался к ширине широкой таблицы (~451px) → весь контент клипался на телефоне. Фикс (styles.css, `@media ≤760`): `.article-content/.article-body{min-width:0;width:100%;box-sizing:border-box}` + content-таблицы `display:block;overflow-x:auto`. DOM-замер в 390px-iframe: `docScrollW=390`, `article-body=290` (было 451). Реальные телефоны (respect viewport-meta) рендерят верно; headless full-page скрин при `--window-size` клипает из-за viewport-meta-кваркa, но DOM-замер — авторитетен.
+- **listing-page H1 Cormorant.** Проверил library.html и др. — H1 уже Cormorant (дрейфа нет; «Montserrat» в library был body-шрифтом). Хоумпейдж big-sans hero — намеренное исключение (§8).
+
+## Осталось (следующие слайсы)
+base-dark на прочих тёмных страницах (не только footer/home); Studio persona-modal (onboarding-оверлей = нарушение §4, пре-существующий — снос трогает логику Studio); скролл-pine хедер главной (CSS на месте, в headless не снять состояние скролла).
 
 ## Deliverables
-Ветка `fix/design-premium-pass`, коммиты `b6af0a8` (главная) + slice 2 (лого/chrome). FIXLOG. Без мёржа, без прода. `landing.html` FROZEN, 3D-движки не тронуты.
+Ветка `fix/design-premium-pass`: `e04cef8` (токены) → `b6af0a8` (главная) → `a13d8ce` (лого/chrome) → slice 3 (footer/accent/tables). FIXLOG. Без мёржа, без прода. `landing.html` FROZEN, 3D-движки не тронуты, эталоны не тронуты. lint DESIGN.md: 0 errors.
