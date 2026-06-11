@@ -7919,7 +7919,7 @@ img {
    Defined here as tokens; applying them onto dark sections/footer/buttons is the next design
    pass (needs operator visual review + the logo decision). ONE Signal accent rule still holds. */
 :root {
-  --base-dark: #101510;     /* deep pine — near-black premium (darkened to match old-Wix darks) */
-  --base-dark-2: #0A0E0B;   /* darker pine variant — Studio band / footer */
+  --base-dark: #182420;     /* dark PINE-GREEN — etalon (calibrated old-Wix dominant). NOT near-black. */
+  --base-dark-2: #151E1B;   /* secondary pine — Studio band / footer (etalon secondary) */
   --radius-photo: 28px;     /* large rounded corners on photo blocks/cards (~24–32px) */
 }
