@@ -205,6 +205,15 @@ async function walkDir(srcDir, dstDir) {
     console.log(`[dir]  ${d}/`);
   }
 
+  // 2.5 Regenerate sitemap.xml from the live page tree (kept in sync; never
+  //     fail the build over it — fall back to the committed sitemap on error).
+  try {
+    require('child_process').execSync('node scripts/gen-sitemap.js', { cwd: ROOT, stdio: 'pipe' });
+    console.log('[sitemap] regenerated');
+  } catch (e) {
+    console.warn('[sitemap] generator failed, using committed sitemap.xml:', e.message);
+  }
+
   // 3. Copy a few specific top-level files that should NOT be minified
   for (const f of ['robots.txt', 'sitemap.xml', '_headers', '_redirects', 'favicon.ico']) {
     const src = path.join(ROOT, f);
